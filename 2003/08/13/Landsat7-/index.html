@@ -1,0 +1,799 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="GPS_GIS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="LANDSAT是美国陆地探测卫星系统。从1972年开始发射第一颗卫星LANDSAT 1，到目前最新的LANDSAT 7。
+LANDSAT 7 卫星于99年发射，装备有Enhanced Thematic Mapper Plus(ETM+)设备，ETM+被动感应地表反射的太阳辐射和散发的热辐射，有8个波段的感应器，覆盖了从红外到可见光的不同波长范围。
+ETM+比起在LANDSAT 4、5上面装备的Th">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Landsat7卫星及遥感图象处理">
+<meta property="og:url" content="http://aleung.github.io/blog/2003/08/13/Landsat7-/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:description" content="LANDSAT是美国陆地探测卫星系统。从1972年开始发射第一颗卫星LANDSAT 1，到目前最新的LANDSAT 7。
+LANDSAT 7 卫星于99年发射，装备有Enhanced Thematic Mapper Plus(ETM+)设备，ETM+被动感应地表反射的太阳辐射和散发的热辐射，有8个波段的感应器，覆盖了从红外到可见光的不同波长范围。
+ETM+比起在LANDSAT 4、5上面装备的Th">
+<meta property="og:updated_time" content="2016-03-16T14:11:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Landsat7卫星及遥感图象处理">
+<meta name="twitter:description" content="LANDSAT是美国陆地探测卫星系统。从1972年开始发射第一颗卫星LANDSAT 1，到目前最新的LANDSAT 7。
+LANDSAT 7 卫星于99年发射，装备有Enhanced Thematic Mapper Plus(ETM+)设备，ETM+被动感应地表反射的太阳辐射和散发的热辐射，有8个波段的感应器，覆盖了从红外到可见光的不同波长范围。
+ETM+比起在LANDSAT 4、5上面装备的Th">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Landsat7卫星及遥感图象处理 | Good good study, day day up </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-2827715-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Good good study, day day up</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">aleung的学习笔记, aleung的idea</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Landsat7卫星及遥感图象处理
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2003-08-13T02:49:00+08:00" content="2003-08-13">
+              2003-08-13
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2003/08/13/Landsat7-/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2003/08/13/Landsat7-/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>LANDSAT是美国陆地探测卫星系统。从1972年开始发射第一颗卫星LANDSAT 1，到目前最新的LANDSAT 7。</p>
+<p>LANDSAT 7 卫星于99年发射，装备有Enhanced Thematic Mapper Plus(ETM+)设备，ETM+被动感应地表反射的太阳辐射和散发的热辐射，有8个波段的感应器，覆盖了从红外到可见光的不同波长范围。</p>
+<p>ETM+比起在LANDSAT 4、5上面装备的Thematic Mapper(TM)设备在红外波段的分辨率更高，因此有更高的准确性。</p>
+<p>LANDSAT 7 的一些总体数据：</p>
+<ul>
+<li>7个光谱波段和一个全色波段 </li>
+<li>观察宽度达185km </li>
+<li>15、30、60、80米精度 </li>
+<li>离地705km太阳同步轨道 </li>
+<li>16天运行周期 </li>
+<li>覆盖范围为南北纬81度之间区域</li>
+</ul>
+<p>ETM+的波段：</p>
+<ol>
+<li>0.45-0.52微米蓝绿波段, 用于水体穿透, 土壤植被分辨 </li>
+<li>0.52-0.60微米绿色波段, 用于植被分辨 </li>
+<li>0.63-0.69微米红色波段, 处于叶绿素吸收区域, 用于观测道路/裸露土壤/植被种类效果很好 </li>
+<li>0.76-0.90微米近红外波段, 用于估算生物数量, 尽管这个波段可以从植被中区分出水体，分辨潮湿土壤，但是对于道路辨认效果不如TM3。 </li>
+<li>1.55-1.75微米中红外波段, 这被认为是所有波段中最佳的一个, 用于分辨道路/裸露土壤/水, 它还能在不同植被之间有好的对比度, 并且有较好的穿透大气、云雾的能力。 </li>
+<li>10.5-12.5微米热红外波段, 感应发出热辐射的目标. 分辨率为60m. </li>
+<li>2.08-2.35微米中红外波段, 对于岩石/矿物的分辨很有用, 也可用于辨识植被覆盖和湿润土壤. </li>
+<li>0.52-0.90微米全色波段, 得到的是黑白图象, 分辨率为15m, 用于增强分辨率, 提供分辨能力. (ETM+增加了这个波段，TM没有)</li>
+</ol>
+<p>以上波段除6、8外分辨率均为30m。</p>
+<p>Landsat7 ETM+ 数据又分为多种，例如L0Rp, L1R和L1G.</p>
+<ul>
+<li>L1R: radiometrically corrected but not geometrically resampled. </li>
+<li>L1G: radiometrically corrected and resampled for geometric correction and registration to geographic map projections.</li>
+</ul>
+<p>在使用这些卫星图象的时候，要先进行处理。通常是用多个波段的图象进行彩色合成，得到伪彩色图象。在合成前，各波段图象还要先做图象增强处理。</p>
+<p>例如：MrSid卫星图象是用band7作为红色, band4作为绿色，band2作为蓝色合成的，简称为742。（MrSid用的是Landsat TM, 1987-1993拍摄数据，当时未有Landsat 7）；GeoGratis Landsat7 合成卫星图象是用743(RGB)。Terra为绿野做到北京图用的是542。</p>
+<p>常用的合成方法：</p>
+<ul>
+<li>321：真彩合成。与肉眼所见接近；仅使用反射的可见光，受大气、云雾、阴影、散射的影响较大，通常对比度不高，感觉模糊（蓝色光散射严重）；对于海岸区域研究特别有用，因为可见光可穿透水面，观察到海底。 </li>
+<li>432：近红外合成。颜色与肉眼所见完全不同；植被在近红外波段反射率特别高，因为叶绿素在此波段反射的能量大，因此在432图象中植被会明显表现为深浅不同的红色，不同类型植物有不同的红色色调；水会吸收差不多所有的近红外光，因此水面颜色很深近乎黑色。 </li>
+<li>743/742：短波红外合成。包含至少一个短波红外波段，短波红外波段的反射率主要取决于物体表面的含水量，因此这类图象可用于植被保护和土地研究。</li>
+</ul>
+<p>图象合成可以用Photoshop之类的图象编辑软件来做，缺点是不能做出带地理信息的GeoTiff图象。<a href="http://www.geogr.ku.dk/chips/" target="_blank" rel="external">Chips</a>（哥本哈根图象处理系统）是一个专门用于遥感图象处理的软件，标准版是免费的。用它来制作3波段合成图象很容易。以下为简单使用方法：</p>
+<p>&gt;<br>Open WinChips, and from the <em>File</em> menu, select <em>New Project</em>. From the <em>File</em> menu, select <em>Add Object(s)</em>, and select the three images for the three bands you want to use in your composite image, and add them as _Chips Image_s. From the <em>File</em> menu, select <em>New Object</em>, then <em>Lookup Table</em>, then save the new Lookup Table file. From the <em>View</em> menu, select <em>New Image View</em>. In the <em>Image View Configuration</em> dialog, on the <em>Image</em> tab, select <em>Display Mode</em> as RGB. For each of the <em>(Red, Green, Blue)</em> choices, select the image for the band you want to use for the respective color. For <em>Lookup Table</em> select the Lookup Table you added earlier, then click <em>OK</em>.<br>&gt;<br>You should now have a <em>Default Image View</em> window open, showing your 3-band color composite image. From the <em>Image View</em> menu, select <em>Lookup Table</em>, then <em>Enhance using Statistics for Entire Image</em>. Once the statistics are calculated for each of the colors, a <em>Modify Lookup Table</em> dialog will be presented. To see the effect of some basic image enhancement, click on <em>Hist. Equal.</em>. You can use <em>Reset</em> to undo the enhancement. Click on <em>Cancel</em> to close the dialog window.<br>&gt;<br>To save the 3-band color composite image, from the <em>Image View</em> menu select <em>Export View To Standard Format</em>. Once you have saved the image file, you have the option of saving geocoding for the image. </p>
+<p>参考：  </p>
+<ul>
+<li><a href="http://imaging.geocomm.com/features/sensor/landsat7/" target="_blank" rel="external">http://imaging.geocomm.com/features/sensor/landsat7/</a>  </li>
+<li><a href="http://members.shaw.ca/davepatton/landsat7.html" target="_blank" rel="external">http://members.shaw.ca/davepatton/landsat7.html</a>  </li>
+<li><a href="http://chesapeake.towson.edu/data/composite.asp" target="_blank" rel="external">http://chesapeake.towson.edu/data/composite.asp</a>  </li>
+<li><a href="http://chesapeake.towson.edu/data/raw_data.asp" target="_blank" rel="external">http://chesapeake.towson.edu/data/raw_data.asp</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/GPS-GIS/" rel="tag">#GPS_GIS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2003/08/05/Robocode-/" rel="next" title="Robocode的线程与执行次序">
+                <i class="fa fa-chevron-left"></i> Robocode的线程与执行次序
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2003/08/18/Java-/" rel="prev" title="Java字符转换问题">
+                Java字符转换问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars.io/gravatar/leoliang@gmail.com"
+               alt="Leo Liang" />
+          <p class="site-author-name" itemprop="name">Leo Liang</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">312</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Liang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'aleung';
+      var disqus_identifier = '2003/08/13/Landsat7-/';
+      var disqus_title = "Landsat7卫星及遥感图象处理";
+      var disqus_url = 'http://aleung.github.io/blog/blog/2003/08/13/Landsat7-/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>

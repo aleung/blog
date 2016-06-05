@@ -1,0 +1,772 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="DIY," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="缘起及设计一切都起源于 flyisland 转的这篇文章：从零开始，给自己设计一台3D打印机，大量的图文细节和制作过程描述吸引了我，门槛似乎也不怎么高，于是产生了做一台的想法。看了 Thingivers 这个网站，更是发现了新的世界，打消了“有3d打印机不知道用来做什么”的疑虑，对喜欢搞制作的人来说3d打印机太有用了。
+于是开始网上查找资料，了解相关信息。一开始的想法是做像那篇文章中的 XYZ 结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kossel Mini 3D打印机制作记录 (1)">
+<meta property="og:url" content="http://aleung.github.io/blog/2015/10/05/kossel-mini-3d-printer-making/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:description" content="缘起及设计一切都起源于 flyisland 转的这篇文章：从零开始，给自己设计一台3D打印机，大量的图文细节和制作过程描述吸引了我，门槛似乎也不怎么高，于是产生了做一台的想法。看了 Thingivers 这个网站，更是发现了新的世界，打消了“有3d打印机不知道用来做什么”的疑虑，对喜欢搞制作的人来说3d打印机太有用了。
+于是开始网上查找资料，了解相关信息。一开始的想法是做像那篇文章中的 XYZ 结">
+<meta property="og:image" content="http://aleung.github.io/blog/blog/attachments/2015/10/1.jpg">
+<meta property="og:image" content="http://aleung.github.io/blog/blog/attachments/2015/10/2.jpg">
+<meta property="og:image" content="http://aleung.github.io/blog/blog/attachments/2015/10/3.jpg">
+<meta property="og:image" content="http://aleung.github.io/blog/blog/attachments/2015/10/4.jpg">
+<meta property="og:updated_time" content="2016-03-16T14:11:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kossel Mini 3D打印机制作记录 (1)">
+<meta name="twitter:description" content="缘起及设计一切都起源于 flyisland 转的这篇文章：从零开始，给自己设计一台3D打印机，大量的图文细节和制作过程描述吸引了我，门槛似乎也不怎么高，于是产生了做一台的想法。看了 Thingivers 这个网站，更是发现了新的世界，打消了“有3d打印机不知道用来做什么”的疑虑，对喜欢搞制作的人来说3d打印机太有用了。
+于是开始网上查找资料，了解相关信息。一开始的想法是做像那篇文章中的 XYZ 结">
+<meta name="twitter:image" content="http://aleung.github.io/blog/blog/attachments/2015/10/1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Kossel Mini 3D打印机制作记录 (1) | Good good study, day day up </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-2827715-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Good good study, day day up</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">aleung的学习笔记, aleung的idea</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Kossel Mini 3D打印机制作记录 (1)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-10-05T21:16:22+08:00" content="2015-10-05">
+              2015-10-05
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2015/10/05/kossel-mini-3d-printer-making/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/10/05/kossel-mini-3d-printer-making/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="缘起及设计"><a href="#缘起及设计" class="headerlink" title="缘起及设计"></a>缘起及设计</h2><p>一切都起源于 flyisland 转的这篇文章：<a href="http://post.smzdm.com/p/332896" target="_blank" rel="external">从零开始，给自己设计一台3D打印机</a>，大量的图文细节和制作过程描述吸引了我，门槛似乎也不怎么高，于是产生了做一台的想法。看了 <a href="http://www.thingiverse.com/" target="_blank" rel="external">Thingivers</a> 这个网站，更是发现了新的世界，打消了“有3d打印机不知道用来做什么”的疑虑，对喜欢搞制作的人来说3d打印机太有用了。</p>
+<p>于是开始网上查找资料，了解相关信息。一开始的想法是做像那篇文章中的 XYZ 结构，大一点的打印体积（开始都是贪心的），看了 <a href="http://forums.reprap.org/" target="_blank" rel="external">RepRap 论坛</a>发现关于 delta 结构的讨论很热门，了解多一些后知道 delta 结构打印机的打印速度快，成本比较低，制作也不复杂，于是锁定了 <a href="http://reprap.org/wiki/Kossel" target="_blank" rel="external">Kossel</a> 机型，心想先做一个出来练练手，小一点也够用了，以后真玩起来有需要再做大机器。</p>
+<p>接下来在寻找国内的资源的时候知道了 <a href="http://www.thingiverse.com/thing:388683" target="_blank" rel="external">K800</a> 打印机，这是国内爱好者 maximscy 在 Kossel Mini 基础上改进的以降低成本为目标的机型，原本 K800 的意思就是人民币800元可以做出来的 Kossel，但实际上基本上也还是要上千元。</p>
+<p>K800 应该说对于推动3D打印机在国内普及有不少功劳，淘宝上有不少卖套件的。K800 降低了成本，但是毕竟还是以牺牲一点精度为代价，因此卖家也有不少“升级套餐”，例如将打印制作的元件换成铝合金元件，滑轮换回直线导轨等等。我对成本还不算很敏感，想做出来的机器质素好一点，但看下来发现套件的价格水分又太大了，而且配置不一定跟自己要求一致，于是决定自己采购元件。</p>
+<p>最后定下来的方案基本上是原版的 Kossel Mini 方案，高度增加50mm，框架连接件用铝合金的以增加牢固程度和精度，挤出机用铝合金的套件。斜杆的制作精度要求比较高，也直接买做好的算了。</p>
+<p>制作相关的资料信息，例如 BOM，记录在GitHub的 <a href="https://github.com/aleung/KosselPrinter" target="_blank" rel="external">KosselPrinter</a> 项目里。</p>
+<h2 id="进展"><a href="#进展" class="headerlink" title="进展"></a>进展</h2><h3 id="国庆节前"><a href="#国庆节前" class="headerlink" title="国庆节前"></a>国庆节前</h3><p>计划用国庆节7天假期来制作，所有材料应该要在节前采购完毕。开始没有考虑到淘宝店家在国庆节会放假，到27号了BOM还没有完全做好，订单还没下。淘宝上采购的难度比预计要困难得多，要比较不同店家的产品，而且搜索了才知道有些元件有好多选择，要弄清楚它们的区别，相互的配套，一个变了可能设计就要改变，配套的东西也不同了。在马云家奋战一个晚上直到凌晨3点，第二天又继续买买买，终于把订单全下完，总金额1400元出头。</p>
+<p>元件在29、30日陆续送到，其中挤出机发现配件不齐，找卖家补发。想着剩下的东西在1日都能够全部收齐了吧？</p>
+<h3 id="10-1"><a href="#10-1" class="headerlink" title="10-1"></a>10-1</h3><p>安装框架，发现买的铝合金连接件是按照国标铝型材设计的，竖杆孔里有几条棱，而我用的是欧标铝型材，配合使用T型螺母，因为棱的存在无法压紧，只好尝试用锉刀去锉掉那条棱。另外，我买的 M3*8 螺丝显得小和短了，有点勉强，出去转了一圈，没有找到卖铝型材用螺母的地方，都放假了。</p>
+<img src="/blog/attachments/2015/10/1.jpg">
+<p>铝合金连接件有一件漏打一个孔，跟店家联系，他晚上直接开车给我送一个好的过来，超好人。跟他说起欧标型材的问题，他说可以送给我一些国标 M4 方螺母，也可以塞进欧标型材的槽里的，就不需要锉掉那条棱了。</p>
+<h3 id="10-2"><a href="#10-2" class="headerlink" title="10-2"></a>10-2</h3><p>把直线导轨装上，发现只有一根导轨的滑块能够在重力下自己下滑，另外两根摩擦力都好大，而且是不均匀，在某些地方特别卡，需要用一点力才能推过去。网上问人，说这是不正常的，要么是质量特别差，要么是旧零件翻新。只好退货了，然后就不知道应该买什么导轨，国产的似乎不可靠，台湾上银的又太贵，而且据说淘宝假货很多。</p>
+<img src="/blog/attachments/2015/10/2.jpg">
+<p>快递国庆节都休息了，节前买的东西到了配送点就是没人送上门，停工待料。开始看软件、参数调整和建模方面的资料，发现入坑了，而且似乎是深不见底。</p>
+<p>试用 <a href="http://www.openscad.org/" target="_blank" rel="external">OpenSCAD</a>，通过写代码的方式来建3D模型，很容易上手，做基于几何体的模型很简便（自由曲面用什么工具都不简单吧？）。</p>
+<h3 id="10-3"><a href="#10-3" class="headerlink" title="10-3"></a>10-3</h3><p>收到M4螺丝螺母，把原来用M3螺丝螺母已经装好的框架拆掉。发现步进电机、同步轮和连接件的安装位置不太吻合，看来又要动用钢锉。要等导轨和滑车到了后确定具体位置才好动手。于是所有东西又回到一堆零件的状态。</p>
+<p>将计划从国庆假期完成更新为10月底前完成。</p>
+<h3 id="10-5"><a href="#10-5" class="headerlink" title="10-5"></a>10-5</h3><p>快递终于上班了，所有淘宝买的东西都送齐了。但是直线导轨退货后还没有重新购买，没有这个关键零件还是什么都做不了。</p>
+<p>今天没有干什么东西，只是将送丝机和挤出头装配了起来。</p>
+<img src="/blog/attachments/2015/10/3.jpg"> <img src="/blog/attachments/2015/10/4.jpg">
+<p><em>(To be contined…)</em></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/DIY/" rel="tag">#DIY</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2015/09/20/quality-of-free-software/" rel="next" title="自由软件质量不如软件企业自己开发的可靠？">
+                <i class="fa fa-chevron-left"></i> 自由软件质量不如软件企业自己开发的可靠？
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars.io/gravatar/leoliang@gmail.com"
+               alt="Leo Liang" />
+          <p class="site-author-name" itemprop="name">Leo Liang</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">312</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#缘起及设计"><span class="nav-number">1.</span> <span class="nav-text">缘起及设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进展"><span class="nav-number">2.</span> <span class="nav-text">进展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#国庆节前"><span class="nav-number">2.1.</span> <span class="nav-text">国庆节前</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-1"><span class="nav-number">2.2.</span> <span class="nav-text">10-1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-2"><span class="nav-number">2.3.</span> <span class="nav-text">10-2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-3"><span class="nav-number">2.4.</span> <span class="nav-text">10-3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-5"><span class="nav-number">2.5.</span> <span class="nav-text">10-5</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Liang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'aleung';
+      var disqus_identifier = '2015/10/05/kossel-mini-3d-printer-making/';
+      var disqus_title = "Kossel Mini 3D打印机制作记录 (1)";
+      var disqus_url = 'http://aleung.github.io/blog/blog/2015/10/05/kossel-mini-3d-printer-making/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>

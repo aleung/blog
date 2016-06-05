@@ -1,0 +1,779 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="SoftwareDev,Java,i18n," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="字符编码问题一直都是令人头痛，查阅资料，写下了《java 字符转换问题的学习笔记》。
+什么是字节流与字符流的转换? 什么时候会做转换?字符就是char类型, 是双字节的, 用unicode, 一个char就是实际上的一个字符；字节就是byte类型, 是单字节的，实际的字符串根据编码不同，用单字节或者双字节来表示。常用的String类型核心就是char[]，String.length()就是char">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java字符转换问题">
+<meta property="og:url" content="http://aleung.github.io/blog/2003/08/18/Java-/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:description" content="字符编码问题一直都是令人头痛，查阅资料，写下了《java 字符转换问题的学习笔记》。
+什么是字节流与字符流的转换? 什么时候会做转换?字符就是char类型, 是双字节的, 用unicode, 一个char就是实际上的一个字符；字节就是byte类型, 是单字节的，实际的字符串根据编码不同，用单字节或者双字节来表示。常用的String类型核心就是char[]，String.length()就是char">
+<meta property="og:updated_time" content="2016-03-16T14:11:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java字符转换问题">
+<meta name="twitter:description" content="字符编码问题一直都是令人头痛，查阅资料，写下了《java 字符转换问题的学习笔记》。
+什么是字节流与字符流的转换? 什么时候会做转换?字符就是char类型, 是双字节的, 用unicode, 一个char就是实际上的一个字符；字节就是byte类型, 是单字节的，实际的字符串根据编码不同，用单字节或者双字节来表示。常用的String类型核心就是char[]，String.length()就是char">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Java字符转换问题 | Good good study, day day up </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-2827715-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Good good study, day day up</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">aleung的学习笔记, aleung的idea</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java字符转换问题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2003-08-18T22:57:00+08:00" content="2003-08-18">
+              2003-08-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2003/08/18/Java-/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2003/08/18/Java-/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>字符编码问题一直都是令人头痛，查阅资料，写下了《java 字符转换问题的学习笔记》。</p>
+<h3 id="什么是字节流与字符流的转换-什么时候会做转换"><a href="#什么是字节流与字符流的转换-什么时候会做转换" class="headerlink" title="什么是字节流与字符流的转换? 什么时候会做转换?"></a>什么是字节流与字符流的转换? 什么时候会做转换?</h3><p>字符就是char类型, 是双字节的, 用unicode, 一个char就是实际上的一个字符；字节就是byte类型, 是单字节的，实际的字符串根据编码不同，用单字节或者双字节来表示。<br>常用的String类型核心就是char[]，String.length()就是char[]数组的大小，因此当encoding没有转换错误时，String长度是字符的个数，不管是中文还是英文。做字符处理的时候也从来不会出现截断半个字符的问题。<br>Java内部都是用char的，但是很多时候做输入输出就要用byte stream，例如文件、数据库、网络。<br>当数据要从char变为byte，或者byte变成char时，就要做转换。<br>同样的内容，用不同的编码方式(encoding)，byte stream是不同的，转换的时候需要指定使用的encoding。<br>JVM的file.encoding属性确定了JVM的缺省的编码/解码方式：从而影响应用中所有字节流==&gt;字符流的解码方式 字符流==&gt;字节流的编码方式。在不同OS平台上，这是由locale决定的，缺省encoding在中文平台为GBK，英文平台为8859_1。  </p>
+<h3 id="Java-I-O"><a href="#Java-I-O" class="headerlink" title="Java I/O"></a>Java I/O</h3><p>Reader和Writer核心是char，InputStream和OutputStream核心是byte。<br>专门有bridge类做Reader/Writer与InputStream/OutputStream的转换：InputStreamReader/OutputStreamWriter。  </p>
+<h3 id="UTF8与unicode"><a href="#UTF8与unicode" class="headerlink" title="UTF8与unicode"></a>UTF8与unicode</h3><p>准确的说，UTF8不是unicode，它也只是一种编码方式，不过它的编码空间可以容纳unicode的所有字符。因此UTF8是一种很适合于存储unicode的外码。UTF8是变长编码，中文3字节。  </p>
+<h3 id="什么地方会发生转换？"><a href="#什么地方会发生转换？" class="headerlink" title="什么地方会发生转换？"></a>什么地方会发生转换？</h3><ul>
+<li><p>从数据库到java程序 byte——〉char  </p>
+</li>
+<li><p>从java程序到数据库 char——〉byte  </p>
+</li>
+<li><p>从文件到java程序 byte——〉char  </p>
+</li>
+<li><p>从java程序到文件 char——〉byte  </p>
+</li>
+<li><p>从java程序到页面显示 char——〉byte  </p>
+</li>
+<li><p>从页面form提交数据到java程序 byte——〉char  </p>
+</li>
+<li><p>从流到java程序 byte——〉char  </p>
+</li>
+<li><p>从java程序到流 char——〉byte  </p>
+</li>
+</ul>
+<h3 id="源程序中的字符串"><a href="#源程序中的字符串" class="headerlink" title="源程序中的字符串"></a>源程序中的字符串</h3><p>最早的字节流解码过程从javac的代码编译就开始了，写在源文件中的字符串是按照一定的编码方式的（如gbk），java编译器根据缺省的encoding来对源代码中的字符串做解码，在java bytecode中存储为unicode char。  </p>
+<h3 id="数据库中的字符编码方式"><a href="#数据库中的字符编码方式" class="headerlink" title="数据库中的字符编码方式"></a>数据库中的字符编码方式</h3><p>数据库中的东西都是二进制存放的，支持任何数据，理论上说，与编码并没有关系。不过，如果没有指定字符集，在排序、匹配的时候有问题，接口的地方也会出现问题。<br>因此就涉及到以什么编码方式来保存到数据库中了。平常我们用数据库工具或者其他程序写数据库时，都是直接用系统编码方式，也就是gbk。但是，JDBC在访问数据库时，缺省是用数据库的字符集，通常为8859_1的，本来应该是gbk-&gt;unicode却变成了8859_1-&gt;unicode,就会出现乱码。连接串中加上参数可以强制jdbc按照gbk做转换。<br>jdbc:mysql://localhost/test?useUnicode=true&amp;characterEncoding=GBK<br>不过这样数据库还是只能支持gbk，如果写入big5码，同样会出现转换错误的问题。最佳方案还是用UTF8来编码，这样可以容纳unicode所有字符，覆盖了gbk、big5等各个字符集的范围。<br>MySQL原来不支持UTF8，直到目前的最新版本4.1才加入unicode支持，但目前4.1版本还在alpha阶段。  </p>
+<h3 id="Swing的字符集问题"><a href="#Swing的字符集问题" class="headerlink" title="Swing的字符集问题"></a>Swing的字符集问题</h3><p>从目前的试验看来，swing的组件会自动根据系统encoding做转换，并不需要干预。  </p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/SoftwareDev/" rel="tag">#SoftwareDev</a>
+          
+            <a href="/blog/tags/Java/" rel="tag">#Java</a>
+          
+            <a href="/blog/tags/i18n/" rel="tag">#i18n</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2003/08/13/Landsat7-/" rel="next" title="Landsat7卫星及遥感图象处理">
+                <i class="fa fa-chevron-left"></i> Landsat7卫星及遥感图象处理
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2003/08/18/MySQL-NOT-NULL-/" rel="prev" title="MySQL是不会理会字段的NOT NULL标记的!">
+                MySQL是不会理会字段的NOT NULL标记的! <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars.io/gravatar/leoliang@gmail.com"
+               alt="Leo Liang" />
+          <p class="site-author-name" itemprop="name">Leo Liang</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">312</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是字节流与字符流的转换-什么时候会做转换"><span class="nav-number">1.</span> <span class="nav-text">什么是字节流与字符流的转换? 什么时候会做转换?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-I-O"><span class="nav-number">2.</span> <span class="nav-text">Java I/O</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UTF8与unicode"><span class="nav-number">3.</span> <span class="nav-text">UTF8与unicode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么地方会发生转换？"><span class="nav-number">4.</span> <span class="nav-text">什么地方会发生转换？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源程序中的字符串"><span class="nav-number">5.</span> <span class="nav-text">源程序中的字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库中的字符编码方式"><span class="nav-number">6.</span> <span class="nav-text">数据库中的字符编码方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Swing的字符集问题"><span class="nav-number">7.</span> <span class="nav-text">Swing的字符集问题</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Liang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'aleung';
+      var disqus_identifier = '2003/08/18/Java-/';
+      var disqus_title = "Java字符转换问题";
+      var disqus_url = 'http://aleung.github.io/blog/blog/2003/08/18/Java-/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>

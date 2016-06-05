@@ -1,0 +1,853 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="TimeManagement," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="首先，我得承认：我又在折腾了。
+这些年来，用过好多种任务管理（to-do）工具，包括low-tech的，电子化的，始终没有一个完全满意。最近一段时间又纠结于此，寻找、尝试各种工具，花了不少时间，真是有点本末倒置啊。
+经过多年的练习，已经逐渐明确了自己对任务管理工具的需求是什么：（优先级从高到低排列）
+
+Available on both PC and Android, data are synch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="任务管理工具">
+<meta property="og:url" content="http://aleung.github.io/blog/2011/02/28/Task-management-tools/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:description" content="首先，我得承认：我又在折腾了。
+这些年来，用过好多种任务管理（to-do）工具，包括low-tech的，电子化的，始终没有一个完全满意。最近一段时间又纠结于此，寻找、尝试各种工具，花了不少时间，真是有点本末倒置啊。
+经过多年的练习，已经逐渐明确了自己对任务管理工具的需求是什么：（优先级从高到低排列）
+
+Available on both PC and Android, data are synch">
+<meta property="og:updated_time" content="2011-03-01T18:19:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="任务管理工具">
+<meta name="twitter:description" content="首先，我得承认：我又在折腾了。
+这些年来，用过好多种任务管理（to-do）工具，包括low-tech的，电子化的，始终没有一个完全满意。最近一段时间又纠结于此，寻找、尝试各种工具，花了不少时间，真是有点本末倒置啊。
+经过多年的练习，已经逐渐明确了自己对任务管理工具的需求是什么：（优先级从高到低排列）
+
+Available on both PC and Android, data are synch">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 任务管理工具 | Good good study, day day up </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-2827715-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Good good study, day day up</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">aleung的学习笔记, aleung的idea</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                任务管理工具
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2011-02-28T07:51:00+08:00" content="2011-02-28">
+              2011-02-28
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2011/02/28/Task-management-tools/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2011/02/28/Task-management-tools/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>首先，我得承认：我又在折腾了。</p>
+<p>这些年来，用过好多种任务管理（to-do）工具，包括low-tech的，电子化的，始终没有一个完全满意。最近一段时间又纠结于此，寻找、尝试各种工具，花了不少时间，真是有点本末倒置啊。</p>
+<p>经过多年的练习，已经逐渐明确了自己对任务管理工具的需求是什么：（优先级从高到低排列）</p>
+<ul>
+<li><strong>Available on both PC and Android, data are synchonized between devices</strong><br>手机是随身携带的，因此要支持Android手机，并且在网络离线时也要可用；手机输入文字速度还是比电脑上慢，屏幕小有局限，输入、整理等工作在电脑上做更有效率。</li>
+<li><strong>随时都可以快速将新的任务记录下来</strong><br>这是GTD中所强调的inbox的功能。创建新任务的界面必须尽可能简单，需要输入的信息和步骤越少越好。</li>
+<li><strong>Be able to set start date of a task, hide future tasks</strong><br>这个功能很多工具都缺乏。Start date与due date是不同的：due date是dead line，大部分任务没有due date；start date是自己对任务的安排。对于不需要马上做的任务，安排好开始的时间，就从当前任务列表里隐藏了，可以更专注于当前任务。</li>
+<li><strong>区分不同任务：new（inbox），scheduled，someday；方便的改变任务类型</strong><br>新任务的记录是清空大脑的过程，需要review后安排具体处理时间；someday是那种还没有想到该什么时候做的任务（也有可能是其实不需要做的）</li>
+<li><strong>Easily schedule / reschedule tasks</strong><br>用简便的操作就可以安排任务执行的时间</li>
+<li><strong>Recurrent task</strong></li>
+<li><strong>Integrate with calendar</strong><br>日程表跟任务列表整合起来，相互可以转换。以前写过<a href="http://good-good-study.appspot.com/blog/posts/3184" target="_blank" rel="external">一些想法</a>。</li>
+<li><strong>Set due date to a task</strong></li>
+<li><strong>Sort tasks in list by drag’n’drop</strong><br>相比起为任务设置priority，我更喜欢直接将任务拖放改变顺序。有时候说不清一个任务到底属于哪个priority，但会知道几个任务中哪个应该先做。</li>
+<li><strong>Apply tag to a task</strong></li>
+<li><strong>Batch operation</strong></li>
+</ul>
+<p>最近将网上找到比较出名的工具都试用过了，记录下简单的评价（针对我的需求的）：</p>
+<ul>
+<li>Remember The Milk <ul>
+<li>功能完善，使用方便</li>
+<li>Web及Android均可离线使用</li>
+<li>不支持 start date</li>
+</ul>
+</li>
+<li>Toodledo <ul>
+<li>Very rich feature set, too heavy</li>
+<li>Complex, unfriendly UI</li>
+<li><strike>不支持 start date</strike></li>
+</ul>
+</li>
+<li>Todoist <ul>
+<li>不支持 start date</li>
+</ul>
+</li>
+<li>Todo.ly <ul>
+<li>不支持 start date</li>
+</ul>
+</li>
+<li>Stay Useful <ul>
+<li>Simple and neat, nice user experience</li>
+<li>没有someday任务，最远只能安排到next week</li>
+<li>支持浏览器离线使用，但在Android上显示没有适应屏幕大小</li>
+<li>免费试用30天，购买$4</li>
+</ul>
+</li>
+<li>Google Tasks <ul>
+<li>不支持 start date</li>
+<li>将任务移到另外一个列表的操作不够简便</li>
+</ul>
+</li>
+<li>Hiveminder <ul>
+<li>No offline access on Android</li>
+</ul>
+</li>
+<li>Nozbe <ul>
+<li>功能完善</li>
+<li>Too expensive: $9.95/month</li>
+</ul>
+</li>
+<li>Tadalist <ul>
+<li>It’s only list of items with checkbox, nothing more</li>
+</ul>
+</li>
+<li>itumz <ul>
+<li>It’s only list of items with checkbox, nothing more</li>
+</ul>
+</li>
+<li>zirr.us <ul>
+<li>Show tasks in tag cloud style</li>
+<li>No start date, only due date</li>
+</ul>
+</li>
+<li>TeuxDeux <ul>
+<li>Day (5 days shown in one screen) + someday, drag’n’drop</li>
+<li>Good user experience</li>
+<li>Can not show all tasks, have to scroll to the date</li>
+<li>No due date</li>
+<li>No recurrent task</li>
+<li>Doesn’t work on Android (native app is underway?)</li>
+</ul>
+</li>
+<li>TaskWarrior <ul>
+<li>CLI</li>
+<li>Good enough feature set</li>
+<li>No Android client</li>
+</ul>
+</li>
+<li>GQueues <ul>
+<li>No start date</li>
+<li>No Android client, 支持浏览器离线访问，但体验不够好</li>
+</ul>
+</li>
+</ul>
+<p>总结下来，就是没有一个能够同时满足我的需求的前几项的。故此我又有了自己做一个的想法，大概的思路已经有了，下次再写。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/TimeManagement/" rel="tag">#TimeManagement</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2011/02/14/Independent-blog-of-a-week/" rel="next" title="独立博客一周年纪念">
+                <i class="fa fa-chevron-left"></i> 独立博客一周年纪念
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2011/03/13/Sina-micro-bo-API-blacklist-terrible/" rel="prev" title="新浪微博API黑名单威武">
+                新浪微博API黑名单威武 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars.io/gravatar/leoliang@gmail.com"
+               alt="Leo Liang" />
+          <p class="site-author-name" itemprop="name">Leo Liang</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">312</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Liang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'aleung';
+      var disqus_identifier = '2011/02/28/Task-management-tools/';
+      var disqus_title = "任务管理工具";
+      var disqus_url = 'http://aleung.github.io/blog/blog/2011/02/28/Task-management-tools/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>

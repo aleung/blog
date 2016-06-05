@@ -1,0 +1,790 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="SoftwareDev,Android," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="近幾天把以前做的跑步步频训练软件 RunningCadence 加上了多語言支持，可以在應用中設定界面以及語音播報所用的語言。
+對多語言的支持，Android已經做得很完善，開發者只需要在應用中加入各種locale的資源文件。但是，應用只會使用系統全局設置的locale，而要在應用自己的設定中選擇locale，以及要讓設定立即生效，就需要開發者自己去實現了。
+本來，一般應用並沒必要自己提供語言設定">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android: 在應用中設定locale">
+<meta property="og:url" content="http://aleung.github.io/blog/2012/10/06/change-locale-in-android-application/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:description" content="近幾天把以前做的跑步步频训练软件 RunningCadence 加上了多語言支持，可以在應用中設定界面以及語音播報所用的語言。
+對多語言的支持，Android已經做得很完善，開發者只需要在應用中加入各種locale的資源文件。但是，應用只會使用系統全局設置的locale，而要在應用自己的設定中選擇locale，以及要讓設定立即生效，就需要開發者自己去實現了。
+本來，一般應用並沒必要自己提供語言設定">
+<meta property="og:updated_time" content="2016-03-16T14:11:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android: 在應用中設定locale">
+<meta name="twitter:description" content="近幾天把以前做的跑步步频训练软件 RunningCadence 加上了多語言支持，可以在應用中設定界面以及語音播報所用的語言。
+對多語言的支持，Android已經做得很完善，開發者只需要在應用中加入各種locale的資源文件。但是，應用只會使用系統全局設置的locale，而要在應用自己的設定中選擇locale，以及要讓設定立即生效，就需要開發者自己去實現了。
+本來，一般應用並沒必要自己提供語言設定">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Android: 在應用中設定locale | Good good study, day day up </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-2827715-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Good good study, day day up</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">aleung的学习笔记, aleung的idea</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android: 在應用中設定locale
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2012-10-06T00:25:00+08:00" content="2012-10-06">
+              2012-10-06
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2012/10/06/change-locale-in-android-application/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2012/10/06/change-locale-in-android-application/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>近幾天把以前做的跑步步频训练软件 <a href="https://play.google.com/store/apps/details?id=leoliang.runningcadence" target="_blank" rel="external">RunningCadence</a> 加上了多語言支持，可以在應用中設定界面以及語音播報所用的語言。</p>
+<p>對多語言的支持，Android已經做得很完善，開發者只需要在應用中加入各種locale的資源文件。但是，應用只會使用系統全局設置的locale，而要在應用自己的設定中選擇locale，以及要讓設定立即生效，就需要開發者自己去實現了。</p>
+<p>本來，一般應用並沒必要自己提供語言設定，用系統全局設定就好了。但這個 RunningCadence 使用了語音合成(TTS)功能，而一般手機上安裝的TTS引擎支持的語言都有限，如果TTS不支持系統locale的語言，那就聽不到聲音了，所以需要花力氣去搞這個應用內的語言選擇。</p>
+<h2 id="讓應用啓動時使用自己設定的locale，而非系統locale"><a href="#讓應用啓動時使用自己設定的locale，而非系統locale" class="headerlink" title="讓應用啓動時使用自己設定的locale，而非系統locale"></a>讓應用啓動時使用自己設定的locale，而非系統locale</h2><p>開發應用時要爲不同locale準備不同的資源，在應用中通過 <a href="http://developer.android.com/reference/android/content/res/Resources.html" target="_blank" rel="external">Resources</a> 類來加載資源，各個界面組件的構建都需要用到資源。而具體資源如何選擇是受 <a href="http://developer.android.com/reference/android/content/res/Configuration.html" target="_blank" rel="external">Configuration</a> 影響的，Configuration帶有設備的硬件相關配置信息（如屏幕分辨率，屏幕方向）和系統全局配置信息（如locale），由系統底層框架提供。</p>
+<p>應用啓動時，Configuration中的locale會被設置爲系統locale。應用若要使用自己的locale，就必須在創建界面之前，將Resources裏的Configuration更改。</p>
+<p>這個更改在application的 onCreate() 裏面做最合適，對應用全局生效，因爲它在任何activity創建之前就執行了，不再需要在各個activity裏做任何事情。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    setLocale();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setLocale</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Locale locale = getLocaleFromPref();</span><br><span class="line">    Locale.setDefault(locale);</span><br><span class="line">    Configuration config = getBaseContext().getResources().getConfiguration();</span><br><span class="line">    overwriteConfigurationLocale(config, locale);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">overwriteConfigurationLocale</span><span class="params">(Configuration config, Locale locale)</span> </span>&#123;</span><br><span class="line">    config.locale = locale;</span><br><span class="line">    getBaseContext().getResources()</span><br><span class="line">            .updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>加了這段代碼後，應用啓動時就會根據 getLocaleFromPref() 返回的語言來顯示了，但是你會發現如果將手機屏幕轉一下，例如豎屏變爲橫屏，界面又會變回系統缺省語言，爲什麼呢？</p>
+<p>系統底層框架會在configuration發生了變化時通知應用[^1]。對application是調用 Application.onConfigurationChanged() 方法。對activity的處理採用那種方式，就與manifest文件中&lt;Activity&gt;的 android:configChanges 屬性配置相關：</p>
+<ul>
+<li>如果發生的是configChanges中指定的事件，調用 Activity.onConfigurationChanged()，不重啓activity；</li>
+<li>否則重啓activity。</li>
+</ul>
+<p>[^1]: 詳細機制見 <a href="http://developer.android.com/guide/topics/resources/runtime-changes.html" target="_blank" rel="external">Handling Runtime Changes</a></p>
+<p>屏幕的旋轉就是一種 runtime change，缺省情況下會觸發activity的重啓，也就是銷毀並重新創建activity[^2]，重新創建時使用的是新的Configuration，裏面帶的又是系統locale，因此就造成了界面變回系統缺省語言。</p>
+<p>[^2]: 在 <a href="/2010/12/16/Android-activity-lifecycle-in-UML-state-machine-diagram">Android Activity Lifecycle in UML</a> 文中的狀態圖可以見到configChanged引發的狀態遷移。</p>
+<p>爲了避免這種情況，需要在Application的 onConfigurationChanged() 裏面也對Configuration做修改。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onConfigurationChanged</span><span class="params">(Configuration newConfig)</span> </span>&#123;</span><br><span class="line">    Locale locale = getLocaleFromPref();</span><br><span class="line">    Locale.setDefault(locale);</span><br><span class="line">    overwriteConfigurationLocale(newConfig, locale);</span><br><span class="line">    <span class="keyword">super</span>.onConfigurationChanged(newConfig);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>做了這些後，應用就能使用自己的locale設定，而不是系統locale了。完整代碼例子可以參考RunningCadence源碼 <a href="https://github.com/aleung/RunningCadence/blob/c658e00bd24a23bd95369bf6e3d87254776ae2cb/RunningCadence/src/leoliang/runningcadence/Application.java" target="_blank" rel="external">Application.java</a>。</p>
+<h2 id="讓應用preference中的locale設定修改立即生效"><a href="#讓應用preference中的locale設定修改立即生效" class="headerlink" title="讓應用preference中的locale設定修改立即生效"></a>讓應用preference中的locale設定修改立即生效</h2><p>應用通常會使用 Preference API 來構造用戶設定界面，在上一步完成後，用戶可以在應用preference裏設置locale，在應用重新啓動時會使用選定的locale。但是用戶在preference裏修改locale後是不會立即生效的，因爲修改沒有反映到 configuration 中去，而且對於已經存在的activity，界面組件都已經創建好了，界面上的文字不可能自動改變。</p>
+<p>一種方案是讓整個應用重新啓動，所有資源都重新加載，所有界面都重新創建。我留意了一下，大部分提供應用內語言設定的應用都是這樣做的——在彈出對話框裏選擇語言並確認後，不會返回到設定頁面，而是顯示應用的入口界面——應用已經重啓了。在 RunningCadence 中，我不想用這種方法，因爲用戶體驗會不好——用戶在修改語言後，通常還要選擇另一個選項進行語音合成測試，看看TTS對新選擇的語言能否正常工作——如果應用重啓返回主界面，用戶就得再進入設定界面才能進行測試，一方面是操作麻煩了，另一方面界面無緣無故跳轉也會帶來困惑。</p>
+<h3 id="在用戶修改設定後，更新Configuration"><a href="#在用戶修改設定後，更新Configuration" class="headerlink" title="在用戶修改設定後，更新Configuration"></a>在用戶修改設定後，更新Configuration</h3><p>更新Configuration的方法跟應用啓動時的做法一樣，可以重用 setLocale() 方法，問題是要能在合適的時機去調用。使用SharedPreference的修改通知機制可以做到這點。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PreferenceActivity</span> <span class="keyword">extends</span> <span class="title">android</span>.<span class="title">preference</span>.<span class="title">PreferenceActivity</span> <span class="keyword">implements</span></span><br><span class="line">        <span class="title">OnSharedPreferenceChangeListener</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSharedPreferenceChanged</span><span class="params">(SharedPreferences sharedPreferences, String key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (key.equals(<span class="string">"pref_language"</span>)) &#123;</span><br><span class="line">            ((Application) getApplication()).setLocale();</span><br><span class="line">            restartActivity();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        addPreferencesFromResource(R.xml.preferences);</span><br><span class="line">        getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onStop();</span><br><span class="line">        getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>要注意這個listener的寫法，如果按照通常Android程序風格，使用匿名內部類來實現，就會發生詭異的問題，總是不會被回調。這個問題花了我好長時間，誤打誤撞解決了也沒明白什麼回事，寫這篇文章時才看見StackOverflow上有這個問題的<a href="http://stackoverflow.com/a/3104265/94148" target="_blank" rel="external">根源解答</a>。</p>
+<h3 id="將已經存在的界面按照新locale重新顯示"><a href="#將已經存在的界面按照新locale重新顯示" class="headerlink" title="將已經存在的界面按照新locale重新顯示"></a>將已經存在的界面按照新locale重新顯示</h3><p>先分析哪些activity是需要重新顯示的，這需要對應用的 <a href="http://developer.android.com/guide/components/tasks-and-back-stack.html" target="_blank" rel="external">task stack</a> 結構有一個審視。要知道在locale更改的時刻，哪些activity還在生存着，會在後續操作中重新變爲可見狀態，這些activity的界面需要重建。在RunningCadence裏比較簡單，就是PreferenceActivity本身和調用它的主activity。</p>
+<p>要讓activity的界面按新locale重新顯示，最簡單的方法應該就是讓它重啓，這比起對每個界面元件都用重新加載資源去重設要簡單得多。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">restartActivity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Intent intent = getIntent();</span><br><span class="line">    finish();</span><br><span class="line">    startActivity(intent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>PreferenceActivity的重啓是在OnSharedPreferenceChangeListener得知設定發生了改變的時候進行，在上面的代碼例子裏已經顯示出來了。而主activity的重啓是在當用戶從PreferenceActivity中返回到主activity時，在onActivityResult() 中觸發。</p>
+<p>完整代碼例子可以參考RunningCadence源碼 <a href="https://github.com/aleung/RunningCadence/blob/f0cdb98b42a94caa5c7e2cec1a8aa6abf91e73b9/RunningCadence/src/leoliang/runningcadence/PreferenceActivity.java" target="_blank" rel="external">PreferenceActivity.java</a>。</p>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>現在將思路理清了寫下來，感覺不算複雜，但是在做的過程中費了好多腦筋繞了不少彎路，邊上網查資料邊嘗試。Android的API Guides在ICS發佈後改進了好多，很多內容重寫過更清晰容易理解了，另外一個非常有價值的資源是<a href="StackOverflow.com">StackOverflow.com</a>。</p>
+<p>我感覺，對於一般應用沒有太大必要去實現應用內的語言選擇。系統裏所有應用都使用統一的locale本來就挺好的。</p>
+<p>如果應用的task stack結構複雜，需要重新顯示的activity很多，可能用重啓整個應用的方法更簡單一些。我不知道重啓應用是怎麼做到的，Android API裏面沒有現成的方法。不過若實現了應用重啓，應用內部各個Activity都不需要做任何額外處理了。</p>
+<p><em>Update</em>: 感謝guanyc網友的留言，給出重啟應用的方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">PendingIntent intent = PendingIntent.getActivity(</span><br><span class="line">    <span class="keyword">this</span>.getBaseContext(), </span><br><span class="line">    <span class="number">0</span>, </span><br><span class="line">    <span class="keyword">new</span> Intent(getIntent()), </span><br><span class="line">    getIntent().getFlags());</span><br><span class="line">AlarmManager mgr = (AlarmManager) getSystemService(Context.ALARM_SERVICE);</span><br><span class="line">mgr.set(AlarmManager.RTC, System.currentTimeMillis() + <span class="number">500</span>, intent);</span><br><span class="line"><span class="comment">// this.finish()?</span></span><br><span class="line"><span class="comment">// this.saveSettings();</span></span><br><span class="line">System.exit(<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<hr>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/SoftwareDev/" rel="tag">#SoftwareDev</a>
+          
+            <a href="/blog/tags/Android/" rel="tag">#Android</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2012/09/17/Java-volatile-/" rel="next" title="Java的volatile关键字的作用">
+                <i class="fa fa-chevron-left"></i> Java的volatile关键字的作用
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2012/12/11/my-first-half-marathon/" rel="prev" title="我的首個半馬拉松">
+                我的首個半馬拉松 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars.io/gravatar/leoliang@gmail.com"
+               alt="Leo Liang" />
+          <p class="site-author-name" itemprop="name">Leo Liang</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">312</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#讓應用啓動時使用自己設定的locale，而非系統locale"><span class="nav-number">1.</span> <span class="nav-text">讓應用啓動時使用自己設定的locale，而非系統locale</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#讓應用preference中的locale設定修改立即生效"><span class="nav-number">2.</span> <span class="nav-text">讓應用preference中的locale設定修改立即生效</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在用戶修改設定後，更新Configuration"><span class="nav-number">2.1.</span> <span class="nav-text">在用戶修改設定後，更新Configuration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#將已經存在的界面按照新locale重新顯示"><span class="nav-number">2.2.</span> <span class="nav-text">將已經存在的界面按照新locale重新顯示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#總結"><span class="nav-number">3.</span> <span class="nav-text">總結</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Liang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'aleung';
+      var disqus_identifier = '2012/10/06/change-locale-in-android-application/';
+      var disqus_title = "Android: 在應用中設定locale";
+      var disqus_url = 'http://aleung.github.io/blog/blog/2012/10/06/change-locale-in-android-application/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>

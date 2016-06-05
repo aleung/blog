@@ -1,0 +1,853 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="SoftwareDev," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="在我们的工作中，不时需要评估工作任务的优先级：例如下个版本的软件应该加入的功能，又或者对之前工作回顾列出的一大堆改进项目，在一轮头脑风暴之后，发现需要做的事情是如此之多，而能投入的资源显得如此至少，怎么挑选出最有价值的事情来做就成了头痛的事。
+过往，我们常做的方法是，召集一个会议，大家一起来为每个任务评分：分别评估出任务的工作量级和重要性（1、2、3… 最重要为1），然后将两者相乘得到一个分数，根">
+<meta property="og:type" content="article">
+<meta property="og:title" content="确定优先级">
+<meta property="og:url" content="http://aleung.github.io/blog/2011/06/26/Determine-priority/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:description" content="在我们的工作中，不时需要评估工作任务的优先级：例如下个版本的软件应该加入的功能，又或者对之前工作回顾列出的一大堆改进项目，在一轮头脑风暴之后，发现需要做的事情是如此之多，而能投入的资源显得如此至少，怎么挑选出最有价值的事情来做就成了头痛的事。
+过往，我们常做的方法是，召集一个会议，大家一起来为每个任务评分：分别评估出任务的工作量级和重要性（1、2、3… 最重要为1），然后将两者相乘得到一个分数，根">
+<meta property="og:updated_time" content="2016-03-16T14:11:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="确定优先级">
+<meta name="twitter:description" content="在我们的工作中，不时需要评估工作任务的优先级：例如下个版本的软件应该加入的功能，又或者对之前工作回顾列出的一大堆改进项目，在一轮头脑风暴之后，发现需要做的事情是如此之多，而能投入的资源显得如此至少，怎么挑选出最有价值的事情来做就成了头痛的事。
+过往，我们常做的方法是，召集一个会议，大家一起来为每个任务评分：分别评估出任务的工作量级和重要性（1、2、3… 最重要为1），然后将两者相乘得到一个分数，根">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 确定优先级 | Good good study, day day up </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-2827715-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Good good study, day day up</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">aleung的学习笔记, aleung的idea</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                确定优先级
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2011-06-26T15:38:00+08:00" content="2011-06-26">
+              2011-06-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2011/06/26/Determine-priority/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2011/06/26/Determine-priority/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在我们的工作中，不时需要评估工作任务的优先级：例如下个版本的软件应该加入的功能，又或者对之前工作回顾列出的一大堆改进项目，在一轮头脑风暴之后，发现需要做的事情是如此之多，而能投入的资源显得如此至少，怎么挑选出最有价值的事情来做就成了头痛的事。</p>
+<p>过往，我们常做的方法是，召集一个会议，大家一起来为每个任务评分：分别评估出任务的工作量级和重要性（1、2、3… 最重要为1），然后将两者相乘得到一个分数，根据这个分数对任务排序。这种做法是期望能找出重要性比较高，但是又不太难完成的任务。但很不幸，越是重要的任务往往工作量越大—-如果有重要而简单的任务，我们早就把它做了，不需要等到这个会议的召开—-得到的分数差距不大。印象中，我参加过的评估会，都没有得出什么有用的结论，最终做的决策似乎跟评估没有太多的关系。</p>
+<p>你可能会指出，这个评估模型根本就是不对的，工作量和重要性两者相乘得不出有意义的数字。但我们都不够聪明，没有想到一个足够简单而直观的方法。（回过头来看，应该是我们谁都没有花心思去想过。为什么？为什么？为什么？！）</p>
+<p>今天读”<a href="http://book.douban.com/subject/4163938/" target="_blank" rel="external">More Joel on Software</a>“，第36节介绍了他们用的方法，值得借鉴。</p>
+<p>首先评估每项任务的工作量（成本），得到一个数字，其实这个数字是什么单位无所谓，story point也好，$也好，在例子里用的是$，金额。</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th style="text-align:right">成本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>个性化首页</td>
+<td style="text-align:right">$10 </td>
+</tr>
+<tr>
+<td>轻松安排软件开放进程</td>
+<td style="text-align:right">$4</td>
+</tr>
+<tr>
+<td>追踪资金到账时间</td>
+<td style="text-align:right">$5</td>
+</tr>
+<tr>
+<td>允许对bug分叉(fork)</td>
+<td style="text-align:right">$1</td>
+</tr>
+</tbody>
+</table>
+<p>然后规定每人手上只有限量的资金，例如$20，可以用来购买这些功能。每个人根据自己对功能的重要性判断来决定应该为每个功能分配多少钱。例如：我觉得追踪资金到账时间是没有用的功能，一分钱也不分给它；安排软件开发过程很重要，我愿意出两倍的钱；而允许对bug分叉更重要，出4倍的钱；而个性化首页不是那么重要，所以我只愿意出80%的钱。故此，我的资金这样分配：</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th style="text-align:right">成本</th>
+<th style="text-align:right">销售额</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>个性化首页</td>
+<td style="text-align:right">$10</td>
+<td style="text-align:right">$8</td>
+</tr>
+<tr>
+<td>轻松安排软件开放进程</td>
+<td style="text-align:right">$4</td>
+<td style="text-align:right">$8</td>
+</tr>
+<tr>
+<td>追踪资金到账时间</td>
+<td style="text-align:right">$5</td>
+<td style="text-align:right">$0</td>
+</tr>
+<tr>
+<td>允许对bug分叉(fork)</td>
+<td style="text-align:right">$1</td>
+<td style="text-align:right">$4</td>
+</tr>
+</tbody>
+</table>
+<p>这个过程其实就是一个已经按照成本加权的优先级评估。每个人在评估时已经综合考虑了成本和重要性。</p>
+<p>将每个功能从各人手中获得的资金累加起来，再除以成本，就得到一个投资收益率，很明显，投资收益率最高的功能就是应该最优先做的。</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th style="text-align:right">成本</th>
+<th style="text-align:right">总销售额</th>
+<th style="text-align:right">投资收益率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>个性化首页</td>
+<td style="text-align:right">$10</td>
+<td style="text-align:right">$45</td>
+<td style="text-align:right">4.5</td>
+</tr>
+<tr>
+<td>轻松安排软件开放进程</td>
+<td style="text-align:right">$4</td>
+<td style="text-align:right">$36</td>
+<td style="text-align:right">9</td>
+</tr>
+<tr>
+<td>追踪资金到账时间</td>
+<td style="text-align:right">$5</td>
+<td style="text-align:right">$12</td>
+<td style="text-align:right">2.4</td>
+</tr>
+<tr>
+<td>允许对bug分叉(fork)</td>
+<td style="text-align:right">$1</td>
+<td style="text-align:right">$7</td>
+<td style="text-align:right">7</td>
+</tr>
+</tbody>
+</table>
+<p>下次排任务优先级的时候，我们应该尝试一下这种方法。</p>
+<p>P.S. 回头再想一下，这个方法其实跟我们以前用的工作量乘以重要性级别的方法本质上是一样的，但是我们过去用的重要性级别1、2、3、4、5没有定量关系，说不出不同级别之间的重要性相差多少倍，因此相乘出来的数字就没有比较价值了。另外，每人手上持有有限量资金进行分配这种方式更接近我们日常的思维模式，调动起人的直觉，类似于planning game。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/SoftwareDev/" rel="tag">#SoftwareDev</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2011/04/10/Drag-and-drop-list-view-on-Android/" rel="next" title="Drag and drop list view on Android">
+                <i class="fa fa-chevron-left"></i> Drag and drop list view on Android
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2011/08/08/Maven-artifact-repository-setup-for-multiple-sites-team/" rel="prev" title="Maven artifact repository setup for multiple sites team">
+                Maven artifact repository setup for multiple sites team <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars.io/gravatar/leoliang@gmail.com"
+               alt="Leo Liang" />
+          <p class="site-author-name" itemprop="name">Leo Liang</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">312</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Liang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'aleung';
+      var disqus_identifier = '2011/06/26/Determine-priority/';
+      var disqus_title = "确定优先级";
+      var disqus_url = 'http://aleung.github.io/blog/blog/2011/06/26/Determine-priority/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>

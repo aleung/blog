@@ -1,0 +1,867 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="SoftwareDev,Scala,Haskell," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="之前在公司里一来一往的邮件讨论，被江南白衣集成一篇收录到他的博客里，读下来还蛮有意思，转过来，以下为全文引用。其中的梁君就是我啦。
+缘起达夫君： 
+利用 GitHub 统计分析编程语言发展趋势
+第一轮讨论梁君：
+增加的Java的项目里，不知道有多少是与Android相关的呢？
+Scala最热门都是在意大利城市（Milan, Rome, Florence, Naples,Turin），很奇怪，意大利">
+<meta property="og:type" content="article">
+<meta property="og:title" content=" 同事们关于 FP 语言的讨论">
+<meta property="og:url" content="http://aleung.github.io/blog/2015/01/25/fp/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:description" content="之前在公司里一来一往的邮件讨论，被江南白衣集成一篇收录到他的博客里，读下来还蛮有意思，转过来，以下为全文引用。其中的梁君就是我啦。
+缘起达夫君： 
+利用 GitHub 统计分析编程语言发展趋势
+第一轮讨论梁君：
+增加的Java的项目里，不知道有多少是与Android相关的呢？
+Scala最热门都是在意大利城市（Milan, Rome, Florence, Naples,Turin），很奇怪，意大利">
+<meta property="og:updated_time" content="2016-03-16T14:11:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content=" 同事们关于 FP 语言的讨论">
+<meta name="twitter:description" content="之前在公司里一来一往的邮件讨论，被江南白衣集成一篇收录到他的博客里，读下来还蛮有意思，转过来，以下为全文引用。其中的梁君就是我啦。
+缘起达夫君： 
+利用 GitHub 统计分析编程语言发展趋势
+第一轮讨论梁君：
+增加的Java的项目里，不知道有多少是与Android相关的呢？
+Scala最热门都是在意大利城市（Milan, Rome, Florence, Naples,Turin），很奇怪，意大利">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title>  同事们关于 FP 语言的讨论 | Good good study, day day up </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-2827715-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Good good study, day day up</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">aleung的学习笔记, aleung的idea</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                 同事们关于 FP 语言的讨论
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-01-25T12:41:14+08:00" content="2015-01-25">
+              2015-01-25
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2015/01/25/fp/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/01/25/fp/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><em>之前在公司里一来一往的邮件讨论，被江南白衣集成一篇收录到<a href="http://calvin1978.blogcn.com/articles/haskell.html" target="_blank" rel="external">他的博客</a>里，读下来还蛮有意思，转过来，以下为全文引用。其中的梁君就是我啦。</em></p>
+<h2 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h2><p><strong>达夫君</strong>： </p>
+<p><a href="http://segmentfault.com/a/1190000000502996" target="_blank" rel="external">利用 GitHub 统计分析编程语言发展趋势</a></p>
+<h2 id="第一轮讨论"><a href="#第一轮讨论" class="headerlink" title="第一轮讨论"></a>第一轮讨论</h2><p><strong>梁君</strong>：</p>
+<p>增加的Java的项目里，不知道有多少是与Android相关的呢？</p>
+<p>Scala最热门都是在意大利城市（Milan, Rome, Florence, Naples,Turin），很奇怪，意大利软件业不发达。于是查了字典在意大利语里scala是scale(英语)的意思，应该跟编程语言无关。排除之后排首位的就是 San Francisco和San Jose，硅谷地区。</p>
+<p>最近几天在看 Haskell，真是非常有趣的一门语言。<br>于是也在Google Trends上看一下，搜索Haskell最热的城市是 Gothenburg，第二是Utrecht (因为乌特勒支大学？)。</p>
+<p>2014年热度，按国家排序，Haskell最热也是China! 考虑到中国已经屏蔽了Google，这个结果令人吃惊。在国内Scala, Haskell也不是那么热门吧？程序员人口基数大？</p>
+<p><strong>雄君</strong>：</p>
+<p>Haskell应该是所有程序语言里面被神化的最厉害的吧。有种说法，Haskell可以让你变成一个更好的程序员，即便你不用它，好像还有本书名就是这个。感觉看几本Haskell书就能变成高手似的，快变成宗教了都。。。。</p>
+<p><strong>梁君</strong>：</p>
+<p>Haskell应该是一种研究型/教学型语言吧。</p>
+<p>据说是纯粹的FP，我现在看它是想试试强迫一下自己使用FP的思维模式。</p>
+<p>那篇 <a href="http://raganwald.com/2014/12/20/why-why-functional-programming-matters-matters.html" target="_blank" rel="external">WhyWhyFP</a> 不错。 里面，看到一些话（虽然不算是那篇文字的主题）：</p>
+<blockquote>
+<p>The key is the word better. It is not the same as the phrase more powerful.<br>it is possible to make a language “better” by removing features that are considered harmful, if by doing so it makes programs in the language better programs.</p>
+</blockquote>
+<p>关于 better 与 powerful 的思考，不是功能越多就越好。用在我们的产品上也是一样啊。</p>
+<h2 id="哥德堡的Haskell教授"><a href="#哥德堡的Haskell教授" class="headerlink" title="哥德堡的Haskell教授"></a>哥德堡的Haskell教授</h2><p><strong>赵君</strong>：</p>
+<p>Gothenburg研究Haskell的那个人好像是Richard君的教授。感兴趣的可以问问Richard的感受。</p>
+<p><strong>范君</strong>：</p>
+<p>Richard说的:</p>
+<blockquote>
+<p>Mr Hughes is a very smart guy. And his homepage hasn’t changed since I had him as a professor : <a href="http://www.cse.chalmers.se/~rjmh/" target="_blank" rel="external">http://www.cse.chalmers.se/~rjmh/</a> </p>
+</blockquote>
+<p>国外大学很多都是用Haskell，大老板之前去大英帝国读研也是用它。</p>
+<h2 id="FP做题大赛"><a href="#FP做题大赛" class="headerlink" title="FP做题大赛"></a>FP做题大赛</h2><p><strong>韶君</strong>：</p>
+<p>我好奇看一下，“证明即程序、命题为类型”，这就是一门数学领域的领域语言，难怪学院派对它宠爱有加，一边证明一边编程，逼格高啊</p>
+<p>有个网站号称趣味学Haskell: <a href="http://learnyouahaskell-zh-tw.csie.org/" target="_blank" rel="external">HASKELL 趣學指南</a> [^1]</p>
+<p>[^1]: 英文原版为 <a href="http://learnyouahaskell.com/" target="_blank" rel="external">Learn You a Haskell for Great Good!</a>。有电子书，简体中文纸板也出版了。</p>
+<p>Step by step 学了一下Haskell，居然停不下来，无论写还是读，都像在玩puzzle game，都想找回以前的数学课本来复习一下。我想不用也能让你成为更好的程序员此话不假，就是让你恶补一下已经还给老师的数学概念。</p>
+<p>给个零零漆的经典应用题大家思考一下：有一个农场，鸡的数目是鸭的四倍，但是鸭又比猪少九只，鸭和猪的数目是六十七只，请问农场所有动物的脚加起来共多少只？</p>
+<p><strong>雄君</strong>：</p>
+<p>感觉这跟你的学习方式关系更大，跟语言关系不大的。你也可以用Scala去做SICP的习题，同样有这种感觉。</p>
+<p><strong>梁君</strong>：</p>
+<p>不挑起具体语言之争。韶君的例子应该是说明FP给人带来耳目一新的感觉。</p>
+<p>另外，我感觉那本书 (Learn You a Haskell) 用来做FP入门真的很好，之前看过一些Scala的书都没有那么清晰的理解。</p>
+<p>顺便做做那道题目：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Prelude</span>&gt; head [c*<span class="number">2</span>+d*<span class="number">2</span>+p*<span class="number">4</span> | d&lt;-[<span class="number">0.</span>.], <span class="keyword">let</span> c=d*<span class="number">4</span>, <span class="keyword">let</span> p=d+<span class="number">9</span>, d+p==<span class="number">67</span>] </span><br><span class="line"><span class="number">442</span></span><br></pre></td></tr></table></figure>
+<p><strong>韶君</strong>：</p>
+<p>我原来写的是</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">head</span> [a*<span class="number">2</span>+b*<span class="number">2</span>+c*<span class="number">4</span>|a &lt;-[<span class="number">1</span>,<span class="number">2.</span>.], b &lt;-[<span class="number">1</span>,<span class="number">2.</span>.], c &lt;- [<span class="number">1</span>,<span class="number">2.</span>.], a=<span class="number">4</span>*b, b=c<span class="number">-9</span>, b+c=<span class="number">67</span>]</span><br></pre></td></tr></table></figure>
+<p>结果不会结束，除非数组加上限，有空找你理解一下。</p>
+<p>确实是FP带来的感觉，相信Scala也可以带来这个感觉，只不过如果我用Scala就不自觉地当Java来做了。</p>
+<p><strong>达夫君</strong>：</p>
+<p>我原来也是将Scala当Java来写。但是当你将Java的语法忘了差不多了，Scala就入门了：）</p>
+<p>其实只是个老问题，就是平常没机会看Scala的代码，没有好的example参考而已。<br>看别人的代码多了，也就习惯了。</p>
+<p>用 Scala 解那道题：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> d = (<span class="number">1</span> to <span class="number">67</span>) toStream</span><br><span class="line"><span class="keyword">val</span> feet = <span class="keyword">for</span> &#123;</span><br><span class="line">  d1 &lt;- d</span><br><span class="line">  c1 = d1 * <span class="number">4</span></span><br><span class="line">  p1 = d1 +<span class="number">9</span> <span class="keyword">if</span> (d1 + p1 == <span class="number">67</span>)</span><br><span class="line">&#125; <span class="keyword">yield</span> &#123;</span><br><span class="line">  (c1+d1) * <span class="number">2</span> + p1 * <span class="number">4</span></span><br><span class="line">&#125;</span><br><span class="line">println(feet.take(<span class="number">1</span>).force)</span><br></pre></td></tr></table></figure>
+<p><strong>梁君</strong>：</p>
+<p>Scala应该增加一种纯FP模式，当打开这个选项的时候，任何不符合FP的写法都报错（或者warning）。</p>
+<p><strong>米君</strong>：</p>
+<p>沒電腦，裸寫一段 Python，不知道對不對：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> map(<span class="keyword">lambda</span> x: ‎x*<span class="number">2</span> + x*<span class="number">4</span>*<span class="number">2</span> + (x+<span class="number">9</span>)*<span class="number">4</span>, filter(<span class="keyword">lambda</span> x: x+x+<span class="number">9</span> == <span class="number">67</span>, range(<span class="number">0</span>,<span class="number">67</span>)))[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<p>看起來還是 Haskell 的最有數學味。</p>
+<p>邊打邊爐邊研究，或者還可以這樣（不知道對不對，大意如此）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> (x*<span class="number">2</span> + x*<span class="number">4</span>*<span class="number">2</span> + (x+<span class="number">9</span>)*<span class="number">4</span> <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">67</span>) <span class="keyword">if</span> x+x+<span class="number">9</span> == <span class="number">67</span>‎)[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<p>據說這樣有 lazy evaluation，map 和 filter 不知道有沒有。有明白人指點一下嗎？</p>
+<p><strong>韶君</strong>：</p>
+<p>FP的思路就是“是什么”，指令编程的思路是“做什么”，从这个角度看<br><code>head [c*2+d*2+p*4 | d&lt;-[0..], let c=d*4, let p=d+9, d+p==67]</code> 这个最优雅了，基本上把题目复述一遍而已</p>
+<p><strong>雄君</strong>：</p>
+<p>米君，你已经线下把三元方程转成一元了，这个是作弊吧，不算。</p>
+<p>Haskell的 lazy evaluation 在这么小的程序里面也会搞出无限循环的bug，这是它没法商用的最大原因之一。</p>
+<p>我发一个Clojure的，也符合数据的解方程思路。</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">first</span></span> (<span class="name"><span class="builtin-name">for</span></span> [p (<span class="name"><span class="builtin-name">range</span></span> <span class="number">1</span> <span class="number">67</span>)</span><br><span class="line">             <span class="symbol">:let</span> [d (<span class="name"><span class="builtin-name">-</span></span> <span class="number">67</span> p) c (<span class="name"><span class="builtin-name">*</span></span> <span class="number">4</span> d)]</span><br><span class="line">             <span class="symbol">:when</span> (<span class="name"><span class="builtin-name">=</span></span> d (<span class="name"><span class="builtin-name">-</span></span> p <span class="number">9</span>))]</span><br><span class="line">         (<span class="name"><span class="builtin-name">+</span></span> (<span class="name"><span class="builtin-name">*</span></span> p <span class="number">4</span>) (<span class="name"><span class="builtin-name">*</span></span> d <span class="number">2</span>) (<span class="name"><span class="builtin-name">*</span></span> c <span class="number">2</span>))))</span><br></pre></td></tr></table></figure>
+<p><strong>梁君</strong>：</p>
+<p>这个我忍不住要说说了，上限没有在原题中给出，需要推理才能得到的。Haskell的程序里是没有设上限的：<code>a &lt;-[1..], b &lt;-[1..], c &lt;- [1..]</code>。<br>你们写的其他程序都是有上限的：<code>p (range 1 67)</code>，<code>x in range(0, 67)</code>，<code>(1 to 67)</code>。</p>
+<p>用这个来说Haskell会搞出无限循环的bug是不是有点冤枉了？</p>
+<p>p.s. FP的理论在那里，现代的语言都或多或少吸取进去了，只是用什么语法形式的问题，纯粹一些还是要跟原来的特性做妥协，大家也都相互借鉴。除了Java最不思上进。</p>
+<p>看上去Clojure的语法最像Lisp。</p>
+<p><strong>米君</strong>：</p>
+<p>不服上訴。哈哈。</p>
+<p>這樣呢？算不算真三元？（已經盡力了。除非改成一元，否則range 好像是繞不過的坎，如果改成無限列表也是一樣會死循環。）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> iter( c*<span class="number">2</span> + d*<span class="number">2</span> + p*<span class="number">4</span> <span class="keyword">for</span> c <span class="keyword">in</span> range(<span class="number">67</span>*<span class="number">4</span>) <span class="keyword">for</span> d <span class="keyword">in</span> range(<span class="number">67</span>) <span class="keyword">for</span> p <span class="keyword">in</span> range(<span class="number">67</span>) <span class="keyword">if</span> c == d*<span class="number">4</span> <span class="keyword">and</span> d == p<span class="number">-9</span> <span class="keyword">and</span> d+p == <span class="number">67</span>).next()</span><br></pre></td></tr></table></figure>
+<p>Clojure的版本和Java看上去很像啊。唯一不同大概就是 lazy evaluation 吧。<br>另外，雖然定義了三個變量，但其實只有一個是真正的“變”量，所以還是一元。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ( <span class="keyword">int</span> p = <span class="number">1</span>; p &lt;=<span class="number">67</span>; d++) &#123; </span><br><span class="line">  <span class="keyword">int</span> d = <span class="number">67</span> - p; </span><br><span class="line">  <span class="keyword">int</span> c = d * <span class="number">4</span>; </span><br><span class="line">  <span class="keyword">if</span> ( d == p - <span class="number">9</span> ) </span><br><span class="line">    System.out.println( c*<span class="number">2</span> + d*<span class="number">2</span> + p*<span class="number">4</span> ) </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>雄君</strong>：</p>
+<p>其实完全不是那么一回事，Scala和Clojure里面的for不是循环的意思，达夫之前解释过。这是Java程序员转FP的第一重障碍。另外，Clojure这段代码绝对没有lazy evaluation，如果需要Lazy，Clojure必须要明确指定使用Lazy seq。</p>
+<p>Python和Java的表达能力不可能赶上Lisp的，超过Lisp表达能力的语言还没有发明出来。</p>
+<h2 id="最后一轮讨论"><a href="#最后一轮讨论" class="headerlink" title="最后一轮讨论"></a>最后一轮讨论</h2><p><strong>雄君</strong>：</p>
+<p>Clojure是一个Lisp变种，也是目前唯一的一个商业化的Lisp系语言。</p>
+<p>Haskell 是 lazy evaluation by default 的语言，全世界几乎独此一家了。这个特性导致程序运行时，时间和空间都是不可预期的，基本上没有企业敢用。</p>
+<p>Haskell又为了程序在逻辑上的predictable，从语言成面回避side effect，结果连个随机数生成都搞不定，发明monad来解决这个问题。问题是monad这么复杂的东西，用Haskell开发竟然是必须掌握的技巧，这很恐怖啊，哪找程序员？</p>
+<p>这语言真的是只能看的。</p>
+<p><strong>韶君</strong>：</p>
+<p>Haskell我觉得商业上想取得成功确实不容易，但我不觉得作者想这样做，说商用，有哪种语言比Java更成功呢，指令语言也没那么容易出错，因为指令语言只有想不到，没有做不到，想取得商业成功就意味着妥协，从这个角度，我更看好Scala。</p>
+<p><strong>达夫君</strong>：</p>
+<p>估计等大家要看Java8的时候就需要考虑是升级JDK到8呢还是换Scala了。</p>
+<p><strong>梁君</strong>：</p>
+<p>Haskell 就是一门教学/研究型语言，开个学术会议，几个老家伙聚在一起，说不如我们设计个语言来显示一下FP多牛B吧。商业成功不是它设计的初衷 (后来其他人怎么想是另外一回事)</p>
+<blockquote>
+<p>At the conference on Functional Programming Languages and Computer Architecture (FPCA ‘87) in Portland, Oregon, a meeting was held during which participants formed a strong consensus that a committee should be formed to define an open standard for such languages. The committee’s purpose was to consolidate the existing functional languages into a common one that would serve as a basis for future research in functional-language design.</p>
+</blockquote>
+<p>才发现BASIC不是我唯一的入门语言，我刚学电脑的时候还看过Logo语言，这么说我也是一开始就接触FP的啦。</p>
+<p>对Java程序员和已经大量投资于Java的软件企业来说，应该是Scala最有价值。</p>
+<p><strong>雄君</strong>：</p>
+<p>我是前几年被人忽悠后花了好几个月学习Haskell，还想用它做项目，现在已经弃坑了。</p>
+<h2 id="诗一首"><a href="#诗一首" class="headerlink" title="诗一首"></a>诗一首</h2><blockquote><p>孤独时</p>
+<p>孤独时我不喜欢使用语言。<br>一头熊和一只鹦鹉坐在<br>跷跷板的两头<br>跷跷板朝一头翘起。很多东西<br>没办法称量，我是熊你们是鹦鹉。<br>我是这头熊我不使用<br>你们的语言。</p>
+<footer><strong>余怒，2003.7.20</strong></footer></blockquote>
+<hr>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/SoftwareDev/" rel="tag">#SoftwareDev</a>
+          
+            <a href="/blog/tags/Scala/" rel="tag">#Scala</a>
+          
+            <a href="/blog/tags/Haskell/" rel="tag">#Haskell</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2015/01/06/haskell/" rel="next" title="Haskell">
+                <i class="fa fa-chevron-left"></i> Haskell
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2015/01/26/jekyll/" rel="prev" title="Jekyll">
+                Jekyll <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars.io/gravatar/leoliang@gmail.com"
+               alt="Leo Liang" />
+          <p class="site-author-name" itemprop="name">Leo Liang</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">312</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#缘起"><span class="nav-number">1.</span> <span class="nav-text">缘起</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一轮讨论"><span class="nav-number">2.</span> <span class="nav-text">第一轮讨论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哥德堡的Haskell教授"><span class="nav-number">3.</span> <span class="nav-text">哥德堡的Haskell教授</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FP做题大赛"><span class="nav-number">4.</span> <span class="nav-text">FP做题大赛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后一轮讨论"><span class="nav-number">5.</span> <span class="nav-text">最后一轮讨论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#诗一首"><span class="nav-number">6.</span> <span class="nav-text">诗一首</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Liang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'aleung';
+      var disqus_identifier = '2015/01/25/fp/';
+      var disqus_title = " 同事们关于 FP 语言的讨论";
+      var disqus_url = 'http://aleung.github.io/blog/blog/2015/01/25/fp/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>
