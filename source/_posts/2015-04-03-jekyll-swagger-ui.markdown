@@ -15,9 +15,9 @@ tags:
 
 为此，写了一个简单的 [Jekyll 插件](https://github.com/aleung/jekyll-swagger-ui)，只要像下面例子那样在 markdown 中简单的插入 `swagger` tag，指定 API 描述文件，相应的 API 文档就会由 Swagger UI 生成并嵌入在页面中。
 
-{% raw %}
-    {% swagger /api/my-api.json %}
-{% endraw %}
+```
+{% swagger /api/my-api.json %}
+```
 
 安装使用方法请参看 [README](https://github.com/aleung/jekyll-swagger-ui)。另外，Swagger UI 没有考虑到在一个页面中显示多组 API，会有些显示问题，已经提交 pull request，下个版本有望修复，暂时可以先下载我的修改版本，详见 README。
 
