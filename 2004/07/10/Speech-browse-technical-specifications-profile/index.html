@@ -124,15 +124,6 @@
   
 
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-2827715-4', 'auto');
-  ga('send', 'pageview');
-</script>
-
 
 
 
@@ -289,13 +280,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2004/07/10/Speech-browse-technical-specifications-profile/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2004/07/10/Speech-browse-technical-specifications-profile/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -327,7 +311,7 @@
 <h4 id="VoiceXML"><a href="#VoiceXML" class="headerlink" title="VoiceXML"></a>VoiceXML</h4><p>VoiceXML可以理解为另外一种表示语言，类似于HTML和WML。它是一种表述对话（dialog）的语言，用来控制业务过程中的人机交互过程，适用于面向电话、手机等终端设备的语音应用，例如自动客户服务、自助查询系统、个人消息系统等。</p>
 <p>将VoiceXML与HTML对比，就能很容易理解了。浏览器解释后，HTML表示的内容是以文字图像方式显示在屏幕上的，VoiceXML的内容是以语言的方式播放给用户的。HTML接收用户的文字输入和鼠标点击，VoiceXML接受用户的语音输入，进行语音识别，或者是通过电话按键输入DTMF数据。</p>
 <p>VoiceXML是一种独立的语言，不能内嵌到现有的web语言中（如HTML，WML）。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0"?&gt;  </span><br><span class="line"><span class="tag">&lt;<span class="name">vxml</span> <span class="attr">version</span>=<span class="string">"2.0"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">catch</span> <span class="attr">event</span>=<span class="string">"event.exit"</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">exit</span> /&gt;</span>   </span><br><span class="line"><span class="tag">&lt;/<span class="name">catch</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">menu</span> <span class="attr">id</span>=<span class="string">"choose_menu_option"</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">prompt</span>&gt;</span>  </span><br><span class="line">You are in a demo for content services.  </span><br><span class="line">To obtain stock quotes, say stocks or say 1.   </span><br><span class="line">For weather information, say weather or press 2.  </span><br><span class="line">For news, say news or press 3.  </span><br><span class="line"><span class="tag">&lt;/<span class="name">prompt</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">choice</span> <span class="attr">dtmf</span>=<span class="string">"1"</span> <span class="attr">next</span>=<span class="string">"#stocks_menu_option"</span>&gt;</span>stocks<span class="tag">&lt;/<span class="name">choice</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">choice</span> <span class="attr">dtmf</span>=<span class="string">"2"</span> <span class="attr">next</span>=<span class="string">"#weather_menu_option"</span>&gt;</span>weather<span class="tag">&lt;/<span class="name">choice</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">choice</span> <span class="attr">dtmf</span>=<span class="string">"3"</span> <span class="attr">next</span>=<span class="string">"#news_menu_option"</span>&gt;</span>news<span class="tag">&lt;/<span class="name">choice</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">nomatch</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">prompt</span>&gt;</span>I could not understand what you said, please try again<span class="tag">&lt;/<span class="name">prompt</span>&gt;</span>   </span><br><span class="line"><span class="tag">&lt;<span class="name">reprompt</span>/&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">nomatch</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">noinput</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">reprompt</span>/&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">noinput</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">menu</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"stocks_menu_option"</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">block</span>&gt;</span>  </span><br><span class="line">...  </span><br><span class="line"><span class="tag">&lt;/<span class="name">block</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"weather_menu_option"</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"city"</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">grammar</span> <span class="attr">type</span>=<span class="string">"application/srgs+xml"</span> <span class="attr">src</span>=<span class="string">"cities.grxml"</span>/&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">prompt</span>&gt;</span>Pleasesaythe city's name<span class="tag">&lt;/<span class="name">prompt</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">field</span>&gt;</span>  </span><br><span class="line">...  </span><br><span class="line"><span class="tag">&lt;<span class="name">filled</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">submit</span> <span class="attr">next</span>=<span class="string">"http://host/weather.do"</span>/&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">filled</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"news_menu_option"</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">block</span>&gt;</span>  </span><br><span class="line">...  </span><br><span class="line"><span class="tag">&lt;/<span class="name">block</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">vxml</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0"?&gt;  </div><div class="line"><span class="tag">&lt;<span class="name">vxml</span> <span class="attr">version</span>=<span class="string">"2.0"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">catch</span> <span class="attr">event</span>=<span class="string">"event.exit"</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;<span class="name">exit</span> /&gt;</span>   </div><div class="line"><span class="tag">&lt;/<span class="name">catch</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">menu</span> <span class="attr">id</span>=<span class="string">"choose_menu_option"</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;<span class="name">prompt</span>&gt;</span>  </div><div class="line">You are in a demo for content services.  </div><div class="line">To obtain stock quotes, say stocks or say 1.   </div><div class="line">For weather information, say weather or press 2.  </div><div class="line">For news, say news or press 3.  </div><div class="line"><span class="tag">&lt;/<span class="name">prompt</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;<span class="name">choice</span> <span class="attr">dtmf</span>=<span class="string">"1"</span> <span class="attr">next</span>=<span class="string">"#stocks_menu_option"</span>&gt;</span>stocks<span class="tag">&lt;/<span class="name">choice</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;<span class="name">choice</span> <span class="attr">dtmf</span>=<span class="string">"2"</span> <span class="attr">next</span>=<span class="string">"#weather_menu_option"</span>&gt;</span>weather<span class="tag">&lt;/<span class="name">choice</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;<span class="name">choice</span> <span class="attr">dtmf</span>=<span class="string">"3"</span> <span class="attr">next</span>=<span class="string">"#news_menu_option"</span>&gt;</span>news<span class="tag">&lt;/<span class="name">choice</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;<span class="name">nomatch</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;<span class="name">prompt</span>&gt;</span>I could not understand what you said, please try again<span class="tag">&lt;/<span class="name">prompt</span>&gt;</span>   </div><div class="line"><span class="tag">&lt;<span class="name">reprompt</span>/&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">nomatch</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;<span class="name">noinput</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;<span class="name">reprompt</span>/&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">noinput</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">menu</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"stocks_menu_option"</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;<span class="name">block</span>&gt;</span>  </div><div class="line">...  </div><div class="line"><span class="tag">&lt;/<span class="name">block</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"weather_menu_option"</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"city"</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;<span class="name">grammar</span> <span class="attr">type</span>=<span class="string">"application/srgs+xml"</span> <span class="attr">src</span>=<span class="string">"cities.grxml"</span>/&gt;</span>  </div><div class="line"><span class="tag">&lt;<span class="name">prompt</span>&gt;</span>Pleasesaythe city's name<span class="tag">&lt;/<span class="name">prompt</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">field</span>&gt;</span>  </div><div class="line">...  </div><div class="line"><span class="tag">&lt;<span class="name">filled</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;<span class="name">submit</span> <span class="attr">next</span>=<span class="string">"http://host/weather.do"</span>/&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">filled</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"news_menu_option"</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;<span class="name">block</span>&gt;</span>  </div><div class="line">...  </div><div class="line"><span class="tag">&lt;/<span class="name">block</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">vxml</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>从例子可以看出，VoiceXML描述的是一个个对话，menu和form是对话的两种形式。menu是列出选择项，供用户选择；form是播放提示语言，接受用户输入。</p>
 <p>&lt;prompt&gt;、&lt;audio&gt;控制语音输出，输出有两种方式，一种是利用TTS将文本合成为语音，另一种是播放预先录制好的语音文件（如vox，wav）。为了控制合成语音的过程，提供丰富的语音表现形式，要求VoiceXML解释器支持SSML（Speech Synthesis Markup Language）语言，SSML可以控制TTS如何合成语音，例如重音、停顿、声调、数字播报方式等。</p>
 <p>语音输入的识别是通过语法规则控制的，&lt;grammar&gt;指定输入项采用什么语法规则进行识别，语法规则要求使用SRGS(Speech Recognition Grammar Specification)规范的格式来描述。</p>
@@ -406,13 +390,6 @@
           
   <div class="comments" id="comments">
     
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
-    
   </div>
 
 
@@ -455,7 +432,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">312</span>
+              <span class="site-state-item-count">317</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -617,27 +594,6 @@
 
 
 
-  
-
-    <script type="text/javascript">
-      var disqus_shortname = 'aleung';
-      var disqus_identifier = '2004/07/10/Speech-browse-technical-specifications-profile/';
-      var disqus_title = "语音浏览技术规范简介";
-      var disqus_url = 'http://aleung.github.io/blog/blog/2004/07/10/Speech-browse-technical-specifications-profile/';
-
-      function run_disqus_script(disqus_script){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-      
-        run_disqus_script('embed.js');
-      
-    </script>
   
 
 

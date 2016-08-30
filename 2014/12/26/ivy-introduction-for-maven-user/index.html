@@ -127,15 +127,6 @@
   
 
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-2827715-4', 'auto');
-  ga('send', 'pageview');
-</script>
-
 
 
 
@@ -292,13 +283,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2014/12/26/ivy-introduction-for-maven-user/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/12/26/ivy-introduction-for-maven-user/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -325,7 +309,7 @@
 <p>一个模块可以有多个 configuration，每个 configuration 包含一组外部模块依赖的声明（实际的配置是反过来的，每个依赖声明会标识自己在那种 configuration 中生效）。Configuration 可以是跟 Maven scope 类似的 compile, runtime 和 test，也可以任意定义。例如，某个模块既可以支持 Oracle 也可以支持 MySQL，当使用不同数据库时，需要依赖的模块是不同的，就可以分别在 oracle 和 mysql 两个 configuration 中定义各自需要的依赖。</p>
 <p>Ivy 的 configuration 在依赖传递管理方面，比 Maven 要强。除了可以定义在一个 configuation 中需要依赖某个模块，还可以定义依赖这个模块时，会使用它的哪个 configuration，只有指定的 configuration 中的依赖才会传递进来。这个机制称为 configuration mapping。</p>
 <p>下面的例子中，声明了在 default configuration 中需要依赖 hibernate，并且包含 hibernate 的 proxool 和 oscache 这两种 configuration 中的依赖。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span> <span class="attr">org</span>=<span class="string">"hibernate"</span> <span class="attr">name</span>=<span class="string">"hibernate"</span> <span class="attr">rev</span>=<span class="string">"2.1.8"</span> <span class="attr">conf</span>=<span class="string">"default-&gt;proxool,oscache"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span> <span class="attr">org</span>=<span class="string">"hibernate"</span> <span class="attr">name</span>=<span class="string">"hibernate"</span> <span class="attr">rev</span>=<span class="string">"2.1.8"</span> <span class="attr">conf</span>=<span class="string">"default-&gt;proxool,oscache"</span>/&gt;</span></div></pre></td></tr></table></figure>
 <p>Configuration 可以扩展（继承）另一个 configuration，可以设置外部可见性。</p>
 <h2 id="Repository"><a href="#Repository" class="headerlink" title="Repository"></a>Repository</h2><p>Maven 的 repository 必须是网络服务（local 除外，local repository 本质上相当于 cache），Ivy 除了支持Maven 2 repository，也支持指定文件系统路径作为repository，还有各种各样其他的存储方式。</p>
 <p>Maven 当配置了多个 repository 时，是按照配置的顺序一一查找，找到 artifact 为止。Ivy 的 artifact 查找是由 resolver 来负责，一个 resolver 对应一个 repository，有些特殊的 resolver 可以将多个 resolver 组合起来使用，例如 chain resolver 和 dual resolver。缺省的 resolver 就是一个 chain resolve，按照 local, shared, public的顺序去访问这些 repository。Ivy 的组织要比 Maven 更灵活一些。</p>
@@ -395,13 +379,6 @@
           
   <div class="comments" id="comments">
     
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
-    
   </div>
 
 
@@ -444,7 +421,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">312</span>
+              <span class="site-state-item-count">317</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -606,27 +583,6 @@
 
 
 
-  
-
-    <script type="text/javascript">
-      var disqus_shortname = 'aleung';
-      var disqus_identifier = '2014/12/26/ivy-introduction-for-maven-user/';
-      var disqus_title = "Ivy Introduction for Maven User";
-      var disqus_url = 'http://aleung.github.io/blog/blog/2014/12/26/ivy-introduction-for-maven-user/';
-
-      function run_disqus_script(disqus_script){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-      
-        run_disqus_script('embed.js');
-      
-    </script>
   
 
 

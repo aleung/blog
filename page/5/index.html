@@ -86,15 +86,12 @@
 
 
 
-<meta name="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Good good study, day day up">
 <meta property="og:url" content="http://aleung.github.io/blog/page/5/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Good good study, day day up">
-<meta name="twitter:description">
 
 
 
@@ -119,15 +116,6 @@
 
   
 
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-2827715-4', 'auto');
-  ga('send', 'pageview');
-</script>
 
 
 
@@ -267,8 +255,8 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2012/09/17/Java-volatile-/" itemprop="url">
-                  Java的volatile关键字的作用
+                <a class="post-title-link" href="/blog/2014/09/16/smog/" itemprop="url">
+                  是灰霾吗？
                 </a>
               
             
@@ -281,21 +269,14 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-09-17T00:00:00+08:00" content="2012-09-17">
-              2012-09-17
+            <time itemprop="dateCreated" datetime="2014-09-16T23:53:29+08:00" content="2014-09-16">
+              2014-09-16
             </time>
           </span>
 
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2012/09/17/Java-volatile-/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2012/09/17/Java-volatile-/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -318,28 +299,9 @@
       
         
           
-            <ul>
-<li>Initial: 2008-12-04</li>
-<li>Updated: 2012-9-17</li>
-</ul>
-<p>Java内存模型中，有主内存和每个线程各自的工作内存，虚拟机和硬件可能会让线程工作内存优先存储于寄存器和高速缓存中，以提高性能。</p>
-<p>所有变量都存储在主内存中，线程工作内存中保存了此线程使用到的变量的副本。工作内存在线程之间是隔离的，对其他线程不可见。线程对变量的所有操作都必须在工作内存中进行，修改后的变量副本要写回主内存。这样就会出现同一个变量在某个瞬间，在一个线程的工作内存中的值可能与另外一个线程工作内存中的值，或者主内存中的值不一致的情况。</p>
-<p>一个变量声明为volatile，就意味着这个变量被修改时其他所有使用到此变量的线程都立即能见到变化（称之为可见性）。具体是在每次使用前都要先刷新，以保证别的线程中的修改已经反映到本线程工作内存中，因此可以保证执行时的一致性。以下例子展现了volatile的作用：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StoppableTask</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;  </span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">boolean</span> pleaseStop;  </span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">while</span> (!pleaseStop) &#123;  </span><br><span class="line">      <span class="comment">// do some stuff...  </span></span><br><span class="line">    &#125;  </span><br><span class="line">  &#125;  </span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">tellMeToStop</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">    pleaseStop = <span class="keyword">true</span>;  </span><br><span class="line">  &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>假如pleaseStop没有被声明为volatile，线程执行run的时候检查的是自己的副本，就不能及时得知其他线程已经调用tellMeToStop()修改了pleaseStop的值。</p>
-<p>Volatile一般情况下并不能代替sychronized，因为volatile不能保证操作的原子性，即使只是i++，实际上也是由多个原子操作组成：read i; inc; write i，假如多个线程同时执行i++，依然可能由于不同线程交替执行而出现写入脏数据的情况。也就是说，如果对变量值的修改需要依赖于变量之前的值，那么volatile不能保证一致性，需要用sychronized，或者使用atomic类型(java.util.concurrent.atomic.*)；而上面的代码例子是可以使用volatile的典型场景。</p>
-<p>Volatile的另外一个作用是禁止指令的重排序优化。在一般情况下，Java执行语句的顺序可能会因为自动优化而修改，例如下面的例子，initialized的赋值有可能在doInitialize()之前就执行了，线程B就有可能不会正确的等待初始化完成。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span> initialized = <span class="keyword">false</span>;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// run in one thread</span></span><br><span class="line">doInitialize();</span><br><span class="line">initialized = <span class="keyword">true</span>;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// run in another thread</span></span><br><span class="line"><span class="keyword">while</span> (!initialized) &#123;</span><br><span class="line">  sleep();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果将initialized声明为volatile，就能保证它的执行顺序不会被改变（但JavaSE 5之前的版本依然会有问题）。</p>
-<p>以前在讲述Java与C++区别的时候，有个著名的例子是double-checked locking在Java中不能使用，就是执行顺序优化造成的问题。但自JavaSE 5起，配合volatile的使用是可以实现double-checked locking的。</p>
-<p>Reference：</p>
-<ul>
-<li><a href="http://www.javamex.com/tutorials/synchronization_volatile.shtml" target="_blank" rel="external">http://www.javamex.com/tutorials/synchronization_volatile.shtml</a></li>
-<li><a href="http://www.ibm.com/developerworks/cn/java/j-jtp06197.html" target="_blank" rel="external">http://www.ibm.com/developerworks/cn/java/j-jtp06197.html</a></li>
-<li><a href="http://book.douban.com/subject/6522893/" target="_blank" rel="external">深入理解Java虚拟机</a></li>
-</ul>
+            <p>看 Google Maps 上面的卫星图，珠江新城一带一片灰蒙蒙，但是有个奇怪的现象：高层建筑的楼顶似乎会清晰一些。</p>
+<img src="/blog/attachments/2014/9/smog.png">
+<p>在图上最显眼的超高层建筑就是东塔和西塔了，东塔目前仍在建（好像已经封顶了），不知道卫星图是什么时候的，看起来也起码建得跟西塔一样高了。查了一下西塔（IFC-广州国际金融中心）的高度是440米。在图上看出西塔的2/3高度以下要灰一些，另外在建的东塔和旁边一个同样在建但高度只有1/3左右的建筑的屋顶的清晰度也有对比。是不是因为接近地面的灰霾影响了通透度，而灰霾主要沉积在距离地表二三百米以内的低空？</p>
 
           
         
@@ -389,8 +351,8 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2012/09/15/color-management-2/" itemprop="url">
-                  色彩管理 (2)
+                <a class="post-title-link" href="/blog/2014/08/23/plantuml/" itemprop="url">
+                  PlantUML 简介
                 </a>
               
             
@@ -403,21 +365,14 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-09-15T00:56:00+08:00" content="2012-09-15">
-              2012-09-15
+            <time itemprop="dateCreated" datetime="2014-08-23T16:57:33+08:00" content="2014-08-23">
+              2014-08-23
             </time>
           </span>
 
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2012/09/15/color-management-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2012/09/15/color-management-2/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -440,19 +395,8 @@
       
         
           
-            <p>色彩管理的<a href="/2004/11/12/Color-management-1">第一篇</a>是在2004年写的，当时本来想连续写，可写了一篇就没有下文了。现在再来继续色彩的话题，不过这次的主题其实不算色彩管理，而是看看色彩的本质是什么。</p>
-<p>颜色是什么？学物理的时候说太阳光通过菱镜会分离成彩色的光带，不同颜色的光的波长是不一样的。这给我们一个印象：颜色就是可见光波长这个物理量的反映。但是问题来了，白色对应什么波长的光？为什么红光和绿光混合在一起变成了黄光，难道混合后波长产生变化了？原因在于，颜色并不是某一個物理量的直接反映，而是人对光线的心理反映，称之为色觉。</p>
-<img src="/blog/attachments/2012/9/eye.jpg" class="right"> 
-<p>人眼有三种色彩感受器（视锥细胞），每种感受器可以感应不同波长范围的光，分别的感受峰值波长为：420nm，534nm，564nm，差不多相当于蓝、绿、红三色光的波长。对于某一种光谱，三种感受器得到三组信号送往大脑，大脑根据这三组信号值的不同组合感知到不同的色彩。</p>
-<p>现实世界中的光线通常都不会是单一波长的（只有激光光源产生的才是单一波长的光吧，要么是经过分光镜得到的），而是不同波长组合的混合光。视觉感受器并不能区分这些光谱，反正各种感受器只对自己能感应的波长范围内的光作出反应，最后大脑拿到的就是三组信号而已。不同的光谱组合的光线，可能对三种视觉感受器产生的刺激恰好是一样的，这样大脑就会将它们感受为同一种颜色，术语称为“异谱同色”。例如波长600nm左右的光线人感受是黄色，而波长540nm绿光和700nm红光一定强度比例的混合，人感觉到的也是黄色。</p>
-<p>我曾经在之乎问过一个问题：人眼若多一种新的视椎细胞可感应可见光范围内的另外一个波长的光，人看到的色彩会有什么变化吗？看到的颜色更多？ 后来我想明白了，是会看到更多的颜色的，准确的说，是能够分辨出更多不同的颜色。在只有三种感受器时，有些不同波长组合的混合光产生的刺激是一样的，大脑区分不出，将它们当作同样的颜色，但假若增加另一种波长的感受器后，这个感受器感应到的刺激不同，就能够分辨为不同色彩了。至于这个颜色是什么？我们不可能知道，因为颜色仅仅是一种心理反应。如此类推，不同动物看到的色彩也是不一样的，因为不同动物眼睛的视锥细胞的波长响应曲线不同，而且数量也不一定一样。假如有某种外星人有四种甚至更多的色彩感受器，那他们会认为地球人全是色盲，地球人到他们的世界里可能连分辨交通灯都有问题——如果他们还用交通灯。另外，所谓三原色，也是针对人而言的。</p>
-<p>既然色彩只是种心理反应（感觉），那为了准确描述色彩和进行分析，就需要建立色彩模型。根据关注的角度不同，不同的研究者拿出了不同的色彩模型，例如孟塞尔颜色立体模型、CIE L<em> a</em> b* 模型。其中 CIE XYZ 模型应该是最能反映人的颜色视觉的，因为它的制定就是通过大量实验来测定人对三种特定波长光线S、M、L（约对应于红绿蓝）的刺激值X，Y，Z。实验方式是让人同时观察目标色光线和SML三组标准光的混合光，调节S/M/L的光强，使得人眼感觉混合光和目标色光线的颜色完全一样，从而得出目标色的XYZ值。CIE XYZ色彩空间是色彩管理的基础。</p>
-<p>CIE XYZ定义了一个三维空间，展现起来不如二维图形直观。经常用来表示色彩空间大小的二维马蹄型图称为CIE xy色度图，如下图。它的纵横座标xy是根据XYZ推导出来的，x=X/(X+Y+Z), y=Y/(X+Y+Z), z=Z/(X+Y+Z), x+y+z=1。彩色的马蹄形范围表示人眼可见的全部色彩范围。在数码相机和电脑显示中使用的RGB色彩空间在CIE xy色度图中反映为三角形范围，三个顶点分别为R/G/B三原色。</p>
-<p><img src="/attachments/2012/9/gamut.jpg" alt=""></p>
-<p>不考虑印刷，摄影爱好者一般会接触到的色彩空间也就是AdobeRGB和sRGB。从图中可见，AdobeRGB的色域比sRGB广，特别是在蓝绿色系方面，AdobeRGB能够表现的色彩比sRGB丰富很多。我查找不到资料描述各种数码相机的感光元件能够记录下来的色域有多大，但一般的说法是一般数码单反所能记录的色彩范围都比sRGB广，接近或大于AdobeRGB。因此，专业的摄影都会选择AdobeRGB色彩空间来保存图像文档。但问题是，我们的显示器并不能展现这么广的色域，民用型号通常都只能再现sRGB色彩空间或更小一点（广色域显示器会比sRGB大，但一般还是达不到AdobeRGB），因此照片中记录的部分颜色是无法在显示器上原汁原味的再现出来的（这里先不考虑显示器没有校准导致偏色问题），超出设备色彩空间的颜色只能用接近的来替换，例如翠绿色的海水就没有那么漂亮了。另外一个问题是有些软件，例如不是最新版本的浏览器，是不支持色彩管理的，它不会将照片的色彩空间映射到显示器的色彩空间以保持在可显示范围内的颜色一致，而是将照片中的RGB值当作设备色彩空间的值来直接显示。如果照片用的是sRGB还好，因为显示器本身大致符合sRGB，颜色偏差不会太多，但若照片是用色域更广的AdobeRGB的，色彩偏差就严重了。所以数码相机的说明书上一般会建议如果照片仅在电脑上观看最好选择sRGB。</p>
-<p>不过，数码相机的色彩空间设置仅仅是针对JPG格式的，如果用RAW格式，保存的是传感器得到的原始值，实际上是数码相机设备色彩空间，而不是任何标准色彩空间。当在电脑中用RAW处理软件打开时，会将照片由设备色彩空间映射到软件设定的工作空间。我用Apple Aperture打开Nikon的RAW，看到它是被标识为AdobeRGB色彩空间。用数码单反的话，最好还是选择RAW格式，因为记录的信息多，后期处理的余地就大很多。</p>
-<p>See also:</p>
-<p><a href="/2004/11/12/Color-management-1">色彩管理(1)</a></p>
+            <p>关于PlantUML的简介。</p>
+<p><iframe src="//www.slideshare.net/slideshow/embed_code/38238529" width="597" height="486" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/aleung/plantuml" title="PlantUML" target="_blank">PlantUML</a> </strong> from <strong><a href="http://www.slideshare.net/aleung" target="_blank">aleung</a></strong> </div></p>
 
           
         
@@ -502,8 +446,8 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2012/09/10/running-route-ersha/" itemprop="url">
-                  广州跑步路线：二沙岛
+                <a class="post-title-link" href="/blog/2014/08/23/getting-the-hang-of-web-typography/" itemprop="url">
+                  Getting the Hang of Web Typography
                 </a>
               
             
@@ -516,21 +460,14 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-09-10T22:13:00+08:00" content="2012-09-10">
-              2012-09-10
+            <time itemprop="dateCreated" datetime="2014-08-23T10:34:11+08:00" content="2014-08-23">
+              2014-08-23
             </time>
           </span>
 
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2012/09/10/running-route-ersha/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2012/09/10/running-route-ersha/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -553,621 +490,53 @@
       
         
           
-            <p><img src="/attachments/2012/9/ersha_sat.jpg" alt=""></p>
-<p>环岛一周约4.4km，其实只能算环半岛，因为岛西面一大段的沿江堤岸是公众不能进入的。车道大部分是沥青路面，晴澜路段水泥路面，人行道是铺石路面。环岛道路汽车不多，在注意安全的前提下可以靠边跑车道。</p>
-<p>虽然算不上有什么景观，但二沙岛上的都是别墅和高级会所，环境幽静，江边视野开阔，跑起来挺舒服。</p>
-<p>晚上晴波路音乐厅美术馆一段江边比较热闹点，有游客、玩单车和玩音乐的，其他路段都比较僻静，特别的北面晴澜路段。但每隔一段距离就有保安坐在路旁，毕竟这里是富人区，治安有保障。</p>
-<p>岛中央是几个大草坪，上面有橡胶铺设的步道，跑步也不错，但就是拐弯多，断断续续，总长度也不够长。</p>
-<p>岛中央大通路/烟雨路有公交车途经。往东过广州大桥可以接着跑珠江新城临江大道，往西沿大通路过桥也可以接着沿江边跑，因此二沙岛可以作为沿珠江跑路线的一段。</p>
-<p>总体来说也是可以推荐的跑步路线。</p>
-<p><img src="/attachments/2012/9/ersha_map.jpg" alt=""></p>
-<p>其他跑步路线介绍：<a href="/2012/09/09/running-route">广州跑步路线：索引</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2012/09/09/running-route-luhu/" itemprop="url">
-                  广州跑步路线: 麓湖
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-09-09T21:13:00+08:00" content="2012-09-09">
-              2012-09-09
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2012/09/09/running-route-luhu/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2012/09/09/running-route-luhu/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="/attachments/2012/9/luhu_sat.jpg" alt=""></p>
-<p>麓湖的跑步路线是环绕着湖一周的路。路面包括木栈道、柏油车道、砖铺人行道，麓湖路属于绿道系统的部分有木栈道，其余环湖路线的人行道很窄，可以跑到车道边上，但有来车时需要注意安全。</p>
-<p>麓湖是广州为数不多的大湖泊，比一般公园的湖要大很多，周边都是山头绿地，环境和景色都不错。可惜环湖的车道虽然不是主干道，但来往车辆还是不少，汽车尾气导致空气还是一般。</p>
-<p>虽然周边环境偏僻些，但白天游人不少，路上也不时会见到跑友，安全不成问题。我没有晚上去跑过，估计会比较僻静，安全上需要小心。附近麓景路、麓湖路都有公交车站。</p>
-<p>环湖一圈约3.5km，总上升59m，基本上不算多大起伏。</p>
-<p><img src="/attachments/2012/9/luhu_elevation.jpg" alt=""></p>
-<p>总体来说是不错的跑步路线，推荐。</p>
-<p><img src="/attachments/2012/9/luhu_map.jpg" alt=""></p>
-<p>其他跑步路线介绍：<a href="/2012/09/09/running-route">广州跑步路线：索引</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2012/09/09/running-route/" itemprop="url">
-                  广州跑步路线：索引
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-09-09T21:09:00+08:00" content="2012-09-09">
-              2012-09-09
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2012/09/09/running-route/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2012/09/09/running-route/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>这一系列博文记录我跑过的路线。</p>
+            <p>读书笔记摘抄：《<a href="http://book.douban.com/subject/25741532/" target="_blank" rel="external">众妙之门——网页排版设计制胜秘诀</a>》</p>
+<h1 id="版式设计"><a href="#版式设计" class="headerlink" title="版式设计"></a>版式设计</h1><p>正文字号常见为12~14px。</p>
+<p>标题与正文字号（font-size）的比例，比较流行的平均值是1.96。也就是将正文文字字号乘以2，就得到标题文字的字号。字号从传统值（6,7,8,9,10,11,12,14,16,18,21,24,36,48,60,72）或者斐波那契数列（8,13,21,34,55）中选择，可以得到更自然的版式效果。</p>
+<p>计算行宽的简单方法：行宽=字号*30。如果字号是10px，行宽就是300px，差不多等于一行65个字。</p>
+<p>行高（line-height）受多种因素的影响：字体、字号、粗细、样式、行宽、字距等。行宽越宽，行高就需越大；字号越大，行高就需要越小。比较流行的行高与字号的比例是1.5。</p>
+<p>段间距通常是行高的75%左右。</p>
+<h1 id="字体分类"><a href="#字体分类" class="headerlink" title="字体分类"></a>字体分类</h1><p>网页设计中大多数字体可以分为五大类别：</p>
+<h3 id="Geometric-Sans-无衬线几何字体"><a href="#Geometric-Sans-无衬线几何字体" class="headerlink" title="Geometric Sans 无衬线几何字体"></a>Geometric Sans 无衬线几何字体</h3><img src="/blog/attachments/2014/8/geometric.jpg">
+<p>这个类别实际包括了几何风格（Geometric）、现实风格（Realist）和奇异风格（Grotesk）三类字体。它们基于精准几何形体，每个字母笔画的宽度都是一样的，这种设计生动体现了“少即是多”的极简派的设计思想。</p>
 <ul>
-<li><a href="/2012/09/09/running-route-luhu/">麓湖</a></li>
-<li><a href="/2012/09/10/running-route-ersha/">二沙岛</a></li>
+<li>运用得当：干净、感性、现代而通用；</li>
+<li>运用不当：冰冷、理性、枯燥。</li>
 </ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2012/08/10/understanding-weblogic-workmanager/" itemprop="url">
-                  Understanding WebLogic WorkManager
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-08-10T22:54:00+08:00" content="2012-08-10">
-              2012-08-10
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2012/08/10/understanding-weblogic-workmanager/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2012/08/10/understanding-weblogic-workmanager/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Since WebLogic Server 9.0, new concepts for workload management is introduced. WorkManager replaces execute queue as defined in earlier releases.</p>
-<p>All WorkManagers share a common thread pool and a priority-based queue. The size of the thread pool is determined automatically by the kernel and resized as needed.  Priority of the requests is dynamic and computed internally to meet the stated goals. </p>
-<p>The thread pool is so-called self-tunning. It monitors the overall throughput every two seconds and uses the collected data to determine if thread count needs to change. Present thread count, the measured throughput, and the past history is taken into account by the algorithm to determine if the thread count needs to increase or decrease, and new threads are automatically added to the pool or removed, as needed.</p>
-<p>It’s no longer have to (and is unable to) configure thread counts on a WorkManager nor the common thread pool. However, it’s possible to affect how server prioritizes work and allocates threads by parameters defined in WorkManager. Each WorkManager can contain following types of components:</p>
+<p><em>Examples of Geometric/Realist/Grotesk Sans:</em> Helvetica, Univers, Futura, Avant Garde, Akzidenz Grotesk, Franklin Gothic, Gotham.</p>
+<h3 id="Humanist-Sans-无衬线人文字体"><a href="#Humanist-Sans-无衬线人文字体" class="headerlink" title="Humanist Sans 无衬线人文字体"></a>Humanist Sans 无衬线人文字体</h3><img src="/blog/attachments/2014/8/humanist.jpg">
+<p>由手写体衍化而来，它们中的一些可能看上去干净而现代，但仍旧保留了一些手写体的特点。一般具有更多细节、更少的一致性，而且字体较窄笔画偏粗。</p>
 <ul>
-<li>Request class <ul>
-<li>Fair-share</li>
-<li>Response-time goal</li>
-<li>Context based</li>
+<li>运用得当：既现代又人文；</li>
+<li>运用不当：缺乏力度，不够权威。</li>
 </ul>
-</li>
-<li>Constraints<ul>
-<li>Minimum threads constraint</li>
-<li>Maximum threads constraint</li>
-<li>Capacity</li>
-</ul>
-</li>
-</ul>
-<p>Request class affects how requests are prioritized. Fair-share request class changes thread usage weight of a WorkManage, which is by default 50. Response-time goal request class specifies the response-time goal in milliseconds. Context-based request class is a compound request class that provides a mapping between the request context and the above two request classes. With context-based request class, it’s possible to specify different request classes for the same servlet invocation depending on the user associated with the invocation.</p>
-<p>A constraint defines minimum and maximum numbers of threads allocated to execute requests and the total number of requests that can be queued or executing before WebLogic Server begins rejecting requests. Constraint is referenced in WorkManager by constraint name. So a constraint can be shared by several WorkManagers and set the common limit.</p>
-<p>Minimum threads constraint makes sure that during periods of high workloads, there would still be a certain number of threads from the self-tuning thread pool available to process work requests for all work managers that reference the minimum threads constraint. Using the minimum threads constraint could result in some side-effects. Users should consider adding a minimum threads constraint to a work manager configuration when it is critical that progress must be made for an application even when the WLS server is under very heavy load, such as work that would have resulted in server-to-server deadlock if not being processed promptly. It is not to be used as a mean of prioritizing workload among different work managers. </p>
-<p>The maximum threads constraint limits the number of threads in the self-tuning thread pool that can be used for executing work for all work managers that references the same constraint. The maximum threads constraint is not designed as a mean to prioritize workloads among different work managers. It is most useful when there are other known limitations where a hard upper limit should be put on the number of threads that should be assigned for processing work requests, and that allocating more threads for processing the workload would not increase the overall throughput.</p>
-<p>A typical use case of maximum threads constraint is to take a data source connection pool size as the max constraint.</p>
-<pre><code>&lt;max-threads-constraint&gt;
-  &lt;name&gt;MyConstraint&lt;/name&gt;
-  &lt;pool-name&gt;MyDataSource&lt;/pool-name&gt;
-&lt;/max-threads-constraint&gt;
-</code></pre><p>The capacity constraint defines the maximum number of requests that can be queued (waiting for thread) or are executing. Overload action, e.g. refuse with HTTP response code 503, is taken after the capacity is reached. </p>
-<p>I draw a picture to show the threadpool and queue. Requests dispatched with different WorkManager are in different color.</p>
-<p><img src="/attachments/2012/8/workmanager.jpg" alt=""></p>
+<p><em>Examples of Humanist Sans:</em> Gill Sans, Frutiger, Myriad, Optima, Verdana.</p>
+<h3 id="Old-Style-古体字"><a href="#Old-Style-古体字" class="headerlink" title="Old Style 古体字"></a>Old Style 古体字</h3><img src="/blog/attachments/2014/8/old-style.jpg">
+<p>特点是粗细笔画间的对比微妙，还有字母的弧度朝左偏。</p>
 <ul>
-<li>Self-tuning thread pool thread allocation ratio amoung WorkManagers is affected by request class. </li>
-<li>Minimum threads constraint limits: never queue request, unless <code>executing &gt;= min-threads-constraint.count</code></li>
-<li>Maximum threads constraint limits: <code>executing &lt;= max-threads-constraint.count</code></li>
-<li>capacity contraint limits: <code>executing + queued &lt;= capacity.count</code></li>
+<li>运用得当：古典，传统而易读；</li>
+<li>运用不当：依然是古典和传统（与其他不协调）。</li>
 </ul>
-<p>WorkManager can be created for a specific application or module (ejb/war), which is called application-scoped WorkManager. If there is no special requirement on individual application or module, you can create global Work Managers that are available to all applications and modules. An application uses a globally-defined Work Manager as a template. Each application creates its own instance, this means that each application has its own default WorkManager that is not shared with other applications. WebLogic Server provides a built-in default Work Manager which may be sufficient for most application requirements.</p>
-<p>Reference:</p>
+<p><em>Examples of Old Style:</em> Jenson, Bembo, Palatino, Garamond(尤其显得传统)</p>
+<h3 id="Transitional-and-Modern-过渡体和现代体"><a href="#Transitional-and-Modern-过渡体和现代体" class="headerlink" title="Transitional and Modern 过渡体和现代体"></a>Transitional and Modern 过渡体和现代体</h3><img src="/blog/attachments/2014/8/trans.jpg"><img src="/blog/attachments/2014/8/modern.jpg">
+<p>这两类字体是启蒙思想的产物，字体设计师尝试改变平凡而低调的古体字的字形，使其变得更具几何特点、更锐利、更艺术。</p>
 <ul>
-<li><a href="http://www.oracle.com/technetwork/articles/entarch/workload-management-088692.html" target="_blank" rel="external">Workload Management in WebLogic Server 9.0</a></li>
-<li><a href="https://blogs.oracle.com/WebLogicServer/entry/threads_constraints_in_work_ma" target="_blank" rel="external">Threads Constraints in Work Managers</a></li>
-<li><a href="http://docs.oracle.com/cd/E15051_01/wls/docs103/config_wls/self_tuned.html" target="_blank" rel="external">Using Work Managers to Optimize Scheduled Work</a></li>
+<li>运用得当：展现出力量感、时尚感和活力；</li>
+<li>运用不当：不伦不类——若说古典，又过于显眼和繁复；若说现代，又显得有点俗气。</li>
 </ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2012/07/31/apigee/" itemprop="url">
-                  apigee
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-07-31T23:20:00+08:00" content="2012-07-31">
-              2012-07-31
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2012/07/31/apigee/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2012/07/31/apigee/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://apigee.com/" target="_blank" rel="external">Apigee</a> is hot recently. It has raised $20 million in its fifth round of funding. What magic it has? I spent some time today to have a look at it.</p>
-<p>Apigee is an API management platform and services company. It benefits both API providers and developers who build their apps with APIs.</p>
-<h2 id="Apigee-Enterprise"><a href="#Apigee-Enterprise" class="headerlink" title="Apigee Enterprise"></a>Apigee Enterprise</h2><p>Apigee Enterprise product is an API proxy plus developer portal.</p>
-<p>Usually when an organization open its internal services or data to external, it develops the API and exposure it, with necessary document published. Application developers learn the API by reading the document, and then code to use the API.</p>
-<p><img src="/attachments/2012/7/api.png" alt=""></p>
-<p>Apigee helps API provider by providing API management, security, analytics etc. It provides developer portal for API provider to management developer onboarding, and also help developer to learn the API by playing with it.</p>
-<p><img src="/attachments/2012/7/api_with_apigee.png" alt=""></p>
-<h2 id="Console-To-Go"><a href="#Console-To-Go" class="headerlink" title="Console To-Go"></a>Console To-Go</h2><p>Apigee Enterprise features are not available to free subscriber of Apigee, excepts the console that let developer learn an API by playing with it. Apigee opens this service to free subscriber as Console To-Go.</p>
-<p>I try to create my own Console To-Go:</p>
-<p>Create an API on Google Application Engine: <a href="http://api-playground.appspot.com/time" target="_blank" rel="external">time API</a> , it simply return the current time since epoch.</p>
-<p>Write the WADL for the API.<br><script src="//gist.github.com/3214300.js"></script></p>
-<p>Create a new console on <a href="https://apigee.com/togo" target="_blank" rel="external">Apigee Console To-Go</a>, upload the WADL file for my playground API.</p>
-<p>That’s all I need to do. Now the console is ready and anyone can try my time API on the console. This is a snapshot of API request-response:</p>
-<iframe src="https://snap.apigee.com/NRNmNb" width="800" height="300" frameborder="0" scrolling="no"></iframe>
-
-<h2 id="Usergrid"><a href="#Usergrid" class="headerlink" title="Usergrid"></a>Usergrid</h2><p>A cloud-based <strong>data service</strong> for application developer, especially for mobile application developer. It provides a core set of <em>commonly used social media application objects</em>, including a rich user model, as well as the ability to create new objects. </p>
-<p>REST API is provided, with data model in JSON.  </p>
-<p>Features includes:</p>
-<ul>
-<li><p><em>User model</em>. Organize users into groups, teams or other structures. User authentication via Facebook, Twitter or other OAuth services. User profile synchronization.</p>
-</li>
-<li><p><em>Collections</em>. Any type of application data in JSON. Data sharing between users and applications.</p>
-</li>
-<li><p><em>Messages and activities</em>. Automates user interaction e.g. status updates, check-ins, comments in the form of activity streams. Support messaging (application internal) and notifications by delivering activities to connected users.</p>
-</li>
-<li><p><em>Data analytics</em>. Log events generated by application. Store, search and analyze at any level of scale.</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2012/07/22/xperia-u/" itemprop="url">
-                  Xperia U 上手
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-07-22T18:22:00+08:00" content="2012-07-22">
-              2012-07-22
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2012/07/22/xperia-u/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2012/07/22/xperia-u/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <img src="/blog/attachments/2012/7/xperia-u.png">
-<p><a href="http://en.wikipedia.org/wiki/Nexus_One" target="_blank" rel="external">Nexus One</a> 手机用了两年多，升过几次系统，到现在用起来还是挺满意，但唯一的问题是内部存储(ROM)太小了，只有512M，留给安装应用的空间不足200M，而现在的应用又越来越大，已经到了当想装新应用必须先卸载其他一些的地步了。尝试过A2SD，效果不大理想，卡顿感比较明显，也可能因为我的TF卡速度不够高。</p>
-<p>现在换的这个 <a href="http://www.sonymobile.com/global-en/products/phones/xperia-u/" target="_blank" rel="external">Sony Xperia U</a> 属于 <a href="http://www.xperiablog.net/2012/03/07/xperia-nxt-specifications-compared-%E2%80%93-xperia-p-vs-xperia-s-vs-xperia-u/" target="_blank" rel="external">Xperia NXT</a> 系列，称为Sony下一代智能手机，包括 Xperia S, Xperia P 和 Xperia U，档次由高至低。Xperia U 在配置上其实跟 Nexus One 变化不算大（<a href="http://geekaphone.com/compare/Sony-Xperia-U-vs-HTC-Nexus-One" target="_blank" rel="external">对比</a>），主要区别是CPU双核(频率相同)，内部存储容量4G，而其他的如屏幕之类都不相上下。不过，两个产品发布时间差了2年，Nexus One在当年算是旗舰级别，而现在Xperia U只是中端机型，在现在的手机大混战中一点都不起眼。这也正符合我目前的需要，相当于一个内存升级版的Nexus One。之前考虑过人称Google三儿子的Galaxy Nexus，样样都满意，不过有些特性我倒用不着，例如4.6寸大屏幕。</p>
-<p>玩了几天，跟我的期望比较一致，总体满意。有些经验记录下来。</p>
-<h2 id="刷机"><a href="#刷机" class="headerlink" title="刷机"></a>刷机</h2><p>参考前一篇 <a href="/2012/07/21/flashing-xperia-u/">Xperia U 刷机</a>。</p>
-<h2 id="透明发光条"><a href="#透明发光条" class="headerlink" title="透明发光条"></a>透明发光条</h2><p>在屏幕下方软按键处有一条称为 illuminating transparent band 的发光条，晚上环境光线暗的时候，那条光带有点刺眼，干脆不要亮好了，找到一个应用 <a href="https://play.google.com/store/apps/details?id=com.haxor" target="_blank" rel="external">Screen Filter</a> 可以将soft-key backlight关闭。另外，在 Google Play 搜索“illumination bar”可以找到一些应用能够将这个发光条用作未接来电、未读短信、邮件的提醒灯。</p>
-<h2 id="USB连接电脑"><a href="#USB连接电脑" class="headerlink" title="USB连接电脑"></a>USB连接电脑</h2><p>Xperia NXT 系列的USB连接采用<a href="http://en.wikipedia.org/wiki/Media_Transfer_Protocol" target="_blank" rel="external">MTP</a> (Media Transfer Protocol) 模式，而不是通常的MSC(Mass Storage)模式。在Windows里，USB连上后，会显示成一个没有盘符的设备，可以在explorer中访问，但在Mac OS X中，就根本看不到。XDA上有人做了个应用<a href="http://forum.xda-developers.com/showthread.php?t=1606940" target="_blank" rel="external">SDCARD Mounter</a>，装在手机上后（需要root），能够将Xperia S/U/P的内部存储空间用MSC模式mount起来，这样在电脑上就能够像U盘一样访问了。</p>
-<p>如果手机没有root，那么Mac OS X还可以安装<a href="http://www.android.com/filetransfer/" target="_blank" rel="external">Android File Transfer</a>来访问手机存储，不过我没有试过是否可行。重要的是，Android File Transfer只能在它的窗口中看到手机的文件，而不是挂载在文件系统上，在finder和shell中都访问不了，这是因为MTP模式下文件系统并不是由电脑端管理，而是在设备端管理。我需要用script来控制传输文件，因此只能用MSC模式。</p>
-<h2 id="DLNA"><a href="#DLNA" class="headerlink" title="DLNA"></a>DLNA</h2><p>用Xperia自带应用播放音乐、视频或者浏览照片时，菜单里有一个选项叫做”Play on device”，说明是 find &amp; connect to DLNA device。</p>
-<p>DLNA是什么呢，上网查了一通，原来这是一个类似Apple的AirPlay的规范，通过网络在设备之间共享数字媒体播放。准确的说，<a href="http://en.wikipedia.org/wiki/Digital_Living_Network_Alliance" target="_blank" rel="external">DLNA</a>的功能集比AirPlay要广很多，定义了 media server，media player，media renderer，media controller 等多种设备（实际上一种设备可以身兼多职），现在应用广泛的有两种模式：</p>
-<ul>
-<li><p><strong>播放媒体服务器上的音频视频（pull）</strong>。在一个设备(media player)上，浏览和播放另外一台设备(media server)上的资源。这时，用户是在播放设备上进行操作的，例如在手机上播放电脑里保存的视频。</p>
-</li>
-<li><p><strong>将媒体推送到另外一个设备远程播放（push）</strong>。如将在手机上正在看的视频推送到大电视上播放，这时手机是media controller，电视机是media renderer，media server看情况，可能是手机也可能是其他设备，要看媒体源在哪里。跟另一种模式的区别是，用户并不是在播放设备上进行操作的，手上的设备就像一个遥控器。这也是AirPlay能做的事情。</p>
-</li>
-</ul>
-<p>Xperia U 的 play on device 就是push模式。但我家里没有支持DLNA的电视机，有没有办法推送到电脑，用电脑的显示器来播放呢？如果是Win7就很好办，Win7带的Media Player内置支持DLNA，将媒体库菜单里的“允许远程控制我的播放器”选中就可以了。但是我的电脑用的是Mac OS X，这种办法走不通。后来发现大名鼎鼎的<a href="http://xbmc.org/" target="_blank" rel="external">XBMC</a>也支持 DLNA renderer 功能，在network setting里面将 Allow control of XBMC via UPnP 选上，手机 play on device 菜单里果然就出现了XBMC可供选择。另外，还惊喜的发现 XBMC 还有 Allow XBMC to receive AirPlay content 选项，测试过能够将iPad的视频推送到XBMC中播放。太好了，那就可以用 Thunderbolt Display 来看了。</p>
-<p>Xperia U 还可以充当 DLNA media server，试过在电脑上用<a href="http://www.videolan.org/vlc/" target="_blank" rel="external">VLC</a>可以浏览手机上的所有视频、音乐、照片。需要在手机的 Connected devices 应用中enable。</p>
+<p><em>Examples of transitional typefaces:</em> Times New Roman, Baskerville.</p>
+<p><em>Examples of Modern serifs:</em> Bodoni, Didot.</p>
+<h3 id="Slab-Serifs-带衬线的板式字体"><a href="#Slab-Serifs-带衬线的板式字体" class="headerlink" title="Slab Serifs 带衬线的板式字体"></a>Slab Serifs 带衬线的板式字体</h3><img src="/blog/attachments/2014/8/slab.jpg">
+<p>笔画与其他衬线字体很像（形式简洁，笔画粗细对比相对微弱），但较为特别的是笔画末端有又方又硬的衬线。</p>
+<p>这类字体可以传达出一种权威感，如Rockwell字体的粗体；也可以展现出友好的感觉，如Archer。独特的块状衬线能为版面带来特别的气息，不过一旦用错也尤为显眼。</p>
+<p><em>Examples of Slab Serifs:</em> Clarendon, Rockwell, Courier, Lubalin Graph, Archer.</p>
 <h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><ul>
-<li><a href="/2010/05/11/Nexus-One-/">Nexus One 到手，以及刷机过程</a></li>
+<li><a href="what-font">What Font Should I Use?</a></li>
+<li>Making Sense of Type Classification (<a href="type-class-1">part 1</a>) (<a href="type-class-2">part 2</a>)</li>
 </ul>
+<h1 id="CSS-Font-Stack"><a href="#CSS-Font-Stack" class="headerlink" title="CSS Font Stack"></a>CSS Font Stack</h1><p>创建字体栈的基本公式：最佳字体 + 次佳字体 + 常见的相似字体 + 相似的网页安全字体 + 通用字体。</p>
+<p>在字体栈中要注意字体的字形比例。例如网页安全字体中，Verdana字形很宽，Arial/Helvetica相对较窄，它们不应该同时存在于版式中；Times和Georgia也是同理。</p>
+<p>常见的字体栈参看 <a href="http://www.smashingmagazine.com/2009/09/22/complete-guide-to-css-font-stacks/" target="_blank" rel="external">Guide to CSS Font Stacks</a></p>
 
           
         
@@ -1217,8 +586,8 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2012/07/21/flashing-xperia-u/" itemprop="url">
-                  Xperia U 刷机
+                <a class="post-title-link" href="/blog/2014/06/21/run/" itemprop="url">
+                  跑步日記
                 </a>
               
             
@@ -1231,21 +600,14 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-07-21T23:20:00+08:00" content="2012-07-21">
-              2012-07-21
+            <time itemprop="dateCreated" datetime="2014-06-21T18:19:08+08:00" content="2014-06-21">
+              2014-06-21
             </time>
           </span>
 
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2012/07/21/flashing-xperia-u/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2012/07/21/flashing-xperia-u/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -1268,13 +630,14 @@
       
         
           
-            <p>昨天中午拿到国行 <a href="http://www.sonymobile.com/global-en/products/phones/xperia-u/" target="_blank" rel="external">Sony Xperia U</a> (ST25i) 手机，开机试了一下，索尼(原来的索尼爱立信)在Android 2.3基础上的定制系统做得还可以，但大陆行货里好多功能都被阉割得不成样子。Google系列的任何东西都去掉了就不用说了，很奇怪的是居然系统里没有自带任何应用市场，国内的山寨市场也没有。可以想象一个不熟悉IT的用户买到手机后就会局限在预装的那几个应用，连升级都没有途径。比较一下SonyMobile英文与中文网站对这款手机的介绍，就会发现中文产品介绍缩水不少，好多卖点都没有了。</p>
-<p>这样的智能手机简直就是残废，于是下班后就开始研究怎么刷机。先是在国内的一些论坛上搜索，但国内论坛真是很没有营养，里面的信息的价值很低。Android hacker的大本营在XDA，相关问题还是要到<a href="http://www.xda-developers.com/" target="_blank" rel="external">XDA论坛</a>找靠谱。</p>
-<p>关于Xperia系列刷机需要了解的基础知识，这篇 <a href="http://forum.xda-developers.com/showthread.php?t=1526866" target="_blank" rel="external">All that u need to know before u begin</a> 讲得比较清楚。</p>
-<p>无论要刷什么，前提条件是先将 bootloader 解锁。关于解锁的教程很多，SonyMobile网站上就有详细步骤，XDA上的 <a href="http://forum.xda-developers.com/showthread.php?t=1527159" target="_blank" rel="external">Xperia S/P/U/Sola Bootloader Unlocking &amp; Relocking</a> 附带了所需工具的下载。还有一个国产软件，号称是一键自动解锁。</p>
-<p>但是，就在第一步，将手机boot到fastboot模式，就花了我好几个小时。按教程，手机在关机状态按着音量+键的同时将USB连接上电脑，就会进入fastboot模式，并且亮起蓝灯。但是无论我怎么反复重试，手机都不会亮起蓝灯，电脑上弹出对话框提示安装驱动程序，但当我选择操作时它又说USB设备已经断开，显示这样的错误信息：s1boot fastboot device unplugged。网上搜索，有人说是驱动没有装好的原因，最后还是从XDA里找到了<a href="http://forum.xda-developers.com/showthread.php?t=1554632" target="_blank" rel="external">解决方案</a>。原来，Xperia手机在进入fastboot模式时，会检测电脑是否已经装上了正确的驱动程序，如果没有，就会退出fastboot模式。而电脑端刚刚提示用户安装驱动，就发现手机已经关闭了连接，就取消了驱动的安装。这种问题可以用来做经典反面案例了。XDA帖子里的解决方法还是要拼手快：预先打开设备管理器，一插上手机后，里面会出现s1boot这个设备，赶紧鼠标右键选择升级驱动，升级驱动的对话框打开后，即使设备断开了还是可以继续进行驱动程序的安装。终于看到传说中的蓝灯了，原来是在下面透明发光条发出很亮的蓝光，我之前还一直以为是右上角摄像头旁边的小灯。</p>
-<p>接下来就非常顺利了，解锁bootloader后，用fastboot安装了ROM和Kernel。我都没有另外用其他工具了，感觉fastboot用起来就很简单，很多人不喜欢可能是因为命令行操作吧。关于fastboot使用，推荐看cyanogenmod的wiki里的<a href="http://wiki.cyanogenmod.com/wiki/Fastboot" target="_blank" rel="external">介绍</a>。</p>
-<p>我刷的ROM是<a href="http://forum.xda-developers.com/showthread.php?t=1684062" target="_blank" rel="external">KA02 Xperia SSpeed</a>， 还是Android 2.3.7，Sony还没有为Xperia U 提供Android 4.0 ICS。Kernel是<a href="http://forum.xda-developers.com/showthread.php?t=1688147" target="_blank" rel="external">Advanced Stock Kernel</a>。刷完开机，见到熟悉Google账号绑定，然后Gmail、通信录、日历同步、Google Play都回来了。Root也有了，收工。</p>
+            <p>今天難得的陰天，早上下過雨，溫度30℃出頭，沒有早幾天那麽酷熱，也有點風。<br>磨磨蹭蹭，早上10點半才出發。熱身段過後，按5’30”配速，從江灣橋過河南，沿江邊一直往東跑。</p>
+<p>過了廣州塔，就到獵德大橋，大概10km位置。這時我面臨著一個艱難的選擇：上橋，就過到珠江新城然後沿江邊往回走，穿過二沙島回家，這是跑過好多次的路線，大概十七八公里左右。如果直走，就一直要到琶洲大橋才能過橋，到了北岸往回跑，要到家路程估計有近30公里，這時我從沒有跑過的距離。在我的大腦還在激烈思想鬥爭的時候，雙腿肌肉已經作出了決定——直走。</p>
+<p>考慮到前路漫漫，將速度下降到5’50”。這時接近正午時分，雖然沒有太陽直射，人也比較熱，心率上升到接近160。找賣水的地方，但琶洲一帶很荒蕪，估算著也撐到過了琶洲橋後也沒問題。</p>
+<p>13.5km處上橋，這橋真長，足足一公里。過了琶洲大橋下來，14.6km，去超市買運動飲料喝，停了幾分鐘。這麽一停下來，就沒法重新跑起來了，完全不想動。繼續跑後氣喘得很厲害，隔夜風爐都吹得著，腳擡不起，步頻下降了很多。將速度下降到6’30”了，希望能夠慢慢適應過來。堅持了一段，毫無起色，終於在過了華南大橋底，到了17km處放棄了。不清楚為什麼買水停了一下後狀態會突然變得那麽差，看回數據，過橋前的速度還是保持得比較平穩的5’50”左右。以前我也有經驗是不能停，一旦停下就很難重新回復狀態，但慢慢適應一段時間後還是可以的，這次完全不行。</p>
+<p>找不到廁所，鑽進樹叢裏面尿尿。舒暢完後渾身酥軟，一轉身沒站穩跟身後樹幹長滿刺的木棉樹來了個親密接觸。</p>
+<p>沿著江邊走，中午很寧靜，人不多，只有知了在不知疲倦的叫。突然覺得這個環境很舒服，享受一下時光吧，在榕樹陰下的石凳坐下，冰冷的石頭冷卻著大腿的肌肉，涼風吹拂身上的汗水。出來跑步什麼都沒有帶，不用再習慣性的拿手機來看，就讓時間的碎片留白，就是那樣靜坐著，看著開闊的江面，感覺那TMD不就是幸福麽。所以人都是自己感動自己的，要不哪來那麽多感人的事情。</p>
+<p>歇了一會，將運動飲料全喝完了，感覺恢復了一些，起來繼續跑一下，邊跑盤算著後面還能再跑多遠。但是，跑累了的時候就是靠內心去堅持的，原來一直習慣了喘著氣的狀態，可以一直跑下去，一旦享受過停下休息的舒服後就承受不了之前那種苦了。最後跑到珠江新城地鐵站收官，累計20.5km。後面這段其實心率還在正常範圍，肌肉沒有不適，就是步頻慢了，按理說這個狀態還可以繼續跑上好一段距離的。</p>
+<p>另一方面，今天跑的狀態看來確實不是那麽好，跑完幾個小時的感覺比以往跑這個距離要累。<br>回來看數據，感覺步頻似乎是反應體力狀態的一個直觀指標，從8.4km起步頻明顯下降了一個台階，而14.6km買水後步頻更是嚴重下降。另一方面，心率跟狀態有什麼關聯也還不是很清晰，每次跑步隨著疲勞累積，心率都是不斷升高的。但看以往的記錄，心率到160多速度依然保持的也有。</p>
 
           
         
@@ -1324,8 +687,8 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2012/07/14/simple-first/" itemprop="url">
-                  《简约至上》读书笔记
+                <a class="post-title-link" href="/blog/2014/04/03/zhong-guo-di-tu-pian-yi/" itemprop="url">
+                  中國電子地圖偏移
                 </a>
               
             
@@ -1338,21 +701,14 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-07-14T10:43:00+08:00" content="2012-07-14">
-              2012-07-14
+            <time itemprop="dateCreated" datetime="2014-04-03T07:43:45+08:00" content="2014-04-03">
+              2014-04-03
             </time>
           </span>
 
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2012/07/14/simple-first/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2012/07/14/simple-first/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -1375,8 +731,16 @@
       
         
           
-            <p><a href="http://book.douban.com/subject/5394309/" target="_blank" rel="external">简约至上</a>，原作名为 Simple and Usable Web,Mobile,and Interaction Design，不错的关于交互设计的书籍。</p>
-<iframe id="xmindshare_embedviewer" src="http://www.xmind.net/share/_embed/aleung/simple-first/" width="900px" height="300px" frameborder="0" scrolling="no"></iframe>
+            <p>幾年前我寫過對Google中國地圖偏移規律的分析(<a href="/2009/12/26/Google-China-Map-offset-1/">1</a>)(<a href="/2009/12/27/Google-China-Map-offset-2/">2</a>)，根據抓取到的偏移量數據，大概看出呈現了<code>sin(a)+sin(3a)</code>這樣的函數曲線規律，並且這個函數以不同頻率和幅度疊加了兩次。當時我推導出函數及其係數，利用它去校正偏移，在百公里範圍的區域內已經非常理想，但是在全國大範圍的不同區域，係數需要有點不同，也就是擬合函數還是差了一些低頻率的細節。不過當時的分析細節我也不敢在博客裏面寫，後來我也沒有再搞地圖方面的應用開發了，就把這個放下。</p>
+<p>實際上這個地圖偏移並不是Google自己搞的算法，而是國家測繪局以立法的形式統一要求加的，稱為地形图非线性保密处理，所有從事國內電子地圖的廠商應該都得到了這個算法，實際上並起不到什麼所謂保護國家安全和國家利益的作用（保護行業壟斷者利益倒是真的），但是這個地圖偏移對地理信息處理和GPS技術的民用化起到了巨大的阻礙作用，近年各種與地理位置相關的應用如雨後春筍般湧現，但都為中國地圖的偏移而頭痛不已，後來由於下面提到的算法的流傳，問題得以解決，但增加很多不必要的複雜性和浪費開發、數據處理的人力。在我看來，這個地圖非線性加密處理在地理信息領域就像GFW在互聯網信息領域一樣，浪費了大量社會財富來對技術發展與應用進行封鎖。<a href="http://baike.baidu.com/view/2356807.htm#2_2" target="_blank" rel="external">李成名</a>，你真的成名了。</p>
+<p>感謝Internet，感謝open source，現在這個偏移算法在網上已經可以輕松找到了。</p>
+<p>網上流傳的原始算法是<a href="http://emq.googlecode.com/svn/emq/src/Algorithm/Coords/Converter.java" target="_blank" rel="external">這個Java文件</a>，然後有人整理過代碼，接力開發出多種語言版本。在『A Fork of Stuffs』博客裏，<a href="http://blog.csdn.net/coolypf/article/details/8686588" target="_blank" rel="external">地球坐标系 (WGS-84) 到火星坐标系 (GCJ-02) 的转换算法</a>給出了C#實現，這個博客另外一篇<a href="http://blog.csdn.net/coolypf/article/details/8569813" target="_blank" rel="external">火星坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换算法</a>也很有用。而使用比較方便應該是下面的github代碼庫：</p>
+<ul>
+<li><a href="https://github.com/googollee/eviltransform" target="_blank" rel="external">googollee/eviltransform</a>: C, go, JavaScript, php語言版本</li>
+<li><a href="https://github.com/Leask/EvilTransform" target="_blank" rel="external">Leask/EvilTransform</a>: Java和C#語言版本，似乎就是將前面介紹的代碼收集到github裏面，沒有改動。</li>
+</ul>
+<p>另外，github裏還有一個項目 <a href="https://github.com/fourcels/lbs" target="_blank" rel="external">fourcels/lbs</a> 是用查表法來糾偏的，裏面的偏移數據（共9M）說不定就是早期從Google地圖服務上抓下來的。但現在有了算法，查表法的價值就不大了。</p>
+
           
         
       
@@ -1408,7 +772,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/blog/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/32/">32</a><a class="extend next" rel="next" href="/blog/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/blog/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/64/">64</a><a class="extend next" rel="next" href="/blog/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1449,7 +813,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">312</span>
+              <span class="site-state-item-count">317</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1596,25 +960,6 @@
 
 
 
-  
-
-    <script type="text/javascript">
-      var disqus_shortname = 'aleung';
-      var disqus_identifier = 'page/5/index.html';
-      var disqus_title = "";
-      var disqus_url = '';
-
-      function run_disqus_script(disqus_script){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-      
-    </script>
   
 
 

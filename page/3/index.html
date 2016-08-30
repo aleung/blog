@@ -86,15 +86,12 @@
 
 
 
-<meta name="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Good good study, day day up">
 <meta property="og:url" content="http://aleung.github.io/blog/page/3/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Good good study, day day up">
-<meta name="twitter:description">
 
 
 
@@ -119,15 +116,6 @@
 
   
 
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-2827715-4', 'auto');
-  ga('send', 'pageview');
-</script>
 
 
 
@@ -267,8 +255,8 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2014/04/03/zhong-guo-di-tu-pian-yi/" itemprop="url">
-                  中國電子地圖偏移
+                <a class="post-title-link" href="/blog/2015/02/05/typesetting-basic/" itemprop="url">
+                  几条基础排版规则，让文档显得专业
                 </a>
               
             
@@ -281,21 +269,14 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-04-03T07:43:45+08:00" content="2014-04-03">
-              2014-04-03
+            <time itemprop="dateCreated" datetime="2015-02-05T00:00:00+08:00" content="2015-02-05">
+              2015-02-05
             </time>
           </span>
 
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2014/04/03/zhong-guo-di-tu-pian-yi/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/04/03/zhong-guo-di-tu-pian-yi/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -318,940 +299,38 @@
       
         
           
-            <p>幾年前我寫過對Google中國地圖偏移規律的分析(<a href="/2009/12/26/Google-China-Map-offset-1/">1</a>)(<a href="/2009/12/27/Google-China-Map-offset-2/">2</a>)，根據抓取到的偏移量數據，大概看出呈現了<code>sin(a)+sin(3a)</code>這樣的函數曲線規律，並且這個函數以不同頻率和幅度疊加了兩次。當時我推導出函數及其係數，利用它去校正偏移，在百公里範圍的區域內已經非常理想，但是在全國大範圍的不同區域，係數需要有點不同，也就是擬合函數還是差了一些低頻率的細節。不過當時的分析細節我也不敢在博客裏面寫，後來我也沒有再搞地圖方面的應用開發了，就把這個放下。</p>
-<p>實際上這個地圖偏移並不是Google自己搞的算法，而是國家測繪局以立法的形式統一要求加的，稱為地形图非线性保密处理，所有從事國內電子地圖的廠商應該都得到了這個算法，實際上並起不到什麼所謂保護國家安全和國家利益的作用（保護行業壟斷者利益倒是真的），但是這個地圖偏移對地理信息處理和GPS技術的民用化起到了巨大的阻礙作用，近年各種與地理位置相關的應用如雨後春筍般湧現，但都為中國地圖的偏移而頭痛不已，後來由於下面提到的算法的流傳，問題得以解決，但增加很多不必要的複雜性和浪費開發、數據處理的人力。在我看來，這個地圖非線性加密處理在地理信息領域就像GFW在互聯網信息領域一樣，浪費了大量社會財富來對技術發展與應用進行封鎖。<a href="http://baike.baidu.com/view/2356807.htm#2_2" target="_blank" rel="external">李成名</a>，你真的成名了。</p>
-<p>感謝Internet，感謝open source，現在這個偏移算法在網上已經可以輕松找到了。</p>
-<p>網上流傳的原始算法是<a href="http://emq.googlecode.com/svn/emq/src/Algorithm/Coords/Converter.java" target="_blank" rel="external">這個Java文件</a>，然後有人整理過代碼，接力開發出多種語言版本。在『A Fork of Stuffs』博客裏，<a href="http://blog.csdn.net/coolypf/article/details/8686588" target="_blank" rel="external">地球坐标系 (WGS-84) 到火星坐标系 (GCJ-02) 的转换算法</a>給出了C#實現，這個博客另外一篇<a href="http://blog.csdn.net/coolypf/article/details/8569813" target="_blank" rel="external">火星坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换算法</a>也很有用。而使用比較方便應該是下面的github代碼庫：</p>
+            <p>虽然我不是处女座的，但在有些事情上会表现得比较处女座，例如对于文档格式，我常会跟各种细节纠缠不休，为的是看起来显得完美一些。</p>
+<p>作为软件开发者，写文档是必备的技能，而且文档里常常会出现大量英文。这里介绍一些很基本的规则，使得文档的显得专业一些。这些规则在其他类型的文章里也是适用的。</p>
+<h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><h3 id="用段落，不要强制换行"><a href="#用段落，不要强制换行" class="headerlink" title="用段落，不要强制换行"></a>用段落，不要强制换行</h3><p>在我看来，禁止使用强制换行，是没有特例的（我们不写诗歌）。在必须保留原始换行的地方，应该作为 preformatted text block（HTML 的 <code>PRE</code>，markdown 的 4 空格缩进段落）出现。</p>
+<h3 id="保持一致性"><a href="#保持一致性" class="headerlink" title="保持一致性"></a>保持一致性</h3><p>保持标点、字体等元素的一致性，整篇文档看起来清晰整齐，可读性高。</p>
+<p>在这方面常见问题有：</p>
+<p>中文英文标点混用</p>
+<p>: 写技术文章，经常会出现中文英文（西文）混合的场景。原则应该是在中文句子中使用中文标点，西文句子中使用西文标点。至于中文句子中嵌入西文引文，那么嵌入的西文内容中应该遵循西文引文这个“亚环境”的规则，用西文标点，但用来包裹嵌入内容的引号或者括号还是属于中文句子的环境，因此用中文标点。</p>
+<p>简体繁体中文混用<br>: 这个如果不考虑海外用户，问题也不算大，对大陆读者来说，混合简体繁体阅读起来基本上没有违和感。</p>
+<p>全角半角混用<br>: 除了中文标点外，西文字母和数字这些字符是不应该出现全角的。</p>
+<p>成对的符号没有对称<br>: 例如引号，是区分左引号和右引号的，一般输入法会正确识别方向，但在拷贝粘贴或者插入编辑的时候要小心方向不要弄错。</p>
+<h3 id="空格的使用"><a href="#空格的使用" class="headerlink" title="空格的使用"></a>空格的使用</h3><p>中文标点不需要加空格。西文标点后需要加一个空格；成对的符号，开始的要在前面加空格，结束的在后面加空格。</p>
+<p>西文单词之间要用空格分隔，这个不容易错。但是单词与数字之间也要加空格，例如“iPhone 6”。</p>
+<p>中文与西文混排时，中文与西文之间可能要添加空格，以保证有一定间距，具体视乎显示效果而定。有人习惯一律加空格。<a href="[中西文混排](http://blog.acgtyrant.com/chinese-western-mixed-typesetting.html)">^1</a></p>
+<h3 id="西文大小写不要误用"><a href="#西文大小写不要误用" class="headerlink" title="西文大小写不要误用"></a>西文大小写不要误用</h3><p>强调以下的规则似乎有点小题大做，但确实还是经常会见到这样的错误。</p>
 <ul>
-<li><a href="https://github.com/googollee/eviltransform" target="_blank" rel="external">googollee/eviltransform</a>: C, go, JavaScript, php語言版本</li>
-<li><a href="https://github.com/Leask/EvilTransform" target="_blank" rel="external">Leask/EvilTransform</a>: Java和C#語言版本，似乎就是將前面介紹的代碼收集到github裏面，沒有改動。</li>
+<li>句子首字母大写，句子内不应该用大写，除非下面的情况；</li>
+<li>有些专有名词首字母大写的，即使用在句子中间也要保留大写；</li>
+<li>全部大写的缩写，放在哪里都不能变成小写。</li>
 </ul>
-<p>另外，github裏還有一個項目 <a href="https://github.com/fourcels/lbs" target="_blank" rel="external">fourcels/lbs</a> 是用查表法來糾偏的，裏面的偏移數據（共9M）說不定就是早期從Google地圖服務上抓下來的。但現在有了算法，查表法的價值就不大了。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2014/03/15/pebble/" itemprop="url">
-                  Pebble
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-15T21:52:22+08:00" content="2014-03-15">
-              2014-03-15
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2014/03/15/pebble/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/03/15/pebble/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://getpebble.com/" target="_blank" rel="external">Pebble手錶</a>戴了兩個星期，如果用一句話來總結感受，那就是：基本滿意，但還沒到愛不釋手的程度，沒有帶來驚喜。</p>
-<p>首先，Pebble真的是一隻手錶，可以看時間。如果你有幸用過各種『智能手環』，就會明白為什麼這麽說了。我戴過<a href="https://jawbone.com/up" target="_blank" rel="external">Jawbone UP</a>一段時間，試過好多次下意識的擡起手腕來看，然後才想起那貨是沒有任何顯示的。</p>
-<img src="/blog/attachments/2014/3/pebbles.jpg" class="right">
-<p>佩戴舒適度上說，Pebble還過得去，塑料錶帶的柔軟度不錯，反正我已經習慣了24小時戴在手腕上的感覺。在這之前，我都有十幾年沒有戴過手錶了吧。</p>
-<p>外形應該是我最不在意的一項了，但不得不說 Pebble 外形上太普通。我的黑色版本，正面看弧形表面，與黑白顯示屏融為一體，還算有點現代感，但側面看就很『薯鈍』的樣子 —— 厚，按鈕粗曠，左邊還有很突兀的幾個充電觸點。</p>
-<p>手錶用的是 144x168 的低分辨率黑白e-paper屏幕，在現在手機電腦都視網膜屏的時代，這個分辨率真是超低了。E-paper的對比度很高，無論什麼光線條件下都非常清晰，雖然分辨率低，實際顯示文字的效果還是不差的。圖像？就算了吧，除了像素少，這個屏還連灰度都顯示不了。不知道這個e-paper跟Kindle之類閱讀器的屏是不是同樣的技術，但看起來還是有區別：Pebble屏的像素邊緣很銳利，顯示直接改變沒有殘影，不像Kindle要全屏反色刷一次。</p>
-<p>Pebble 可以安裝 app，當然了，否則就對不起 smart watch 這個名字。App 分為 watchface 和 watchapp 兩大類，無論是那種也不管大小，總共最多安裝8個，不知道它內部怎麼管理空間的。Watchface 只有一屏顯示信息，不能接受按鍵控制，最常見用途是顯示時間，當然也可以顯示其他信息，例如天氣、日曆之類。Watchapp就是可以與用戶交互的應用，可以有多屏，用戶通過菜單、控制按鈕來操作。</p>
-<p>Pebble 的方便之處是它作爲手機的一個延伸的信息終端，手機可以將實時的信息推送到手表上，或者是在手表上顯示濃縮的手機應用的某些信息。前者例如，我以前經常會漏接電話或者漏看短信，因爲手機放袋裏聽不到聲音，現在戴著 Pebble 就不會了，因爲手表會振動提醒。後者例如一些跑步應用，能在 Pebble 上顯示速度、距離等關鍵信息，就不用拿手機出來看。</p>
-<p>Pebble 最大的問題是操控不方便。表上有四個按鈕：上/下/Enter/ESC，沒有觸摸屏，任何操作都只能靠按鍵選擇菜單項，因此經常要按好多次按鈕才能完全想要的操作。而 Pebble 的按鈕按起來又不算是特別方便，總之我是不會想在手表上做按超過一兩次按鈕的操作的。這種操控的不方便限制了app可以做的事情，感覺這個比起屏幕和表的硬件處理能力的限制還要大。Pebble 也不支持 app 後台運行，要求在手錶上跑多任務，電池撐不住吧，但沒有多任務也造成一些類型的 app 沒法做了。</p>
-<p>至于耗電，目前還不至于很大問題。官方宣傳可以用5-7天，我實際用下來只有3天，也不知道是軟件問題還是硬件問題。但3天其實還是可以接受的。</p>
-<p>最後介紹一下我現在常用的app：</p>
-<h5 id="Watchface"><a href="#Watchface" class="headerlink" title="Watchface"></a>Watchface</h5><img src="/blog/attachments/2014/3/postage_watchface.png" class="right">
-<img src="/blog/attachments/2014/3/agenda_watchface.png" class="right">
-<p>Agenda Watchface</p>
-<p>: 在辦公室或者需要按日程做事的時候會用這個watchface，一眼就能看到當前時間和接下來的日程安排。</p>
-<p>Postage</p>
-<p>: 當我不需要看日程安排的時候，喜歡用這個face，夠簡潔，外圍的黑色與黑色表身融為一體。實際看起來比截圖好看很多。</p>
-<h5 id="Watchapp"><a href="#Watchapp" class="headerlink" title="Watchapp"></a>Watchapp</h5><img src="/blog/attachments/2014/3/pebbleauth.png" class="right">
-<p>PebbleAuth </p>
-<p>: 二步認證的token生成器，相當於 Google Authenticator 運行在手錶上，這樣更加安全啦。現在除了 Google，LastPass 和 EverNote 都支持二步認證了。</p>
-<p>Sleep as Android</p>
-<p>: 我買 Pebble 就是因為看到 Sleep as Android 支持 Pebble 了，才動了心的。這個應用利用 Pebble 上的運動傳感器監控睡眠的深淺度，早上能夠在合適的淺睡眠週期通過振動叫醒。我以前就在用 Sleep as Android，但要用手機的運動傳感器，所以手機要放在床墊上，現在戴著手錶就行了，手機可以放遠一些。</p>
-<img src="/blog/attachments/2014/3/sleepaspebble.png">
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2014/01/20/text-to-uml-diagram/" itemprop="url">
-                  Text to UML diagram
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-01-20T22:10:00+08:00" content="2014-01-20">
-              2014-01-20
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2014/01/20/text-to-uml-diagram/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/01/20/text-to-uml-diagram/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Usually I used <a href="http://astah.net/" target="_blank" rel="external">Astah</a> to draw UML diagram to put into design document in MS Word or PowerPoint format. The separation of the source and generated file making management of the UML model file a problem. And also it’s annoying to adjust a large amount of elements by dragging with mouse whenever you add something in the diagram. For a coder, typing on keyboard is faster than drawing with mouse.</p>
-<p>Now I switch to <a href="http://plantuml.com/" target="_blank" rel="external">PlantUML</a>. Just write UML in its <a href="http://en.wikipedia.org/wiki/Domain-specific_language" target="_blank" rel="external">DSL</a> and PlantUML generates the diagram. It supports most of the frequent used UML diagrams, which I use most are sequence diagram, class diagram and state diagram. Then I paste the generated diagram into slides (design document) and keep the “source” in note. No need to wonder where to find original UML model file when I need to update the diagram.</p>
-<p>The core of PlantUML is simply a jar file. It parses the text input and depends on <em>dot</em> tool from <a href="http://www.graphviz.org/" target="_blank" rel="external">Graphviz</a> for graph generation (except sequence diagram). </p>
-<p>There are <a href="http://www.plantuml.com/running.html" target="_blank" rel="external">a bunch of ways</a> to run PlantUML. I highlight some of them I prefer:</p>
-<ul>
-<li>Online editor. Best choice if you’re too lazy to install anything on your computer.</li>
-<li>Desktop (Windows): <a href="https://code.google.com/p/plant-uml-file-watcher/" target="_blank" rel="external">PlantUML File Watcher</a></li>
-<li>Embedded into Octopress blog platform. The below examples are using it.</li>
-<li>IDE plugin. Easy way to keep UML together with source code.</li>
-</ul>
-<p>The syntax of PlantUML’s DSL is quite intuitional, you can start to use it by following example.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">package ConsentObject &lt;&lt;Rect&gt;&gt; &#123;</span><br><span class="line">  Consent : id</span><br><span class="line">  Scope : key</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">Client - User</span><br><span class="line">(Client, User) . Consent</span><br><span class="line"> </span><br><span class="line">Consent - &quot;*&quot; Scope</span><br><span class="line"> </span><br><span class="line">Consent &quot;1&quot; -- &quot;1..*&quot; AccessToken</span><br></pre></td></tr></table></figure>
-<p>The generated diagram:</p>
-<img src="http://www.plantuml.com/plantuml/svg/K-0gI4pEJanFLN3EpojEpIlnJyfAJIvHiB490b9sTWhLN0emAGKhXSmK83SuERyW5SZ9JgtagkLIu7BEoGJ9wYg45gSMSMb0k3fWdgQ27amtI27K75q59IqbY358eag6IWgwG2b3FJsWh6DoScfnSKX-TceU0000"> 
-<p>A sequence diagram example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">title OAuth 2.0 Authorization Code Grant</span><br><span class="line"></span><br><span class="line">actor    UserAgent       as UA</span><br><span class="line">participant Application     as APP</span><br><span class="line">participant OAuthServer     as OAuth</span><br><span class="line">participant ResourceServer  as RS</span><br><span class="line"></span><br><span class="line">== Application requests authorization from user ==</span><br><span class="line">UA-&gt;APP: </span><br><span class="line">APP--&gt;UA:redirect to OAuth Server</span><br><span class="line">UA-&gt;OAuth: GET /authorize?response_type=code</span><br><span class="line">ref over UA, OAuth: user authentication\nuser confirms reqest</span><br><span class="line">OAuth--&gt;UA: redirect to App with authorization_code</span><br><span class="line">UA-&gt;APP: authorization_code</span><br><span class="line"></span><br><span class="line">== Application retrieve access token ==</span><br><span class="line">APP-&gt;OAuth: POST /token with authorization_code</span><br><span class="line">ref over APP, OAuth: client authentication</span><br><span class="line">APP&lt;--OAuth: access_token</span><br><span class="line"></span><br><span class="line">== Application access protected resource ==</span><br><span class="line">APP-&gt;RS: getResource with access_token</span><br><span class="line">RS-&gt;OAuth: validateToken(access_token)</span><br><span class="line">RS--&gt;APP: result</span><br></pre></td></tr></table></figure>
-<img src="http://www.plantuml.com/plantuml/svg/TP9FJuGm4CNl_HHpr4JKU2IYQOpPusvWkPbicZAxDh8KfyCQ_VIsfP35Fnm8RT_C-xsXRBX5MCk1N-7k-XR2XoNpfTZO3fviWx0YrR4GIhCb69_Q8Sa3TfpMoa4jHQ-8ZJQzbuFi-zReiKjIoCrc8Occ5T89QPB4hOMeH6S7qZZflAYiX2YAXGFX-u2E7QW5_fxi4GRF2aKXQfazU8GSX7zdsKCjSyB646e6jca4eqtKneqSLizRk9dQuYEXwstdSCUVFHRQpqSGxi46k5fUGQgAfg7ApoX1ldHnKzjkR-Ze0hD75h5Wn85p7XyFFen7MaJQHSSvoXzdlqV3PF24eBH6vtphD-p2FC8Kff2RTULJZaV_cSunVU6SKxSct89bqj3wFikIPFJTnUO_uH9JJvPzR6myxVYxPy2ook60F5s3H7VUigpc62VLcaOnRiF1nRdgCiZIqBp7qF8t">
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2013/12/08/intercept-android-https-traffic/" itemprop="url">
-                  拦截Android应用HTTPS通讯内容
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-12-08T15:03:00+08:00" content="2013-12-08">
-              2013-12-08
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2013/12/08/intercept-android-https-traffic/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/12/08/intercept-android-https-traffic/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>昨天在捣弄 <a href="http://micoach.adidas.com/" target="_blank" rel="external">miCoach</a> 到 <a href="http://nikeplus.nike.com/" target="_blank" rel="external">Nike+</a> 的数据迁移，到了最后一步发现调用 Nike+ API 需要传送client_id和client_secret，这两个信息是用来认证客户端的，但Nike并没有公开开放API，因此无法申请到client_id。看 <a href="https://github.com/angusws/tcx2nikeplus" target="_blank" rel="external">tcx2nikeplus</a> 的作者说他是通过查看iPhone应用发送的请求来拿到这两个信息的。但是 Nike+ API 都是走HTTPS的，普通方式的截包看不到加密传输的数据。</p>
-<p>要嗅探加密传输，必须通过<a href="http://zh.wikipedia.org/wiki/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB" target="_blank" rel="external">中间人攻击</a>的方式才行。上网搜索一下看看有没有现成工具，果然一搜就找到了：<a href="http://portswigger.net/burp/" target="_blank" rel="external">Burp Suite</a>。它是一个安全测试工具，功能好像有不少，我这里用它做代理，从中监控应用到服务器的通讯内容。</p>
-<p>下面记录大致操作过程。</p>
-<p>在PC上安装运行Burp，设置 Proxy - Options - Proxy Listeners，让它监听合适的地址和端口，并且选择 “Generate CA-signed per-host certificates”。</p>
-<p>将浏览器代理指向Burp proxy，访问任意一个https地址，Burp这时是中间人，它会用自己的根证书(PortSwiggerCA)签发一个目标服务器的证书，替换了真正服务器的证书。浏览器应该会有安全报警，因为系统并不信任签发这个证书的CA。查看证书详细信息，选择根证书并且信任这个根证书，就会把PortSwiggerCA的证书加入到系统的信任列表中。</p>
-<p>要将这个根证书装进Android，需要先从系统 key chain 里将它导出到文件（.pem格式），然后执行下面的命令将它转换为DER格式后缀为.crt的文件。</p>
-<pre><code>openssl x509 -in PortSwiggerCA.pem -inform PEM –out PortSwiggerCA.crt -outform DER
-</code></pre><p>接下来，将 PortSwiggerCA.crt 放入Android的sdcard，在系统安全菜单中安装证书。证书安装后，Android系统就会信任所有Burp签发的证书了。</p>
-<p>在Android的WLAN设置代理指向Burp。但很多Android应用都不理会系统的代理设置，不使用系统指定代理，遇到这种情况就要用 <a href="https://play.google.com/store/apps/details?id=org.proxydroid" target="_blank" rel="external">ProxyDroid</a> 来设置GlobalProxry（手机要root）。设置好了，在Burp里面就能够拦截到Android应用的HTTPS通信明文了。</p>
-<img src="/blog/attachments/2013/12/burp.png">
-<p><em>注意：为确保安全，测试完之后要将 PortSwiggerCA 这个根证书从PC和Android系统信任列表中删除。如果不是临时使用，应该要用自己的证书代替Burp提供的证书。</em></p>
-<p>这个故事告诉我们，中间人攻击并不是那么复杂的事情。特别是终端应用开发者，不可寄望于通过加密传输来隐藏应用到服务器的协议细节，要逆向工程是很容易的。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2013/12/01/2013-gz-half-marathon/" itemprop="url">
-                  2013广州马拉松半程小结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-12-01T20:03:00+08:00" content="2013-12-01">
-              2013-12-01
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2013/12/01/2013-gz-half-marathon/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/12/01/2013-gz-half-marathon/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>11月23日，参加了2013广州马拉松的半程赛事，这是我第二次跑半程马拉松，赛会成绩1:55:11，自己按过出发点的计时是1:52:50。这个成绩比上一年要差了一些，2012广州半马的自己计时是1:49:57。但还是完成目标了，我赛前预订的是两小时内完成。</p>
-<p>今年的训练是从7月中旬开始的（见：<a href="2013/07/27/first-long-run">今年首次长跑训练</a>），最开始的目标是全程马拉松，但是训练断断续续了好多回：八月初去大辣甲岛坐快艇颠伤了腰；九月中旬肠胃炎病了一回体重一下掉了两公斤；十月中旬出差；十月中旬到十一月中旬咳嗽了一个月。总之一直都没有跟上训练计划，训练强度没有上去，跑全马没有可能了，报名时还是选择半马。咳嗽延续了很长时间，严重到胸口肋骨痛，虽然训练没有完全停止，但很担心这样的身体状态连半马都跑不下来了，幸好到了十一月中旬，赛前两周咳嗽逐步好转。一直都没有怎么跑长距离，都是平常的30分钟，十一月开始才将每次跑量增加到12km左右。11月16日（赛前一周）晚遇上Nike的夜跑活动，那次跑得非常轻松，13km步速5:27，就对完赛非常有信心了。赛前一周内减量，周二周四跑了两次慢速短时间维持运动状态。</p>
-<p>从周训练量图上看得出来：太少了，很多时候每周2小时都不够。</p>
-<img src="/blog/attachments/2013/12/run-history-weekly.png">
-<p>今年的路线比去年好多了，都是沿着江边跑。半程路线没有经过老城区，时间也早，观众没有那么多，但气氛也还是比去年好，观众都在热情的叫喊，特别是跑到路边跟一溜的观众一一击掌，兴奋度立马提高，特别有动力。</p>
-<img src="/blog/attachments/2013/12/marathon-route.png">
-<p>早上七点半起跑，我6:40到珠江新城地铁站，一出站到处都是跑手，看到这个场景人就开始有点兴奋了，虽然平日这个时间还在床上呼呼大睡。在歌剧院外面的广场脱了外套和长裤，当天气温比较暖和，没有热身也不怎么冷。跟朋友回合，时间已到7:10，看着出发区密密麻麻的人群，有点心急。幸好今年的存包工作做得很好，不需要排队，然后上厕所，倒是排了上十分钟，一切妥当已经接近起跑时间。广马的出发点空间过于狭窄，只有一条半车道的宽度，早就已经挤满了人。有人在人堆里往前钻，我也跟在他后面钻，好歹往前挪了几十米。离起跑线还是很远很远，也不知道是什么时候鸣枪的，总之听到前面有人欢呼，然后又等了好一会发现人群开始往前移动了。人群基本还是走，我已经是尽量在人缝中钻了，走走停停，到起跑线时已经两分半钟。过了起跑线，还是跑不起来，跑了一小段前面又堵住了，又得走。一直过了大半公里，路面宽了之后，才可以真正跑起来。</p>
-<p>起跑后几公里都没有把握好速度。按照2小时内完赛的目标，我给自己预定的配速是5’20”~5’30”之间。路面宽阔后，大家的速度都加上去了，一听 miCoach pacer 报速度，步速已经到 5’10” 左右了，于是就把速度降下来。在赛事中跟自己平常训练很不一样，平常起跑的速度都比较慢，要跑上十来分钟速度才加得上去，而在赛事中兴奋度高了，跟着其他人一下子就跑得比较快，自己一点感觉都没有，还以为慢。怕跑快，控制速度后，又压得太慢了，降到了5’40”。在四五公里左右还感觉右小腿肌肉有点僵硬感。</p>
-<img src="/blog/attachments/2013/12/first5k.png">
-<p>过了前半小时，大概跑顺了进入状态。特别是车陂路第一个折返点后，一路都跑得很顺畅，步速基本上都在5’20”以上。回到珠江新城路段，沿路观众也多起来，我也喜欢回应一下观众，跑近路旁，挥挥手，甚至击掌，观众喝彩得更热烈，自己也更加兴奋，明显速度会跑快一点。五公里开始有水站，以前跑我不喜欢拿运动饮料，觉得甜了反而不解渴，但这次还是都选择了喝运动饮料，因为可以补充点能量。跟去年不一样，今年饮料是用纸杯分发的，确实这样更合理不浪费，只不过一边跑一边喝的难度不小，估计是喝一半撒了一半。实际上并不感觉渴，喝一两口感觉就可以了，但每5公里的饮料站我都去拿了，而且都全喝完，以保证不缺水，毕竟当天的温度对长跑来说比较高。</p>
-<img src="/blog/attachments/2013/12/6-12km.png">
-<p>10km处有计时显示，已经忘了是多少，当时估算了一下，2小时内完成没什么问题了。12km开始进入猎德大桥路段，感觉依然很轻松。我记到去年到10km时也是感觉非常轻松的，但过了不久就开始疲累，因此也不敢大意。后面这一段路的速度在图上看波动比较大：12~13km猎德大道这短短一段路几个小上下坡：过猎德涌两次；13.5km左右路段是爬猎德大桥的上坡，14km左右是冲下坡；15.5km处磨碟沙隧道下坡又是一轮猛冲，16km是隧道上坡。速度下降得很厉害的地方都是饮水站或者降温海绵站。</p>
-<p>在猎德-花城大道折返处拐弯的时候突然听到有人喊我的名字，一看是小春天，举着写上『Leo加油』的一张纸。有点惊喜，没想到她在这里，原来我是让她们在过桥后15、16km路段等的。因为是在拐弯处，当我看到她的时候已经几乎跑过了，匆匆一眼印象中一身很灰的衣服，所以啦啦队也要穿抢眼的衣服啊。然后开始上猎德大桥，虽然比较高，坡度还算是平缓的，减速保持步频上坡，终于过了最高点了，前面有大堆摄影师拦在路上拍照，很多人经过时都摆些pose好上镜，我当时没有意识到这里是一个官方摄影点，只是一心想着下坡可以冲快些。绕过了那群摄影师，突然又听到有人喊我的名字，一看是清风在旁边，也只是来得及挥挥手就冲过去了。一长段下坡，放开脚步狂奔。</p>
-<p>疲累感大概是在16km后出现的，冲完磨碟沙隧道下坡后上坡感觉有点吃力了，然后后面的路程就开始没有轻松的感觉，不过这时剩下的路程已经没有多少，看着对面折返的跑全马的跑手，心想：我再跑几公里就完成了，要跑全马的话还要再跑一倍多的距离，多痛苦啊。后面的路程开始一边跑一边默算着剩下的公里数，不过状态也还是不差，可能就是心理上觉得差不多到了失去了动力。</p>
-<img src="/blog/attachments/2013/12/13-18km.png">
-<p>琶洲大桥脚折返后，剩下最后两公里，开始加速做最后冲刺。因为最后有个小弯，一直没有看到终点门楼，有点觉得维持不住速度，直到最后一两百米左右看到终点，这时来劲了还猛冲了一下。</p>
-<img src="/blog/attachments/2013/12/sprint.png">
-<p>全程的心率在缓慢的上升，大概10km后进入黄区(159-165BPM)，除了最后冲刺，基本维持在黄区内。冲线时最高心率175BPM。</p>
-<img src="/blog/attachments/2013/12/heart-rate.png">
-<p>下面是全程的步速与步频曲线，粗线是步频。可以看出速度虽然有波动但全程平均差别不是太大，但前半程的步频基本在180以上，而后半程就下降到180以下了，说明体力下降步伐没有那么轻快了。</p>
-<img src="/blog/attachments/2013/12/stride-rate.png">
-<p>几点总结：</p>
-<ul>
-<li>训练量不足；</li>
-<li>体能储备上，半程没有问题，但跑更长距离估计余量不多了，需要增加长距离训练；</li>
-<li>配速不够平稳。miCoach pacer 只能靠语音播报，不像手表可以随时看到数值，定时播报的间隔时间有点长，在没有把握时应该多让它报一下步速。</li>
-</ul>
-<p>最后感谢亲友团的支持鼓励！希望明年一起跑！</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2013/10/21/du-of-software-design/" itemprop="url">
-                  软件设计之度
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-10-21T22:30:00+08:00" content="2013-10-21">
-              2013-10-21
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2013/10/21/du-of-software-design/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/10/21/du-of-software-design/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>上个月在公司里分享的主题。Slideshare上看不到页面的动画效果，页面里的东西混一起了，要下载原PowerPoint文件看才行。</p>
-<iframe src="http://www.slideshare.net/slideshow/embed_code/26482993" width="595" height="487" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen></iframe>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2013/07/27/first-long-run/" itemprop="url">
-                  今年首次长跑训练
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-07-27T20:24:00+08:00" content="2013-07-27">
-              2013-07-27
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2013/07/27/first-long-run/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/07/27/first-long-run/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>去年底跑完广州马拉松半程后，一直都没有怎么认真跑步，经常一停就几个星期。转眼间到了7月中，算一下离今年广州马拉松不够四个月了，是时候开始训练。用miCoach做训练计划，选择了全程马拉松，居然第一次训练就是要2小时long run，太狠了。想着之前已经隔天跑，跑了一个半星期，身体应该能承受，那就按计划来吧。</p>
-<p>半小时左右，跑到二沙岛过广州大桥，开始有累感。然后是各种累各种想停下的感觉，但好歹步速还在五分多六分多左右。</p>
-<p>经过广州塔，江堤上很多游人，景色不错。五十多分钟时过猎德桥，过完桥就开始回程了。<br>猎德大桥上竟然铺了橡胶，但太软了跑起来反而不好用力。</p>
-<p>下桥后停下来吃了根蕉，这一停不得了，再也跑不动了，真是宁可慢不可停。跑了几百米，虽然很慢，但都还是恢复不了跑步状态，大腿小腿都动不起来。才刚回程这样的状态不是办法，只好再停下来做了一轮腿部拉伸。拉伸完之后跑步的状态恢复了，虽然腿还是累。</p>
-<p>然后水袋饮水软管和耳机线又在胸前晃来晃去，每跑一步就拍一下身体，很不舒服。前半程卡在背包带上好好的，后面就总卡不稳了，可能是累了后身体晃动厉害了。又得停下来倒弄一番，还不小心把软件弄停了，后面都没有了记录。</p>
-<p>这时候刚好跑了一小时。手机不再有跑速语音提醒了，不知道自己的速度。但即使软件不断提醒我要提高速度到绿区，也加不了速了。这时候把步伐稳定下来，控制着小步幅，自我感觉姿态还是保持住的，但步频就提不上去了。一路跑一路在默念着：宁可慢，不可停。一旦停下来，就很难很难再恢复回跑的状态了。我的目标只是时间，不是距离。</p>
-<p>就这样默念着，不知不觉也就跑完了花城广场到广州大桥一段，上广州大桥到二沙岛。其实也不远，就两公里。跑着跑着就开始考虑起路线的问题了。先是想：一定要按计划跑够两小时！然后想，按这速度，两小时估计回不到家了，大概到江湾酒店。那么就跑到江湾就停吧。随着疲劳感一波一波袭来，思想斗争不断：看来跑不了这么远了；不行！起码也要到江湾；就到海印吧；现在先别想，撑过下一个路口再说！天啊，这么累，怎么可能跑马拉松啊。在差不多到音乐厅的前一个路口，思想还是放弃了，就坚持跑到二沙中医院的公交车站吧。</p>
-<p>当我跑步时，我在想些什么——哪有那么多人生哲理思考，想得只有一件事：什么时候可以停下来！</p>
-<p>其实最后步姿还不错，膝盖等关节状态良好，呼吸也还可以，就是大腿抬不起，要坚持在身体上应该还可以的，就是没有战胜自己。有人跑完马拉松后总结：在你感觉已经崩溃的时候，其实至少还可以再跑已经跑过的一半的距离。如果不是出现伤痛，唯一决定性的就是自己的意志。</p>
-<p>回家在地图上测了路线距离，大约13.5公里，1小时30分钟，算下来pace 6’40”。同以前的成绩比慢了不少。但这是恢复训练一周半后的第一次long run，算正常，本应该先跑个一小时循序渐进的。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2013/04/03/my-opinion-on-smartisan-os/" itemprop="url">
-                  看老罗的锤子发布会
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-04-03T13:05:00+08:00" content="2013-04-03">
-              2013-04-03
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2013/04/03/my-opinion-on-smartisan-os/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/04/03/my-opinion-on-smartisan-os/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>两个小时，演讲太啰嗦，时间压缩一半可能会精炼很多，乔布斯有这么多废话吗？另外就是老罗一贯的自恋。我突然想找小米首次发布会来看看，看雷布斯的表现如何。老罗已经是名嘴，雷布斯更惨不忍睹？</p>
-<p>从发布会的信息上看，锤子是一个做了UI / HI (Human Interface) 优化的Android系统：</p>
-<ol>
-<li>更换了System UI（风格基调是iOS的）</li>
-<li>提供以九宫格无背景为特色的Launcher（Android UI优点之一的widget无处容身了）</li>
-<li>替换了所有应用自带的图标</li>
-<li>提供了一些重新设计的系统自带应用，如相机、通讯录、拨号等（里面加入不少体贴用户的细节）</li>
-<li>语音控制功能的整合（还没做好）</li>
-</ol>
-<p>这样看来，锤子做的事情跟很多基于Android的定制系统是一个层面的，类似的系统太多太多了：最早但死掉的中国移动OMS，各手机厂商为自己手机定制的系统（HTC SenseUI，联想乐OS，魅族Flyme），已经放弃的点心OS，很火的MIUI……。顺便说一下，MIUI为应用图标硬加的圆角矩形背景极为难看，希望被老罗炮轰一下后能改过来。</p>
-<p>从整体设计风格来说，锤子追随的是iOS的UI风格和人机界面设计规范，从各个UI组件的样子可以看得出来，还有交互操作的方式，也包括拟物化的设计、仿真的视觉反馈等。</p>
-<p>对于一些操作细节的打磨，带来更人性化的体验，是很多人对锤子称道的地方。的确是做得不错，但演示到的几乎每一个改进／做法，都能够在其他系统／第三方应用中找到已经真实应用的范本。老罗团队做得好是在于关注到需要改进的地方，将它们集中到一起。发现哪里操作细节需要改进比起作出改进更难。</p>
-<p>因此，看完两个小时的发布会，这个锤子系统没有带来什么耳目一新的感觉。老罗太高调了，说什么要做最好的手机系统，吹嘘的跟现实的落差太大。也许这是营销手段，反正我就不喜欢这种营销了。</p>
-<p>发布会最后一段，老罗说得很清楚：锤子将会是一个极其封闭的系统，因为只有封闭，才能为小白用户提供最完美、一致的用户体验。听起来很耳熟是不？这不就是苹果说的吗？但是，智能手机系统更重要的角色是一个平台，各种应用才是上面的主角。应用的图标跟系统风格不搭配，锤子给出的解决方案是给你换掉，可是进入应用后，应用的UI、操作方式呢？这才是更重要的。UX不仅仅是美工，是整个人机交互。苹果是怎么做到的？苹果制定了一套系统详尽的人机界面设计规范(HIG)，苹果有很强的控制力，它可以通过App Store发布审核制度强制要求只有符合的应用才能上架。我看不到锤子能有这样的能力去控制第三方应用，也不觉得一个团队有能力(和有必要)在系统里自带所有主要的功能而抛弃第三方应用，因此觉得锤子找的这个提供更佳用户界面的切入点恐怕走不了多远。</p>
-<p>在手机平台这个层面的用户体验上，要作出革新，非小打小闹可以做到。我虽然不做用户交互端的开发，但也有关注移动应用的UX的发展。真正意义的智能手机应用自iPhone革命性发布开始，并没有好多年的时间，这些年来，UX design在迅猛发展。iOS以高度拟物仿真的特点一直独领风骚，但走入了过分繁杂的极端；Android一路在摸索，历年Google IO都带出新的UI/UX design pattern，每次都推翻之前的方案，但可以看到一路在改善，到了Android 4.x，已经有一整套成熟的设计规范；微软的Metro UI可以称得上是一个大的革新。近年的设计趋势都是简约化，去年底苹果工业设计师的更替后，苹果的设计理念也许也会往这个方向走。在我看来，大气的设计是定义出一整套设计语汇，自成体系，并且背后要有设计哲学所支撑（Metro的定位是一种设计语言）。读完iOS的HIG，Android SDK文档里的设计指南，Windows phone的设计指南，就有所体会。另外顺便说说Android应用，普遍比较丑的原因不在于Android自己的设计理念，而是应用开发者没有跟随这个理念，不少依照Android 4.x的设计风格的应用都很漂亮很好用的。</p>
-<p>最后总结我看到的锤子：老罗崇尚苹果的整套理念，另外也看到了一些可以改进的地方（例如他说的iPhone设计上的妥协），于是要将它搬到Android平台上来，按照自己的理解重现实现一遍。这将是一个很有趣的尝试，期望能为国内手机应用UX僵化老土的设计带来新鲜的风气。只是别把自己过分拔高就好了。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2013/03/30/should-i-keep-plugged-in-after-my-notebook-is-fully-charged/" itemprop="url">
-                  笔记本充满电后，是否应该拔掉电源
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-03-30T00:34:00+08:00" content="2013-03-30">
-              2013-03-30
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2013/03/30/should-i-keep-plugged-in-after-my-notebook-is-fully-charged/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/03/30/should-i-keep-plugged-in-after-my-notebook-is-fully-charged/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在豆瓣小组里，有人问笔记本充满电后，是否应该拔掉电源用电池。我的回答是“否”，在有电源时应该插着电源，以延长电池寿命。我的回答遭到了某些疑似文科生的质疑（抱歉我对文科生的不敬）。现在很多中文网站、论坛的东西都是东抄西抄，以讹传讹。为此我科普了一把。</p>
+<h3 id="西文没有书名号"><a href="#西文没有书名号" class="headerlink" title="西文没有书名号"></a>西文没有书名号</h3><p>书名号是中文特有的。在西文中，书名用斜体表示，篇名用引号。</p>
+<h3 id="使用样式，不要在文字上添加格式"><a href="#使用样式，不要在文字上添加格式" class="headerlink" title="使用样式，不要在文字上添加格式"></a>使用样式，不要在文字上添加格式</h3><p>同样语义的文字，就应该有同样的显示效果，这也是一致性的体现。把文字变得五颜六色，再插一段超大字体，这种做法还是留在小毛孩的论坛里吧。</p>
+<h3 id="不要滥用强调"><a href="#不要滥用强调" class="headerlink" title="不要滥用强调"></a>不要滥用强调</h3><p>强调会吸引注意力，打破文档视觉结构，只应该用在真正需要的地方。满篇的强调等于没有强调。</p>
+<p>若要突出文档架构，应该使用标题（headings）。当文章中有些整行文字需要强调时，往往是应该将它们作为小标题。</p>
+<p>在西文中，按照强调的程度不同，一般强调用斜体，特别强调用加粗。但是，斜体只适合西文，中文不好看，在印刷中可以用楷体或者加着重号代替，不过在一般电子文档中不方便使用（在 web 上可以用 CSS 来控制），没有什么好方法，所以在中文中就没法区分一般强调和特别强调了。 <a href="[大眾字型學：理想的排版強調法](http://blog.justfont.com/2014/01/popular-typography-4/)">^3</a></p>
+<p>改颜色改字体大小之类的奇淫技巧不可使用。</p>
+<h3 id="合理使用格式"><a href="#合理使用格式" class="headerlink" title="合理使用格式"></a>合理使用格式</h3><p>通过合理使用语义化的格式，可以达到需要的显示效果，而不用去直接指定如何显示。HTML 和 markdown 都支持以下几种格式：</p>
+<p>引用 （blockquote）<br>: 整段文字引用自其他地方。</p>
+<p>Preformatted text block<br>: 保留原始格式，包括换行，空格等。</p>
+<p>代码格式<br>: 用等宽字体（monospaced font）显示。要做得漂亮一点就是加上自动语法高亮渲染了。</p>
+<p>定义列表 (definition list)<br>: 适用于一个名词，后面一段解释的场合，就像现在这段文字。也就是 key-value map 在文本中的体现。在HTML 里是 <code>DL</code>, <code>DT</code> 和 <code>DD</code> 标签，不属于基本的 markdown 格式，有些引擎会支持。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>保证各种元素的一致性。关注内容的层次结构，段落或文字的语义属性，而不是显示效果。显示效果由样式来控制。</p>
 <hr>
-<p>看看Apple的网站吧： </p>
-<ul>
-<li><a href="http://www.apple.com/batteries/" target="_blank" rel="external">http://www.apple.com/batteries/</a> </li>
-<li><a href="http://www.apple.com/batteries/notebooks.html" target="_blank" rel="external">http://www.apple.com/batteries/notebooks.html</a> </li>
-</ul>
-<blockquote>
-<p>A charge cycle means using all of the battery’s power, but that doesn’t necessarily mean a single charge. For instance, you could listen to your iPod for a few hours one day, using half its power, and then recharge it fully. If you did the same thing the next day, it would count as one charge cycle, not two, so you may take several days to complete a cycle. </p>
-<p>Lithium-ion polymer batteries need to be used for maximum performance. If you don’t use your device often, be sure to complete a charge cycle at least once a month. </p>
-</blockquote>
-<p>电池的放电循环是累计的（原文里有图），不是说要一次性用光所有的电。 </p>
-<p>如果你一个月用电池用不够一个放电循环，那就需要专门去把电池的电耗掉再充满。但如果你平常不时需要移动使用电脑的话，一般一个月都能用够一个电池放电循环，就没有必要专门去耗用电池的电了。 </p>
-<p>锂电池的正常使用寿命大概在500～1000次放电循环左右。<a href="http://support.apple.com/kb/ht1519" target="_blank" rel="external">这里</a>有Apple官方声称的电池寿命数值，新款MBP，MBA都是1000次。 </p>
-<p>而且有说法是浅放电比起深放电有利于延长电池寿命[<a href="http://batteryuniversity.com/learn/article/how_to_prolong_lithium_based_batteries" target="_blank" rel="external">来源</a>] 。特别是，过放电会严重损害电池。电脑有保护，不会让电池过放，电量低到一定程度就自动关机，但是若关机后依然长期不充电，电池的自放电也会最终使电池过放电。 </p>
-<p>我的MBP用了接近两年，按照有电源时就插电源的用法，现在电池也已经用了131个周期了。要知道，电脑休眠也是耗电的。 </p>
-<p>还有<a href="http://forums.macrumors.com/showpost.php?p=9875442&amp;postcount=23" target="_blank" rel="external">这里</a>也整理了很多与Apple Notebook电池相关的知识。</p>
 
           
         
@@ -1301,8 +380,8 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2013/03/30/maven-unique-non-unique-snapshot-conflict/" itemprop="url">
-                  Solving Maven unique and non-unique snapshot conflict
+                <a class="post-title-link" href="/blog/2015/01/26/jekyll/" itemprop="url">
+                  Jekyll
                 </a>
               
             
@@ -1315,21 +394,14 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-03-30T00:04:00+08:00" content="2013-03-30">
-              2013-03-30
+            <time itemprop="dateCreated" datetime="2015-01-26T21:29:40+08:00" content="2015-01-26">
+              2015-01-26
             </time>
           </span>
 
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2013/03/30/maven-unique-non-unique-snapshot-conflict/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/03/30/maven-unique-non-unique-snapshot-conflict/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -1352,12 +424,438 @@
       
         
           
-            <p>Recently I changed an Artifactory repository configuration from storing non-unique snapshots to unique snapshots (as described <a href="http://wiki.jfrog.org/confluence/display/RTF/Local+Repositories" target="_blank" rel="external">here</a>). After that, “Unable to download the artifact” error happened on some artifacts.</p>
-<p>When both unique snapshot and non-unique snapshot of the same version of an artifact exists, there will be problem to download it. For example, in a repository if under folder <code>/com/mycompany/test/foo/1.0.0-SNAPSHOT/</code> there are <code>foo-1.0.0-SNAPSHOT.pom</code> and <code>foo-1.0.0-20130329-231102-1.pom</code>, then downloading <code>com.mycompany.test:foo:1.0.0-SNAPSHOT:pom</code> will get error. You have to delete either the file with SNAPSHOT in name or all the files with time stamp in name.</p>
-<p>Before I changed the configuration, there were SNAPSHOT artifacts in the repository. After configuration changed, the continuous integration jobs running on CI server redeployed artifacts to the repository, and those new files have time stamp in file names, and the version is the same. That caused the problem.</p>
-<p>To solve the problem, I should delete the *-SNAPSHOT file, if and only if there are both unique snapshot and non-unique snapshot of the same version.</p>
-<p>I wrote a Ruby script to do that. It scans all recent deployed artifacts (they have time stamp in file name because of the new configuration) and try to delete the same version non-unique snapshot (-SNAPSHOT) file if any. It uses Artifactory’s REST API. This script need to be run periodically till all artifacts have been rebuilt and deployed to repository. </p>
-<script src="//gist.github.com/https://gist.github.com/aleung/5260512.js"></script>
+            <h2 id="用-Jekyll-作为内部技术文档库"><a href="#用-Jekyll-作为内部技术文档库" class="headerlink" title="用 Jekyll 作为内部技术文档库"></a>用 Jekyll 作为内部技术文档库</h2><img src="/blog/attachments/2015/1/ecebook.png" class="right">
+<p>去年在公司的产品开发团队中推行了使用 <a href="http://jekyllrb.com/" target="_blank" rel="external">Jekyll</a> 静态网站生成工具来写内部技术文档，大半年下来，效果还不错。</p>
+<p>内部技术资料的共享和维护以前一直是个问题。开始用 Office Word 正正规规的写设计文档，维护成本太高了，往往是代码已经翻天覆地变化，文档里都没有反映出来，大家不愿意更新。而且查找起来也不方便。后来推行敏捷方法，不想让文档工作那么 heavy 了，于是用 wiki 来记录。Wiki 的问题是信息非常碎片化，大家很随意的添加新页面，整个 wiki 就像一个草稿本，写得很没有系统。网状的超链接导航令读者很迷茫，不知道需要的信息入口在哪儿，有些隐藏得很深的页面没有几个人知道它们的存在。Wiki 的在线编辑体验也不是那么好。</p>
+<p>Jekyll 是个静态网站生成工具，采用 <a href="http://zh.m.wikipedia.org/wiki/Markdown" target="_blank" rel="external">markdown</a> 语法来写内容，根据模板生成 HTML 页面，发布到一个 web 服务器上，就可以用浏览器在线查看内容。Jekyll 通常用来做  blog 系统，但它用来做有组织的内容发布系统也是完全胜任的。我基本上就是仿照 Jekyll <a href="http://jekyllrb.com/docs/home/" target="_blank" rel="external">官方文档</a> 的风格和结构来组织我们产品的内部技术文档库。</p>
+<p>使用 Jekyll 优点首先是编写方便，markdown 是个轻量的标记语言，上手简单，语法易记，而且有不少编辑工具支持。即使没有渲染成 HTML，也是直接可以阅读的，比起奇奇怪怪还各自不同的 wiki 语法好写多了。</p>
+<p>在模板做得好以及安装合适的插件后，生成的文档显示效果相当漂亮，格式效果也很丰富。而且，我们使用了 <a href="https://github.com/aleung/jekyll-plantuml" target="_blank" rel="external">plantuml</a> 插件，可以直接用文字的方式<strong>写</strong>UML[^1]，比起以前用其他工具画图，截图，再嵌入文档这种方式方便多了。</p>
+<p>[^1]: 参考 <a href="/blog/2014/08/23/plantuml/">PlantUML 简介</a>, <a href="/blog/2014/01/20/text-to-uml-diagram/">Text to UML Diagram</a></p>
+<p>技术文档库的原始文件是文本格式，用 git 来做版本管理，不用担心大家同时编辑保存时会相互覆盖的问题，修改历史也很清晰。大家都是程序员，本来代码就是用 git 来管理的，文档也用 git 管理自然是很顺手的事情。使用 <a href="https://github.com/aleung/jekyll-post-revision" target="_blank" rel="external">jekyll-post-revision</a> 这个插件，能够在生成的页面上显示修改历史记录。</p>
+<p>通过 <a href="https://github.com/slashdotdash/jekyll-lunr-js-search" target="_blank" rel="external">jekyll-lunr-js-search</a> 这个插件，能为站点提供全文搜索的能力，这也是相当方便的功能。</p>
+<h2 id="在-Windows-上安装-Jekyll"><a href="#在-Windows-上安装-Jekyll" class="headerlink" title="在 Windows 上安装 Jekyll"></a>在 Windows 上安装 Jekyll</h2><p>Jekyll 是用 Ruby 开发的，在 Linux 和 Mac OS X 上安装使用都很简单，在系统中有 Ruby 环境的前提下（Mac 是自带的，Linux 的各种发行版都会有安装包），照着官网上的<a href="http://jekyllrb.com/docs/quickstart/" target="_blank" rel="external">介绍</a>，几个命令就搞定了。但是，在 Windows 下就不是那么简单了（顺便再黑一下 Windows，不使用 Microsoft 技术的开发者都应该离开它）。</p>
+<p>在 Windows 上装过几次 Jekyll，可以写点教程减少大家摸索的时间。大致参考这篇 <a href="http://jekyll-windows.juthilo.com/" target="_blank" rel="external">Run Jekyll on Windows</a>。</p>
+<h3 id="安装-Ruby"><a href="#安装-Ruby" class="headerlink" title="安装 Ruby"></a>安装 Ruby</h3><p>首先需要安装 Ruby 环境。从 <a href="http://rubyinstaller.org/downloads" target="_blank" rel="external">http://rubyinstaller.org/downloads</a> 下载 Ruby 2.0 和 DevKit，安装 Ruby，然后将 DevKit 解压到 <code>C:/RubyDevKit</code>，在命令行运行下面指令完成安装。</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> C:\RubyDevKit </div><div class="line">ruby dk.rb init </div><div class="line">ruby dk.rb install</div></pre></td></tr></table></figure>
+<h3 id="安装-Jekyll-相关的-gem"><a href="#安装-Jekyll-相关的-gem" class="headerlink" title="安装 Jekyll 相关的 gem"></a>安装 Jekyll 相关的 gem</h3><p>Gem 是 Ruby 的包管理工具。在命令行执行<code>gem install</code>可从互联网的仓库直接下载和安装需要的包。如果需要代理，需要先设置环境变量<code>http_proxy</code>，如不需要则忽略第一行。其中，<code>jekyll</code>这个 gem 是必须安装的，其他的视乎环境、配置和使用的插件，可能需要装，可能不需要装。</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">set</span> http_proxy=http://my-proxy:<span class="number">8080</span></div><div class="line"></div><div class="line">gem install jekyll</div><div class="line"></div><div class="line">gem install kramdown</div><div class="line">gem install pygments</div><div class="line">gem install nokogiri</div><div class="line">gem install coderay</div><div class="line">gem install wdm</div><div class="line">gem install json</div></pre></td></tr></table></figure>
+<p>如果在安装过程中出现 SSL 错误，从<a href="https://gist.github.com/luislavena/f064211759ee0f806c88" target="_blank" rel="external">这里</a>可以找到解决方法。</p>
+<h3 id="使用-Jekyll"><a href="#使用-Jekyll" class="headerlink" title="使用 Jekyll"></a>使用 Jekyll</h3><p>Jekyll 的相关操作都是执行<code>jekyll</code>命令进行。后面的基本上就是看<a href="http://jekyllrb.com/docs/quickstart/" target="_blank" rel="external">官方文档</a>慢慢折腾了。</p>
+<h2 id="制作-jekyll-exe"><a href="#制作-jekyll-exe" class="headerlink" title="制作 jekyll.exe"></a>制作 jekyll.exe</h2><p>上面的步骤还是有点繁琐。我们公司里的都是 Java 程序员，在电脑里装个 Ruby 环境也没有其他用处。为了推广使用，简化大家的操作，做一个 portable 的 Jekyll 可执行程序会更好。</p>
+<p>制作的步骤基本上参考这篇 <a href="http://www.nickw.it/jekyll-dot-exe/" target="_blank" rel="external">Building Jekyll.exe for Windows</a>。</p>
+<p>首先要安装 OCRA。可能还需要安装 psych，bigdecimal 这些 gem。</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gem install ocra</div></pre></td></tr></table></figure>
+<p>解开 jekyll 到一个临时目录：</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gem unpack jekyll</div></pre></td></tr></table></figure>
+<p>修改<code>bin/jekyll</code>，在开头增加几个依赖声明：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">require</span> <span class="string">'nokogiri'</span></div><div class="line"><span class="keyword">require</span> <span class="string">'jekyll-watch'</span></div><div class="line"><span class="keyword">require</span> <span class="string">'wdm'</span></div></pre></td></tr></table></figure>
+<p>生成 exe 文件：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ocra --add-all-core --gem-all bin/jekyll lib/jekyll/mime.types lib/site_template/**/* lib/site_template/*</div></pre></td></tr></table></figure>
+<p>做出来的 jekyll.exe 需要测试一下，看看各种命令是否都能正常。视乎配置和使用插件的不同，可能需要增加更多的依赖声明。以上只是我的环境的例子，不一定适用于所有场景。</p>
+<p>最后，我知道大家都还是懒得衣来伸手饭来张口的，就提供一个编译好的 <a href="https://github.com/f5f6/f5f6.github.io/raw/master/_bin/jekyll.exe" target="_blank" rel="external">jekyll.exe</a> 下载，支持 kramdown 和 coderay。但还是那句话：不一定符合你的环境。</p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2015/01/25/fp/" itemprop="url">
+                   同事们关于 FP 语言的讨论
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-01-25T12:41:14+08:00" content="2015-01-25">
+              2015-01-25
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><em>之前在公司里一来一往的邮件讨论，被江南白衣集成一篇收录到<a href="http://calvin1978.blogcn.com/articles/haskell.html" target="_blank" rel="external">他的博客</a>里，读下来还蛮有意思，转过来，以下为全文引用。其中的梁君就是我啦。</em></p>
+<h2 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h2><p><strong>达夫君</strong>： </p>
+<p><a href="http://segmentfault.com/a/1190000000502996" target="_blank" rel="external">利用 GitHub 统计分析编程语言发展趋势</a></p>
+<h2 id="第一轮讨论"><a href="#第一轮讨论" class="headerlink" title="第一轮讨论"></a>第一轮讨论</h2><p><strong>梁君</strong>：</p>
+<p>增加的Java的项目里，不知道有多少是与Android相关的呢？</p>
+<p>Scala最热门都是在意大利城市（Milan, Rome, Florence, Naples,Turin），很奇怪，意大利软件业不发达。于是查了字典在意大利语里scala是scale(英语)的意思，应该跟编程语言无关。排除之后排首位的就是 San Francisco和San Jose，硅谷地区。</p>
+<p>最近几天在看 Haskell，真是非常有趣的一门语言。<br>于是也在Google Trends上看一下，搜索Haskell最热的城市是 Gothenburg，第二是Utrecht (因为乌特勒支大学？)。</p>
+<p>2014年热度，按国家排序，Haskell最热也是China! 考虑到中国已经屏蔽了Google，这个结果令人吃惊。在国内Scala, Haskell也不是那么热门吧？程序员人口基数大？</p>
+<p><strong>雄君</strong>：</p>
+<p>Haskell应该是所有程序语言里面被神化的最厉害的吧。有种说法，Haskell可以让你变成一个更好的程序员，即便你不用它，好像还有本书名就是这个。感觉看几本Haskell书就能变成高手似的，快变成宗教了都。。。。</p>
+<p><strong>梁君</strong>：</p>
+<p>Haskell应该是一种研究型/教学型语言吧。</p>
+<p>据说是纯粹的FP，我现在看它是想试试强迫一下自己使用FP的思维模式。</p>
+<p>那篇 <a href="http://raganwald.com/2014/12/20/why-why-functional-programming-matters-matters.html" target="_blank" rel="external">WhyWhyFP</a> 不错。 里面，看到一些话（虽然不算是那篇文字的主题）：</p>
+<blockquote>
+<p>The key is the word better. It is not the same as the phrase more powerful.<br>it is possible to make a language “better” by removing features that are considered harmful, if by doing so it makes programs in the language better programs.</p>
+</blockquote>
+<p>关于 better 与 powerful 的思考，不是功能越多就越好。用在我们的产品上也是一样啊。</p>
+<h2 id="哥德堡的Haskell教授"><a href="#哥德堡的Haskell教授" class="headerlink" title="哥德堡的Haskell教授"></a>哥德堡的Haskell教授</h2><p><strong>赵君</strong>：</p>
+<p>Gothenburg研究Haskell的那个人好像是Richard君的教授。感兴趣的可以问问Richard的感受。</p>
+<p><strong>范君</strong>：</p>
+<p>Richard说的:</p>
+<blockquote>
+<p>Mr Hughes is a very smart guy. And his homepage hasn’t changed since I had him as a professor : <a href="http://www.cse.chalmers.se/~rjmh/" target="_blank" rel="external">http://www.cse.chalmers.se/~rjmh/</a> </p>
+</blockquote>
+<p>国外大学很多都是用Haskell，大老板之前去大英帝国读研也是用它。</p>
+<h2 id="FP做题大赛"><a href="#FP做题大赛" class="headerlink" title="FP做题大赛"></a>FP做题大赛</h2><p><strong>韶君</strong>：</p>
+<p>我好奇看一下，“证明即程序、命题为类型”，这就是一门数学领域的领域语言，难怪学院派对它宠爱有加，一边证明一边编程，逼格高啊</p>
+<p>有个网站号称趣味学Haskell: <a href="http://learnyouahaskell-zh-tw.csie.org/" target="_blank" rel="external">HASKELL 趣學指南</a> [^1]</p>
+<p>[^1]: 英文原版为 <a href="http://learnyouahaskell.com/" target="_blank" rel="external">Learn You a Haskell for Great Good!</a>。有电子书，简体中文纸板也出版了。</p>
+<p>Step by step 学了一下Haskell，居然停不下来，无论写还是读，都像在玩puzzle game，都想找回以前的数学课本来复习一下。我想不用也能让你成为更好的程序员此话不假，就是让你恶补一下已经还给老师的数学概念。</p>
+<p>给个零零漆的经典应用题大家思考一下：有一个农场，鸡的数目是鸭的四倍，但是鸭又比猪少九只，鸭和猪的数目是六十七只，请问农场所有动物的脚加起来共多少只？</p>
+<p><strong>雄君</strong>：</p>
+<p>感觉这跟你的学习方式关系更大，跟语言关系不大的。你也可以用Scala去做SICP的习题，同样有这种感觉。</p>
+<p><strong>梁君</strong>：</p>
+<p>不挑起具体语言之争。韶君的例子应该是说明FP给人带来耳目一新的感觉。</p>
+<p>另外，我感觉那本书 (Learn You a Haskell) 用来做FP入门真的很好，之前看过一些Scala的书都没有那么清晰的理解。</p>
+<p>顺便做做那道题目：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="type">Prelude</span>&gt; head [c*<span class="number">2</span>+d*<span class="number">2</span>+p*<span class="number">4</span> | d&lt;-[<span class="number">0.</span>.], <span class="keyword">let</span> c=d*<span class="number">4</span>, <span class="keyword">let</span> p=d+<span class="number">9</span>, d+p==<span class="number">67</span>] </div><div class="line"><span class="number">442</span></div></pre></td></tr></table></figure>
+<p><strong>韶君</strong>：</p>
+<p>我原来写的是</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">head</span> [a*<span class="number">2</span>+b*<span class="number">2</span>+c*<span class="number">4</span>|a &lt;-[<span class="number">1</span>,<span class="number">2.</span>.], b &lt;-[<span class="number">1</span>,<span class="number">2.</span>.], c &lt;- [<span class="number">1</span>,<span class="number">2.</span>.], a=<span class="number">4</span>*b, b=c<span class="number">-9</span>, b+c=<span class="number">67</span>]</div></pre></td></tr></table></figure>
+<p>结果不会结束，除非数组加上限，有空找你理解一下。</p>
+<p>确实是FP带来的感觉，相信Scala也可以带来这个感觉，只不过如果我用Scala就不自觉地当Java来做了。</p>
+<p><strong>达夫君</strong>：</p>
+<p>我原来也是将Scala当Java来写。但是当你将Java的语法忘了差不多了，Scala就入门了：）</p>
+<p>其实只是个老问题，就是平常没机会看Scala的代码，没有好的example参考而已。<br>看别人的代码多了，也就习惯了。</p>
+<p>用 Scala 解那道题：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> d = (<span class="number">1</span> to <span class="number">67</span>) toStream</div><div class="line"><span class="keyword">val</span> feet = <span class="keyword">for</span> &#123;</div><div class="line">  d1 &lt;- d</div><div class="line">  c1 = d1 * <span class="number">4</span></div><div class="line">  p1 = d1 +<span class="number">9</span> <span class="keyword">if</span> (d1 + p1 == <span class="number">67</span>)</div><div class="line">&#125; <span class="keyword">yield</span> &#123;</div><div class="line">  (c1+d1) * <span class="number">2</span> + p1 * <span class="number">4</span></div><div class="line">&#125;</div><div class="line">println(feet.take(<span class="number">1</span>).force)</div></pre></td></tr></table></figure>
+<p><strong>梁君</strong>：</p>
+<p>Scala应该增加一种纯FP模式，当打开这个选项的时候，任何不符合FP的写法都报错（或者warning）。</p>
+<p><strong>米君</strong>：</p>
+<p>沒電腦，裸寫一段 Python，不知道對不對：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> map(<span class="keyword">lambda</span> x: ‎x*<span class="number">2</span> + x*<span class="number">4</span>*<span class="number">2</span> + (x+<span class="number">9</span>)*<span class="number">4</span>, filter(<span class="keyword">lambda</span> x: x+x+<span class="number">9</span> == <span class="number">67</span>, range(<span class="number">0</span>,<span class="number">67</span>)))[<span class="number">0</span>]</div></pre></td></tr></table></figure>
+<p>看起來還是 Haskell 的最有數學味。</p>
+<p>邊打邊爐邊研究，或者還可以這樣（不知道對不對，大意如此）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> (x*<span class="number">2</span> + x*<span class="number">4</span>*<span class="number">2</span> + (x+<span class="number">9</span>)*<span class="number">4</span> <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">67</span>) <span class="keyword">if</span> x+x+<span class="number">9</span> == <span class="number">67</span>‎)[<span class="number">0</span>]</div></pre></td></tr></table></figure>
+<p>據說這樣有 lazy evaluation，map 和 filter 不知道有沒有。有明白人指點一下嗎？</p>
+<p><strong>韶君</strong>：</p>
+<p>FP的思路就是“是什么”，指令编程的思路是“做什么”，从这个角度看<br><code>head [c*2+d*2+p*4 | d&lt;-[0..], let c=d*4, let p=d+9, d+p==67]</code> 这个最优雅了，基本上把题目复述一遍而已</p>
+<p><strong>雄君</strong>：</p>
+<p>米君，你已经线下把三元方程转成一元了，这个是作弊吧，不算。</p>
+<p>Haskell的 lazy evaluation 在这么小的程序里面也会搞出无限循环的bug，这是它没法商用的最大原因之一。</p>
+<p>我发一个Clojure的，也符合数据的解方程思路。</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="name"><span class="builtin-name">first</span></span> (<span class="name"><span class="builtin-name">for</span></span> [p (<span class="name"><span class="builtin-name">range</span></span> <span class="number">1</span> <span class="number">67</span>)</div><div class="line">             <span class="symbol">:let</span> [d (<span class="name"><span class="builtin-name">-</span></span> <span class="number">67</span> p) c (<span class="name"><span class="builtin-name">*</span></span> <span class="number">4</span> d)]</div><div class="line">             <span class="symbol">:when</span> (<span class="name"><span class="builtin-name">=</span></span> d (<span class="name"><span class="builtin-name">-</span></span> p <span class="number">9</span>))]</div><div class="line">         (<span class="name"><span class="builtin-name">+</span></span> (<span class="name"><span class="builtin-name">*</span></span> p <span class="number">4</span>) (<span class="name"><span class="builtin-name">*</span></span> d <span class="number">2</span>) (<span class="name"><span class="builtin-name">*</span></span> c <span class="number">2</span>))))</div></pre></td></tr></table></figure>
+<p><strong>梁君</strong>：</p>
+<p>这个我忍不住要说说了，上限没有在原题中给出，需要推理才能得到的。Haskell的程序里是没有设上限的：<code>a &lt;-[1..], b &lt;-[1..], c &lt;- [1..]</code>。<br>你们写的其他程序都是有上限的：<code>p (range 1 67)</code>，<code>x in range(0, 67)</code>，<code>(1 to 67)</code>。</p>
+<p>用这个来说Haskell会搞出无限循环的bug是不是有点冤枉了？</p>
+<p>p.s. FP的理论在那里，现代的语言都或多或少吸取进去了，只是用什么语法形式的问题，纯粹一些还是要跟原来的特性做妥协，大家也都相互借鉴。除了Java最不思上进。</p>
+<p>看上去Clojure的语法最像Lisp。</p>
+<p><strong>米君</strong>：</p>
+<p>不服上訴。哈哈。</p>
+<p>這樣呢？算不算真三元？（已經盡力了。除非改成一元，否則range 好像是繞不過的坎，如果改成無限列表也是一樣會死循環。）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> iter( c*<span class="number">2</span> + d*<span class="number">2</span> + p*<span class="number">4</span> <span class="keyword">for</span> c <span class="keyword">in</span> range(<span class="number">67</span>*<span class="number">4</span>) <span class="keyword">for</span> d <span class="keyword">in</span> range(<span class="number">67</span>) <span class="keyword">for</span> p <span class="keyword">in</span> range(<span class="number">67</span>) <span class="keyword">if</span> c == d*<span class="number">4</span> <span class="keyword">and</span> d == p<span class="number">-9</span> <span class="keyword">and</span> d+p == <span class="number">67</span>).next()</div></pre></td></tr></table></figure>
+<p>Clojure的版本和Java看上去很像啊。唯一不同大概就是 lazy evaluation 吧。<br>另外，雖然定義了三個變量，但其實只有一個是真正的“變”量，所以還是一元。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> ( <span class="keyword">int</span> p = <span class="number">1</span>; p &lt;=<span class="number">67</span>; d++) &#123; </div><div class="line">  <span class="keyword">int</span> d = <span class="number">67</span> - p; </div><div class="line">  <span class="keyword">int</span> c = d * <span class="number">4</span>; </div><div class="line">  <span class="keyword">if</span> ( d == p - <span class="number">9</span> ) </div><div class="line">    System.out.println( c*<span class="number">2</span> + d*<span class="number">2</span> + p*<span class="number">4</span> ) </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>雄君</strong>：</p>
+<p>其实完全不是那么一回事，Scala和Clojure里面的for不是循环的意思，达夫之前解释过。这是Java程序员转FP的第一重障碍。另外，Clojure这段代码绝对没有lazy evaluation，如果需要Lazy，Clojure必须要明确指定使用Lazy seq。</p>
+<p>Python和Java的表达能力不可能赶上Lisp的，超过Lisp表达能力的语言还没有发明出来。</p>
+<h2 id="最后一轮讨论"><a href="#最后一轮讨论" class="headerlink" title="最后一轮讨论"></a>最后一轮讨论</h2><p><strong>雄君</strong>：</p>
+<p>Clojure是一个Lisp变种，也是目前唯一的一个商业化的Lisp系语言。</p>
+<p>Haskell 是 lazy evaluation by default 的语言，全世界几乎独此一家了。这个特性导致程序运行时，时间和空间都是不可预期的，基本上没有企业敢用。</p>
+<p>Haskell又为了程序在逻辑上的predictable，从语言成面回避side effect，结果连个随机数生成都搞不定，发明monad来解决这个问题。问题是monad这么复杂的东西，用Haskell开发竟然是必须掌握的技巧，这很恐怖啊，哪找程序员？</p>
+<p>这语言真的是只能看的。</p>
+<p><strong>韶君</strong>：</p>
+<p>Haskell我觉得商业上想取得成功确实不容易，但我不觉得作者想这样做，说商用，有哪种语言比Java更成功呢，指令语言也没那么容易出错，因为指令语言只有想不到，没有做不到，想取得商业成功就意味着妥协，从这个角度，我更看好Scala。</p>
+<p><strong>达夫君</strong>：</p>
+<p>估计等大家要看Java8的时候就需要考虑是升级JDK到8呢还是换Scala了。</p>
+<p><strong>梁君</strong>：</p>
+<p>Haskell 就是一门教学/研究型语言，开个学术会议，几个老家伙聚在一起，说不如我们设计个语言来显示一下FP多牛B吧。商业成功不是它设计的初衷 (后来其他人怎么想是另外一回事)</p>
+<blockquote>
+<p>At the conference on Functional Programming Languages and Computer Architecture (FPCA ‘87) in Portland, Oregon, a meeting was held during which participants formed a strong consensus that a committee should be formed to define an open standard for such languages. The committee’s purpose was to consolidate the existing functional languages into a common one that would serve as a basis for future research in functional-language design.</p>
+</blockquote>
+<p>才发现BASIC不是我唯一的入门语言，我刚学电脑的时候还看过Logo语言，这么说我也是一开始就接触FP的啦。</p>
+<p>对Java程序员和已经大量投资于Java的软件企业来说，应该是Scala最有价值。</p>
+<p><strong>雄君</strong>：</p>
+<p>我是前几年被人忽悠后花了好几个月学习Haskell，还想用它做项目，现在已经弃坑了。</p>
+<h2 id="诗一首"><a href="#诗一首" class="headerlink" title="诗一首"></a>诗一首</h2><blockquote><p>孤独时</p>
+<p>孤独时我不喜欢使用语言。<br>一头熊和一只鹦鹉坐在<br>跷跷板的两头<br>跷跷板朝一头翘起。很多东西<br>没办法称量，我是熊你们是鹦鹉。<br>我是这头熊我不使用<br>你们的语言。</p>
+<footer><strong>余怒，2003.7.20</strong></footer></blockquote>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2015/01/06/haskell/" itemprop="url">
+                  Haskell
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-01-06T22:03:35+08:00" content="2015-01-06">
+              2015-01-06
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>2014年断断续续学了一阵子 Scala 语言，Scala 真的不错，将面向对象和函数式编程两种范式结合得很好，对 Java 程序员非常友好。不过，从学编程开始就受命令式编程的思想的浸淫，要使用函数式编程的思想相当困难，思路转不过来，而 Scala 又不强迫你用 FP，所以写出来的程序基本上还是命令式的。不少人都推荐学 Haskell 作为函数式编程的入门，作为一门学院派的语言，它非常纯粹，有助于掌握函数式编程的思维方式。于是开始读 <a href="http://learnyouahaskell.com/" target="_blank" rel="external">Learn You a Haskell for Great Good</a>，这真是本入门好书，从头开始一点点的理解接受函数式编程的思路。学 Haskell 的感觉非常<em>有趣</em>。</p>
+<p>不过那本书只是讲语言特性和思想，没有讲 Haskell 的运行环境和使用。上网收集了一些资料，记录下来。</p>
+<p>Haskell (缺省)是编译成 native code，并非运行在托管环境下，因此开发出来的程序就像 C 的一样直接可执行的 binary。Haskell 程序需要依赖于 Runtime System (RTS)，RTS 提供了内存管理，GC，轻量线程，并发等等功能的支持。包括 RTS 和其他的依赖到的 library，缺省都是静态链接到可执行程序中的，因此编译出来的程序体积会比较大。但现在 GHC 也已经支持动态链接了，如果使用动态链接，则要求运行环境中需要已经安装了 GHC（有 RTS）。在这方面，Haskell 跟 Go 差不多，都是直接得到 native 可执行程序，分发和部署会简单一些。</p>
+<p>Haskell 的编译器叫做 Glasgow Haskell Compiler (GHC)，它包括了 compiler，boot library 和 runtime system (RTS)。编译器支持多种 backend，除了可以生成 native code (机器码)，也可以产生 C 语言源代码（供跨平台移植），或者 LLVM code，（供后面接 LLVM toolchain 使用）。</p>
+<p>做应用开发不太可能什么都从头做起，必然要依赖第三方的函数库。Haskell 世界里的包管理和 build 系统叫 Cabal。另外有个工具 Cabal-Install 负责下载 Haskell package 源代码、编译、安装和注册到 GHC 的整个过程。共享的包存放在 <a href="http://hackage.haskell.org/" target="_blank" rel="external">Hackage</a> 这个在线仓库中。</p>
+<p>Reference: <a href="http://www.aosabook.org/en/ghc.html" target="_blank" rel="external">The Architecture of Open Source Applications - GHC</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2015/01/02/da-peng-new-year-marathon/" itemprop="url">
+                  大鹏新年马拉松
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-01-02T16:17:11+08:00" content="2015-01-02">
+              2015-01-02
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Pacer数据丢了，没法分析心率和速度 :( </p>
+<p>净成绩 4:17:47，比广马要好些。之前训练很少，按照玩玩的心态去跑，没有设定时间目标，也没有预定配速，就按照舒服的速度跑。</p>
+<p>起跑后速度不快，大家的速度也平均，不像其他赛事一样起跑速度都很快，应该是因为只有全马，大家都是有经验的。开始几公里步速大概在5’50”上下，感觉跟平常训练很像，步伐轻快，心率也没有一下飙高。太阳没出来，有点风，罩着雨衣到8km 才脱下。</p>
+<p>十几公里那段跑得比较舒畅，步速也不知不觉加快到5分十几秒的样子。这段落偶有小上下坡，新柏油路面，很舒服。18km 吃能量胶，以免20km 后能量不足。这时我还挺乐观的以为能跑进410。</p>
+<p>过了半程 开始觉得膝关节不适，比以往出现得早太多了，而且二十多公里后开始变成水泥路面。心肺状态倒是很好，基本不喘气。</p>
+<p>25km 补给点吃了盐丸和香蕉，26km 经过水头，有些民众加油，气氛不错。27km 后有点疲累了，28km后一个陡坡，怕太耗体能，走了后半段。</p>
+<p>30km 那段很多人都在走路了，只要坚持跑就能不断超人，距离拉得很开，有些时候就是一个人在跑，前面很远都没人。这时跑得吃力了，速度在6分左右，但感觉很慢。不断的期待什么时候能到往大亚湾电站的路。小腿也有抽筋感觉，在医护站喷过云南白药。这段路上又吃了一个能量胶。</p>
+<p>31km 后转弯拐向大亚湾核电站方向，对面有折返的人，观众也多些，心理上很快就跑完了折返段这两公里。</p>
+<p>然后就一直惦记着38km 前那个大上坡，实际上上坡从33km 就开始了，这段路树荫茂密，看不到远方，我听别人说是连续两公里上坡，还以为没到。除了左小腿，右小腿和左大腿都有过要抽筋感觉，过医疗站必去喷一下。过了35km 大补给站，看到一眼到头都是上坡的大直路，但反倒跑起来不那么辛苦，小步的跑虽然慢但不是非常吃劲，没有撑不住要停下来走的感觉。过了37km 看到前面到顶了，才走了最后一段。</p>
+<p>38km 后急下坡，虽然轻松但脚肌肉已经太疲累跑不起来，6分步速。而且，左小腿抽筋感很强，膝关节和髋关节都劳累，右膝特别不适。虽然是最后几公里，但真有点崩溃的感觉了。40km 前后应该是感觉最差的一段。</p>
+<p>41km最后一个拐弯后，又开始上坡，这时咬牙也得坚持了，要抽筋也不管了，左四头肌和小腿的肌肉都在不断的抽搐着，其实它们还是有继续工作的能力的。但，怎么还看不到终点啊？终于在过42km牌子后看到终点拱门……这两百米也不短……</p>
+<p>冲线后除了挂上奖牌，组委会还很贴心的准备了披风给披上，真温暖。从马路下去会场有好多级台阶，也专设了一个斜坡供大家下去。虽然是斜坡，我都只能慢慢蹭下去，膝关节累得弯不了了，志愿者马上过了扶我到医疗点喷药。傍晚大巴回到广州，下车后走路都一拐一拐，右膝的旧患，在弯曲时痛，不能受力，特别是下不了楼梯。休息一晚后，感觉好很多。</p>
+<p>这次跑的心率一直很平稳，起跑几公里没有一下子飙升，十公里后一直维持在160以内，从头到尾都没有特别气喘吁吁的，没有那种肌肉糖原消耗尽突然有氧功能跟不上的感觉。早餐吃了三碗粥，一个鸡蛋，几个红薯，一瓶运动饮料直到起跑前喝完。跟往常一样，水站不喝水，饮料站都喝一些饮料。18km 能量胶，25km 半根香蕉，30km 左右能量胶，35km 半根香蕉，觉得能量补充足够了。带来3个能量胶剩了一个，补给站也没有多拿食物，感觉不需要。</p>
+<p>但是，依然困扰的是小腿后侧肌肉抽筋的问题，上次盐田半马在最后一公里也出现了。广马前的训练几次三十多公里没有出现过。广马天气热太阳晒，这次气温很适宜，还吃了盐丸，还是出现。应该问题还是训练得少，肌肉不能坚持长时间运动。</p>
+<img src="/blog/attachments/2015/1/route.jpg">
+<img src="/blog/attachments/2015/1/elevation.jpg">
 
           
         
@@ -1390,7 +888,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/32/">32</a><a class="extend next" rel="next" href="/blog/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/64/">64</a><a class="extend next" rel="next" href="/blog/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1431,7 +929,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">312</span>
+              <span class="site-state-item-count">317</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1578,25 +1076,6 @@
 
 
 
-  
-
-    <script type="text/javascript">
-      var disqus_shortname = 'aleung';
-      var disqus_identifier = 'page/3/index.html';
-      var disqus_title = "";
-      var disqus_url = '';
-
-      function run_disqus_script(disqus_script){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-      
-    </script>
   
 
 

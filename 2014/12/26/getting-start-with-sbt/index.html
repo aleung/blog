@@ -127,15 +127,6 @@ Source cod">
   
 
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-2827715-4', 'auto');
-  ga('send', 'pageview');
-</script>
-
 
 
 
@@ -292,13 +283,6 @@ Source cod">
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2014/12/26/getting-start-with-sbt/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/12/26/getting-start-with-sbt/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -319,7 +303,7 @@ Source cod">
 
       
         <p>A shortened sbt tutorial for beginner and quick reference.</p>
-<h2 id="Directory-structure"><a href="#Directory-structure" class="headerlink" title="Directory structure"></a>Directory structure</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">lib/</span><br><span class="line">project/</span><br><span class="line">  Build.scala</span><br><span class="line">  plugins.sbt</span><br><span class="line">src/</span><br><span class="line">  main/</span><br><span class="line">    resources/</span><br><span class="line">    scala/</span><br><span class="line">    java/</span><br><span class="line">  test/</span><br><span class="line">built.sbt</span><br></pre></td></tr></table></figure>
+<h2 id="Directory-structure"><a href="#Directory-structure" class="headerlink" title="Directory structure"></a>Directory structure</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">lib/</div><div class="line">project/</div><div class="line">  Build.scala</div><div class="line">  plugins.sbt</div><div class="line">src/</div><div class="line">  main/</div><div class="line">    resources/</div><div class="line">    scala/</div><div class="line">    java/</div><div class="line">  test/</div><div class="line">built.sbt</div></pre></td></tr></table></figure>
 <p>Source code can be placed in the project’s base directory. But usually people organize them into directory structure.</p>
 <p>sbt by default uses the same directory structure as Maven for source files, all under <code>src/</code>.</p>
 <p>sbt build definition files include <code>build.sbt</code> in project’s base drectory and other <code>.sbt</code> or <code>.scala</code> files in <code>project/</code> subdirectory.</p>
@@ -335,12 +319,12 @@ Source cod">
 <li>reload</li>
 </ul>
 <p>sbt can ran in interactive mode or batch mode. In batch mode, specifying a space-seperated list of commands. For commands that take arguments, enclosing the command and arguments in quotes.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sbt clean compile <span class="string">"testOnly TestA TestB"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sbt clean compile <span class="string">"testOnly TestA TestB"</span></div></pre></td></tr></table></figure>
 <p>Prefixing a command with <code>~</code> will make the command run when any source files change. Press enter to stop watching for changes.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; ~ compile</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; ~ compile</div></pre></td></tr></table></figure>
 <h2 id="Build-definition"><a href="#Build-definition" class="headerlink" title="Build definition"></a>Build definition</h2><h3 id="sbt-build-definition-basic"><a href="#sbt-build-definition-basic" class="headerlink" title=".sbt build definition basic"></a>.sbt build definition basic</h3><h4 id="Project"><a href="#Project" class="headerlink" title="Project"></a>Project</h4><p><code>build.sbt</code> defines one or more <code>Project</code>s, which hold a list of Scala expressions called <code>settings</code>.</p>
 <p>Top-level objects and classes are not allowed in <code>build.sbt</code>. Those should go in the <code>project/</code> directory as full Scala source files.</p>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lazy</span> <span class="keyword">val</span> commonSettings = <span class="type">Seq</span>(</span><br><span class="line">  organization := <span class="string">"com.example"</span>,</span><br><span class="line">  version := <span class="string">"0.1.0"</span>,</span><br><span class="line">  scalaVersion := <span class="string">"2.11.4"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">lazy</span> <span class="keyword">val</span> root = (project in file(<span class="string">"."</span>)).</span><br><span class="line">  settings(commonSettings: _*).</span><br><span class="line">  settings(</span><br><span class="line">    name := <span class="string">"hello"</span></span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">lazy</span> <span class="keyword">val</span> commonSettings = <span class="type">Seq</span>(</div><div class="line">  organization := <span class="string">"com.example"</span>,</div><div class="line">  version := <span class="string">"0.1.0"</span>,</div><div class="line">  scalaVersion := <span class="string">"2.11.4"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">lazy</span> <span class="keyword">val</span> root = (project in file(<span class="string">"."</span>)).</div><div class="line">  settings(commonSettings: _*).</div><div class="line">  settings(</div><div class="line">    name := <span class="string">"hello"</span></div><div class="line">  )</div></pre></td></tr></table></figure>
 <p>On the left, <code>name</code>, <code>version</code> and <code>scalaVersion</code> are <em>keys</em>. Keys have a method called <code>:=</code>, which returns a <code>Setting[T]</code>, where <code>T</code> is the value type.</p>
 <h4 id="Keys"><a href="#Keys" class="headerlink" title="Keys"></a>Keys</h4><p>There are three flavors of key: <code>SettingKey[T]</code>, <code>TaskKey[T]</code> and <code>InputKey[T]</code>.</p>
 <p>A <code>TaskKey[T]</code> is said to define a <em>task</em>. </p>
@@ -348,30 +332,30 @@ Source cod">
 <p>For a setting, the value will be computed once at project load time. For a task, the computation will be re-run each time the task is executed.</p>
 <p>Built-in keys are fields in object <code>sbt.Keys</code>, which are implicitly imported so can be directly referred.</p>
 <p>Custom keys may be defined with their respective creation methods: <code>settingKey</code>, <code>taskKey</code>, and <code>inputKey</code>. </p>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lazy</span> <span class="keyword">val</span> hello = taskKey[<span class="type">Unit</span>](<span class="string">"An example task"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">lazy</span> <span class="keyword">val</span> root = (project in file(<span class="string">"."</span>)).</span><br><span class="line">  settings(</span><br><span class="line">    hello := &#123; println(<span class="string">"Hello!"</span>) &#125;</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">lazy</span> <span class="keyword">val</span> hello = taskKey[<span class="type">Unit</span>](<span class="string">"An example task"</span>)</div><div class="line"></div><div class="line"><span class="keyword">lazy</span> <span class="keyword">val</span> root = (project in file(<span class="string">"."</span>)).</div><div class="line">  settings(</div><div class="line">    hello := &#123; println(<span class="string">"Hello!"</span>) &#125;</div><div class="line">  )</div></pre></td></tr></table></figure>
 <h3 id="Bare-sbt-build-definition"><a href="#Bare-sbt-build-definition" class="headerlink" title="Bare .sbt build definition"></a>Bare .sbt build definition</h3><p><em>Bare .sbt build definition</em> is an old style which is not recommended to use.</p>
 <p>Bare .sbt build definition doesn’t explicitly define a <code>Project</code>, it implicitly deines one based on the location of the <code>.sbt</code> file. The <code>.sbt</code> file consists of a list of <code>Setting[_]</code> expressions.</p>
 <p>Before sbt 0.13.7, settings must be separated by blank lines.</p>
 <h2 id="Library-dependencies"><a href="#Library-dependencies" class="headerlink" title="Library dependencies"></a>Library dependencies</h2><p>To add unmanaged dependencies, simplily drop jar files in <code>lib/</code>.</p>
 <p>Managed dependencies are specified by <code>libraryDependencies</code> key in <code>build.sbt</code>.</p>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">libraryDependencies += groupID % artifactID % revision % configuration</span><br></pre></td></tr></table></figure>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">libraryDependencies += groupID % artifactID % revision % configuration</div></pre></td></tr></table></figure>
 <p>If you use double %% between the groupID and artifactID, sbt will add your project’s Scala version to the artifact name.</p>
 <p>Assuming the scalaVersion for your build is 2.11.1, the following adds <code>org.scala-tools:scala-stm_2.11.1:0.3</code>:</p>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">libraryDependencies += <span class="string">"org.scala-tools"</span> %% <span class="string">"scala-stm"</span> % <span class="string">"0.3"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">libraryDependencies += <span class="string">"org.scala-tools"</span> %% <span class="string">"scala-stm"</span> % <span class="string">"0.3"</span></div></pre></td></tr></table></figure>
 <p>By default, if omitted, configuration is “compile”. A common used value is “test”.</p>
 <p>sbt uses Apache Ivy to implement managed dependencies. Advanced usage of revision and configuration can follow Ivy document.</p>
 <p>sbt uses the standard Maven2 repository by default. To add additional repository, add a <code>resolver</code>:</p>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">resolvers += <span class="string">"Local Maven Repository"</span> at <span class="string">"file://"</span>+<span class="type">Path</span>.userHome.absolutePath+<span class="string">"/.m2/repository"</span></span><br><span class="line"></span><br><span class="line">resolvers += <span class="string">"Sonatype OSS Snapshots"</span> at <span class="string">"https://oss.sonatype.org/content/repositories/snapshots"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">resolvers += <span class="string">"Local Maven Repository"</span> at <span class="string">"file://"</span>+<span class="type">Path</span>.userHome.absolutePath+<span class="string">"/.m2/repository"</span></div><div class="line"></div><div class="line">resolvers += <span class="string">"Sonatype OSS Snapshots"</span> at <span class="string">"https://oss.sonatype.org/content/repositories/snapshots"</span></div></pre></td></tr></table></figure>
 <h2 id="Multiple-projects"><a href="#Multiple-projects" class="headerlink" title="Multiple projects"></a>Multiple projects</h2><p>Multiple projects can be grouped under one project. </p>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lazy</span> <span class="keyword">val</span> root = (project in file(<span class="string">"."</span>)).</span><br><span class="line">  aggregate(util, core)</span><br><span class="line"></span><br><span class="line"><span class="keyword">lazy</span> <span class="keyword">val</span> util = project</span><br><span class="line"></span><br><span class="line"><span class="keyword">lazy</span> <span class="keyword">val</span> core = project</span><br></pre></td></tr></table></figure>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">lazy</span> <span class="keyword">val</span> root = (project in file(<span class="string">"."</span>)).</div><div class="line">  aggregate(util, core)</div><div class="line"></div><div class="line"><span class="keyword">lazy</span> <span class="keyword">val</span> util = project</div><div class="line"></div><div class="line"><span class="keyword">lazy</span> <span class="keyword">val</span> core = project</div></pre></td></tr></table></figure>
 <p>Each sub-project has its own directory. In above example the directory name is same as the project’s ID. The following is a more explicit way: </p>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lazy</span> <span class="keyword">val</span> core = project in file(<span class="string">"core"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">lazy</span> <span class="keyword">val</span> core = project in file(<span class="string">"core"</span>)</div></pre></td></tr></table></figure>
 <p>If a project is not defined for the root directory in the build, sbt creates a default one that aggregates all other projects in the build. </p>
 <p>A project may depend on other projects:</p>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lazy</span> <span class="keyword">val</span> core = project.dependsOn(util, api)</span><br></pre></td></tr></table></figure>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">lazy</span> <span class="keyword">val</span> core = project.dependsOn(util, api)</div></pre></td></tr></table></figure>
 <p><code>foo dependsOn(bar)</code> means that the <code>compile</code> configuration in foo depends on the <code>compile</code> configuration in bar. You can declare other configuraiton dependency, for example, <code>dependsOn(bar % &quot;test-&gt;test;compile-&gt;compile&quot;)</code>.</p>
 <h2 id="Using-plugins"><a href="#Using-plugins" class="headerlink" title="Using plugins"></a>Using plugins</h2><p>Declares the plugin dependency in <code>project/plugins.sbt</code>. The file name can be different, you may create one sbt file for one plugin.</p>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addSbtPlugin(<span class="string">"com.typesafe.sbt"</span> % <span class="string">"sbt-site"</span> % <span class="string">"0.7.0"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">addSbtPlugin(<span class="string">"com.typesafe.sbt"</span> % <span class="string">"sbt-site"</span> % <span class="string">"0.7.0"</span>)</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -440,13 +424,6 @@ Source cod">
           
   <div class="comments" id="comments">
     
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
-    
   </div>
 
 
@@ -489,7 +466,7 @@ Source cod">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">312</span>
+              <span class="site-state-item-count">317</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -651,27 +628,6 @@ Source cod">
 
 
 
-  
-
-    <script type="text/javascript">
-      var disqus_shortname = 'aleung';
-      var disqus_identifier = '2014/12/26/getting-start-with-sbt/';
-      var disqus_title = "Getting start with sbt";
-      var disqus_url = 'http://aleung.github.io/blog/blog/2014/12/26/getting-start-with-sbt/';
-
-      function run_disqus_script(disqus_script){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-      
-        run_disqus_script('embed.js');
-      
-    </script>
   
 
 

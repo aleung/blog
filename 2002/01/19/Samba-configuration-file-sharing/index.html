@@ -127,15 +127,6 @@
   
 
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-2827715-4', 'auto');
-  ga('send', 'pageview');
-</script>
-
 
 
 
@@ -292,13 +283,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2002/01/19/Samba-configuration-file-sharing/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2002/01/19/Samba-configuration-file-sharing/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -320,7 +304,7 @@
       
         <p>根据实践的经验，基本了解了samba配置方法，将它记录下来。   </p>
 <p>一个基本的配置文件：   </p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">[global]  </span><br><span class="line">netbios name = SERVERNAME  </span><br><span class="line">workgroup = GROUPNAME  </span><br><span class="line">null passwords = yes (是否允许用户设置空密码,default=no)  </span><br><span class="line">log file = /var/log/samba/log.%m  </span><br><span class="line">max log size = 500  </span><br><span class="line">dns proxy = No (default=yes,一般情况下没有必要)  </span><br><span class="line">security = user (相当于WinNT/2000的文件共享)  </span><br><span class="line">encrypt passwords = yes  </span><br><span class="line">guest ok = yes (default=no,是否允许guest访问,即不需要输入密码)  </span><br><span class="line">(在global节中的这个设定会作为各共享资源设定的缺省值)  </span><br><span class="line">  </span><br><span class="line">[homes] (每个用户会看到各自的home目录)  </span><br><span class="line">comment = Your Home Directories  </span><br><span class="line">read only = No  </span><br><span class="line">browseable = No  </span><br><span class="line">  </span><br><span class="line">[share] (share to all, read only)  </span><br><span class="line">comment = Share Folder  </span><br><span class="line">path = /home/samba  </span><br><span class="line">guest ok = yes (在global中设定了,这里可以不写)  </span><br><span class="line">writeable = no  </span><br><span class="line">  </span><br><span class="line">[source] (leo,frank可读写;james只读;其余用户无权访问)  </span><br><span class="line">path = /home/source  </span><br><span class="line">valid users = james,leo,frank(可访问此资源的用户的列表,如果不指定,任何用户都可以访问)  </span><br><span class="line">write list = leo,frank (有写权限的用户的列表)  </span><br><span class="line">writeable = no (其他用户不可写)  </span><br><span class="line">create mode = 666 (保证新建的文件目录可以其他用户读写)  </span><br><span class="line">directory mode = 777  </span><br><span class="line">force group = nobody (无论用户以什么身份login,强制为此user/group;不一定需要)  </span><br><span class="line">force user = nobody</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">[global]  </div><div class="line">netbios name = SERVERNAME  </div><div class="line">workgroup = GROUPNAME  </div><div class="line">null passwords = yes (是否允许用户设置空密码,default=no)  </div><div class="line">log file = /var/log/samba/log.%m  </div><div class="line">max log size = 500  </div><div class="line">dns proxy = No (default=yes,一般情况下没有必要)  </div><div class="line">security = user (相当于WinNT/2000的文件共享)  </div><div class="line">encrypt passwords = yes  </div><div class="line">guest ok = yes (default=no,是否允许guest访问,即不需要输入密码)  </div><div class="line">(在global节中的这个设定会作为各共享资源设定的缺省值)  </div><div class="line">  </div><div class="line">[homes] (每个用户会看到各自的home目录)  </div><div class="line">comment = Your Home Directories  </div><div class="line">read only = No  </div><div class="line">browseable = No  </div><div class="line">  </div><div class="line">[share] (share to all, read only)  </div><div class="line">comment = Share Folder  </div><div class="line">path = /home/samba  </div><div class="line">guest ok = yes (在global中设定了,这里可以不写)  </div><div class="line">writeable = no  </div><div class="line">  </div><div class="line">[source] (leo,frank可读写;james只读;其余用户无权访问)  </div><div class="line">path = /home/source  </div><div class="line">valid users = james,leo,frank(可访问此资源的用户的列表,如果不指定,任何用户都可以访问)  </div><div class="line">write list = leo,frank (有写权限的用户的列表)  </div><div class="line">writeable = no (其他用户不可写)  </div><div class="line">create mode = 666 (保证新建的文件目录可以其他用户读写)  </div><div class="line">directory mode = 777  </div><div class="line">force group = nobody (无论用户以什么身份login,强制为此user/group;不一定需要)  </div><div class="line">force user = nobody</div></pre></td></tr></table></figure>
 <p>在samba的权限控制中, 关键的是以下一些参数.<br>invalid users<br>valid users<br>guest ok / public (两种写法都可以)<br>这三个参数, 优先级从高到低, 控制用户是否可以/是否需要login到一个服务.<br>write list<br>read list<br>readonly / writeable (两种写法都可以)<br>这三个参数, 优先级从高到低, 控制用户是否有写权限.   </p>
 <p>用户要访问一个服务(共享目录),<br>首先要成功login到这个服务(或者这个服务是public, 不需要login),<br>然后再根据配置决定他是否有写的权限. 只要login进入了,就起码有读权限了.   </p>
 <p>另外, unix文件系统的权限设置是个前提, 无论samba的访问权限怎么设置,<br>用户在unix中无权访问的文件在samba中也肯定是不能访问的.   </p>
@@ -390,13 +374,6 @@
           
   <div class="comments" id="comments">
     
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
-    
   </div>
 
 
@@ -439,7 +416,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">312</span>
+              <span class="site-state-item-count">317</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -601,27 +578,6 @@
 
 
 
-  
-
-    <script type="text/javascript">
-      var disqus_shortname = 'aleung';
-      var disqus_identifier = '2002/01/19/Samba-configuration-file-sharing/';
-      var disqus_title = "配置samba文件共享";
-      var disqus_url = 'http://aleung.github.io/blog/blog/2002/01/19/Samba-configuration-file-sharing/';
-
-      function run_disqus_script(disqus_script){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-      
-        run_disqus_script('embed.js');
-      
-    </script>
   
 
 

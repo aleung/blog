@@ -86,15 +86,12 @@
 
 
 
-<meta name="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Good good study, day day up">
 <meta property="og:url" content="http://aleung.github.io/blog/page/6/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Good good study, day day up">
-<meta name="twitter:description">
 
 
 
@@ -119,15 +116,6 @@
 
   
 
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-2827715-4', 'auto');
-  ga('send', 'pageview');
-</script>
 
 
 
@@ -267,8 +255,8 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2012/07/07/spring-bean-reference-injection-definition-by-external-configuration/" itemprop="url">
-                  Spring bean reference injection definition by external configuration
+                <a class="post-title-link" href="/blog/2014/03/15/pebble/" itemprop="url">
+                  Pebble
                 </a>
               
             
@@ -281,21 +269,14 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-07-07T21:38:00+08:00" content="2012-07-07">
-              2012-07-07
+            <time itemprop="dateCreated" datetime="2014-03-15T21:52:22+08:00" content="2014-03-15">
+              2014-03-15
             </time>
           </span>
 
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2012/07/07/spring-bean-reference-injection-definition-by-external-configuration/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2012/07/07/spring-bean-reference-injection-definition-by-external-configuration/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -318,12 +299,29 @@
       
         
           
-            <p>当使用 Spring 作为 IoC framework 的时候，有时会利用 property placeholder 来将bean的注入属性做成可配置化。但是，一般很少会将 reference bean id 也用 property placeholder 代替，有人甚至以为这是不允许的。</p>
-<p>利用Spring Framework的property placeholder，将bean依赖关系配置抽离Spring XML文件，就能在产品发布部署后，通过配置选项来选定不同的实现，可用于集成接口、特定业务逻辑打开关闭等。</p>
-<p><a href="http://www.oodesign.com/adapter-pattern.html" target="_blank" rel="external">Adaptor pattern</a> is widely used at the point where our product integrates with external system. Product will provide several adapters to adapt to different external system interface.<br>We deliver our product in uniform installation package for all customers. A mechanism is required to configure which adapter to be used after system is installed.</p>
-<p><a href="http://www.oodesign.com/factory-pattern.html" target="_blank" rel="external">Factory pattern</a> can be used to create the specific adapter by configuration property. But by this way we need to create factory for each kind of adapters.</p>
-<p>Actually Spring Framework already supports it. With property placeholder, it is able to use placeholder in bean reference and resolve the bean name from properties. The bean definition XML file is not allowed to be modified when product is released, because it’s packaged in war/ear. But properties can be modified as long as it’s store outside of the package, e.g. on file system or in configuration management (extend the PropertyPlaceholderConfigurer class).</p>
-<p>Here is a sample code snippet:<br><script src="//gist.github.com/https://gist.github.com/2934603.js"></script></p>
+            <p><a href="http://getpebble.com/" target="_blank" rel="external">Pebble手錶</a>戴了兩個星期，如果用一句話來總結感受，那就是：基本滿意，但還沒到愛不釋手的程度，沒有帶來驚喜。</p>
+<p>首先，Pebble真的是一隻手錶，可以看時間。如果你有幸用過各種『智能手環』，就會明白為什麼這麽說了。我戴過<a href="https://jawbone.com/up" target="_blank" rel="external">Jawbone UP</a>一段時間，試過好多次下意識的擡起手腕來看，然後才想起那貨是沒有任何顯示的。</p>
+<img src="/blog/attachments/2014/3/pebbles.jpg" class="right">
+<p>佩戴舒適度上說，Pebble還過得去，塑料錶帶的柔軟度不錯，反正我已經習慣了24小時戴在手腕上的感覺。在這之前，我都有十幾年沒有戴過手錶了吧。</p>
+<p>外形應該是我最不在意的一項了，但不得不說 Pebble 外形上太普通。我的黑色版本，正面看弧形表面，與黑白顯示屏融為一體，還算有點現代感，但側面看就很『薯鈍』的樣子 —— 厚，按鈕粗曠，左邊還有很突兀的幾個充電觸點。</p>
+<p>手錶用的是 144x168 的低分辨率黑白e-paper屏幕，在現在手機電腦都視網膜屏的時代，這個分辨率真是超低了。E-paper的對比度很高，無論什麼光線條件下都非常清晰，雖然分辨率低，實際顯示文字的效果還是不差的。圖像？就算了吧，除了像素少，這個屏還連灰度都顯示不了。不知道這個e-paper跟Kindle之類閱讀器的屏是不是同樣的技術，但看起來還是有區別：Pebble屏的像素邊緣很銳利，顯示直接改變沒有殘影，不像Kindle要全屏反色刷一次。</p>
+<p>Pebble 可以安裝 app，當然了，否則就對不起 smart watch 這個名字。App 分為 watchface 和 watchapp 兩大類，無論是那種也不管大小，總共最多安裝8個，不知道它內部怎麼管理空間的。Watchface 只有一屏顯示信息，不能接受按鍵控制，最常見用途是顯示時間，當然也可以顯示其他信息，例如天氣、日曆之類。Watchapp就是可以與用戶交互的應用，可以有多屏，用戶通過菜單、控制按鈕來操作。</p>
+<p>Pebble 的方便之處是它作爲手機的一個延伸的信息終端，手機可以將實時的信息推送到手表上，或者是在手表上顯示濃縮的手機應用的某些信息。前者例如，我以前經常會漏接電話或者漏看短信，因爲手機放袋裏聽不到聲音，現在戴著 Pebble 就不會了，因爲手表會振動提醒。後者例如一些跑步應用，能在 Pebble 上顯示速度、距離等關鍵信息，就不用拿手機出來看。</p>
+<p>Pebble 最大的問題是操控不方便。表上有四個按鈕：上/下/Enter/ESC，沒有觸摸屏，任何操作都只能靠按鍵選擇菜單項，因此經常要按好多次按鈕才能完全想要的操作。而 Pebble 的按鈕按起來又不算是特別方便，總之我是不會想在手表上做按超過一兩次按鈕的操作的。這種操控的不方便限制了app可以做的事情，感覺這個比起屏幕和表的硬件處理能力的限制還要大。Pebble 也不支持 app 後台運行，要求在手錶上跑多任務，電池撐不住吧，但沒有多任務也造成一些類型的 app 沒法做了。</p>
+<p>至于耗電，目前還不至于很大問題。官方宣傳可以用5-7天，我實際用下來只有3天，也不知道是軟件問題還是硬件問題。但3天其實還是可以接受的。</p>
+<p>最後介紹一下我現在常用的app：</p>
+<h5 id="Watchface"><a href="#Watchface" class="headerlink" title="Watchface"></a>Watchface</h5><img src="/blog/attachments/2014/3/postage_watchface.png" class="right">
+<img src="/blog/attachments/2014/3/agenda_watchface.png" class="right">
+<p>Agenda Watchface</p>
+<p>: 在辦公室或者需要按日程做事的時候會用這個watchface，一眼就能看到當前時間和接下來的日程安排。</p>
+<p>Postage</p>
+<p>: 當我不需要看日程安排的時候，喜歡用這個face，夠簡潔，外圍的黑色與黑色表身融為一體。實際看起來比截圖好看很多。</p>
+<h5 id="Watchapp"><a href="#Watchapp" class="headerlink" title="Watchapp"></a>Watchapp</h5><img src="/blog/attachments/2014/3/pebbleauth.png" class="right">
+<p>PebbleAuth </p>
+<p>: 二步認證的token生成器，相當於 Google Authenticator 運行在手錶上，這樣更加安全啦。現在除了 Google，LastPass 和 EverNote 都支持二步認證了。</p>
+<p>Sleep as Android</p>
+<p>: 我買 Pebble 就是因為看到 Sleep as Android 支持 Pebble 了，才動了心的。這個應用利用 Pebble 上的運動傳感器監控睡眠的深淺度，早上能夠在合適的淺睡眠週期通過振動叫醒。我以前就在用 Sleep as Android，但要用手機的運動傳感器，所以手機要放在床墊上，現在戴著手錶就行了，手機可以放遠一些。</p>
+<img src="/blog/attachments/2014/3/sleepaspebble.png">
 
           
         
@@ -373,8 +371,8 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2012/06/30/redesign-of-software-development-workspace/" itemprop="url">
-                  软件团队工作空间再设计
+                <a class="post-title-link" href="/blog/2014/01/20/text-to-uml-diagram/" itemprop="url">
+                  Text to UML diagram
                 </a>
               
             
@@ -387,21 +385,14 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-06-30T22:24:00+08:00" content="2012-06-30">
-              2012-06-30
+            <time itemprop="dateCreated" datetime="2014-01-20T22:10:00+08:00" content="2014-01-20">
+              2014-01-20
             </time>
           </span>
 
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2012/06/30/redesign-of-software-development-workspace/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2012/06/30/redesign-of-software-development-workspace/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -424,17 +415,23 @@
       
         
           
-            <p>软件团队的办公室空间可以分为三大类：团队工作空间，会议空间，公共区域。</p>
-<p>敏捷团队在工作过程中需要有比较多沟通，团队工作空间需要为此准备必要的设施，例如带有白板的讨论区域，这样就不需要讨论一些事情都要跑很远找会议室；供张贴东西的墙面；公共信息显示屏，显示CI状态之类。</p>
-<p>每个人的座位当然是越宽敞越好，即使条件限制，最低限度也需要保证可以增加一个人并排坐一起结对编程或讨论问题。因此应该用长条型的桌子，而不是曲尺型的桌子。</p>
-<p>不同团队之间的空间有一定的隔离，减少相互影响，因为团队内的讨论对他人是噪音。并且，空间的尺度对心理也有影响，需要合适的尺度，过大的大厅一排排整齐排列的桌子的心理效果不好。</p>
-<p>将公共区域，例如休息区、茶水间、打印机等，放在各个区域空间的交汇点，一方面是方便各个区域的人的到达，另外是形成汇聚点，成为人们的交流场所。公司里面需要创造让不同团队成员见面交流的机会。公共区域特别应该是开放性的，不带有物理边界，才能彰显公共属性，例如茶水间休息区与走廊不应该设墙，让它们融合起来，这样大家路过的时候就能够打个招呼聊上几句。休息家具款式可以多样化，颜色也可选择鲜明多彩的，让空间生动有活力。</p>
-<p>其实不仅是公共区域，团队区域之间也应该是柔性边界。柔性边界会鼓励人们进入不同的区域，在软件公司里并没有什么理由要为员工进入一个普通区域造成障碍。人从一个大厅进入另一个大厅，心理不会有异样感，但如果要穿过一个门进入一个坐了人的封闭的房间，那他必须是有专门目的才会这样做。</p>
-<p>会议室相对团队空间来说，私密性会强一些。在软件公司里开会，白板是很重要的，会议室的白板（或者用玻璃）的面积应该尽量的大，越大越好，画不下要擦掉影响思路，有可能的话将整面墙都做白版。会议室面积小，密闭空间的压抑感会特别严重，用玻璃做墙面可以改善空间感。由于团队工作空间是开放性的，需要多留一些小会议室(quite room)，或者半开放小隔间作为不受干扰的环境来临时使用。</p>
-<p>人喜欢在窗户旁边工作：与外界空间的连通感，扩大心理空间，不会有幽闭压抑感；自然采光与通风。因此有窗的空间应该留作给人长时间活动的空间，而不是用作偶然才有人使用的用途，如果用作储物、机房就更浪费了。</p>
-<p><em>后记：</em></p>
-<p><em>差不多两年前在荷兰工作的时候，对于欧洲的办公环境深有感触，回到国内后就有了这些想法，不过一直没有动笔写下来。期望在国内有类似欧洲的环境在目前显然是不现实的，但如果是在一开始设计办公环境的时候考虑更多人的因素，其实在不增加成本的情况下也能有所改善。最重要的是观念。</em></p>
-<p><em>另外还有更早的一篇<a href="/2006/05/12/Each-have-independent-office-with-the-Windows">每人都有带窗户的独立办公室</a>，是在瑞典工作的时候写的。</em></p>
+            <p>Usually I used <a href="http://astah.net/" target="_blank" rel="external">Astah</a> to draw UML diagram to put into design document in MS Word or PowerPoint format. The separation of the source and generated file making management of the UML model file a problem. And also it’s annoying to adjust a large amount of elements by dragging with mouse whenever you add something in the diagram. For a coder, typing on keyboard is faster than drawing with mouse.</p>
+<p>Now I switch to <a href="http://plantuml.com/" target="_blank" rel="external">PlantUML</a>. Just write UML in its <a href="http://en.wikipedia.org/wiki/Domain-specific_language" target="_blank" rel="external">DSL</a> and PlantUML generates the diagram. It supports most of the frequent used UML diagrams, which I use most are sequence diagram, class diagram and state diagram. Then I paste the generated diagram into slides (design document) and keep the “source” in note. No need to wonder where to find original UML model file when I need to update the diagram.</p>
+<p>The core of PlantUML is simply a jar file. It parses the text input and depends on <em>dot</em> tool from <a href="http://www.graphviz.org/" target="_blank" rel="external">Graphviz</a> for graph generation (except sequence diagram). </p>
+<p>There are <a href="http://www.plantuml.com/running.html" target="_blank" rel="external">a bunch of ways</a> to run PlantUML. I highlight some of them I prefer:</p>
+<ul>
+<li>Online editor. Best choice if you’re too lazy to install anything on your computer.</li>
+<li>Desktop (Windows): <a href="https://code.google.com/p/plant-uml-file-watcher/" target="_blank" rel="external">PlantUML File Watcher</a></li>
+<li>Embedded into Octopress blog platform. The below examples are using it.</li>
+<li>IDE plugin. Easy way to keep UML together with source code.</li>
+</ul>
+<p>The syntax of PlantUML’s DSL is quite intuitional, you can start to use it by following example.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">package ConsentObject &lt;&lt;Rect&gt;&gt; &#123;</div><div class="line">  Consent : id</div><div class="line">  Scope : key</div><div class="line">&#125;</div><div class="line"> </div><div class="line">Client - User</div><div class="line">(Client, User) . Consent</div><div class="line"> </div><div class="line">Consent - &quot;*&quot; Scope</div><div class="line"> </div><div class="line">Consent &quot;1&quot; -- &quot;1..*&quot; AccessToken</div></pre></td></tr></table></figure>
+<p>The generated diagram:</p>
+<img src="http://www.plantuml.com/plantuml/svg/K-0gI4pEJanFLN3EpojEpIlnJyfAJIvHiB490b9sTWhLN0emAGKhXSmK83SuERyW5SZ9JgtagkLIu7BEoGJ9wYg45gSMSMb0k3fWdgQ27amtI27K75q59IqbY358eag6IWgwG2b3FJsWh6DoScfnSKX-TceU0000"> 
+<p>A sequence diagram example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">title OAuth 2.0 Authorization Code Grant</div><div class="line"></div><div class="line">actor    UserAgent       as UA</div><div class="line">participant Application     as APP</div><div class="line">participant OAuthServer     as OAuth</div><div class="line">participant ResourceServer  as RS</div><div class="line"></div><div class="line">== Application requests authorization from user ==</div><div class="line">UA-&gt;APP: </div><div class="line">APP--&gt;UA:redirect to OAuth Server</div><div class="line">UA-&gt;OAuth: GET /authorize?response_type=code</div><div class="line">ref over UA, OAuth: user authentication\nuser confirms reqest</div><div class="line">OAuth--&gt;UA: redirect to App with authorization_code</div><div class="line">UA-&gt;APP: authorization_code</div><div class="line"></div><div class="line">== Application retrieve access token ==</div><div class="line">APP-&gt;OAuth: POST /token with authorization_code</div><div class="line">ref over APP, OAuth: client authentication</div><div class="line">APP&lt;--OAuth: access_token</div><div class="line"></div><div class="line">== Application access protected resource ==</div><div class="line">APP-&gt;RS: getResource with access_token</div><div class="line">RS-&gt;OAuth: validateToken(access_token)</div><div class="line">RS--&gt;APP: result</div></pre></td></tr></table></figure>
+<img src="http://www.plantuml.com/plantuml/svg/TP9FJuGm4CNl_HHpr4JKU2IYQOpPusvWkPbicZAxDh8KfyCQ_VIsfP35Fnm8RT_C-xsXRBX5MCk1N-7k-XR2XoNpfTZO3fviWx0YrR4GIhCb69_Q8Sa3TfpMoa4jHQ-8ZJQzbuFi-zReiKjIoCrc8Occ5T89QPB4hOMeH6S7qZZflAYiX2YAXGFX-u2E7QW5_fxi4GRF2aKXQfazU8GSX7zdsKCjSyB646e6jca4eqtKneqSLizRk9dQuYEXwstdSCUVFHRQpqSGxi46k5fUGQgAfg7ApoX1ldHnKzjkR-Ze0hD75h5Wn85p7XyFFen7MaJQHSSvoXzdlqV3PF24eBH6vtphD-p2FC8Kff2RTULJZaV_cSunVU6SKxSct89bqj3wFikIPFJTnUO_uH9JJvPzR6myxVYxPy2ook60F5s3H7VUigpc62VLcaOnRiF1nRdgCiZIqBp7qF8t">
 
           
         
@@ -484,8 +481,8 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2012/06/25/migrate-my-blog-to-github/" itemprop="url">
-                  migrate my blog to github
+                <a class="post-title-link" href="/blog/2013/12/08/intercept-android-https-traffic/" itemprop="url">
+                  拦截Android应用HTTPS通讯内容
                 </a>
               
             
@@ -498,21 +495,14 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-06-25T23:40:00+08:00" content="2012-06-25">
-              2012-06-25
+            <time itemprop="dateCreated" datetime="2013-12-08T15:03:00+08:00" content="2013-12-08">
+              2013-12-08
             </time>
           </span>
 
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2012/06/25/migrate-my-blog-to-github/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2012/06/25/migrate-my-blog-to-github/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -535,29 +525,18 @@
       
         
           
-            <p>个人blog再一次搬家，从 Google Application Engine (GAE) 搬到 github 上来。原来的<a href="http://good-good-study.appspot.com/" target="_blank" rel="external">地址</a>依然能够访问，但是不会再更新了，新文章都发到这里。Feed订阅地址不变，建议使用Google Reader订阅本站。</p>
-<h2 id="搬迁原因"><a href="#搬迁原因" class="headerlink" title="搬迁原因"></a>搬迁原因</h2><p>上一次从blogbus搬到GAE，是因为忍受不了审查制度。GAE后来也被墙了，但是即使如此，我也不会为了读者数量而再使用国内的blog服务，在被审查的状态下写东西。</p>
-<p>这次搬到github，最主要的动机是为了使用<a href="http://octopress.org/" target="_blank" rel="external">Octopress</a>这个blog framework。</p>
-<h3 id="好玩"><a href="#好玩" class="headerlink" title="好玩"></a>好玩</h3><p>这个是最重要的原因。写blog不是什么正事，本来就是兴趣而已。之前搬离blogbus，选择了GAE的原因就是尝试一下GAE和PlayFramework编程。这次就是为了尝试Octopress。</p>
-<h3 id="使用markdown写作"><a href="#使用markdown写作" class="headerlink" title="使用markdown写作"></a>使用markdown写作</h3><p>Octopress使用markdown语法。接触markdown语法是在github项目的README页面上，还有<a href="http://stackoverflow.com" target="_blank" rel="external">StackOverflow</a>里发帖用的也是markdown。刚开始觉得又是另一种wiki语法，但慢慢习惯了发现很好用：语法不太复杂，常用的格式不难记住；基本上常用的格式都覆盖了，实在不行还可以直接写HTML；原始文本的阅读性很好，不像HTML没法直接看；排版容易，文本编辑器就可以，而HTML的WYSIWYG编辑器生成的内容经常格式错乱需要手工再编辑。</p>
-<h3 id="访问速度提高"><a href="#访问速度提高" class="headerlink" title="访问速度提高"></a>访问速度提高</h3><p>原来在GAE上的blog因为访问量少，服务进程闲置一段时间就会关闭，新请求进来要实例化新服务进程。我用的是PlayFramework，每次初始化都要等上十来秒左右，因此打开首个页面一定要等，体验很不好。</p>
-<p>Octopress是在本地生成HTML页面后静态发布，速度自然不慢。不过缺省页面模版有些引用的资源下载速度不快，也有些可能被墙了，影响页面加载时间，下一步需要优化一下。</p>
-<h3 id="版本管理与备份"><a href="#版本管理与备份" class="headerlink" title="版本管理与备份"></a>版本管理与备份</h3><p>Octopress最好用的特性就是跟github集成，发布到github上。整个blog就是一个git project，天然就有版本管理了。放在github上，我也不需要考虑备份问题了。</p>
-<h3 id="目前没有被墙"><a href="#目前没有被墙" class="headerlink" title="目前没有被墙"></a>目前没有被墙</h3><p>目前github是可以直接访问的，因此可以方便大陆读者。不过这个是最次要的原因了，因为作为一个优秀的网络服务，github说不定哪天就被GFW给认证了。另外，前面说过页面里面嵌入的某些资源是被墙的，我还没有测试过对访问会带来什么影响。</p>
-<h2 id="搬迁过程"><a href="#搬迁过程" class="headerlink" title="搬迁过程"></a>搬迁过程</h2><p>Octopress的搭建不算难，需要安装ruby和一些gem，按照文档指导，再Google一下就能搞掂。按照文档做了一些配置，也没什么问题。缺省不支持tag，找了两个<a href="https://github.com/robbyedwards/octopress-tag-pages" target="_blank" rel="external">插件</a>装上去。模版和theme都用缺省的，稍微改了一点点，反正不在乎有没有个性了，我自己做也不一定好看，以后再说吧。缺省style显示不出表格，也需要改一点css。网上的资料不少，遇到问题Google一下大都能找到答案。</p>
-<p>然后就是旧文章的迁移了，我原来的blog能够将所有数据用json格式导出，现在就要将它转换成新系统的文件格式；原来的文章正文是HTML，需要转换成markdown语法。不懂ruby，于是找了个python写的转换工具<a href="http://www.aaronsw.com/2002/html2text/" target="_blank" rel="external">html2txt</a>，自己再写点脚本就好了。</p>
-<p>问题还是有一些的：</p>
-<p>Post的时间很奇怪：如果精确到秒，Octopress(其实是Jekyll)会认为这是UTC时间，在generate的时候变换为本地时区，页面里的帖子时间就加了8个小时；如果不精确到秒，只是分钟，那它就会当做本地时间而不做变换。我都不知道这是by design还是bug，不懂ruby看了下代码不得要领。后来我就把时间全部都改成只保留到分钟，绕开这个问题算了。</p>
-<p>Ruby不支持中文URL，因此有几个问题：</p>
-<ol>
-<li>文章URL不能是中文</li>
-<li>tag URL不能是中文</li>
-<li>文章中不能带有中文URL的链接。</li>
-</ol>
-<p>对于1，可以不用标题而只是用id来做post URL，但我觉得permalink还是用标题更cool一些，将中文翻译成英文好了。Google translate的API不公开了，本来想用Bing translate的API，但它要用OAuth2认证，我嫌要写太多代码了，后来找到有道翻译的API，效果还行。</p>
-<p>对于2，因为tag的URL与显示是一致的，不能象post permalink那样做。网上的一些解决方法都比较复杂，不能保证日后升级兼容性，我干脆全部用英文做tag算了。</p>
-<p>对于3，搜索了一遍旧文章，只有一个链接是中文的，而且已经失效了，故此也不需要花功夫了。</p>
-<p>最后，就是还需要人工去check一遍老文章，看看自动转换的格式有没有问题，顺便回顾一下以前写的东西，有需要修改补充的就更新一下。</p>
+            <p>昨天在捣弄 <a href="http://micoach.adidas.com/" target="_blank" rel="external">miCoach</a> 到 <a href="http://nikeplus.nike.com/" target="_blank" rel="external">Nike+</a> 的数据迁移，到了最后一步发现调用 Nike+ API 需要传送client_id和client_secret，这两个信息是用来认证客户端的，但Nike并没有公开开放API，因此无法申请到client_id。看 <a href="https://github.com/angusws/tcx2nikeplus" target="_blank" rel="external">tcx2nikeplus</a> 的作者说他是通过查看iPhone应用发送的请求来拿到这两个信息的。但是 Nike+ API 都是走HTTPS的，普通方式的截包看不到加密传输的数据。</p>
+<p>要嗅探加密传输，必须通过<a href="http://zh.wikipedia.org/wiki/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB" target="_blank" rel="external">中间人攻击</a>的方式才行。上网搜索一下看看有没有现成工具，果然一搜就找到了：<a href="http://portswigger.net/burp/" target="_blank" rel="external">Burp Suite</a>。它是一个安全测试工具，功能好像有不少，我这里用它做代理，从中监控应用到服务器的通讯内容。</p>
+<p>下面记录大致操作过程。</p>
+<p>在PC上安装运行Burp，设置 Proxy - Options - Proxy Listeners，让它监听合适的地址和端口，并且选择 “Generate CA-signed per-host certificates”。</p>
+<p>将浏览器代理指向Burp proxy，访问任意一个https地址，Burp这时是中间人，它会用自己的根证书(PortSwiggerCA)签发一个目标服务器的证书，替换了真正服务器的证书。浏览器应该会有安全报警，因为系统并不信任签发这个证书的CA。查看证书详细信息，选择根证书并且信任这个根证书，就会把PortSwiggerCA的证书加入到系统的信任列表中。</p>
+<p>要将这个根证书装进Android，需要先从系统 key chain 里将它导出到文件（.pem格式），然后执行下面的命令将它转换为DER格式后缀为.crt的文件。</p>
+<pre><code>openssl x509 -in PortSwiggerCA.pem -inform PEM –out PortSwiggerCA.crt -outform DER
+</code></pre><p>接下来，将 PortSwiggerCA.crt 放入Android的sdcard，在系统安全菜单中安装证书。证书安装后，Android系统就会信任所有Burp签发的证书了。</p>
+<p>在Android的WLAN设置代理指向Burp。但很多Android应用都不理会系统的代理设置，不使用系统指定代理，遇到这种情况就要用 <a href="https://play.google.com/store/apps/details?id=org.proxydroid" target="_blank" rel="external">ProxyDroid</a> 来设置GlobalProxry（手机要root）。设置好了，在Burp里面就能够拦截到Android应用的HTTPS通信明文了。</p>
+<img src="/blog/attachments/2013/12/burp.png">
+<p><em>注意：为确保安全，测试完之后要将 PortSwiggerCA 这个根证书从PC和Android系统信任列表中删除。如果不是临时使用，应该要用自己的证书代替Burp提供的证书。</em></p>
+<p>这个故事告诉我们，中间人攻击并不是那么复杂的事情。特别是终端应用开发者，不可寄望于通过加密传输来隐藏应用到服务器的协议细节，要逆向工程是很容易的。</p>
 
           
         
@@ -607,8 +586,8 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2012/06/24/try-octopress-markdown-features/" itemprop="url">
-                  试验 Octopress 的各种特性
+                <a class="post-title-link" href="/blog/2013/12/01/2013-gz-half-marathon/" itemprop="url">
+                  2013广州马拉松半程小结
                 </a>
               
             
@@ -621,21 +600,14 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-06-24T23:08:00+08:00" content="2012-06-24">
-              2012-06-24
+            <time itemprop="dateCreated" datetime="2013-12-01T20:03:00+08:00" content="2013-12-01">
+              2013-12-01
             </time>
           </span>
 
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2012/06/24/try-octopress-markdown-features/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2012/06/24/try-octopress-markdown-features/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -658,35 +630,34 @@
       
         
           
-            <p>这个blog使用的markdown解释器是<a href="http://kramdown.rubyforge.org/quickref.html" target="_blank" rel="external">kramdown</a>，比起标准markdown有所增强。再加上Jekyll的一些插件特供的特殊功能。</p>
-<h2 id="Markdown基本语法"><a href="#Markdown基本语法" class="headerlink" title="Markdown基本语法"></a>Markdown基本语法</h2><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p>标题用<code>#</code>开头，一个井号是一级标题，两个井号是二级标题，井号越多字体越小。</p>
-<p>一级标题也可以通过在标题的下一行用<code>========</code>来标注，二级标题就是<code>---------</code>。更小的标题就不能用这种方式了。</p>
-<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p>行内式链接：</p>
-<pre><code>This is a [link](http://example.com).
-</code></pre><p>参考式链接：在链接文字的方括号后面再接上另一个方括号，而在第二个方括号里面要填入用以辨识链接的标记（若省略则与链接文字相同），接着，在文件的任意处，把这个标记的链接内容定义出来。</p>
-<pre><code>This is [an example][1] reference-style link.
-
-[1]: http://example.com
-</code></pre><p>参考式链接可以提高 markdown 文本的易读性。</p>
-<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p>与链接类似，区别是前面增加叹号<code>!</code>：</p>
-<pre><code>![text](link)
-</code></pre><p>另一种图片语法是由插件支持的，用<code>{</code> <code>%</code>包围的img标签，后面跟着图片URL，在URL前可以加入可选的css class名称，如：<code>left</code>, <code>right</code>，得到文字环绕效果。</p>
-<h3 id="引用-blockquote"><a href="#引用-blockquote" class="headerlink" title="引用 (blockquote)"></a>引用 (blockquote)</h3><p>用<code>&gt;</code>开头的一个段落：</p>
-<blockquote>
-<p>Stay hungry…<br>stay foolish.</p>
-</blockquote>
-<p>用四个空格缩进的段落，会按原始格式显示，相当于HTML的<code>&lt;pre&gt;</code>的效果：</p>
-<pre><code>+----+
-|    |
-+----+
-</code></pre><p>也可以通过在原始格式引用段落的前后各加一行波浪号`<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 显示效果</span><br><span class="line"></span><br><span class="line">用`*`或`_`包围的文字会用斜体显示：</span><br><span class="line"></span><br><span class="line">Some of these words *are emphasized*.</span><br><span class="line"></span><br><span class="line">如果双重符号`**`或`__`则会用粗体显示：</span><br><span class="line"></span><br><span class="line">Use two asterisks for **strong emphasis**.</span><br><span class="line"></span><br><span class="line">用`` ` ``包围的文字按代码格式显示。</span><br><span class="line"></span><br><span class="line">### 列表</span><br><span class="line"></span><br><span class="line">用`*`, `+`, `-`开头的行都会作为列表项。子项缩进两个空格。</span><br><span class="line"></span><br><span class="line">+ 加号开头的段落</span><br><span class="line">  + 缩进两个空格，加号开头</span><br><span class="line">    + 再缩进两个空格，三级项目</span><br><span class="line">- 其次</span><br><span class="line"></span><br><span class="line">表格</span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">注意第二行的分割线的冒号位置，决定了这一列的对齐方式。</span><br><span class="line"></span><br><span class="line">    No.   | Name    | Status  |</span><br><span class="line">    -----:|:--------|:-------:|</span><br><span class="line">    1     | Alaph   | done    |</span><br><span class="line">    2     | Beta    | ongoing |</span><br><span class="line">    10000 | Release | n/a     | </span><br><span class="line"></span><br><span class="line">效果：</span><br><span class="line"></span><br><span class="line">No.   | Name    | Status  |</span><br><span class="line">-----:|:--------|:-------:|</span><br><span class="line">1     | Alaph   | done    |</span><br><span class="line">2     | Beta    | ongoing |</span><br><span class="line">10000 | Release | n/a     | </span><br><span class="line"></span><br><span class="line">### 脚注</span><br><span class="line"></span><br><span class="line">增加脚注[^1]很简单，就是这样：`[^1]`</span><br><span class="line"></span><br><span class="line">脚注定义的写法是以`[^1]: `开头，后面跟着定义。</span><br><span class="line"></span><br><span class="line">[^1]: 脚注一定会显示在最末尾。</span><br><span class="line"></span><br><span class="line">嵌入代码</span><br><span class="line">-----------</span><br><span class="line"></span><br><span class="line">下面的嵌入代码的方式都是由插件提供的，并非markdown语法。</span><br><span class="line"></span><br><span class="line">### 代码高亮</span><br></pre></td></tr></table></figure></p>
- <figure class="highlight plain"><figcaption><span>[title] [url] [link text]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code snippet</span><br></pre></td></tr></table></figure>
-<p><del>~</del></p>
-<p>效果：</p>
-<figure class="highlight java"><figcaption><span>HelloWorld.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello, World"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="嵌入Gist"><a href="#嵌入Gist" class="headerlink" title="嵌入Gist"></a>嵌入Gist</h3><script src="//gist.github.com/2934603.js"></script>
-<p>方法是写一个用<code>{</code> <code>%</code>包围的gist标签，后面带上id。</p>
-<hr>
+            <p>11月23日，参加了2013广州马拉松的半程赛事，这是我第二次跑半程马拉松，赛会成绩1:55:11，自己按过出发点的计时是1:52:50。这个成绩比上一年要差了一些，2012广州半马的自己计时是1:49:57。但还是完成目标了，我赛前预订的是两小时内完成。</p>
+<p>今年的训练是从7月中旬开始的（见：<a href="2013/07/27/first-long-run">今年首次长跑训练</a>），最开始的目标是全程马拉松，但是训练断断续续了好多回：八月初去大辣甲岛坐快艇颠伤了腰；九月中旬肠胃炎病了一回体重一下掉了两公斤；十月中旬出差；十月中旬到十一月中旬咳嗽了一个月。总之一直都没有跟上训练计划，训练强度没有上去，跑全马没有可能了，报名时还是选择半马。咳嗽延续了很长时间，严重到胸口肋骨痛，虽然训练没有完全停止，但很担心这样的身体状态连半马都跑不下来了，幸好到了十一月中旬，赛前两周咳嗽逐步好转。一直都没有怎么跑长距离，都是平常的30分钟，十一月开始才将每次跑量增加到12km左右。11月16日（赛前一周）晚遇上Nike的夜跑活动，那次跑得非常轻松，13km步速5:27，就对完赛非常有信心了。赛前一周内减量，周二周四跑了两次慢速短时间维持运动状态。</p>
+<p>从周训练量图上看得出来：太少了，很多时候每周2小时都不够。</p>
+<img src="/blog/attachments/2013/12/run-history-weekly.png">
+<p>今年的路线比去年好多了，都是沿着江边跑。半程路线没有经过老城区，时间也早，观众没有那么多，但气氛也还是比去年好，观众都在热情的叫喊，特别是跑到路边跟一溜的观众一一击掌，兴奋度立马提高，特别有动力。</p>
+<img src="/blog/attachments/2013/12/marathon-route.png">
+<p>早上七点半起跑，我6:40到珠江新城地铁站，一出站到处都是跑手，看到这个场景人就开始有点兴奋了，虽然平日这个时间还在床上呼呼大睡。在歌剧院外面的广场脱了外套和长裤，当天气温比较暖和，没有热身也不怎么冷。跟朋友回合，时间已到7:10，看着出发区密密麻麻的人群，有点心急。幸好今年的存包工作做得很好，不需要排队，然后上厕所，倒是排了上十分钟，一切妥当已经接近起跑时间。广马的出发点空间过于狭窄，只有一条半车道的宽度，早就已经挤满了人。有人在人堆里往前钻，我也跟在他后面钻，好歹往前挪了几十米。离起跑线还是很远很远，也不知道是什么时候鸣枪的，总之听到前面有人欢呼，然后又等了好一会发现人群开始往前移动了。人群基本还是走，我已经是尽量在人缝中钻了，走走停停，到起跑线时已经两分半钟。过了起跑线，还是跑不起来，跑了一小段前面又堵住了，又得走。一直过了大半公里，路面宽了之后，才可以真正跑起来。</p>
+<p>起跑后几公里都没有把握好速度。按照2小时内完赛的目标，我给自己预定的配速是5’20”~5’30”之间。路面宽阔后，大家的速度都加上去了，一听 miCoach pacer 报速度，步速已经到 5’10” 左右了，于是就把速度降下来。在赛事中跟自己平常训练很不一样，平常起跑的速度都比较慢，要跑上十来分钟速度才加得上去，而在赛事中兴奋度高了，跟着其他人一下子就跑得比较快，自己一点感觉都没有，还以为慢。怕跑快，控制速度后，又压得太慢了，降到了5’40”。在四五公里左右还感觉右小腿肌肉有点僵硬感。</p>
+<img src="/blog/attachments/2013/12/first5k.png">
+<p>过了前半小时，大概跑顺了进入状态。特别是车陂路第一个折返点后，一路都跑得很顺畅，步速基本上都在5’20”以上。回到珠江新城路段，沿路观众也多起来，我也喜欢回应一下观众，跑近路旁，挥挥手，甚至击掌，观众喝彩得更热烈，自己也更加兴奋，明显速度会跑快一点。五公里开始有水站，以前跑我不喜欢拿运动饮料，觉得甜了反而不解渴，但这次还是都选择了喝运动饮料，因为可以补充点能量。跟去年不一样，今年饮料是用纸杯分发的，确实这样更合理不浪费，只不过一边跑一边喝的难度不小，估计是喝一半撒了一半。实际上并不感觉渴，喝一两口感觉就可以了，但每5公里的饮料站我都去拿了，而且都全喝完，以保证不缺水，毕竟当天的温度对长跑来说比较高。</p>
+<img src="/blog/attachments/2013/12/6-12km.png">
+<p>10km处有计时显示，已经忘了是多少，当时估算了一下，2小时内完成没什么问题了。12km开始进入猎德大桥路段，感觉依然很轻松。我记到去年到10km时也是感觉非常轻松的，但过了不久就开始疲累，因此也不敢大意。后面这一段路的速度在图上看波动比较大：12~13km猎德大道这短短一段路几个小上下坡：过猎德涌两次；13.5km左右路段是爬猎德大桥的上坡，14km左右是冲下坡；15.5km处磨碟沙隧道下坡又是一轮猛冲，16km是隧道上坡。速度下降得很厉害的地方都是饮水站或者降温海绵站。</p>
+<p>在猎德-花城大道折返处拐弯的时候突然听到有人喊我的名字，一看是小春天，举着写上『Leo加油』的一张纸。有点惊喜，没想到她在这里，原来我是让她们在过桥后15、16km路段等的。因为是在拐弯处，当我看到她的时候已经几乎跑过了，匆匆一眼印象中一身很灰的衣服，所以啦啦队也要穿抢眼的衣服啊。然后开始上猎德大桥，虽然比较高，坡度还算是平缓的，减速保持步频上坡，终于过了最高点了，前面有大堆摄影师拦在路上拍照，很多人经过时都摆些pose好上镜，我当时没有意识到这里是一个官方摄影点，只是一心想着下坡可以冲快些。绕过了那群摄影师，突然又听到有人喊我的名字，一看是清风在旁边，也只是来得及挥挥手就冲过去了。一长段下坡，放开脚步狂奔。</p>
+<p>疲累感大概是在16km后出现的，冲完磨碟沙隧道下坡后上坡感觉有点吃力了，然后后面的路程就开始没有轻松的感觉，不过这时剩下的路程已经没有多少，看着对面折返的跑全马的跑手，心想：我再跑几公里就完成了，要跑全马的话还要再跑一倍多的距离，多痛苦啊。后面的路程开始一边跑一边默算着剩下的公里数，不过状态也还是不差，可能就是心理上觉得差不多到了失去了动力。</p>
+<img src="/blog/attachments/2013/12/13-18km.png">
+<p>琶洲大桥脚折返后，剩下最后两公里，开始加速做最后冲刺。因为最后有个小弯，一直没有看到终点门楼，有点觉得维持不住速度，直到最后一两百米左右看到终点，这时来劲了还猛冲了一下。</p>
+<img src="/blog/attachments/2013/12/sprint.png">
+<p>全程的心率在缓慢的上升，大概10km后进入黄区(159-165BPM)，除了最后冲刺，基本维持在黄区内。冲线时最高心率175BPM。</p>
+<img src="/blog/attachments/2013/12/heart-rate.png">
+<p>下面是全程的步速与步频曲线，粗线是步频。可以看出速度虽然有波动但全程平均差别不是太大，但前半程的步频基本在180以上，而后半程就下降到180以下了，说明体力下降步伐没有那么轻快了。</p>
+<img src="/blog/attachments/2013/12/stride-rate.png">
+<p>几点总结：</p>
+<ul>
+<li>训练量不足；</li>
+<li>体能储备上，半程没有问题，但跑更长距离估计余量不多了，需要增加长距离训练；</li>
+<li>配速不够平稳。miCoach pacer 只能靠语音播报，不像手表可以随时看到数值，定时播报的间隔时间有点长，在没有把握时应该多让它报一下步速。</li>
+</ul>
+<p>最后感谢亲友团的支持鼓励！希望明年一起跑！</p>
 
           
         
@@ -736,8 +707,8 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2012/06/09/Some-reading-record/" itemprop="url">
-                  一些读书记录
+                <a class="post-title-link" href="/blog/2013/10/21/du-of-software-design/" itemprop="url">
+                  软件设计之度
                 </a>
               
             
@@ -750,21 +721,14 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-06-09T11:56:00+08:00" content="2012-06-09">
-              2012-06-09
+            <time itemprop="dateCreated" datetime="2013-10-21T22:30:00+08:00" content="2013-10-21">
+              2013-10-21
             </time>
           </span>
 
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2012/06/09/Some-reading-record/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2012/06/09/Some-reading-record/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -787,555 +751,8 @@
       
         
           
-            <p>前几个月看了些软件开发相关的书，读的时候有时有感悟就发条tweet，在这里备份一下。  </p>
-<h3 id="梦断代码"><a href="#梦断代码" class="headerlink" title="梦断代码"></a><a href="http://book.douban.com/subject/6526454/" target="_blank" rel="external">梦断代码</a></h3><p>开始阅读《梦断代码》，一个历时多年的软件项目惨败的故事。其实类似的案例很多很多，不过大家都不愿意承认失败，或者将失败轻描淡写而已。</p>
-<p>可复用软件之梦有一悖论：几乎总能找到一段满足大部分需要的代码，但这些拿来的代码所不能做到的部分，恰是本项目与众不同的创新之处。</p>
-<p>软件开发的时间估算始终是恒久难题，敏捷方法能做到的只是对于短期估算有改善：通过任务切分和开发团队亲自估算让数值看起来可靠些，通过计算迭代速率等手段让估算值反映团队近期状态；但对于长期估算，答案依然是：你丫别问了，到时自然就知道。</p>
-<p>《梦断代码》讲了一帮聪明人是怎么把事情搞砸的。因此我非常感兴趣Linux项目是怎么运作的，Linus怎么把这么多聪明人弄到一起合作，而且似乎成效相当不错。</p>
-<p>在周五下班的地铁上看完了《梦断代码》，没有做计划也没有刻意定目标，但已经是在周五读完的第三本书，每周一本。就像连续三个叠代都准时交付。</p>
-<h3 id="设计原本"><a href="#设计原本" class="headerlink" title="设计原本"></a><a href="http://book.douban.com/subject/5406042/" target="_blank" rel="external">设计原本</a></h3><p>一个设计，一个人能完成就不要让其他人参与，增加的人手会削弱设计的一致性，概念的完整性。一个职责，一个部门负责就好，多部门合作带来各自的利益考虑和冲突。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2012/06/05/The-programmer-thought-of-uniting-the-reading-notes/" itemprop="url">
-                  《程序员的思维修炼》读书笔记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-06-05T22:27:00+08:00" content="2012-06-05">
-              2012-06-05
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2012/06/05/The-programmer-thought-of-uniting-the-reading-notes/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2012/06/05/The-programmer-thought-of-uniting-the-reading-notes/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>《<a href="http://book.douban.com/subject/5372651/" target="_blank" rel="external">程序员的思维修炼—-开发认知潜能的九堂课</a>》，国内书商起个怪名字，其实重点在副标题。 原书标题根本不是这样的。</p>
-<h2 id="德雷福斯-Dreyfus-技能模型"><a href="#德雷福斯-Dreyfus-技能模型" class="headerlink" title="德雷福斯(Dreyfus)技能模型"></a>德雷福斯(Dreyfus)技能模型</h2><h3 id="新手-Novice"><a href="#新手-Novice" class="headerlink" title="新手(Novice)"></a>新手(Novice)</h3><p>新手缺乏经验，完成任务时需要操作指引。</p>
-<p>即使某人在一个领域上工作了十年，对所有指引已经了然于心，但他只是不断重复执行指令，也依然是新手。</p>
-<h3 id="高级新手-Advanced-beginner"><a href="#高级新手-Advanced-beginner" class="headerlink" title="高级新手(Advanced beginner)"></a>高级新手(Advanced beginner)</h3><p>能执行要做的任务并根据需求学习新任务，但没对任务环境获得更广泛的概念上的理解，缺乏全局思维。</p>
-<p>高级新手占了绝大部分比例，但他们常高估自己，因为不知道自己不知道什么。</p>
-<h3 id="胜任者-Competent"><a href="#胜任者-Competent" class="headerlink" title="胜任者(Competent)"></a>胜任者(Competent)</h3><p>胜任者能够独立解决问题。</p>
-<h3 id="精通者-Proficient-practitioner"><a href="#精通者-Proficient-practitioner" class="headerlink" title="精通者(Proficient practitioner)"></a>精通者(Proficient practitioner)</h3><p>精通者懂得反思，自我纠正，从自己和他人的经验中学习。</p>
-<h3 id="专家-Expert"><a href="#专家-Expert" class="headerlink" title="专家(Expert)"></a>专家(Expert)</h3><p>专家凭直觉工作，基于他们在领域中的丰富经验，在恰当的情景中选取和应用这些经验。</p>
-<p>专家对问题思考时将所有方面作为一个完整和独特的整体来考虑，而不仅是关注相关方面。</p>
-<p>处理问题时，新手需要指引(instruction)，专家依靠直觉。不给新手指引，或者要求专家跟随指引，都会降低生产力。</p>
-<p><em>按照前面说那个技能模型的定义，看看自己，在大部分领域都只是高级新手，少量能到胜任者，连精通都算不上。</em></p>
-<h2 id="隐性思维"><a href="#隐性思维" class="headerlink" title="隐性思维"></a>隐性思维</h2><p><em>原文中为R型思维，R指右脑，但作者认为左右脑区分并非真实情况，将L解释为线性(linear)模式R解释为富(rich)模式。我按照自己的理解将R型思维看成隐性思维。</em></p>
-<p>发挥隐性思维，捕获闪现灵感，随时准备着记录下来。</p>
-<p>隐性思维会被压抑，在一种思维不受控制的状态下，隐性思维才会发挥作用。</p>
-<p>重视你的直觉，但要去验证它，而不是盲目在第一时间跟随直觉行动。</p>
-<p>隐性思维是非线性的，它从你的记忆库中匹配关联，多学习接触不同类别的东西，为隐性思维累积素材。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2012/03/10/By-mobile-phone-remote-control-Linux-backstage-radio-broadcast-requirements/" itemprop="url">
-                  用手机遥控Linux后台播放豆瓣电台
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-03-10T00:35:00+08:00" content="2012-03-10">
-              2012-03-10
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2012/03/10/By-mobile-phone-remote-control-Linux-backstage-radio-broadcast-requirements/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2012/03/10/By-mobile-phone-remote-control-Linux-backstage-radio-broadcast-requirements/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>最近买了一个<a href="http://en.wikipedia.org/wiki/Asus_EeeBox_PC" target="_blank" rel="external">EeeBox</a>来做home server，装Ubuntu操作系统，有不少东西可以玩。</p>
-<p>其中一个用途是连接到音响播放音乐。我比较喜欢听豆瓣电台，于是找一个豆瓣电台的客户端。Home server平常不接显示器，也不启动图形界面，常见的浏览器客户端、桌面客户端都不能用，要找命令行的。在github上找到Johnny Huang开发的<a href="https://github.com/hzqtc/fmd" target="_blank" rel="external">fmd</a>（Douban FM daemon），启动后在后台运行，正合我意。Fork下来给它增加了个安装脚本，能够安装为服务，开机就自动运行了。但fmd只是个后台进程，只有telnet命令接口，没法对它进行直接控制的，作者另外做了个命令行工具，叫做fmc（FMD client），用来控制fmd。但命令行工具在我这里也还是不能用—-没有显示器没有键盘—-必须能遥控才行。于是我在fmc基础上给它增加了一个web UI，称为<a href="https://github.com/aleung/fmweb" target="_blank" rel="external">fmweb</a>，通过手机浏览器访问，就可以控制播放了。于是，我现在在家里任何地方，都可以控制我的豆瓣电台的播放，不喜欢听，跳下一首歌。</p>
-<p>这是在Android浏览器上的截图，在iPhone、iPad上也可以用。</p>
-<p><img src="https://lh6.googleusercontent.com/-ishGby7lpTk/T1ove7Z0-rI/AAAAAAAAAoU/94_iFdmfSKw/s400/Screenshot_2012-03-09-23-41-13.png" alt=""><img src="https://lh5.googleusercontent.com/-zXp_XdbbgNk/T1ovfpnkxbI/AAAAAAAAAoc/CN-7dV4U4Xg/s400/Screenshot_2012-03-09-23-55-39.png" alt=""></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2012/02/25/In-the-amazon-bought-the-computer-motherboard-and-summarizes-the-experience-of-fault-return/" itemprop="url">
-                  在亚马逊买电脑主板，故障退货的经历及总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-02-25T19:58:00+08:00" content="2012-02-25">
-              2012-02-25
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2012/02/25/In-the-amazon-bought-the-computer-motherboard-and-summarizes-the-experience-of-fault-return/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2012/02/25/In-the-amazon-bought-the-computer-motherboard-and-summarizes-the-experience-of-fault-return/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>为了给老台式电脑升级，在Amazon买了主板、CPU、内存，但装起来加电后不亮。根据现象分析，主板故障的可能性最大，主板是华擎H61M-HVS。拿去华擎网站上列出的本地特约维修中心检查。那里的人说亚马逊网上买的他们不管，跟他沟通了一下，他才勉为其难的测试了一下，查出是主板故障，贴了张故障标签就算了。问他是否能出检测报告之类，我好退货，他说不行，本来检测都不是他们的责任。</p>
-<p>想找Amazon客服咨询，才发现根本没有客服热线，只能上网。幸好智能手机能上网，在订单退货的页面里能够呼叫客服。客服回电话倒是非常快，说了情况后她让我保留好维修中心的故障标签，给我办理了退货申请。我现在就等着退货了。</p>
-<p>就这次经历总结一下：</p>
-<ol>
-<li>买回来的新主板就有故障，让我对华擎的质量失去信心。后来我就买了华硕的主板，一线品牌可能可以放心些。</li>
-<li>华擎（好多其他电脑配件厂商也一样）的售后服务是要求通过原销售店家进行的，但亚马逊并不负责售后，因此出现故障后能否得到有效的服务很难说。我这次幸好还在7天退货期内，可以找亚马逊退货，假如超过7天，我都不知道该如何送修。这点的责任我觉得更多在厂商，他们还没有重视网络电子商务市场。因此消费者在购买这类商品的时候要慎重考虑，要么在实体店买，要么选择明确支持直接全国联保无需通过经销商的品牌。</li>
-<li>亚马逊的客服态度和处理都令我满意。结合以前网购的经历，亚马逊在网站、送货、支付、退货各环节都做得不错，是体验最好的。当然，这次我还要等到退货完成，退款成功后才能下最后结论。</li>
-</ol>
-<p>Update：</p>
-<p>Amazon的退货非常简单和顺利，免费上门收货，签张单。款项很快就退回帐户了。后来我购买其他的东西，还试过无理由退货（只有部分类别货品允许无理由退货），也是很简便，一句废话都不问，爽快得很。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2012/02/19/Extend-the-toilet-bowl-cleaning-treasure-blue-bubble-use-of-the-time-small-skills/" itemprop="url">
-                  延长洁厕宝(蓝泡泡)使用时间的小技巧
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-02-19T23:33:00+08:00" content="2012-02-19">
-              2012-02-19
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2012/02/19/Extend-the-toilet-bowl-cleaning-treasure-blue-bubble-use-of-the-time-small-skills/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2012/02/19/Extend-the-toilet-bowl-cleaning-treasure-blue-bubble-use-of-the-time-small-skills/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>以前马桶放的洁厕宝（蓝泡泡）总是不耐用，声称普通使用可达一个月，但实际上头几天冲的水颜色很深，一个星期后颜色就非常淡了，根本用不到一个月，原因是溶解速度控制不了，太快了。</p>
-<p>为了防止过快溶解，给洁厕宝增加一个”外套”。我选的是大开口的口香糖盒子，大小比较合适，能把整块洁厕宝放进去，瓶口合上比较严实。在瓶身开上几个直径3～5mm左右的洞，洞不能太小也不能太大。开始可以先开三四个，如果实验发现洁厕宝溶解不出来再加开几个。怎么开洞就看你手上有什么工具了，我试过几种工具，发现用美工刀最容易，三刀开出一个三角形的洞。做好后把洁厕宝放进去，盖上盖子，扔马桶水箱里就行了。因为盒子里有空气，可能它不会自己沉下去，需要把它按进水里，把空气排出来。水箱里有水垢，不是那么好看，就不把照片贴出来了。</p>
-<p><img src="https://lh4.googleusercontent.com/-c5HKYk_j34o/T0EL4Y6tMcI/AAAAAAAAAnY/YnGOTSAfDBY/s800/toilet_%201%20%281%29.jpg" alt=""><img src="https://lh4.googleusercontent.com/-xujCGkefLQY/T0EL5g-crrI/AAAAAAAAAng/aVK2tmecsC0/s800/toilet_%202%20%281%29.jpg" alt=""><img src="https://lh3.googleusercontent.com/-lDnmsRQFEiQ/T0EL7i1DpCI/AAAAAAAAAno/GCn5dEHM9dc/s800/toilet_%203%20%281%29.jpg" alt=""></p>
-<p>加了”外套”后，效果相当显著，一颗洁厕宝大概能用三个月。去年家人出差多，竟然用了半年！</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2011/12/26/Baiyun-mountain-running/" itemprop="url">
-                  白云山跑步
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2011-12-26T00:50:00+08:00" content="2011-12-26">
-              2011-12-26
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2011/12/26/Baiyun-mountain-running/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2011/12/26/Baiyun-mountain-running/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>最近几个周末都跑超过10公里的长距离，但珠江边跑多了已经没有新鲜感。另外最近一段时间空气污染情况又偏高了，虽然头顶阳光灿烂，看远眺整个城市低空都笼罩在一层灰霾之中。于是就把目光投向了白云山：一方面离开市中心，也有高度，空气会好些；另外跑有坡度的路线，可以起到不一样的锻炼效果。</p>
-<p>以往去珠江边跑，我都是从住处附近就开始跑，最后跑回家，因此可以穿短衣短裤。但去白云山跑来回都得坐车，穿衣就是个问题。为此专门去迪卡侬买了长袖跑步上衣和紧身7分跑步裤。本来还想买跑步背包的，没得卖，登山背包不适合跑步，只好算了。回来在网上查一下，似乎全国的店都没有卖跑步背包，看了现在玩户外hiking的人多了，但跑步得还是少数。这次背了自行车包，效果还行，没有腰带有点左右晃动，但只是放一件衣服重量不大，对跑步没什么影响。</p>
-<p>从外语学院附近的西门进白云山，已经下午4点多，周末到白云山的人真多，路上游客络绎不绝。新买的衣裤很显眼，引来不少注目，所以很多人都建议买点貌似专业的装备，可以有助于坚持锻炼。</p>
-<p>路线记录在<a href="http://runkeeper.com/user/aleung/activity/63723897" target="_blank" rel="external">RunKeeper</a>，有地图和海拔、速度曲线。</p>
-<p>西门上山的路是最平缓的，至明珠楼前的2km没有多少上升，正好作为热身。过了明珠楼，就是正式上山路了，2公里上升了150米，上坡时的步速在每公里6分钟多到7分钟多左右，步频大概坚持在160～170，但步幅缩得很小了。绕摩星岭有东西两条路，我先是选择了东面的路，在接近6km处经过了这段路的最高点275米，接下来的路就比较平缓了，上下坡交替，坡度没有前面大，下坡路我跑得很欢。这段路视野开阔，先是看到京溪、梅花园一带的楼房，然后拐过弯，就看到了天河的中信等高楼。看着笼罩在一片灰蒙蒙之中的高楼已经在脚下，感觉很爽。跑了45分钟，7.6km，到达山顶公园。我原计划就是跑到这里为止的，本来以为起码要一个多小时才能到，一停下来，觉得好像不累，还没跑够（其实前面上坡的时候挺吃力的）。从这里如果往南走，就一直是下山路，到云台花园出山，坡度要更大，我不敢跑这样的下坡路，于是回头，还是回外语学院那边好了。接下来的岔路，选择了摩星岭西侧的路，这样走的就是环线，不用全走回头路。没想到后面这一公里多的路真是要命，一路都是上坡，一点平缓都没有。后面有一段我都坚持不了走直线，只能之字形迂回。幸好这段路不长，锦绣南天（雷达站）处到达最高点340米，这一公里上升了90米，上坡步速每公里8～9分钟，比走路快不了多少。接下来就是一路下坡了，跑了一公里多，一直都要控制速度，想着到山底路还长，怕膝盖受不了，不敢继续跑了，就此结束。全程10.64km，耗时1:06:55，平均6.17min/km。</p>
-<p>西门这条路跑步上山比较合适，但走路下去就太长了。结束跑的时候差不多6点，太阳下山了，穿回抓绒衣也不冷，但裤子只盖住膝盖，小腿就有点凉。走到明珠楼，看后面的路坡度不大了，又跑了差不多两公里一段。但这段就跑得不算太好，不算累，但小腿偶尔有点要抽筋的感觉，不知道是因为之前上坡时累了还是因为太凉。下次还是走云台花园下山好了，时间短一些。但那边又没有直接回家的公交车，麻烦。今天跑这趟步一共花了4个多小时，如果能够将总时间控制到3小时内就比较好。</p>
-<p>今天还戴了心率记录器来跑的，早上迪卡侬买的，配合我已有的心率胸带，USB电脑读数据。谁知回来才发现只能接Windows上，不支持Mac OSX，在虚拟机里也认不到设备。而且RunKeeper也只支持Polar心率表的数据格式，这个就算能连也没用。要拿回去退货了。</p>
-<p>第一次跑上山，感觉不错。以后说不定可以尝试一下越野跑，据说龙凤线也可以跑的。不过不敢跑大下坡，膝盖伤过后就承受不了。</p>
+            <p>上个月在公司里分享的主题。Slideshare上看不到页面的动画效果，页面里的东西混一起了，要下载原PowerPoint文件看才行。</p>
+<iframe src="http://www.slideshare.net/slideshow/embed_code/26482993" width="595" height="487" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen></iframe>
 
           
         
@@ -1368,7 +785,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/blog/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/32/">32</a><a class="extend next" rel="next" href="/blog/page/7/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/blog/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/64/">64</a><a class="extend next" rel="next" href="/blog/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1409,7 +826,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">312</span>
+              <span class="site-state-item-count">317</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1556,25 +973,6 @@
 
 
 
-  
-
-    <script type="text/javascript">
-      var disqus_shortname = 'aleung';
-      var disqus_identifier = 'page/6/index.html';
-      var disqus_title = "";
-      var disqus_url = '';
-
-      function run_disqus_script(disqus_script){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-      
-    </script>
   
 
 

@@ -1,0 +1,753 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Software,Hardware," />
+
+
+
+
+
+  <link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="装了一台黑苹果在公司里用，幸福指数大大提升。
+硬件硬件选型参考tonymacx86的CustoMac Mini)，算下来主机不足4000元。要保证安装顺利、功能正常和稳定，最重要的是选择推荐的主板型号，可以找到详细的安装配置教程，各种可能的坑都有人给出解决方案了。安装过程一律依据tonymacx86的guide进行，没有任何问题。SSD和机械硬盘组成fusion drive，在较低的成本上达到不错">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hackintosh Installation">
+<meta property="og:url" content="http://aleung.github.io/blog/2016/04/11/mac-installation/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:description" content="装了一台黑苹果在公司里用，幸福指数大大提升。
+硬件硬件选型参考tonymacx86的CustoMac Mini)，算下来主机不足4000元。要保证安装顺利、功能正常和稳定，最重要的是选择推荐的主板型号，可以找到详细的安装配置教程，各种可能的坑都有人给出解决方案了。安装过程一律依据tonymacx86的guide进行，没有任何问题。SSD和机械硬盘组成fusion drive，在较低的成本上达到不错">
+<meta property="og:updated_time" content="2016-08-30T16:34:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hackintosh Installation">
+<meta name="twitter:description" content="装了一台黑苹果在公司里用，幸福指数大大提升。
+硬件硬件选型参考tonymacx86的CustoMac Mini)，算下来主机不足4000元。要保证安装顺利、功能正常和稳定，最重要的是选择推荐的主板型号，可以找到详细的安装配置教程，各种可能的坑都有人给出解决方案了。安装过程一律依据tonymacx86的guide进行，没有任何问题。SSD和机械硬盘组成fusion drive，在较低的成本上达到不错">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Hackintosh Installation | Good good study, day day up </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Good good study, day day up</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">aleung的学习笔记, aleung的idea</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Hackintosh Installation
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-11T00:00:00+08:00" content="2016-04-11">
+              2016-04-11
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>装了一台黑苹果在公司里用，幸福指数大大提升。</p>
+<h1 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h1><p>硬件选型参考tonymacx86的<a href="[http://www.tonymacx86.com/building-customac-buyers-guide-march-2016.html#CustoMac_Mini](http://www.tonymacx86.com/building-customac-buyers-guide-march-2016.html#CustoMac_Mini">CustoMac Mini</a>)，算下来主机不足4000元。要保证安装顺利、功能正常和稳定，最重要的是选择推荐的主板型号，可以找到详细的安装配置教程，各种可能的坑都有人给出解决方案了。安装过程一律依据tonymacx86的guide进行，没有任何问题。SSD和机械硬盘组成fusion drive，在较低的成本上达到不错的性能和容量的兼顾。唯一问题是用了fusion driver之后hibernate就不能用了，因为Clover认不出fusion driver，找不到上面的sleep image。</p>
+<h1 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h1><p>以下内容均针对 El Capitan。</p>
+<h2 id="App安装途径"><a href="#App安装途径" class="headerlink" title="App安装途径"></a>App安装途径</h2><p>安装应用途径，按照优先顺序：</p>
+<ul>
+<li><a href="https://caskroom.github.io/" target="_blank" rel="external">Homebrew Cask</a></li>
+<li><a href="http://brew.sh/" target="_blank" rel="external">Homebrew</a></li>
+<li>App Store</li>
+<li>官网下载</li>
+</ul>
+<h3 id="升级已安装的所有brews"><a href="#升级已安装的所有brews" class="headerlink" title="升级已安装的所有brews"></a>升级已安装的所有brews</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">brew update</div><div class="line">brew upgrade</div></pre></td></tr></table></figure>
+<h3 id="升级已安装的所有casks"><a href="#升级已安装的所有casks" class="headerlink" title="升级已安装的所有casks"></a>升级已安装的所有casks</h3><p>From: <a href="http://apple.stackexchange.com/a/231020/13455" target="_blank" rel="external">http://apple.stackexchange.com/a/231020/13455</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl <span class="_">-s</span> https://gist.githubusercontent.com/atais/5d3ec79e67f221cb55b7/raw/f6e6b647e6f90939c016ba88e591529d143cb33d/cash_upgrade.sh | bash /dev/stdin</div></pre></td></tr></table></figure>
+<h2 id="强大的命令行"><a href="#强大的命令行" class="headerlink" title="强大的命令行"></a>强大的命令行</h2><ul>
+<li>用iTerm2替换系统自带的terminal<ul>
+<li>安装 Solarized Dracula theme （不要选Solaris dark，好多工具的输出会看不见）</li>
+<li>更改字体</li>
+</ul>
+</li>
+<li>用zsh替换缺省的bash<ul>
+<li>使用 Oh-my-zsh 进行zsh的配置，以上步骤参考这里 <a href="https://gist.github.com/kevin-smets/8568070" target="_blank" rel="external">https://gist.github.com/kevin-smets/8568070</a></li>
+<li>设置为超酷的theme: <a href="https://gist.github.com/agnoster/3712874" target="_blank" rel="external">agnoster</a></li>
+</ul>
+</li>
+<li>安装 <a href="https://github.com/clvv/fasd" target="_blank" rel="external">fasd</a></li>
+</ul>
+<h2 id="Finder增强"><a href="#Finder增强" class="headerlink" title="Finder增强"></a>Finder增强</h2><h3 id="快速切换是否显示隐藏文件"><a href="#快速切换是否显示隐藏文件" class="headerlink" title="快速切换是否显示隐藏文件"></a>快速切换是否显示隐藏文件</h3><p>按照<a href="http://apple.stackexchange.com/questions/177132/how-to-set-h-to-enable-show-hidden-files/177138#177138" target="_blank" rel="external">这里</a>的方法创建一个Automator Service。</p>
+<h3 id="增强-Finder-预览文件的能力"><a href="#增强-Finder-预览文件的能力" class="headerlink" title="增强 Finder 预览文件的能力"></a>增强 Finder 预览文件的能力</h3><p>安装quick look plugins： <a href="https://github.com/sindresorhus/quick-look-plugins" target="_blank" rel="external">https://github.com/sindresorhus/quick-look-plugins</a></p>
+<h2 id="增强剪贴板"><a href="#增强剪贴板" class="headerlink" title="增强剪贴板"></a>增强剪贴板</h2><p>安装 ClipMenu，提供剪贴板历史功能</p>
+<h2 id="本地化Web应用"><a href="#本地化Web应用" class="headerlink" title="本地化Web应用"></a>本地化Web应用</h2><p>安装 <a href="https://github.com/dmarmor/epichrome" target="_blank" rel="external">epichrome</a> 将web应用（例如trello）包装为本地应用，方便使用 Mission Control 和全屏。它实际上是每个web应用绑定一个独立的chrome profile，故此还可以安装使用chrome插件。</p>
+<h2 id="一套键盘鼠标控制两台电脑"><a href="#一套键盘鼠标控制两台电脑" class="headerlink" title="一套键盘鼠标控制两台电脑"></a>一套键盘鼠标控制两台电脑</h2><p>Mac是台式机，键盘鼠标连接到Mac上，安装SynergyKM，运行为server；Win笔记本安装Synergy（网上寻找第三方编译版本，open source，但官网下载binary要收费），运行为client。</p>
+<p>使用Windows键盘，需要重新映射按键。首先是在 Preference - Keyboard - Modifier Keys 中对调 Option 和 Command 键，这样左下角三个键的位置就跟Mac的键位相同了。然后安装<a href="https://pqrs.org/osx/karabiner/" target="_blank" rel="external">Karabiner</a>，一个功能超强的键盘映射工具，在profile中选择enable需要的映射规则。</p>
+<p>因为用 Synergy 同时控制Win电脑，这时重映射过的键盘在 Windows 里面就很难用了。Karabiner 支持多个profile，但目前还没有根据所在屏幕自动切换的方案，解决方法是创建一个NoRemap的profile，里面不打开任何remap规则，用F6键做profile切换。</p>
+<p>Profile切换需要在Karabiner中增加自定义规则，在<code>private.xml</code>中加入下面的内容：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">vkopenurldef</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>KeyCode::VK_OPEN_URL_SHELL_switchprofile_default<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">url</span> <span class="attr">type</span>=<span class="string">"shell"</span>&gt;</span></div><div class="line">        &lt;![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name Default    ]]&gt;</div><div class="line">    <span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">vkopenurldef</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">vkopenurldef</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>KeyCode::VK_OPEN_URL_SHELL_switchprofile_noremap<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">url</span> <span class="attr">type</span>=<span class="string">"shell"</span>&gt;</span></div><div class="line">        &lt;![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name NoRemap    ]]&gt;</div><div class="line">    <span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">vkopenurldef</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Switch Profile to Default with F6<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">identifier</span>&gt;</span>private.switch1<span class="tag">&lt;/<span class="name">identifier</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">autogen</span>&gt;</span></div><div class="line">        __KeyToKey__</div><div class="line">        KeyCode::F6,</div><div class="line">        KeyCode::VK_OPEN_URL_SHELL_switchprofile_default</div><div class="line">    <span class="tag">&lt;/<span class="name">autogen</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Switch Profile to NoRemap with F6<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">identifier</span>&gt;</span>private.switch2<span class="tag">&lt;/<span class="name">identifier</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">autogen</span>&gt;</span></div><div class="line">        __KeyToKey__</div><div class="line">        KeyCode::F6,</div><div class="line">        KeyCode::VK_OPEN_URL_SHELL_switchprofile_noremap</div><div class="line">    <span class="tag">&lt;/<span class="name">autogen</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">item</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>参考自：<a href="http://apple.stackexchange.com/a/143064/13455" target="_blank" rel="external">http://apple.stackexchange.com/a/143064/13455</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/Software/" rel="tag">#Software</a>
+          
+            <a href="/blog/tags/Hardware/" rel="tag">#Hardware</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2015/12/06/guangzhou-marathon/" rel="next" title="2015 广州马拉松小结">
+                <i class="fa fa-chevron-left"></i> 2015 广州马拉松小结
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2016/08/30/update/" rel="prev" title="Blog update">
+                Blog update <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars.io/gravatar/leoliang@gmail.com"
+               alt="Leo Liang" />
+          <p class="site-author-name" itemprop="name">Leo Liang</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">317</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/blog/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#硬件"><span class="nav-number">1.</span> <span class="nav-text">硬件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件"><span class="nav-number">2.</span> <span class="nav-text">软件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#App安装途径"><span class="nav-number">2.1.</span> <span class="nav-text">App安装途径</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#升级已安装的所有brews"><span class="nav-number">2.1.1.</span> <span class="nav-text">升级已安装的所有brews</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#升级已安装的所有casks"><span class="nav-number">2.1.2.</span> <span class="nav-text">升级已安装的所有casks</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强大的命令行"><span class="nav-number">2.2.</span> <span class="nav-text">强大的命令行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Finder增强"><span class="nav-number">2.3.</span> <span class="nav-text">Finder增强</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#快速切换是否显示隐藏文件"><span class="nav-number">2.3.1.</span> <span class="nav-text">快速切换是否显示隐藏文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增强-Finder-预览文件的能力"><span class="nav-number">2.3.2.</span> <span class="nav-text">增强 Finder 预览文件的能力</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增强剪贴板"><span class="nav-number">2.4.</span> <span class="nav-text">增强剪贴板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地化Web应用"><span class="nav-number">2.5.</span> <span class="nav-text">本地化Web应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一套键盘鼠标控制两台电脑"><span class="nav-number">2.6.</span> <span class="nav-text">一套键盘鼠标控制两台电脑</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Liang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>

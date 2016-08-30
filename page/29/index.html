@@ -86,15 +86,12 @@
 
 
 
-<meta name="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Good good study, day day up">
 <meta property="og:url" content="http://aleung.github.io/blog/page/29/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Good good study, day day up">
-<meta name="twitter:description">
 
 
 
@@ -119,15 +116,6 @@
 
   
 
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-2827715-4', 'auto');
-  ga('send', 'pageview');
-</script>
 
 
 
@@ -267,8 +255,8 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2003/09/11/Invalid-XML-character-msxml-dll-/" itemprop="url">
-                  Invalid XML character, msxml.dll的问题
+                <a class="post-title-link" href="/blog/2009/03/17/Why-can-t-together/" itemprop="url">
+                  为什么不能合在一起
                 </a>
               
             
@@ -281,21 +269,14 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2003-09-11T22:35:00+08:00" content="2003-09-11">
-              2003-09-11
+            <time itemprop="dateCreated" datetime="2009-03-17T08:20:00+08:00" content="2009-03-17">
+              2009-03-17
             </time>
           </span>
 
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2003/09/11/Invalid-XML-character-msxml-dll-/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2003/09/11/Invalid-XML-character-msxml-dll-/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -318,12 +299,67 @@
       
         
           
-            <p>Java程序测试中发现parse一个XML文件时出现exception, 错误信息为invalid XML character. 但这个XML文件用XMLSpy检查却没有问题.  </p>
-<p>经过查找资料, 发现是XML文件中包含了一些不允许在XML中使用的字符(控制符). XML规范中规定了允许的字符范围(<a href="http://www.w3.org/TR/REC-xml#dt-character" target="_blank" rel="external">http://www.w3.org/TR/REC-xml#dt-character</a>):  </p>
-<pre><code>Char ::= #x9 | #xA | #xD | [#x20-#xD7FF] | [#xE000-#xFFFD] | [#x10000-#x10FFFF]   
-</code></pre><p>包含illegal字符的XML文件不是well-formedness的, 为什么这样的文件能够生成, 并且XMLSpy不报错? 是Microsoft XML parser的问题. 这个XML文件是使用msxml.dll生成的, 估计XMLSpy用的也是msxml.dll, 这个parser的其中一个缺陷是允许某些非常字符的存在. 而Java程序中用的parser估计是sun的crimson, 这个parser严格检查XML character range, 包含非法字符就会报错.   </p>
-<p>msxml.dll的问题看来还有不少, 这里专门有谈到: <a href="http://www.xml.com/pub/a/1999/11/parser/index.html?page=2" target="_blank" rel="external">http://www.xml.com/pub/a/1999/11/parser/index.html?page=2</a>   </p>
-<p>为了解决此问题, 需要在生成XML前先对字符串检查, 把非法字符过滤掉. 这里提供了java的过滤函数: <a href="http://lists.ibiblio.org/pipermail/xom-interest/2003-May/000471.html" target="_blank" rel="external">http://lists.ibiblio.org/pipermail/xom-interest/2003-May/000471.html</a>   </p>
+            <p>白鸦在他的<a href="http://uicom.net/blog/?p=818" target="_blank" rel="external">blog</a>上说，日历(calendar)和任务(task, todo)这两样东西为什么要分成两个独立功能，而不能合到一起？ 对此，我是有同感的。</p>
+<p>在我的日常事务管理流程中，会将所有要做的事情都记录在todo list中，然后每天会做时间规划，根据todo list里面任务的优先级、due date决定当天需要做的事情，并且在日历中计划出处理这些事情的时间。当然，如果是会议请求，outlook就已经自动把它放在日历里面了。事情完成后，到todo list中将相应任务设置为completed。实际的执行过程中，时间安排可能会做出改变，我把日历里的项目调整为实际耗用的时间。这样，事务的管理、时间安排、时间耗用的跟踪都在todo list和日历这两个系统中完成了。</p>
+<p>但是，分为两个系统，还是有麻烦之处：我必须同时查看todo list和日历，才能进行时间的安排；需要将todo list里面已经存在的任务手工填写到日历中。实际上，可以认为任务和日历中的事件(event)本质上是相同的东西：都是需要完成的一些事情。任务安排了具体时间之后就变成了日历中的事件。如果要将两者合并，属性上可以做这样一些设计：</p>
+<table>
+<thead>
+<tr>
+<th>统一后的属性</th>
+<th>原Todo中的属性</th>
+<th>原Calendar中的属性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Subject / Description</td>
+<td>Subject / Description</td>
+<td>Subject / Description</td>
+</tr>
+<tr>
+<td>Due date</td>
+<td>Due date</td>
+<td></td>
+</tr>
+<tr>
+<td>Start date</td>
+<td>Start date</td>
+<td></td>
+</tr>
+<tr>
+<td>Complete status</td>
+<td>Complete status</td>
+<td></td>
+</tr>
+<tr>
+<td>Estimation</td>
+<td>Estimation</td>
+<td>作为缺省的duration</td>
+</tr>
+<tr>
+<td>Repeat</td>
+<td>Repeat</td>
+<td>Repeat</td>
+</tr>
+<tr>
+<td>Start time / End time</td>
+<td>Start time / End time</td>
+<td></td>
+</tr>
+<tr>
+<td>Where</td>
+<td>Where (不是所有todo软件都有此属性)</td>
+<td>Where</td>
+</tr>
+<tr>
+<td>Priority</td>
+<td>Priority</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>还有其他的一些属性就不一一列出了，但已经可见两者其实大部分都是重叠的。</p>
+<p>两者合并后，在展现上，能够将一天里已经安排好具体时间的事件，和没有安排具体时间，但是需要在这天内做（根据Start date和Due date）的任务显示在同一界面上，什么时候该做什么就一目了然了。在操作上，将一个任务拖放到日历中，或者输入开始结束时间，就能为任务安排计划的执行时间，并且显示在日历中。</p>
 
           
         
@@ -373,8 +409,8 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2003/09/08/MySQL-/" itemprop="url">
-                  MySQL的表名大小写问题
+                <a class="post-title-link" href="/blog/2009/03/17/How-to-solve-the-conflict/" itemprop="url">
+                  如何解决冲突
                 </a>
               
             
@@ -387,21 +423,14 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2003-09-08T22:44:00+08:00" content="2003-09-08">
-              2003-09-08
+            <time itemprop="dateCreated" datetime="2009-03-17T05:57:00+08:00" content="2009-03-17">
+              2009-03-17
             </time>
           </span>
 
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2003/09/08/MySQL-/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2003/09/08/MySQL-/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -424,474 +453,34 @@
       
         
           
-            <p>在SQL标准中, 标识符是不区分大小写的. 可是在MySQL中, 情况有所不同, 表名有可能是大小写敏感的:  </p>
-<blockquote>
-<p>在 MySQL 中，数据库和表对就于那些目录下的目录和文件。因而，操作系统的敏感性决定数据库和表命名的大小写敏感。这就意味着数据库和表名在 Windows 中是大小写不敏感的，而在大多数类型的 Unix 系统中是大小写敏感的。  </p>
-</blockquote>
-<p>尽管在 Windows 中数据库与表名是忽略大小写的，你不应该在同一个查询中使用不同的大小写来引用一个给定的数据库和表。  </p>
-<p>表的别名是区分大小写的。  </p>
-<p>详细信息在MySQL参考手册中有说明. 查看: <em>MySQL语言参考</em> - <em>语言结构</em>  </p>
-<p>从兼容性和可移植性考虑, 在涉及到数据库表名的时候, 均应该<strong>严格区分大小写</strong>, 无论使用的是什么类型的数据库和什么类型的平台.  </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2003/09/08/Java-XML-API/" itemprop="url">
-                  Java的几种XML语法分析API
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2003-09-08T22:42:00+08:00" content="2003-09-08">
-              2003-09-08
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2003/09/08/Java-XML-API/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2003/09/08/Java-XML-API/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>用Java对XML进行处理, 有好多种方案, 如不了解相互的关系让人很头晕. 这里介绍的都是XML processing/parsing的范畴, XML的应用还有其他的许多方面, 也有好多令人眼花缭乱的缩写.  </p>
-<p>XML语法分析的方案有两种, 分别为DOM和SAX.  </p>
-<p><strong>DOM</strong>: Document Object Model (<a href="http://www.w3.org/DOM/" target="_blank" rel="external">http://www.w3.org/DOM/</a>)<br>DOM 由 W3C 创建，并且是该协会的正式建议.<br>解析器读入整个文档，然后构建一个驻留内存的树结构，然后您的代码就可以使用 DOM 接口来操作这个树结构。您可以遍历树以了解原始文档包含了什么，您可以删除树的几个部分，还可以重新排列树和添加新的分支，等等。<br>DOM 构建整个文档驻留内存的树。如果文档很大，就会要求有极大的内存。<br>DOM 创建表示原始文档中每个东西的对象，包括元素、文本、属性和空格。如果您只需关注原始文档的一小部分，那么创建那些永远不被使用的对象是极其浪费的。<br>DOM 解析器必须在您的代码取得控制权之前读取整个文档。对于非常大的文档，这会引起显著的延迟。   </p>
-<p><strong>SAX</strong> API for XML (<a href="http://www.saxproject.org/" target="_blank" rel="external">http://www.saxproject.org/</a>)<br>SAX 采用事件驱动的模式, 解释器读入XML文档, 进行扫描, 当发现符合指定条件的数据时, 向您的代码发送一个事件。SAX 不能修改 XML 文档.<br>SAX 事件是无状态的。当 SAX 解析器在 XML 文档中发现文本时，它就向您的代码发送一个事件。该事件仅仅给您发现的文本；它不告诉您什么元素包含那个文本。如果您想知道这一点，则必须自己编写状态管理代码。<br>SAX 事件不是持久的。如果应用程序需要一个数据结构来对 XML 文档建模，则必须自己编写那样的代码。如果您需要从 SAX 事件访问数据，并且没有把那个数据存储在代码中，那么您不得不再次解析该文档。<br>SAX 的速度相当快, 而且节省内存, 因为它不会保存数据在内存之中.   </p>
-<p>DOM/SAX 是两种不同的解析方法, 各有侧重点, 用于不同用途. 它们都可以用不同的编程语言来实现, 不同的供应商会提供各自的解释器版本. 例如Microsoft提供了DOM分析器msxml.dll, Apache的xerces, SUN的crimson等.   </p>
-<p>DOM与SAX, 如何选择?   </p>
+            <p>今天参加了一个名为《有效率的会议管理》的培训课程，其中关于如何解决冲突的问题，比较有意义，记录下来。</p>
+<p>面临冲突时，一般人有以下几种行为反应的模式：</p>
 <ul>
-<li><p>应用程序将如何部署？<br>如果您的应用程序将要作为 Java applet 部署，那么您会希望使要下载的代码数量最小，SAX 解析器比 DOM 解析器小。   </p>
-</li>
-<li><p>一旦解析了 XML 文档，还需要多次访问那些数据吗？<br>如果您需要回过头来访问 XML 文件的已解析版本，DOM 可能是正确的选择。而 SAX 事件被触发时，如果您以后需要它，则由您（开发人员）自己决定以某种方式保存它。如果您需要访问不曾保存的事件，则必须再次解析该文件。而 DOM 自动保存所有的数据。   </p>
-</li>
-<li><p>只需要 XML 源文件的少量内容吗？<br>如果您只需要 XML 源文件的少量内容，那么 SAX 可能是正确的选择。SAX 不会为源文件中的每个东西创建对象；您要确定什么是重要的。使用 SAX，您要检查每个事件以了解它是否与您的需要有关，然后相应地处理它。更妙的是，一旦找到您正在寻找的东西，您的代码就会抛出一个异常来完全停止 SAX 解析器。   </p>
-</li>
-<li><p>您正在一台内存很少的机器上工作吗？<br>若是的话，不管您可能考虑到的其它因素是什么，SAX 是您的最佳选择。  </p>
-</li>
+<li>回避型：回避问题，避免与对方发生冲突。但是这并不能解决问题，因为并不接受对方的观点，只是将问题拖延。</li>
+<li>竞争型：竭力坚持自己的立场和观点，力图说服对方。</li>
+<li>迁就型：放弃自己的立场，迁就对方的意见。与回避的区别在于，迁就是接受对方的观点。</li>
+<li>妥协型：求同存异，力求寻找双方观点中一致之处，得到折中的解决方案，而对于不一致的地方双方共同让步。</li>
+<li>协作型：开诚布公的阐述自己的观点和担忧的同时，也用心聆听对方的观点，同时考虑自己和对方关切的全部事情；力图通过共同探讨来解决双方的差异，通过合作得到满足各方意愿的解决方法。</li>
 </ul>
-<p>在Java语言中, 要处理XML, 除了直接使用DOM/SAX, 还有高层次一点的API可以使用, 比较常见的是JAXP和JDOM.   </p>
-<p><strong>JAXP</strong>: Java API for XML Processing<br>是 Sun 提供的标准API, 包含在JDK中.<br>但它更多的是一套接口, 将DOM和SAX的接口规范起来, 并没有在易操作性方面提供太多的方便.  </p>
-<p><strong>JDOM</strong>: 由Brett McLaughlin, Jason Hunter两人创立的open source项目 (<a href="http://www.jdom.org" target="_blank" rel="external">http://www.jdom.org</a>)<br>JDOM的设计目的不是要做万能的解析器, 而是能提供常用的大部分的功能. 它的使用相对简单, 容易理解, 使用它开发代码量会比较少.<br>JDOM 的速度也比较高, 仅仅比SAX慢一点. 它主要是使用SAX来实现功能, 当需要用到DOM的时候才使用DOM.   </p>
-<p>还有不少类似的API, 某些甚至已经比JDOM更好, 不过都不如JDOM使用范围广.  </p>
-<p>JAXP/JDOM 都是建立在 DOM/SAX 之上的API, 也可认为是抽象层, 需要通过具体供应商提供 DOM/SAX 实现来完成 XML 解析工作. 作为一个相对高层的接口, 隐藏了具体厂商实现, 减低复杂性, 降低开发的工作量.   </p>
-<p>一般来说, 在我们开发程序的时候, 从开发效率,兼容性,移植性等方面考虑, 都是选择使用高层的API更好些. JAXP已经附带在JDK中, 由SUN所支持, 应该标准化/延续性方面会比较好; 而根据网上开发者反映, 普遍都喜欢用JDOM, 因为使用简单方便.  </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2003/09/04/How-to-let-JTextArea-automatic-scroll-to-the-bottom-/" itemprop="url">
-                  如何让JTextArea自动滚动到最底?
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2003-09-04T22:52:00+08:00" content="2003-09-04">
-              2003-09-04
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2003/09/04/How-to-let-JTextArea-automatic-scroll-to-the-bottom-/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2003/09/04/How-to-let-JTextArea-automatic-scroll-to-the-bottom-/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>如果用JTextArea来做信息窗口，不断用append()显示新信息，通常会希望内容能自动滚动，保持最后增加的信息能够显示出来。利用setCaretPosition()可以实现，这个方法是设置输入光标的位置，如果光标位置超出目前可视范围，会自动滚动以保正光标可以显示出来。</p>
-<pre><code>int length = textArea.getText().length();
-textArea.setCaretPosition(length);
-</code></pre><p>如果还希望限制JTextArea中的文本长度，不让它无限制的增长，可以加上以下两行，当长度超出预订的maxTextLength后将开头的字符截除。不过美中不足的是截除无法按行进行。</p>
-<pre><code>if ( length &gt; maxTextLength ) { 
-    textArea.replaceRange(&quot;&quot;, 0, length - maxTextLength); 
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2003/09/02/Unicode-/" itemprop="url">
-                  Unicode与字符编码
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2003-09-02T22:55:00+08:00" content="2003-09-02">
-              2003-09-02
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2003/09/02/Unicode-/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2003/09/02/Unicode-/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode:"></a>Unicode:</h3><p>unicode.org制定的编码机制, 要将全世界常用文字都函括进去.<br>在1.0中是16位编码, 由U+0000到U+FFFF. 每个2byte码对应一个字符; 在2.0开始抛弃了16位限制, 原来的16位作为基本位平面, 另外增加了16个位平面, 相当于20位编码, 编码范围0到0x10FFFF.  </p>
-<h3 id="UCS"><a href="#UCS" class="headerlink" title="UCS:"></a>UCS:</h3><p>ISO制定的ISO10646标准所定义的 Universal Character Set, 采用4byte编码.  </p>
-<h3 id="Unicode与UCS的关系"><a href="#Unicode与UCS的关系" class="headerlink" title="Unicode与UCS的关系:"></a>Unicode与UCS的关系:</h3><p>ISO与unicode.org是两个不同的组织, 因此最初制定了不同的标准; 但自从unicode2.0开始, unicode采用了与ISO 10646-1相同的字库和字码, ISO也承诺ISO10646将不会给超出0x10FFFF的UCS-4编码赋值, 使得两者保持一致.  </p>
-<h3 id="UCS的编码方式"><a href="#UCS的编码方式" class="headerlink" title="UCS的编码方式:"></a>UCS的编码方式:</h3><ul>
-<li>UCS-2, 与unicode的2byte编码基本一样.   </li>
-<li>UCS-4, 4byte编码, 目前是在UCS-2前加上2个全零的byte.  </li>
-</ul>
-<h3 id="UTF-Unicode-UCS-Transformation-Format"><a href="#UTF-Unicode-UCS-Transformation-Format" class="headerlink" title="UTF: Unicode/UCS Transformation Format"></a>UTF: Unicode/UCS Transformation Format</h3><ul>
-<li>UTF-8, 8bit编码, ASCII不作变换, 其他字符做变长编码, 每个字符1-3 byte. 通常作为外码. 有以下优点:  <ul>
-<li>与CPU字节顺序无关, 可以在不同平台之间交流  </li>
-<li>容错能力高, 任何一个字节损坏后, 最多只会导致一个编码码位损失, 不会链锁错误(如GB码错一个字节就会整行乱码)   </li>
-</ul>
-</li>
-<li>UTF-16, 16bit编码, 是变长码, 大致相当于20位编码, 值在0到0x10FFFF之间, 基本上就是unicode编码的实现. 它是变长码, 与CPU字序有关, 但因为最省空间, 常作为网络传输的外码.<br>UTF-16是unicode的preferred encoding.   </li>
-<li>UTF-32, 仅使用了unicode范围(0到0x10FFFF)的32位编码, 相当于UCS-4的子集.  </li>
-</ul>
-<h3 id="UTF与unicode的关系"><a href="#UTF与unicode的关系" class="headerlink" title="UTF与unicode的关系:"></a>UTF与unicode的关系:</h3><p>Unicode是一个字符集, 可以看作为内码.<br>而UTF是一种编码方式, 它的出现是因为unicode不适宜在某些场合直接传输和处理. UTF-16直接就是unicode编码, 没有变换, 但它包含了0x00在编码内, 头256字节码的第一个byte都是0x00, 在操作系统(C语言)中有特殊意义, 会引起问题. 采用UTF-8编码对unicode的直接编码作些变换可以避免这问题, 并带来一些优点.  </p>
-<h3 id="中国国标编码"><a href="#中国国标编码" class="headerlink" title="中国国标编码:"></a>中国国标编码:</h3><ul>
-<li>GB 13000: 完全等同于ISO 10646-1/Unicode 2.1, 今后也将随ISO 10646/Unicode的标准更改而同步更改.  </li>
-<li>GBK: 对GB2312的扩充, 以容纳GB2312字符集范围以外的Unicode 2.1的统一汉字部分, 并且增加了部分unicode中没有的字符.   </li>
-<li>GB 18030-2000: 基于GB 13000, 作为Unicode 3.0的GBK扩展版本, 覆盖了所有unicode编码, 地位等同于UTF-8, UTF-16, 是一种unicode编码形式. 变长编码, 用单字节/双字节/4字节对字符编码. GB18030向下兼容GB2312/GBK.<br>GB 18030是中国所有非手持/嵌入式计算机系统的强制实施标准.  </li>
-</ul>
-<p><em>2001-11-14 (2003-9-2 补充)</em>  </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2003/08/29/java-library/" itemprop="url">
-                  java开发辅助工具,library
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2003-08-29T20:24:00+08:00" content="2003-08-29">
-              2003-08-29
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2003/08/29/java-library/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2003/08/29/java-library/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://www.zaval.org/" target="_blank" rel="external">http://www.zaval.org/</a> 这个网站有好几个java开发辅助工具,library. 包括了:  </p>
+<p>行为模式没有绝对的好坏之分，但在不同场合下选择不同的行为模式会更合适。将事情的重要性与冲突双方人际关系的重要性作为坐标轴，可以将这5种行为模式的适合情形放在不同的区域。例如，对于工作上的事情，往往重要性比较高，应该采取协作，妥协，竞争几种行为模式；对于家庭的问题，人际关系的保持更加重要，应该采取协作，妥协，迁就几种行为模式。从图中可以看出，协作是最理想的行为模式，如果能够通过协作而解决问题，结果往往可以达到双赢；而回避这种行为模式通常都是需要避免的，因为事情不重要人际关系也不重要的情况实际上不多。(我想到网上交流时，也许可以选择回避型的行为模式，看网上的骂架有多少是有意义的？)</p>
+<p><a href="http://www.flickr.com/photos/leoliang/4897373666/" target="_blank" rel="external"><img src="http://farm5.static.flickr.com/4140/4897373666_2c531317eb_z.jpg" alt="conflict"></a></p>
+<p>每个人通常会同时具备多种行为模式，但以其中的一种或几种占优势。例如有人遇到冲突总是很强势，一般会表现出竞争型模式，有些人面临冲突会倾向于妥协或迁就。虽然有上面的适合情形的分析，但冲突发生时，人们往往会以固有的优势模式来做出反应。</p>
+<p>对于领导人才，最理想的模式是”协作-妥协-竞争”，最长于通过协作方式来解决问题，如果协作不能生效，转而寻找妥协的解决方案，依然未果则采取竞争性行为模式，强势压倒对方。</p>
+<p>要以协作的方式解决冲突，在冲突发生时就需要停下来问问自己：</p>
 <ul>
-<li>Java Resource Editor: 用于i18n/l10n的翻译 </li>
-<li>Light-Weight Visual Components Library (LwVCL): 一组基于AWT的可视控件, 估计目标是可以移植到PDA等小型设备上 </li>
-<li>Proxy Suite: an easy-to-use solution that allows monitoring TCP-based protocols, such as HTTP, NNTP and others. It is extremely useful in software development and can be used as a debug tool. </li>
-<li>轻型数据库工具 </li>
-<li>其他的一些东西, 如Java Charts Package等, 只有介绍没有下载  </li>
+<li>Why is he/she acting like this way?</li>
+<li>What are our common interests?</li>
+<li>What would be the consequences if we come to an agreement?</li>
 </ul>
+<p>其实关键就在于尽可能寻找一个满足双方interest的双赢的方案。</p>
+<p>另外，协作型的人在冲突发生时往往会充当一个有耐心的教育者。</p>
+<p>根据测试的结果，我最强的模式是竞争型，然后表现出一定的协作型和回避型，而迁就和妥协就很弱。有些同事对我是竞争型的感到有点奇怪，确实，我很多时候表现得都不强势。自己分析了一下，我如果在对自己的观点十分有把握的时候，我会非常的坚持自己的观点，丝毫都不让步。但是，我对自己的观点的把握不够大的时候，就不是这样了，我希望自己坚持的东西是100%正确的。特别是在我不熟悉的领域，会没有什么观点。采取竞争型的行为模式，虽然过去的经验中大多数最终都证明我是正确的，但这样会对人际关系带来一定的影响。</p>
+<p>分析下来，自己需要在这些方面做出改进：</p>
+<ol>
+<li>多尝试使用协作的方式解决问题，提高这方面的能力。主要是要倾听对方的观点，了解对方观点背后所关切的东西，通过换位思考来寻找对双方都有利的解决方案。</li>
+<li>在事情的重要性不是那么高的时候，可以妥协，得到折中的解决方法，而不一定非要对方完全接受自己的观点。</li>
+<li>即使在没有十足把握的情况下，也应该积极的表达出自己的观点。自己不一定完全正确，但这时候对方往往也不见得就正确。这样才有助于共同找到最优的解决方案。</li>
+</ol>
 
           
         
@@ -941,8 +530,8 @@ textArea.setCaretPosition(length);
             
               
                 
-                <a class="post-title-link" href="/blog/2003/08/28/SWT-Swing-/" itemprop="url">
-                  SWT与Swing之争
+                <a class="post-title-link" href="/blog/2009/03/07/The-subway-security-know-more-D/" itemprop="url">
+                  地铁安全知多D
                 </a>
               
             
@@ -955,21 +544,14 @@ textArea.setCaretPosition(length);
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2003-08-28T20:19:00+08:00" content="2003-08-28">
-              2003-08-28
+            <time itemprop="dateCreated" datetime="2009-03-07T21:12:00+08:00" content="2009-03-07">
+              2009-03-07
             </time>
           </span>
 
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2003/08/28/SWT-Swing-/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2003/08/28/SWT-Swing-/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -992,328 +574,220 @@ textArea.setCaretPosition(length);
       
         
           
-            <p>SWT(in Eclipse)与Swing之争, 似乎争议注意在这几方面:  </p>
+            <p>今天发现广州地铁在站内广告牌上宣传地铁安全知识，介绍了在危急情况下如何撤离。广州地铁通车这么多年了，我还是第一次看到这方面的信息。重视安全知识的宣传，是件好事。</p>
+<p>在地铁列车在隧道内发生事故，特别是火灾之类的，乘客如何快速撤离，是件非常重要的事情，因为火势很容易顺着隧道蔓延，高温和有毒气体无法向四周扩散，更是很快就会包围整个隧道。</p>
+<p>地铁一、二号线都是在列车两头司机室前端可以打开一个逃生门，乘客需要走到列车尽头通过司机室再由逃生门离开列车下到隧道地面。需要从两头下车，是因为车厢门打开后就是面向着隧道壁，并没有足够空间供乘客行走。列车车厢地板距离轨道有大概半个人的高差，因此一号线列车打开逃生门后会伸出一块板搭到地面上，形成一个斜坡，并且有扶手（如果我没有看错照片）。正常人应该可以跑下去，行动不便的人也应该还是勉强能够走下去。可是二号线列车的设计就有很大问题了，斜坡变成了一个梯子，从照片上看人还要反过身来面向梯子才能下去。在危急情况下时间就是一切，按照这样爬梯子一车乘客需要多少时间才能疏散完？一列车才两个逃生口啊，事故发生时往往只有一个能用（一头发生事故，当然只能从另外一头离开）。而且，行动不便的人很可能就无法自己下去了，正常的乘客也有可能在忙乱之间摔倒，那将是人踩人的惨剧。一号线列车是西门子的，二号线列车是长春客车厂与庞巴迪合作，都不知道是否国产化设计搞出来的问题。</p>
+<p>相比之下，三、四号线就好多了，隧道左侧设置了与车厢地板同高的疏散平台，打开侧面车门就可以沿平台行走。不过平台还是很窄的，一大车的人要沿着这窄窄的平台走到附近的地铁站，要保持好秩序也不容易。要注意的是，特别是四号线，不能跳下轨道。其他的几条已使用地铁线都是架空线供电，但四号线是<a href="http://zh.wikipedia.org/w/index.php?title=%E7%AC%AC%E4%B8%89%E8%BD%A8%E4%BE%9B%E7%94%B5" target="_blank" rel="external">第三轨供电</a>，在轮轨的外侧有一条供电轨，可是1500V的电压。</p>
+<p>从<a href="http://news.dayoo.com/gov/200902/26/36198_5370659.htm" target="_blank" rel="external">新闻</a>上看，即将开通的五号线也会安装疏散平台。一、二号线估计是因为隧道没有预留宽度，所以无法安装。</p>
+<p>顺便show几张照片，是前段时间去参观海瑞克隧道设备公司时拍的，广州地铁的大部分隧道盾构工程所用的盾构机都是由海瑞克提供的。</p>
+<p>盾构机前部盾体的结构图：  </p>
+<p><img src="/attachments/2009/3/Herrenknecht1.jpg" alt=""></p>
+<p>整个盾构机像火车一样很长，一节节台车组成。车间里这台盾构机才刚开始组装，提供给云南的一个水利工程用的，工程师介绍说共有三十多节：</p>
+<p><img src="/attachments/2009/3/Herrenknecht2.jpg" alt=""></p>
+<p>准备组装的刀盘驱动部分：</p>
+<p><img src="/attachments/2009/3/Herrenknecht3.jpg" alt=""></p>
+<p>左面是回收回来的旧滚刀，右面是展台上的滚刀，和适合不同地质条件的刀体。岩石就是靠这些滚刀压碎的：</p>
+<p><img src="/attachments/2009/3/Herrenknecht4.jpg" alt=""></p>
+<p>我参观的时候厂房里没有组装好的机器，从网上找来两张照片。上图看到的是盾构机的前部，红色的刀盘，上面镶嵌的黑色的就是刀具。从照片看似乎就是在我参观的那个车间。下图是一台硬岩掘进机的侧面。</p>
+<p><img src="/attachments/2009/3/Herrenknecht5.jpg" alt=""><br><img src="/attachments/2009/3/Herrenknecht6.jpg" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2009/02/19/Schedule-management-for-where-notepad-PC-PDA-Mobile-phone-Watch-/" itemprop="url">
+                  日程管理适合做在哪里: 记事本? PC? PDA? 手机? 手表!
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2009-02-19T20:17:00+08:00" content="2009-02-19">
+              2009-02-19
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>做日常管理，传统用纸质记事本，电脑化之后是PC，便携设备出现后是PDA和现在流行的智能手机。但其实还有一个很好的途径一直被忽略了，那就是：</p>
+<p><a href="http://www.mrjoneswatches.com/average-day/" target="_blank" rel="external"><img src="/attachments/2009/2/watch.jpg" alt=""></a></p>
+<p>这是一个很有创意的设计，相信戴起来也很cool，但恐怕实用价值不大：表盘上标的是”a breakdown of what average people do on an average day”，但每个人都有自己的行事方式，没有多少人是一个average的人吧？</p>
+<p>除非—-表盘是可以个性化定制的。但是，一个人的时间安排还是会变化的啊。好，扩展一下思路，引入高科技吧：想象一下，上图的表盘并不是印制出来的，而是高分辨率的电子显示屏，将一天的日程安排显示出来；日程安排是通过无线网络与服务器同步的（例如Google Calendar）。</p>
+<p>再想象一下使用的场景：你正在休息室喝咖啡，同事冲进去说：”啊，你躲在这里啊，我有个新idea想跟你讨论一下，有空吗？”，你抬起手一看表，”现在九点二十五分，我喝完这杯咖啡九点半要开会，下午也已经有安排了，呃，十一点到十二点是有空的，可以吗？”</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2009/02/11/Self-defense-self-defense-was/" itemprop="url">
+                  防身自卫术
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2009-02-11T05:37:00+08:00" content="2009-02-11">
+              2009-02-11
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>无意中在CCTV看到女子防身自卫术的介绍，没太多技巧，不需要太强体力，不难记，不只是对女子，对文弱书生也有用吧，记录下关键，以备不时之需。</p>
 <ul>
-<li>SWT是否比Swing更快? SWT使用OS native构件, 理论上更快. 但实际比较如何, 争议很大. </li>
-<li>SWT与Swing比较, 是否更符合平台传统外观? SWT使用OS native构件,而不是象Swing一样重新写代码模拟出来. Swing支持者说用Look&amp;Feel灵活, 也可以做得不错. </li>
-<li>Swing的结构过于复杂. Swing的事件模型设计得不好. 但是swing扩展性强. </li>
-<li>Swing采用JVM的垃圾收集来回收资源, SWT提供可控的资源销毁而不采用垃圾收集.  </li>
+<li>头部弱点在眼睛，用两指插眼睛。</li>
+<li>躯干弱点在裆部，招式可以用抓/顶/踢。（应该是只针对男性吧，不过需要对付的应该都是男性）</li>
+<li>被对方用手抓/捂住时，向外掰其尾指。松手后用上面两招攻击。</li>
+<li>出招要快、狠；可声东击西，引开注意力时出击；趁对方短暂失去攻击能力时抓紧时间逃走。</li>
 </ul>
-<p>这个Java英文讨论组, <a href="http://www.javalobby.org" target="_blank" rel="external">http://www.javalobby.org</a> , 内容还可以, search功能也比较好用.<br>看老外的论坛也是老骂架的:)  </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2003/08/27/Some-GPS-related-software-and-project/" itemprop="url">
-                  一些与GPS相关的软件项目
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2003-08-27T01:11:00+08:00" content="2003-08-27">
-              2003-08-27
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2003/08/27/Some-GPS-related-software-and-project/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2003/08/27/Some-GPS-related-software-and-project/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>想写个GPS有关的软件，网上找到一些相关的项目: </p>
-<ul>
-<li>Java framework for GPS <a href="http://www.aasted.org/gps/" target="_blank" rel="external">http://www.aasted.org/gps/</a><br>这个项目的目标是为各种应用程序加入GPS功能提供framework. 目前提供的是与Garmin GPS通讯的功能. </li>
-<li>Chaeron GPS library <a href="http://www.chaeron.com/gps.html" target="_blank" rel="external">http://www.chaeron.com/gps.html</a><br>类似的项目,也是作为支持库，但功能更强/完善. 支持多种平台, 包括多种PDA. 而且这看来是一个active的项目, 由一个公司支持. </li>
-<li>JavaGPS <a href="http://javagps.sourceforge.net/" target="_blank" rel="external">http://javagps.sourceforge.net/</a><br>这个项目的范围似乎比前两个窄一些, 局限于从GPS中取得当前位置数据. 从代码看来，设计也不如前两个项目规范。</li>
-</ul>
-<p>但是，这些项目看来都是只支持从GPS取数据，而不支持传送数据给GPS。</p>
-<ul>
-<li>EPS <a href="http://eps.sourceforge.net/" target="_blank" rel="external">http://eps.sourceforge.net/</a><br>这是一个小应用程序，能够下载GPS数据并显示。这个程序能与Garmin GPS通讯，有上传/下载功能, 不过代码风格很差。</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2003/08/26/Super-toy-car/" itemprop="url">
-                  超级玩具小车
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2003-08-26T20:17:00+08:00" content="2003-08-26">
-              2003-08-26
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2003/08/26/Super-toy-car/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2003/08/26/Super-toy-car/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>一个神奇的project, 使用了各种流行的前沿技术, 令人炫目的技术列表:  </p>
-<p><a href="http://www.idealliance.org/papers/xml02/dx_xml02/papers/05-05-05/05-05-05.html" target="_blank" rel="external">http://www.idealliance.org/papers/xml02/dx_xml02/papers/05-05-05/05-05-05.html</a>  </p>
-<p>Mobile GPS Demonstration Platform, 演示了移动通讯/GPS/WebService/XML技术的结合, 一辆装备了GPS、GPRS mobile、Java Embeded Board的玩具小车。  </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2003/08/22/Eclipse-i18n-l10n-/" itemprop="url">
-                  Eclipse的i18n/l10n辅助功能
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2003-08-22T20:15:00+08:00" content="2003-08-22">
-              2003-08-22
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2003/08/22/Eclipse-i18n-l10n-/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2003/08/22/Eclipse-i18n-l10n-/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Java程序的本地化，做法都是在程序中不直接写死字符串，而是通过ResourceBoundle的getString()方法，在本地语言的properties文件中读取出翻译后的字串。<br>对于已经开发好的程序，找出源代码中写死的字符串工作相当繁琐，Eclipse有这方面的辅助工具。<br>选择文件，右键菜单 source-&gt;Extenalize Strings 打开工具，能够找出源文件中的所有字符串，选择那些需要翻译，自动替换并生成properties文件。  </p>
 
           
         
@@ -1346,7 +820,7 @@ textArea.setCaretPosition(length);
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/28/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/28/">28</a><span class="page-number current">29</span><a class="page-number" href="/blog/page/30/">30</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/32/">32</a><a class="extend next" rel="next" href="/blog/page/30/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/28/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/28/">28</a><span class="page-number current">29</span><a class="page-number" href="/blog/page/30/">30</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/64/">64</a><a class="extend next" rel="next" href="/blog/page/30/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1387,7 +861,7 @@ textArea.setCaretPosition(length);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">312</span>
+              <span class="site-state-item-count">317</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1534,25 +1008,6 @@ textArea.setCaretPosition(length);
 
 
 
-  
-
-    <script type="text/javascript">
-      var disqus_shortname = 'aleung';
-      var disqus_identifier = 'page/29/index.html';
-      var disqus_title = "";
-      var disqus_url = '';
-
-      function run_disqus_script(disqus_script){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-      
-    </script>
   
 
 

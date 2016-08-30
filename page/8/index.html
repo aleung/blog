@@ -86,15 +86,12 @@
 
 
 
-<meta name="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Good good study, day day up">
 <meta property="og:url" content="http://aleung.github.io/blog/page/8/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Good good study, day day up">
-<meta name="twitter:description">
 
 
 
@@ -119,15 +116,6 @@
 
   
 
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-2827715-4', 'auto');
-  ga('send', 'pageview');
-</script>
 
 
 
@@ -267,8 +255,8 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2011/04/10/Drag-and-drop-list-view-on-Android/" itemprop="url">
-                  Drag and drop list view on Android
+                <a class="post-title-link" href="/blog/2013/03/22/clean-aged-artifacts-from-artifactory/" itemprop="url">
+                  Clean aged artifacts from Artifactory
                 </a>
               
             
@@ -281,21 +269,14 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2011-04-10T06:05:00+08:00" content="2011-04-10">
-              2011-04-10
+            <time itemprop="dateCreated" datetime="2013-03-22T23:21:00+08:00" content="2013-03-22">
+              2013-03-22
             </time>
           </span>
 
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2011/04/10/Drag-and-drop-list-view-on-Android/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2011/04/10/Drag-and-drop-list-view-on-Android/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -318,16 +299,11 @@
       
         
           
-            <p>I didn’t expect that implementing a drag and drop list view on Android is so difficult. It took me more than one week to get it work.</p>
-<p>Android SDK doesn’t provide too much support on drag and drop, at least there is no out of box API that can be used till Android 3.0 Honeycomb. It’s said that drag and drop support is improved in Android 3.0 SDK, I didn’t learn it yet because Android 3.0 hasn’t come to mobile device.</p>
-<p>At first I looked for open source implementation of drag and drop list view. After searching on Internet I did find some examples and library, e.g. <a href="https://github.com/commonsguy/cwac-touchlist" target="_blank" rel="external">CWAC TouchListView</a> , they all derives from source code of Android music application. However they don’t fit for my application: First, they require to specify the height of item view in code or in layout file, that also implicitly force all item views in the same height. In my application the list view has two item view types, which differ in height. Even if item views are in same height, I don’t like the way that specifying exact value of height, I perfer to set <code>layout_height</code> to <code>wrap_content</code> and let it automatically calculates the value. Second, by those implementation, on each list item view there must be a “grabber” element. User moves an item by putting finger on the grabber then drag. I want to keep UI of my application as clean as it can, I would like to active item dragging by long press on an item, instead of drag a grabber. So I implement my version of drag and drop list view, the source code is at GitHub: <a href="https://github.com/aleung/tasks365/blob/master/tasks365/src/leoliang/tasks365/DraggableListView.java" target="_blank" rel="external">DraggableListView</a>. It isn’t perfect yet, still has large room for improvement.</p>
-<p>A ListView shows items in a vertically scrolling list. The items can be refered by their position in the list. When there are a lot of items, only portion of them are visible. A visible item view can be retrieved by calling <code>ListView.getChildAt()</code>. Please be noticed that child view index is different to item position. In the code you will find these two values need to be converted between each other.</p>
-<p><a href="http://www.flickr.com/photos/leoliang/5603506949/" target="_blank" rel="external"><img src="http://farm6.static.flickr.com/5267/5603506949_627d31073c.jpg" alt="listview"></a></p>
-<p>Long press on an item is detected by<code>GestureDetector</code>, then a dragging object is created. The dragging object represents on UI by an ImageView, which is a copy of the view of the item to be moved. The dragging object moves on screen following user’s finger. Untill user’s finger leave touch screen, the list items do not change their order, they just expand or shrink to simulate item dragging.</p>
-<p>In below diagram, dragging object is in green. Item at position 3 is being dragged in this example. When dragging starts, the view of item 3 shrinks its height to 1 to make it invisible (I didn’t investigate why height should be 1 instead of 0). User sees item 3 is dragged, actually it’s the dragging object – clone of the item 3 view. When dragging object is hovering at a position, the item view at that position expands to make an empty space, so looks like that it is being pushed aside by the dragging object.</p>
-<p><a href="http://www.flickr.com/photos/leoliang/5604090272/" target="_blank" rel="external"><img src="http://farm6.static.flickr.com/5101/5604090272_641594fa57_m.jpg" alt="listview-dnp-1"></a><a href="http://www.flickr.com/photos/leoliang/5603507715/" target="_blank" rel="external"><img src="http://farm6.static.flickr.com/5188/5603507715_d47cb49532_m.jpg" alt="listview-dnp-2"></a></p>
-<p>Here is a screenshot of demo:</p>
-<p><a href="http://www.flickr.com/photos/leoliang/5603811095/" target="_blank" rel="external"><img src="http://farm5.static.flickr.com/4099/5603811095_f2f7c52c79.jpg" alt="DraggableListView"></a></p>
+            <p><a href="http://www.jfrog.com/home/v_artifactory_opensource_overview" target="_blank" rel="external">Artifactory</a> has no feature to automatically remove old artifacts from local repository. Once the disk is full, manually remove unused artifacts is painful. Moveover, you’re not sure which artifacts are unused and can be safely deleted.</p>
+<p>Artifactory has a set of <a href="http://wiki.jfrog.org/confluence/display/RTF/Artifactory&#39;s+REST+API" target="_blank" rel="external">REST API</a>. One of the API is to search artifacts not downloaded since a specified date. In our projects, there are CI jobs which keep building the software for each branch. If a SNAPSHOT artifact hasn’t been downloaded for a time, we can make sure that this artifact is no use any more, a newer version should be existing.</p>
+<p>I made a Ruby script to do the clean up job automatically. It searches artifacts which weren’t downloaded in specific days and deletes them. It can be invoked in a CI job to run periodically. </p>
+<script src="//gist.github.com/https://gist.github.com/aleung/5203736.js"></script>
+<p>The script can also be used to clean unused release (non-SNAPSHOT) artifacts. However a good practice is to keep releases forever. </p>
 
           
         
@@ -377,8 +353,8 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2011/03/24/My-task-management-tools-function-prototype-has-been-completed/" itemprop="url">
-                  我的任务管理工具功能原型已经完成
+                <a class="post-title-link" href="/blog/2013/03/19/maven-batch-deploy-artifacts/" itemprop="url">
+                  Batch deploy artifacts to Maven repository
                 </a>
               
             
@@ -391,21 +367,14 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2011-03-24T05:13:00+08:00" content="2011-03-24">
-              2011-03-24
+            <time itemprop="dateCreated" datetime="2013-03-19T21:32:00+08:00" content="2013-03-19">
+              2013-03-19
             </time>
           </span>
 
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2011/03/24/My-task-management-tools-function-prototype-has-been-completed/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2011/03/24/My-task-management-tools-function-prototype-has-been-completed/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -428,1019 +397,604 @@
       
         
           
-            <p>在<a href="http://good-good-study.appspot.com/blog/posts/119001" target="_blank" rel="external">上一篇blog</a>里面列出了我个人对任务管理工具的需求以及对比较热门的工具的分析。由于现有工具没有那款能够满足我的几点主要需求，于是就产生了自己做一个的想法。前几天，功能性原型完成，已经正式用了起来，下一步要做的工作是界面设计和交互设计。</p>
-<p>目前做的是Android手机应用，web端还没有考虑。一方面是手机几乎不离身，保证了随时可用，另一方面是web端使用现有的服务已经勉强可以满足要求，下面我会说明。</p>
-<p>从功能定位上，主要是受了<a href="http://stayuseful.com/" target="_blank" rel="external">StayUseful</a>和<a href="http://teuxdeux.com" target="_blank" rel="external">TeuxDeux</a>的影响，目标是要做成简洁、轻量级的任务列表，强调对任务进行计划安排，专注于当天以及最近几天的任务。</p>
+            <p>I need to migrate a Maven repository from <a href="http://www.jfrog.com/home/v_artifactory_opensource_overview" target="_blank" rel="external">Artifactory</a> to <a href="http://www.sonatype.org/nexus/" target="_blank" rel="external">Nexus</a>. Nexus’s migration <a href="http://www.sonatype.com/people/2009/03/migrating-from-artifactory-to-nexus/" target="_blank" rel="external">solution</a> uses its migration plugin. But our Nexus service is managed by IT team and I don’t want to bother to ask them to install a plugin.</p>
+<p>Artifactory is able to export a whole repository into file system as local repository layout (like .m2/repository folder). So I looked for import feature in Nexus, but failed.</p>
+<p>Searched on Google then I found <a href="http://stackoverflow.com/a/3304212/94148" target="_blank" rel="external">this answer</a> on StackOverflow. Sean provided a pom with embedded Groovy script to upload (deploy) a hierarchy of files to a Maven repository. However Sean’s solution handles groupId, artifactId and version in a way differ to what I want. It requires to specify groupId and version in pom as fixed value.</p>
+<p>I modify the Groovy script a bit to handle local repository folder layout. GroupId, artifactId and version are parsed from path of file. Here is my modified version:</p>
+<script src="//gist.github.com/https://gist.github.com/aleung/5194777.js"></script>
+<p>Before using it, modify the setting in \<deploy.basefolder\> and \<distributionmanagement\>. Make sure you have removed all non-artifact files e.g. <em>.sha1, </em>.lastUpdated from your import directory. Or you may enhance the script to filter those files out.</distributionmanagement\></deploy.basefolder\></p>
+<p>Suppose your import folder is ~/.m2/repository, put this pom.xml at ~/.m2. Run <code>cd ~/.m2; mvn install</code> then everything is done.</p>
+<p>Usually you should configure your repository to allow redeploy of an existing artifact. Otherwise you’ll get error if an artifact you want to import already exist in repository.</p>
+<p><strong>Update</strong> 2013-3-29:</p>
+<p>There is a more simple way to import artifacts into Nexus, if you have privilege to access its data folder. Just copy the files into the storage location of the repository (the path can be found in repository configuration tab on Nexus web UI), change owner and group of the copied directories and files. After that, on Nexus web UI right click the folder and choose rebuild metadata. After a while everything will be ready.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2013/03/18/stand-up-desk/" itemprop="url">
+                  站立工作环境
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-03-18T23:44:00+08:00" content="2013-03-18">
+              2013-03-18
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>坐姿，特别是不正确的坐姿，对腰椎间盘的压力是站姿的2到3倍，长期在电脑前工作的人很容易得腰椎间盘突出等腰椎疾病。因此现在IT工作者逐渐流行站立工作。但是，长期站立也会带来其他的问题，如下肢静脉曲张等。一个比较理想的方案是使用可升降的办公桌，坐姿站姿交替。</p>
+<p>2011年我花了不少时间寻找国内哪里可以买到可升降办公桌，但都没有找到。网上搜索倒是有不少信息，但都是厂家寻求批发订货的，电话问过几个本地厂商，基本都说不做，做的也没有现货不零售。唯一的是淘宝上有个泠泠岛，做个人客户，当时价格很高，外地购买也不方便，而且我对它的质量不是很放心。最终放弃了购买升降桌的念头，改为自行DIY站立工作桌。</p>
+<p>2012年初用IKEA的BRODER系统加一个VIKA桌面搭建了一个站立工作桌。BRODER归属在重型储物系列里，本来用途是储物架，钢柱杆和钢网搁板很牢固，最大的搁板深度基本足够做桌面了，在上面垫上一块木桌面刚刚好。用IKEA的东西好处是你有很大发挥的空间，这个<a href="http://www.wretch.cc/blog/ikeameatball/12392137" target="_blank" rel="external">IKEA的居家生活部落格</a>里就有不少BRODER各种应用的照片。但刚刚查IKEA中国网站，已经找不到BRODER，不知是否不卖了。</p>
+<img src="/blog/attachments/2013/3/desk.jpg">
+<p>就这样用了一年，但长期站立工作也不好，于是想配一张高脚凳也许就差不多了。桌面高度是按站立工作而定的，按照我的身高桌面高度也偏高，一般市面上卖的高脚凳（酒吧凳）座高都不够。最后在淘宝上找到了一款，高度比较合适。今天到货刚刚装起来了。其实这凳子做工、质量都不算很好，组装也不够方便，如果IKEA有合适的我绝对不会选择它的（虽然说IKEA的东西质量也只算一般，但还是要比这淘宝货强）。</p>
+<img src="/blog/attachments/2013/3/desk_chair.jpg">
+<p>关于工作台面、座椅以及显示器的合适高度，在<a href="http://book.douban.com/subject/11652185/" target="_blank" rel="external">Human Factors in Engineering and Design</a>一书的 chapter 13. Applied Anthropometry, Work-Space Design and Seating 中对站姿与坐姿工作环境有很好的描述。我在决定台面高度与椅子高度的时候参考了此书中给出的研究数据。</p>
+<p>顺便说说，上面提到那本书是<a href="http://zh.wikipedia.org/wiki/%E4%BA%BA%E5%9B%A0%E5%B7%A5%E7%A8%8B%E5%AD%A6" target="_blank" rel="external">人因学</a>的经典好书，国内有<a href="http://book.douban.com/subject/3746065/" target="_blank" rel="external">中文翻译版</a>。</p>
+<p>另外再推荐阅读：美国职业健康和安全管理局(OSHA)工作区健康与安全指南<a href="http://www.youliv.com/ErgoStandard/WSGoodPositions.aspx" target="_blank" rel="external">中文翻译</a>。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2013/03/10/which-app-is-draining-your-android-bettery/" itemprop="url">
+                  怎么处理Android耗电严重的问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-03-10T21:49:00+08:00" content="2013-03-10">
+              2013-03-10
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Android用户常常会被耗电问题困扰，明明手机没怎么使用，电量却不停的掉，半天就耗光了。有些人会寻求kill应用的方法——而Android系统的设计原则是用户不需要关心进程的启停的。其实大多数情况下，这都跟系统无关，而是安装的某些应用的问题。合理设计的应用，即使有后台进程，也只会在必要的时候唤醒进行短时间工作。但有些应用开发者不懂怎么合理设计应用后台任务，造成耗电问题。</p>
+<p>要解决耗电问题，首先得找出是那个应用耗电。Android 4.0以上系统已经能够显示出系统各模块以及各个应用的耗电比例（设置－电量使用情况），不过细节信息还是不够多，往往不足以判定是什么原因耗电严重，这时候就要用到这个应用：<a href="https://play.google.com/store/apps/details?id=com.gsamlabs.bbm" target="_blank" rel="external">GSam Battery Monitor</a>。就像Android系统的电量使用情况，GSam可以列出系统各模块（系统、电话、屏幕、Wifi等）以及各应用的耗电比例，但它可以看到每项更细节的信息，如某一应用使用各传感器的时间、屏幕不同亮度分布使用时间等等，可以帮助判断是什么模块／应用耗电严重，以及耗电的具体原因。GSam还有更多的功能，用起来也不太复杂，自己摸索一下就行。</p>
+<p>找到罪魁祸首后，最简单处理手段就是卸载它。但如果这个应用非装不可没有替代品，怎么办？Kill不是办法，若应用因后台服务而耗电，后台服务kill掉也能自动重启的。每次用完都要去kill用起来也不方便。这时 <a href="https://play.google.com/store/apps/details?id=com.oasisfeng.greenify" target="_blank" rel="external">Greenify</a> 就派上用场了，当你将一个应用加入greenify列表中，它能够在你不使用这个应用时将它进入冬眠状态，但又不影响其正常使用。除了用来对付耗电应用，对付耗内存应用也不错，当应用冬眠时，也不会占用内存(RAM)。至于它的工作原理，作者没有透露过，我还没有见到有解释。Greenify只能用于Android 3.1+，需要root。Android手机要玩好，root基本上是不可少的。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2013/02/09/beginning-r/" itemprop="url">
+                  R初略学习笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-02-09T14:18:00+08:00" content="2013-02-09">
+              2013-02-09
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="包管理"><a href="#包管理" class="headerlink" title="包管理"></a>包管理</h2><p>从CRAN安装一个包：<code>install.packages(&quot;pkg_name&quot;)</code></p>
+<p>加载包：<code>library(package)</code></p>
+<h2 id="R的基本数据类型"><a href="#R的基本数据类型" class="headerlink" title="R的基本数据类型"></a>R的基本数据类型</h2><p>在R里面一个元素的基本数据类型称为 mode。每个对象都有mode属性。</p>
+<p>基本数据类型包括：数值(实数) numeric，复数 complex，字符(串) character，逻辑(布尔) logical 和 raw。NA表示没有值。</p>
+<p>基本数据类型之间的转换通过 as.<em>something</em>() 函数进行，例如 <code>as.character()</code>, <code>as.integer()</code>。</p>
+<h2 id="R的数据对象类型"><a href="#R的数据对象类型" class="headerlink" title="R的数据对象类型"></a>R的数据对象类型</h2><h3 id="向量-vector"><a href="#向量-vector" class="headerlink" title="向量 vector"></a>向量 vector</h3><p>向量由一组相同类型的元素组成。</p>
+<p>用函数 c() 可以构造出向量：</p>
+<pre><code>x &lt;- c(10.4, 5.6, 3.1, 21.7)
+</code></pre><p>如果要生成元素为序列的向量，简单的方法是用冒号，如 1:7，复杂的方法是函数 seq()。另外，函数 rep() 可以根据已有向量的元素重复来生成新向量。</p>
+<p>向量中的某个元素通过 [] 访问，如 <code>x[3]</code>，注意，下标从1开始！方括号中下标位置放的可以是向量，称为索引向量 index vector，这时候会根据索引取出特定元素构成新的向量。例如 <code>x[1:10]</code> 取出x的前10个元素。</p>
+<p>对向量做运算，是对向量的每个元素做独立运算，结果是一个相同元素个数的新向量。</p>
+<h3 id="因子-factor"><a href="#因子-factor" class="headerlink" title="因子 factor"></a>因子 factor</h3><p><strong>TODO</strong>：没懂</p>
+<h3 id="数组-array"><a href="#数组-array" class="headerlink" title="数组 array"></a>数组 array</h3><p>数组是多维的一组相同类型数据。特别地，二维数组称为矩阵 matrix。</p>
+<p>通过指定维度属性 dim，向量可以转换为数组。例如z为有1500个元素的向量，<code>dim(z) &lt;- c(3, 5, 100)</code> 将z变作3<em>5</em>100的三维数组。另外一种构造数组的方法是用函数 array()： <code>Z &lt;- array(data_vector, dim_vector)</code>。向量中元素是按照首下标优先的顺序来遍历的，如 <code>z[1,1,1], z[2,1,1], …, z[2,5,100], z[3,5,100]</code>。</p>
+<p>可以通过 <code>a[2,,]</code> 这样的方法访问子数组，得到的是指定了第一维为2后剩余维数的数组。正如可以用向量为下标来访问向量，也可以用索引矩阵 index matrix 作为下标来访问数组，这样可以根据索引矩阵的值为下标取出数组中的特定一组元素。</p>
+<p>通过 <code>as.vector(X)</code> 或者 <code>c(X)</code> 可以将数组X变回向量。</p>
+<h3 id="列表-list"><a href="#列表-list" class="headerlink" title="列表 list"></a>列表 list</h3><p>文档里叫list，但实际上更象其他语言里的map，或者叫hash。列表里的每个元素是一个对象，称为组件 componet，列表里的组件的类型不需要一致。</p>
+<p>生成列表的方法：<code>Lst &lt;- list(name_1=object_1, …, name_m=object_m)</code>。组件名字是可忽略的。构成列表的对象会复制一个副本到列表里面，而不是引用。</p>
+<p>用 <code>[[n]]</code> 来访问列表中的第n个组件。如果组件有名字，用 <code>list$component_name</code> 的方法更简便。组件名可以简写为名字的前几个字母，只要不引起歧义就行。</p>
+<h3 id="数据帧-data-frame"><a href="#数据帧-data-frame" class="headerlink" title="数据帧 data frame"></a>数据帧 data frame</h3><p>数据帧是特殊的列表：</p>
 <ul>
-<li>单日任务列表：在一个页面里列出一天的所有任务。只显示计划在此一天执行的任务，保证专注性。缺省的页面是当天，可快速导航到最近几天。</li>
-<li>用简单的操作可更改任务的执行日期。</li>
-<li>过去没有完成的任务自动放到”今天”，要么马上去完成它，要么重新安排执行日期。</li>
-<li>任务可设置due date，对于有due date的任务，会显示出剩余天数或者过期天数。</li>
-<li>任务不设优先级，但可以加星。单日任务列表中，任务可以拖放排序。</li>
-<li>数据与云端同步。</li>
+<li>组件为向量(数值型,字符形,逻辑型)，因子，数值矩阵，列表或其他数据帧</li>
+<li>数据帧中作为变量的向量结构必须具有相同的长度,而矩阵结构应当具有相同的行大小</li>
 </ul>
-<p>因为目标要做到数据与云端同步，这自己从零开始实现工作量太大了，所以一开始就计划基于网上现有的服务基础之上开发。最初物色的对象是Google Tasks，但发现Google Tasks尚未开放API，虽然已经有Android应用可以做到与Google Tasks同步，但它们是靠hack Google的网页前端与后端通信接口来实现的，实现起来既麻烦也不可靠。接下来发现Google Calendar是一个更好的选择：</p>
-<ul>
-<li>Android Calendar与云端的Google Calendar之间几乎是实时同步，无论在哪边做修改，几秒钟之后另外一边就能看到变动。</li>
-<li>Android Calendar提供Provider接口供其他Android应用调用，开发简便，并且Android Calendar是open source的，有问题可以直接看代码。</li>
-<li>Web端可使用Google Calendar，虽然不能实现我需要的全部功能，但基本的都可以做到。</li>
-<li>为实现日程表跟任务列表的整合提供了可能。Google Calendar还能与其他系统同步，提高扩展性。</li>
+<p>很多情况下,数据帧会被当作各列具有不同模式和属性的矩阵。</p>
+<p>数据帧同样可以用下标来获取子集，例如看前三行数据：<code>data[1:3,]</code>，根据某列的值做过滤：<code>filtered_frame &lt;- full_frame[full_frame$country==&quot;cn&quot;,]</code></p>
+<p>通过 <code>as.matrix(X)</code> 将数据帧转换为矩阵。</p>
+<h2 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h2><p>函数 <code>read.table()</code> 读取文本文件的数据，产生一个数据帧。更常用的是 <code>read.csv()</code> 和 <code>read.delim()</code>，它们是 read.table() 的缺省参数版本，后者读取tab分隔的文件。文件的每个列被保存到数据帧的一个组件中，组件名字就是列的名字，如果列名里有空格会被转换成句点。</p>
+<h2 id="绘图"><a href="#绘图" class="headerlink" title="绘图"></a>绘图</h2><h3 id="高级绘图函数"><a href="#高级绘图函数" class="headerlink" title="高级绘图函数"></a>高级绘图函数</h3><p>下面是R中高级绘图函数的概括:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">plot(x)</td>
+<td style="text-align:left">以x的元素值为纵坐标、以序号为横坐标绘图</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">plot(x, y)</td>
+<td style="text-align:left">x(在x-轴上)与y(在y-轴上)的二元作图。根据type参数可以画出多种类型的图。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">sunflowerplot(x,y)</td>
+<td style="text-align:left">同上 但是以相似坐标的点作为花朵,其花瓣数目为点的个数</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">pie(x)</td>
+<td style="text-align:left">饼图</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">boxplot(x)</td>
+<td style="text-align:left">盒形图(“box-and-whiskers”)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">stripchart(x)</td>
+<td style="text-align:left">把x的值画在一条线段上,样本量较小时可作为盒形图的替代</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">coplot(x~y\</td>
+<td style="text-align:left">z)</td>
+<td>关于z的每个数值(或数值区间)绘制x与y的二元图</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">interaction.plot(f1, f2, y)</td>
+<td style="text-align:left">如果f1和f2是因子,作y的均值图,以f1的不同值作为x轴, 而f2的不同值对应不同曲线;可以用选项fun指定y的其他的统计量(缺省计算均值,fun=mean)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">matplot(x,y)</td>
+<td style="text-align:left">二元图,其中x的第一列对应y的第一列,x的第二列对应y的第二 列,依次类推。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">dotchart(x)</td>
+<td style="text-align:left">如果x是数据框,作Cleveland点图(逐行逐列累加图)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">fourfoldplot(x)</td>
+<td style="text-align:left">用四个四分之一圆显示2X2列联表情况(x必须是dim=c(2, 2, k)的数组,或者是dim=c(2, 2)的矩阵,如果k = 1)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">assocplot(x)</td>
+<td style="text-align:left">Cohen–Friendly图,显示在二维列联表中行、列变量偏离独立性 的程度</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">mosaicplot(x)</td>
+<td style="text-align:left">列联表的对数线性回归残差的马赛克图</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">pairs(x)</td>
+<td style="text-align:left">如果x是矩阵或是数据框,作x的各列之间的二元图</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">plot.ts(x)</td>
+<td style="text-align:left">如果x是类”ts”的对象,作x的时间序列曲线,x可以是多元的, 但是序列必须有相同的频率和时间</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">ts.plot(x)</td>
+<td style="text-align:left">同上,但如果x是多元的,序列可有不同的时间但须有相同的频 率</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">hist(x)</td>
+<td style="text-align:left">x的频率直方图</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">barplot(x)</td>
+<td style="text-align:left">x的值的条形图</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">qqnorm(x)</td>
+<td style="text-align:left">正态分位数-分位数图</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">qqplot(x, y)</td>
+<td style="text-align:left">y对x的分位数-分位数图</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">contour(x, y, z)</td>
+<td style="text-align:left">等高线图(画曲线时用内插补充空白的值),x和y必须为向量 ,z必须为矩阵 , 使得dim(z)=c(length(x), length(y))(x和y可以省略)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">filled.contour (x,y, z)</td>
+<td style="text-align:left">同上,等高线之间的区域是彩色的,并且绘制彩色对应的值的图 例</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">image(x, y, z)</td>
+<td style="text-align:left">同上,但是实际数据大小用不同色彩表示</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">persp(x, y, z)</td>
+<td style="text-align:left">同上,但为透视图</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">stars(x)</td>
+<td style="text-align:left">如果x是矩阵或者数据框,用星形和线段画出</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">symbols(x, y, …)</td>
+<td style="text-align:left">在由x和y给定坐标画符号(圆,正方形,长方形,星,温度计式 或者盒形图),符号的类型、大小、颜色等由另外的变量指定</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">termplot(mod.obj)</td>
+<td style="text-align:left">回归模型(mod.obj)的(偏)影响图</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">heatmap(x)</td>
+<td style="text-align:left">热度图</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="需要工具包支持的高级绘图"><a href="#需要工具包支持的高级绘图" class="headerlink" title="需要工具包支持的高级绘图"></a>需要工具包支持的高级绘图</h4><p><strong>板块层级图 tree map</strong></p>
+<p>用矩形面积来表示数值，可用于分析磁盘空间占用</p>
+<pre><code>library(portfolio)
+map.market(id, area, group, color)
+</code></pre><p><strong>平行坐标图</strong></p>
+<pre><code>library(lattice)
+parallel(data)
+</code></pre><h3 id="低级绘图命令"><a href="#低级绘图命令" class="headerlink" title="低级绘图命令"></a>低级绘图命令</h3><p>R里面有一套绘图函数是作用于现存的图形上的:称为低级作图命 令(low-level plotting commands)。下面有一些主要的:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">scatter.smooth(x, y, …)</td>
+<td style="text-align:left">LOESS(局部加权散点平滑)拟合曲线</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">points(x, y)</td>
+<td style="text-align:left">添加点(可以使用选项type=)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">lines(x, y)</td>
+<td style="text-align:left">同上,但是添加线</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">text(x, y, labels,…)</td>
+<td style="text-align:left">在(x,y)处添加用labels指定的文字;典型的用法是: plot(x, y, type=”n”); text(x, y, names)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">mtext(text,side=3, line=0,…)</td>
+<td style="text-align:left">在边空添加用text指定的文字,用side指定添加到哪一边(参照 下面的axis());line指定添加的文字距离绘图区域的行数</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">segments(x0, y0,x1, y1)</td>
+<td style="text-align:left">从(x0,y0)各点到(x1,y1)各点画线段</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">arrows(x0, y0,x1, y1, angle= 30,code=2)</td>
+<td style="text-align:left">同上但加画箭头,如果code=2则在各(x0,y0)处画箭头,如 果code=1则在各(x1,y1)处画箭头,如果code=3则在两端都画箭头; angle控制箭头轴到箭头边的角度</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">abline(a,b)</td>
+<td style="text-align:left">绘制斜率为b和截距为a的直线</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">abline(h=y)</td>
+<td style="text-align:left">在纵坐标y处画水平线</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">abline(v=x)</td>
+<td style="text-align:left">在横坐标x处画垂直线</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">abline(lm.obj)</td>
+<td style="text-align:left">画由lm.obj确定的回归线(参照第五章)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">rect(x1, y1, x2, y2)</td>
+<td style="text-align:left">绘制长方形,(x1, y1)为左下角,(x2,y2)为右上角</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">polygon(x, y)</td>
+<td style="text-align:left">绘制连接各x,y坐标确定的点的多边形</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">legend(x, y, legend)</td>
+<td style="text-align:left">在点(x,y)处添加图例,说明内容由legend给定</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">title()</td>
+<td style="text-align:left">添加标题,也可添加一个副标题</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">axis(side, vect)</td>
+<td style="text-align:left">画坐标轴,side=1时画在下边,side=2时画在左边,side=3时画在上边,side=4时画在右边。可选参数at指定画刻度线的位置坐标</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">box()</td>
+<td style="text-align:left">在当前的图上加上边框</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">rug(x)</td>
+<td style="text-align:left">在x-轴上用短线画出x数据的位置</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">locator(n, type=”n”, …)</td>
+<td style="text-align:left">在用户用鼠标在图上点击n次后返回n次点击的坐标(x, y);并可以在点击处绘制符号(type=”p”时)或连线(type=”l”时),缺省情 况下不画符号或连线</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li>R for Beginners</li>
+<li>An Introduction to R</li>
 </ul>
-<p>具体做起来其实不难，就是将一些task专有的数据放进Calendar的Event里面。Google Calendar的event数据对象没有供存放扩展数据的字段，我就将task数据用JSON格式放进description里面了。</p>
-<p>好了，下一步怎样做出简洁、易用、高效的交互界面才是困难所在。另外，给它起个好名字也很难，有什么建议么？</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2011/03/21/Diagram-of-WebLogic-MBean-navigation/" itemprop="url">
-                  Diagram of WebLogic MBean navigation
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2011-03-21T18:37:00+08:00" content="2011-03-21">
-              2011-03-21
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2011/03/21/Diagram-of-WebLogic-MBean-navigation/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2011/03/21/Diagram-of-WebLogic-MBean-navigation/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>It isn’t a full diagram that presents all WebLogic MBeans. Only the MBeans I’m interesting in are shown.</p>
-<p><a href="http://www.flickr.com/photos/leoliang/5546496754/" target="_blank" rel="external"><img src="http://farm6.static.flickr.com/5056/5546496754_181f58ec69_b.jpg" alt="WeblogicMBean"></a></p>
-<p>Reference:<a href="http://download.oracle.com/docs/cd/E15051_01/wls/docs103/wlsmbeanref/core/index.html" target="_blank" rel="external">The WebLogic Server® MBean Reference</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2011/03/19/His-shan-zhishi-the-Dutch-Brabant-2010-sustainable-development-and-balance-report/" itemprop="url">
-                  他山之石：荷兰Brabant 2010年可持续发展与平衡报告书
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2011-03-19T05:56:00+08:00" content="2011-03-19">
-              2011-03-19
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2011/03/19/His-shan-zhishi-the-Dutch-Brabant-2010-sustainable-development-and-balance-report/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2011/03/19/His-shan-zhishi-the-Dutch-Brabant-2010-sustainable-development-and-balance-report/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://www.flickr.com/photos/leoliang/5537728245/" target="_blank" rel="external"><img src="http://farm6.static.flickr.com/5013/5537728245_91bfd23187.jpg" alt="IMG_20110315_220911"></a> </p>
-<p>今天在公司休息区看到了一本政府出版物，《2010年Brabant可持续发展与平衡报告书》，Brabant是荷兰南部的一个省份。</p>
-<p>我对这本册子相当感兴趣，关心的主要有几点：</p>
-<ol>
-<li>政府如何进行信息公开；</li>
-<li>如何达致可持续发展，怎样维持经济、文化与生态的平衡；</li>
-<li>民众关心哪些方面的指标；</li>
-<li>怎样对政府的成绩进行评定；</li>
-<li>怎样通过图表、文字、数据和颜色将信息清晰的展现出来，让普通民众都能读懂。</li>
-</ol>
-<p>全书共238页，分成三大部分：经济、社会文化、生态。每部分有多个关注点，每个关注点下有4～8个指标。</p>
-<p>用Google Translate翻译了所有的关注点以及部分我感兴趣的指标的名称，有些可能译得不准确。</p>
-<ul>
-<li>经济： <ul>
-<li><strong>劳动力</strong>，</li>
-<li><strong>资本</strong>，</li>
-<li><strong>知识</strong>，</li>
-<li><strong>能源，原材料**</strong>和辅料**，</li>
-<li><strong>空间</strong>，（为企业提供足够的空间（土地，经营场所））</li>
-<li><strong>经济结构</strong>，</li>
-<li><strong>基础设施</strong></li>
-</ul>
-</li>
-<li>社会文化： <ul>
-<li><strong>社会**</strong>参与**：社会凝聚力，歧视，社会团体，社会的积极成员，志愿者，社会排斥，孤独，种族融合</li>
-<li><strong>经济**</strong>和政治参与**：贫困家庭，选举投票率，政治互信，参与决策，长期失业，影响政治进程的看法</li>
-<li><strong>艺术和**</strong>文化**，</li>
-<li><strong>环境</strong>：住房短缺，满意的公园，本地服务的满意度，居住满意度，垃圾，噪音/气味，住房的满意度</li>
-<li><strong>安全</strong>，</li>
-<li><strong>健康</strong>：长期病患者，心理健康评估，心血管疾病的死亡率，自我健康评估，危险行为，运动，照顾者负担过重，健康服务满意度</li>
-<li><strong>教育</strong></li>
-</ul>
-</li>
-<li>生态： <ul>
-<li><strong>土壤</strong>，</li>
-<li><strong>空气</strong>：烟雾天（灰霾？），颗粒物，温室气体，氮化物</li>
-<li><strong>地表水</strong>，</li>
-<li><strong>自然</strong>：草地物种，农作物，新的自然生态区，森林物种，荒原物种</li>
-<li><strong>地下水</strong>，</li>
-<li><strong>景观</strong>：城市化（限制城市化），景观体验，自然性，天际线（限制高层建筑），历史独特性</li>
-</ul>
-</li>
-</ul>
-<p><a href="http://www.flickr.com/photos/leoliang/5537755097/" target="_blank" rel="external"><img src="http://farm6.static.flickr.com/5256/5537755097_9ba7cfed57_m.jpg" alt="IMG_20110315_221604"></a> </p>
-<p>经济、社会文化、生态，分别用蓝色、红色和绿色代表。这三种颜色贯穿整本册子，从封面、封底到每一页。从侧面一眼就可以看出三部分页码的分布。</p>
-<p>基本上每一个指标用一个页面的篇幅进行描述，首先是这个指标含义的简单描述，接下来是用一句话概括对于这个指标期望达到的目标，然后是用一个段落的文字对这个指标的目标进行详细叙述。</p>
-<p>每个指标的情况都会有具体量化的数字，根据预设的条件，对指标进行级别评定，分别为金色（最优）、绿色（可接受）、橙色（临界）和红色（不可接受）。在大企业工作过的人应该都很熟悉，就像KPI一样。对于普通人，如果他不关心具体的指标数值是多少，或者没有专业知识理解数值的意义，那他只需要简单看看这个指标是什么颜色就行了。</p>
-<p>接下来，会有一个图表展现进一步的数据。例如纵向的比较：列出历年的数据；或者横向的比较：列出其他的省份这个指标的数据。</p>
-<p>对于每个关注点，用一幅<a href="http://zh.wikipedia.org/wiki/%E9%A5%BC%E5%9B%BE#.E6.9E.81.E5.8C.BA.E5.9B.BE" target="_blank" rel="external">南丁格尔玫瑰图</a>来展现所属的各个指标的得分、评级和权重，在图上还会标出上一年度的得分，年度变化。</p>
-<p>经济、社会文化、生态，每个部分最后一页的总结，也是用图形的方式，将关注点列出来，每个关注点包含的指标用圆点表示，大小是得分，颜色是评级。</p>
-<p>最终，发展的目标是要实现经济、社会文化和生态三者的平衡，达致可持续发展。</p>
-<p><a href="http://www.flickr.com/photos/leoliang/5537729263/" target="_blank" rel="external"><img src="http://farm6.static.flickr.com/5139/5537729263_366a7cb6a9_z.jpg" alt="IMG_20110315_225420"></a> </p>
-<p><a href="http://www.flickr.com/photos/leoliang/5538307676/" target="_blank" rel="external"><img src="http://farm6.static.flickr.com/5099/5538307676_81c2a9f3ce_z.jpg" alt="IMG_20110315_221756"></a></p>
-<p><a href="http://www.flickr.com/photos/leoliang/5537728395/" target="_blank" rel="external"><img src="http://farm6.static.flickr.com/5174/5537728395_4f8b4a42f6_z.jpg" alt="IMG_20110315_221112"></a></p>
-<p><a href="http://www.flickr.com/photos/leoliang/5537730559/" target="_blank" rel="external"><img src="http://farm6.static.flickr.com/5174/5537730559_bc96e642ee_b.jpg" alt="summary"></a></p>
-<p><a href="http://www.flickr.com/photos/leoliang/5537728763/" target="_blank" rel="external"><img src="http://farm6.static.flickr.com/5094/5537728763_c07a09f650.jpg" alt="IMG_20110315_221541"></a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2011/03/13/Sina-micro-bo-API-blacklist-terrible/" itemprop="url">
-                  新浪微博API黑名单威武
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2011-03-13T01:40:00+08:00" content="2011-03-13">
-              2011-03-13
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2011/03/13/Sina-micro-bo-API-blacklist-terrible/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2011/03/13/Sina-micro-bo-API-blacklist-terrible/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>因为有些tweet没有同步到新浪微博，查看了 <a href="http://good-good-study.appspot.com/blog/posts/111001" target="_blank" rel="external">TwitterSinaSync</a> 的运行日志，发现了这样的记录：</p>
-<p><a href="http://www.flickr.com/photos/leoliang/5519631639/" target="_blank" rel="external"><img src="http://farm6.static.flickr.com/5057/5519631639_5b0593fd42_z.jpg" alt=""></a></p>
-<p>前一个tweet（绿色框）正常同步到了新浪微博，而接下来一个就失败（红色框），错误信息是黑名单用户。显然是tweet中的某些内容触发了黑名单机制，在这里估计是”twitter”。</p>
-<p>一旦用户被列入了黑名单，接下来对这个用户的操作都会失败。看下面的例子，第一条是成功的，第二个失败后，接下来的tweet的同步都失败了，即使内容看起来绝无敏感词。其实我也猜不出第二条tweet中哪个词触发了加入黑名单，是”境外”？还是”mranti”？</p>
-<p><a href="http://www.flickr.com/photos/leoliang/5519631597/" target="_blank" rel="external"><img src="http://farm6.static.flickr.com/5217/5519631597_e6064611fc_z.jpg" alt="sina_blacklist_1"></a></p>
-<p>目前新浪微博API的自动触发黑名单是临时性的，过一段时间后用户就可以继续使用，不过不知道它内部有没有什么计数器什么的。为此，我修改了 TwitterSinaSync，当用户被列入黑名单后会暂停同步一段时间。这个版本还处理了用户撤销新浪API授权的情况，会自动将用户删除。用户可以用原邀请链接重新开通。请到<a href="https://github.com/aleung/TwitterSinaSync" target="_blank" rel="external">TwitterSinaSync@github</a>下载 2.3 版本源代码。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2011/02/28/Task-management-tools/" itemprop="url">
-                  任务管理工具
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2011-02-28T07:51:00+08:00" content="2011-02-28">
-              2011-02-28
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2011/02/28/Task-management-tools/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2011/02/28/Task-management-tools/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>首先，我得承认：我又在折腾了。</p>
-<p>这些年来，用过好多种任务管理（to-do）工具，包括low-tech的，电子化的，始终没有一个完全满意。最近一段时间又纠结于此，寻找、尝试各种工具，花了不少时间，真是有点本末倒置啊。</p>
-<p>经过多年的练习，已经逐渐明确了自己对任务管理工具的需求是什么：（优先级从高到低排列）</p>
-<ul>
-<li><strong>Available on both PC and Android, data are synchonized between devices</strong><br>手机是随身携带的，因此要支持Android手机，并且在网络离线时也要可用；手机输入文字速度还是比电脑上慢，屏幕小有局限，输入、整理等工作在电脑上做更有效率。</li>
-<li><strong>随时都可以快速将新的任务记录下来</strong><br>这是GTD中所强调的inbox的功能。创建新任务的界面必须尽可能简单，需要输入的信息和步骤越少越好。</li>
-<li><strong>Be able to set start date of a task, hide future tasks</strong><br>这个功能很多工具都缺乏。Start date与due date是不同的：due date是dead line，大部分任务没有due date；start date是自己对任务的安排。对于不需要马上做的任务，安排好开始的时间，就从当前任务列表里隐藏了，可以更专注于当前任务。</li>
-<li><strong>区分不同任务：new（inbox），scheduled，someday；方便的改变任务类型</strong><br>新任务的记录是清空大脑的过程，需要review后安排具体处理时间；someday是那种还没有想到该什么时候做的任务（也有可能是其实不需要做的）</li>
-<li><strong>Easily schedule / reschedule tasks</strong><br>用简便的操作就可以安排任务执行的时间</li>
-<li><strong>Recurrent task</strong></li>
-<li><strong>Integrate with calendar</strong><br>日程表跟任务列表整合起来，相互可以转换。以前写过<a href="http://good-good-study.appspot.com/blog/posts/3184" target="_blank" rel="external">一些想法</a>。</li>
-<li><strong>Set due date to a task</strong></li>
-<li><strong>Sort tasks in list by drag’n’drop</strong><br>相比起为任务设置priority，我更喜欢直接将任务拖放改变顺序。有时候说不清一个任务到底属于哪个priority，但会知道几个任务中哪个应该先做。</li>
-<li><strong>Apply tag to a task</strong></li>
-<li><strong>Batch operation</strong></li>
-</ul>
-<p>最近将网上找到比较出名的工具都试用过了，记录下简单的评价（针对我的需求的）：</p>
-<ul>
-<li>Remember The Milk <ul>
-<li>功能完善，使用方便</li>
-<li>Web及Android均可离线使用</li>
-<li>不支持 start date</li>
-</ul>
-</li>
-<li>Toodledo <ul>
-<li>Very rich feature set, too heavy</li>
-<li>Complex, unfriendly UI</li>
-<li><strike>不支持 start date</strike></li>
-</ul>
-</li>
-<li>Todoist <ul>
-<li>不支持 start date</li>
-</ul>
-</li>
-<li>Todo.ly <ul>
-<li>不支持 start date</li>
-</ul>
-</li>
-<li>Stay Useful <ul>
-<li>Simple and neat, nice user experience</li>
-<li>没有someday任务，最远只能安排到next week</li>
-<li>支持浏览器离线使用，但在Android上显示没有适应屏幕大小</li>
-<li>免费试用30天，购买$4</li>
-</ul>
-</li>
-<li>Google Tasks <ul>
-<li>不支持 start date</li>
-<li>将任务移到另外一个列表的操作不够简便</li>
-</ul>
-</li>
-<li>Hiveminder <ul>
-<li>No offline access on Android</li>
-</ul>
-</li>
-<li>Nozbe <ul>
-<li>功能完善</li>
-<li>Too expensive: $9.95/month</li>
-</ul>
-</li>
-<li>Tadalist <ul>
-<li>It’s only list of items with checkbox, nothing more</li>
-</ul>
-</li>
-<li>itumz <ul>
-<li>It’s only list of items with checkbox, nothing more</li>
-</ul>
-</li>
-<li>zirr.us <ul>
-<li>Show tasks in tag cloud style</li>
-<li>No start date, only due date</li>
-</ul>
-</li>
-<li>TeuxDeux <ul>
-<li>Day (5 days shown in one screen) + someday, drag’n’drop</li>
-<li>Good user experience</li>
-<li>Can not show all tasks, have to scroll to the date</li>
-<li>No due date</li>
-<li>No recurrent task</li>
-<li>Doesn’t work on Android (native app is underway?)</li>
-</ul>
-</li>
-<li>TaskWarrior <ul>
-<li>CLI</li>
-<li>Good enough feature set</li>
-<li>No Android client</li>
-</ul>
-</li>
-<li>GQueues <ul>
-<li>No start date</li>
-<li>No Android client, 支持浏览器离线访问，但体验不够好</li>
-</ul>
-</li>
-</ul>
-<p>总结下来，就是没有一个能够同时满足我的需求的前几项的。故此我又有了自己做一个的想法，大概的思路已经有了，下次再写。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2011/02/14/Independent-blog-of-a-week/" itemprop="url">
-                  独立博客一周年纪念
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2011-02-14T01:34:00+08:00" content="2011-02-14">
-              2011-02-14
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2011/02/14/Independent-blog-of-a-week/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2011/02/14/Independent-blog-of-a-week/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Good good study, day day up 这个博客从2001年就开始写，正如副标题所说，定位为记录学习心得和一些想法（之前我还有另外一个摄影、旅行主题的博客），基本上谈的就是理科生的话题。原来一直是放在BlogBus上的，直到去年初，实在忍受不了BlogBus疯狂的内容审查，搬出来做独立博客。</p>
-<p>查看历史记录，在这个搭建于Google App Engine上的新blog上发的<a href="http://good-good-study.appspot.com/blog/posts/1001" target="_blank" rel="external">第一篇文章</a>是在去年的2月14日，居然是在情人节！今天是2月13日，也就是这个独立博客已经一周岁了。</p>
-<p>统计一下新blog这一年里发布的文章有30篇（不包括更新的旧文章），平均两周一篇，比我自己印象中的多了。希望自己今后能够继续保持这样一个习惯。最热门的文章是”<a href="http://good-good-study.appspot.com/blog/posts/20001" target="_blank" rel="external">在Android手机上使用SSH tunnel翻墙</a>“，其次是”<a href="http://good-good-study.appspot.com/blog/posts/3224" target="_blank" rel="external">Google中国地图偏移</a>“。</p>
-<p>新的blog留言需要用Google帐号登录，spam是全没有了，但是留言也冷清了好多。没想到什么办法既方便又能杜绝spam的。不知道有没有方法通过Google Buzz或者Twitter来留言呢。另外一个问题是搬家之后搜索引擎的收录不理想，一些关键字的搜索结果还是指向我原来的blog。</p>
-<p>搬到GAE上，就已经准备好要被墙，一年下来appspot.com被封被解封反复多次，似乎到目前为止这个blog还能直接访问（不知道不同地区的情况）。但是，即使被封也不会再搬回墙内，作为一个软件开发者，受困于信息封锁就意味着被技术发展所抛弃，我的博客读者不应该是这样的人。有人说翻墙太麻烦，老想找免费的方法当然麻烦，还是花点钱买个ssh帐号吧，便宜的就是一年几美元。每个月上百的ADSL费用都舍得花了，就不要吝啬这一年几十块钱了，无障碍获取信息的价值就远远值回来了。</p>
-<p>就写到这里吧。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2011/02/11/Android-ssh-/" itemprop="url">
-                  Android用户的好消息：用ssh翻墙
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2011-02-11T20:41:00+08:00" content="2011-02-11">
-              2011-02-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2011/02/11/Android-ssh-/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2011/02/11/Android-ssh-/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>之前我写过一系列<a href="http://good-good-study.appspot.com/blog/posts/90001" target="_blank" rel="external">文章</a>介绍Android系统用ssh翻墙的想法，现在有人把整合的软件做出来了：<a href="http://madeye.me/2011/02/10/ssh-tunnel-on-the-android-application-puff-android-edition/" target="_blank" rel="external">sshtunnel</a></p>
-<p>与TransProxy类似，sshtunnel也是内置了redsocks作为HTTPS/SOCKS redirector，使用iptables重定向网络流，不同的是它还使用了trilead-ssh2代码（作者说来自于ConnectBot）来做SSH client，因此这一个程序就可以完成整个过程，操作简单。根据文档说明和大致浏览代码，貌似没有使用SSH dynamic port forwarding，而是要求SSH server端安装了HTTP代理服务器，SSH连接纯粹是tunnel了到服务端HTTP proxy的连接。</p>
-<p>Update: <a href="https://twitter.com/#!/ofmax/status/36717058762739712" target="_blank" rel="external">作者说</a>，不使用SSH dynamic port forwarding是因为受限于Android手机的机能。我之前测试用ConnectBot做SOCKS proxy的时候就总是遇到CPU占用100%的问题，估计作者说的就是这个。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2011/02/11/TwitterSinaSync-Twitter-/" itemprop="url">
-                  TwitterSinaSync，自动同步Twitter信息到新浪微博
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2011-02-11T05:31:00+08:00" content="2011-02-11">
-              2011-02-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2011/02/11/TwitterSinaSync-Twitter-/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2011/02/11/TwitterSinaSync-Twitter-/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>之前寻找同步twitter到新浪微博的方法，没有尝试到满意的。@cutemic<a href="http://cutemic.posterous.com/twitter" target="_blank" rel="external">介绍说</a>他是在GAE上跑一个叫twitter2sina的python程序，周期性读取自己的tweets，再调用API发送到新浪微博。</p>
-<p>程序员的基本素质是懒惰，因此我问@cutemic他安装的程序是否支持多用户，如果支持，我就懒得自己折腾，让他给我加个用户好了。很可惜，他的程序是要将新浪微博用户名密码hard code到程序里的，那我只能自力更生了。</p>
-<p>装起来之后，本着助人为乐的精神，考虑把这个服务也提供给别人使用。看看代码，调用新浪微博API是用Basic HTTP认证的，需要提供用户名和密码，这样太没有安全感了，别人不敢用的。如果改成OAuth，用户就不需要提供密码了。</p>
-<p>动手尝试修改，于是，就有了这个<a href="https://github.com/aleung/TwitterSinaSync" target="_blank" rel="external">TwitterSinaSync</a>。</p>
-<p>代码大概的历史：</p>
-<ol>
-<li>原始版本是<a href="http://code.google.com/p/twitter2sina/" target="_blank" rel="external">twitter2sina</a>，没有使用新浪微博API，已经失效</li>
-<li>@cutemic的<a href="http://cutemic.posterous.com/twitter" target="_blank" rel="external">修改版本</a>，改成使用新浪微博API</li>
-<li>我修改的<a href="">TwitterSinaSync</a></li>
-</ol>
-<p>主要特性：</p>
-<ul>
-<li>部署于Google App Engine，免费、可靠、方便的云计算环境</li>
-<li>使用新浪微博API OAuth认证，用户不需要提供密码，保证安全</li>
-<li>支持多用户：多组twitter-微博同步绑定</li>
-<li>新用户凭管理员提供的邀请链接才能加入，方便私人分享</li>
-</ul>
-<p><a href="https://github.com/aleung/TwitterSinaSync" target="_blank" rel="external">代码</a>托管在GitHub，bug report 和 feature request可以往<a href="">这里</a>提交。</p>
-<p><em><strong>Updated 2011-7-7:</strong></em></p>
-<p>由于新浪微博对API使用过滤异常的严格，这个应用基本上用处不大了，普通内容的tweet，大概十条里只有两三条能够成功同步，见<a href="http://good-good-study.appspot.com/blog/posts/124001" target="_blank" rel="external">新浪微博API黑名单威武</a>。如果应用能够通过审核，也许过滤会放宽一些，但是根据新浪微博API的用户协议，是不能用于从其他微博系统同步信息的，更何况是Twitter，通过审核的可能性微乎其微。故此我不再维护这个软件了，也不再提供邀请码，请谅解。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2011/01/14/GQueuesInbox-Send-item-to-your-GQueues-inbox-with-Android-device-anywhere-anytime/" itemprop="url">
-                  GQueuesInbox : Send item to your GQueues inbox with Android device anywhere anytime
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2011-01-14T05:15:00+08:00" content="2011-01-14">
-              2011-01-14
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2011/01/14/GQueuesInbox-Send-item-to-your-GQueues-inbox-with-Android-device-anywhere-anytime/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2011/01/14/GQueuesInbox-Send-item-to-your-GQueues-inbox-with-Android-device-anywhere-anytime/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <img src="http://farm6.static.flickr.com/5285/5360976023_928916d839_m.jpg" class="right" title="GQueueInbox">
-<p>去年底<a href="https://www.rememberthemilk.com/" target="_blank" rel="external">RememberTheMilk</a>的pro帐号到期了，于是又折腾了一下看看有没有好用的类似工具，发现了一个在线任务管理的新秀：<a href="http://www.gqueues.com" target="_blank" rel="external">GQueues</a>。GQueues的功能和界面都不错，我比较喜欢它的一点是没有用高中低的任务优先级，而是让你在列表中拖放任务改变顺序，排在最顶的就是需要优先处理的。有些事情你很难界定应该是属于重要性高还是重要性中等，但是如果几件事情放在一起，就很容易分出哪个相对更重要一些。</p>
-<p>但是，GQueues没有开发手机本地应用，在手机上只能通过浏览器访问。虽然它的网站有专门为移动设备优化，但还是不如本地应用便捷。而且很重要一点，不是任何时候都能访问到网络的，想起一件要做的事情，却因为连不上网而无法记录下来，只能留在脑子里或者要记录到别的地方，这样不符合GTD的原则。</p>
-<p>为此，我写了一个简单的Android应用，做的唯一事情就是往GQueues inbox里面添加新任务，并且允许离线使用：如果没有网络，任务会暂存起来，在有网络的时候后台自动发送出去。软件介绍：<a href="http://www.appbrain.com/app/gqueuesinbox/leoliang.gqueuesinbox" target="_blank" rel="external">http://www.appbrain.com/app/gqueuesinbox/leoliang.gqueuesinbox</a></p>
-<p>不过，因为GQueues部署在Google App Engine上的，IP地址被GFW屏蔽，在国内无法直接访问。解决办法是自己将可以访问的IP配置到hosts文件里面，无论是PC还是手机都要如此处理。</p>
 
           
         
@@ -1473,7 +1027,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/blog/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/32/">32</a><a class="extend next" rel="next" href="/blog/page/9/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/blog/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/64/">64</a><a class="extend next" rel="next" href="/blog/page/9/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1514,7 +1068,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">312</span>
+              <span class="site-state-item-count">317</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1661,25 +1215,6 @@
 
 
 
-  
-
-    <script type="text/javascript">
-      var disqus_shortname = 'aleung';
-      var disqus_identifier = 'page/8/index.html';
-      var disqus_title = "";
-      var disqus_url = '';
-
-      function run_disqus_script(disqus_script){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-      
-    </script>
   
 
 

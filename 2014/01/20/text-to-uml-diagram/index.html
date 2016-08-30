@@ -124,15 +124,6 @@
   
 
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-2827715-4', 'auto');
-  ga('send', 'pageview');
-</script>
-
 
 
 
@@ -289,13 +280,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2014/01/20/text-to-uml-diagram/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/01/20/text-to-uml-diagram/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -326,11 +310,11 @@
 <li>IDE plugin. Easy way to keep UML together with source code.</li>
 </ul>
 <p>The syntax of PlantUML’s DSL is quite intuitional, you can start to use it by following example.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">package ConsentObject &lt;&lt;Rect&gt;&gt; &#123;</span><br><span class="line">  Consent : id</span><br><span class="line">  Scope : key</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">Client - User</span><br><span class="line">(Client, User) . Consent</span><br><span class="line"> </span><br><span class="line">Consent - &quot;*&quot; Scope</span><br><span class="line"> </span><br><span class="line">Consent &quot;1&quot; -- &quot;1..*&quot; AccessToken</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">package ConsentObject &lt;&lt;Rect&gt;&gt; &#123;</div><div class="line">  Consent : id</div><div class="line">  Scope : key</div><div class="line">&#125;</div><div class="line"> </div><div class="line">Client - User</div><div class="line">(Client, User) . Consent</div><div class="line"> </div><div class="line">Consent - &quot;*&quot; Scope</div><div class="line"> </div><div class="line">Consent &quot;1&quot; -- &quot;1..*&quot; AccessToken</div></pre></td></tr></table></figure>
 <p>The generated diagram:</p>
 <img src="http://www.plantuml.com/plantuml/svg/K-0gI4pEJanFLN3EpojEpIlnJyfAJIvHiB490b9sTWhLN0emAGKhXSmK83SuERyW5SZ9JgtagkLIu7BEoGJ9wYg45gSMSMb0k3fWdgQ27amtI27K75q59IqbY358eag6IWgwG2b3FJsWh6DoScfnSKX-TceU0000"> 
 <p>A sequence diagram example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">title OAuth 2.0 Authorization Code Grant</span><br><span class="line"></span><br><span class="line">actor    UserAgent       as UA</span><br><span class="line">participant Application     as APP</span><br><span class="line">participant OAuthServer     as OAuth</span><br><span class="line">participant ResourceServer  as RS</span><br><span class="line"></span><br><span class="line">== Application requests authorization from user ==</span><br><span class="line">UA-&gt;APP: </span><br><span class="line">APP--&gt;UA:redirect to OAuth Server</span><br><span class="line">UA-&gt;OAuth: GET /authorize?response_type=code</span><br><span class="line">ref over UA, OAuth: user authentication\nuser confirms reqest</span><br><span class="line">OAuth--&gt;UA: redirect to App with authorization_code</span><br><span class="line">UA-&gt;APP: authorization_code</span><br><span class="line"></span><br><span class="line">== Application retrieve access token ==</span><br><span class="line">APP-&gt;OAuth: POST /token with authorization_code</span><br><span class="line">ref over APP, OAuth: client authentication</span><br><span class="line">APP&lt;--OAuth: access_token</span><br><span class="line"></span><br><span class="line">== Application access protected resource ==</span><br><span class="line">APP-&gt;RS: getResource with access_token</span><br><span class="line">RS-&gt;OAuth: validateToken(access_token)</span><br><span class="line">RS--&gt;APP: result</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">title OAuth 2.0 Authorization Code Grant</div><div class="line"></div><div class="line">actor    UserAgent       as UA</div><div class="line">participant Application     as APP</div><div class="line">participant OAuthServer     as OAuth</div><div class="line">participant ResourceServer  as RS</div><div class="line"></div><div class="line">== Application requests authorization from user ==</div><div class="line">UA-&gt;APP: </div><div class="line">APP--&gt;UA:redirect to OAuth Server</div><div class="line">UA-&gt;OAuth: GET /authorize?response_type=code</div><div class="line">ref over UA, OAuth: user authentication\nuser confirms reqest</div><div class="line">OAuth--&gt;UA: redirect to App with authorization_code</div><div class="line">UA-&gt;APP: authorization_code</div><div class="line"></div><div class="line">== Application retrieve access token ==</div><div class="line">APP-&gt;OAuth: POST /token with authorization_code</div><div class="line">ref over APP, OAuth: client authentication</div><div class="line">APP&lt;--OAuth: access_token</div><div class="line"></div><div class="line">== Application access protected resource ==</div><div class="line">APP-&gt;RS: getResource with access_token</div><div class="line">RS-&gt;OAuth: validateToken(access_token)</div><div class="line">RS--&gt;APP: result</div></pre></td></tr></table></figure>
 <img src="http://www.plantuml.com/plantuml/svg/TP9FJuGm4CNl_HHpr4JKU2IYQOpPusvWkPbicZAxDh8KfyCQ_VIsfP35Fnm8RT_C-xsXRBX5MCk1N-7k-XR2XoNpfTZO3fviWx0YrR4GIhCb69_Q8Sa3TfpMoa4jHQ-8ZJQzbuFi-zReiKjIoCrc8Occ5T89QPB4hOMeH6S7qZZflAYiX2YAXGFX-u2E7QW5_fxi4GRF2aKXQfazU8GSX7zdsKCjSyB646e6jca4eqtKneqSLizRk9dQuYEXwstdSCUVFHRQpqSGxi46k5fUGQgAfg7ApoX1ldHnKzjkR-Ze0hD75h5Wn85p7XyFFen7MaJQHSSvoXzdlqV3PF24eBH6vtphD-p2FC8Kff2RTULJZaV_cSunVU6SKxSct89bqj3wFikIPFJTnUO_uH9JJvPzR6myxVYxPy2ook60F5s3H7VUigpc62VLcaOnRiF1nRdgCiZIqBp7qF8t">
 
       
@@ -400,13 +384,6 @@
           
   <div class="comments" id="comments">
     
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
-    
   </div>
 
 
@@ -449,7 +426,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">312</span>
+              <span class="site-state-item-count">317</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -611,27 +588,6 @@
 
 
 
-  
-
-    <script type="text/javascript">
-      var disqus_shortname = 'aleung';
-      var disqus_identifier = '2014/01/20/text-to-uml-diagram/';
-      var disqus_title = "Text to UML diagram";
-      var disqus_url = 'http://aleung.github.io/blog/blog/2014/01/20/text-to-uml-diagram/';
-
-      function run_disqus_script(disqus_script){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-      
-        run_disqus_script('embed.js');
-      
-    </script>
   
 
 

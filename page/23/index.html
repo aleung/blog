@@ -86,15 +86,12 @@
 
 
 
-<meta name="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Good good study, day day up">
 <meta property="og:url" content="http://aleung.github.io/blog/page/23/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Good good study, day day up">
-<meta name="twitter:description">
 
 
 
@@ -119,15 +116,6 @@
 
   
 
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-2827715-4', 'auto');
-  ga('send', 'pageview');
-</script>
 
 
 
@@ -267,8 +255,8 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2005/02/24/Use-MPC-to-generate-makefile-for-you/" itemprop="url">
-                  Use MPC to generate makefile for you
+                <a class="post-title-link" href="/blog/2010/02/14/Basic-function-complete-can-open/" itemprop="url">
+                  基本功能完备，可以公开了
                 </a>
               
             
@@ -281,21 +269,14 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2005-02-24T04:15:00+08:00" content="2005-02-24">
-              2005-02-24
+            <time itemprop="dateCreated" datetime="2010-02-14T18:16:00+08:00" content="2010-02-14">
+              2010-02-14
             </time>
           </span>
 
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2005/02/24/Use-MPC-to-generate-makefile-for-you/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2005/02/24/Use-MPC-to-generate-makefile-for-you/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -318,35 +299,15 @@
       
         
           
-            <p>MPC - The Makefile, Project and workspace Creator (<a href="http://www.ociweb.com/product/mpc/" target="_blank" rel="external">http://www.ociweb.com/product/mpc/</a>) is comes with ACE, ACE use it to create its makefile.</p>
-<p>Now it’s no need to write makefile anymore, MPC can do it for you.</p>
-<ol>
-<li>Write the workspace file (mwc) and project file (mpc)  </li>
-<li>Generate makefile<br>$ACE_ROOT/bin/mwc.pl -type make ismap.mwc</li>
-</ol>
-<p>Let’s study on an example.</p>
-<p>Our ismap_server have 4 sub-projects. Directories ismap, oblc, rtbp each contains a sub project, they will build libraries for later use. The main project builds 3 libraries together and generates the executable file.</p>
-<p>The directory structure is like this:</p>
-<p>src/{ismap_server files (main project)}<br>src/ismap/{ismap_frontend files (sub project)}<br>src/oblc/{oblc files (sub project)}<br>src/rtbp/{rtbp_backend files (sub project)}</p>
-<p>First, write the workspace file <strong>ismap.mwc</strong>. In the workspace block, each line defines a project(mpc file) or directory.</p>
-<p>workspace {<br> ismap<br> oblc<br> rtbp<br> ismap_server.mpc<br>}</p>
-<p>Actually, this mwc file can be omitted. The default behavior of MPC is recursing into directories and adding all mpc files into workspace.</p>
-<p>Then write the project files for each project. The ismap, oblc and rtbp projects are the same, they generates a library file. Put a mpc file with content as following in each project directory, named as the project’s name (<strong>ismap.mpc</strong>, <strong>oblc.mpc</strong> and <strong>rtbp.mpc</strong>).</p>
-<p>project : aceexe {<br> libout = ../<br>}</p>
-<p>The mpc file is very simple. The first lines means that the project inherits setting from base project aceexe, which is defined in $ACE_ROOT/bin/MakeProjectCreator/config/aceexe.mpb. The second line defines where to put the output library. I set it to the upper directory so that all 3 libraries are put together. (It seems that static library target won’t be put into the specified directory. )</p>
-<p>Project can have tree kinds of output: executable, dynamic library and static library. The output filename is defined by keywork <em>exename</em>, <em>sharedname</em> and <em>staticname</em>. MPC will search the source files to see whether the main function exists. If main exists, set target as executable, library otherwise. If mwc.pl/mpc.pl is called with the <em>-static</em> parameter, generates static library. The default is dynamic library.</p>
-<p>I omit the keywork staticname here. The output file name will be the same as the mpc file.</p>
-<p>It’s no need to specify any source file name or header file name. MPC will generate a makefile compiling all the sources in the directory.</p>
-<p>The main project’s mpc file <strong>ismap_server.mpc</strong> is a bit different than sub project’s. </p>
-<p>project : aceexe {<br> exename = ismap_server<br> libs += ismap oblc rtbp<br> libpaths += .<br> after += ismap oblc rtbp<br>}</p>
-<p>The keyword <em>libs</em> specifies the library(s) to link into the target. “+=” means no overwrite but append. The keyword <em>after</em> specifies the dependance between projects.</p>
-<p>From the example, you will find that write mpc file and use MPC to generate makefile is easier than write makefile by hand.</p>
-<p>ps. To make project successfully on solaris system, need to set the following directory into PATH environment variable:</p>
+            <p>一个blog所需要的功能的最小集合已经完备了，可以投入使用，再边用边改进了：</p>
 <ul>
-<li>/usr/ccs/bin  (for ar) </li>
-<li>/usr/openwin/bin  (for makedepend) </li>
-<li>/usr/local/bin  (for make, gcc)</li>
+<li>发文章</li>
+<li>文章分页显示</li>
+<li>Tag</li>
+<li>评论</li>
+<li>用户认证通过Google account进行</li>
 </ul>
+<p><a href="https://appengine.google.com/" target="_blank" rel="external">Google Application Engine</a> 提供了强大的平台，<a href="http://www.playframework.org" target="_blank" rel="external">Play Framework</a>使得Java web开发变得很简便。开发这个应用用了几天时间，不算快，但作为第一次，学习、查资料花的时间不少，上手之后的工作效率将会提高很多。另外，对我来说，HTML+CSS才是最困难的部分，基本没有做前端的经验。现在的界面是从sample里面copy出来改的，每改一点就要看看效果，边试边改。</p>
 
           
         
@@ -396,8 +357,8 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2005/02/18/Member-function-call-delete-this-legal/" itemprop="url">
-                  成员函数调用delete this合法吗？
+                <a class="post-title-link" href="/blog/2010/02/14/This-blog-now-support-feed-output/" itemprop="url">
+                  这个blog现在支持feed输出了
                 </a>
               
             
@@ -410,21 +371,14 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2005-02-18T21:18:00+08:00" content="2005-02-18">
-              2005-02-18
+            <time itemprop="dateCreated" datetime="2010-02-14T18:16:00+08:00" content="2010-02-14">
+              2010-02-14
             </time>
           </span>
 
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2005/02/18/Member-function-call-delete-this-legal/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2005/02/18/Member-function-call-delete-this-legal/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -447,25 +401,11 @@
       
         
           
-            <p>Yesterday, I discussed with Alex whether “delete this” in C++ is legal code.</p>
-<p>In some case, only the object itself knows when its life is to the end and should be destroyed, the owner of object doesn’t know it, or the object has no explicit owner. The most easy way to manger the life time of this kind of object is let it delete itself.</p>
-<p>But we doubted that “delete this” isn’t legal in C++: after the object is released, how does the execution continue?</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> A &#123;  </span><br><span class="line"><span class="keyword">public</span>:  </span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span></span>;  </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> A::foo()  </span><br><span class="line">&#123;  </span><br><span class="line">  <span class="comment">// do something  </span></span><br><span class="line">  <span class="keyword">delete</span> <span class="keyword">this</span>;  </span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"I commit suicide!"</span> &lt;&lt; <span class="built_in">endl</span>;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span><br><span class="line"></span>&#123;  </span><br><span class="line">  A* a = <span class="keyword">new</span> A;  </span><br><span class="line">  a-&gt;foo();  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>I find the answer now, it’s legal, but must be careful when using it. </p>
-<p>The following <a href="http://www.sunistudio.com/cppfaq/freestore-mgmt.html#[16.14]" target="_blank" rel="external">faq</a> explain it clearly:</p>
-<blockquote>
-<p>只要你小心，一个对象请求自杀(<code>delete</code> <code>this</code>).是可以的。</p>
-<p>以下是我对“小心”的定义：</p>
-<ol>
-<li>你必须100%的确定，<code>this</code>对象是用 <code>new</code>分配的（不是用<code>new[]</code>，也不是用<a href="http://www.sunistudio.com/cppfaq/dtors.html#[11.10]" target="_blank" rel="external">定位放置 <code>new</code></a>，也不是一个栈上的局部对象，也不是全局的，也不是另一个对象的成员，而是明白的普通的<code>new</code>）。</li>
-<li>你必须100%的确定，该成员函数是<code>this</code>对象最后调用的的成员函数。</li>
-<li>你必须100%的确定，剩下的成员函数（<code>delete</code> <code>this</code>之后的）不接触到 <code>this</code>对象任何一块（包括调用任何其他成员函数或访问任何数据成员）。</li>
-<li>你必须 100%的确定，在<code>delete</code> <code>this</code>之后不再去访问<code>this</code>指针。换句话说，你不能去检查它，将它和其他指针比较，和 <code>NULL</code>比较，打印它，转换它，对它做任何事。</li>
-</ol>
-<p>自然，对于这种情况还要习惯性地告诫：当你的指针是一个指向基类类型的指针，而没有<a href="http://www.sunistudio.com/cppfaq/virtual-functions.html#[20.4]" target="_blank" rel="external">虚析构函数</a>时（也不可以 <code>delete</code> <code>this</code>）。 </p>
-</blockquote>
-<p>And these ariticles also take about “delete this”:</p>
-<p><a href="http://info.tlw.cn/6079.htm" target="_blank" rel="external">http://info.tlw.cn/6079.htm</a><br><a href="http://blog.csdn.net/foxmail/archive/2004/09/22/113060.aspx" target="_blank" rel="external">http://blog.csdn.net/foxmail/archive/2004/09/22/113060.aspx</a></p>
+            <p>支持atom比我想象中简单很多，根本用不着什么library，多加一个xml template就行了。</p>
+<p>如果你的浏览器支持，就能在地址栏右边看到feed的图标，点击就可以选择阅读器进行订阅。或者在阅读器（例如Google Reader）里面输入这个网站的地址，也可以订阅。</p>
+<p><img src="http://farm5.static.flickr.com/4058/4353315450_7d1914e9ab_o.png" alt=""></p>
+<p>PS. 这个blog的页面使用了一些HTML5标签，因此需要使用新的浏览器才能正常浏览，例如使用 Firefox 3, Chrome。如果你看到的页面不是上图的样子，说明你的浏览器 out date 啦。</p>
+<p>PPS. 我会一如既往的使用flickr来存放照片，如果你看不到照片，或者有一天你连这个blog的页面都看不到，那说明你上的只是局域网，根本不是Internet。</p>
 
           
         
@@ -515,8 +455,8 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2004/12/22/Updated-the-RSS/" itemprop="url">
-                  更新了RSS
+                <a class="post-title-link" href="/blog/2010/01/24/Seems-to-have-to-get-off-here/" itemprop="url">
+                  看来还是得下车了
                 </a>
               
             
@@ -529,21 +469,14 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2004-12-22T22:05:00+08:00" content="2004-12-22">
-              2004-12-22
+            <time itemprop="dateCreated" datetime="2010-01-24T06:41:00+08:00" content="2010-01-24">
+              2010-01-24
             </time>
           </span>
 
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2004/12/22/Updated-the-RSS/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2004/12/22/Updated-the-RSS/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -566,8 +499,13 @@
       
         
           
-            <p>将blog的rss feed改了一下，使用了<a href="http://www.feedburner.com/" target="_blank" rel="external">FeedBurner</a>提供的rss扩展服务。大家可以留意页面右下角的rss图标。<strong><em>如果是用RSS Reader阅读我的blog的朋友，麻烦更换一下地址吧</em></strong>。</p>
-<p>FeedBurner提供的功能不错的，我只使用了其中的一部分，其中比较特别的就是自动将del.icio.us的书签加入到blog rss中。</p>
+            <p>Update 2010-2-15:</p>
+<p>今天将BlogBus的数据导入到这里后，进BlogBus后台核对一下文章是否有缺失，一看又有好几篇文章被隐藏了。那些都是纯正的技术文章，并不像下面截屏的那样故意加入特殊字眼，有一篇还是全英文的，我真看不出有什么敏感词。</p>
+<p>下面的原文发在<a href="http://aleung.blogbus.com" target="_blank" rel="external">BlogBus</a>。</p>
+<hr>
+<p>去向未定，但想继续看我的blog，估计都得学几招翻墙功夫了</p>
+<p>请bookmark这个地址：<a href="http://feeds.feedburner.com/GoodGoodStudyDayDayUp" target="_blank" rel="external">http://feeds.feedburner.com/GoodGoodStudyDayDayUp</a></p>
+<p><img src="http://farm5.static.flickr.com/4030/4356716336_bd25956bc6_o.jpg" alt=""></p>
 
           
         
@@ -617,8 +555,8 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2004/12/22/The-era-of-network-reading/" itemprop="url">
-                  网络时代的阅读
+                <a class="post-title-link" href="/blog/2010/01/01/The-reason-for-explorer-crash-tools/" itemprop="url">
+                  查找explorer crash原因的工具
                 </a>
               
             
@@ -631,21 +569,14 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2004-12-22T21:32:00+08:00" content="2004-12-22">
-              2004-12-22
+            <time itemprop="dateCreated" datetime="2010-01-01T06:59:00+08:00" content="2010-01-01">
+              2010-01-01
             </time>
           </span>
 
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2004/12/22/The-era-of-network-reading/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2004/12/22/The-era-of-network-reading/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -668,9 +599,9 @@
       
         
           
-            <p>跟同事聊天，说起学生时代读过的书，个个都如数家珍，罗列出一大堆印象深刻的。可那都是很久以前的事情了，要说到近年来看了什么书，几乎都想不起来。报纸上也报道说，根据调查现在的青年的读书比起以前少了多少个百分点。是啊，捧一本书，安坐一角，细细品味，这样的情景已经很久没有出现了。这并不能完全归咎于工作忙碌，没有时间，而是很多空余时间已经被网络占有了。</p>
-<p>要说阅读量，现今比起以前倒不见得真的少了，每天在网上浏览，一两个月下来，累计数量估计也比得上一本大部头。只不过，在网上的阅读是很零散的，不如读书一般系统连贯。网上阅读的优势是信息及时，查找方便，可以进行充分的交互沟通；但是网上阅读不足之处是，信息量太大，需要耗费不少时间进行过滤，往往有广度而缺乏深度，可信度也需要靠自己辨别。</p>
-<p>看来，网络阅读适合于用来开拓知识面，快速入门，交流讨论；但要想好好学点东西，还是要心平气和，少上网，多读书。</p>
+            <p>不知道装了什么软件之后，只要在文件管理器中点击鼠标右键，Windows Explorer就会崩溃，重新启动依然如是。</p>
+<p>找到<a href="http://www.nirsoft.net/" target="_blank" rel="external">Nir Sofer</a>出品的小工具 ShellExView，这个工具分析注册表，列出所有注册到explorer的shell extension及相关信息，并能够enable/disable选定的extension。找到可疑的extension，将它disable，然后再进行一次右键操作，看看还会不会crash。如此排除法很快就定位出什么软件是罪魁祸首，将它卸载或者将extension disable，问题就解决了。</p>
+<p>比较有用的信息是extension type，file extensions，file created time。首先关注文件创建时间，找出最近新增的extension，因为以前正常，最近才出问题，那引起问题通常是新装的软件。不过也不能一概而论，也有可能是以前安装的软件，因为最近的环境更改而出现了问题。另外可以根据extension type和file extensions进行过滤，例如我遇到的问题是右键菜单引发崩溃，那重点关注extension type为Context Menu的那些项。还有，在任何类型文件上按右键菜单都会引发崩溃，所以不大可能是由只针对特定文件类型的extension引发的。虽然系统注册的shell extension很多，例如我这个新装没多久的Vista系统就已经有三百多项，但是大部分都是Microsoft出品的，一般来说还是比较可靠的，只要关注非Microsoft的就可以了，找起问题来还是很快的。</p>
 
           
         
@@ -720,8 +651,8 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2004/12/13/String-fuzzy-matching/" itemprop="url">
-                  字符串模糊匹配
+                <a class="post-title-link" href="/blog/2009/12/27/Google-China-Map-offset-2/" itemprop="url">
+                  Google中国地图偏移 (续)
                 </a>
               
             
@@ -734,21 +665,14 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2004-12-13T17:35:00+08:00" content="2004-12-13">
-              2004-12-13
+            <time itemprop="dateCreated" datetime="2009-12-27T22:04:00+08:00" content="2009-12-27">
+              2009-12-27
             </time>
           </span>
 
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2004/12/13/String-fuzzy-matching/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2004/12/13/String-fuzzy-matching/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -771,539 +695,14 @@
       
         
           
-            <p>字符串匹配最常用的是正则表达式，但是正则表达式的匹配非常严格，某些场合下，希望的匹配算法是模糊的，只要求找出相似的字符串而不是完全匹配的字符串，例如拼写错误、插入空格等情况。<a href="http://www.codeproject.com/aspnet/intelligent404page.asp" target="_blank" rel="external">http://www.codeproject.com/aspnet/intelligent404page.asp</a>这篇文章介绍了如何生成智能的404页面，当URL不存在时可提示出拼写近似的网页。其中使用Levenshtein的算法来计算两个字符串的‘edit distance’,也就是一个字符串要经过多少步修改（增加、改变、删除字符），才能变成另外一个字符串。根据计算出的相似的分值，据此来给出建议结果。</p>
-<p>这个算法看来在处理用户输入的时候会很有用，能够增加用户界面的人性化程度。一个友善的提示，比起冷冰冰的“输入错误”友好多了，降低了用户使用软件时的心理阻碍。另外，这个算法应该也是可以适用于中文的，采用unicode处理就可以了。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2004/12/11/Relaxed-and-desktop/" itemprop="url">
-                  清爽的桌面
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2004-12-11T02:37:00+08:00" content="2004-12-11">
-              2004-12-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2004/12/11/Relaxed-and-desktop/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2004/12/11/Relaxed-and-desktop/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>一直以为explorer是与windows结合得很紧密的程序，不可缺少。因为它是windows的shell，桌面、菜单、文件浏览窗口都是由它拥有的，如果explorer没有运行，整个屏幕就是空空如也，什么都控制不了。</p>
-<p>没有想到，explorer也是可以替换的，<a href="www.geoshell.com">GeoShell</a>就是这样一个explorer的替代品。而且，它是open source的。安装geoshell替换了explorer之后，屏幕界面清爽了很多，可以替换skin，可以安装plugin，最适合那些疯狂的DIYer了，例如可以把系统装扮成MacOS。据说，geoshell占用内存比起explorer要小，稳定性也很不错。我装起来用了半天，确实占内存比explorer少，不过还要用的时间长一点才能确认。</p>
-<p><a href="http://www.flickr.com/photos/aleung/2075928/" target="_blank" rel="external"><img src="http://photos2.flickr.com/2075928_d0c94036cb.jpg" alt="geoshell"></a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2004/12/09/Eye-control-the-mouse/" itemprop="url">
-                  眼控鼠标
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2004-12-09T08:44:00+08:00" content="2004-12-09">
-              2004-12-09
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2004/12/09/Eye-control-the-mouse/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2004/12/09/Eye-control-the-mouse/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>近日看了报道，说长期使用鼠标，很容易导致手腕疾病。以前一直右手用鼠标的，于是换了左手，避免老是一只手过于劳累。不过刚开始还真不习惯，左手总是笨笨的。</p>
-<p>鼠标的功能是为了给用户提供一个全屏幕定位的手段，但是，要能准确地选定屏幕的位置，还是需要一个反馈的过程：手移动鼠标，屏幕鼠标指针反映出当前的位置，手调整鼠标移动的方向和速度，直到鼠标指针移动到期望的位置。在这个过程中，要选择的地方就是目光集中所在的地方，故此，如果能够监测到眼球注视的位置，就能获取到用户需要定位的地方，这将是一种最为直观的手段——看哪指哪。这样带来好处，一方面是定位直观快速，另一方面是能将手从鼠标上解放出来，不需要在键盘与鼠标之间来回移动，减少疲劳了。</p>
-<p>我想，这“眼控鼠标”应该不算什么天方夜谭的想法吧，canon单反相机的眼控对焦技术已经商用化很多年了，起码说明在技术原理上是可行的。当然，相机取景时眼睛是紧贴取景框的，而使用电脑时距离会远很多，而且头部会移动，所以实现难度可能不小。但是，在这个技术飞速发展的年代，只要能想到，有什么不可能？</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2004/12/07/ozi-/" itemprop="url">
-                  ozi提供了地图拼合的工具
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2004-12-07T09:03:00+08:00" content="2004-12-07">
-              2004-12-07
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2004/12/07/ozi-/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2004/12/07/ozi-/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>ozi提供了一个地图合并的工具ozimapmerge, 能够将不同区域、不同比例、不同投影方式的多个地图合并生成新的地图。使用很简单，输入可以是所有ozi支持的地图，带有map文件就可以了；选取一定的区域，指定生成地图的线数，就能输出合并后的地图，格式为ozi专用的ozfx3，并且会生成配套的map文件。如果地图重叠，生成图会选择最精细那幅。</p>
-<p>根据我现在的摸索，这个工具有两个用途：</p>
-<ul>
-<li>我拥有低精度的大区域地图和高精度的局部地图，利用ozimapmerge，可以把高精度地图镶嵌到低精度地图中。 </li>
-<li>多幅相邻的地图拼合成一张大图。</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2004/12/03/Two-Linux-small-tools-whichcd-checkinstall/" itemprop="url">
-                  两个linux小工具：whichcd, checkinstall
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2004-12-03T19:02:00+08:00" content="2004-12-03">
-              2004-12-03
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2004/12/03/Two-Linux-small-tools-whichcd-checkinstall/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2004/12/03/Two-Linux-small-tools-whichcd-checkinstall/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>现在的linux安装盘通常都有几张，要找一个rpm包在哪张盘就很麻烦了，要一张张放进光驱里面看。在sourceforge.net上面找到whichcd这个小工具，能够告诉你某个rpm在第几张光盘，也能告诉你当需要某个文件/命令时应该安装哪个rpm。</p>
-<p>估计它是预先将主要linux发行版的包的资料都保存起来了，支持的linux发行版本有限，RedHat的最齐。</p>
-<p>另外一个工具叫做CheckInstall，通过记录软件make install过程中新建和拷贝了什么文件目录，自动生成rpm。（以前有个工具叫做installwatch，现在已经被包含到CheckInstall软件包里面了）。这就大大简化了rpm的制作过程，一个软件只有源码和makefile的，也能够直接制作出rpm，不需要写spec了。当然，这工具只能生成简单的rpm，不能做到检测依赖性、运行pre/post script。不过，大部分情况下，能做到这样也就够了。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2004/11/23/To-adopt-Firefox/" itemprop="url">
-                  转用Firefox
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2004-11-23T20:50:00+08:00" content="2004-11-23">
-              2004-11-23
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2004/11/23/To-adopt-Firefox/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2004/11/23/To-adopt-Firefox/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Firefox出了1.0版本，网上展开了铺天盖地的宣传。这真是网络的魅力啊，一个自由软件本来是没有多大力气搞宣传活动的，但经过用户fans的自发传播，也包括搭便车商家的推波助澜，一下子用户量出现了爆发增长。</p>
-<p>但宣传归宣传，用户也不是傻瓜，毕竟firefox是一个好软件，mozilla项目这么多年也总算结下一个大果子了。说起来，mozilla为开源社区也贡献了不少东西，除了浏览器套件外，bugzilla、SpiderMonkey/Rhino这些“副产品”也是被广泛使用了。</p>
-<p>我以前也曾经试用过mozilla suite和firefox，但是那时感觉产品还不成熟，至少还缺乏说服IE用户“叛变”的feature。现在的firefox不一样了，我使用了好几天，感觉基本上已经可以把原来一直用的基于IE内核的Maxthon(MyIE2)替换掉了。</p>
-<p>不过，虽然在易用性方面有了很大进步，firefox目前还不能算是一个适合普通用户使用的软件。它的强大，必须在配合各种extensions的情况下才能发挥出来，而extensions需要用户自己去下载安装。对于一个普通用户，面对几百种extensions，怎么知道应该下载哪些。要推广firefox，需要有人（组织）去做打包的工作才行，根据不同的需求，选择合适的extension做出专门的安装包，装好就可以用。</p>
-<p>例如大家都说foobar2000比winamp好，我下了一个安装起来，一点都不好用，配置又复杂得要命。后来又见到一个网友做的精选版，将必备的插件、常用的配置做到安装包里面了，一装起来，才发现原来foobar2000是这么好用的。</p>
-<p>介绍一下我现在用的extension，基本是为了符合原来使用Maxthon(MyIE2)的习惯而配置的：</p>
-<ul>
-<li>Adblock：过滤网页广告 </li>
-<li>Advanced Highlighter Button (AHB)：将页面的搜索关键字高亮显示(其实这个extension也不是很必要) </li>
-<li>ieview：遇到firefox不兼容的网页，可以用IE打开 </li>
-<li>FlashGot：使用外部下载工具下载文件 </li>
-<li>Tabbrowser Extensions：这个东西用来配置tab的，配置很灵活，当然了，灵活的代名词就是复杂:) </li>
-<li>Super DragAndGo：拖放一个link，在新窗口打开；拖放一段文字，打开搜索引擎搜索 </li>
-<li>del.icio.us：as title:)</li>
-</ul>
-<p>Firefox本身的防弹出窗口功能就很好。另外页面搜索也很方便，敲入“/”就可以在当前显示页里面搜索文字。</p>
+            <p>接着<a href="/2009/12/26/Google-China-Map-offset-1/">昨天的分析</a>。</p>
+<p>已经发现在纬线上的偏移值呈现出明显的规律性，这个规律不难拟合出来。利用拟合出来的函数将这个高频扰动抵消之后，得到了这样的曲线：</p>
+<p><img src="/attachments/2009/12/4382498800_1bc9e586dd_o.jpg" alt=""></p>
+<p>看起来相当完美。那在看看将它应用到大尺度上效果如何：</p>
+<p><img src="/attachments/2009/12/4381740587_73cd1113fd_o.jpg" alt=""></p>
+<p>有微小的抖动，看来参数细节还需要微调一下，不过要求不高的话其实已经可以接受了。</p>
+<p>接下来，在这张图上又发现了规律…… 嗯，我不能继续写下去了。</p>
+<p>其实对于离线应用，进一步的分析不做也没有关系了，并不需要将整个函数拟合出来，剩余的工作可以通过查表法来做，然后插值再加回高频扰动。因为知道了高频扰动的函数后，就能够用较低的采样频率来记录偏移量，即使将整个表放内存里，占用的空间大小也可以接受。</p>
 
           
         
@@ -1336,7 +735,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/22/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/22/">22</a><span class="page-number current">23</span><a class="page-number" href="/blog/page/24/">24</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/32/">32</a><a class="extend next" rel="next" href="/blog/page/24/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/22/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/22/">22</a><span class="page-number current">23</span><a class="page-number" href="/blog/page/24/">24</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/64/">64</a><a class="extend next" rel="next" href="/blog/page/24/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1377,7 +776,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">312</span>
+              <span class="site-state-item-count">317</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1524,25 +923,6 @@
 
 
 
-  
-
-    <script type="text/javascript">
-      var disqus_shortname = 'aleung';
-      var disqus_identifier = 'page/23/index.html';
-      var disqus_title = "";
-      var disqus_url = '';
-
-      function run_disqus_script(disqus_script){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-      
-    </script>
   
 
 
