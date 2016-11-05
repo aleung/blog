@@ -661,9 +661,9 @@
     
       <category term="SoftwareDev" scheme="http://aleung.github.io/blog/tags/SoftwareDev/"/>
     
-      <category term="Scala" scheme="http://aleung.github.io/blog/tags/Scala/"/>
-    
       <category term="Haskell" scheme="http://aleung.github.io/blog/tags/Haskell/"/>
+    
+      <category term="Scala" scheme="http://aleung.github.io/blog/tags/Scala/"/>
     
   </entry>
   
