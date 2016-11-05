@@ -255,6 +255,104 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2008/11/06/Will-laptops-to-stand-up/" itemprop="url">
+                  将笔记本电脑竖起来
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2008-11-06T03:54:00+08:00" content="2008-11-06">
+              2008-11-06
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>办公室桌面不够大，总是感觉不够空间。看到instructable网站上的一个<a href="http://www.instructables.com/id/Ergonomic_Laptop_Stand_Made_From_a_Coat_Hanger/" target="_blank" rel="external">作品</a>，将laptop竖起来摆放，受到启发，琢磨着怎么把自己的笔记本电脑也竖起来。不过，我是通过dock来外接显示器、键盘、鼠标的，这样才不需要经常拔插那一大堆电缆，因此dock要跟laptop一块竖起来才行。</p>
+<p>前两天把这个架子做好了，虽然很简单，但已经完全满足要求。主要的材料都是在无意中找到的：夹板是在公司楼下捡的，泡沫是公司新到机器的包装箱里的，恰好合用。</p>
+<p><a href="http://www.flickr.com/photos/leoliang/4896788613/" target="_blank" rel="external"><img src="http://farm5.static.flickr.com/4075/4896788613_aae357206f_z.jpg" alt="laptop_stand"></a></p>
+<p>竖起来后，laptop的显示屏恰好与外接显示器一样高，视线在屏幕间切换时比较连贯，看起来更加舒服。</p>
+<p>制作过程和更多图片放到<a href="http://www.instructables.com/id/Simple_Laptop_Stand_2/" target="_blank" rel="external">instructables网站</a>上了。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2008/10/24/Will-the-wireless-tags-used-in-the-library/" itemprop="url">
                   将无线标签用在图书馆中
                 </a>
@@ -632,111 +730,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2008/06/17/How-to-allow-remote-application-setting-display-to-the-SUSE-linux-desktop/" itemprop="url">
-                  How to allow remote application setting display to the SUSE linux desktop
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2008-06-17T20:59:00+08:00" content="2008-06-17">
-              2008-06-17
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li>Allow remote TCP connection to the X server. You need root privilege to config it. </li>
-</ol>
-<p>Just run gdmsetup. This will open a window with multiple tabs. In the Security tab, disabled the line that says “Deny TCP connections to the X server”. Close the window and then log out of your current X session. You need to restart gdm for this to work.  The easiest way to do that is to go to a console login, login as root, change to run level 3 (just type “init 3”) and then return to run level 5 (“init 5”) to restart gdm.<br>Ref: <a href="http://www.graphics-muse.org/wp/?p=69" target="_blank" rel="external">http://www.graphics-muse.org/wp/?p=69</a></p>
-<ol>
-<li>Add remote host into X server access control</li>
-</ol>
-<p>Run xhost _remote_host<em>ip</em></p>
-<ol>
-<li>Set DISPLAY environment variable in remote host before execute the application</li>
-</ol>
-<p>setenv DISPLAY _display_host<em>ip</em>:0.0</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -782,7 +775,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">317</span>
+              <span class="site-state-item-count">318</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

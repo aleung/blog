@@ -255,6 +255,101 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2003/11/08/MySQL-/" itemprop="url">
+                  MySQL的锁
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2003-11-08T02:54:00+08:00" content="2003-11-08">
+              2003-11-08
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>MySQL的数据表访问锁定：读操作、写操作分别要申请读锁和写锁，读锁可以并发，写锁是唯一的。通过配置或者一些命令可以改变读、写的优先级。在MySQL手册中关于性能部分有说明。</p>
+<p>普通的表类型，如MyISAM表是采用table级锁定；InnoDB和BDB是支持transaction的表类型，它们采用更小粒度的锁定，BDB是page级锁定，InnoDB是row级锁定。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2003/11/01/GPS-EasyGPS-GPSBabel/" itemprop="url">
                   GPS数据管理软件EasyGPS和格式转换工具GPSBabel
                 </a>
@@ -652,110 +747,6 @@ photopc id &quot;NIKON DIGITAL CAMERA&quot; query
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2003/09/19/The-system-performance-monitoring-tool/" itemprop="url">
-                  系统性能监控工具
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2003-09-19T22:39:00+08:00" content="2003-09-19">
-              2003-09-19
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>有些工具是专门用来绘制曲线图的, 可用于监控系统、设备的性能等用途，例如网络流量曲线/系统性能曲线等:  </p>
-<ul>
-<li><p>MRTG <a href="http://www.univ.kiev.ua/~roman/soft/mrtg/" target="_blank" rel="external">http://www.univ.kiev.ua/~roman/soft/mrtg/</a><br>这个工具原本用于显示路由器的流量, 通过SNMP来获取流量. 但是也有扩展特性, 可以通过调用其他程序来采集数据并生成曲线图. 但由于原来设计是流量监测, 故此配置灵活性不如RRDtool.<br>这里是各种扩展: <a href="http://people.ee.ethz.ch/~oetiker/webtools/mrtg/links.html" target="_blank" rel="external">http://people.ee.ethz.ch/~oetiker/webtools/mrtg/links.html</a>  </p>
-</li>
-<li><p>RRDTool <a href="http://people.ee.ethz.ch/~oetiker/webtools/rrdtool/" target="_blank" rel="external">http://people.ee.ethz.ch/~oetiker/webtools/rrdtool/</a><br>RRD是Round Robin Database的意思, 这个工具专门用于收集数据, 并且按照一定的周期生成曲线图. 很象MRTG, 不过它不包含数据采集功能, 而且灵活性高适应面更广.  </p>
-</li>
-<li><p>ORCA(<a href="http://www.orcaware.com/orca/docs/orcallator.html" target="_blank" rel="external">http://www.orcaware.com/orca/docs/orcallator.html</a>), 一个主机性能采集的工具, 利用RRDTool生成很多种性能曲线. 它只能在solaris上运行. 但它采集的数据和生成的曲线可以参考, 部分在linux上用RRDTool配合其他的采集程序应该也可以生成的.  </p>
-</li>
-<li><p>BGraphs(<a href="http://www.ag0ny.com/graphs/" target="_blank" rel="external">http://www.ag0ny.com/graphs/</a>) 利用RRDtool和shell script做的linux性能采集工具。我在它的基础上修改，安装到公司的上网服务器上，还不错。  </p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -801,7 +792,7 @@ photopc id &quot;NIKON DIGITAL CAMERA&quot; query
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">317</span>
+              <span class="site-state-item-count">318</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
