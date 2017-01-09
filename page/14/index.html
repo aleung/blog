@@ -261,6 +261,103 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2012/02/19/Extend-the-toilet-bowl-cleaning-treasure-blue-bubble-use-of-the-time-small-skills/" itemprop="url">
+                  延长洁厕宝(蓝泡泡)使用时间的小技巧
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2012-02-19T23:33:00+08:00" content="2012-02-19">
+              2012-02-19
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>以前马桶放的洁厕宝（蓝泡泡）总是不耐用，声称普通使用可达一个月，但实际上头几天冲的水颜色很深，一个星期后颜色就非常淡了，根本用不到一个月，原因是溶解速度控制不了，太快了。</p>
+<p>为了防止过快溶解，给洁厕宝增加一个”外套”。我选的是大开口的口香糖盒子，大小比较合适，能把整块洁厕宝放进去，瓶口合上比较严实。在瓶身开上几个直径3～5mm左右的洞，洞不能太小也不能太大。开始可以先开三四个，如果实验发现洁厕宝溶解不出来再加开几个。怎么开洞就看你手上有什么工具了，我试过几种工具，发现用美工刀最容易，三刀开出一个三角形的洞。做好后把洁厕宝放进去，盖上盖子，扔马桶水箱里就行了。因为盒子里有空气，可能它不会自己沉下去，需要把它按进水里，把空气排出来。水箱里有水垢，不是那么好看，就不把照片贴出来了。</p>
+<p><img src="https://lh4.googleusercontent.com/-c5HKYk_j34o/T0EL4Y6tMcI/AAAAAAAAAnY/YnGOTSAfDBY/s800/toilet_%201%20%281%29.jpg" alt=""><img src="https://lh4.googleusercontent.com/-xujCGkefLQY/T0EL5g-crrI/AAAAAAAAAng/aVK2tmecsC0/s800/toilet_%202%20%281%29.jpg" alt=""><img src="https://lh3.googleusercontent.com/-lDnmsRQFEiQ/T0EL7i1DpCI/AAAAAAAAAno/GCn5dEHM9dc/s800/toilet_%203%20%281%29.jpg" alt=""></p>
+<p>加了”外套”后，效果相当显著，一颗洁厕宝大概能用三个月。去年家人出差多，竟然用了半年！</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2011/12/26/Baiyun-mountain-running/" itemprop="url">
                   白云山跑步
                 </a>
@@ -650,112 +747,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2011/11/08/Dump-beans-information-from-live-Spring-application-context/" itemprop="url">
-                  Dump beans information from live Spring application context
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2011-11-08T18:42:00+08:00" content="2011-11-08">
-              2011-11-08
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>To maintain the Spring application context in a large application is not an easy job. There may be dozens of beans, whenever you want to make changes, you have to be very clear on there dependency. After serveral rounds of update, some beans might be orphan, they’re unused any more but you don’t know.</p>
-<p>Spring IDE provides bean cross reference view and bean graph view that can help to analysis the bean relationship. But what Spring IDE has is a static view of the beans. In our project the application context is complicated: it scans classpath for all bean definition XML files and load them; application context created in WAR package inherits parent application context which is defines in EJB classpath; some beans are marked with annotation and loaded by <context:component-scan>, rather than define in XML file. I doubt Spring IDE can show the dynamic bean view as it is in runtime. What’s more, Spring IDE isn’t available at our standard development environment.</context:component-scan></p>
-<p>Inspired by a StackOverflow <a href="http://stackoverflow.com/questions/5850639/how-to-keep-track-of-all-the-autowired-stuff-while-using-spring-ioc/5851872#5851872" target="_blank" rel="external">answer</a>, I created an ApplicationContextDumper. Add it into application context, it will dump all beans and their dependencies in the current context and parent contexts (if any) into log file when the application context initialization finishes. It also lists the beans which aren’t referenced.</p>
-<script src="//gist.github.com/1347171.js?file=ApplicationContextDumper.java"></script>
-<p>Here is an example. We have two application contexts. Please be noticed that the ApplicationContextDumper has been added into applicationContext.xml.</p>
-<script src="//gist.github.com/1347171.js?file=applicationContext.xml"></script>
-<script src="//gist.github.com/1347171.js?file=parentContext.xml"></script>
-<p>parentBeanFactory is the parent of myBeanFactory:</p>
-<script src="//gist.github.com/1347171.js?file=beanRefContext.xml"></script>
-<p>In main, loads application context from beanRefContext.xml. </p>
-<script src="//gist.github.com/1347171.js?file=main.java"></script>
-<p>The application context is dumped in log:</p>
-<script src="//gist.github.com/1347171.js?file=output"></script>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -801,7 +792,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">318</span>
+              <span class="site-state-item-count">319</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -811,7 +802,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags">
-                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -855,7 +846,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -261,6 +261,102 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2009/12/03/Restore-the-wind-baiyun-sunny-days-blog/" itemprop="url">
+                  重拾 “清风白云艳阳天” blog
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2009-12-03T08:05:00+08:00" content="2009-12-03">
+              2009-12-03
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>“清风白云艳阳天: 摄影-旅行-生活” 是我的第一个blog，大概是在2000/2001年左右开始的吧，搬过好多次家，最初放在公司的服务器上，又放过在绿野上，后来放在朋友的服务器。2006年朋友的服务器关了，这个blog就没有着落了。随着对摄影的兴趣减淡，也一直没有提起心情来把它重新建起来。反倒是后来的 “Goog good study day day up” 断断续续的一直坚持了下来。</p>
+<p>Blogbus用了这么久，感觉还不错，就在这里再安一个家吧。不一定会更新得多勤快，反正想写就写，想贴就贴。及时性是肯定不能保证的了，我好多照片都是等一年后才扫描出来，再不知道等多久才会处理好。</p>
+<p>下面是链接，建议用RSS订阅，免得每次打开都看不到新内容 :)</p>
+<h1 id="SunnyDay-amp-FeelingWind"><a href="#SunnyDay-amp-FeelingWind" class="headerlink" title="SunnyDay &amp; FeelingWind"></a><a href="http://sunnywind.blogbus.com/" target="_blank" rel="external">SunnyDay &amp; FeelingWind</a></h1>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2009/11/03/The-world-can-change-in-a-day/" itemprop="url">
                   The world can change in a day
                 </a>
@@ -684,126 +780,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2009/09/17/How-to-setup-hg-Mercurial-web-access/" itemprop="url">
-                  How to setup hg (Mercurial) web access
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2009-09-17T03:08:00+08:00" content="2009-09-17">
-              2009-09-17
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>(Platform: Windows Vista)</p>
-<ol>
-<li>Mercurial is already installed. </li>
-<li>Install Apache. </li>
-<li>Download mercurial source package to get the file hgwebdir.cgi. This file isn’t included in the Windows binary package. </li>
-<li>Copy hgwebdir.cgi into Apache’s cgi-bin folder and rename to hgwebdir.py </li>
-<li>Create a file named hgweb.config in the same folder. Config the name and the path of therepositories in this file. </li>
-<li>Install python 2.5 and make sure to check the option to registerit as the default handler of .py file.<br>The hgwebdir.cgi from Mercurial 1.xrequires python 2.5. Error “Invalid Magic Number” will be got when running on other version python. </li>
-<li>Extract the file library.zip in Mercurial installation folder into a directory. Use 7zip to unzip, other zip tools might fail. </li>
-<li>In Mercurial installation directory there is a foldernamed Templates.Moveit into thelibrary folder. </li>
-<li>Edit hgwebdir.py, add followinglines to add the library folderinto python library path:<br>import sys<br>sys.path.insert(0, “C:\Program Files\Mercurial\library”)</li>
-<li>Start apache, try to access in browser<br><a href="http://localhost/cgi-bin/hgwebdir.py" target="_blank" rel="external">http://localhost/cgi-bin/hgwebdir.py</a></li>
-<li>If the repositories index page can shown, that’s fine. If got 500 internal error, check apache error log.<br>If the error information is like this:<br><em>The system cannot find the path specified. : couldn’t create child process: 720003: hgwebdir.py</em><br>it means Apache can’t locate the python executer. <ol>
-<li>Edit Apache’s config file httpd.conf,uncomment theline:<br>ScriptInterpreterSource registry<br>This will enable Apache to skip the script’s shebang line and use default registered handler.</li>
-</ol>
-</li>
-<li>When the index is successfully shown in browser, edit the .hg\hgrc file in each repositories to add following lines. It will enable push to repository by web access (default is read only) and enable push by http (default is requiring ssl).<br>[web]<br>allow_push = *<br>push_ssl = false</li>
-<li>Try to clone a repository by web access and modify something then push back. It should be ok. </li>
-<li>Add a line in Apache http.conf to make the URL more friendly:<br>ScriptAliasMatch ^/hg(.*) “C:/Program Files/Apache2.2/cgi-bin/hgwebdir.py$1”<br>Now the url will be:<br><a href="http://localhost/hg" target="_blank" rel="external">http://localhost/hg</a></li>
-</ol>
-<p>Just record the installation steps in case I need to do it againsome time in the furture. Hope thatIhaven’t missed any step :)</p>
-<p>Reference:</p>
-<ul>
-<li><a href="http://mercurial.selenic.com/wiki/PublishingRepositories" target="_blank" rel="external">http://mercurial.selenic.com/wiki/PublishingRepositories</a></li>
-<li><a href="http://mercurial.selenic.com/wiki/HgWebDirStepByStep" target="_blank" rel="external">http://mercurial.selenic.com/wiki/HgWebDirStepByStep</a></li>
-<li><a href="http://www.imladris.com/Scripts/PythonForWindows.html" target="_blank" rel="external">http://www.imladris.com/Scripts/PythonForWindows.html</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -849,7 +825,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">318</span>
+              <span class="site-state-item-count">319</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -859,7 +835,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags">
-                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -903,7 +879,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

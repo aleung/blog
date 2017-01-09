@@ -261,6 +261,108 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2004/04/10/How-to-increase-the-number-of-Windows-programs-thread-/" itemprop="url">
+                  如何增加windows程序的线程数量?
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2004-04-10T06:10:00+08:00" content="2004-04-10">
+              2004-04-10
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>编写测试程序, 发现超过1000个线程, 程序执行就会出现内存错误. 原来我还以为是windows对线程数量有限制, 查资料才知道支持线程多少并不是操作系统决定的, 而是与程序的堆栈空间大小有关.</p>
+<p>在VC中, 修改Project Setting - Link - Stack allocation - Reserve, 缺省为1M(0x100000), 将这个数值降低, 也就是减少每个线程的栈空间大小, 就可以增加线程数量. 这是因为用户地址空间总共是2GB, 线程保留栈空间大小乘以线程数量不能大于2GB.</p>
+<p>因为上下文切换的开销, 线程过多效率会降低, 我做这个测试程序就是想知道这个效率曲线到底是怎样的.</p>
+<p>以下为网上找到的资料:</p>
+<p>I just found this under CreateThread() in MSDN:  </p>
+<p>The number of threads a process can create is limited by the available virtual memory. By default, every thread has one megabyte of stack space. Therefore, you can create at most 2028 threads. If you reduce the default stack size, you can create more threads. However, your application will have better performance if you create one thread per processor and build queues of requests for which the application maintains the context information. A thread would process all requests in a queue before processing requests in the next queue.  </p>
+<p>So the number of threads you can create is capped by the 2 GB user address space available to your process.  </p>
+<p>So you have a few choices, as I see it:  </p>
+<p>1) Run multiple copies of your server at once and coordinate between them. You will need endless amounts of swap space.<br>2) Reduce the amount of stack used per thread (lowering from 1 Mb to 100Kb should get you 40,000 threads).<br>3) Re-architect your app to not require one thread per connection. Have each thread monitor many connections using (for example) a select() call.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2004/04/05/Target-plan/" itemprop="url">
                   目标，计划
                 </a>
@@ -631,101 +733,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2004/02/20/If-you-get-used-to-using-UNIX-commands-so-in-Windows-/" itemprop="url">
-                  如果你习惯使用UNIX的命令，那么在Windows中...
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2004-02-20T03:00:00+08:00" content="2004-02-20">
-              2004-02-20
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://unxutils.sourceforge.net" target="_blank" rel="external">unxutils.sourceforge.net</a> 提供了一系列的unix工具在win32平台上的移植版本. 这些版本是完全基于win32平台的, 不像cygwin那样还需要一个模拟层.</p>
-<p>Windows 2000 command line 中的 for 命令用于对一组文件中的每个执行某特定命令，类似于unix的 find * -exec command ，功能很强大，具体参数用 for /? 查看。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -771,7 +778,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">318</span>
+              <span class="site-state-item-count">319</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -781,7 +788,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags">
-                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -825,7 +832,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

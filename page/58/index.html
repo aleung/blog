@@ -261,6 +261,115 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2003/09/26/In-OziExplorer-use-of-NASA-LandCover-MrSID-data-method/" itemprop="url">
+                  在OziExplorer中使用NASA LandCover MrSID数据的方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2003-09-26T20:57:00+08:00" content="2003-09-26">
+              2003-09-26
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1)<br>This refers to the satellite images available from Nasa’s<br>Earth Science Applications Directorate MrSID Image Server:<br><a href="https://zulu.ssc.nasa.gov/mrsid/" target="_blank" rel="external">https://zulu.ssc.nasa.gov/mrsid/</a><br>Note that this is using secure HTTP, and the old URL<br>no longer works. They do not have their server set up<br>properly, so you may get warnings about the site’s<br>security certificate.  </p>
+<p>从 <a href="https://zulu.ssc.nasa.gov/mrsid/" target="_blank" rel="external">https://zulu.ssc.nasa.gov/mrsid/</a> 下载数据  </p>
+<p>2)<br>Initially you use your mouse and the options at the<br>bottom of the map webpage(In/Out, zoom level, map size) to<br>find the map you want, then you select the “Select Image”<br>radiobutton and click on the map to get a popup window,<br>and on that you select “Download MrSID Image”.<br>You have to zoom in a couple of levels from the world map<br>before the image names are shown, and you won’t get the popup<br>window if you have Javascript disabled.  </p>
+<p>用鼠标点出你需要的区块，选择”Select Image”，弹出区块窗口，下载  </p>
+<p>3)<br>The downloaded file will have a “.tar” extension. Programs<br>such as WinZip that work with ZIP files should be able to<br>open the ‘tarball’(the name used for tar archives) file.<br>Typically it contains four files - the MrSid image(.sid),<br>it’s “world file”(.sdw), it’s metadata file(.met), and a<br>small JPEG thumbnail image(.jpg).  </p>
+<p>下载的是tar文件，用winzip、winrar可解压。包含4个文件，后缀为 sid, sdw, met, jpg  </p>
+<p>4)<br>The only files you need from the tarball are the image(.sid)<br>and it’s “world file”, which has a “.sdw” extension. Extract<br>them from the tarball, and save them into the same directory.  </p>
+<p>有用的文件是 sid 和 sdw，解开放到同一目录中  </p>
+<p>5)<br>Make sure you have the correct version of OziExplorer.<br>Older versions did not support the use of MrSid images.<br>As explained on Ozi’s Optional Extras page:<br><a href="http://216.40.224.145/eng/optional_extras.html" target="_blank" rel="external">http://216.40.224.145/eng/optional_extras.html</a><br>you need to have the MrSid DLL.<br>I would suggest using OziExplorer version 3.90.4j or newer,<br>because prior to that the filename was not shown on the<br>“DRG Import Defaults” dialog box.  </p>
+<p>在 <a href="http://216.40.224.145/eng/optional_extras.html" target="_blank" rel="external">http://216.40.224.145/eng/optional_extras.html</a> 下载MrSid.dll并安装，这是OziExplorer的MrSID pluggin。<br>最好用OziExplorer 3.90.4j以后的版本。  </p>
+<p>6)<br>All the Nasa MrSid images use the WGS84 datum.<br>There is no need for the associated “.met” file when importing<br>into Ozi, and there is no need to look at the contents of the<br>“.met” or “.sdw” files.<br>The first character of the MrSid file’s name is the hemisphere(N or S).<br>The first pair of digits is the file’s UTM zone.<br>The second pair of digits is the latitude of the lower edge<br>of the image in the Northern hemisphere, and the upper edge of the<br>image in the Southern hemisphere - the images span 5 degrees of latitude,<br>with a slight bit of overlap to the north and south.<br>For example, N-10-45_loc.sid is for the Northern hemisphere,<br>UTM zone 10, and covers between 45 and 50 degrees North.  </p>
+<p>MrSid图象使用WGS84座标系，文件名首字母为南/北半球，第一组数字为UTM zone，第二组数字为区块靠近赤道一边的纬度，每个文件覆盖纬度5度的区域。如N-10-45_loc.sid表示北半球，UTM 10区，北纬45-50度。  </p>
+<p>7)<br>In Ozi select “Import Map” from the File menu, then either<br>“Single DRG Map” or “All DRG Maps on a CD or in a Folder”.<br>If you are going to import multiple Nasa MrSid images at the<br>same time from one directory, arrange it so that all the images<br>are for the same hemisphere and same UTM zone.<br>On the “DRG Import Defaults” dialog box:<br>Map Datum = WGS84<br>Map Grid Zone = UTM zone of the map image(s)<br>Hemisphere = first letter of image file(s) name(s)<br>Map Projection = UTM  </p>
+<p>在Ozi的File菜单选择”Import Map”，然后选择”Single DRG Map”或”All DRG Maps on a CD or in a Folder”.<br>如果打算一次导入同一目录中的多个MrSid图象，应该是同一个半球同一个zone的。（我试过没有成功，如果不怕麻烦还是一次一个好了）<br>在”DRG Import Defaults”对话框中，按以下填写：<br>Map Datum = WGS84<br>Map Grid Zone = 图象的UTM zone<br>Hemisphere = 图象文件名的首字母<br>Map Projection = UTM  </p>
+<p>That’s it - you should now be able to use the MrSid images in Ozi.<br>You no longer need the “.sdw” file(s), but they are small, so I<br>would keep them in case you ever need to re-do the import.  </p>
+<p>OK了，以后在Ozi中打开map文件就行了。<br>sdw文件其实也不再需要，不过它很小，留着也不占空间。  </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2003/09/19/The-system-performance-monitoring-tool/" itemprop="url">
                   系统性能监控工具
                 </a>
@@ -659,106 +768,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2003/09/04/How-to-let-JTextArea-automatic-scroll-to-the-bottom-/" itemprop="url">
-                  如何让JTextArea自动滚动到最底?
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2003-09-04T22:52:00+08:00" content="2003-09-04">
-              2003-09-04
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>如果用JTextArea来做信息窗口，不断用append()显示新信息，通常会希望内容能自动滚动，保持最后增加的信息能够显示出来。利用setCaretPosition()可以实现，这个方法是设置输入光标的位置，如果光标位置超出目前可视范围，会自动滚动以保正光标可以显示出来。</p>
-<pre><code>int length = textArea.getText().length();
-textArea.setCaretPosition(length);
-</code></pre><p>如果还希望限制JTextArea中的文本长度，不让它无限制的增长，可以加上以下两行，当长度超出预订的maxTextLength后将开头的字符截除。不过美中不足的是截除无法按行进行。</p>
-<pre><code>if ( length &gt; maxTextLength ) { 
-    textArea.replaceRange(&quot;&quot;, 0, length - maxTextLength); 
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -804,7 +813,7 @@ textArea.setCaretPosition(length);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">318</span>
+              <span class="site-state-item-count">319</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -814,7 +823,7 @@ textArea.setCaretPosition(length);
           
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags">
-                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -858,7 +867,7 @@ textArea.setCaretPosition(length);
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -261,6 +261,106 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2012/07/21/flashing-xperia-u/" itemprop="url">
+                  Xperia U 刷机
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2012-07-21T23:20:00+08:00" content="2012-07-21">
+              2012-07-21
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>昨天中午拿到国行 <a href="http://www.sonymobile.com/global-en/products/phones/xperia-u/" target="_blank" rel="external">Sony Xperia U</a> (ST25i) 手机，开机试了一下，索尼(原来的索尼爱立信)在Android 2.3基础上的定制系统做得还可以，但大陆行货里好多功能都被阉割得不成样子。Google系列的任何东西都去掉了就不用说了，很奇怪的是居然系统里没有自带任何应用市场，国内的山寨市场也没有。可以想象一个不熟悉IT的用户买到手机后就会局限在预装的那几个应用，连升级都没有途径。比较一下SonyMobile英文与中文网站对这款手机的介绍，就会发现中文产品介绍缩水不少，好多卖点都没有了。</p>
+<p>这样的智能手机简直就是残废，于是下班后就开始研究怎么刷机。先是在国内的一些论坛上搜索，但国内论坛真是很没有营养，里面的信息的价值很低。Android hacker的大本营在XDA，相关问题还是要到<a href="http://www.xda-developers.com/" target="_blank" rel="external">XDA论坛</a>找靠谱。</p>
+<p>关于Xperia系列刷机需要了解的基础知识，这篇 <a href="http://forum.xda-developers.com/showthread.php?t=1526866" target="_blank" rel="external">All that u need to know before u begin</a> 讲得比较清楚。</p>
+<p>无论要刷什么，前提条件是先将 bootloader 解锁。关于解锁的教程很多，SonyMobile网站上就有详细步骤，XDA上的 <a href="http://forum.xda-developers.com/showthread.php?t=1527159" target="_blank" rel="external">Xperia S/P/U/Sola Bootloader Unlocking &amp; Relocking</a> 附带了所需工具的下载。还有一个国产软件，号称是一键自动解锁。</p>
+<p>但是，就在第一步，将手机boot到fastboot模式，就花了我好几个小时。按教程，手机在关机状态按着音量+键的同时将USB连接上电脑，就会进入fastboot模式，并且亮起蓝灯。但是无论我怎么反复重试，手机都不会亮起蓝灯，电脑上弹出对话框提示安装驱动程序，但当我选择操作时它又说USB设备已经断开，显示这样的错误信息：s1boot fastboot device unplugged。网上搜索，有人说是驱动没有装好的原因，最后还是从XDA里找到了<a href="http://forum.xda-developers.com/showthread.php?t=1554632" target="_blank" rel="external">解决方案</a>。原来，Xperia手机在进入fastboot模式时，会检测电脑是否已经装上了正确的驱动程序，如果没有，就会退出fastboot模式。而电脑端刚刚提示用户安装驱动，就发现手机已经关闭了连接，就取消了驱动的安装。这种问题可以用来做经典反面案例了。XDA帖子里的解决方法还是要拼手快：预先打开设备管理器，一插上手机后，里面会出现s1boot这个设备，赶紧鼠标右键选择升级驱动，升级驱动的对话框打开后，即使设备断开了还是可以继续进行驱动程序的安装。终于看到传说中的蓝灯了，原来是在下面透明发光条发出很亮的蓝光，我之前还一直以为是右上角摄像头旁边的小灯。</p>
+<p>接下来就非常顺利了，解锁bootloader后，用fastboot安装了ROM和Kernel。我都没有另外用其他工具了，感觉fastboot用起来就很简单，很多人不喜欢可能是因为命令行操作吧。关于fastboot使用，推荐看cyanogenmod的wiki里的<a href="http://wiki.cyanogenmod.com/wiki/Fastboot" target="_blank" rel="external">介绍</a>。</p>
+<p>我刷的ROM是<a href="http://forum.xda-developers.com/showthread.php?t=1684062" target="_blank" rel="external">KA02 Xperia SSpeed</a>， 还是Android 2.3.7，Sony还没有为Xperia U 提供Android 4.0 ICS。Kernel是<a href="http://forum.xda-developers.com/showthread.php?t=1688147" target="_blank" rel="external">Advanced Stock Kernel</a>。刷完开机，见到熟悉Google账号绑定，然后Gmail、通信录、日历同步、Google Play都回来了。Root也有了，收工。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2012/07/14/simple-first/" itemprop="url">
                   《简约至上》读书笔记
                 </a>
@@ -653,128 +753,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2012/06/24/try-octopress-markdown-features/" itemprop="url">
-                  试验 Octopress 的各种特性
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-06-24T23:08:00+08:00" content="2012-06-24">
-              2012-06-24
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>这个blog使用的markdown解释器是<a href="http://kramdown.rubyforge.org/quickref.html" target="_blank" rel="external">kramdown</a>，比起标准markdown有所增强。再加上Jekyll的一些插件特供的特殊功能。</p>
-<h2 id="Markdown基本语法"><a href="#Markdown基本语法" class="headerlink" title="Markdown基本语法"></a>Markdown基本语法</h2><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p>标题用<code>#</code>开头，一个井号是一级标题，两个井号是二级标题，井号越多字体越小。</p>
-<p>一级标题也可以通过在标题的下一行用<code>========</code>来标注，二级标题就是<code>---------</code>。更小的标题就不能用这种方式了。</p>
-<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p>行内式链接：</p>
-<pre><code>This is a [link](http://example.com).
-</code></pre><p>参考式链接：在链接文字的方括号后面再接上另一个方括号，而在第二个方括号里面要填入用以辨识链接的标记（若省略则与链接文字相同），接着，在文件的任意处，把这个标记的链接内容定义出来。</p>
-<pre><code>This is [an example][1] reference-style link.
-
-[1]: http://example.com
-</code></pre><p>参考式链接可以提高 markdown 文本的易读性。</p>
-<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p>与链接类似，区别是前面增加叹号<code>!</code>：</p>
-<pre><code>![text](link)
-</code></pre><p>另一种图片语法是由插件支持的，用<code>{</code> <code>%</code>包围的img标签，后面跟着图片URL，在URL前可以加入可选的css class名称，如：<code>left</code>, <code>right</code>，得到文字环绕效果。</p>
-<h3 id="引用-blockquote"><a href="#引用-blockquote" class="headerlink" title="引用 (blockquote)"></a>引用 (blockquote)</h3><p>用<code>&gt;</code>开头的一个段落：</p>
-<blockquote>
-<p>Stay hungry…<br>stay foolish.</p>
-</blockquote>
-<p>用四个空格缩进的段落，会按原始格式显示，相当于HTML的<code>&lt;pre&gt;</code>的效果：</p>
-<pre><code>+----+
-|    |
-+----+
-</code></pre><p>也可以通过在原始格式引用段落的前后各加一行波浪号`<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 显示效果</div><div class="line"></div><div class="line">用`*`或`_`包围的文字会用斜体显示：</div><div class="line"></div><div class="line">Some of these words *are emphasized*.</div><div class="line"></div><div class="line">如果双重符号`**`或`__`则会用粗体显示：</div><div class="line"></div><div class="line">Use two asterisks for **strong emphasis**.</div><div class="line"></div><div class="line">用`` ` ``包围的文字按代码格式显示。</div><div class="line"></div><div class="line">### 列表</div><div class="line"></div><div class="line">用`*`, `+`, `-`开头的行都会作为列表项。子项缩进两个空格。</div><div class="line"></div><div class="line">+ 加号开头的段落</div><div class="line">  + 缩进两个空格，加号开头</div><div class="line">    + 再缩进两个空格，三级项目</div><div class="line">- 其次</div><div class="line"></div><div class="line">表格</div><div class="line">------</div><div class="line"></div><div class="line">注意第二行的分割线的冒号位置，决定了这一列的对齐方式。</div><div class="line"></div><div class="line">    No.   | Name    | Status  |</div><div class="line">    -----:|:--------|:-------:|</div><div class="line">    1     | Alaph   | done    |</div><div class="line">    2     | Beta    | ongoing |</div><div class="line">    10000 | Release | n/a     | </div><div class="line"></div><div class="line">效果：</div><div class="line"></div><div class="line">No.   | Name    | Status  |</div><div class="line">-----:|:--------|:-------:|</div><div class="line">1     | Alaph   | done    |</div><div class="line">2     | Beta    | ongoing |</div><div class="line">10000 | Release | n/a     | </div><div class="line"></div><div class="line">### 脚注</div><div class="line"></div><div class="line">增加脚注[^1]很简单，就是这样：`[^1]`</div><div class="line"></div><div class="line">脚注定义的写法是以`[^1]: `开头，后面跟着定义。</div><div class="line"></div><div class="line">[^1]: 脚注一定会显示在最末尾。</div><div class="line"></div><div class="line">嵌入代码</div><div class="line">-----------</div><div class="line"></div><div class="line">下面的嵌入代码的方式都是由插件提供的，并非markdown语法。</div><div class="line"></div><div class="line">### 代码高亮</div></pre></td></tr></table></figure></p>
- <figure class="highlight plain"><figcaption><span>[title] [url] [link text]</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">code snippet</div></pre></td></tr></table></figure>
-<p><del>~</del></p>
-<p>效果：</p>
-<figure class="highlight java"><figcaption><span>HelloWorld.java</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"Hello, World"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="嵌入Gist"><a href="#嵌入Gist" class="headerlink" title="嵌入Gist"></a>嵌入Gist</h3><script src="//gist.github.com/2934603.js"></script>
-<p>方法是写一个用<code>{</code> <code>%</code>包围的gist标签，后面带上id。</p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -820,7 +798,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">318</span>
+              <span class="site-state-item-count">319</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -830,7 +808,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags">
-                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -874,7 +852,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

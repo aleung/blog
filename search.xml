@@ -4,6 +4,28 @@
   
     
     <entry>
+      <title><![CDATA[在非GPL应用中使用OpenJDK]]></title>
+      <url>http://aleung.github.io/blog/blog/2017/01/06/Use-OpenJDK-in-proprietary-software/</url>
+      <content type="html"><![CDATA[<p>大家都知道 Oracle JDK 在商业应用场合是需要购买 license 的，往往会选择 OpenJDK 来规避。但是，OpenJDK 的 license 是 GPL，GPL 是一种 “传染性” 的协议，那么 OpenJDK 是否可以在非 GPL 应用中使用呢？</p>
+<p>在 <a href="http://stackoverflow.com/" target="_blank" rel="external">StackOverflow</a>、<a href="http://opensource.stackexchange.com/" target="_blank" rel="external">Open Source Stack Exchange</a> 中搜索到一些相关的讨论，大部分答案是认为可以使用，应用无需因此用 GPL 发布，但也有人提出质疑。</p>
+<p>在 OpenJDK 网站中的 <a href="http://openjdk.java.net/faq/" target="_blank" rel="external">FAQ</a>是这么写的：</p>
+<blockquote>
+<h3 id="What-open-source-license-is-OpenJDK-published-under"><a href="#What-open-source-license-is-OpenJDK-published-under" class="headerlink" title="What open-source license is OpenJDK published under?"></a>What open-source license is OpenJDK published under?</h3><p>GPL v2 for almost all of the virtual machine, and GPL v2 + the Classpath exception for the class libraries and those parts of the virtual machine that expose public APIs.</p>
+<h3 id="How-do-I-know-which-license-applies-to-a-given-source-code-file-in-OpenJDK"><a href="#How-do-I-know-which-license-applies-to-a-given-source-code-file-in-OpenJDK" class="headerlink" title="How do I know which license applies to a given source code file in OpenJDK?"></a>How do I know which license applies to a given source code file in OpenJDK?</h3><p>Each source code file is individually licensed - look for the copyright header with the license information.</p>
+</blockquote>
+<p>比较坑爹的是整个 OpenJDK 居然不是统一使用一种授权协议，每个源文件有自己独立的授权——要明确你使用的法律责任，得一个一个源文件看去！不过，按照 FAQ 里面的说法（如果它是准确的），类库和 JVM 的公共 API 都是用 GPL v2 ＋ Classpath exception (GPL v2 + CE) 发布的。</p>
+<p>这个 classpath exception 是什么回事？GPL v2 要求：基于 GPL 软件派生出来的作品也需要继承使用 GPL 协议发布。一个程序动态链接或者静态链接了一个库，都视为此库的派生作品。按照这个定义，在 Java 程序里使用了（在classpath中包含了）某个类库，就是此类库的派生作品。然后，OpenJDK 的某些源代码的授权声明中，在 GPLv2 协议文本之后附加了一段 <a href="http://openjdk.java.net/legal/gplv2+ce.html" target="_blank" rel="external">classpath exception</a>，对于链接这种情况给予了豁免，可以自由选择授权协议。</p>
+<p>我的理解，这是为了让 OpenJDK 可被商业应用（非 GPL 授权应用）使用。JVM (HotSpot) 的代码大部分都是用 GPL （没有 classpath exception）授权，但因为 Java 应用只是在 VM 上运行，并没有与 VM 链接，所以不受 GPL 的限制。</p>
+<p>但是，没有那么简单。咨询公司开源部门的专业人士，他让我谨慎的评估一下。因为 OpenJDK 作为一个开源项目，并没有严格的控制提交代码采用的授权协议，很可能某个代码提交增加了一个新的源文件，其授权是不带 CE 的，或者将已有文件的授权的 CE 部分删除了，应用使用了这个源文件编译出来的库就中招了。</p>
+<p>我下载了 OpenJDK7 的源代码，用脚本扫描了所有 <code>*.java, *.c*, *.h*</code> 文件，找出带有 GPL 但又不包含 Classpath exception 的文件。除去 HotSpot 部分和 example 代码，并不多：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">./share/lib/security/BlacklistedCertsConverter.java</div><div class="line">./aix/porting/porting_aix.*</div><div class="line">./share/native/sun/security/ec/impl/*</div></pre></td></tr></table></figure>
+<p>第一个是个工具（带有main函数），不是库的一部分；第二个是 AIX 系统相关的；第三个是属于 <a href="http://docs.oracle.com/javase/7/docs/technotes/guides/security/SunProviders.html#SunEC" target="_blank" rel="external">SunEC provider</a>，实现椭圆曲线加密算法（ECC）的。</p>
+<p>需要我们注意的只有第三个，对应着文件 <code>jre/lib/ext/sunec.jar</code>。也就是，Java应用确保不使用这个jar，就可以用 OpenJDK 而不需要用 GPL 发布。一旦使用了 <code>sunec.jar</code>，整个 Java 应用都必须用 GPLv2（或其兼容协议）发布，开放源代码。</p>
+<p>但我上面的分析仅仅是基于当前版本的 OpenJDK7，OpenJDK 每次发布代码都会变化，故此每次要安装升级时都必须重新检查它的所有源代码的授权协议。对于商业软件来说，保险起见还是乖乖给 Oracle 付费使用他们家的 JDK 吧。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Consul 集群不稳定的分析]]></title>
       <url>http://aleung.github.io/blog/blog/2016/11/05/Consul-unstable/</url>
       <content type="html"><![CDATA[<p>一个 Consul 集群由3个 Consul server 和近百个 Consul client 组成。观察发现集群状态不稳定，频繁出现以下现象：</p>
@@ -3051,6 +3073,17 @@ goB. .U....s7.......#
     </entry>
     
     <entry>
+      <title><![CDATA[这个blog现在支持feed输出了]]></title>
+      <url>http://aleung.github.io/blog/blog/2010/02/14/This-blog-now-support-feed-output/</url>
+      <content type="html"><![CDATA[<p>支持atom比我想象中简单很多，根本用不着什么library，多加一个xml template就行了。</p>
+<p>如果你的浏览器支持，就能在地址栏右边看到feed的图标，点击就可以选择阅读器进行订阅。或者在阅读器（例如Google Reader）里面输入这个网站的地址，也可以订阅。</p>
+<p><img src="http://farm5.static.flickr.com/4058/4353315450_7d1914e9ab_o.png" alt=""></p>
+<p>PS. 这个blog的页面使用了一些HTML5标签，因此需要使用新的浏览器才能正常浏览，例如使用 Firefox 3, Chrome。如果你看到的页面不是上图的样子，说明你的浏览器 out date 啦。</p>
+<p>PPS. 我会一如既往的使用flickr来存放照片，如果你看不到照片，或者有一天你连这个blog的页面都看不到，那说明你上的只是局域网，根本不是Internet。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[基本功能完备，可以公开了]]></title>
       <url>http://aleung.github.io/blog/blog/2010/02/14/Basic-function-complete-can-open/</url>
       <content type="html"><![CDATA[<p>一个blog所需要的功能的最小集合已经完备了，可以投入使用，再边用边改进了：</p>
@@ -3062,17 +3095,6 @@ goB. .U....s7.......#
 <li>用户认证通过Google account进行</li>
 </ul>
 <p><a href="https://appengine.google.com/" target="_blank" rel="external">Google Application Engine</a> 提供了强大的平台，<a href="http://www.playframework.org" target="_blank" rel="external">Play Framework</a>使得Java web开发变得很简便。开发这个应用用了几天时间，不算快，但作为第一次，学习、查资料花的时间不少，上手之后的工作效率将会提高很多。另外，对我来说，HTML+CSS才是最困难的部分，基本没有做前端的经验。现在的界面是从sample里面copy出来改的，每改一点就要看看效果，边试边改。</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[这个blog现在支持feed输出了]]></title>
-      <url>http://aleung.github.io/blog/blog/2010/02/14/This-blog-now-support-feed-output/</url>
-      <content type="html"><![CDATA[<p>支持atom比我想象中简单很多，根本用不着什么library，多加一个xml template就行了。</p>
-<p>如果你的浏览器支持，就能在地址栏右边看到feed的图标，点击就可以选择阅读器进行订阅。或者在阅读器（例如Google Reader）里面输入这个网站的地址，也可以订阅。</p>
-<p><img src="http://farm5.static.flickr.com/4058/4353315450_7d1914e9ab_o.png" alt=""></p>
-<p>PS. 这个blog的页面使用了一些HTML5标签，因此需要使用新的浏览器才能正常浏览，例如使用 Firefox 3, Chrome。如果你看到的页面不是上图的样子，说明你的浏览器 out date 啦。</p>
-<p>PPS. 我会一如既往的使用flickr来存放照片，如果你看不到照片，或者有一天你连这个blog的页面都看不到，那说明你上的只是局域网，根本不是Internet。</p>
 ]]></content>
     </entry>
     

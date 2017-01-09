@@ -261,6 +261,105 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2015/01/06/haskell/" itemprop="url">
+                  Haskell
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-01-06T22:03:35+08:00" content="2015-01-06">
+              2015-01-06
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>2014年断断续续学了一阵子 Scala 语言，Scala 真的不错，将面向对象和函数式编程两种范式结合得很好，对 Java 程序员非常友好。不过，从学编程开始就受命令式编程的思想的浸淫，要使用函数式编程的思想相当困难，思路转不过来，而 Scala 又不强迫你用 FP，所以写出来的程序基本上还是命令式的。不少人都推荐学 Haskell 作为函数式编程的入门，作为一门学院派的语言，它非常纯粹，有助于掌握函数式编程的思维方式。于是开始读 <a href="http://learnyouahaskell.com/" target="_blank" rel="external">Learn You a Haskell for Great Good</a>，这真是本入门好书，从头开始一点点的理解接受函数式编程的思路。学 Haskell 的感觉非常<em>有趣</em>。</p>
+<p>不过那本书只是讲语言特性和思想，没有讲 Haskell 的运行环境和使用。上网收集了一些资料，记录下来。</p>
+<p>Haskell (缺省)是编译成 native code，并非运行在托管环境下，因此开发出来的程序就像 C 的一样直接可执行的 binary。Haskell 程序需要依赖于 Runtime System (RTS)，RTS 提供了内存管理，GC，轻量线程，并发等等功能的支持。包括 RTS 和其他的依赖到的 library，缺省都是静态链接到可执行程序中的，因此编译出来的程序体积会比较大。但现在 GHC 也已经支持动态链接了，如果使用动态链接，则要求运行环境中需要已经安装了 GHC（有 RTS）。在这方面，Haskell 跟 Go 差不多，都是直接得到 native 可执行程序，分发和部署会简单一些。</p>
+<p>Haskell 的编译器叫做 Glasgow Haskell Compiler (GHC)，它包括了 compiler，boot library 和 runtime system (RTS)。编译器支持多种 backend，除了可以生成 native code (机器码)，也可以产生 C 语言源代码（供跨平台移植），或者 LLVM code，（供后面接 LLVM toolchain 使用）。</p>
+<p>做应用开发不太可能什么都从头做起，必然要依赖第三方的函数库。Haskell 世界里的包管理和 build 系统叫 Cabal。另外有个工具 Cabal-Install 负责下载 Haskell package 源代码、编译、安装和注册到 GHC 的整个过程。共享的包存放在 <a href="http://hackage.haskell.org/" target="_blank" rel="external">Hackage</a> 这个在线仓库中。</p>
+<p>Reference: <a href="http://www.aosabook.org/en/ghc.html" target="_blank" rel="external">The Architecture of Open Source Applications - GHC</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2015/01/02/da-peng-new-year-marathon/" itemprop="url">
                   大鹏新年马拉松
                 </a>
@@ -741,137 +840,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2014/12/14/api-metrics-demo/" itemprop="url">
-                  API metrics demo
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-12-14T17:21:17+08:00" content="2014-12-14">
-              2014-12-14
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>This demo uses Graphite and Grafana to store and present API metrics. The demo environment is installed on Ubuntu.</p>
-<h2 id="Graphite"><a href="#Graphite" class="headerlink" title="Graphite"></a>Graphite</h2><p>Graphite has two major components. </p>
-<p>The first is <code>carbon-cache</code>, which is a daemon process to receive metrics data from client through TCP connection and store into filesystem via <code>whisper</code> database library.</p>
-<p>Another one is a webapp. It provides HTTP API for generating graphs and retrieving raw data.</p>
-<p>Since Ubuntu 14.04, it’s easy to install graphite with <code>apt-get</code>:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install graphite-web graphite-carbon</div></pre></td></tr></table></figure>
-<p>Both <code>carbon</code> and <code>graphite-web</code> are installed as python module. </p>
-<p>Start carbon:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service carbon-cache start</div></pre></td></tr></table></figure>
-<p>Graphite-web is base on django framework. Read <code>/usr/share/doc/graphite-web/README</code> for how to setup graphite-web. A major steps is to create database and default data:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo graphite-manage syncdb</div><div class="line">sudo chown _graphite:_graphite /var/lib/graphite/graphite.db</div></pre></td></tr></table></figure>
-<p>For testing Graphite, you can start Graphite with the Django lightweight Web server for development:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo -u _graphite /usr/bin/django-admin runserver --settings graphite.settings 0.0.0.0:8080</div></pre></td></tr></table></figure>
-<p>To install on Apache, follow the guide in <code>/usr/share/doc/graphite-web/README</code>. </p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install libapache2-mod-wsgi</div><div class="line">sudo cp /usr/share/graphite-web/apache2-graphite.conf /etc/apache2/sites-available/graphite-web.conf</div><div class="line">sudo a2ensite graphite-web</div><div class="line">sudo service apache2 restart</div></pre></td></tr></table></figure>
-<p>Graphite-web 0.9.12 only works under URL root path, it conflict with Apache default site setting. I modify <code>/etc/apache2/sites-enabled/graphite-web.conf</code> to make it work in a virtual host on port 81.</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Listen 81</div><div class="line">&lt;VirtualHost *:81&gt;</div><div class="line"> ...</div><div class="line">&lt;/VirtualHost&gt;</div></pre></td></tr></table></figure>
-<p>Reference:</p>
-<ul>
-<li><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-graphite-on-an-ubuntu-14-04-server" target="_blank" rel="external">https://www.digitalocean.com/community/tutorials/how-to-install-and-use-graphite-on-an-ubuntu-14-04-server</a></li>
-</ul>
-<h2 id="Grafana"><a href="#Grafana" class="headerlink" title="Grafana"></a>Grafana</h2><p>Download grafana package and extract to a directory. Configure Apache web server to make the grafana directory accessable.</p>
-<p>Edit <code>config.js</code> (copy from <code>config.sample.js</code>) to enable graphite as datasource.</p>
-<p>Because graphite-web is hosting on virtual host on port 81, which is different than where grafana is hosting, there is cross site script access restriction. Have to enable CORS (cross origin resource sharing) on graphite-web side.</p>
-<p>Enable Apache mod_headers:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo a2enmod headers</div></pre></td></tr></table></figure>
-<p>Add into <code>/etc/apache2/sites-enabled/graphite-web.conf</code>:</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="attribute"><span class="nomarkup">Header</span></span> set Access-Control-Allow-Origin <span class="string">"*"</span></div><div class="line"><span class="attribute"><span class="nomarkup">Header</span></span> set Access-Control-Allow-Methods <span class="string">"GET, OPTIONS"</span></div><div class="line"><span class="attribute"><span class="nomarkup">Header</span></span> set Access-Control-Allow-Headers <span class="string">"origin, authorization, accept"</span></div></pre></td></tr></table></figure>
-<h2 id="Elasticsearch"><a href="#Elasticsearch" class="headerlink" title="Elasticsearch"></a>Elasticsearch</h2><p>Elasticsearch is used by Granfan as a database to persistent dashboard configuration. Search and analystics features of Elasticsearch isn’t used in this case. Without Elasticsearch Grafana still works, but unable to save any change to dashboard design. You have to export dashboard JSON and import next time you want to use it.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.1.deb</div><div class="line">sudo dpkg -i elasticsearch-1.4.1.deb</div></pre></td></tr></table></figure>
-<p>Elasticsearch is not starting on bootup by default. To setup as service, run:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo update-rc.d elasticsearch defaults 95 10</div></pre></td></tr></table></figure>
-<p>To start manually, run:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo /etc/init.d/elasticsearch start</div></pre></td></tr></table></figure>
-<p>To enable CORS (cross origin resource sharing), add below into <code>/etc/elasticsearch/elasticsearch.yml</code>:</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http.cors.enabled: <span class="literal">true</span></div></pre></td></tr></table></figure>
-<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p>The scala script <code>feed_graphite.scala</code> generates mock API metrics data for demo. The Grafana portal is defined as <code>api.json</code>. Both files are stored in this <a href="https://gist.github.com/aleung/1ec7e56bfa9448af920b" target="_blank" rel="external">gist</a>.</p>
-<p><img src="/attachments/2014/12/api-metrics-demo.png" alt=""></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -917,7 +885,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">318</span>
+              <span class="site-state-item-count">319</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -927,7 +895,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags">
-                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -971,7 +939,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

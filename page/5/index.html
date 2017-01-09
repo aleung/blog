@@ -261,6 +261,137 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2014/12/14/api-metrics-demo/" itemprop="url">
+                  API metrics demo
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-12-14T17:21:17+08:00" content="2014-12-14">
+              2014-12-14
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>This demo uses Graphite and Grafana to store and present API metrics. The demo environment is installed on Ubuntu.</p>
+<h2 id="Graphite"><a href="#Graphite" class="headerlink" title="Graphite"></a>Graphite</h2><p>Graphite has two major components. </p>
+<p>The first is <code>carbon-cache</code>, which is a daemon process to receive metrics data from client through TCP connection and store into filesystem via <code>whisper</code> database library.</p>
+<p>Another one is a webapp. It provides HTTP API for generating graphs and retrieving raw data.</p>
+<p>Since Ubuntu 14.04, it’s easy to install graphite with <code>apt-get</code>:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install graphite-web graphite-carbon</div></pre></td></tr></table></figure>
+<p>Both <code>carbon</code> and <code>graphite-web</code> are installed as python module. </p>
+<p>Start carbon:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service carbon-cache start</div></pre></td></tr></table></figure>
+<p>Graphite-web is base on django framework. Read <code>/usr/share/doc/graphite-web/README</code> for how to setup graphite-web. A major steps is to create database and default data:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo graphite-manage syncdb</div><div class="line">sudo chown _graphite:_graphite /var/lib/graphite/graphite.db</div></pre></td></tr></table></figure>
+<p>For testing Graphite, you can start Graphite with the Django lightweight Web server for development:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo -u _graphite /usr/bin/django-admin runserver --settings graphite.settings 0.0.0.0:8080</div></pre></td></tr></table></figure>
+<p>To install on Apache, follow the guide in <code>/usr/share/doc/graphite-web/README</code>. </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install libapache2-mod-wsgi</div><div class="line">sudo cp /usr/share/graphite-web/apache2-graphite.conf /etc/apache2/sites-available/graphite-web.conf</div><div class="line">sudo a2ensite graphite-web</div><div class="line">sudo service apache2 restart</div></pre></td></tr></table></figure>
+<p>Graphite-web 0.9.12 only works under URL root path, it conflict with Apache default site setting. I modify <code>/etc/apache2/sites-enabled/graphite-web.conf</code> to make it work in a virtual host on port 81.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Listen 81</div><div class="line">&lt;VirtualHost *:81&gt;</div><div class="line"> ...</div><div class="line">&lt;/VirtualHost&gt;</div></pre></td></tr></table></figure>
+<p>Reference:</p>
+<ul>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-graphite-on-an-ubuntu-14-04-server" target="_blank" rel="external">https://www.digitalocean.com/community/tutorials/how-to-install-and-use-graphite-on-an-ubuntu-14-04-server</a></li>
+</ul>
+<h2 id="Grafana"><a href="#Grafana" class="headerlink" title="Grafana"></a>Grafana</h2><p>Download grafana package and extract to a directory. Configure Apache web server to make the grafana directory accessable.</p>
+<p>Edit <code>config.js</code> (copy from <code>config.sample.js</code>) to enable graphite as datasource.</p>
+<p>Because graphite-web is hosting on virtual host on port 81, which is different than where grafana is hosting, there is cross site script access restriction. Have to enable CORS (cross origin resource sharing) on graphite-web side.</p>
+<p>Enable Apache mod_headers:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo a2enmod headers</div></pre></td></tr></table></figure>
+<p>Add into <code>/etc/apache2/sites-enabled/graphite-web.conf</code>:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="attribute"><span class="nomarkup">Header</span></span> set Access-Control-Allow-Origin <span class="string">"*"</span></div><div class="line"><span class="attribute"><span class="nomarkup">Header</span></span> set Access-Control-Allow-Methods <span class="string">"GET, OPTIONS"</span></div><div class="line"><span class="attribute"><span class="nomarkup">Header</span></span> set Access-Control-Allow-Headers <span class="string">"origin, authorization, accept"</span></div></pre></td></tr></table></figure>
+<h2 id="Elasticsearch"><a href="#Elasticsearch" class="headerlink" title="Elasticsearch"></a>Elasticsearch</h2><p>Elasticsearch is used by Granfan as a database to persistent dashboard configuration. Search and analystics features of Elasticsearch isn’t used in this case. Without Elasticsearch Grafana still works, but unable to save any change to dashboard design. You have to export dashboard JSON and import next time you want to use it.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.1.deb</div><div class="line">sudo dpkg -i elasticsearch-1.4.1.deb</div></pre></td></tr></table></figure>
+<p>Elasticsearch is not starting on bootup by default. To setup as service, run:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo update-rc.d elasticsearch defaults 95 10</div></pre></td></tr></table></figure>
+<p>To start manually, run:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo /etc/init.d/elasticsearch start</div></pre></td></tr></table></figure>
+<p>To enable CORS (cross origin resource sharing), add below into <code>/etc/elasticsearch/elasticsearch.yml</code>:</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http.cors.enabled: <span class="literal">true</span></div></pre></td></tr></table></figure>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p>The scala script <code>feed_graphite.scala</code> generates mock API metrics data for demo. The Grafana portal is defined as <code>api.json</code>. Both files are stored in this <a href="https://gist.github.com/aleung/1ec7e56bfa9448af920b" target="_blank" rel="external">gist</a>.</p>
+<p><img src="/attachments/2014/12/api-metrics-demo.png" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2014/11/26/2014-guangzhou-marathon-analysis/" itemprop="url">
                   2014广马数据分析
                 </a>
@@ -750,107 +881,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2014/06/21/run/" itemprop="url">
-                  跑步日記
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-06-21T18:19:08+08:00" content="2014-06-21">
-              2014-06-21
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>今天難得的陰天，早上下過雨，溫度30℃出頭，沒有早幾天那麽酷熱，也有點風。<br>磨磨蹭蹭，早上10點半才出發。熱身段過後，按5’30”配速，從江灣橋過河南，沿江邊一直往東跑。</p>
-<p>過了廣州塔，就到獵德大橋，大概10km位置。這時我面臨著一個艱難的選擇：上橋，就過到珠江新城然後沿江邊往回走，穿過二沙島回家，這是跑過好多次的路線，大概十七八公里左右。如果直走，就一直要到琶洲大橋才能過橋，到了北岸往回跑，要到家路程估計有近30公里，這時我從沒有跑過的距離。在我的大腦還在激烈思想鬥爭的時候，雙腿肌肉已經作出了決定——直走。</p>
-<p>考慮到前路漫漫，將速度下降到5’50”。這時接近正午時分，雖然沒有太陽直射，人也比較熱，心率上升到接近160。找賣水的地方，但琶洲一帶很荒蕪，估算著也撐到過了琶洲橋後也沒問題。</p>
-<p>13.5km處上橋，這橋真長，足足一公里。過了琶洲大橋下來，14.6km，去超市買運動飲料喝，停了幾分鐘。這麽一停下來，就沒法重新跑起來了，完全不想動。繼續跑後氣喘得很厲害，隔夜風爐都吹得著，腳擡不起，步頻下降了很多。將速度下降到6’30”了，希望能夠慢慢適應過來。堅持了一段，毫無起色，終於在過了華南大橋底，到了17km處放棄了。不清楚為什麼買水停了一下後狀態會突然變得那麽差，看回數據，過橋前的速度還是保持得比較平穩的5’50”左右。以前我也有經驗是不能停，一旦停下就很難重新回復狀態，但慢慢適應一段時間後還是可以的，這次完全不行。</p>
-<p>找不到廁所，鑽進樹叢裏面尿尿。舒暢完後渾身酥軟，一轉身沒站穩跟身後樹幹長滿刺的木棉樹來了個親密接觸。</p>
-<p>沿著江邊走，中午很寧靜，人不多，只有知了在不知疲倦的叫。突然覺得這個環境很舒服，享受一下時光吧，在榕樹陰下的石凳坐下，冰冷的石頭冷卻著大腿的肌肉，涼風吹拂身上的汗水。出來跑步什麼都沒有帶，不用再習慣性的拿手機來看，就讓時間的碎片留白，就是那樣靜坐著，看著開闊的江面，感覺那TMD不就是幸福麽。所以人都是自己感動自己的，要不哪來那麽多感人的事情。</p>
-<p>歇了一會，將運動飲料全喝完了，感覺恢復了一些，起來繼續跑一下，邊跑盤算著後面還能再跑多遠。但是，跑累了的時候就是靠內心去堅持的，原來一直習慣了喘著氣的狀態，可以一直跑下去，一旦享受過停下休息的舒服後就承受不了之前那種苦了。最後跑到珠江新城地鐵站收官，累計20.5km。後面這段其實心率還在正常範圍，肌肉沒有不適，就是步頻慢了，按理說這個狀態還可以繼續跑上好一段距離的。</p>
-<p>另一方面，今天跑的狀態看來確實不是那麽好，跑完幾個小時的感覺比以往跑這個距離要累。<br>回來看數據，感覺步頻似乎是反應體力狀態的一個直觀指標，從8.4km起步頻明顯下降了一個台階，而14.6km買水後步頻更是嚴重下降。另一方面，心率跟狀態有什麼關聯也還不是很清晰，每次跑步隨著疲勞累積，心率都是不斷升高的。但看以往的記錄，心率到160多速度依然保持的也有。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -896,7 +926,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">318</span>
+              <span class="site-state-item-count">319</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -906,7 +936,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags">
-                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -950,7 +980,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
