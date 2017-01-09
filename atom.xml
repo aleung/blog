@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://aleung.github.io/blog/"/>
-  <updated>2017-01-09T16:06:23.000Z</updated>
+  <updated>2017-01-09T16:20:19.000Z</updated>
   <id>http://aleung.github.io/blog/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>在非GPL应用中使用OpenJDK</title>
+    <title>在非GPL应用中使用OpenJDK的法律问题</title>
     <link href="http://aleung.github.io/blog/2017/01/06/Use-OpenJDK-in-proprietary-software/"/>
     <id>http://aleung.github.io/blog/2017/01/06/Use-OpenJDK-in-proprietary-software/</id>
     <published>2017-01-06T14:56:07.000Z</published>
-    <updated>2017-01-09T16:06:23.000Z</updated>
+    <updated>2017-01-09T16:20:19.000Z</updated>
     
     <content type="html"><![CDATA[<p>大家都知道 Oracle JDK 在商业应用场合是需要购买 license 的，往往会选择 OpenJDK 来规避。但是，OpenJDK 的 license 是 GPL，GPL 是一种 “传染性” 的协议，那么 OpenJDK 是否可以在非 GPL 应用中使用呢？</p>
 <p>在 <a href="http://stackoverflow.com/" target="_blank" rel="external">StackOverflow</a>、<a href="http://opensource.stackexchange.com/" target="_blank" rel="external">Open Source Stack Exchange</a> 中搜索到一些相关的讨论，大部分答案是认为可以使用，应用无需因此用 GPL 发布，但也有人提出质疑。</p>
