@@ -261,6 +261,111 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2013/12/08/intercept-android-https-traffic/" itemprop="url">
+                  拦截Android应用HTTPS通讯内容
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-12-08T15:03:00+08:00" content="2013-12-08">
+              2013-12-08
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>昨天在捣弄 <a href="http://micoach.adidas.com/" target="_blank" rel="external">miCoach</a> 到 <a href="http://nikeplus.nike.com/" target="_blank" rel="external">Nike+</a> 的数据迁移，到了最后一步发现调用 Nike+ API 需要传送client_id和client_secret，这两个信息是用来认证客户端的，但Nike并没有公开开放API，因此无法申请到client_id。看 <a href="https://github.com/angusws/tcx2nikeplus" target="_blank" rel="external">tcx2nikeplus</a> 的作者说他是通过查看iPhone应用发送的请求来拿到这两个信息的。但是 Nike+ API 都是走HTTPS的，普通方式的截包看不到加密传输的数据。</p>
+<p>要嗅探加密传输，必须通过<a href="http://zh.wikipedia.org/wiki/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB" target="_blank" rel="external">中间人攻击</a>的方式才行。上网搜索一下看看有没有现成工具，果然一搜就找到了：<a href="http://portswigger.net/burp/" target="_blank" rel="external">Burp Suite</a>。它是一个安全测试工具，功能好像有不少，我这里用它做代理，从中监控应用到服务器的通讯内容。</p>
+<p>下面记录大致操作过程。</p>
+<p>在PC上安装运行Burp，设置 Proxy - Options - Proxy Listeners，让它监听合适的地址和端口，并且选择 “Generate CA-signed per-host certificates”。</p>
+<p>将浏览器代理指向Burp proxy，访问任意一个https地址，Burp这时是中间人，它会用自己的根证书(PortSwiggerCA)签发一个目标服务器的证书，替换了真正服务器的证书。浏览器应该会有安全报警，因为系统并不信任签发这个证书的CA。查看证书详细信息，选择根证书并且信任这个根证书，就会把PortSwiggerCA的证书加入到系统的信任列表中。</p>
+<p>要将这个根证书装进Android，需要先从系统 key chain 里将它导出到文件（.pem格式），然后执行下面的命令将它转换为DER格式后缀为.crt的文件。</p>
+<pre><code>openssl x509 -in PortSwiggerCA.pem -inform PEM –out PortSwiggerCA.crt -outform DER
+</code></pre><p>接下来，将 PortSwiggerCA.crt 放入Android的sdcard，在系统安全菜单中安装证书。证书安装后，Android系统就会信任所有Burp签发的证书了。</p>
+<p>在Android的WLAN设置代理指向Burp。但很多Android应用都不理会系统的代理设置，不使用系统指定代理，遇到这种情况就要用 <a href="https://play.google.com/store/apps/details?id=org.proxydroid" target="_blank" rel="external">ProxyDroid</a> 来设置GlobalProxry（手机要root）。设置好了，在Burp里面就能够拦截到Android应用的HTTPS通信明文了。</p>
+<img src="/blog/attachments/2013/12/burp.png">
+<p><em>注意：为确保安全，测试完之后要将 PortSwiggerCA 这个根证书从PC和Android系统信任列表中删除。如果不是临时使用，应该要用自己的证书代替Burp提供的证书。</em></p>
+<p>这个故事告诉我们，中间人攻击并不是那么复杂的事情。特别是终端应用开发者，不可寄望于通过加密传输来隐藏应用到服务器的协议细节，要逆向工程是很容易的。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2013/12/01/2013-gz-half-marathon/" itemprop="url">
                   2013广州马拉松半程小结
                 </a>
@@ -661,115 +766,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2013/04/03/my-opinion-on-smartisan-os/" itemprop="url">
-                  看老罗的锤子发布会
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-04-03T13:05:00+08:00" content="2013-04-03">
-              2013-04-03
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>两个小时，演讲太啰嗦，时间压缩一半可能会精炼很多，乔布斯有这么多废话吗？另外就是老罗一贯的自恋。我突然想找小米首次发布会来看看，看雷布斯的表现如何。老罗已经是名嘴，雷布斯更惨不忍睹？</p>
-<p>从发布会的信息上看，锤子是一个做了UI / HI (Human Interface) 优化的Android系统：</p>
-<ol>
-<li>更换了System UI（风格基调是iOS的）</li>
-<li>提供以九宫格无背景为特色的Launcher（Android UI优点之一的widget无处容身了）</li>
-<li>替换了所有应用自带的图标</li>
-<li>提供了一些重新设计的系统自带应用，如相机、通讯录、拨号等（里面加入不少体贴用户的细节）</li>
-<li>语音控制功能的整合（还没做好）</li>
-</ol>
-<p>这样看来，锤子做的事情跟很多基于Android的定制系统是一个层面的，类似的系统太多太多了：最早但死掉的中国移动OMS，各手机厂商为自己手机定制的系统（HTC SenseUI，联想乐OS，魅族Flyme），已经放弃的点心OS，很火的MIUI……。顺便说一下，MIUI为应用图标硬加的圆角矩形背景极为难看，希望被老罗炮轰一下后能改过来。</p>
-<p>从整体设计风格来说，锤子追随的是iOS的UI风格和人机界面设计规范，从各个UI组件的样子可以看得出来，还有交互操作的方式，也包括拟物化的设计、仿真的视觉反馈等。</p>
-<p>对于一些操作细节的打磨，带来更人性化的体验，是很多人对锤子称道的地方。的确是做得不错，但演示到的几乎每一个改进／做法，都能够在其他系统／第三方应用中找到已经真实应用的范本。老罗团队做得好是在于关注到需要改进的地方，将它们集中到一起。发现哪里操作细节需要改进比起作出改进更难。</p>
-<p>因此，看完两个小时的发布会，这个锤子系统没有带来什么耳目一新的感觉。老罗太高调了，说什么要做最好的手机系统，吹嘘的跟现实的落差太大。也许这是营销手段，反正我就不喜欢这种营销了。</p>
-<p>发布会最后一段，老罗说得很清楚：锤子将会是一个极其封闭的系统，因为只有封闭，才能为小白用户提供最完美、一致的用户体验。听起来很耳熟是不？这不就是苹果说的吗？但是，智能手机系统更重要的角色是一个平台，各种应用才是上面的主角。应用的图标跟系统风格不搭配，锤子给出的解决方案是给你换掉，可是进入应用后，应用的UI、操作方式呢？这才是更重要的。UX不仅仅是美工，是整个人机交互。苹果是怎么做到的？苹果制定了一套系统详尽的人机界面设计规范(HIG)，苹果有很强的控制力，它可以通过App Store发布审核制度强制要求只有符合的应用才能上架。我看不到锤子能有这样的能力去控制第三方应用，也不觉得一个团队有能力(和有必要)在系统里自带所有主要的功能而抛弃第三方应用，因此觉得锤子找的这个提供更佳用户界面的切入点恐怕走不了多远。</p>
-<p>在手机平台这个层面的用户体验上，要作出革新，非小打小闹可以做到。我虽然不做用户交互端的开发，但也有关注移动应用的UX的发展。真正意义的智能手机应用自iPhone革命性发布开始，并没有好多年的时间，这些年来，UX design在迅猛发展。iOS以高度拟物仿真的特点一直独领风骚，但走入了过分繁杂的极端；Android一路在摸索，历年Google IO都带出新的UI/UX design pattern，每次都推翻之前的方案，但可以看到一路在改善，到了Android 4.x，已经有一整套成熟的设计规范；微软的Metro UI可以称得上是一个大的革新。近年的设计趋势都是简约化，去年底苹果工业设计师的更替后，苹果的设计理念也许也会往这个方向走。在我看来，大气的设计是定义出一整套设计语汇，自成体系，并且背后要有设计哲学所支撑（Metro的定位是一种设计语言）。读完iOS的HIG，Android SDK文档里的设计指南，Windows phone的设计指南，就有所体会。另外顺便说说Android应用，普遍比较丑的原因不在于Android自己的设计理念，而是应用开发者没有跟随这个理念，不少依照Android 4.x的设计风格的应用都很漂亮很好用的。</p>
-<p>最后总结我看到的锤子：老罗崇尚苹果的整套理念，另外也看到了一些可以改进的地方（例如他说的iPhone设计上的妥协），于是要将它搬到Android平台上来，按照自己的理解重现实现一遍。这将是一个很有趣的尝试，期望能为国内手机应用UX僵化老土的设计带来新鲜的风气。只是别把自己过分拔高就好了。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -815,7 +811,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">319</span>
+              <span class="site-state-item-count">320</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -825,7 +821,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags">
-                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

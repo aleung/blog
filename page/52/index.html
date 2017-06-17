@@ -261,6 +261,102 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2004/05/27/WordPress-/" itemprop="url">
+                  WordPress越做越好了
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2004-05-27T16:44:00+08:00" content="2004-05-27">
+              2004-05-27
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>昨天晚上把我的<a href="http://sunnyday.cn2k.net/blog/" target="_blank" rel="external">另外一个blog</a>的程序升级到<a href="http://wordpress.org" target="_blank" rel="external">WordPress</a> 1.2, 升级本身是非常简单的, 正如wordpress网站上说的, installing WordPress and upgrading from previous versions and other software is a piece of cake, 它的安装升级脚本做的非常完善且友好, 访问一个URL点击几次next就做好了, 因为是全web化的配置, 保存在数据库中的, 一切都自动完成. 不过update我自己的页面template耗了些时间, 因为新版本提供的函数有些更改了, 必须手工修改, 如果用它的default template就不需要费这些功夫. </p>
+<p>我的blog从最早的b2, 到WordPress 0.5x, 到现在的WordPress 1.2, 几次升级, 感觉这个软件越做越好了. XML-RPC的支持, email-blogging, 可自定义字段, link manager, 层次化的category, 多作者, 图片上传和自动生成缩略图, 保存草稿… 还有好多细节方面的功能都不错.</p>
+<p>我还考虑过是不是该把blogbus上的这个blog也搬到自己的WordPress上边去, 不过暂时blogbus还是用得不错, 搬起来挺麻烦的, 而且它的HTML编辑挺方便, WYSIWYG, 还是等等再说吧.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2004/05/26/C-C-i18n/" itemprop="url">
                   C/C++中的i18n
                 </a>
@@ -645,114 +741,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2004/04/30/Solve-Xerces-C-XML-parser-EnitiyResolver-doesn-t-work-in-the-problem/" itemprop="url">
-                  解决Xerces-C XML parser中EnitiyResolver不起作用的问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2004-04-30T01:32:00+08:00" content="2004-04-30">
-              2004-04-30
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在SAX和DOM两种paser API中，均提供了EntityResolver接口，应用程序可通过实现这个接口的resolveEntity()方法来实现对外部实体访问的控制，例如将对网络URL的访问重定向为对本地文件或者数据库的访问。Xerces软件包提供了例子redirect来演示这个功能。</p>
-<p>在我们的程序中，parse VXML文件时需要使用外部的schema，而这些schema又会间接引用其他的schema或者DTD，这些外部实体都是通过URL形式的system id来指定的（基本上都是在<a href="http://www.w3c.org" target="_blank" rel="external">www.w3c.org</a>上）。考虑到程序运行环境不一定与internet连接，还有远程网络的效率也不高，我们在程序中实现了自己的EntityResolver，把所有对这些schemas、DTDs的访问都截取下来，返回程序中内置的拷贝。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> DTDResolver : <span class="keyword">public</span> EntityResolver &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">virtual</span> InputSource * <span class="title">resolveEntity</span><span class="params">(<span class="keyword">const</span> XMLCh * <span class="keyword">const</span> publicId,</span></span></div><div class="line">        <span class="keyword">const</span> XMLCh * <span class="keyword">const</span> systemId)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (Compare(systemId, <span class="string">L"http://www.w3.org/TR/voicexml20/vxml.xsd"</span>)) &#123;</div><div class="line">            <span class="function">VXIcharToXMLCh <span class="title">name</span><span class="params">(<span class="string">L"http://www.w3.org/TR/voicexml20/vxml.xsd (SB)"</span>)</span></span>;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> MemBufInputSource(VALIDATOR_DATA + VALIDATOR_VXML,</div><div class="line">                VALIDATOR_VXML_SIZE,</div><div class="line">                name.c_str(), <span class="literal">false</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (Compare(systemId, <span class="string">L"http://www.w3.org/2001/xml.xsd"</span>)) &#123;</div><div class="line">            <span class="function">VXIcharToXMLCh <span class="title">name</span><span class="params">(<span class="string">L"http://www.w3.org/2001/xml.xsd"</span>)</span></span>;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> MemBufInputSource(VALIDATOR_DATA + VALIDATOR_XML,</div><div class="line">                VALIDATOR_XML_SIZE,</div><div class="line">                name.c_str(), <span class="literal">false</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (Compare(systemId, <span class="string">L"XMLSchema.dtd"</span>)) &#123;</div><div class="line">            <span class="function">VXIcharToXMLCh <span class="title">name</span><span class="params">(<span class="string">L"XMLSchema.dtd"</span>)</span></span>;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> MemBufInputSource(VALIDATOR_DATA + VALIDATOR_SCHEMA_DTD,</div><div class="line">                VALIDATOR_SCHEMA_DTD_SIZE,</div><div class="line">                name.c_str(), <span class="literal">false</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">// ......</span></div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// ......</span></div><div class="line"></div><div class="line">parser = XMLReaderFactory::createXMLReader();</div><div class="line">DTDResolver * dtd = <span class="keyword">new</span> DTDResolver();</div><div class="line">parser-&gt;setEntityResolver(dtd);</div></pre></td></tr></table></figure>
-<p>在测试中发现，对某些外部实体的访问成功截取了，但是另外一些却不成功，parser依然尝试通过网络访问，然后由于网络不通而访问失败，造成xml文件无法parse。</p>
-<p>对程序进行跟踪，发现了问题出现的规律：所有对schema文件的引用处理都正常，无论是include还是import方式，也无论是多少层的间接引用；在被parse的XML文件中DOCTYPE声明的外部实体引用，处理也正常，故此xerces自带的redirect例子是不会出问题的；但是，schema文件的DOCTYPE声明的外部实体引用就不能被正确处理了，根本不会调用指定的resolveEntity()方法。</p>
-<p>这时，基本上可以确认问题是出在xerces身上，而不是我们的程序的问题了。于是仔细跟踪xerces代码对schema parse的执行过程，最终发现了问题。</p>
-<p>XercesDOMParser类有两个resolveEnitiy方法：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">InputSource* XercesDOMParser::resolveEntity(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> publicId,</div><div class="line">                                            <span class="keyword">const</span> XMLCh* <span class="keyword">const</span> systemId,</div><div class="line">                                            <span class="keyword">const</span> XMLCh* <span class="keyword">const</span> baseURI)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (fEntityResolver)</div><div class="line">        <span class="keyword">return</span> fEntityResolver-&gt;resolveEntity(publicId, systemId);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line">InputSource* XercesDOMParser::resolveEntity(XMLResourceIdentifier* resourceIdentifier)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (fEntityResolver)</div><div class="line">        <span class="keyword">return</span> fEntityResolver-&gt;resolveEntity(resourceIdentifier-&gt;getPublicId(),</div><div class="line">                                                resourceIdentifier-&gt;getSystemId());</div><div class="line">    <span class="keyword">if</span> (fXMLEntityResolver)</div><div class="line">        <span class="keyword">return</span> fXMLEntityResolver-&gt;resolveEntity(resourceIdentifier);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>根据代码注释，前者是deprecated的，被后者代替。</p>
-<p>由XercesDOMParser派生出XSDDOMParser类，这个类是专门用来parser xsd文件（也就是schema）的。这个类重载了XercesDOMParser的三个参数的resolveEntity方法，用fUserEntityHandler代替fEntityResolver的方法调用。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">InputSource* XSDDOMParser::resolveEntity(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> publicId,</div><div class="line">                                         <span class="keyword">const</span> XMLCh* <span class="keyword">const</span> systemId,</div><div class="line">                                         <span class="keyword">const</span> XMLCh* <span class="keyword">const</span> baseURI)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (fUserEntityHandler)</div><div class="line">        <span class="keyword">return</span> fUserEntityHandler-&gt;resolveEntity(publicId, systemId, baseURI);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>但是XSDDOMParser没有重载第二个resolveEntity方法，估计是第二个方法是后来才加入XercesDOMParser的，在XSDDOMParser中没有同步修改。因此，依然是使用fEntityResolver，而不是fUserEntityHandler，就造成了没有调用到我们定义的resolveEntity方法，依然按照原来的system id去访问网络了。</p>
-<p>问题找出来，解决就简单了，在XSDDOMParser中把另外一个resolveEntity方法也重载了，改为使用fUserEntityHandler。修改之后，测试通过。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">InputSource* XSDDOMParser::resolveEntity(XMLResourceIdentifier* resourceIdentifier)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (fUserEntityHandler)</div><div class="line">        <span class="keyword">return</span> fUserEntityHandler-&gt;resolveEntity(resourceIdentifier);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这个问题在Xerces-C 2.4和2.5版本都存在，IBM的XML4C与Xerces-C是影子项目，也有同样的问题。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -798,7 +786,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">319</span>
+              <span class="site-state-item-count">320</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -808,7 +796,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags">
-                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

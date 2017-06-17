@@ -261,6 +261,104 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2005/11/10/Memory-allocator-/" itemprop="url">
+                  Memory allocator影响多线程程序效率
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2005-11-10T02:14:00+08:00" content="2005-11-10">
+              2005-11-10
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在8个双内核CPU的SUN 4900上运行多线程程序居然比起2个CPU的440更慢，发现原因在于memory allocator的问题，缺省的malloc库只适合于单线程，内存操作是序列化进行的。更换了mtmalloc就正常了。另外还有一个选择是用libumem。</p>
+<p><a href="http://developers.sun.com/solaris/articles/multiproc/multiproc.html" target="_blank" rel="external">http://developers.sun.com/solaris/articles/multiproc/multiproc.html</a></p>
+<p><a href="http://forum.sun.com/thread.jspa?threadID=24312&amp;messageID=91895" target="_blank" rel="external">http://forum.sun.com/thread.jspa?threadID=24312&amp;messageID=91895</a></p>
+<p>换别的memory allocator也很简单，程序都不需要重新编译，仅仅修改启动脚本就可以了：</p>
+<pre><code>LD_PRELOAD=&quot;/usr/lib/libmtmalloc.so&quot; ./_my_application_
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2005/11/05/Collection-and-hiding-disc/" itemprop="url">
                   藏书与藏碟
                 </a>
@@ -954,119 +1052,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2005/06/11/R2D2/" itemprop="url">
-                  R2D2
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2005-06-11T20:42:00+08:00" content="2005-06-11">
-              2005-06-11
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>StarWar里面的一些角色造型挺成功的，R2D2就是其中一个。</p>
-<p>清风白云说喜欢r2d2，要我给她做一张墙纸，上google一<a href="http://www.google.com/search?q=r2d2" target="_blank" rel="external">搜索</a>，哇，原来r2d2的fans这么多！</p>
-<ul>
-<li>r2d2外形的<a href="http://www.mini-itx.com/projects/r2d2pc/" target="_blank" rel="external">电脑</a>，是不是很cool? </li>
-<li>这是一个r2d2外形的声控<a href="http://www.hasbro.com/r2droidfactory/" target="_blank" rel="external">玩具</a>，具有语音识别功能，能够接受一些指令，应该挺好玩 </li>
-<li><a href="http://www.ericharshbarger.org/lego/r2d2.html" target="_blank" rel="external">有人</a>用lego积木搭成<a href="http://www.ericharshbarger.org/lego/images/r2d2/r2d2_4.jpg" target="_blank" rel="external">r2d2模型</a>，不过还是粗糙了些 </li>
-<li>有专门的<a href="http://www.robotbuilders.net/r2/" target="_blank" rel="external">R2D2 Builder Club</a>,交流制作r2d2的经验 </li>
-<li>这个mac的<a href="http://www.macupdate.com/info.php/id/18122" target="_blank" rel="external">软件</a>没有什么特别功能，只是“Randomly plays R2D2 sounds. Use it to annoy your coworkers.”。没有windows版本，要不我也装一个骚扰一下同事:) </li>
-<li>有公司用r2d2来给自己的产品做<a href="http://www.abb.com.cn/global/cnabb/cnabb050.nsf!OpenDatabase&amp;db=/global/cnabb/cnabb056.nsf&amp;v=FAE&amp;e=ch&amp;c=3DB06FFA9892F41B48256B0C002AF267" target="_blank" rel="external">广告</a></li>
-<li>……</li>
-</ul>
-<p>如果没有看过星战，或者对故事了解不多，<a href="http://www.starwars.com/databank/droid/r2d2/" target="_blank" rel="external">这里</a>有R2D2的官方介绍。</p>
-<p>还可以到<a href="http://www.googlism.com/" target="_blank" rel="external">googlism</a>看看网上是怎么介绍和<a href="http://www.googlism.com/who_is/r/r2d2/" target="_blank" rel="external">评价R2D2</a>的。我还是第一次发现googlism这么好玩，看它搜索出来的资料：</p>
-<ul>
-<li>r2d2 is 3 feet 1 inch tall / r2d2 is 94 cm tall </li>
-<li>r2d2 is left handed （r2d2有hand吗？） </li>
-<li>r2d2 is much cooler than c3po （哈哈！） </li>
-<li>r2d2 is by far the best character actor in all the star wars movies </li>
-<li>r2d2 is stephen hawking （这令我非常疑惑，怎么与霍金拉上关系呢，最后在<a href="http://www.glennbeck.com/news/05202002.shtml" target="_blank" rel="external">这里</a>找到答案）</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1112,7 +1097,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">319</span>
+              <span class="site-state-item-count">320</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1122,7 +1107,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags">
-                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -261,6 +261,105 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2017/06/17/OsmAndMapCreator/" itemprop="url">
+                  使用OsmAndMapCreator及时更新OsmAnd地图
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-17T15:02:32+08:00" content="2017-06-17">
+              2017-06-17
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>使用 <a href="https://www.openstreetmap.org" target="_blank" rel="external">OpenStreetMap</a> （简称为OSM）地图数据的手机应用有好些，<a href="http://osmand.net/" target="_blank" rel="external">OsmAnd</a> 是其中比较优秀的一个。OsmAnd的地图数据每月更新一次，延后了半个月到一个多月。作为一个OSM mapper，期望能够马上看到和用到最近做出的修改，等一个月实在太久了。</p>
+<p>OSM原始地图数据在 <a href="http://wiki.openstreetmap.org/wiki/Planet.osm" target="_blank" rel="external">planet.osm</a> 的网站可以下载到，但数据文件是全球的，非常大。从 <a href="http://download.geofabrik.de/" target="_blank" rel="external">GeoFabrik</a> 可以下载按国家分割的数据文件。中国区的PBF格式数据是330MB。但每天重新下载一个数据包还是太大了，其实更新的数据不是很多。网站上还提供每天（planet.osm还有每小时）的变更数据包（osc文件），用 <code>osmupdate</code> 工具就能自动下载变更并且生成新的完整数据文件。 </p>
+<p>有了最新的 osm.pbf 数据文件，就可以使用 <code>OsmAndMapCreator</code> 生成 OsmAnd 可用的 OBF 格式离线地图文件了。生成的过程非常耗内存和CPU，全中国的地图在一台 Core i3-4370 CPU 的电脑上用了90分钟，需要分配 10GB 内存才够用（否则会出现 OutOfMemory 错误）。生成出来的 OBF 文件也有845MB之巨。为了缩短时间，我设置了 <code>osmupdate</code> 的<code>-b</code>参数，过滤出广东中部区域的数据，这样就快很多，几分钟搞定。</p>
+<p>处理的流程如下图。实际上安装好软件，修改好配置后，每次更新就执行一个脚本，过程全自动。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Previous full map data (osm.pbf) \</div><div class="line">                              [osmupdate] --&gt; Latest full map data (osm.pbf)</div><div class="line">            Recent changes (osc) /                      |</div><div class="line">                                                        v</div><div class="line">[OsmAnd] &lt;------ Latest offline map (obf) &lt;------- [OsmAndMapCreator]</div></pre></td></tr></table></figure>
+<p>步骤和脚本放在 gist：<a href="https://gist.github.com/aleung/42776348d023b689e8c337b82a3c7cd5，适用于" target="_blank" rel="external">https://gist.github.com/aleung/42776348d023b689e8c337b82a3c7cd5，适用于</a> MacOS 和 Linix，需要自行修改文件中的目录路径。工具在Win平台也可以用，但脚本就要重新写了。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2017/01/06/Use-OpenJDK-in-proprietary-software/" itemprop="url">
                   在非GPL应用中使用OpenJDK的法律问题
                 </a>
@@ -708,119 +807,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2015/12/06/guangzhou-marathon/" itemprop="url">
-                  2015 广州马拉松小结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-06T00:00:00+08:00" content="2015-12-06">
-              2015-12-06
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>因为训练得少，一直担心跑全程会很辛苦，预计430完成就不错了。</p>
-<p>周六寒风冷雨，幸好周日放晴了，早上起床气温12℃，穿了长袖。存包时感觉不冷，就没有套雨衣。今天气温很适宜跑步，既没有冷得发抖，也没有很热。</p>
-<ul>
-<li>起跑很保守，慢慢跑，想着按430的话全程也就是6分配速。跑了两三公里自然而然的快起来，渐渐进入6分配速以内。</li>
-<li>10km 感觉自己状态还好，一小时内完成了；一直心率都保持在150以下，心中欣喜；下了猎德桥后16km起左膝盖有点不适，受膝痛影响精神也不那么轻松了，后面过两次隧道下坡时小心翼翼。</li>
-</ul>
-<ul>
-<li>20km 发现自己居然比2小时少了七八分钟，按照一小时十公里预算，又赚了好些时间。渐渐膝盖感觉也不明显了。</li>
-<li>24km 左右吃能量胶，过25km 比预计早了10分钟，没有见到小云和小春天，拿了李莹一根香蕉。25km 补给点吃盐丸，想把粉末倒水杯里，发现很难倒出来，整颗扔水里也融不开，有点狼狈，还浪费了一分钟时间。</li>
-<li>28km 起进入滨江路老城区路段，开始跑得不轻松了，这时候我就喜欢一个人孤独的靠着马路中线跑，不管路边加油的观众。左小腿有点发硬的感觉，每个站都淋湿小腿裤子，风干时就很冰冷。</li>
-<li>33km 过人民桥，慢慢跑上去，盘算着完赛时间是多少，好像跑回以前最好的412是有可能的。剩下不足10km，感觉能量不是问题，但想想还是再吃一个能量胶，也吃一颗盐丸。</li>
-<li>在沿江路跑，看着34km，35km 过去，觉得剩下路程不多了，想如果后面我能维持6分配速，就可以进410，但状态也确实不再轻松，最担心是小腿会抽筋。</li>
-<li>后面各跑群的补给点很多，一会就见到一个，过了江湾，一会就到海印。想着去年在这里见到小春天，当时已经抽筋了好久。没见到她们，想她们是不是又错过时间。</li>
-<li>数着一公里又一公里，接近广州大桥，终于40km 啦，剩下没多远，就算抽筋怎么也可以熬过去，何况我配速都还能维持在5:45左右。突然听到有人喊艳阳天，看到了李莹和小云，兴奋的举起手跑过去让她们拍照，但想着最后2km 要一鼓作气完成，就没有停留，小春天在后面大喊回来合影。没有跟小云合影真辜负了她这么费心为我准备加油。</li>
-<li>从二沙岛过桥进入海心沙，41km，居然海心沙那段路就有一公里，不过都能看到前面的路拐个弯就到了，感觉也不长。最后一段告诉自己没必要加速，根本差不了几秒钟。后面的摄影师真对，一会一个，都没有什么其他姿势可以做了，表情是很轻松的。</li>
-<li>最后一个拐弯后，一大堆美女啦啦队热情的喊，从她们手上接过一个气球，跑完最后一段。拿着气球这个点子不错，拍照效果应该好吧。冲线后，一按手表，居然是4:02:02，完全没有想到居然能够 PB 还快了10分钟。官方净成绩是4:01:53.</li>
-</ul>
-<p>这次还是首次全马没有上厕所。前十几公里是有一点想尿的，厕所要排队想后面的人少，但跑到后边就没有尿意了，省了一分钟 :)</p>
-<p>尽管气温不高，从第一个海绵站（7.5km）开始就拿海绵降温，开始是淋头部。到小腿出现发硬，怕抽筋，就给小腿和大腿也淋水。大概30km 处拿了半瓶水来淋小腿，弄得鞋袜都湿了，幸好也没有带来什么影响。后来就不敢直接淋，用手捧水在腿上抹。</p>
-<p>不算起步的3km，20km前平均步速5:33；20-30km平均5:36（除去弄盐丸浪费时间那段）；30km 以后平均5:46。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -866,7 +852,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">319</span>
+              <span class="site-state-item-count">320</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -876,7 +862,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags">
-                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
