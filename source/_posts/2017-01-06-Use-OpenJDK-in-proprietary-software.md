@@ -1,5 +1,5 @@
 ---
-title: 在非GPL应用中使用OpenJDK
+title: 在非GPL应用中使用OpenJDK的法律问题
 layout: blog
 date: 2017-01-06 22:56:07
 tags:
