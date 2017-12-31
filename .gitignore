@@ -2,6 +2,7 @@ db.json
 publish
 public/
 .deploy*/
+yarn.lock
 
 # Created by https://www.gitignore.io
 
