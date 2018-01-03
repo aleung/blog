@@ -90,6 +90,7 @@
 <meta property="og:title" content="Good good study, day day up">
 <meta property="og:url" content="http://aleung.github.io/blog/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Good good study, day day up">
 
@@ -261,6 +262,460 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2017/12/31/kossel-mini-3d-printer-making/" itemprop="url">
+                  Kossel Mini 3D打印机制作记录 (2)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-12-31T14:41:46+08:00" content="2017-12-31">
+              2017-12-31
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="/blog/2015/10/05/kossel-mini-3d-printer-making/">上一篇</a>是2015年国庆写的，当时是滑轨质量不行需要更换。后来重新买了滑轨，装配起来，测试过电路板、电机正常，然后就停工了。一放两年，这两个星期终于重新拿出来，继续制作。</p>
+<p>两年过去，Kossel打印机已经不是DIY热门了，搜索到的新信息很少。另一方面，淘宝上配件的价格普遍下降了不少。</p>
+<h1 id="装配"><a href="#装配" class="headerlink" title="装配"></a>装配</h1><p>其实主要部分在2015年底已经装好了，就差滑车限位开关和挤出机没装上。</p>
+<p>上面的接线理过了还是有些乱，等能打印后设计个外壳把电路板罩上。</p>
+<img src="/blog/attachments/2017/12/kossel.jpg">
+<h1 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h1><p>装配还好，调试才是累人的活。</p>
+<p>升级到最新的 Merlin 固件，delta结构打印机的配置参数减少了一些，网上的调试教程普遍是两三年前的，针对旧版本固件，已经不适用了。</p>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>Delta 结构打印机的坐标原点在打印床正中心，三根立柱依次编号为 alpha / beta / gamma，但也有称为 X, Y, Z 柱，不能跟坐标系的三个轴混淆。三根立柱和xy平面的位置关系如下图，圆形为可打印半径。需要先计算好A, B, C 三点的xy坐标，后面调试要用。</p>
+<img src="/blog/attachments/2017/12/delta_columns.jpg">
+<p>打印头的移动可以分解为：</p>
+<ul>
+<li>z轴上的运动：三个柱的滑车同时上下移动相同距离；</li>
+<li>xy平面上的运动：三个滑车上下移动不等距离，造成斜杆倾斜角度变化而改变斜杆在平面上的投影长度；</li>
+</ul>
+<p>需要给出的参数就是以下几个：</p>
+<ul>
+<li><code>DELTA_DIAGONAC_ROD</code> - 斜杆长度</li>
+<li><code>DELTA_RADIUS</code> - 打印头处于平面正中央时，斜杆在平面上的投影长度</li>
+<li><code>DELTA_HEIGHT</code> - 打印头可以到达的最高点的z坐标</li>
+<li><code>DELTA_PRINTABLE_RADIUS</code> - 可打印半径</li>
+<li><code>DEFAULT_AXIS_STEPS_PER_UNIT</code> - 各电机（包括三个柱，和挤出机）走1mm需要的步进脉冲数量</li>
+</ul>
+<p>打印机怎么知道滑车的位置呢？滑车由步进电机驱动，根据<code>DEFAULT_AXIS_STEPS_PER_UNIT</code>可以推算出相对运动距离。在轨道最高点（endstop）安装有感应开关，滑车复位时上行至最高点直到感应开关触发，此处的位置对应着z轴的<code>DELTA_HEIGHT</code>值。</p>
+<img src="/blog/attachments/2017/12/delta_radius.jpg">
+<h2 id="参数调整"><a href="#参数调整" class="headerlink" title="参数调整"></a>参数调整</h2><h3 id="初始设定"><a href="#初始设定" class="headerlink" title="初始设定"></a>初始设定</h3><p><code>DEFAULT_AXIS_STEPS_PER_UNIT</code> 这个参数的调准是第一步。我用的步进电机基本步距1.8°，RAMPS驱动板采用1/16微步（microstepping），也就是转一圈需要3200个脉冲。XYZ柱电机安装GT2同步轮，齿距2mm，16齿，也就是转一圈滑车移动32mm，由此算出 100 steps/mm。对于挤出机(E)，根据挤出轮直径12mm，算出周长37.7mm，得到 84.88 steps/mm。</p>
+<p>尽可能精确的测量斜杆长度（球头中心点距离），填入<code>DELTA_DIAGONAC_ROD</code> 。</p>
+<p>将三个滑车推到最高点，测量打印嘴离打印床的垂直高度，稍放大几毫米余量，填入<code>DELTA_HEIGHT</code>。</p>
+<p><code>DELTA_RADIUS</code> 的值很难测准，可以通过用细线挂重物的方式来找出垂线。两三毫米内的误差也是可以的。</p>
+<h3 id="调准高度和endstop偏移"><a href="#调准高度和endstop偏移" class="headerlink" title="调准高度和endstop偏移"></a>调准高度和endstop偏移</h3><p>三个立柱的 endstop 感应器安装位置会有偏差，不在一个水平面上，<code>DELTA_ENDSTOP_ADJ</code> 参数可以矫正这个误差（如果有EEPROM，也可以用 G-code <code>M666</code> 设定这些参数并用<code>M500</code>保存）。</p>
+<p>为了调校方便，需要在printing host软件中先设定4个宏，分别让打印头移动到前面基础知识坐标平面图中的 A, B, C, O 点。宏包含以下 G-code，其中x,y为点的坐标：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">G28</span><br><span class="line">G0 X&lt;x&gt; Y&lt;y&gt; Z5 F5000</span><br></pre></td></tr></table></figure>
+<p>执行宏后，打印头会悬停在对应点上方的几毫米处。在打印床上放一张复印纸。在printing host软件中控制打印头z轴单步下降，接近后每次下降0.1mm，抽拉复印纸根据打印头有没有摩擦到纸张来判断打印头是否已经降到打印床表面，如果纸张被打印头压死抽不动就是已经太低了。记录下最后的z坐标（打印机液晶屏显示，或者<code>M114</code>指令获取）。</p>
+<p>根据A, B, C点测量到的值，调整 <a href="http://reprap.org/wiki/G-code#M666:_Set_delta_endstop_adjustment" target="_blank" rel="noopener"><code>M666</code></a> 的X, Y, Z参数，反复迭代测量、调整，直到A, B, C点打印头接触打印床时z坐标为零。这个步骤完成后，打印机的三个立柱上滑车的z高度就是准确和同步的了。</p>
+<h3 id="调准radius"><a href="#调准radius" class="headerlink" title="调准radius"></a>调准radius</h3><p>上面调整结束后，O点数据不为零，也就是打印头在xy平面上运动，z坐标不变的时候，实际上的运动轨迹是一个碗形，可能向上凸也可能向下凹。要纠正碗形失真，需要精确设置 <code>DELTA_RADIUS</code> 参数。用 <a href="http://reprap.org/wiki/G-code#M665:_Set_delta_configuration" target="_blank" rel="noopener"><code>M665</code></a> 也可以调整这个参数 (R)。</p>
+<p>调试过程类似，也是迭代调整参数和测量，直到 A, B, C, O 点均测得零值。</p>
+<h3 id="调准斜杆长度"><a href="#调准斜杆长度" class="headerlink" title="调准斜杆长度"></a>调准斜杆长度</h3><p>接下来的校准需要通过打印一个立方体来进行，用游标卡尺测量打印出来的真实 x, y 边长，根据与期望长度的比例来调整 <code>DELTA_DIAGONAC_ROD</code>（或<code>M665</code>的L参数）。</p>
+<p>由于打印头问题，这个测试还没能开始。</p>
+<h3 id="调试数据记录"><a href="#调试数据记录" class="headerlink" title="调试数据记录"></a>调试数据记录</h3><p>下表是几次迭代校准的过程，左边的是使用的参数，A／B／C／O为测量值。</p>
+<table>
+<thead>
+<tr>
+<th>M666 X</th>
+<th>M666 Y</th>
+<th>M666 Z</th>
+<th>M665 H</th>
+<th>M665 L</th>
+<th>M665 R</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>O</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-6</td>
+<td>-8</td>
+<td>-6</td>
+<td>250</td>
+<td>214</td>
+<td>103</td>
+<td>0</td>
+<td>0.8</td>
+<td>0.7</td>
+<td>1.3</td>
+<td></td>
+</tr>
+<tr>
+<td>-6.2</td>
+<td>-7.2</td>
+<td>-5.3</td>
+<td>250</td>
+<td>214</td>
+<td>103</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.7</td>
+<td>高度和水平已校准</td>
+</tr>
+<tr>
+<td>-5.5</td>
+<td>-6.5</td>
+<td>-4.6</td>
+<td>250</td>
+<td>214</td>
+<td>101</td>
+<td>0.1</td>
+<td>0</td>
+<td>0.1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>-5.5</td>
+<td>-6.6</td>
+<td>-4.6</td>
+<td>250</td>
+<td>214</td>
+<td>101.2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>radius已校准</td>
+</tr>
+</tbody>
+</table>
+<h2 id="挤出头"><a href="#挤出头" class="headerlink" title="挤出头"></a>挤出头</h2><p>运动部件的校准还说顺利，可是真准备首次打印的时候才出问题。</p>
+<p>进丝一段之后就挤不进去了，步进电机前进一下就往回跳。喷嘴一点料都没有挤出来。尝试回抽，拔一小段后也卡住。拆开打印头，发现打印丝在离前端几毫米的地方形成了一个环，造成不能前进也不能后退。</p>
+<p>散热风扇正常，升高降低温度都试过，四氟管已经确认插到头，都没发解决进丝一到喉管瓶颈为就堵塞的问题。从拔出来的堵塞物看，是丝进入喉管瓶颈位置后软化膨胀变粗，刮起表面一层，堆积成环状就卡死了。</p>
+<img src="/blog/attachments/2017/12/jam.jpg">
+<p>这卷耗材还是两年前的，拆过封口，时间太长会对材料有影响。换了一卷没有拆封的耗材来测试，这次能过顺利进丝通过瓶颈位，喷嘴也出丝了。可是接下来加载模型打印，又不出料了。</p>
+<p>上网查资料，发现现在的喉管有改进型的，里面带铁氟龙管内衬，或者是可以让进料铁氟龙管直通过去，一直到喷嘴处。在耗材可能软化的段都是铁氟龙管内衬，摩擦力很小而且没有接缝，就不容易出现堵塞。</p>
+<img src="/blog/attachments/2017/12/hotend.jpg">
+<p>元旦店家都休息了，又一次陷入等待状态……</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2017/09/07/docker-dev-env/" itemprop="url">
+                  Microservice development environment make easy with Docker
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-09-07T13:37:23+08:00" content="2017-09-07">
+              2017-09-07
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>正在负责的产品线已经全面转为基于 node.js 技术栈微服务架构，为了提高开发效率，我希望能创建一个标准的、容易创建的开发环境，以改善开发环境之间不一致、可能不完备、创建配置麻烦的现状。</p>
+<p>对这个开发环境的要求是 lightweight，reproducible 和 portable。</p>
+<p>开始尝试的是 <a href="https://www.vagrantup.com/" target="_blank" rel="noopener">Vagrant</a>，但感觉缺点还是不少：provision 过程麻烦了些；如果要同时进行不同的开发就要运行多个VM，占用资源比较多；而且有个关键问题没找到好的解决方法：Windows 的文件系统不支持符号链接 (symbolic link)，而 npm install 时会依赖于符号链接，VM 使用 Windows host 的共享目录时在里面执行 npm install 会出错。</p>
+<p>这时 docker 进入了视野，容器的轻量、自包含一切的特性很满足我对标准化开发环境的要求。经过几天折腾，搞出了这样一套环境，初步试用还比较满意。</p>
+<p>这个基于 docker 的开发环境做到了这些：</p>
+<ul>
+<li>可以运行于任何操作系统、任意主机上，只需要安装了 docker。我们用到的环境包括每个开发者的 PC、远程的公共开发机和测试 lab 里的主机，操作系统包括 Win7、Linux 和 macOS。</li>
+<li>在满足要求的机器上（装好 docker 和其他必须的软件），敲一个命令，在一分钟内就可以从无到有创建出一个开发环境。</li>
+<li>开发环境中所有东西都是预定义和存储于公共仓库（包括 git，docker镜像和 npm 模块仓库）中，每个人在任何机器上创建出来的环境都会是一摸一样的。</li>
+<li>定义出一套标准的、可重用的环境，统一各个微服务项目的开发体验。</li>
+</ul>
+<p>这个开发环境覆盖了一个微服务的日常开发流程，包括编码、构建、质量检查、单元测试等等。但不含括要求跨服务集成的测试，例如系统测试、端到端测试。</p>
+<p>环境包括预先创建的用于开发、测试的多个docker镜像。其中最主要的是 node.js 环境的镜像，其中包括了基本的 Linux shell 环境和 node.js 开发运行用到的软件。其他镜像是单元测试中需要依赖到的工具。</p>
+<img src="/blog/attachments/2017/9/images.png">
+<p>每个微服务有自己独立的开发环境，通过 <code>docker-compose</code> 启动起来。被开发的服务在 node.js 容器中构建和测试，源代码放在host文件系统中，通过 volume与容器共享，这样开发者可以在 host 上随意使用喜欢的编辑器修改代码，也绕开容器没法运行图形界面应用的问题。根据需求，将单元测试要用到的容器 link 到 node.js 容器，构造出测试环境。</p>
+<img src="/blog/attachments/2017/9/microservice-dev.png">
+<p>于微服务开发，是不需要暴露任何端口出来的，因为测试过程都在容器中。对于 web 应用开发，要从容器中映射出 http 端口供 host 的浏览器访问，如果需要做 web debug，还可以将 debug 端口暴露出来。</p>
+<p>一个 host 上可以同时进行多个项目的开发，环境完全独立，相互并不干扰。</p>
+<img src="/blog/attachments/2017/9/isolated-env.png">
+<p>在调试这个环境的过程中，最麻烦的是 Win7 上运行 docker。在 Win10 之前的环境中运行 docker，当某些特殊字符在控制台上显示时，有可能引发 docker 出现 “New state of ‘nil’ is invalid” 的错误。详细情况在 docker issues <a href="https://github.com/moby/moby/issues/21323" target="_blank" rel="noopener">#21323</a> 中 <a href="https://github.com/moby/moby/issues/22345" target="_blank" rel="noopener">#22345</a> 有描述。后来找到变通方案：安装  <a href="http://conemu.github.io/en/Downloads.html" target="_blank" rel="noopener">ConEmu</a> 或者 <a href="http://cmder.net/" target="_blank" rel="noopener">Cmder</a>，并且将 ConEmu 设置为缺省终端，替换掉 Windows 自带的终端，就可以避免错误的发生。</p>
+<p>Windows 环境里还有一个限制：只有 <code>C:/Users/</code> 下面的目录才能被挂载成 docker volume，所以源代码目录必须放在 <code>C:/Users/{your_id}/</code> 之下.</p>
+<p>一个开发环境需要的容器以及相关配置都定义在 <code>docker-compose.yml</code> 文件中了，以下为一个例子：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">"3"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  target:</span></span><br><span class="line"><span class="attr">    hostname:</span> <span class="string">foo-service</span>    <span class="comment"># set it to your project name</span></span><br><span class="line"><span class="attr">    image:</span>  <span class="string">internal.docker.hub/dev/nodejs</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">$&#123;PWD&#125;:/project</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">~/.cache/yarn:/usr/local/share/.cache/yarn</span></span><br><span class="line"><span class="attr">    depends_on:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">postgres</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="attr">      PgDatabaseAddress:</span> <span class="string">postgres</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  postgres:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">internal.docker.hub/dev/postgres</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="attr">      POSTGRES_PASSWORD:</span> <span class="string">test</span></span><br><span class="line"><span class="attr">      POSTGRES_USER:</span> <span class="string">test</span></span><br></pre></td></tr></table></figure>
+<p>另外，对于 node.js 项目，我们也定义了统一的 <code>package.json</code> 模版，里面包含了开发过程各种操作的 npm scripts，包括 TypeScript 编译、代码格式化、tslint检查、单元测试、文档生成等等。</p>
+<p>要在一台机器上开始某个项目的开发，要做的事情只需要：</p>
+<ol>
+<li>将源代码 git clone 的本地目录，里面包括了定义docker环境的  <code>docker-compose.yml</code> 和定义 node.js 项目的 <code>package.json</code>。</li>
+<li>运行 <code>docker-compose up --rm target</code>，启动 docker 环境。启动时会自动安装所有 npm 依赖。</li>
+<li>这时终端会进入到容器的 bash 中，在这儿就可以像在本地环境一样进行开发操作了，例如：<code>yarn build</code>, <code>yarn test</code>。</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2017/06/21/pact/" itemprop="url">
+                  Pact - 微服务的契约测试
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-21T14:52:23+08:00" content="2017-06-21">
+              2017-06-21
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>微服务架构的系统中，存在着大量的服务，每个服务开放出接口（作为provider），接口可以被很多其他服务调用（consume）。接口API是服务提供者和服务消费者之间的契约，理论上，只要测试了双方的实现都完全符合API，就可以保证它们能够正常的集成到一起；但在现实场景中，对API难以给出非常精确的定义，覆盖测试完整API的工作量也会非常巨大，再加上随着API的演进，要验证兼容性更是很麻烦。</p>
+<p>消费者驱动契约（<a href="http://martinfowler.com/articles/consumerDrivenContracts.html" target="_blank" rel="noopener">Consumer Driven Contract</a>）测试试图解决这个问题。它从接口的消费者出发，记录下消费者使用接口的各种场景，以此作为契约，验证接口的提供者是否符合。<a href="https://docs.pact.io/" target="_blank" rel="noopener">Pact</a> 就是支持针对 HTTP API 的消费者驱动契约测试的工具。</p>
+<p>传统上会将测试做以下分类：</p>
+<ul>
+<li>单元测试：测试单个service</li>
+<li>集成测试：测试由多个services组成的系统</li>
+<li>端到端测试：测试从用户到各个外部系统的整个场景</li>
+</ul>
+<p>契约测试是对单元测试的增强，针对服务接口provider测试，覆盖了一部分本来需要集成测试才能测试到的场景。</p>
+<p>假设我们有一个模块 P 提供了某个API，这个API被其他三个模块 C-1、C-2、C-3 使用了。集成测试需要搭建起一个环境，把这几个模块都部署起来，作为一个整体来测试，验证它们之间的 API 调用是否正确。</p>
+<img src="/blog/attachments/2017/6/integration-test.png">
+<p>要对这些模块独立进行单元测试，就需要mock API 的 provider 或者 consumer。每个绿色框框都是独立的测试环境，相互没有依赖。但问题是，对 P 的测试，要覆盖 API 的各种调用场景，需要构造出很多测试用例，分别不同的设置 mock 的请求和期望响应。这样不但很繁琐，而且还很难确保已经覆盖了各种不同 consumer 的真正实用场景。</p>
+<img src="/blog/attachments/2017/6/unit-test.png">
+<p>引入了pact之后，对于 consumer 的测试区别不大，依然要写各种测试用例，给出 API 调用的期望请求和对于响应，只不过是换成用 pact 工具来做mock。在测试执行过后，pact 会将 API 请求以及响应（测试用例中模拟的）记录到 pact file（JSON格式）中，作为消费者端的契约。</p>
+<p>对于 provider 的测试就不同了，不需要再构造测试用例来测试 API，而是将 pact files 作为输入，pact 会跟进消费者契约生成 API 请求，并且检查 provider 的响应是否符合契约。</p>
+<img src="/blog/attachments/2017/6/test-with-pact.png">
+<p>使用了 pact 之后，依然是每个服务独立的进行单元测试，但是可以模拟出真实集成场景。</p>
+<p>Pact 还提供了 pact broker 去管理 pact files，以便方便的发布、获取契约，了解服务之间的依赖关系。对于由非常多服务组成的复杂系统，会有很大帮助。</p>
+<p>但是，使用消费者驱动契约测试是有限制的，只适用于测试系统内部服务：</p>
+<ul>
+<li>消费者、提供者都使用同样的契约测试工具进行测试</li>
+<li>服务的消费者必须是可全部罗列的，所有服务消费者的测试用例需要完备，覆盖它调用 API 的所有场景，否则服务提供者的测试覆盖就会不足</li>
+</ul>
+<p>Read more:</p>
+<ul>
+<li><a href="http://dius.com.au/2016/02/03/microservices-pact/" target="_blank" rel="noopener">Pact 101</a></li>
+<li><a href="http://zhouqing86.github.io/2017/04/08/js-test11-pact-test/" target="_blank" rel="noopener">JS测试之Pact测试</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2017/06/17/OsmAndMapCreator/" itemprop="url">
                   使用OsmAndMapCreator及时更新OsmAnd地图
                 </a>
@@ -305,12 +760,12 @@
       
         
           
-            <p>使用 <a href="https://www.openstreetmap.org" target="_blank" rel="external">OpenStreetMap</a> （简称为OSM）地图数据的手机应用有好些，<a href="http://osmand.net/" target="_blank" rel="external">OsmAnd</a> 是其中比较优秀的一个。OsmAnd的地图数据每月更新一次，延后了半个月到一个多月。作为一个OSM mapper，期望能够马上看到和用到最近做出的修改，等一个月实在太久了。</p>
-<p>OSM原始地图数据在 <a href="http://wiki.openstreetmap.org/wiki/Planet.osm" target="_blank" rel="external">planet.osm</a> 的网站可以下载到，但数据文件是全球的，非常大。从 <a href="http://download.geofabrik.de/" target="_blank" rel="external">GeoFabrik</a> 可以下载按国家分割的数据文件。中国区的PBF格式数据是330MB。但每天重新下载一个数据包还是太大了，其实更新的数据不是很多。网站上还提供每天（planet.osm还有每小时）的变更数据包（osc文件），用 <code>osmupdate</code> 工具就能自动下载变更并且生成新的完整数据文件。 </p>
+            <p>使用 <a href="https://www.openstreetmap.org" target="_blank" rel="noopener">OpenStreetMap</a> （简称为OSM）地图数据的手机应用有好些，<a href="http://osmand.net/" target="_blank" rel="noopener">OsmAnd</a> 是其中比较优秀的一个。OsmAnd的地图数据每月更新一次，延后了半个月到一个多月。作为一个OSM mapper，期望能够马上看到和用到最近做出的修改，等一个月实在太久了。</p>
+<p>OSM原始地图数据在 <a href="http://wiki.openstreetmap.org/wiki/Planet.osm" target="_blank" rel="noopener">planet.osm</a> 的网站可以下载到，但数据文件是全球的，非常大。从 <a href="http://download.geofabrik.de/" target="_blank" rel="noopener">GeoFabrik</a> 可以下载按国家分割的数据文件。中国区的PBF格式数据是330MB。但每天重新下载一个数据包还是太大了，其实更新的数据不是很多。网站上还提供每天（planet.osm还有每小时）的变更数据包（osc文件），用 <code>osmupdate</code> 工具就能自动下载变更并且生成新的完整数据文件。 </p>
 <p>有了最新的 osm.pbf 数据文件，就可以使用 <code>OsmAndMapCreator</code> 生成 OsmAnd 可用的 OBF 格式离线地图文件了。生成的过程非常耗内存和CPU，全中国的地图在一台 Core i3-4370 CPU 的电脑上用了90分钟，需要分配 10GB 内存才够用（否则会出现 OutOfMemory 错误）。生成出来的 OBF 文件也有845MB之巨。为了缩短时间，我设置了 <code>osmupdate</code> 的<code>-b</code>参数，过滤出广东中部区域的数据，这样就快很多，几分钟搞定。</p>
 <p>处理的流程如下图。实际上安装好软件，修改好配置后，每次更新就执行一个脚本，过程全自动。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Previous full map data (osm.pbf) \</div><div class="line">                              [osmupdate] --&gt; Latest full map data (osm.pbf)</div><div class="line">            Recent changes (osc) /                      |</div><div class="line">                                                        v</div><div class="line">[OsmAnd] &lt;------ Latest offline map (obf) &lt;------- [OsmAndMapCreator]</div></pre></td></tr></table></figure>
-<p>步骤和脚本放在 gist：<a href="https://gist.github.com/aleung/42776348d023b689e8c337b82a3c7cd5，适用于" target="_blank" rel="external">https://gist.github.com/aleung/42776348d023b689e8c337b82a3c7cd5，适用于</a> MacOS 和 Linix，需要自行修改文件中的目录路径。工具在Win平台也可以用，但脚本就要重新写了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Previous full map data (osm.pbf) \</span><br><span class="line">                              [osmupdate] --&gt; Latest full map data (osm.pbf)</span><br><span class="line">            Recent changes (osc) /                      |</span><br><span class="line">                                                        v</span><br><span class="line">[OsmAnd] &lt;------ Latest offline map (obf) &lt;------- [OsmAndMapCreator]</span><br></pre></td></tr></table></figure>
+<p>步骤和脚本放在 gist：<a href="https://gist.github.com/aleung/42776348d023b689e8c337b82a3c7cd5，适用于" target="_blank" rel="noopener">https://gist.github.com/aleung/42776348d023b689e8c337b82a3c7cd5，适用于</a> MacOS 和 Linix，需要自行修改文件中的目录路径。工具在Win平台也可以用，但脚本就要重新写了。</p>
 
           
         
@@ -360,8 +815,8 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2017/01/06/Use-OpenJDK-in-proprietary-software/" itemprop="url">
-                  在非GPL应用中使用OpenJDK的法律问题
+                <a class="post-title-link" href="/blog/2017/06/17/OsmAndMapCreator/" itemprop="url">
+                  使用OsmAndMapCreator及时更新OsmAnd地图
                 </a>
               
             
@@ -374,8 +829,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-06T22:56:07+08:00" content="2017-01-06">
-              2017-01-06
+            <time itemprop="dateCreated" datetime="2017-06-17T11:29:19+08:00" content="2017-06-17">
+              2017-06-17
             </time>
           </span>
 
@@ -404,381 +859,16 @@
       
         
           
-            <p>大家都知道 Oracle JDK 在商业应用场合是需要购买 license 的，往往会选择 OpenJDK 来规避。但是，OpenJDK 的 license 是 GPL，GPL 是一种 “传染性” 的协议，那么 OpenJDK 是否可以在非 GPL 应用中使用呢？</p>
-<p>在 <a href="http://stackoverflow.com/" target="_blank" rel="external">StackOverflow</a>、<a href="http://opensource.stackexchange.com/" target="_blank" rel="external">Open Source Stack Exchange</a> 中搜索到一些相关的讨论，大部分答案是认为可以使用，应用无需因此用 GPL 发布，但也有人提出质疑。</p>
-<p>在 OpenJDK 网站中的 <a href="http://openjdk.java.net/faq/" target="_blank" rel="external">FAQ</a>是这么写的：</p>
-<blockquote>
-<h3 id="What-open-source-license-is-OpenJDK-published-under"><a href="#What-open-source-license-is-OpenJDK-published-under" class="headerlink" title="What open-source license is OpenJDK published under?"></a>What open-source license is OpenJDK published under?</h3><p>GPL v2 for almost all of the virtual machine, and GPL v2 + the Classpath exception for the class libraries and those parts of the virtual machine that expose public APIs.</p>
-<h3 id="How-do-I-know-which-license-applies-to-a-given-source-code-file-in-OpenJDK"><a href="#How-do-I-know-which-license-applies-to-a-given-source-code-file-in-OpenJDK" class="headerlink" title="How do I know which license applies to a given source code file in OpenJDK?"></a>How do I know which license applies to a given source code file in OpenJDK?</h3><p>Each source code file is individually licensed - look for the copyright header with the license information.</p>
-</blockquote>
-<p>比较坑爹的是整个 OpenJDK 居然不是统一使用一种授权协议，每个源文件有自己独立的授权——要明确你使用的法律责任，得一个一个源文件看去！不过，按照 FAQ 里面的说法（如果它是准确的），类库和 JVM 的公共 API 都是用 GPL v2 ＋ Classpath exception (GPL v2 + CE) 发布的。</p>
-<p>这个 classpath exception 是什么回事？GPL v2 要求：基于 GPL 软件派生出来的作品也需要继承使用 GPL 协议发布。一个程序动态链接或者静态链接了一个库，都视为此库的派生作品。按照这个定义，在 Java 程序里使用了（在classpath中包含了）某个类库，就是此类库的派生作品。然后，OpenJDK 的某些源代码的授权声明中，在 GPLv2 协议文本之后附加了一段 <a href="http://openjdk.java.net/legal/gplv2+ce.html" target="_blank" rel="external">classpath exception</a>，对于链接这种情况给予了豁免，可以自由选择授权协议。</p>
-<p>我的理解，这是为了让 OpenJDK 可被商业应用（非 GPL 授权应用）使用。JVM (HotSpot) 的代码大部分都是用 GPL （没有 classpath exception）授权，但因为 Java 应用只是在 VM 上运行，并没有与 VM 链接，所以不受 GPL 的限制。</p>
-<p>但是，没有那么简单。咨询公司开源部门的专业人士，他让我谨慎的评估一下。因为 OpenJDK 作为一个开源项目，并没有严格的控制提交代码采用的授权协议，很可能某个代码提交增加了一个新的源文件，其授权是不带 CE 的，或者将已有文件的授权的 CE 部分删除了，应用使用了这个源文件编译出来的库就中招了。</p>
-<p>我下载了 OpenJDK7 的源代码，用脚本扫描了所有 <code>*.java, *.c*, *.h*</code> 文件，找出带有 GPL 但又不包含 Classpath exception 的文件。除去 HotSpot 部分和 example 代码，并不多：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">./share/lib/security/BlacklistedCertsConverter.java</div><div class="line">./aix/porting/porting_aix.*</div><div class="line">./share/native/sun/security/ec/impl/*</div></pre></td></tr></table></figure>
-<p>第一个是个工具（带有main函数），不是库的一部分；第二个是 AIX 系统相关的；第三个是属于 <a href="http://docs.oracle.com/javase/7/docs/technotes/guides/security/SunProviders.html#SunEC" target="_blank" rel="external">SunEC provider</a>，实现椭圆曲线加密算法（ECC）的。</p>
-<p>需要我们注意的只有第三个，对应着文件 <code>jre/lib/ext/sunec.jar</code>。也就是，Java应用确保不使用这个jar，就可以用 OpenJDK 而不需要用 GPL 发布。一旦使用了 <code>sunec.jar</code>，整个 Java 应用都必须用 GPLv2（或其兼容协议）发布，开放源代码。</p>
-<p>但我上面的分析仅仅是基于当前版本的 OpenJDK7，OpenJDK 每次发布代码都会变化，故此每次要安装升级时都必须重新检查它的所有源代码的授权协议。对于商业软件来说，保险起见还是乖乖给 Oracle 付费使用他们家的 JDK 吧。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2016/11/05/Consul-unstable/" itemprop="url">
-                  Consul 集群不稳定的分析
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-05T11:22:20+08:00" content="2016-11-05">
-              2016-11-05
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>一个 Consul 集群由3个 Consul server 和近百个 Consul client 组成。观察发现集群状态不稳定，频繁出现以下现象：</p>
-<ol>
-<li>节点退出集群，又重新加入集群；</li>
-<li>重新选举 leader，有时候原来的 leader 会重新当选。</li>
-</ol>
-<p>对于第一个问题，分析发现原因是我们错误使用了 fail fast 策略：我们平台中会有个supervisor daemon监控着进程的状态，当进程 health check 失败了，就会重启进程并且发送告警。对于 Consul agent 进程，health check 调用 Consul API，API不能正常返回就认为进程状态不健康。这样做本来的用意是及时发现集群配置的错误，另外也是服务依赖管理的需要，依赖 Consul 的其它服务会等到 Consul agent 进入正常状态后才启动。但是，由于第二个问题的存在，在 leader 重新选举过程中 API 不能正常响应，Consul agent 就被当作不健康而被重启，出现了 Consul 节点退出重新加入集群的现象。本来，群集是能自动恢复到正常工作状态的，重启进程反而造成更大的负面影响。</p>
-<p>对于第二个问题，直接原因是某个 Consul server 所在的VM上有个异常的进程将CPU几乎全耗尽了，Consul 不能及时的处理集群间的通信，响应超时，产生了临时性的脑裂。但开始我们一直不能理解，单个 server 的 partitioning 为什么会影响到整个集群呢？剩余的 2 个 server 应该还是能够组成集群并保持稳定的 leader 才对。后来才发现，比起全部丢失，消息的部分丢失所引起的现象会诡异得多。</p>
-<p>这是当前 leader cm121 的日志：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">50:32 [WARN] raft: Rejecting vote from 172.17.52.84:8300 since we have a leader: 172.17.52.121:8300</div><div class="line">50:32 [ERR] raft: peer 172.17.52.84:8300 has newer term, stopping replication</div><div class="line">50:32 [INFO] raft: aborting pipeline replication to peer 172.17.52.84:8300</div><div class="line">50:32 [INFO] raft: aborting pipeline replication to peer 172.17.52.85:8300</div><div class="line">50:32 [INFO] consul: cluster leadership lost</div><div class="line">50:32 [INFO] raft: Node at 172.17.52.121:8300 [Follower] entering Follower state</div><div class="line">50:33 [WARN] raft: Heartbeat timeout reached, starting election</div><div class="line">50:33 [INFO] raft: Node at 172.17.52.121:8300 [Candidate] entering Candidate state</div><div class="line">50:34 [INFO] raft: Election won. Tally: 2</div><div class="line">50:34 [INFO] raft: Node at 172.17.52.121:8300 [Leader] entering Leader state</div><div class="line">50:34 [INFO] consul: cluster leadership acquired</div><div class="line">50:34 [INFO] consul: New leader elected: cm121</div></pre></td></tr></table></figure>
-<p>在这个例子中，CPU耗尽的 server 是 cm84，当前 leader 为 cm121。cm121 会定期发出 AppendEntries RPC，但 cm84 因为没有CPU资源没有处理到，等到 heartbeat timeout，cm84 错误认为当前没有 leader 了，就向所有其它 server 发出 RequestVote RPC（带有更大的 term 值），自荐为候选人，发起一轮新的投票。但是这个投票请求被其它 server 都拒绝了。</p>
-<img src="/blog/attachments/2016/11/raft_state.png">
-<p>根据状态图可知，当 leader 收到其它 server 发来的消息有更大的 team 值时，就需要交出 leader 位置，转为 follower。因此被 cm84 一捣乱，集群里面就没有 leader 了，导致接下来的超时重新选举。在新一轮选举中，cm121得到两票，重新当选为 leader。</p>
-<p>将消息的时间线画出来，其中 S1 为当前 leader (cm121)，S3 为会间歇性丢掉消息的 server (cm84)，可见 S3 如何导致重新选举 leader。</p>
-<img src="/blog/attachments/2016/11/timeline.jpg">
-<p>对于 Consul 中 raft 实现的行为：reject vote since we have a leader，似乎跟 raft 论文描述的有些出入。在 Raft <a href="https://raft.github.io/raft.pdf" target="_blank" rel="external">论文</a>中 RequestVote RPC receiver implementation 部分，没有提到已有 leader 时需要 reject 新的 vote。不过，即使没有这个检查，cm84 大部分情况下还是不能满足当选条件，因为它错失了 leader 发来的 AppendEntries RPC，它的 log 就不一定是 up-to-date 的（除非错失的 AppendEntries 没有 log entries，只是heartbeat）。cm84 不能当选，cm121被迫退位，群集还是会进入无 leader 状态。</p>
-<blockquote>
-<p><strong>RequestVote RPC</strong></p>
-<p>Invoked by candidates to gather votes (§5.2).</p>
-<p>Arguments:</p>
-<ul>
-<li>term : candidate’s term</li>
-<li>candidateId : candidate requesting vote</li>
-<li>lastLogIndex : index of candidate’s last log entry (§5.4)</li>
-<li>lastLogTerm : term of candidate’s last log entry (§5.4)</li>
-</ul>
-<p>Results:</p>
-<ul>
-<li>term : currentTerm, for candidate to update itself</li>
-<li>voteGranted : true means candidate received vote</li>
-</ul>
-<p>Receiver implementation:</p>
-<ol>
-<li>Reply false if term &lt; currentTerm (§5.1)</li>
-<li>If votedFor is null or candidateId, and candidate’s log is at<br>least as up-to-date as receiver’s log, grant vote (§5.2, §5.4)</li>
-</ol>
-</blockquote>
-<p>下一步要做的是避免 Consul 进程得不到足够的CPU资源，计划尝试修改 Consul 进程的 nice 来提高调度优先级，或者配置 CPU affinity 绑定一个CPU核给 Consul。</p>
-<p>另外，在分析过程中也进一步加深了对 Consul 的理解。</p>
-<p>Consul agent 分为两种：server 和 client。实际上，这里是两个不同层次的群集（当涉及到多个 datacenter 时，还多一个 WAN layer，这里就不讨论了）。</p>
-<img src="/blog/attachments/2016/11/consul_cluster.jpg">
-<p>所有 server 通过 Raft 协议组成一个集群，是一个 CP 系统。Consul 的 catelog 和 KV store 服务都是在这个 raft 集群中提供的，虽然 API 在 client 上也提供，但 client 只是转发给 server 来处理。集群中只会选出最多一个 leader，能容忍 partition 的发生（脑裂）。当存在 pratitioning 时，leader 在有多数 server 的分区里，只有少数 server 的分区选不出 leader。数据写入都由 leader 处理，保证了强一致性。 数据读取根据一致性要求（consistency mode），可以由 leader 或者 follower 处理。在没有选出 leader 的时候，Consul 的大部分 API 会不可用（consistency mode 为 stale 的读请求应该可以处理，需要测试确认一下）。</p>
-<p>所有 consul agent，包括 server 和 client，组成一个更大的集群，就是平常所说的 consul cluster。这个集群是通过 Serf 协议（一种 gossip 协议）组成的，是一个AP系统，用于 consul 节点的发现和管理。AP系统只能保证最终一致性，因此 consul 节点的加入或者离开，是不能立刻被整个群集所见到的。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2016/08/30/update/" itemprop="url">
-                  Blog update
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-30T21:40:17+08:00" content="2016-08-30">
-              2016-08-30
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>接近一年没有更新过这个blog了，时间过得真快，也是有史以来荒废得最久的时间。</p>
-<p>虽然没有写文章，在上半年还是断断续续的花了点时间升级了blog系统。原本用的是<a href="https://github.com/octopress/octopress" target="_blank" rel="external">Octopress</a>，但Octopress的3.0版本开发基本上处于废弃状态，想换回正宗的<a href="https://jekyllrb.com" target="_blank" rel="external">Jekyll</a>，Jekyll 3.0的发布也是从2004年底一直等到2005年底，试用过测试版本很多不兼容问题。从去年以来，工作重点切换到node.js平台，于是自己的项目也选择node.js好了，最后选用了<a href="https://hexo.io" target="_blank" rel="external">Hexo</a>作为blog系统。Hexo还有个优点就是render速度比基于Ruby的Jekyll/Octopress快了起码一个数量级，我这里三百多篇文章，以前启动预览得大概一分钟，现在几秒钟。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2016/04/11/mac-installation/" itemprop="url">
-                  Hackintosh Installation
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-11T00:00:00+08:00" content="2016-04-11">
-              2016-04-11
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>装了一台黑苹果在公司里用，幸福指数大大提升。</p>
-<h1 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h1><p>硬件选型参考tonymacx86的<a href="[http://www.tonymacx86.com/building-customac-buyers-guide-march-2016.html#CustoMac_Mini](http://www.tonymacx86.com/building-customac-buyers-guide-march-2016.html#CustoMac_Mini">CustoMac Mini</a>)，算下来主机不足4000元。要保证安装顺利、功能正常和稳定，最重要的是选择推荐的主板型号，可以找到详细的安装配置教程，各种可能的坑都有人给出解决方案了。安装过程一律依据tonymacx86的guide进行，没有任何问题。SSD和机械硬盘组成fusion drive，在较低的成本上达到不错的性能和容量的兼顾。唯一问题是用了fusion driver之后hibernate就不能用了，因为Clover认不出fusion driver，找不到上面的sleep image。</p>
-<h1 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h1><p>以下内容均针对 El Capitan。</p>
-<h2 id="App安装途径"><a href="#App安装途径" class="headerlink" title="App安装途径"></a>App安装途径</h2><p>安装应用途径，按照优先顺序：</p>
-<ul>
-<li><a href="https://caskroom.github.io/" target="_blank" rel="external">Homebrew Cask</a></li>
-<li><a href="http://brew.sh/" target="_blank" rel="external">Homebrew</a></li>
-<li>App Store</li>
-<li>官网下载</li>
-</ul>
-<h3 id="升级已安装的所有brews"><a href="#升级已安装的所有brews" class="headerlink" title="升级已安装的所有brews"></a>升级已安装的所有brews</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">brew update</div><div class="line">brew upgrade</div></pre></td></tr></table></figure>
-<h3 id="升级已安装的所有casks"><a href="#升级已安装的所有casks" class="headerlink" title="升级已安装的所有casks"></a>升级已安装的所有casks</h3><p>From: <a href="http://apple.stackexchange.com/a/231020/13455" target="_blank" rel="external">http://apple.stackexchange.com/a/231020/13455</a></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl <span class="_">-s</span> https://gist.githubusercontent.com/atais/5d3ec79e67f221cb55b7/raw/f6e6b647e6f90939c016ba88e591529d143cb33d/cash_upgrade.sh | bash /dev/stdin</div></pre></td></tr></table></figure>
-<h2 id="强大的命令行"><a href="#强大的命令行" class="headerlink" title="强大的命令行"></a>强大的命令行</h2><ul>
-<li>用iTerm2替换系统自带的terminal<ul>
-<li>安装 Solarized Dracula theme （不要选Solaris dark，好多工具的输出会看不见）</li>
-<li>更改字体</li>
-</ul>
-</li>
-<li>用zsh替换缺省的bash<ul>
-<li>使用 Oh-my-zsh 进行zsh的配置，以上步骤参考这里 <a href="https://gist.github.com/kevin-smets/8568070" target="_blank" rel="external">https://gist.github.com/kevin-smets/8568070</a></li>
-<li>设置为超酷的theme: <a href="https://gist.github.com/agnoster/3712874" target="_blank" rel="external">agnoster</a></li>
-</ul>
-</li>
-<li>安装 <a href="https://github.com/clvv/fasd" target="_blank" rel="external">fasd</a></li>
-</ul>
-<h2 id="Finder增强"><a href="#Finder增强" class="headerlink" title="Finder增强"></a>Finder增强</h2><h3 id="快速切换是否显示隐藏文件"><a href="#快速切换是否显示隐藏文件" class="headerlink" title="快速切换是否显示隐藏文件"></a>快速切换是否显示隐藏文件</h3><p>按照<a href="http://apple.stackexchange.com/questions/177132/how-to-set-h-to-enable-show-hidden-files/177138#177138" target="_blank" rel="external">这里</a>的方法创建一个Automator Service。</p>
-<h3 id="增强-Finder-预览文件的能力"><a href="#增强-Finder-预览文件的能力" class="headerlink" title="增强 Finder 预览文件的能力"></a>增强 Finder 预览文件的能力</h3><p>安装quick look plugins： <a href="https://github.com/sindresorhus/quick-look-plugins" target="_blank" rel="external">https://github.com/sindresorhus/quick-look-plugins</a></p>
-<h2 id="增强剪贴板"><a href="#增强剪贴板" class="headerlink" title="增强剪贴板"></a>增强剪贴板</h2><p>安装 ClipMenu，提供剪贴板历史功能</p>
-<h2 id="本地化Web应用"><a href="#本地化Web应用" class="headerlink" title="本地化Web应用"></a>本地化Web应用</h2><p>安装 <a href="https://github.com/dmarmor/epichrome" target="_blank" rel="external">epichrome</a> 将web应用（例如trello）包装为本地应用，方便使用 Mission Control 和全屏。它实际上是每个web应用绑定一个独立的chrome profile，故此还可以安装使用chrome插件。</p>
-<h2 id="一套键盘鼠标控制两台电脑"><a href="#一套键盘鼠标控制两台电脑" class="headerlink" title="一套键盘鼠标控制两台电脑"></a>一套键盘鼠标控制两台电脑</h2><p>Mac是台式机，键盘鼠标连接到Mac上，安装SynergyKM，运行为server；Win笔记本安装Synergy（网上寻找第三方编译版本，open source，但官网下载binary要收费），运行为client。</p>
-<p>使用Windows键盘，需要重新映射按键。首先是在 Preference - Keyboard - Modifier Keys 中对调 Option 和 Command 键，这样左下角三个键的位置就跟Mac的键位相同了。然后安装<a href="https://pqrs.org/osx/karabiner/" target="_blank" rel="external">Karabiner</a>，一个功能超强的键盘映射工具，在profile中选择enable需要的映射规则。</p>
-<p>因为用 Synergy 同时控制Win电脑，这时重映射过的键盘在 Windows 里面就很难用了。Karabiner 支持多个profile，但目前还没有根据所在屏幕自动切换的方案，解决方法是创建一个NoRemap的profile，里面不打开任何remap规则，用F6键做profile切换。</p>
-<p>Profile切换需要在Karabiner中增加自定义规则，在<code>private.xml</code>中加入下面的内容：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">vkopenurldef</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>KeyCode::VK_OPEN_URL_SHELL_switchprofile_default<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">url</span> <span class="attr">type</span>=<span class="string">"shell"</span>&gt;</span></div><div class="line">        &lt;![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name Default    ]]&gt;</div><div class="line">    <span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">vkopenurldef</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">vkopenurldef</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>KeyCode::VK_OPEN_URL_SHELL_switchprofile_noremap<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">url</span> <span class="attr">type</span>=<span class="string">"shell"</span>&gt;</span></div><div class="line">        &lt;![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name NoRemap    ]]&gt;</div><div class="line">    <span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">vkopenurldef</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Switch Profile to Default with F6<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">identifier</span>&gt;</span>private.switch1<span class="tag">&lt;/<span class="name">identifier</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">autogen</span>&gt;</span></div><div class="line">        __KeyToKey__</div><div class="line">        KeyCode::F6,</div><div class="line">        KeyCode::VK_OPEN_URL_SHELL_switchprofile_default</div><div class="line">    <span class="tag">&lt;/<span class="name">autogen</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Switch Profile to NoRemap with F6<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">identifier</span>&gt;</span>private.switch2<span class="tag">&lt;/<span class="name">identifier</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">autogen</span>&gt;</span></div><div class="line">        __KeyToKey__</div><div class="line">        KeyCode::F6,</div><div class="line">        KeyCode::VK_OPEN_URL_SHELL_switchprofile_noremap</div><div class="line">    <span class="tag">&lt;/<span class="name">autogen</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">item</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>参考自：<a href="http://apple.stackexchange.com/a/143064/13455" target="_blank" rel="external">http://apple.stackexchange.com/a/143064/13455</a></p>
+            <p>使用 <a href="https://www.openstreetmap.org" target="_blank" rel="noopener">OpenStreetMap</a> （简称为OSM）地图数据的手机应用有好些，<a href="http://osmand.net/" target="_blank" rel="noopener">OsmAnd</a> 是其中比较优秀的一个。OsmAnd的地图数据每月更新一次，延后了半个月到一个多月。作为一个OSM mapper，期望能够马上看到和用到最近做出的修改，等一个月实在太久了。</p>
+<p>OSM原始地图数据在 <a href="http://wiki.openstreetmap.org/wiki/Planet.osm" target="_blank" rel="noopener">planet.osm</a> 的网站可以下载到，但数据文件是全球的，非常大。从 <a href="http://download.geofabrik.de/" target="_blank" rel="noopener">GeoFabrik</a> 可以下载按国家分割的数据文件。中国区的PBF格式数据是330MB。但每天重新下载一个数据包还是太大了，其实更新的数据不是很多。网站上还提供每天（planet.osm还有每小时）的变更数据包（osc文件），用 <code>osmupdate</code> 工具就能自动下载变更并且生成新的完整数据文件。 </p>
+<p>有了最新的 osm.pbf 数据文件，就可以使用 <code>OsmAndMapCreator</code> 生成 OsmAnd 可用的 OBF 格式离线地图文件了。生成的过程非常耗内存和CPU，全中国的地图在一台 Core i3-4370 CPU 的电脑上用了90分钟，需要分配 10GB 内存才够用（否则会出现 OutOfMemory 错误）。生成出来的 OBF 文件也有845MB之巨。为了缩短时间，我设置了 <code>osmupdate</code> 的<code>-b</code>参数，过滤出广东中部区域的数据，这样就快很多，几分钟搞定。</p>
+<p>处理的流程如下图。实际上安装好软件，修改好配置后，每次更新就执行一个脚本，过程全自动。</p>
+<pre><code>Previous full map data (osm.pbf) \
+                              [osmupdate] --&gt; Latest full map data (osm.pbf)
+            Recent changes (osc) /                      |
+                                                        v
+[OsmAnd] &lt;------ Latest offline map (obf) &lt;------- [OsmAndMapCreator]
+</code></pre><p>步骤和脚本放在 gist：<a href="https://gist.github.com/aleung/42776348d023b689e8c337b82a3c7cd5，适用于" target="_blank" rel="noopener">https://gist.github.com/aleung/42776348d023b689e8c337b82a3c7cd5，适用于</a> MacOS 和 Linix，需要自行修改文件中的目录路径。工具在Win平台也可以用，但脚本就要重新写了。</p>
 
           
         
@@ -811,7 +901,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/64/">64</a><a class="extend next" rel="next" href="/blog/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/65/">65</a><a class="extend next" rel="next" href="/blog/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -852,7 +942,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -906,7 +996,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

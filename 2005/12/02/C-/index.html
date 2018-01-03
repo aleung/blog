@@ -86,22 +86,18 @@
 
 
 
-<meta name="description" content="在C++中进行格式化字符串的生成，通常有两种方法。一种是C风格的，使用sprintf生成格式化字符串，用str系列字符串函数进行字符串（实际是内存buffer）的拼接、拷贝等操作。另外一种是C++风格的，用string stream类通过流操作来生成格式化的字符串。
-在使用上，两种方法各有长短，在这里不作分析。我发现的问题是string stream的效率相对C的方法效率比较低。
-编写了两个程序做">
+<meta name="description" content="在C++中进行格式化字符串的生成，通常有两种方法。一种是C风格的，使用sprintf生成格式化字符串，用str系列字符串函数进行字符串（实际是内存buffer）的拼接、拷贝等操作。另外一种是C++风格的，用string stream类通过流操作来生成格式化的字符串。 在使用上，两种方法各有长短，在这里不作分析。我发现的问题是string stream的效率相对C的方法效率比较低。 编写了两个程序做">
+<meta name="keywords" content="SoftwareDev">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++中生成格式化字符串方法的性能比较">
 <meta property="og:url" content="http://aleung.github.io/blog/2005/12/02/C-/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description" content="在C++中进行格式化字符串的生成，通常有两种方法。一种是C风格的，使用sprintf生成格式化字符串，用str系列字符串函数进行字符串（实际是内存buffer）的拼接、拷贝等操作。另外一种是C++风格的，用string stream类通过流操作来生成格式化的字符串。
-在使用上，两种方法各有长短，在这里不作分析。我发现的问题是string stream的效率相对C的方法效率比较低。
-编写了两个程序做">
+<meta property="og:description" content="在C++中进行格式化字符串的生成，通常有两种方法。一种是C风格的，使用sprintf生成格式化字符串，用str系列字符串函数进行字符串（实际是内存buffer）的拼接、拷贝等操作。另外一种是C++风格的，用string stream类通过流操作来生成格式化的字符串。 在使用上，两种方法各有长短，在这里不作分析。我发现的问题是string stream的效率相对C的方法效率比较低。 编写了两个程序做">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-03-16T14:11:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++中生成格式化字符串方法的性能比较">
-<meta name="twitter:description" content="在C++中进行格式化字符串的生成，通常有两种方法。一种是C风格的，使用sprintf生成格式化字符串，用str系列字符串函数进行字符串（实际是内存buffer）的拼接、拷贝等操作。另外一种是C++风格的，用string stream类通过流操作来生成格式化的字符串。
-在使用上，两种方法各有长短，在这里不作分析。我发现的问题是string stream的效率相对C的方法效率比较低。
-编写了两个程序做">
+<meta name="twitter:description" content="在C++中进行格式化字符串的生成，通常有两种方法。一种是C风格的，使用sprintf生成格式化字符串，用str系列字符串函数进行字符串（实际是内存buffer）的拼接、拷贝等操作。另外一种是C++风格的，用string stream类通过流操作来生成格式化的字符串。 在使用上，两种方法各有长短，在这里不作分析。我发现的问题是string stream的效率相对C的方法效率比较低。 编写了两个程序做">
 
 
 
@@ -421,7 +417,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -486,7 +482,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

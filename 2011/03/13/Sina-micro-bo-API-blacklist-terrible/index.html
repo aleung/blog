@@ -86,27 +86,20 @@
 
 
 
-<meta name="description" content="因为有些tweet没有同步到新浪微博，查看了 TwitterSinaSync 的运行日志，发现了这样的记录：
-
-前一个tweet（绿色框）正常同步到了新浪微博，而接下来一个就失败（红色框），错误信息是黑名单用户。显然是tweet中的某些内容触发了黑名单机制，在这里估计是”twitter”。
-一旦用户被列入了黑名单，接下来对这个用户的操作都会失败。看下面的例子，第一条是成功的，第二个失败后，接下来的">
+<meta name="description" content="因为有些tweet没有同步到新浪微博，查看了 TwitterSinaSync 的运行日志，发现了这样的记录：  前一个tweet（绿色框）正常同步到了新浪微博，而接下来一个就失败（红色框），错误信息是黑名单用户。显然是tweet中的某些内容触发了黑名单机制，在这里估计是”twitter”。 一旦用户被列入了黑名单，接下来对这个用户的操作都会失败。看下面的例子，第一条是成功的，第二个失败后，接下来的">
+<meta name="keywords" content="SoftwareDev">
 <meta property="og:type" content="article">
 <meta property="og:title" content="新浪微博API黑名单威武">
 <meta property="og:url" content="http://aleung.github.io/blog/2011/03/13/Sina-micro-bo-API-blacklist-terrible/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description" content="因为有些tweet没有同步到新浪微博，查看了 TwitterSinaSync 的运行日志，发现了这样的记录：
-
-前一个tweet（绿色框）正常同步到了新浪微博，而接下来一个就失败（红色框），错误信息是黑名单用户。显然是tweet中的某些内容触发了黑名单机制，在这里估计是”twitter”。
-一旦用户被列入了黑名单，接下来对这个用户的操作都会失败。看下面的例子，第一条是成功的，第二个失败后，接下来的">
+<meta property="og:description" content="因为有些tweet没有同步到新浪微博，查看了 TwitterSinaSync 的运行日志，发现了这样的记录：  前一个tweet（绿色框）正常同步到了新浪微博，而接下来一个就失败（红色框），错误信息是黑名单用户。显然是tweet中的某些内容触发了黑名单机制，在这里估计是”twitter”。 一旦用户被列入了黑名单，接下来对这个用户的操作都会失败。看下面的例子，第一条是成功的，第二个失败后，接下来的">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://farm6.static.flickr.com/5057/5519631639_5b0593fd42_z.jpg">
 <meta property="og:image" content="http://farm6.static.flickr.com/5217/5519631597_e6064611fc_z.jpg">
 <meta property="og:updated_time" content="2016-03-16T14:11:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="新浪微博API黑名单威武">
-<meta name="twitter:description" content="因为有些tweet没有同步到新浪微博，查看了 TwitterSinaSync 的运行日志，发现了这样的记录：
-
-前一个tweet（绿色框）正常同步到了新浪微博，而接下来一个就失败（红色框），错误信息是黑名单用户。显然是tweet中的某些内容触发了黑名单机制，在这里估计是”twitter”。
-一旦用户被列入了黑名单，接下来对这个用户的操作都会失败。看下面的例子，第一条是成功的，第二个失败后，接下来的">
+<meta name="twitter:description" content="因为有些tweet没有同步到新浪微博，查看了 TwitterSinaSync 的运行日志，发现了这样的记录：  前一个tweet（绿色框）正常同步到了新浪微博，而接下来一个就失败（红色框），错误信息是黑名单用户。显然是tweet中的某些内容触发了黑名单机制，在这里估计是”twitter”。 一旦用户被列入了黑名单，接下来对这个用户的操作都会失败。看下面的例子，第一条是成功的，第二个失败后，接下来的">
 <meta name="twitter:image" content="http://farm6.static.flickr.com/5057/5519631639_5b0593fd42_z.jpg">
 
 
@@ -314,12 +307,12 @@
       
 
       
-        <p>因为有些tweet没有同步到新浪微博，查看了 <a href="http://good-good-study.appspot.com/blog/posts/111001" target="_blank" rel="external">TwitterSinaSync</a> 的运行日志，发现了这样的记录：</p>
-<p><a href="http://www.flickr.com/photos/leoliang/5519631639/" target="_blank" rel="external"><img src="http://farm6.static.flickr.com/5057/5519631639_5b0593fd42_z.jpg" alt=""></a></p>
+        <p>因为有些tweet没有同步到新浪微博，查看了 <a href="http://good-good-study.appspot.com/blog/posts/111001" target="_blank" rel="noopener">TwitterSinaSync</a> 的运行日志，发现了这样的记录：</p>
+<p><a href="http://www.flickr.com/photos/leoliang/5519631639/" target="_blank" rel="noopener"><img src="http://farm6.static.flickr.com/5057/5519631639_5b0593fd42_z.jpg" alt=""></a></p>
 <p>前一个tweet（绿色框）正常同步到了新浪微博，而接下来一个就失败（红色框），错误信息是黑名单用户。显然是tweet中的某些内容触发了黑名单机制，在这里估计是”twitter”。</p>
 <p>一旦用户被列入了黑名单，接下来对这个用户的操作都会失败。看下面的例子，第一条是成功的，第二个失败后，接下来的tweet的同步都失败了，即使内容看起来绝无敏感词。其实我也猜不出第二条tweet中哪个词触发了加入黑名单，是”境外”？还是”mranti”？</p>
-<p><a href="http://www.flickr.com/photos/leoliang/5519631597/" target="_blank" rel="external"><img src="http://farm6.static.flickr.com/5217/5519631597_e6064611fc_z.jpg" alt="sina_blacklist_1"></a></p>
-<p>目前新浪微博API的自动触发黑名单是临时性的，过一段时间后用户就可以继续使用，不过不知道它内部有没有什么计数器什么的。为此，我修改了 TwitterSinaSync，当用户被列入黑名单后会暂停同步一段时间。这个版本还处理了用户撤销新浪API授权的情况，会自动将用户删除。用户可以用原邀请链接重新开通。请到<a href="https://github.com/aleung/TwitterSinaSync" target="_blank" rel="external">TwitterSinaSync@github</a>下载 2.3 版本源代码。</p>
+<p><a href="http://www.flickr.com/photos/leoliang/5519631597/" target="_blank" rel="noopener"><img src="http://farm6.static.flickr.com/5217/5519631597_e6064611fc_z.jpg" alt="sina_blacklist_1"></a></p>
+<p>目前新浪微博API的自动触发黑名单是临时性的，过一段时间后用户就可以继续使用，不过不知道它内部有没有什么计数器什么的。为此，我修改了 TwitterSinaSync，当用户被列入黑名单后会暂停同步一段时间。这个版本还处理了用户撤销新浪API授权的情况，会自动将用户删除。用户可以用原邀请链接重新开通。请到<a href="https://github.com/aleung/TwitterSinaSync" target="_blank" rel="noopener">TwitterSinaSync@github</a>下载 2.3 版本源代码。</p>
 
       
     </div>
@@ -429,7 +422,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -494,7 +487,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

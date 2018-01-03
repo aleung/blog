@@ -86,19 +86,18 @@
 
 
 
-<meta name="description" content="Yesterday, I discussed with Alex whether “delete this” in C++ is legal code.
-In some case, only the object itself knows when its life is to the end and should be destroyed, the owner of object doesn’t">
+<meta name="description" content="Yesterday, I discussed with Alex whether “delete this” in C++ is legal code. In some case, only the object itself knows when its life is to the end and should be destroyed, the owner of object doesn’t">
+<meta name="keywords" content="SoftwareDev">
 <meta property="og:type" content="article">
 <meta property="og:title" content="成员函数调用delete this合法吗？">
 <meta property="og:url" content="http://aleung.github.io/blog/2005/02/18/Member-function-call-delete-this-legal/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description" content="Yesterday, I discussed with Alex whether “delete this” in C++ is legal code.
-In some case, only the object itself knows when its life is to the end and should be destroyed, the owner of object doesn’t">
+<meta property="og:description" content="Yesterday, I discussed with Alex whether “delete this” in C++ is legal code. In some case, only the object itself knows when its life is to the end and should be destroyed, the owner of object doesn’t">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-03-16T14:11:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="成员函数调用delete this合法吗？">
-<meta name="twitter:description" content="Yesterday, I discussed with Alex whether “delete this” in C++ is legal code.
-In some case, only the object itself knows when its life is to the end and should be destroyed, the owner of object doesn’t">
+<meta name="twitter:description" content="Yesterday, I discussed with Alex whether “delete this” in C++ is legal code. In some case, only the object itself knows when its life is to the end and should be destroyed, the owner of object doesn’t">
 
 
 
@@ -308,22 +307,22 @@ In some case, only the object itself knows when its life is to the end and shoul
         <p>Yesterday, I discussed with Alex whether “delete this” in C++ is legal code.</p>
 <p>In some case, only the object itself knows when its life is to the end and should be destroyed, the owner of object doesn’t know it, or the object has no explicit owner. The most easy way to manger the life time of this kind of object is let it delete itself.</p>
 <p>But we doubted that “delete this” isn’t legal in C++: after the object is released, how does the execution continue?</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> A &#123;  </div><div class="line"><span class="keyword">public</span>:  </div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span></span>;  </div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">void</span> A::foo()  </div><div class="line">&#123;  </div><div class="line">  <span class="comment">// do something  </span></div><div class="line">  <span class="keyword">delete</span> <span class="keyword">this</span>;  </div><div class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"I commit suicide!"</span> &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></div><div class="line">&#123;  </div><div class="line">  A* a = <span class="keyword">new</span> A;  </div><div class="line">  a-&gt;foo();  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> &#123;</span>  </span><br><span class="line"><span class="keyword">public</span>:  </span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span></span>;  </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> A::foo()  </span><br><span class="line">&#123;  </span><br><span class="line">  <span class="comment">// do something  </span></span><br><span class="line">  <span class="keyword">delete</span> <span class="keyword">this</span>;  </span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"I commit suicide!"</span> &lt;&lt; <span class="built_in">endl</span>;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">  A* a = <span class="keyword">new</span> A;  </span><br><span class="line">  a-&gt;foo();  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>I find the answer now, it’s legal, but must be careful when using it. </p>
-<p>The following <a href="http://www.sunistudio.com/cppfaq/freestore-mgmt.html#[16.14]" target="_blank" rel="external">faq</a> explain it clearly:</p>
+<p>The following <a href="http://www.sunistudio.com/cppfaq/freestore-mgmt.html#[16.14]" target="_blank" rel="noopener">faq</a> explain it clearly:</p>
 <blockquote>
 <p>只要你小心，一个对象请求自杀(<code>delete</code> <code>this</code>).是可以的。</p>
 <p>以下是我对“小心”的定义：</p>
 <ol>
-<li>你必须100%的确定，<code>this</code>对象是用 <code>new</code>分配的（不是用<code>new[]</code>，也不是用<a href="http://www.sunistudio.com/cppfaq/dtors.html#[11.10]" target="_blank" rel="external">定位放置 <code>new</code></a>，也不是一个栈上的局部对象，也不是全局的，也不是另一个对象的成员，而是明白的普通的<code>new</code>）。</li>
+<li>你必须100%的确定，<code>this</code>对象是用 <code>new</code>分配的（不是用<code>new[]</code>，也不是用<a href="http://www.sunistudio.com/cppfaq/dtors.html#[11.10]" target="_blank" rel="noopener">定位放置 <code>new</code></a>，也不是一个栈上的局部对象，也不是全局的，也不是另一个对象的成员，而是明白的普通的<code>new</code>）。</li>
 <li>你必须100%的确定，该成员函数是<code>this</code>对象最后调用的的成员函数。</li>
 <li>你必须100%的确定，剩下的成员函数（<code>delete</code> <code>this</code>之后的）不接触到 <code>this</code>对象任何一块（包括调用任何其他成员函数或访问任何数据成员）。</li>
 <li>你必须 100%的确定，在<code>delete</code> <code>this</code>之后不再去访问<code>this</code>指针。换句话说，你不能去检查它，将它和其他指针比较，和 <code>NULL</code>比较，打印它，转换它，对它做任何事。</li>
 </ol>
-<p>自然，对于这种情况还要习惯性地告诫：当你的指针是一个指向基类类型的指针，而没有<a href="http://www.sunistudio.com/cppfaq/virtual-functions.html#[20.4]" target="_blank" rel="external">虚析构函数</a>时（也不可以 <code>delete</code> <code>this</code>）。 </p>
+<p>自然，对于这种情况还要习惯性地告诫：当你的指针是一个指向基类类型的指针，而没有<a href="http://www.sunistudio.com/cppfaq/virtual-functions.html#[20.4]" target="_blank" rel="noopener">虚析构函数</a>时（也不可以 <code>delete</code> <code>this</code>）。 </p>
 </blockquote>
 <p>And these ariticles also take about “delete this”:</p>
-<p><a href="http://info.tlw.cn/6079.htm" target="_blank" rel="external">http://info.tlw.cn/6079.htm</a><br><a href="http://blog.csdn.net/foxmail/archive/2004/09/22/113060.aspx" target="_blank" rel="external">http://blog.csdn.net/foxmail/archive/2004/09/22/113060.aspx</a></p>
+<p><a href="http://info.tlw.cn/6079.htm" target="_blank" rel="noopener">http://info.tlw.cn/6079.htm</a><br><a href="http://blog.csdn.net/foxmail/archive/2004/09/22/113060.aspx" target="_blank" rel="noopener">http://blog.csdn.net/foxmail/archive/2004/09/22/113060.aspx</a></p>
 
       
     </div>
@@ -433,7 +432,7 @@ In some case, only the object itself knows when its life is to the end and shoul
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -498,7 +497,7 @@ In some case, only the object itself knows when its life is to the end and shoul
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

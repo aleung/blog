@@ -86,19 +86,18 @@
 
 
 
-<meta name="description" content="之前寻找同步twitter到新浪微博的方法，没有尝试到满意的。@cutemic介绍说他是在GAE上跑一个叫twitter2sina的python程序，周期性读取自己的tweets，再调用API发送到新浪微博。
-程序员的基本素质是懒惰，因此我问@cutemic他安装的程序是否支持多用户，如果支持，我就懒得自己折腾，让他给我加个用户好了。很可惜，他的程序是要将新浪微博用户名密码hard code到程序">
+<meta name="description" content="之前寻找同步twitter到新浪微博的方法，没有尝试到满意的。@cutemic介绍说他是在GAE上跑一个叫twitter2sina的python程序，周期性读取自己的tweets，再调用API发送到新浪微博。 程序员的基本素质是懒惰，因此我问@cutemic他安装的程序是否支持多用户，如果支持，我就懒得自己折腾，让他给我加个用户好了。很可惜，他的程序是要将新浪微博用户名密码hard code到程序">
+<meta name="keywords" content="MyWork">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TwitterSinaSync，自动同步Twitter信息到新浪微博">
 <meta property="og:url" content="http://aleung.github.io/blog/2011/02/11/TwitterSinaSync-Twitter-/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description" content="之前寻找同步twitter到新浪微博的方法，没有尝试到满意的。@cutemic介绍说他是在GAE上跑一个叫twitter2sina的python程序，周期性读取自己的tweets，再调用API发送到新浪微博。
-程序员的基本素质是懒惰，因此我问@cutemic他安装的程序是否支持多用户，如果支持，我就懒得自己折腾，让他给我加个用户好了。很可惜，他的程序是要将新浪微博用户名密码hard code到程序">
+<meta property="og:description" content="之前寻找同步twitter到新浪微博的方法，没有尝试到满意的。@cutemic介绍说他是在GAE上跑一个叫twitter2sina的python程序，周期性读取自己的tweets，再调用API发送到新浪微博。 程序员的基本素质是懒惰，因此我问@cutemic他安装的程序是否支持多用户，如果支持，我就懒得自己折腾，让他给我加个用户好了。很可惜，他的程序是要将新浪微博用户名密码hard code到程序">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2011-07-07T16:03:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TwitterSinaSync，自动同步Twitter信息到新浪微博">
-<meta name="twitter:description" content="之前寻找同步twitter到新浪微博的方法，没有尝试到满意的。@cutemic介绍说他是在GAE上跑一个叫twitter2sina的python程序，周期性读取自己的tweets，再调用API发送到新浪微博。
-程序员的基本素质是懒惰，因此我问@cutemic他安装的程序是否支持多用户，如果支持，我就懒得自己折腾，让他给我加个用户好了。很可惜，他的程序是要将新浪微博用户名密码hard code到程序">
+<meta name="twitter:description" content="之前寻找同步twitter到新浪微博的方法，没有尝试到满意的。@cutemic介绍说他是在GAE上跑一个叫twitter2sina的python程序，周期性读取自己的tweets，再调用API发送到新浪微博。 程序员的基本素质是懒惰，因此我问@cutemic他安装的程序是否支持多用户，如果支持，我就懒得自己折腾，让他给我加个用户好了。很可惜，他的程序是要将新浪微博用户名密码hard code到程序">
 
 
 
@@ -305,14 +304,14 @@
       
 
       
-        <p>之前寻找同步twitter到新浪微博的方法，没有尝试到满意的。@cutemic<a href="http://cutemic.posterous.com/twitter" target="_blank" rel="external">介绍说</a>他是在GAE上跑一个叫twitter2sina的python程序，周期性读取自己的tweets，再调用API发送到新浪微博。</p>
+        <p>之前寻找同步twitter到新浪微博的方法，没有尝试到满意的。@cutemic<a href="http://cutemic.posterous.com/twitter" target="_blank" rel="noopener">介绍说</a>他是在GAE上跑一个叫twitter2sina的python程序，周期性读取自己的tweets，再调用API发送到新浪微博。</p>
 <p>程序员的基本素质是懒惰，因此我问@cutemic他安装的程序是否支持多用户，如果支持，我就懒得自己折腾，让他给我加个用户好了。很可惜，他的程序是要将新浪微博用户名密码hard code到程序里的，那我只能自力更生了。</p>
 <p>装起来之后，本着助人为乐的精神，考虑把这个服务也提供给别人使用。看看代码，调用新浪微博API是用Basic HTTP认证的，需要提供用户名和密码，这样太没有安全感了，别人不敢用的。如果改成OAuth，用户就不需要提供密码了。</p>
-<p>动手尝试修改，于是，就有了这个<a href="https://github.com/aleung/TwitterSinaSync" target="_blank" rel="external">TwitterSinaSync</a>。</p>
+<p>动手尝试修改，于是，就有了这个<a href="https://github.com/aleung/TwitterSinaSync" target="_blank" rel="noopener">TwitterSinaSync</a>。</p>
 <p>代码大概的历史：</p>
 <ol>
-<li>原始版本是<a href="http://code.google.com/p/twitter2sina/" target="_blank" rel="external">twitter2sina</a>，没有使用新浪微博API，已经失效</li>
-<li>@cutemic的<a href="http://cutemic.posterous.com/twitter" target="_blank" rel="external">修改版本</a>，改成使用新浪微博API</li>
+<li>原始版本是<a href="http://code.google.com/p/twitter2sina/" target="_blank" rel="noopener">twitter2sina</a>，没有使用新浪微博API，已经失效</li>
+<li>@cutemic的<a href="http://cutemic.posterous.com/twitter" target="_blank" rel="noopener">修改版本</a>，改成使用新浪微博API</li>
 <li>我修改的<a href="">TwitterSinaSync</a></li>
 </ol>
 <p>主要特性：</p>
@@ -322,9 +321,9 @@
 <li>支持多用户：多组twitter-微博同步绑定</li>
 <li>新用户凭管理员提供的邀请链接才能加入，方便私人分享</li>
 </ul>
-<p><a href="https://github.com/aleung/TwitterSinaSync" target="_blank" rel="external">代码</a>托管在GitHub，bug report 和 feature request可以往<a href="">这里</a>提交。</p>
+<p><a href="https://github.com/aleung/TwitterSinaSync" target="_blank" rel="noopener">代码</a>托管在GitHub，bug report 和 feature request可以往<a href="">这里</a>提交。</p>
 <p><em><strong>Updated 2011-7-7:</strong></em></p>
-<p>由于新浪微博对API使用过滤异常的严格，这个应用基本上用处不大了，普通内容的tweet，大概十条里只有两三条能够成功同步，见<a href="http://good-good-study.appspot.com/blog/posts/124001" target="_blank" rel="external">新浪微博API黑名单威武</a>。如果应用能够通过审核，也许过滤会放宽一些，但是根据新浪微博API的用户协议，是不能用于从其他微博系统同步信息的，更何况是Twitter，通过审核的可能性微乎其微。故此我不再维护这个软件了，也不再提供邀请码，请谅解。</p>
+<p>由于新浪微博对API使用过滤异常的严格，这个应用基本上用处不大了，普通内容的tweet，大概十条里只有两三条能够成功同步，见<a href="http://good-good-study.appspot.com/blog/posts/124001" target="_blank" rel="noopener">新浪微博API黑名单威武</a>。如果应用能够通过审核，也许过滤会放宽一些，但是根据新浪微博API的用户协议，是不能用于从其他微博系统同步信息的，更何况是Twitter，通过审核的可能性微乎其微。故此我不再维护这个软件了，也不再提供邀请码，请谅解。</p>
 
       
     </div>
@@ -434,7 +433,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -499,7 +498,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

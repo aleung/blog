@@ -87,11 +87,13 @@
 
 
 <meta name="description" content="字符串匹配最常用的是正则表达式，但是正则表达式的匹配非常严格，某些场合下，希望的匹配算法是模糊的，只要求找出相似的字符串而不是完全匹配的字符串，例如拼写错误、插入空格等情况。http://www.codeproject.com/aspnet/intelligent404page.asp这篇文章介绍了如何生成智能的404页面，当URL不存在时可提示出拼写近似的网页。其中使用Levenshtein的算">
+<meta name="keywords" content="SoftwareDev">
 <meta property="og:type" content="article">
 <meta property="og:title" content="字符串模糊匹配">
 <meta property="og:url" content="http://aleung.github.io/blog/2004/12/13/String-fuzzy-matching/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
 <meta property="og:description" content="字符串匹配最常用的是正则表达式，但是正则表达式的匹配非常严格，某些场合下，希望的匹配算法是模糊的，只要求找出相似的字符串而不是完全匹配的字符串，例如拼写错误、插入空格等情况。http://www.codeproject.com/aspnet/intelligent404page.asp这篇文章介绍了如何生成智能的404页面，当URL不存在时可提示出拼写近似的网页。其中使用Levenshtein的算">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-03-16T14:11:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字符串模糊匹配">
@@ -302,7 +304,7 @@
       
 
       
-        <p>字符串匹配最常用的是正则表达式，但是正则表达式的匹配非常严格，某些场合下，希望的匹配算法是模糊的，只要求找出相似的字符串而不是完全匹配的字符串，例如拼写错误、插入空格等情况。<a href="http://www.codeproject.com/aspnet/intelligent404page.asp" target="_blank" rel="external">http://www.codeproject.com/aspnet/intelligent404page.asp</a>这篇文章介绍了如何生成智能的404页面，当URL不存在时可提示出拼写近似的网页。其中使用Levenshtein的算法来计算两个字符串的‘edit distance’,也就是一个字符串要经过多少步修改（增加、改变、删除字符），才能变成另外一个字符串。根据计算出的相似的分值，据此来给出建议结果。</p>
+        <p>字符串匹配最常用的是正则表达式，但是正则表达式的匹配非常严格，某些场合下，希望的匹配算法是模糊的，只要求找出相似的字符串而不是完全匹配的字符串，例如拼写错误、插入空格等情况。<a href="http://www.codeproject.com/aspnet/intelligent404page.asp" target="_blank" rel="noopener">http://www.codeproject.com/aspnet/intelligent404page.asp</a>这篇文章介绍了如何生成智能的404页面，当URL不存在时可提示出拼写近似的网页。其中使用Levenshtein的算法来计算两个字符串的‘edit distance’,也就是一个字符串要经过多少步修改（增加、改变、删除字符），才能变成另外一个字符串。根据计算出的相似的分值，据此来给出建议结果。</p>
 <p>这个算法看来在处理用户输入的时候会很有用，能够增加用户界面的人性化程度。一个友善的提示，比起冷冰冰的“输入错误”友好多了，降低了用户使用软件时的心理阻碍。另外，这个算法应该也是可以适用于中文的，采用unicode处理就可以了。</p>
 
       
@@ -413,7 +415,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -478,7 +480,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

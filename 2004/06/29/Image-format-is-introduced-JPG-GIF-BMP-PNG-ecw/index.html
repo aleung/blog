@@ -86,25 +86,18 @@
 
 
 
-<meta name="description" content="图像格式介绍在网上有很多资料, 随便google一下都能找到. 这是我在论坛上回复别人的帖子, 顺手也帖到这儿.
-这几种格式都是光栅图像格式(除了光栅格式还有一种是矢量格式), 描述的是图像点阵的色彩数据.
-BMP格式是最简单的格式，基本就是图像点阵的内存拷贝。没有任何压缩，也无法表示格外的数据。现在很少用BMP来做图像数据交换了。
-GIF和PNG都是索引色彩, 也就是不直接描述象素的颜色, 只是">
+<meta name="description" content="图像格式介绍在网上有很多资料, 随便google一下都能找到. 这是我在论坛上回复别人的帖子, 顺手也帖到这儿. 这几种格式都是光栅图像格式(除了光栅格式还有一种是矢量格式), 描述的是图像点阵的色彩数据. BMP格式是最简单的格式，基本就是图像点阵的内存拷贝。没有任何压缩，也无法表示格外的数据。现在很少用BMP来做图像数据交换了。 GIF和PNG都是索引色彩, 也就是不直接描述象素的颜色, 只是">
+<meta name="keywords" content="ImageProcessing">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图像格式介绍: jpg, gif, bmp, png, ecw......">
 <meta property="og:url" content="http://aleung.github.io/blog/2004/06/29/Image-format-is-introduced-JPG-GIF-BMP-PNG-ecw/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description" content="图像格式介绍在网上有很多资料, 随便google一下都能找到. 这是我在论坛上回复别人的帖子, 顺手也帖到这儿.
-这几种格式都是光栅图像格式(除了光栅格式还有一种是矢量格式), 描述的是图像点阵的色彩数据.
-BMP格式是最简单的格式，基本就是图像点阵的内存拷贝。没有任何压缩，也无法表示格外的数据。现在很少用BMP来做图像数据交换了。
-GIF和PNG都是索引色彩, 也就是不直接描述象素的颜色, 只是">
+<meta property="og:description" content="图像格式介绍在网上有很多资料, 随便google一下都能找到. 这是我在论坛上回复别人的帖子, 顺手也帖到这儿. 这几种格式都是光栅图像格式(除了光栅格式还有一种是矢量格式), 描述的是图像点阵的色彩数据. BMP格式是最简单的格式，基本就是图像点阵的内存拷贝。没有任何压缩，也无法表示格外的数据。现在很少用BMP来做图像数据交换了。 GIF和PNG都是索引色彩, 也就是不直接描述象素的颜色, 只是">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-03-16T14:11:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图像格式介绍: jpg, gif, bmp, png, ecw......">
-<meta name="twitter:description" content="图像格式介绍在网上有很多资料, 随便google一下都能找到. 这是我在论坛上回复别人的帖子, 顺手也帖到这儿.
-这几种格式都是光栅图像格式(除了光栅格式还有一种是矢量格式), 描述的是图像点阵的色彩数据.
-BMP格式是最简单的格式，基本就是图像点阵的内存拷贝。没有任何压缩，也无法表示格外的数据。现在很少用BMP来做图像数据交换了。
-GIF和PNG都是索引色彩, 也就是不直接描述象素的颜色, 只是">
+<meta name="twitter:description" content="图像格式介绍在网上有很多资料, 随便google一下都能找到. 这是我在论坛上回复别人的帖子, 顺手也帖到这儿. 这几种格式都是光栅图像格式(除了光栅格式还有一种是矢量格式), 描述的是图像点阵的色彩数据. BMP格式是最简单的格式，基本就是图像点阵的内存拷贝。没有任何压缩，也无法表示格外的数据。现在很少用BMP来做图像数据交换了。 GIF和PNG都是索引色彩, 也就是不直接描述象素的颜色, 只是">
 
 
 
@@ -320,7 +313,7 @@ GIF和PNG都是索引色彩, 也就是不直接描述象素的颜色, 只是">
 <p>在地理信息领域，还使用一些其他的有损压缩格式，例如基于小波算法的ecw和MrSID格式。但是这些格式目前还基本是用于专业领域，不如jpg通用，支持的图像处理软件也不多。</p>
 <p>对于卫星影像的最终输出，我觉得还是采用有损压缩格式比较好，因为图像数据量实在太大了，如果不压缩或者压缩过小，对于存储、传送都不方便。采用合适的压缩率，图像质量基本不会受到影响，看看网上的漂亮mm照片，都是jpg有损压缩的:) 如果是在oziexplorer中观看，建议使用ecw格式，ecw的好处在于可以局部加载数据，减少内存占用，对于超大图像有好处；它不像其他格式，即使只显示图像其中一小快，也要将整个图像数据全部解码放入内存。但是能处理ecw的软件很少, 只能在最后输出最终结果时转换.</p>
 <p>地图制作，看什么图，如果是色块为主的图，用gif/png比较合适，如果色彩都是过渡的，就还是用jpg或者ecw好。</p>
-<p>图像压缩：<a href="http://media.cs.tsinghua.edu.cn/~ahz/digitalimageprocess/chapter14/chapt14_ahz.htm" target="_blank" rel="external">http://media.cs.tsinghua.edu.cn/~ahz/digitalimageprocess/chapter14/chapt14_ahz.htm</a></p>
+<p>图像压缩：<a href="http://media.cs.tsinghua.edu.cn/~ahz/digitalimageprocess/chapter14/chapt14_ahz.htm" target="_blank" rel="noopener">http://media.cs.tsinghua.edu.cn/~ahz/digitalimageprocess/chapter14/chapt14_ahz.htm</a></p>
 
       
     </div>
@@ -430,7 +423,7 @@ GIF和PNG都是索引色彩, 也就是不直接描述象素的颜色, 只是">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -495,7 +488,7 @@ GIF和PNG都是索引色彩, 也就是不直接描述象素的颜色, 只是">
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

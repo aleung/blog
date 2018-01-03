@@ -86,22 +86,18 @@
 
 
 
-<meta name="description" content="LANDSAT是美国陆地探测卫星系统。从1972年开始发射第一颗卫星LANDSAT 1，到目前最新的LANDSAT 7。
-LANDSAT 7 卫星于99年发射，装备有Enhanced Thematic Mapper Plus(ETM+)设备，ETM+被动感应地表反射的太阳辐射和散发的热辐射，有8个波段的感应器，覆盖了从红外到可见光的不同波长范围。
-ETM+比起在LANDSAT 4、5上面装备的Th">
+<meta name="description" content="LANDSAT是美国陆地探测卫星系统。从1972年开始发射第一颗卫星LANDSAT 1，到目前最新的LANDSAT 7。 LANDSAT 7 卫星于99年发射，装备有Enhanced Thematic Mapper Plus(ETM+)设备，ETM+被动感应地表反射的太阳辐射和散发的热辐射，有8个波段的感应器，覆盖了从红外到可见光的不同波长范围。 ETM+比起在LANDSAT 4、5上面装备的Th">
+<meta name="keywords" content="GPS_GIS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Landsat7卫星及遥感图象处理">
 <meta property="og:url" content="http://aleung.github.io/blog/2003/08/13/Landsat7-/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description" content="LANDSAT是美国陆地探测卫星系统。从1972年开始发射第一颗卫星LANDSAT 1，到目前最新的LANDSAT 7。
-LANDSAT 7 卫星于99年发射，装备有Enhanced Thematic Mapper Plus(ETM+)设备，ETM+被动感应地表反射的太阳辐射和散发的热辐射，有8个波段的感应器，覆盖了从红外到可见光的不同波长范围。
-ETM+比起在LANDSAT 4、5上面装备的Th">
+<meta property="og:description" content="LANDSAT是美国陆地探测卫星系统。从1972年开始发射第一颗卫星LANDSAT 1，到目前最新的LANDSAT 7。 LANDSAT 7 卫星于99年发射，装备有Enhanced Thematic Mapper Plus(ETM+)设备，ETM+被动感应地表反射的太阳辐射和散发的热辐射，有8个波段的感应器，覆盖了从红外到可见光的不同波长范围。 ETM+比起在LANDSAT 4、5上面装备的Th">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-03-16T14:11:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Landsat7卫星及遥感图象处理">
-<meta name="twitter:description" content="LANDSAT是美国陆地探测卫星系统。从1972年开始发射第一颗卫星LANDSAT 1，到目前最新的LANDSAT 7。
-LANDSAT 7 卫星于99年发射，装备有Enhanced Thematic Mapper Plus(ETM+)设备，ETM+被动感应地表反射的太阳辐射和散发的热辐射，有8个波段的感应器，覆盖了从红外到可见光的不同波长范围。
-ETM+比起在LANDSAT 4、5上面装备的Th">
+<meta name="twitter:description" content="LANDSAT是美国陆地探测卫星系统。从1972年开始发射第一颗卫星LANDSAT 1，到目前最新的LANDSAT 7。 LANDSAT 7 卫星于99年发射，装备有Enhanced Thematic Mapper Plus(ETM+)设备，ETM+被动感应地表反射的太阳辐射和散发的热辐射，有8个波段的感应器，覆盖了从红外到可见光的不同波长范围。 ETM+比起在LANDSAT 4、5上面装备的Th">
 
 
 
@@ -345,14 +341,14 @@ ETM+比起在LANDSAT 4、5上面装备的Th">
 <li>432：近红外合成。颜色与肉眼所见完全不同；植被在近红外波段反射率特别高，因为叶绿素在此波段反射的能量大，因此在432图象中植被会明显表现为深浅不同的红色，不同类型植物有不同的红色色调；水会吸收差不多所有的近红外光，因此水面颜色很深近乎黑色。 </li>
 <li>743/742：短波红外合成。包含至少一个短波红外波段，短波红外波段的反射率主要取决于物体表面的含水量，因此这类图象可用于植被保护和土地研究。</li>
 </ul>
-<p>图象合成可以用Photoshop之类的图象编辑软件来做，缺点是不能做出带地理信息的GeoTiff图象。<a href="http://www.geogr.ku.dk/chips/" target="_blank" rel="external">Chips</a>（哥本哈根图象处理系统）是一个专门用于遥感图象处理的软件，标准版是免费的。用它来制作3波段合成图象很容易。以下为简单使用方法：</p>
+<p>图象合成可以用Photoshop之类的图象编辑软件来做，缺点是不能做出带地理信息的GeoTiff图象。<a href="http://www.geogr.ku.dk/chips/" target="_blank" rel="noopener">Chips</a>（哥本哈根图象处理系统）是一个专门用于遥感图象处理的软件，标准版是免费的。用它来制作3波段合成图象很容易。以下为简单使用方法：</p>
 <p>&gt;<br>Open WinChips, and from the <em>File</em> menu, select <em>New Project</em>. From the <em>File</em> menu, select <em>Add Object(s)</em>, and select the three images for the three bands you want to use in your composite image, and add them as _Chips Image_s. From the <em>File</em> menu, select <em>New Object</em>, then <em>Lookup Table</em>, then save the new Lookup Table file. From the <em>View</em> menu, select <em>New Image View</em>. In the <em>Image View Configuration</em> dialog, on the <em>Image</em> tab, select <em>Display Mode</em> as RGB. For each of the <em>(Red, Green, Blue)</em> choices, select the image for the band you want to use for the respective color. For <em>Lookup Table</em> select the Lookup Table you added earlier, then click <em>OK</em>.<br>&gt;<br>You should now have a <em>Default Image View</em> window open, showing your 3-band color composite image. From the <em>Image View</em> menu, select <em>Lookup Table</em>, then <em>Enhance using Statistics for Entire Image</em>. Once the statistics are calculated for each of the colors, a <em>Modify Lookup Table</em> dialog will be presented. To see the effect of some basic image enhancement, click on <em>Hist. Equal.</em>. You can use <em>Reset</em> to undo the enhancement. Click on <em>Cancel</em> to close the dialog window.<br>&gt;<br>To save the 3-band color composite image, from the <em>Image View</em> menu select <em>Export View To Standard Format</em>. Once you have saved the image file, you have the option of saving geocoding for the image. </p>
 <p>参考：  </p>
 <ul>
-<li><a href="http://imaging.geocomm.com/features/sensor/landsat7/" target="_blank" rel="external">http://imaging.geocomm.com/features/sensor/landsat7/</a>  </li>
-<li><a href="http://members.shaw.ca/davepatton/landsat7.html" target="_blank" rel="external">http://members.shaw.ca/davepatton/landsat7.html</a>  </li>
-<li><a href="http://chesapeake.towson.edu/data/composite.asp" target="_blank" rel="external">http://chesapeake.towson.edu/data/composite.asp</a>  </li>
-<li><a href="http://chesapeake.towson.edu/data/raw_data.asp" target="_blank" rel="external">http://chesapeake.towson.edu/data/raw_data.asp</a></li>
+<li><a href="http://imaging.geocomm.com/features/sensor/landsat7/" target="_blank" rel="noopener">http://imaging.geocomm.com/features/sensor/landsat7/</a>  </li>
+<li><a href="http://members.shaw.ca/davepatton/landsat7.html" target="_blank" rel="noopener">http://members.shaw.ca/davepatton/landsat7.html</a>  </li>
+<li><a href="http://chesapeake.towson.edu/data/composite.asp" target="_blank" rel="noopener">http://chesapeake.towson.edu/data/composite.asp</a>  </li>
+<li><a href="http://chesapeake.towson.edu/data/raw_data.asp" target="_blank" rel="noopener">http://chesapeake.towson.edu/data/raw_data.asp</a></li>
 </ul>
 
       
@@ -463,7 +459,7 @@ ETM+比起在LANDSAT 4、5上面装备的Th">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -528,7 +524,7 @@ ETM+比起在LANDSAT 4、5上面装备的Th">
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

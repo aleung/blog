@@ -87,11 +87,13 @@
 
 
 <meta name="description" content="To maintain the Spring application context in a large application is not an easy job. There may be dozens of beans, whenever you want to make changes, you have to be very clear on there dependency. Af">
+<meta name="keywords" content="SoftwareDev,SpringFramework">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dump beans information from live Spring application context">
 <meta property="og:url" content="http://aleung.github.io/blog/2011/11/08/Dump-beans-information-from-live-Spring-application-context/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
 <meta property="og:description" content="To maintain the Spring application context in a large application is not an easy job. There may be dozens of beans, whenever you want to make changes, you have to be very clear on there dependency. Af">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-03-16T14:11:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dump beans information from live Spring application context">
@@ -304,7 +306,7 @@
       
         <p>To maintain the Spring application context in a large application is not an easy job. There may be dozens of beans, whenever you want to make changes, you have to be very clear on there dependency. After serveral rounds of update, some beans might be orphan, they’re unused any more but you don’t know.</p>
 <p>Spring IDE provides bean cross reference view and bean graph view that can help to analysis the bean relationship. But what Spring IDE has is a static view of the beans. In our project the application context is complicated: it scans classpath for all bean definition XML files and load them; application context created in WAR package inherits parent application context which is defines in EJB classpath; some beans are marked with annotation and loaded by <context:component-scan>, rather than define in XML file. I doubt Spring IDE can show the dynamic bean view as it is in runtime. What’s more, Spring IDE isn’t available at our standard development environment.</context:component-scan></p>
-<p>Inspired by a StackOverflow <a href="http://stackoverflow.com/questions/5850639/how-to-keep-track-of-all-the-autowired-stuff-while-using-spring-ioc/5851872#5851872" target="_blank" rel="external">answer</a>, I created an ApplicationContextDumper. Add it into application context, it will dump all beans and their dependencies in the current context and parent contexts (if any) into log file when the application context initialization finishes. It also lists the beans which aren’t referenced.</p>
+<p>Inspired by a StackOverflow <a href="http://stackoverflow.com/questions/5850639/how-to-keep-track-of-all-the-autowired-stuff-while-using-spring-ioc/5851872#5851872" target="_blank" rel="noopener">answer</a>, I created an ApplicationContextDumper. Add it into application context, it will dump all beans and their dependencies in the current context and parent contexts (if any) into log file when the application context initialization finishes. It also lists the beans which aren’t referenced.</p>
 <script src="//gist.github.com/1347171.js?file=ApplicationContextDumper.java"></script>
 <p>Here is an example. We have two application contexts. Please be noticed that the ApplicationContextDumper has been added into applicationContext.xml.</p>
 <script src="//gist.github.com/1347171.js?file=applicationContext.xml"></script>
@@ -426,7 +428,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -491,7 +493,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

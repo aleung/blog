@@ -87,11 +87,13 @@
 
 
 <meta name="description" content="I need to migrate a Maven repository from Artifactory to Nexus. Nexus’s migration solution uses its migration plugin. But our Nexus service is managed by IT team and I don’t want to bother to ask them">
+<meta name="keywords" content="SoftwareDev,Maven">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Batch deploy artifacts to Maven repository">
 <meta property="og:url" content="http://aleung.github.io/blog/2013/03/19/maven-batch-deploy-artifacts/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
 <meta property="og:description" content="I need to migrate a Maven repository from Artifactory to Nexus. Nexus’s migration solution uses its migration plugin. But our Nexus service is managed by IT team and I don’t want to bother to ask them">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2013-03-29T15:42:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Batch deploy artifacts to Maven repository">
@@ -302,9 +304,9 @@
       
 
       
-        <p>I need to migrate a Maven repository from <a href="http://www.jfrog.com/home/v_artifactory_opensource_overview" target="_blank" rel="external">Artifactory</a> to <a href="http://www.sonatype.org/nexus/" target="_blank" rel="external">Nexus</a>. Nexus’s migration <a href="http://www.sonatype.com/people/2009/03/migrating-from-artifactory-to-nexus/" target="_blank" rel="external">solution</a> uses its migration plugin. But our Nexus service is managed by IT team and I don’t want to bother to ask them to install a plugin.</p>
+        <p>I need to migrate a Maven repository from <a href="http://www.jfrog.com/home/v_artifactory_opensource_overview" target="_blank" rel="noopener">Artifactory</a> to <a href="http://www.sonatype.org/nexus/" target="_blank" rel="noopener">Nexus</a>. Nexus’s migration <a href="http://www.sonatype.com/people/2009/03/migrating-from-artifactory-to-nexus/" target="_blank" rel="noopener">solution</a> uses its migration plugin. But our Nexus service is managed by IT team and I don’t want to bother to ask them to install a plugin.</p>
 <p>Artifactory is able to export a whole repository into file system as local repository layout (like .m2/repository folder). So I looked for import feature in Nexus, but failed.</p>
-<p>Searched on Google then I found <a href="http://stackoverflow.com/a/3304212/94148" target="_blank" rel="external">this answer</a> on StackOverflow. Sean provided a pom with embedded Groovy script to upload (deploy) a hierarchy of files to a Maven repository. However Sean’s solution handles groupId, artifactId and version in a way differ to what I want. It requires to specify groupId and version in pom as fixed value.</p>
+<p>Searched on Google then I found <a href="http://stackoverflow.com/a/3304212/94148" target="_blank" rel="noopener">this answer</a> on StackOverflow. Sean provided a pom with embedded Groovy script to upload (deploy) a hierarchy of files to a Maven repository. However Sean’s solution handles groupId, artifactId and version in a way differ to what I want. It requires to specify groupId and version in pom as fixed value.</p>
 <p>I modify the Groovy script a bit to handle local repository folder layout. GroupId, artifactId and version are parsed from path of file. Here is my modified version:</p>
 <script src="//gist.github.com/https://gist.github.com/aleung/5194777.js"></script>
 <p>Before using it, modify the setting in \<deploy.basefolder\> and \<distributionmanagement\>. Make sure you have removed all non-artifact files e.g. <em>.sha1, </em>.lastUpdated from your import directory. Or you may enhance the script to filter those files out.</distributionmanagement\></deploy.basefolder\></p>
@@ -423,7 +425,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -488,7 +490,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

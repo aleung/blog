@@ -86,19 +86,18 @@
 
 
 
-<meta name="description" content="Robocode的每个机器人都是一个线程，线程调度为非强占式，由战斗管理线程依次调度运行。每个线程执行到一个阻塞函数的时候，交出cpu占用权。对于AdvancedRobot，阻塞函数是excute()。  
-从这个角度而言，可以把robocode看作是回合制的游戏，每个回合各个robot设定要做些什么操作，即调用setXXX()，调用excute()完成本回合的操作设定。各个robot都设定完后，">
+<meta name="description" content="Robocode的每个机器人都是一个线程，线程调度为非强占式，由战斗管理线程依次调度运行。每个线程执行到一个阻塞函数的时候，交出cpu占用权。对于AdvancedRobot，阻塞函数是excute()。   从这个角度而言，可以把robocode看作是回合制的游戏，每个回合各个robot设定要做些什么操作，即调用setXXX()，调用excute()完成本回合的操作设定。各个robot都设定完后，">
+<meta name="keywords" content="SoftwareDev">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Robocode的线程与执行次序">
 <meta property="og:url" content="http://aleung.github.io/blog/2003/08/05/Robocode-/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description" content="Robocode的每个机器人都是一个线程，线程调度为非强占式，由战斗管理线程依次调度运行。每个线程执行到一个阻塞函数的时候，交出cpu占用权。对于AdvancedRobot，阻塞函数是excute()。  
-从这个角度而言，可以把robocode看作是回合制的游戏，每个回合各个robot设定要做些什么操作，即调用setXXX()，调用excute()完成本回合的操作设定。各个robot都设定完后，">
+<meta property="og:description" content="Robocode的每个机器人都是一个线程，线程调度为非强占式，由战斗管理线程依次调度运行。每个线程执行到一个阻塞函数的时候，交出cpu占用权。对于AdvancedRobot，阻塞函数是excute()。   从这个角度而言，可以把robocode看作是回合制的游戏，每个回合各个robot设定要做些什么操作，即调用setXXX()，调用excute()完成本回合的操作设定。各个robot都设定完后，">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-03-16T14:11:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Robocode的线程与执行次序">
-<meta name="twitter:description" content="Robocode的每个机器人都是一个线程，线程调度为非强占式，由战斗管理线程依次调度运行。每个线程执行到一个阻塞函数的时候，交出cpu占用权。对于AdvancedRobot，阻塞函数是excute()。  
-从这个角度而言，可以把robocode看作是回合制的游戏，每个回合各个robot设定要做些什么操作，即调用setXXX()，调用excute()完成本回合的操作设定。各个robot都设定完后，">
+<meta name="twitter:description" content="Robocode的每个机器人都是一个线程，线程调度为非强占式，由战斗管理线程依次调度运行。每个线程执行到一个阻塞函数的时候，交出cpu占用权。对于AdvancedRobot，阻塞函数是excute()。   从这个角度而言，可以把robocode看作是回合制的游戏，每个回合各个robot设定要做些什么操作，即调用setXXX()，调用excute()完成本回合的操作设定。各个robot都设定完后，">
 
 
 
@@ -418,7 +417,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -483,7 +482,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

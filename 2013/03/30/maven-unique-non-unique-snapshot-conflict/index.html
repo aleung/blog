@@ -87,11 +87,13 @@
 
 
 <meta name="description" content="Recently I changed an Artifactory repository configuration from storing non-unique snapshots to unique snapshots (as described here). After that, “Unable to download the artifact” error happened on so">
+<meta name="keywords" content="SoftwareDev,Maven">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Solving Maven unique and non-unique snapshot conflict">
 <meta property="og:url" content="http://aleung.github.io/blog/2013/03/30/maven-unique-non-unique-snapshot-conflict/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
 <meta property="og:description" content="Recently I changed an Artifactory repository configuration from storing non-unique snapshots to unique snapshots (as described here). After that, “Unable to download the artifact” error happened on so">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-03-16T14:11:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solving Maven unique and non-unique snapshot conflict">
@@ -302,7 +304,7 @@
       
 
       
-        <p>Recently I changed an Artifactory repository configuration from storing non-unique snapshots to unique snapshots (as described <a href="http://wiki.jfrog.org/confluence/display/RTF/Local+Repositories" target="_blank" rel="external">here</a>). After that, “Unable to download the artifact” error happened on some artifacts.</p>
+        <p>Recently I changed an Artifactory repository configuration from storing non-unique snapshots to unique snapshots (as described <a href="http://wiki.jfrog.org/confluence/display/RTF/Local+Repositories" target="_blank" rel="noopener">here</a>). After that, “Unable to download the artifact” error happened on some artifacts.</p>
 <p>When both unique snapshot and non-unique snapshot of the same version of an artifact exists, there will be problem to download it. For example, in a repository if under folder <code>/com/mycompany/test/foo/1.0.0-SNAPSHOT/</code> there are <code>foo-1.0.0-SNAPSHOT.pom</code> and <code>foo-1.0.0-20130329-231102-1.pom</code>, then downloading <code>com.mycompany.test:foo:1.0.0-SNAPSHOT:pom</code> will get error. You have to delete either the file with SNAPSHOT in name or all the files with time stamp in name.</p>
 <p>Before I changed the configuration, there were SNAPSHOT artifacts in the repository. After configuration changed, the continuous integration jobs running on CI server redeployed artifacts to the repository, and those new files have time stamp in file names, and the version is the same. That caused the problem.</p>
 <p>To solve the problem, I should delete the *-SNAPSHOT file, if and only if there are both unique snapshot and non-unique snapshot of the same version.</p>
@@ -419,7 +421,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -484,7 +486,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

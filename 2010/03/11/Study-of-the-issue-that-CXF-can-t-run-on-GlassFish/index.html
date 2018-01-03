@@ -86,19 +86,18 @@
 
 
 
-<meta name="description" content="IssueSOAP WS client which uses CXF can’t run on GlassFish AS. Getting ClassCastException on invoking some CXF API. The problem was described as CXF-2237 [2].
-AnalysisJAX-WS is the Java API for XML Web">
+<meta name="description" content="IssueSOAP WS client which uses CXF can’t run on GlassFish AS. Getting ClassCastException on invoking some CXF API. The problem was described as CXF-2237 [2]. AnalysisJAX-WS is the Java API for XML Web">
+<meta name="keywords" content="SoftwareDev">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Study of the issue that CXF can't run on GlassFish">
+<meta property="og:title" content="Study of the issue that CXF can&#39;t run on GlassFish">
 <meta property="og:url" content="http://aleung.github.io/blog/2010/03/11/Study-of-the-issue-that-CXF-can-t-run-on-GlassFish/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description" content="IssueSOAP WS client which uses CXF can’t run on GlassFish AS. Getting ClassCastException on invoking some CXF API. The problem was described as CXF-2237 [2].
-AnalysisJAX-WS is the Java API for XML Web">
+<meta property="og:description" content="IssueSOAP WS client which uses CXF can’t run on GlassFish AS. Getting ClassCastException on invoking some CXF API. The problem was described as CXF-2237 [2]. AnalysisJAX-WS is the Java API for XML Web">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-03-16T14:11:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Study of the issue that CXF can't run on GlassFish">
-<meta name="twitter:description" content="IssueSOAP WS client which uses CXF can’t run on GlassFish AS. Getting ClassCastException on invoking some CXF API. The problem was described as CXF-2237 [2].
-AnalysisJAX-WS is the Java API for XML Web">
+<meta name="twitter:title" content="Study of the issue that CXF can&#39;t run on GlassFish">
+<meta name="twitter:description" content="IssueSOAP WS client which uses CXF can’t run on GlassFish AS. Getting ClassCastException on invoking some CXF API. The problem was described as CXF-2237 [2]. AnalysisJAX-WS is the Java API for XML Web">
 
 
 
@@ -328,11 +327,11 @@ AnalysisJAX-WS is the Java API for XML Web">
 <h3 id="Remove-Metro-from-GlassFish"><a href="#Remove-Metro-from-GlassFish" class="headerlink" title="Remove Metro from GlassFish"></a>Remove Metro from GlassFish</h3><p>If there is no application which deploys on the this application server that depends on Metro, we can remove Metro lib (webservices-*.jar) from GlassFish’s lib folder.</p>
 <h3 id="Change-to-Metro"><a href="#Change-to-Metro" class="headerlink" title="Change to Metro"></a>Change to Metro</h3><p>That’s nothing to say. We finally choose this way. There is almost no workload to migrate our code from CXF to Metro, because both of them follows JAX-WS specification, except that some code that calls CXF specify API need to be changed. We even don’t change the build script and still use CXF’s wsdl2java tool.</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
-<li><a href="https://issues.apache.org/jira/browse/CXF-857" target="_blank" rel="external">CXF Issue: CXF-857</a></li>
-<li><a href="https://issues.apache.org/jira/browse/CXF-2237" target="_blank" rel="external">CXF Issue: CXF-2237</a></li>
-<li><a href="http://stackoverflow.com/questions/2064068/how-to-pick-cxf-over-metro-on-glassfish" target="_blank" rel="external">StackOverflow: How to pick CXF over Metro on Glassfish</a></li>
-<li><a href="http://jcp.org/en/jsr/detail?id=224" target="_blank" rel="external">JSR 224: JAX-WS 2.x</a></li>
-<li><a href="http://good-good-study.appspot.com/blog/posts/4218" target="_blank" rel="external">WebLogic的classloading</a></li>
+<li><a href="https://issues.apache.org/jira/browse/CXF-857" target="_blank" rel="noopener">CXF Issue: CXF-857</a></li>
+<li><a href="https://issues.apache.org/jira/browse/CXF-2237" target="_blank" rel="noopener">CXF Issue: CXF-2237</a></li>
+<li><a href="http://stackoverflow.com/questions/2064068/how-to-pick-cxf-over-metro-on-glassfish" target="_blank" rel="noopener">StackOverflow: How to pick CXF over Metro on Glassfish</a></li>
+<li><a href="http://jcp.org/en/jsr/detail?id=224" target="_blank" rel="noopener">JSR 224: JAX-WS 2.x</a></li>
+<li><a href="http://good-good-study.appspot.com/blog/posts/4218" target="_blank" rel="noopener">WebLogic的classloading</a></li>
 </ol>
 
       
@@ -443,7 +442,7 @@ AnalysisJAX-WS is the Java API for XML Web">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -508,7 +507,7 @@ AnalysisJAX-WS is the Java API for XML Web">
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

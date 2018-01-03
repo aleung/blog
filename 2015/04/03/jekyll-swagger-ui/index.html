@@ -86,22 +86,18 @@
 
 
 
-<meta name="description" content="Swagger 是被广泛使用的用于 REST API 描述和文档化的框架。它制定了一个用于描述 REST API 的规范，提供了一组工具用于编辑 API 描述文件、生成测试客户端、生成文档等等。Swagger UI 是其中的用于生成文档的工具。
-Jekyll 是深受程序员喜爱的静态网站生成工具，通常用来做 blog 站点，我们的工作团队也用它来做内部的技术文档库。
-在 Jekyll 里描述我们产品">
+<meta name="description" content="Swagger 是被广泛使用的用于 REST API 描述和文档化的框架。它制定了一个用于描述 REST API 的规范，提供了一组工具用于编辑 API 描述文件、生成测试客户端、生成文档等等。Swagger UI 是其中的用于生成文档的工具。 Jekyll 是深受程序员喜爱的静态网站生成工具，通常用来做 blog 站点，我们的工作团队也用它来做内部的技术文档库。 在 Jekyll 里描述我们产品">
+<meta name="keywords" content="SoftwareDev">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Jekyll 与 Swagger UI 集成">
 <meta property="og:url" content="http://aleung.github.io/blog/2015/04/03/jekyll-swagger-ui/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description" content="Swagger 是被广泛使用的用于 REST API 描述和文档化的框架。它制定了一个用于描述 REST API 的规范，提供了一组工具用于编辑 API 描述文件、生成测试客户端、生成文档等等。Swagger UI 是其中的用于生成文档的工具。
-Jekyll 是深受程序员喜爱的静态网站生成工具，通常用来做 blog 站点，我们的工作团队也用它来做内部的技术文档库。
-在 Jekyll 里描述我们产品">
+<meta property="og:description" content="Swagger 是被广泛使用的用于 REST API 描述和文档化的框架。它制定了一个用于描述 REST API 的规范，提供了一组工具用于编辑 API 描述文件、生成测试客户端、生成文档等等。Swagger UI 是其中的用于生成文档的工具。 Jekyll 是深受程序员喜爱的静态网站生成工具，通常用来做 blog 站点，我们的工作团队也用它来做内部的技术文档库。 在 Jekyll 里描述我们产品">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-08-30T16:40:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jekyll 与 Swagger UI 集成">
-<meta name="twitter:description" content="Swagger 是被广泛使用的用于 REST API 描述和文档化的框架。它制定了一个用于描述 REST API 的规范，提供了一组工具用于编辑 API 描述文件、生成测试客户端、生成文档等等。Swagger UI 是其中的用于生成文档的工具。
-Jekyll 是深受程序员喜爱的静态网站生成工具，通常用来做 blog 站点，我们的工作团队也用它来做内部的技术文档库。
-在 Jekyll 里描述我们产品">
+<meta name="twitter:description" content="Swagger 是被广泛使用的用于 REST API 描述和文档化的框架。它制定了一个用于描述 REST API 的规范，提供了一组工具用于编辑 API 描述文件、生成测试客户端、生成文档等等。Swagger UI 是其中的用于生成文档的工具。 Jekyll 是深受程序员喜爱的静态网站生成工具，通常用来做 blog 站点，我们的工作团队也用它来做内部的技术文档库。 在 Jekyll 里描述我们产品">
 
 
 
@@ -308,12 +304,12 @@ Jekyll 是深受程序员喜爱的静态网站生成工具，通常用来做 blo
       
 
       
-        <p><a href="http://swagger.io/" target="_blank" rel="external">Swagger</a> 是被广泛使用的用于 REST API 描述和文档化的框架。它制定了一个用于描述 REST API 的规范，提供了一组工具用于编辑 API 描述文件、生成测试客户端、生成文档等等。<a href="https://github.com/swagger-api/swagger-ui" target="_blank" rel="external">Swagger UI</a> 是其中的用于生成文档的工具。</p>
-<p><a href="http://jekyllrb.com/" target="_blank" rel="external">Jekyll</a> 是深受程序员喜爱的静态网站生成工具，通常用来做 blog 站点，我们的工作团队也<a href="/blog/2015/01/26/jekyll/">用它来做内部的技术文档库</a>。</p>
+        <p><a href="http://swagger.io/" target="_blank" rel="noopener">Swagger</a> 是被广泛使用的用于 REST API 描述和文档化的框架。它制定了一个用于描述 REST API 的规范，提供了一组工具用于编辑 API 描述文件、生成测试客户端、生成文档等等。<a href="https://github.com/swagger-api/swagger-ui" target="_blank" rel="noopener">Swagger UI</a> 是其中的用于生成文档的工具。</p>
+<p><a href="http://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> 是深受程序员喜爱的静态网站生成工具，通常用来做 blog 站点，我们的工作团队也<a href="/blog/2015/01/26/jekyll/">用它来做内部的技术文档库</a>。</p>
 <p>在 Jekyll 里描述我们产品的 REST API，编辑排版是比较繁琐的事情，不同的 API 描述也没有统一的风格，因此考虑到引入 Swagger 来规范化 API 定义。</p>
-<p>为此，写了一个简单的 <a href="https://github.com/aleung/jekyll-swagger-ui" target="_blank" rel="external">Jekyll 插件</a>，只要像下面例子那样在 markdown 中简单的插入 <code>swagger</code> tag，指定 API 描述文件，相应的 API 文档就会由 Swagger UI 生成并嵌入在页面中。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% swagger /api/my-api.json %&#125;</div></pre></td></tr></table></figure>
-<p>安装使用方法请参看 <a href="https://github.com/aleung/jekyll-swagger-ui" target="_blank" rel="external">README</a>。另外，Swagger UI 没有考虑到在一个页面中显示多组 API，会有些显示问题，已经提交 pull request，下个版本有望修复，暂时可以先下载我的修改版本，详见 README。</p>
+<p>为此，写了一个简单的 <a href="https://github.com/aleung/jekyll-swagger-ui" target="_blank" rel="noopener">Jekyll 插件</a>，只要像下面例子那样在 markdown 中简单的插入 <code>swagger</code> tag，指定 API 描述文件，相应的 API 文档就会由 Swagger UI 生成并嵌入在页面中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% swagger /api/my-api.json %&#125;</span><br></pre></td></tr></table></figure>
+<p>安装使用方法请参看 <a href="https://github.com/aleung/jekyll-swagger-ui" target="_blank" rel="noopener">README</a>。另外，Swagger UI 没有考虑到在一个页面中显示多组 API，会有些显示问题，已经提交 pull request，下个版本有望修复，暂时可以先下载我的修改版本，详见 README。</p>
 
       
     </div>
@@ -423,7 +419,7 @@ Jekyll 是深受程序员喜爱的静态网站生成工具，通常用来做 blo
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -488,7 +484,7 @@ Jekyll 是深受程序员喜爱的静态网站生成工具，通常用来做 blo
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

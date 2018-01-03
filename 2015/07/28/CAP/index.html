@@ -86,22 +86,18 @@
 
 
 
-<meta name="description" content="更新一致性更新一致性问题发生在多个实体同时更新同一数据，出现写冲突。并发环境下维护数据一致性所用的方式通常分为悲观和乐观两种。
-悲观方式就是避免发生冲突，例如采用 write lock，根本不让写操作同时发生。排在后面的操作者需要检查最新数据来判断是否继续更新。
-乐观方式是先让冲突发生，然后检测冲突并处理。例如用条件更新，仅当数据库中的数据当前值与之前读出的值相同时才对此执行更新操作。另一种方法是">
+<meta name="description" content="更新一致性更新一致性问题发生在多个实体同时更新同一数据，出现写冲突。并发环境下维护数据一致性所用的方式通常分为悲观和乐观两种。 悲观方式就是避免发生冲突，例如采用 write lock，根本不让写操作同时发生。排在后面的操作者需要检查最新数据来判断是否继续更新。 乐观方式是先让冲突发生，然后检测冲突并处理。例如用条件更新，仅当数据库中的数据当前值与之前读出的值相同时才对此执行更新操作。另一种方法是">
+<meta name="keywords" content="SoftwareDev,Database">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CAP">
 <meta property="og:url" content="http://aleung.github.io/blog/2015/07/28/CAP/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description" content="更新一致性更新一致性问题发生在多个实体同时更新同一数据，出现写冲突。并发环境下维护数据一致性所用的方式通常分为悲观和乐观两种。
-悲观方式就是避免发生冲突，例如采用 write lock，根本不让写操作同时发生。排在后面的操作者需要检查最新数据来判断是否继续更新。
-乐观方式是先让冲突发生，然后检测冲突并处理。例如用条件更新，仅当数据库中的数据当前值与之前读出的值相同时才对此执行更新操作。另一种方法是">
+<meta property="og:description" content="更新一致性更新一致性问题发生在多个实体同时更新同一数据，出现写冲突。并发环境下维护数据一致性所用的方式通常分为悲观和乐观两种。 悲观方式就是避免发生冲突，例如采用 write lock，根本不让写操作同时发生。排在后面的操作者需要检查最新数据来判断是否继续更新。 乐观方式是先让冲突发生，然后检测冲突并处理。例如用条件更新，仅当数据库中的数据当前值与之前读出的值相同时才对此执行更新操作。另一种方法是">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-08-30T15:41:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CAP">
-<meta name="twitter:description" content="更新一致性更新一致性问题发生在多个实体同时更新同一数据，出现写冲突。并发环境下维护数据一致性所用的方式通常分为悲观和乐观两种。
-悲观方式就是避免发生冲突，例如采用 write lock，根本不让写操作同时发生。排在后面的操作者需要检查最新数据来判断是否继续更新。
-乐观方式是先让冲突发生，然后检测冲突并处理。例如用条件更新，仅当数据库中的数据当前值与之前读出的值相同时才对此执行更新操作。另一种方法是">
+<meta name="twitter:description" content="更新一致性更新一致性问题发生在多个实体同时更新同一数据，出现写冲突。并发环境下维护数据一致性所用的方式通常分为悲观和乐观两种。 悲观方式就是避免发生冲突，例如采用 write lock，根本不让写操作同时发生。排在后面的操作者需要检查最新数据来判断是否继续更新。 乐观方式是先让冲突发生，然后检测冲突并处理。例如用条件更新，仅当数据库中的数据当前值与之前读出的值相同时才对此执行更新操作。另一种方法是">
 
 
 
@@ -328,9 +324,9 @@
 <p>另一方面，一致性也与 latency 相互排斥，当引入更多手段来保证一致性时（如仲裁），latency 会增加，或者说当允许更大的 latency 时，可以增加一致性保障（例如不断重试）。</p>
 <h1 id="放宽持久性约束"><a href="#放宽持久性约束" class="headerlink" title="放宽持久性约束"></a>放宽持久性约束</h1><p>某些场合可以牺牲一些持久性以换取更好性能，也就是要忍受在故障情况下部分数据丢失。</p>
 <h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
-<li><a href="https://book.douban.com/subject/25662138/" target="_blank" rel="external">NoSQL Distilled</a></li>
-<li><a href="https://codahale.com/you-cant-sacrifice-partition-tolerance/" target="_blank" rel="external">You Can’t Sacrifice Partition Tolerance</a></li>
-<li><a href="http://www.infoq.com/cn/articles/cap-twelve-years-later-how-the-rules-have-changed" target="_blank" rel="external">CAP理论十二年回顾：”规则”变了</a></li>
+<li><a href="https://book.douban.com/subject/25662138/" target="_blank" rel="noopener">NoSQL Distilled</a></li>
+<li><a href="https://codahale.com/you-cant-sacrifice-partition-tolerance/" target="_blank" rel="noopener">You Can’t Sacrifice Partition Tolerance</a></li>
+<li><a href="http://www.infoq.com/cn/articles/cap-twelve-years-later-how-the-rules-have-changed" target="_blank" rel="noopener">CAP理论十二年回顾：”规则”变了</a></li>
 </ul>
 
       
@@ -443,7 +439,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -508,7 +504,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

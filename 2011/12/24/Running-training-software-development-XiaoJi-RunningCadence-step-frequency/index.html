@@ -86,22 +86,18 @@
 
 
 
-<meta name="description" content="在10km跑总结里提到：这次10km跑成绩的提高最重要因素是步频的提高。
-在网上看了一些资料，提到提高步频的好处，并指出长跑理想的步频应该在每分钟180步左右，就开始尝试练习提高步频。但是跑起来并不知道怎样的频率才是合适的，还需要有工具测量才行。想到可以用手机的加速度传感器来测量，跑步时把手机绑在手臂上或者拿手上，测量手的摆动周期应该就可以计算出步频。
-有了想法后，就考虑怎样实现。先要知道跑步时加">
+<meta name="description" content="在10km跑总结里提到：这次10km跑成绩的提高最重要因素是步频的提高。 在网上看了一些资料，提到提高步频的好处，并指出长跑理想的步频应该在每分钟180步左右，就开始尝试练习提高步频。但是跑起来并不知道怎样的频率才是合适的，还需要有工具测量才行。想到可以用手机的加速度传感器来测量，跑步时把手机绑在手臂上或者拿手上，测量手的摆动周期应该就可以计算出步频。 有了想法后，就考虑怎样实现。先要知道跑步时加">
+<meta name="keywords" content="SoftwareDev,Android,MyWork,Running">
 <meta property="og:type" content="article">
 <meta property="og:title" content="跑步步频训练软件 RunningCadence 开发小记">
 <meta property="og:url" content="http://aleung.github.io/blog/2011/12/24/Running-training-software-development-XiaoJi-RunningCadence-step-frequency/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description" content="在10km跑总结里提到：这次10km跑成绩的提高最重要因素是步频的提高。
-在网上看了一些资料，提到提高步频的好处，并指出长跑理想的步频应该在每分钟180步左右，就开始尝试练习提高步频。但是跑起来并不知道怎样的频率才是合适的，还需要有工具测量才行。想到可以用手机的加速度传感器来测量，跑步时把手机绑在手臂上或者拿手上，测量手的摆动周期应该就可以计算出步频。
-有了想法后，就考虑怎样实现。先要知道跑步时加">
+<meta property="og:description" content="在10km跑总结里提到：这次10km跑成绩的提高最重要因素是步频的提高。 在网上看了一些资料，提到提高步频的好处，并指出长跑理想的步频应该在每分钟180步左右，就开始尝试练习提高步频。但是跑起来并不知道怎样的频率才是合适的，还需要有工具测量才行。想到可以用手机的加速度传感器来测量，跑步时把手机绑在手臂上或者拿手上，测量手的摆动周期应该就可以计算出步频。 有了想法后，就考虑怎样实现。先要知道跑步时加">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-03-16T14:11:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="跑步步频训练软件 RunningCadence 开发小记">
-<meta name="twitter:description" content="在10km跑总结里提到：这次10km跑成绩的提高最重要因素是步频的提高。
-在网上看了一些资料，提到提高步频的好处，并指出长跑理想的步频应该在每分钟180步左右，就开始尝试练习提高步频。但是跑起来并不知道怎样的频率才是合适的，还需要有工具测量才行。想到可以用手机的加速度传感器来测量，跑步时把手机绑在手臂上或者拿手上，测量手的摆动周期应该就可以计算出步频。
-有了想法后，就考虑怎样实现。先要知道跑步时加">
+<meta name="twitter:description" content="在10km跑总结里提到：这次10km跑成绩的提高最重要因素是步频的提高。 在网上看了一些资料，提到提高步频的好处，并指出长跑理想的步频应该在每分钟180步左右，就开始尝试练习提高步频。但是跑起来并不知道怎样的频率才是合适的，还需要有工具测量才行。想到可以用手机的加速度传感器来测量，跑步时把手机绑在手臂上或者拿手上，测量手的摆动周期应该就可以计算出步频。 有了想法后，就考虑怎样实现。先要知道跑步时加">
 
 
 
@@ -317,8 +313,8 @@
 <p>还有个问题是手机加速度传感器的采样频率能到多高？是否能满足要求？长跑理想的着地次数是每分钟180次，相当于3Hz，一般人都只会比这个慢。实测我的Nexus One使用最短采样间隔时大约30~50ms能获取到一组数据，也就是采样频率大于20Hz，对于检测3Hz的信号完全足够。</p>
 <p>对于复杂波形的处理方法，同样是简单的一阶低通滤波，截止频率取了3.5Hz，相当于每分钟210次着地。高频干扰通过滤波削弱后，相邻波峰的时间间隔就是两次着地的时间间隔了。具体实现时，波峰判断会比较麻烦，采样检查是否超过阈值来代替。本来想按振幅比例来设定阈值的，但算振幅也比较麻烦，之前检测重力加速度时已经得到重力加速度在测量轴上的分量，直接拿它的1/2做阈值就好了。这样做还带来了一个没有预料到的副作用：走路时脚步比较轻，超不过阈值，因此软件还能知道当前是否处于跑步状态。</p>
 <p>步频数据算出来以后其他的就好办了。跑步时不方便看屏幕，通过语音合成播放出来。设定目标步频，语音提示应该加快还是减慢。还打算过增加个目标步频的节拍音，当实际步频与目标不一致时播放出来，不过软件用了这段时间，感觉有语音播报步频基本上已经足够了，暂时不做以后再说吧。</p>
-<p>这个软件项目的网站： <a href="http://code.google.com/p/running-cadence/" target="_blank" rel="external">http://code.google.com/p/running-cadence/</a></p>
-<p>软件发布在Android Market:<a href="https://market.android.com/details?id=leoliang.runningcadence" target="_blank" rel="external">https://market.android.com/details?id=leoliang.runningcadence</a></p>
+<p>这个软件项目的网站： <a href="http://code.google.com/p/running-cadence/" target="_blank" rel="noopener">http://code.google.com/p/running-cadence/</a></p>
+<p>软件发布在Android Market:<a href="https://market.android.com/details?id=leoliang.runningcadence" target="_blank" rel="noopener">https://market.android.com/details?id=leoliang.runningcadence</a></p>
 
       
     </div>
@@ -434,7 +430,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -499,7 +495,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

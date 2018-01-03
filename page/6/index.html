@@ -90,6 +90,7 @@
 <meta property="og:title" content="Good good study, day day up">
 <meta property="og:url" content="http://aleung.github.io/blog/page/6/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Good good study, day day up">
 
@@ -261,6 +262,507 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2014/12/14/api-metrics-demo/" itemprop="url">
+                  API metrics demo
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-12-14T17:21:17+08:00" content="2014-12-14">
+              2014-12-14
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>This demo uses Graphite and Grafana to store and present API metrics. The demo environment is installed on Ubuntu.</p>
+<h2 id="Graphite"><a href="#Graphite" class="headerlink" title="Graphite"></a>Graphite</h2><p>Graphite has two major components. </p>
+<p>The first is <code>carbon-cache</code>, which is a daemon process to receive metrics data from client through TCP connection and store into filesystem via <code>whisper</code> database library.</p>
+<p>Another one is a webapp. It provides HTTP API for generating graphs and retrieving raw data.</p>
+<p>Since Ubuntu 14.04, it’s easy to install graphite with <code>apt-get</code>:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install graphite-web graphite-carbon</span><br></pre></td></tr></table></figure>
+<p>Both <code>carbon</code> and <code>graphite-web</code> are installed as python module. </p>
+<p>Start carbon:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service carbon-cache start</span><br></pre></td></tr></table></figure>
+<p>Graphite-web is base on django framework. Read <code>/usr/share/doc/graphite-web/README</code> for how to setup graphite-web. A major steps is to create database and default data:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo graphite-manage syncdb</span><br><span class="line">sudo chown _graphite:_graphite /var/lib/graphite/graphite.db</span><br></pre></td></tr></table></figure>
+<p>For testing Graphite, you can start Graphite with the Django lightweight Web server for development:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -u _graphite /usr/bin/django-admin runserver --settings graphite.settings 0.0.0.0:8080</span><br></pre></td></tr></table></figure>
+<p>To install on Apache, follow the guide in <code>/usr/share/doc/graphite-web/README</code>. </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libapache2-mod-wsgi</span><br><span class="line">sudo cp /usr/share/graphite-web/apache2-graphite.conf /etc/apache2/sites-available/graphite-web.conf</span><br><span class="line">sudo a2ensite graphite-web</span><br><span class="line">sudo service apache2 restart</span><br></pre></td></tr></table></figure>
+<p>Graphite-web 0.9.12 only works under URL root path, it conflict with Apache default site setting. I modify <code>/etc/apache2/sites-enabled/graphite-web.conf</code> to make it work in a virtual host on port 81.</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute"><span class="nomarkup">Listen</span></span> 81</span><br><span class="line"><span class="section">&lt;VirtualHost *:81&gt;</span></span><br><span class="line"> ...</span><br><span class="line"><span class="section">&lt;/VirtualHost&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Reference:</p>
+<ul>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-graphite-on-an-ubuntu-14-04-server" target="_blank" rel="noopener">https://www.digitalocean.com/community/tutorials/how-to-install-and-use-graphite-on-an-ubuntu-14-04-server</a></li>
+</ul>
+<h2 id="Grafana"><a href="#Grafana" class="headerlink" title="Grafana"></a>Grafana</h2><p>Download grafana package and extract to a directory. Configure Apache web server to make the grafana directory accessable.</p>
+<p>Edit <code>config.js</code> (copy from <code>config.sample.js</code>) to enable graphite as datasource.</p>
+<p>Because graphite-web is hosting on virtual host on port 81, which is different than where grafana is hosting, there is cross site script access restriction. Have to enable CORS (cross origin resource sharing) on graphite-web side.</p>
+<p>Enable Apache mod_headers:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo a2enmod headers</span><br></pre></td></tr></table></figure>
+<p>Add into <code>/etc/apache2/sites-enabled/graphite-web.conf</code>:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute"><span class="nomarkup">Header</span></span> set Access-Control-Allow-Origin <span class="string">"*"</span></span><br><span class="line"><span class="attribute"><span class="nomarkup">Header</span></span> set Access-Control-Allow-Methods <span class="string">"GET, OPTIONS"</span></span><br><span class="line"><span class="attribute"><span class="nomarkup">Header</span></span> set Access-Control-Allow-Headers <span class="string">"origin, authorization, accept"</span></span><br></pre></td></tr></table></figure>
+<h2 id="Elasticsearch"><a href="#Elasticsearch" class="headerlink" title="Elasticsearch"></a>Elasticsearch</h2><p>Elasticsearch is used by Granfan as a database to persistent dashboard configuration. Search and analystics features of Elasticsearch isn’t used in this case. Without Elasticsearch Grafana still works, but unable to save any change to dashboard design. You have to export dashboard JSON and import next time you want to use it.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.1.deb</span><br><span class="line">sudo dpkg -i elasticsearch-1.4.1.deb</span><br></pre></td></tr></table></figure>
+<p>Elasticsearch is not starting on bootup by default. To setup as service, run:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-rc.d elasticsearch defaults 95 10</span><br></pre></td></tr></table></figure>
+<p>To start manually, run:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/elasticsearch start</span><br></pre></td></tr></table></figure>
+<p>To enable CORS (cross origin resource sharing), add below into <code>/etc/elasticsearch/elasticsearch.yml</code>:</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">http.cors.enabled:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p>The scala script <code>feed_graphite.scala</code> generates mock API metrics data for demo. The Grafana portal is defined as <code>api.json</code>. Both files are stored in this <a href="https://gist.github.com/aleung/1ec7e56bfa9448af920b" target="_blank" rel="noopener">gist</a>.</p>
+<p><img src="/attachments/2014/12/api-metrics-demo.png" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2014/11/26/2014-guangzhou-marathon-analysis/" itemprop="url">
+                  2014广马数据分析
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-11-26T07:38:06+08:00" content="2014-11-26">
+              2014-11-26
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><em>Updated 2014-11-27: 之前漏了一些号码段，重新补上更新了。</em></p>
+<p>2014广州马拉松在网上可以根据号码查询成绩和名次了，但是没有开放完整成绩册的数据下载。出于好奇，想知道成绩的分布：跑330以内的有多少人？400呢？有多少人最后关门一刻才冲线的？于是写了个程序把数据抓下来分析。</p>
+<img src="/blog/attachments/2014/11/groups.png" class="right">
+<p>数据不包含号码以0开头的专业选手（大概几十人）。由于不知道确切号码段，没完赛选手的数据有可能有误。</p>
+<p>首先是各组的人数，男女比例全马约8:1，半马约3.6:1。跑步的妹子相对还是比较少，女子只要完赛了，总能够拿到个几百名的名次的 :)</p>
+<p>然后看成绩分布。</p>
+<p>半程组里有15%男选手和22%女选手未能完成比赛，而全程组不能完赛的男女选手比例分别是14%和21%。不一定是女子毅力不行，是相同的关门时间对女子更困难些吧。但有意思的是虽然全程更痛苦，但完成率跟半程是基本上一样的。</p>
+<p>半马组，一半的男选手在2:30内跑完，一半的女选手在2:45内跑完。全马组，这个数字是男子5:00，女子5:20。有能力5小时内跑完全程的，已经强过一半的人了。</p>
+<p>有几十人是过了关门时间才冲线的，依然有成绩，看来组委会还不是那么不近人情。</p>
+<img src="/blog/attachments/2014/11/half-marathon.png">
+<img src="/blog/attachments/2014/11/marathon.png">
+<p>能跑330是什么水平？400呢？看看下面的表格，比例是表示有多少人在这个时间内完赛。</p>
+<ul>
+<li>男子全程</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">时间</th>
+<th style="text-align:right">比例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">3:30</td>
+<td style="text-align:right">4.0%</td>
+</tr>
+<tr>
+<td style="text-align:right">4:00</td>
+<td style="text-align:right">15.6%</td>
+</tr>
+<tr>
+<td style="text-align:right">4:30</td>
+<td style="text-align:right">32.1%</td>
+</tr>
+<tr>
+<td style="text-align:right">5:00</td>
+<td style="text-align:right">52.0%</td>
+</tr>
+<tr>
+<td style="text-align:right">5:30</td>
+<td style="text-align:right">67.2%</td>
+</tr>
+<tr>
+<td style="text-align:right">6:00</td>
+<td style="text-align:right">85.5%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>女子全程</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">时间</th>
+<th style="text-align:right">比例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">3:30</td>
+<td style="text-align:right">1.3%</td>
+</tr>
+<tr>
+<td style="text-align:right">4:00</td>
+<td style="text-align:right">5.7%</td>
+</tr>
+<tr>
+<td style="text-align:right">4:30</td>
+<td style="text-align:right">17.1%</td>
+</tr>
+<tr>
+<td style="text-align:right">5:00</td>
+<td style="text-align:right">38.6%</td>
+</tr>
+<tr>
+<td style="text-align:right">5:30</td>
+<td style="text-align:right">58.0%</td>
+</tr>
+<tr>
+<td style="text-align:right">6:00</td>
+<td style="text-align:right">78.2%</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2014/09/16/smog/" itemprop="url">
+                  是灰霾吗？
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-09-16T23:53:29+08:00" content="2014-09-16">
+              2014-09-16
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>看 Google Maps 上面的卫星图，珠江新城一带一片灰蒙蒙，但是有个奇怪的现象：高层建筑的楼顶似乎会清晰一些。</p>
+<img src="/blog/attachments/2014/9/smog.png">
+<p>在图上最显眼的超高层建筑就是东塔和西塔了，东塔目前仍在建（好像已经封顶了），不知道卫星图是什么时候的，看起来也起码建得跟西塔一样高了。查了一下西塔（IFC-广州国际金融中心）的高度是440米。在图上看出西塔的2/3高度以下要灰一些，另外在建的东塔和旁边一个同样在建但高度只有1/3左右的建筑的屋顶的清晰度也有对比。是不是因为接近地面的灰霾影响了通透度，而灰霾主要沉积在距离地表二三百米以内的低空？</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2014/08/23/plantuml/" itemprop="url">
+                  PlantUML 简介
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-08-23T16:57:33+08:00" content="2014-08-23">
+              2014-08-23
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>关于PlantUML的简介。</p>
+<p><iframe src="//www.slideshare.net/slideshow/embed_code/38238529" width="597" height="486" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/aleung/plantuml" title="PlantUML" target="_blank">PlantUML</a> </strong> from <strong><a href="http://www.slideshare.net/aleung" target="_blank">aleung</a></strong> </div></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2014/08/23/getting-the-hang-of-web-typography/" itemprop="url">
                   Getting the Hang of Web Typography
                 </a>
@@ -305,7 +807,7 @@
       
         
           
-            <p>读书笔记摘抄：《<a href="http://book.douban.com/subject/25741532/" target="_blank" rel="external">众妙之门——网页排版设计制胜秘诀</a>》</p>
+            <p>读书笔记摘抄：《<a href="http://book.douban.com/subject/25741532/" target="_blank" rel="noopener">众妙之门——网页排版设计制胜秘诀</a>》</p>
 <h1 id="版式设计"><a href="#版式设计" class="headerlink" title="版式设计"></a>版式设计</h1><p>正文字号常见为12~14px。</p>
 <p>标题与正文字号（font-size）的比例，比较流行的平均值是1.96。也就是将正文文字字号乘以2，就得到标题文字的字号。字号从传统值（6,7,8,9,10,11,12,14,16,18,21,24,36,48,60,72）或者斐波那契数列（8,13,21,34,55）中选择，可以得到更自然的版式效果。</p>
 <p>计算行宽的简单方法：行宽=字号*30。如果字号是10px，行宽就是300px，差不多等于一行65个字。</p>
@@ -351,436 +853,7 @@
 </ul>
 <h1 id="CSS-Font-Stack"><a href="#CSS-Font-Stack" class="headerlink" title="CSS Font Stack"></a>CSS Font Stack</h1><p>创建字体栈的基本公式：最佳字体 + 次佳字体 + 常见的相似字体 + 相似的网页安全字体 + 通用字体。</p>
 <p>在字体栈中要注意字体的字形比例。例如网页安全字体中，Verdana字形很宽，Arial/Helvetica相对较窄，它们不应该同时存在于版式中；Times和Georgia也是同理。</p>
-<p>常见的字体栈参看 <a href="http://www.smashingmagazine.com/2009/09/22/complete-guide-to-css-font-stacks/" target="_blank" rel="external">Guide to CSS Font Stacks</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2014/06/21/run/" itemprop="url">
-                  跑步日記
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-06-21T18:19:08+08:00" content="2014-06-21">
-              2014-06-21
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>今天難得的陰天，早上下過雨，溫度30℃出頭，沒有早幾天那麽酷熱，也有點風。<br>磨磨蹭蹭，早上10點半才出發。熱身段過後，按5’30”配速，從江灣橋過河南，沿江邊一直往東跑。</p>
-<p>過了廣州塔，就到獵德大橋，大概10km位置。這時我面臨著一個艱難的選擇：上橋，就過到珠江新城然後沿江邊往回走，穿過二沙島回家，這是跑過好多次的路線，大概十七八公里左右。如果直走，就一直要到琶洲大橋才能過橋，到了北岸往回跑，要到家路程估計有近30公里，這時我從沒有跑過的距離。在我的大腦還在激烈思想鬥爭的時候，雙腿肌肉已經作出了決定——直走。</p>
-<p>考慮到前路漫漫，將速度下降到5’50”。這時接近正午時分，雖然沒有太陽直射，人也比較熱，心率上升到接近160。找賣水的地方，但琶洲一帶很荒蕪，估算著也撐到過了琶洲橋後也沒問題。</p>
-<p>13.5km處上橋，這橋真長，足足一公里。過了琶洲大橋下來，14.6km，去超市買運動飲料喝，停了幾分鐘。這麽一停下來，就沒法重新跑起來了，完全不想動。繼續跑後氣喘得很厲害，隔夜風爐都吹得著，腳擡不起，步頻下降了很多。將速度下降到6’30”了，希望能夠慢慢適應過來。堅持了一段，毫無起色，終於在過了華南大橋底，到了17km處放棄了。不清楚為什麼買水停了一下後狀態會突然變得那麽差，看回數據，過橋前的速度還是保持得比較平穩的5’50”左右。以前我也有經驗是不能停，一旦停下就很難重新回復狀態，但慢慢適應一段時間後還是可以的，這次完全不行。</p>
-<p>找不到廁所，鑽進樹叢裏面尿尿。舒暢完後渾身酥軟，一轉身沒站穩跟身後樹幹長滿刺的木棉樹來了個親密接觸。</p>
-<p>沿著江邊走，中午很寧靜，人不多，只有知了在不知疲倦的叫。突然覺得這個環境很舒服，享受一下時光吧，在榕樹陰下的石凳坐下，冰冷的石頭冷卻著大腿的肌肉，涼風吹拂身上的汗水。出來跑步什麼都沒有帶，不用再習慣性的拿手機來看，就讓時間的碎片留白，就是那樣靜坐著，看著開闊的江面，感覺那TMD不就是幸福麽。所以人都是自己感動自己的，要不哪來那麽多感人的事情。</p>
-<p>歇了一會，將運動飲料全喝完了，感覺恢復了一些，起來繼續跑一下，邊跑盤算著後面還能再跑多遠。但是，跑累了的時候就是靠內心去堅持的，原來一直習慣了喘著氣的狀態，可以一直跑下去，一旦享受過停下休息的舒服後就承受不了之前那種苦了。最後跑到珠江新城地鐵站收官，累計20.5km。後面這段其實心率還在正常範圍，肌肉沒有不適，就是步頻慢了，按理說這個狀態還可以繼續跑上好一段距離的。</p>
-<p>另一方面，今天跑的狀態看來確實不是那麽好，跑完幾個小時的感覺比以往跑這個距離要累。<br>回來看數據，感覺步頻似乎是反應體力狀態的一個直觀指標，從8.4km起步頻明顯下降了一個台階，而14.6km買水後步頻更是嚴重下降。另一方面，心率跟狀態有什麼關聯也還不是很清晰，每次跑步隨著疲勞累積，心率都是不斷升高的。但看以往的記錄，心率到160多速度依然保持的也有。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2014/04/03/zhong-guo-di-tu-pian-yi/" itemprop="url">
-                  中國電子地圖偏移
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-04-03T07:43:45+08:00" content="2014-04-03">
-              2014-04-03
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>幾年前我寫過對Google中國地圖偏移規律的分析(<a href="/2009/12/26/Google-China-Map-offset-1/">1</a>)(<a href="/2009/12/27/Google-China-Map-offset-2/">2</a>)，根據抓取到的偏移量數據，大概看出呈現了<code>sin(a)+sin(3a)</code>這樣的函數曲線規律，並且這個函數以不同頻率和幅度疊加了兩次。當時我推導出函數及其係數，利用它去校正偏移，在百公里範圍的區域內已經非常理想，但是在全國大範圍的不同區域，係數需要有點不同，也就是擬合函數還是差了一些低頻率的細節。不過當時的分析細節我也不敢在博客裏面寫，後來我也沒有再搞地圖方面的應用開發了，就把這個放下。</p>
-<p>實際上這個地圖偏移並不是Google自己搞的算法，而是國家測繪局以立法的形式統一要求加的，稱為地形图非线性保密处理，所有從事國內電子地圖的廠商應該都得到了這個算法，實際上並起不到什麼所謂保護國家安全和國家利益的作用（保護行業壟斷者利益倒是真的），但是這個地圖偏移對地理信息處理和GPS技術的民用化起到了巨大的阻礙作用，近年各種與地理位置相關的應用如雨後春筍般湧現，但都為中國地圖的偏移而頭痛不已，後來由於下面提到的算法的流傳，問題得以解決，但增加很多不必要的複雜性和浪費開發、數據處理的人力。在我看來，這個地圖非線性加密處理在地理信息領域就像GFW在互聯網信息領域一樣，浪費了大量社會財富來對技術發展與應用進行封鎖。<a href="http://baike.baidu.com/view/2356807.htm#2_2" target="_blank" rel="external">李成名</a>，你真的成名了。</p>
-<p>感謝Internet，感謝open source，現在這個偏移算法在網上已經可以輕松找到了。</p>
-<p>網上流傳的原始算法是<a href="http://emq.googlecode.com/svn/emq/src/Algorithm/Coords/Converter.java" target="_blank" rel="external">這個Java文件</a>，然後有人整理過代碼，接力開發出多種語言版本。在『A Fork of Stuffs』博客裏，<a href="http://blog.csdn.net/coolypf/article/details/8686588" target="_blank" rel="external">地球坐标系 (WGS-84) 到火星坐标系 (GCJ-02) 的转换算法</a>給出了C#實現，這個博客另外一篇<a href="http://blog.csdn.net/coolypf/article/details/8569813" target="_blank" rel="external">火星坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换算法</a>也很有用。而使用比較方便應該是下面的github代碼庫：</p>
-<ul>
-<li><a href="https://github.com/googollee/eviltransform" target="_blank" rel="external">googollee/eviltransform</a>: C, go, JavaScript, php語言版本</li>
-<li><a href="https://github.com/Leask/EvilTransform" target="_blank" rel="external">Leask/EvilTransform</a>: Java和C#語言版本，似乎就是將前面介紹的代碼收集到github裏面，沒有改動。</li>
-</ul>
-<p>另外，github裏還有一個項目 <a href="https://github.com/fourcels/lbs" target="_blank" rel="external">fourcels/lbs</a> 是用查表法來糾偏的，裏面的偏移數據（共9M）說不定就是早期從Google地圖服務上抓下來的。但現在有了算法，查表法的價值就不大了。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2014/03/15/pebble/" itemprop="url">
-                  Pebble
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-03-15T21:52:22+08:00" content="2014-03-15">
-              2014-03-15
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://getpebble.com/" target="_blank" rel="external">Pebble手錶</a>戴了兩個星期，如果用一句話來總結感受，那就是：基本滿意，但還沒到愛不釋手的程度，沒有帶來驚喜。</p>
-<p>首先，Pebble真的是一隻手錶，可以看時間。如果你有幸用過各種『智能手環』，就會明白為什麼這麽說了。我戴過<a href="https://jawbone.com/up" target="_blank" rel="external">Jawbone UP</a>一段時間，試過好多次下意識的擡起手腕來看，然後才想起那貨是沒有任何顯示的。</p>
-<img src="/blog/attachments/2014/3/pebbles.jpg" class="right">
-<p>佩戴舒適度上說，Pebble還過得去，塑料錶帶的柔軟度不錯，反正我已經習慣了24小時戴在手腕上的感覺。在這之前，我都有十幾年沒有戴過手錶了吧。</p>
-<p>外形應該是我最不在意的一項了，但不得不說 Pebble 外形上太普通。我的黑色版本，正面看弧形表面，與黑白顯示屏融為一體，還算有點現代感，但側面看就很『薯鈍』的樣子 —— 厚，按鈕粗曠，左邊還有很突兀的幾個充電觸點。</p>
-<p>手錶用的是 144x168 的低分辨率黑白e-paper屏幕，在現在手機電腦都視網膜屏的時代，這個分辨率真是超低了。E-paper的對比度很高，無論什麼光線條件下都非常清晰，雖然分辨率低，實際顯示文字的效果還是不差的。圖像？就算了吧，除了像素少，這個屏還連灰度都顯示不了。不知道這個e-paper跟Kindle之類閱讀器的屏是不是同樣的技術，但看起來還是有區別：Pebble屏的像素邊緣很銳利，顯示直接改變沒有殘影，不像Kindle要全屏反色刷一次。</p>
-<p>Pebble 可以安裝 app，當然了，否則就對不起 smart watch 這個名字。App 分為 watchface 和 watchapp 兩大類，無論是那種也不管大小，總共最多安裝8個，不知道它內部怎麼管理空間的。Watchface 只有一屏顯示信息，不能接受按鍵控制，最常見用途是顯示時間，當然也可以顯示其他信息，例如天氣、日曆之類。Watchapp就是可以與用戶交互的應用，可以有多屏，用戶通過菜單、控制按鈕來操作。</p>
-<p>Pebble 的方便之處是它作爲手機的一個延伸的信息終端，手機可以將實時的信息推送到手表上，或者是在手表上顯示濃縮的手機應用的某些信息。前者例如，我以前經常會漏接電話或者漏看短信，因爲手機放袋裏聽不到聲音，現在戴著 Pebble 就不會了，因爲手表會振動提醒。後者例如一些跑步應用，能在 Pebble 上顯示速度、距離等關鍵信息，就不用拿手機出來看。</p>
-<p>Pebble 最大的問題是操控不方便。表上有四個按鈕：上/下/Enter/ESC，沒有觸摸屏，任何操作都只能靠按鍵選擇菜單項，因此經常要按好多次按鈕才能完全想要的操作。而 Pebble 的按鈕按起來又不算是特別方便，總之我是不會想在手表上做按超過一兩次按鈕的操作的。這種操控的不方便限制了app可以做的事情，感覺這個比起屏幕和表的硬件處理能力的限制還要大。Pebble 也不支持 app 後台運行，要求在手錶上跑多任務，電池撐不住吧，但沒有多任務也造成一些類型的 app 沒法做了。</p>
-<p>至于耗電，目前還不至于很大問題。官方宣傳可以用5-7天，我實際用下來只有3天，也不知道是軟件問題還是硬件問題。但3天其實還是可以接受的。</p>
-<p>最後介紹一下我現在常用的app：</p>
-<h5 id="Watchface"><a href="#Watchface" class="headerlink" title="Watchface"></a>Watchface</h5><img src="/blog/attachments/2014/3/postage_watchface.png" class="right">
-<img src="/blog/attachments/2014/3/agenda_watchface.png" class="right">
-<p>Agenda Watchface</p>
-<p>: 在辦公室或者需要按日程做事的時候會用這個watchface，一眼就能看到當前時間和接下來的日程安排。</p>
-<p>Postage</p>
-<p>: 當我不需要看日程安排的時候，喜歡用這個face，夠簡潔，外圍的黑色與黑色表身融為一體。實際看起來比截圖好看很多。</p>
-<h5 id="Watchapp"><a href="#Watchapp" class="headerlink" title="Watchapp"></a>Watchapp</h5><img src="/blog/attachments/2014/3/pebbleauth.png" class="right">
-<p>PebbleAuth </p>
-<p>: 二步認證的token生成器，相當於 Google Authenticator 運行在手錶上，這樣更加安全啦。現在除了 Google，LastPass 和 EverNote 都支持二步認證了。</p>
-<p>Sleep as Android</p>
-<p>: 我買 Pebble 就是因為看到 Sleep as Android 支持 Pebble 了，才動了心的。這個應用利用 Pebble 上的運動傳感器監控睡眠的深淺度，早上能夠在合適的淺睡眠週期通過振動叫醒。我以前就在用 Sleep as Android，但要用手機的運動傳感器，所以手機要放在床墊上，現在戴著手錶就行了，手機可以放遠一些。</p>
-<img src="/blog/attachments/2014/3/sleepaspebble.png">
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2014/01/20/text-to-uml-diagram/" itemprop="url">
-                  Text to UML diagram
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-01-20T22:10:00+08:00" content="2014-01-20">
-              2014-01-20
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Usually I used <a href="http://astah.net/" target="_blank" rel="external">Astah</a> to draw UML diagram to put into design document in MS Word or PowerPoint format. The separation of the source and generated file making management of the UML model file a problem. And also it’s annoying to adjust a large amount of elements by dragging with mouse whenever you add something in the diagram. For a coder, typing on keyboard is faster than drawing with mouse.</p>
-<p>Now I switch to <a href="http://plantuml.com/" target="_blank" rel="external">PlantUML</a>. Just write UML in its <a href="http://en.wikipedia.org/wiki/Domain-specific_language" target="_blank" rel="external">DSL</a> and PlantUML generates the diagram. It supports most of the frequent used UML diagrams, which I use most are sequence diagram, class diagram and state diagram. Then I paste the generated diagram into slides (design document) and keep the “source” in note. No need to wonder where to find original UML model file when I need to update the diagram.</p>
-<p>The core of PlantUML is simply a jar file. It parses the text input and depends on <em>dot</em> tool from <a href="http://www.graphviz.org/" target="_blank" rel="external">Graphviz</a> for graph generation (except sequence diagram). </p>
-<p>There are <a href="http://www.plantuml.com/running.html" target="_blank" rel="external">a bunch of ways</a> to run PlantUML. I highlight some of them I prefer:</p>
-<ul>
-<li>Online editor. Best choice if you’re too lazy to install anything on your computer.</li>
-<li>Desktop (Windows): <a href="https://code.google.com/p/plant-uml-file-watcher/" target="_blank" rel="external">PlantUML File Watcher</a></li>
-<li>Embedded into Octopress blog platform. The below examples are using it.</li>
-<li>IDE plugin. Easy way to keep UML together with source code.</li>
-</ul>
-<p>The syntax of PlantUML’s DSL is quite intuitional, you can start to use it by following example.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">package ConsentObject &lt;&lt;Rect&gt;&gt; &#123;</div><div class="line">  Consent : id</div><div class="line">  Scope : key</div><div class="line">&#125;</div><div class="line"> </div><div class="line">Client - User</div><div class="line">(Client, User) . Consent</div><div class="line"> </div><div class="line">Consent - &quot;*&quot; Scope</div><div class="line"> </div><div class="line">Consent &quot;1&quot; -- &quot;1..*&quot; AccessToken</div></pre></td></tr></table></figure>
-<p>The generated diagram:</p>
-<img src="http://www.plantuml.com/plantuml/svg/K-0gI4pEJanFLN3EpojEpIlnJyfAJIvHiB490b9sTWhLN0emAGKhXSmK83SuERyW5SZ9JgtagkLIu7BEoGJ9wYg45gSMSMb0k3fWdgQ27amtI27K75q59IqbY358eag6IWgwG2b3FJsWh6DoScfnSKX-TceU0000"> 
-<p>A sequence diagram example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">title OAuth 2.0 Authorization Code Grant</div><div class="line"></div><div class="line">actor    UserAgent       as UA</div><div class="line">participant Application     as APP</div><div class="line">participant OAuthServer     as OAuth</div><div class="line">participant ResourceServer  as RS</div><div class="line"></div><div class="line">== Application requests authorization from user ==</div><div class="line">UA-&gt;APP: </div><div class="line">APP--&gt;UA:redirect to OAuth Server</div><div class="line">UA-&gt;OAuth: GET /authorize?response_type=code</div><div class="line">ref over UA, OAuth: user authentication\nuser confirms reqest</div><div class="line">OAuth--&gt;UA: redirect to App with authorization_code</div><div class="line">UA-&gt;APP: authorization_code</div><div class="line"></div><div class="line">== Application retrieve access token ==</div><div class="line">APP-&gt;OAuth: POST /token with authorization_code</div><div class="line">ref over APP, OAuth: client authentication</div><div class="line">APP&lt;--OAuth: access_token</div><div class="line"></div><div class="line">== Application access protected resource ==</div><div class="line">APP-&gt;RS: getResource with access_token</div><div class="line">RS-&gt;OAuth: validateToken(access_token)</div><div class="line">RS--&gt;APP: result</div></pre></td></tr></table></figure>
-<img src="http://www.plantuml.com/plantuml/svg/TP9FJuGm4CNl_HHpr4JKU2IYQOpPusvWkPbicZAxDh8KfyCQ_VIsfP35Fnm8RT_C-xsXRBX5MCk1N-7k-XR2XoNpfTZO3fviWx0YrR4GIhCb69_Q8Sa3TfpMoa4jHQ-8ZJQzbuFi-zReiKjIoCrc8Occ5T89QPB4hOMeH6S7qZZflAYiX2YAXGFX-u2E7QW5_fxi4GRF2aKXQfazU8GSX7zdsKCjSyB646e6jca4eqtKneqSLizRk9dQuYEXwstdSCUVFHRQpqSGxi46k5fUGQgAfg7ApoX1ldHnKzjkR-Ze0hD75h5Wn85p7XyFFen7MaJQHSSvoXzdlqV3PF24eBH6vtphD-p2FC8Kff2RTULJZaV_cSunVU6SKxSct89bqj3wFikIPFJTnUO_uH9JJvPzR6myxVYxPy2ook60F5s3H7VUigpc62VLcaOnRiF1nRdgCiZIqBp7qF8t">
+<p>常见的字体栈参看 <a href="http://www.smashingmagazine.com/2009/09/22/complete-guide-to-css-font-stacks/" target="_blank" rel="noopener">Guide to CSS Font Stacks</a></p>
 
           
         
@@ -813,7 +886,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/blog/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/64/">64</a><a class="extend next" rel="next" href="/blog/page/7/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/blog/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/65/">65</a><a class="extend next" rel="next" href="/blog/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -854,7 +927,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -908,7 +981,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

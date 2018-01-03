@@ -86,21 +86,20 @@
 
 
 
-<meta name="description" content="最近买了一个EeeBox来做home server，装Ubuntu操作系统，有不少东西可以玩。
-其中一个用途是连接到音响播放音乐。我比较喜欢听豆瓣电台，于是找一个豆瓣电台的客户端。Home server平常不接显示器，也不启动图形界面，常见的浏览器客户端、桌面客户端都不能用，要找命令行的。在github上找到Johnny Huang开发的fmd（Douban FM daemon），启动后在后台运行">
+<meta name="description" content="最近买了一个EeeBox来做home server，装Ubuntu操作系统，有不少东西可以玩。 其中一个用途是连接到音响播放音乐。我比较喜欢听豆瓣电台，于是找一个豆瓣电台的客户端。Home server平常不接显示器，也不启动图形界面，常见的浏览器客户端、桌面客户端都不能用，要找命令行的。在github上找到Johnny Huang开发的fmd（Douban FM daemon），启动后在后台运行">
+<meta name="keywords" content="SoftwareDev">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用手机遥控Linux后台播放豆瓣电台">
 <meta property="og:url" content="http://aleung.github.io/blog/2012/03/10/By-mobile-phone-remote-control-Linux-backstage-radio-broadcast-requirements/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description" content="最近买了一个EeeBox来做home server，装Ubuntu操作系统，有不少东西可以玩。
-其中一个用途是连接到音响播放音乐。我比较喜欢听豆瓣电台，于是找一个豆瓣电台的客户端。Home server平常不接显示器，也不启动图形界面，常见的浏览器客户端、桌面客户端都不能用，要找命令行的。在github上找到Johnny Huang开发的fmd（Douban FM daemon），启动后在后台运行">
+<meta property="og:description" content="最近买了一个EeeBox来做home server，装Ubuntu操作系统，有不少东西可以玩。 其中一个用途是连接到音响播放音乐。我比较喜欢听豆瓣电台，于是找一个豆瓣电台的客户端。Home server平常不接显示器，也不启动图形界面，常见的浏览器客户端、桌面客户端都不能用，要找命令行的。在github上找到Johnny Huang开发的fmd（Douban FM daemon），启动后在后台运行">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://lh6.googleusercontent.com/-ishGby7lpTk/T1ove7Z0-rI/AAAAAAAAAoU/94_iFdmfSKw/s400/Screenshot_2012-03-09-23-41-13.png">
 <meta property="og:image" content="https://lh5.googleusercontent.com/-zXp_XdbbgNk/T1ovfpnkxbI/AAAAAAAAAoc/CN-7dV4U4Xg/s400/Screenshot_2012-03-09-23-55-39.png">
 <meta property="og:updated_time" content="2012-03-11T07:06:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用手机遥控Linux后台播放豆瓣电台">
-<meta name="twitter:description" content="最近买了一个EeeBox来做home server，装Ubuntu操作系统，有不少东西可以玩。
-其中一个用途是连接到音响播放音乐。我比较喜欢听豆瓣电台，于是找一个豆瓣电台的客户端。Home server平常不接显示器，也不启动图形界面，常见的浏览器客户端、桌面客户端都不能用，要找命令行的。在github上找到Johnny Huang开发的fmd（Douban FM daemon），启动后在后台运行">
+<meta name="twitter:description" content="最近买了一个EeeBox来做home server，装Ubuntu操作系统，有不少东西可以玩。 其中一个用途是连接到音响播放音乐。我比较喜欢听豆瓣电台，于是找一个豆瓣电台的客户端。Home server平常不接显示器，也不启动图形界面，常见的浏览器客户端、桌面客户端都不能用，要找命令行的。在github上找到Johnny Huang开发的fmd（Douban FM daemon），启动后在后台运行">
 <meta name="twitter:image" content="https://lh6.googleusercontent.com/-ishGby7lpTk/T1ove7Z0-rI/AAAAAAAAAoU/94_iFdmfSKw/s400/Screenshot_2012-03-09-23-41-13.png">
 
 
@@ -308,8 +307,8 @@
       
 
       
-        <p>最近买了一个<a href="http://en.wikipedia.org/wiki/Asus_EeeBox_PC" target="_blank" rel="external">EeeBox</a>来做home server，装Ubuntu操作系统，有不少东西可以玩。</p>
-<p>其中一个用途是连接到音响播放音乐。我比较喜欢听豆瓣电台，于是找一个豆瓣电台的客户端。Home server平常不接显示器，也不启动图形界面，常见的浏览器客户端、桌面客户端都不能用，要找命令行的。在github上找到Johnny Huang开发的<a href="https://github.com/hzqtc/fmd" target="_blank" rel="external">fmd</a>（Douban FM daemon），启动后在后台运行，正合我意。Fork下来给它增加了个安装脚本，能够安装为服务，开机就自动运行了。但fmd只是个后台进程，只有telnet命令接口，没法对它进行直接控制的，作者另外做了个命令行工具，叫做fmc（FMD client），用来控制fmd。但命令行工具在我这里也还是不能用—-没有显示器没有键盘—-必须能遥控才行。于是我在fmc基础上给它增加了一个web UI，称为<a href="https://github.com/aleung/fmweb" target="_blank" rel="external">fmweb</a>，通过手机浏览器访问，就可以控制播放了。于是，我现在在家里任何地方，都可以控制我的豆瓣电台的播放，不喜欢听，跳下一首歌。</p>
+        <p>最近买了一个<a href="http://en.wikipedia.org/wiki/Asus_EeeBox_PC" target="_blank" rel="noopener">EeeBox</a>来做home server，装Ubuntu操作系统，有不少东西可以玩。</p>
+<p>其中一个用途是连接到音响播放音乐。我比较喜欢听豆瓣电台，于是找一个豆瓣电台的客户端。Home server平常不接显示器，也不启动图形界面，常见的浏览器客户端、桌面客户端都不能用，要找命令行的。在github上找到Johnny Huang开发的<a href="https://github.com/hzqtc/fmd" target="_blank" rel="noopener">fmd</a>（Douban FM daemon），启动后在后台运行，正合我意。Fork下来给它增加了个安装脚本，能够安装为服务，开机就自动运行了。但fmd只是个后台进程，只有telnet命令接口，没法对它进行直接控制的，作者另外做了个命令行工具，叫做fmc（FMD client），用来控制fmd。但命令行工具在我这里也还是不能用—-没有显示器没有键盘—-必须能遥控才行。于是我在fmc基础上给它增加了一个web UI，称为<a href="https://github.com/aleung/fmweb" target="_blank" rel="noopener">fmweb</a>，通过手机浏览器访问，就可以控制播放了。于是，我现在在家里任何地方，都可以控制我的豆瓣电台的播放，不喜欢听，跳下一首歌。</p>
 <p>这是在Android浏览器上的截图，在iPhone、iPad上也可以用。</p>
 <p><img src="https://lh6.googleusercontent.com/-ishGby7lpTk/T1ove7Z0-rI/AAAAAAAAAoU/94_iFdmfSKw/s400/Screenshot_2012-03-09-23-41-13.png" alt=""><img src="https://lh5.googleusercontent.com/-zXp_XdbbgNk/T1ovfpnkxbI/AAAAAAAAAoc/CN-7dV4U4Xg/s400/Screenshot_2012-03-09-23-55-39.png" alt=""></p>
 
@@ -421,7 +420,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -486,7 +485,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

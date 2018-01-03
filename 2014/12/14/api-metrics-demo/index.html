@@ -86,24 +86,20 @@
 
 
 
-<meta name="description" content="This demo uses Graphite and Grafana to store and present API metrics. The demo environment is installed on Ubuntu.
-GraphiteGraphite has two major components. 
-The first is carbon-cache, which is a dae">
+<meta name="description" content="This demo uses Graphite and Grafana to store and present API metrics. The demo environment is installed on Ubuntu. GraphiteGraphite has two major components.  The first is carbon-cache, which is a dae">
+<meta name="keywords" content="SoftwareDev,DataVisualization">
 <meta property="og:type" content="article">
 <meta property="og:title" content="API metrics demo">
 <meta property="og:url" content="http://aleung.github.io/blog/2014/12/14/api-metrics-demo/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description" content="This demo uses Graphite and Grafana to store and present API metrics. The demo environment is installed on Ubuntu.
-GraphiteGraphite has two major components. 
-The first is carbon-cache, which is a dae">
-<meta property="og:image" content="http://aleung.github.io/blog/attachments/2014/12/api-metrics-demo.png">
+<meta property="og:description" content="This demo uses Graphite and Grafana to store and present API metrics. The demo environment is installed on Ubuntu. GraphiteGraphite has two major components.  The first is carbon-cache, which is a dae">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://aleung.github.io/attachments/2014/12/api-metrics-demo.png">
 <meta property="og:updated_time" content="2016-03-16T14:11:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="API metrics demo">
-<meta name="twitter:description" content="This demo uses Graphite and Grafana to store and present API metrics. The demo environment is installed on Ubuntu.
-GraphiteGraphite has two major components. 
-The first is carbon-cache, which is a dae">
-<meta name="twitter:image" content="http://aleung.github.io/blog/attachments/2014/12/api-metrics-demo.png">
+<meta name="twitter:description" content="This demo uses Graphite and Grafana to store and present API metrics. The demo environment is installed on Ubuntu. GraphiteGraphite has two major components.  The first is carbon-cache, which is a dae">
+<meta name="twitter:image" content="http://aleung.github.io/attachments/2014/12/api-metrics-demo.png">
 
 
 
@@ -315,38 +311,38 @@ The first is carbon-cache, which is a dae">
 <p>The first is <code>carbon-cache</code>, which is a daemon process to receive metrics data from client through TCP connection and store into filesystem via <code>whisper</code> database library.</p>
 <p>Another one is a webapp. It provides HTTP API for generating graphs and retrieving raw data.</p>
 <p>Since Ubuntu 14.04, it’s easy to install graphite with <code>apt-get</code>:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install graphite-web graphite-carbon</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install graphite-web graphite-carbon</span><br></pre></td></tr></table></figure>
 <p>Both <code>carbon</code> and <code>graphite-web</code> are installed as python module. </p>
 <p>Start carbon:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service carbon-cache start</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service carbon-cache start</span><br></pre></td></tr></table></figure>
 <p>Graphite-web is base on django framework. Read <code>/usr/share/doc/graphite-web/README</code> for how to setup graphite-web. A major steps is to create database and default data:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo graphite-manage syncdb</div><div class="line">sudo chown _graphite:_graphite /var/lib/graphite/graphite.db</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo graphite-manage syncdb</span><br><span class="line">sudo chown _graphite:_graphite /var/lib/graphite/graphite.db</span><br></pre></td></tr></table></figure>
 <p>For testing Graphite, you can start Graphite with the Django lightweight Web server for development:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo -u _graphite /usr/bin/django-admin runserver --settings graphite.settings 0.0.0.0:8080</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -u _graphite /usr/bin/django-admin runserver --settings graphite.settings 0.0.0.0:8080</span><br></pre></td></tr></table></figure>
 <p>To install on Apache, follow the guide in <code>/usr/share/doc/graphite-web/README</code>. </p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install libapache2-mod-wsgi</div><div class="line">sudo cp /usr/share/graphite-web/apache2-graphite.conf /etc/apache2/sites-available/graphite-web.conf</div><div class="line">sudo a2ensite graphite-web</div><div class="line">sudo service apache2 restart</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libapache2-mod-wsgi</span><br><span class="line">sudo cp /usr/share/graphite-web/apache2-graphite.conf /etc/apache2/sites-available/graphite-web.conf</span><br><span class="line">sudo a2ensite graphite-web</span><br><span class="line">sudo service apache2 restart</span><br></pre></td></tr></table></figure>
 <p>Graphite-web 0.9.12 only works under URL root path, it conflict with Apache default site setting. I modify <code>/etc/apache2/sites-enabled/graphite-web.conf</code> to make it work in a virtual host on port 81.</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Listen 81</div><div class="line">&lt;VirtualHost *:81&gt;</div><div class="line"> ...</div><div class="line">&lt;/VirtualHost&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute"><span class="nomarkup">Listen</span></span> 81</span><br><span class="line"><span class="section">&lt;VirtualHost *:81&gt;</span></span><br><span class="line"> ...</span><br><span class="line"><span class="section">&lt;/VirtualHost&gt;</span></span><br></pre></td></tr></table></figure>
 <p>Reference:</p>
 <ul>
-<li><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-graphite-on-an-ubuntu-14-04-server" target="_blank" rel="external">https://www.digitalocean.com/community/tutorials/how-to-install-and-use-graphite-on-an-ubuntu-14-04-server</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-graphite-on-an-ubuntu-14-04-server" target="_blank" rel="noopener">https://www.digitalocean.com/community/tutorials/how-to-install-and-use-graphite-on-an-ubuntu-14-04-server</a></li>
 </ul>
 <h2 id="Grafana"><a href="#Grafana" class="headerlink" title="Grafana"></a>Grafana</h2><p>Download grafana package and extract to a directory. Configure Apache web server to make the grafana directory accessable.</p>
 <p>Edit <code>config.js</code> (copy from <code>config.sample.js</code>) to enable graphite as datasource.</p>
 <p>Because graphite-web is hosting on virtual host on port 81, which is different than where grafana is hosting, there is cross site script access restriction. Have to enable CORS (cross origin resource sharing) on graphite-web side.</p>
 <p>Enable Apache mod_headers:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo a2enmod headers</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo a2enmod headers</span><br></pre></td></tr></table></figure>
 <p>Add into <code>/etc/apache2/sites-enabled/graphite-web.conf</code>:</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="attribute"><span class="nomarkup">Header</span></span> set Access-Control-Allow-Origin <span class="string">"*"</span></div><div class="line"><span class="attribute"><span class="nomarkup">Header</span></span> set Access-Control-Allow-Methods <span class="string">"GET, OPTIONS"</span></div><div class="line"><span class="attribute"><span class="nomarkup">Header</span></span> set Access-Control-Allow-Headers <span class="string">"origin, authorization, accept"</span></div></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute"><span class="nomarkup">Header</span></span> set Access-Control-Allow-Origin <span class="string">"*"</span></span><br><span class="line"><span class="attribute"><span class="nomarkup">Header</span></span> set Access-Control-Allow-Methods <span class="string">"GET, OPTIONS"</span></span><br><span class="line"><span class="attribute"><span class="nomarkup">Header</span></span> set Access-Control-Allow-Headers <span class="string">"origin, authorization, accept"</span></span><br></pre></td></tr></table></figure>
 <h2 id="Elasticsearch"><a href="#Elasticsearch" class="headerlink" title="Elasticsearch"></a>Elasticsearch</h2><p>Elasticsearch is used by Granfan as a database to persistent dashboard configuration. Search and analystics features of Elasticsearch isn’t used in this case. Without Elasticsearch Grafana still works, but unable to save any change to dashboard design. You have to export dashboard JSON and import next time you want to use it.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.1.deb</div><div class="line">sudo dpkg -i elasticsearch-1.4.1.deb</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.1.deb</span><br><span class="line">sudo dpkg -i elasticsearch-1.4.1.deb</span><br></pre></td></tr></table></figure>
 <p>Elasticsearch is not starting on bootup by default. To setup as service, run:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo update-rc.d elasticsearch defaults 95 10</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-rc.d elasticsearch defaults 95 10</span><br></pre></td></tr></table></figure>
 <p>To start manually, run:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo /etc/init.d/elasticsearch start</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/elasticsearch start</span><br></pre></td></tr></table></figure>
 <p>To enable CORS (cross origin resource sharing), add below into <code>/etc/elasticsearch/elasticsearch.yml</code>:</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http.cors.enabled: <span class="literal">true</span></div></pre></td></tr></table></figure>
-<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p>The scala script <code>feed_graphite.scala</code> generates mock API metrics data for demo. The Grafana portal is defined as <code>api.json</code>. Both files are stored in this <a href="https://gist.github.com/aleung/1ec7e56bfa9448af920b" target="_blank" rel="external">gist</a>.</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">http.cors.enabled:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p>The scala script <code>feed_graphite.scala</code> generates mock API metrics data for demo. The Grafana portal is defined as <code>api.json</code>. Both files are stored in this <a href="https://gist.github.com/aleung/1ec7e56bfa9448af920b" target="_blank" rel="noopener">gist</a>.</p>
 <p><img src="/attachments/2014/12/api-metrics-demo.png" alt=""></p>
 
       
@@ -459,7 +455,7 @@ The first is carbon-cache, which is a dae">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -524,7 +520,7 @@ The first is carbon-cache, which is a dae">
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -86,21 +86,20 @@
 
 
 
-<meta name="description" content="Java语言具备GC(垃圾回收)的能力，内存管理不需要应用程序去过问，这很方便。但是，GC是怎么进行的，JVM的内存参数应该怎么调整，如何优化，往往我们不是太清楚。看过一些资料后，对Sun JVM的内存管理以及垃圾回收的机制大概有了一个概念，这里将这些资料归纳和翻译出来。本文内容主要基于Sun JVM 1.3.1，在后续版本中有不少优化措施，但是这些基本概念还是不变的。
-这里假设大家对GC的概念和">
+<meta name="description" content="Java语言具备GC(垃圾回收)的能力，内存管理不需要应用程序去过问，这很方便。但是，GC是怎么进行的，JVM的内存参数应该怎么调整，如何优化，往往我们不是太清楚。看过一些资料后，对Sun JVM的内存管理以及垃圾回收的机制大概有了一个概念，这里将这些资料归纳和翻译出来。本文内容主要基于Sun JVM 1.3.1，在后续版本中有不少优化措施，但是这些基本概念还是不变的。 这里假设大家对GC的概念和">
+<meta name="keywords" content="SoftwareDev">
 <meta property="og:type" content="article">
 <meta property="og:title" content="了解JVM的内存管理与垃圾回收">
 <meta property="og:url" content="http://aleung.github.io/blog/2007/03/08/Understand-the-JVM-memory-management-and-garbage-collection/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description" content="Java语言具备GC(垃圾回收)的能力，内存管理不需要应用程序去过问，这很方便。但是，GC是怎么进行的，JVM的内存参数应该怎么调整，如何优化，往往我们不是太清楚。看过一些资料后，对Sun JVM的内存管理以及垃圾回收的机制大概有了一个概念，这里将这些资料归纳和翻译出来。本文内容主要基于Sun JVM 1.3.1，在后续版本中有不少优化措施，但是这些基本概念还是不变的。
-这里假设大家对GC的概念和">
-<meta property="og:image" content="http://aleung.github.io/blog/blog/attachments/2007/3/java_memory.jpg">
+<meta property="og:description" content="Java语言具备GC(垃圾回收)的能力，内存管理不需要应用程序去过问，这很方便。但是，GC是怎么进行的，JVM的内存参数应该怎么调整，如何优化，往往我们不是太清楚。看过一些资料后，对Sun JVM的内存管理以及垃圾回收的机制大概有了一个概念，这里将这些资料归纳和翻译出来。本文内容主要基于Sun JVM 1.3.1，在后续版本中有不少优化措施，但是这些基本概念还是不变的。 这里假设大家对GC的概念和">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://aleung.github.io/blog/attachments/2007/3/java_memory.jpg">
 <meta property="og:updated_time" content="2016-03-16T14:11:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="了解JVM的内存管理与垃圾回收">
-<meta name="twitter:description" content="Java语言具备GC(垃圾回收)的能力，内存管理不需要应用程序去过问，这很方便。但是，GC是怎么进行的，JVM的内存参数应该怎么调整，如何优化，往往我们不是太清楚。看过一些资料后，对Sun JVM的内存管理以及垃圾回收的机制大概有了一个概念，这里将这些资料归纳和翻译出来。本文内容主要基于Sun JVM 1.3.1，在后续版本中有不少优化措施，但是这些基本概念还是不变的。
-这里假设大家对GC的概念和">
-<meta name="twitter:image" content="http://aleung.github.io/blog/blog/attachments/2007/3/java_memory.jpg">
+<meta name="twitter:description" content="Java语言具备GC(垃圾回收)的能力，内存管理不需要应用程序去过问，这很方便。但是，GC是怎么进行的，JVM的内存参数应该怎么调整，如何优化，往往我们不是太清楚。看过一些资料后，对Sun JVM的内存管理以及垃圾回收的机制大概有了一个概念，这里将这些资料归纳和翻译出来。本文内容主要基于Sun JVM 1.3.1，在后续版本中有不少优化措施，但是这些基本概念还是不变的。 这里假设大家对GC的概念和">
+<meta name="twitter:image" content="http://aleung.github.io/blog/attachments/2007/3/java_memory.jpg">
 
 
 
@@ -333,12 +332,12 @@
 <p>这里给出的只是基本的介绍，下面reference中的文章都很不错，对进一步了解或者查找性能优化参数都有帮助。</p>
 <p>Reference</p>
 <ol>
-<li><a href="http://blogs.sun.com/watt/resource/jvm-options-list.html" target="_blank" rel="external">http://blogs.sun.com/watt/resource/jvm-options-list.html</a></li>
-<li><a href="http://java.sun.com/docs/hotspot/gc/" target="_blank" rel="external">http://java.sun.com/docs/hotspot/gc/</a></li>
-<li><a href="http://java.sun.com/javase/technologies/hotspot/vmoptions.jsp" target="_blank" rel="external">http://java.sun.com/javase/technologies/hotspot/vmoptions.jsp</a></li>
-<li><a href="http://builder.zdnet.com.cn/2003/0415/85798.shtml" target="_blank" rel="external">http://builder.zdnet.com.cn/2003/0415/85798.shtml</a></li>
-<li><a href="http://java.sun.com/developer/technicalArticles/Programming/turbo/" target="_blank" rel="external">http://java.sun.com/developer/technicalArticles/Programming/turbo/</a></li>
-<li><a href="http://developers.sun.com/techtopics/mobility/midp/articles/garbagecollection2/" target="_blank" rel="external">http://developers.sun.com/techtopics/mobility/midp/articles/garbagecollection2/</a></li>
+<li><a href="http://blogs.sun.com/watt/resource/jvm-options-list.html" target="_blank" rel="noopener">http://blogs.sun.com/watt/resource/jvm-options-list.html</a></li>
+<li><a href="http://java.sun.com/docs/hotspot/gc/" target="_blank" rel="noopener">http://java.sun.com/docs/hotspot/gc/</a></li>
+<li><a href="http://java.sun.com/javase/technologies/hotspot/vmoptions.jsp" target="_blank" rel="noopener">http://java.sun.com/javase/technologies/hotspot/vmoptions.jsp</a></li>
+<li><a href="http://builder.zdnet.com.cn/2003/0415/85798.shtml" target="_blank" rel="noopener">http://builder.zdnet.com.cn/2003/0415/85798.shtml</a></li>
+<li><a href="http://java.sun.com/developer/technicalArticles/Programming/turbo/" target="_blank" rel="noopener">http://java.sun.com/developer/technicalArticles/Programming/turbo/</a></li>
+<li><a href="http://developers.sun.com/techtopics/mobility/midp/articles/garbagecollection2/" target="_blank" rel="noopener">http://developers.sun.com/techtopics/mobility/midp/articles/garbagecollection2/</a></li>
 </ol>
 
       
@@ -449,7 +448,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -514,7 +513,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -86,19 +86,18 @@
 
 
 
-<meta name="description" content="Doxygen是一个很不错的文档生成程序，类似于JavaDoc的功能，但是能支持C++/C/Java和其他的好些语言。今天在使用的时候，发现doxygen不能处理带有中文的文件名或者路径，就把源代码下载回来，看看是什么问题。
-问题很容易定位出来，又是unicode和字符集转换的问题，字符集真是让人头痛的东西:(。当在windows平台上运行时，它使用了WideCharToMultiByte来转换字">
+<meta name="description" content="Doxygen是一个很不错的文档生成程序，类似于JavaDoc的功能，但是能支持C++/C/Java和其他的好些语言。今天在使用的时候，发现doxygen不能处理带有中文的文件名或者路径，就把源代码下载回来，看看是什么问题。 问题很容易定位出来，又是unicode和字符集转换的问题，字符集真是让人头痛的东西:(。当在windows平台上运行时，它使用了WideCharToMultiByte来转换字">
+<meta name="keywords" content="SoftwareDev">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Doxygen不能支持中文文件名/路径:(">
+<meta property="og:title" content="Doxygen不能支持中文文件名&#x2F;路径:(">
 <meta property="og:url" content="http://aleung.github.io/blog/2004/07/01/Doxygen-/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description" content="Doxygen是一个很不错的文档生成程序，类似于JavaDoc的功能，但是能支持C++/C/Java和其他的好些语言。今天在使用的时候，发现doxygen不能处理带有中文的文件名或者路径，就把源代码下载回来，看看是什么问题。
-问题很容易定位出来，又是unicode和字符集转换的问题，字符集真是让人头痛的东西:(。当在windows平台上运行时，它使用了WideCharToMultiByte来转换字">
+<meta property="og:description" content="Doxygen是一个很不错的文档生成程序，类似于JavaDoc的功能，但是能支持C++/C/Java和其他的好些语言。今天在使用的时候，发现doxygen不能处理带有中文的文件名或者路径，就把源代码下载回来，看看是什么问题。 问题很容易定位出来，又是unicode和字符集转换的问题，字符集真是让人头痛的东西:(。当在windows平台上运行时，它使用了WideCharToMultiByte来转换字">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-03-16T14:11:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Doxygen不能支持中文文件名/路径:(">
-<meta name="twitter:description" content="Doxygen是一个很不错的文档生成程序，类似于JavaDoc的功能，但是能支持C++/C/Java和其他的好些语言。今天在使用的时候，发现doxygen不能处理带有中文的文件名或者路径，就把源代码下载回来，看看是什么问题。
-问题很容易定位出来，又是unicode和字符集转换的问题，字符集真是让人头痛的东西:(。当在windows平台上运行时，它使用了WideCharToMultiByte来转换字">
+<meta name="twitter:title" content="Doxygen不能支持中文文件名&#x2F;路径:(">
+<meta name="twitter:description" content="Doxygen是一个很不错的文档生成程序，类似于JavaDoc的功能，但是能支持C++/C/Java和其他的好些语言。今天在使用的时候，发现doxygen不能处理带有中文的文件名或者路径，就把源代码下载回来，看看是什么问题。 问题很容易定位出来，又是unicode和字符集转换的问题，字符集真是让人头痛的东西:(。当在windows平台上运行时，它使用了WideCharToMultiByte来转换字">
 
 
 
@@ -305,7 +304,7 @@
       
 
       
-        <p><a href="http://www.stack.nl/~dimitri/doxygen" target="_blank" rel="external">Doxygen</a>是一个很不错的文档生成程序，类似于JavaDoc的功能，但是能支持C++/C/Java和其他的好些语言。今天在使用的时候，发现doxygen不能处理带有中文的文件名或者路径，就把源代码下载回来，看看是什么问题。</p>
+        <p><a href="http://www.stack.nl/~dimitri/doxygen" target="_blank" rel="noopener">Doxygen</a>是一个很不错的文档生成程序，类似于JavaDoc的功能，但是能支持C++/C/Java和其他的好些语言。今天在使用的时候，发现doxygen不能处理带有中文的文件名或者路径，就把源代码下载回来，看看是什么问题。</p>
 <p>问题很容易定位出来，又是unicode和字符集转换的问题，字符集真是让人头痛的东西:(。当在windows平台上运行时，它使用了WideCharToMultiByte来转换字符集，但没有判断当前locale，只是用了CP_ACP(ANSI)code page，故此对于中文就转换成为乱码了（其他multi-byte字符集也会有问题）。</p>
 <p>本来想改的，发现doxygen底层用的都是QT的代码，什么QString, QCString，完全是自己独立的一套东西，好些地方似乎都没有考虑mbs字符集的问题，实在跟不下去了，也不知道它的国际化是怎么做的，KDE也是基于QT函数库的呀，也许是windows版本的问题？放弃，给doxygen作者写了个bug report，看看他会不会去修改吧。</p>
 <p>ps.</p>
@@ -419,7 +418,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -484,7 +483,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

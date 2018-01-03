@@ -90,6 +90,7 @@
 <meta property="og:title" content="Good good study, day day up">
 <meta property="og:url" content="http://aleung.github.io/blog/page/39/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Good good study, day day up">
 
@@ -261,6 +262,485 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2006/08/23/I-Love-Audio-Player/" itemprop="url">
+                  ‘I Love’ audio player
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2006-08-23T15:06:00+08:00" content="2006-08-23">
+              2006-08-23
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>下载的mp3越来越多之后，总想怎样才能将喜欢的与不太喜欢的区分出来呢。渐渐的有一个想法，就是在播放的时候统计自己的喜好。基本思路其实跟以前想过的”什么时候电视机可以变得聪明一些”差不多。</p>
+<p>下面就设想一下这个音乐播放器应该是怎样的：如果觉得一首歌不好听/不想听，就跳过它放下一首。如果觉得特别喜欢，可以投一票。根据用户的动作，可以统计出对歌曲的喜爱程度。歌曲全都是随机播放，越是喜欢的歌曲播放出来的机会会越大，但是其它歌曲也会偶然播放出来，不会永远埋没起来。原本喜欢的听多了后也许会有点腻，没关系，不想听就跳过好了，播放器会不断”学习”你的喜好。只要曲库里有足够多的歌曲，总能保证听到的大部分都是喜欢的歌曲。</p>
+<p>假设要开发这样一个软件，就叫它”I love”吧，将它的功能用user story描述出来，应该有这些（还可能增加好多）：</p>
+<table>
+<thead>
+<tr>
+<th>title</th>
+<th>description</th>
+<th>priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>播放MP3</td>
+<td>能够播放mp3格式的音频文件</td>
+<td>最高</td>
+</tr>
+<tr>
+<td>播放WMV</td>
+<td>能够播放wmv格式的音频文件</td>
+<td>最低</td>
+</tr>
+<tr>
+<td>Copy profile</td>
+<td>将现有的profile copy成一个新的profile</td>
+<td>低</td>
+</tr>
+<tr>
+<td>Switch profile</td>
+<td>在软件中可以存在很多个profile，但只能有一个profile生效。所有对喜爱值的操作都是对当前profile进行的。用户选择一个profile，将这个profile设置成为当前active的profile。切换profile时不停止当前歌曲的播放。</td>
+<td>中</td>
+</tr>
+<tr>
+<td>I like it</td>
+<td>当歌曲正在播放时，用户按下”I love”按钮，将这首歌的喜爱度增加一个数值，如果同一首歌，用户再次按下，忽略这个操作</td>
+<td>中</td>
+</tr>
+<tr>
+<td>Don’t like it, next</td>
+<td>当歌曲正在播放时，用户按下”I don’t like it”按钮，停止播放这首歌，并且将这首歌的喜爱度减少一个数值。然后 随机播放下一首歌</td>
+<td>高</td>
+</tr>
+<tr>
+<td>歌曲播放结束</td>
+<td>如果歌曲播放到结尾，并且在这个过程中用户没有按下过”I like it”按钮，将这首歌的喜爱度增加一个数值。然后 随机播放下一首歌</td>
+<td>高</td>
+</tr>
+<tr>
+<td>随机播放一首歌(shuffle)</td>
+<td>profile是保存了所有歌曲信息的一组数据，每首歌曲都有一个喜爱度的值。从profile中按照喜爱度加权来随机的挑选一首歌来播放，歌曲的喜爱度越高，被选中的概率越大。</td>
+<td>最高</td>
+</tr>
+<tr>
+<td>暂停/继续</td>
+<td>当用户按下”暂停/播放”按钮，暂停当前歌曲的播放；再按一次，从上次暂停的地方继续播放。</td>
+<td>中</td>
+</tr>
+<tr>
+<td>Rename profile</td>
+<td></td>
+<td>中</td>
+</tr>
+<tr>
+<td>程序启动</td>
+<td>选择最后一次使用的profile，如果配置为”启动立即播放”，随机播放一首歌</td>
+<td>低</td>
+</tr>
+<tr>
+<td>显示歌曲信息</td>
+<td>显示当前播放歌曲的信息，包括歌名、专辑、艺人等</td>
+<td>中</td>
+</tr>
+<tr>
+<td>off-line media library</td>
+<td>将off-line媒体库（例如光盘）的曲目也加入profile中，同步的时候按照喜爱度加权的原则随机copy一部分曲目到硬盘中，换掉旧的一些。</td>
+<td>最低</td>
+</tr>
+</tbody>
+</table>
+<p>只要把播放mp3、shuffle、don’t like it、播放结束这四个user story实现了，基本就能用了；再将优先级为”中”也实现了，设想的目标就基本都能达到。</p>
+<p>整个播放器的界面将会非常简洁：三个按钮：喜欢/不喜欢/暂停或继续，不喜欢（下一首）的按钮应该是最大的；音量控制；正在播放的歌曲显示。切换profile放在菜单里面。这些按钮都必须能够用键盘快捷键控制。</p>
+<p>不过，我只是想想而已，真的去写这样一个软件的可能性微乎其微。媒体播放、用户界面这些都是我不熟悉的东西。不知道是不是已经有类似功能的软件？如果有就太好了。</p>
+<p>这样的播放器其实更适合用硬件实现，上面这些user story可以完完全全在随身听上实现。不过，软件还有可能自己写，要自己做硬件的门槛就高多了。现在市面的mp3品种多得眼花缭乱，大部分功能都是一个样，有创意的厂商非常少。写下自己的想法后，上网查了一下，发现apple ipod shuffle和sony的walkman A系列有类似的功能，但从介绍来看都没有完全满足我的要求，不知道用起来怎样。在我看来，以下两点是最重要的：</p>
+<p>第一是歌曲的喜爱度必须是在播放过程中日积月累的更新，而不是通过什么操作界面来评级。对于用户，只有最简单直接的操作：喜欢，按一下（可别要进什么菜单）；不喜欢，跳下一首。我认为甚至不应该提供任何机会给用户直接更改喜爱度。</p>
+<p>第二是需要有profile切换，在不同环境、不同心情下喜欢的音乐是不一样的，有了profile功能就可以独立累计喜爱度。Profile也可以用来区分不同的使用者。</p>
+<p>也许过不了多久就会有这样的产品出现了，到时是不是要考虑买一个呢？ :)</p>
+<p><strong>Update 2012-7-5:</strong> 这样的产品真的有了，不过不是本地播放器，而是在线播放，就是<a href="http://douban.fm" target="_blank" rel="noopener">豆瓣电台</a>。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2006/08/20/Anger-green-and-the-collapse-of-a-generation/" itemprop="url">
+                  愤青与垮掉的一代
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2006-08-20T15:56:00+08:00" content="2006-08-20">
+              2006-08-20
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在MSN上见到一个久没联络的中学同学，聊天中她说到我以前是愤青。我非常奇怪，怎么我变成愤青了？她说因为我听摇滚，所以觉得我是愤青。我只好跟她解释，“愤青”这个词在当前的语境中是特指偏激的民族主义分子。如今“愤青”一词含义已经不同于“愤怒青年”了，英文里用的也是专有名词fenqing，只用于chinese。愤青们是否听摇滚我不清楚，但我猜大部分都是不听的。</p>
+<p>现在又时兴将80后称为中国的“垮掉的一代”。如果硬要这样套的话，也只好增加一个流行的前缀：有中国特色的。  </p>
+<p>近日在读《<a href="http://www.douban.com/subject/1051440/" target="_blank" rel="noopener">在路上</a>》，很久没有读过这样的书了，好像回到了大学的年代。摘录豆瓣上的一段<a href="http://www.douban.com/review/1055467/" target="_blank" rel="noopener">书评</a>：  </p>
+<blockquote>
+<p>垮掉的那一代人已经老去，但不知道他们的精神是否依然？跟他们的迷惘相比，我们这一代人越来越像一群被圈养的行尸走肉，没有朝气，也没有感动人的生命之光。<br>在我的想像中，那个“伟大的时代”跟那些逝去的人一样，已经远远地离开，再也不会回来了。   </p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2006/07/31/Homebuilt-bicycle-trailer/" itemprop="url">
+                  Homebuilt bicycle trailer
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2006-07-31T09:22:00+08:00" content="2006-07-31">
+              2006-07-31
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>挺实用的一个东西，用来运点东西挺方便。但不知道在国内会不会被警察叔叔抓？<a href="http://www.flickr.com/photos/bikeman04/201520772/in/pool-make/" target="_blank" rel="noopener"><br><img src="http://static.flickr.com/62/201520772_efc6874999.jpg" alt=""></a>  </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2006/07/22/What-is-a-moment-how-long-/" itemprop="url">
+                  一刹那到底是多久？
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2006-07-22T04:17:00+08:00" content="2006-07-22">
+              2006-07-22
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>我们在表达非常非常短的时间的时候，经常会用“刹那”这个词，例如：刹那间的感动。如果有人偏偏要跟你较劲，问你“刹那之间”，那到底是多长时间啊？你肯定会骂他太无聊、钻牛角尖。</p>
+<p>那就来钻钻牛角尖吧：</p>
+<p>“刹那”来自梵文 ksana，</p>
+<ul>
+<li>120 刹那 = 1坦刹那（tatksana) </li>
+<li>60 坦刹那 = 1 腊缚(lava) </li>
+<li>30 腊缚 = 1 牟呼栗多 (murhutar) </li>
+<li>5 牟呼栗多 = 1 时 (大时，kala) </li>
+<li>6 时 = 1 昼夜 (即1日)。</li>
+</ul>
+<p>据此，可以推算出：1 刹那 = 1/75 秒 = 13.33 毫秒</p>
+<p>看来刹那间的感动确实没有感动多久啊。</p>
+<p>呵呵，不是我这么无聊去研究这些东西，是在<a href="http://zh.wikipedia.org/" target="_blank" rel="noopener">维基百科</a>无意中<a href="http://zh.wikipedia.org/wiki/%E5%88%B9%E9%82%A3" target="_blank" rel="noopener">看到</a>的。现在维基百科已经成为我除了google以外的另外一个重要的学习工具了，遇到不了解的概念，先去维基百科看看(包括<a href="http://zh.wikipedia.org/" target="_blank" rel="noopener">中文</a>、<a href="http://en.wikipedia.org/" target="_blank" rel="noopener">英文</a>)，再在<a href="http://www.google.com/" target="_blank" rel="noopener">google</a>搜索。还有就是每天去看看维基首页的新闻动态、特色条目，可真了解不少东西。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2006/07/15/Embedded-script-/" itemprop="url">
                   Embedded script 初接触
                 </a>
@@ -308,7 +788,7 @@
             <p>近年来各种编程语言如雨后春笋一般涌现出来，令人眼花缭乱。有些是已经有相当历史的近来得到了广泛关注，有些则是新创的但风头不弱于前辈。它们的名字虽然我很多都听说过，大概知道是什么样的语言，但也是仅此而已了。</p>
 <p>这些新兴语言大都是动态语言，运行于虚拟机之中。而我一直都是使用C++/Java这些静态语言，这些新语言让我觉得很新鲜。在具有动态特性的语言中，我唯一熟悉的也就是PHP了，但是php给我的印象是方便灵活，但是显得零乱，缺乏OO特性，难以承担大规模应用。也因此我对这些语言就带有一点偏见，觉得“不够严谨”、有点“小儿科”。</p>
 <p>由于所开发系统的业务逻辑的复杂和多变，让我们吃尽了苦头，寻找解决方案的一个思路是将业务逻辑控制分离出来，降低这部分修改的难度。如果要再进一步，就是要采用script来描述业务逻辑了，那么是设计这样一种script，还是有什么现有的架构可以重用？</p>
-<p>将视野放开，可以看到动态语言在这方面得到了越来越广泛的应用，有好多新兴语言就是用来做embedded script的。在嵌入的脚本和宿主语言之间，数据可以传递，函数可以相互调用。因为我做的应用使用C++开发，因此我这几天看了<a href="http://www.lua.org/" target="_blank" rel="external">Lua</a>和<a href="http://www.squirrel-lang.org/" target="_blank" rel="external">Squirrel</a>这两种用于C/C++的嵌入语言的资料，这两种语言目前主要都是在游戏开发领域使用，Lua比较出名因为魔兽争霸使用了它，Squirrel是从Lua派生出来的。先不考虑怎样应用于具体业务，单从语言本身来说，这些简单的语言给我印象不错，一些语言特征能够给编码带来很多方便，如function作为first-class value，table数据结构(关联数组)，而我特别关心的是它们对coroutine(协程)的支持。</p>
+<p>将视野放开，可以看到动态语言在这方面得到了越来越广泛的应用，有好多新兴语言就是用来做embedded script的。在嵌入的脚本和宿主语言之间，数据可以传递，函数可以相互调用。因为我做的应用使用C++开发，因此我这几天看了<a href="http://www.lua.org/" target="_blank" rel="noopener">Lua</a>和<a href="http://www.squirrel-lang.org/" target="_blank" rel="noopener">Squirrel</a>这两种用于C/C++的嵌入语言的资料，这两种语言目前主要都是在游戏开发领域使用，Lua比较出名因为魔兽争霸使用了它，Squirrel是从Lua派生出来的。先不考虑怎样应用于具体业务，单从语言本身来说，这些简单的语言给我印象不错，一些语言特征能够给编码带来很多方便，如function作为first-class value，table数据结构(关联数组)，而我特别关心的是它们对coroutine(协程)的支持。</p>
 <p>使用通用的script还是自己开发引擎，自定义script格式，这就看怎么权衡了。动态语言的语言机制强大而灵活，其描述能力是自定义的script难以到达的；但是通用、灵活往往也意味着复杂，自定义script专注于要实现的业务功能，往往比较简单，学习难度要低；自己定义script虽然要开发解释器，但是针对性很强，与业务紧密相关，使用通用script还是要考虑怎样来描述业务操作，宿主程序如何提供接口来结合起来，其实要做的事情并不少。</p>
 <p>不过我现在对它们的了解还只是很表面，仅仅走马观花而已，观点一定是片面的，还需要进一步的学习。就目前来说，我对使用嵌入语言存在着这些疑问：</p>
 <ul>
@@ -318,400 +798,7 @@
 <li>性能始终是一个需要关心的问题</li>
 </ul>
 <hr>
-<p>PS. 刚才网上花了不少时间读了关于面向对象的讨论和文章，看来我对于面向对象的了解还是相当片面的，只是局限在C++/Java语言对于OO的实现，而C++/Java是属于<a href="http://en.wikipedia.org/wiki/Class-based_OOP" target="_blank" rel="external">class-based OOP</a>，单纯的用class-based的思维去套用<a href="http://en.wikipedia.org/wiki/Prototype-based_programming" target="_blank" rel="external">prototype-based OOP</a>得到的结论当然不合理。另外一个错误就是我将prototype-based和object-based混为一谈了，其实完全两码事，object-based model则一般不认为是OO。花点时间去了解一下prototype-based OOP和动态编成语言应该是值得的，起码可以开拓思路。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2006/07/14/DIY-/" itemprop="url">
-                  DIY交流网站
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2006-07-14T08:00:00+08:00" content="2006-07-14">
-              2006-07-14
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>喜欢DIY的人不应该错过这个网站，<a href="http://www.instructables.com" target="_blank" rel="external">instructables</a> ，在这里分享DIY的创意，可以看看人家做了些什么好玩的东西，是怎么做的，也可以将自己的经验发布出来。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2006/07/14/Or-blogline-works-better/" itemprop="url">
-                  还是blogline好用
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2006-07-14T08:00:00+08:00" content="2006-07-14">
-              2006-07-14
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>试过了好几种RSS阅读器，换来换去都感觉总是差那么一点点不够好用。最终还是用回了<a href="http://www.bloglines.com/" target="_blank" rel="external">blogline</a>,简单、方便，这就够了。不过前提是网络的速度够快，好像在国内访问的速度不怎么样，也许又得换了。</p>
-<p>2009-5-31 Updated: 现在应该改为”还是Google Reader好用” <img src="http://public.blogbus.com/biaoqing/163/11.gif" alt=""></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2006/07/03/Everyone-can-edit-Geocaching-of-Chinese-guide/" itemprop="url">
-                  人人可编辑的Geocaching中文指南
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2006-07-03T08:00:00+08:00" content="2006-07-03">
-              2006-07-03
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>最近一年，随着GPS使用者的增加，geocaching开始在国内媒体上有所介绍，也出现了一些相关的网站。但是因为大家都没有多少玩的经验，很多人都只是找过一两个cache，甚至还没有找过，就开始自己藏cache了，对规则的理解也出现了偏差。例如将cache埋藏在地下，找的时候居然要带铲子去挖；为了能让寻宝者知道往哪里挖，就将藏宝地点的照片贴出来。这样，寻宝过程完全变成了单纯的GPS定位，寻找的乐趣都没有了。  </p>
-<p>我以前也只是找到过一个cache，对geocaching的了解都是在网上看回来的，纸上谈兵居多。在Stockholm玩了一段时间的geocaching后，经验增长了不少。在这儿寻宝很有乐趣，一方面是很多cache都放在有意思的地方，有景色或者有历史背景，找cache的过程中随之了解这个城市，发现这个城市；另一方面是cache藏匿的方法花样繁多(应该是我以前了解得少)，寻找起来很有乐趣，找到后特别有成功感。  </p>
-<p>感觉有必要将学到的经验总结一下，让国内玩家多了解人家是怎么玩的，开拓思路。先是写了一篇“藏宝指南”，原本打算发到论坛上的，但是想到别人也会有自己的经验可以分享出来，如果贴论坛，就只能发新的帖子，信息就零散了。论坛不太适合用作知识的系统整理，这方面还是wiki比较合适，于是我的计划又扩大了一层：建立一个介绍geocaching知识的中文wiki。  </p>
-<p>尝试、比较了几个免费的wiki服务，最后选定了使用schtuff.com，wiki的网址是 <a href="http://geocaching.schtuff.com" target="_blank" rel="external">http://geocaching.schtuff.com</a> 。仿照维基百科，编辑策略也是“人人可编辑”，不过schtuff.com是不允许匿名编辑的，必须先注册用户。License方面也是考虑了一阵子，在CC与GFDL之间拿不定主意，其实关键就是要不要SA(相同方式分享)，最后选定了最宽松的CC-BY。  </p>
-<p>目前几个主要的条目都已经有了基本的内容，好意思拿出来说了:) 目前为止大部分条目都还是我写的，<a href="http://www.geocaching.cn" target="_blank" rel="external">geocaching.cn</a>的网友贡献了一些内容，期待会有越来越的参与者。不过，我也不抱多大希望，国内网友对wiki的接受程度比较低，参与度就更加低。  </p>
-<p>如果对geocaching有兴趣，就来看看，了解一下吧。如果认同这个wiki的，帮忙宣传一下：人人可编辑的Geocaching中文指南，<a href="http://geocaching.schtuff.com/" target="_blank" rel="external">http://geocaching.schtuff.com</a>   </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2006/06/28/How-does-not-support-Chinese-sites-in-the-input-Chinese-information/" itemprop="url">
-                  如何在不支持中文的网站中输入中文信息
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2006-06-28T12:23:00+08:00" content="2006-06-28">
-              2006-06-28
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>有些网站不支持汉字，输入的中文字符显示不出来，变成了问号。geocaching.com就是这样。这通常是在文字处理的某个过程中只能处理7bit字符，将汉字过滤掉了。</p>
-<p>在HTML/XML中对于这种在字符集以外的字符的表示有一种特殊方法：字符实体(character entity)，用字符实体来代替一个字符，相当于编程语言里面的转义符。HTML字符实体都是用&amp;开头，分号结尾的，又分为两种，命名字符实体(named character entity)和数字字符实体(numeric character entity)，命名字符实体数量不多，都是些常用的符号，例如&nbsp;表示空格；数字字符实体是将unicode字符编码的十进制或十六进制数字放在&amp;和;之间，例如&#23383;(十进制)和&#x5B57;(十六进制)。这样，所有unicode字符都变成了7bit ASCII编码，如果在不支持汉字的网站上输入这样编码后的中文，就不会在处理过程中被过滤了，只要浏览器支持，就能够把这些字符还原显示出来。</p>
-<p>怎样将一段中文变成HTML实体的表示方法呢？知道相关的名词之后就好办了，用“HTML entity convert”之类的keywords到google搜索，找到了以下工具：</p>
-<ul>
-<li><a href="http://konieczny.be/unicode.html" target="_blank" rel="external">Unicode (UTF-8) to HTML entities converter</a> (online)</li>
-<li><a href="http://pioneer.stereo.lu/converter.html" target="_blank" rel="external">Unicode Characters to HTML Entities Converter</a> (online)</li>
-<li><a href="http://www.mikezilla.com/exp0012.html" target="_blank" rel="external">ASCII Converter</a> (online) </li>
-<li><a href="http://code.cside.com/3rdpage/jp/unicode/converter.html" target="_blank" rel="external">10進、16進文字コードin HTMLユニコード</a> (online) </li>
-<li><a href="http://www.babelstone.co.uk/Software/BabelPad.html" target="_blank" rel="external">BabelPad</a> (Unicode Text Editor for Windows)</li>
-</ul>
-<p>一般的话用在线的都可以了，如果希望用本地软件的，可以用BabelPad，注意要将字体设置成宋体或者其他中文字体，否则中文显示不出来的。输入或者粘贴一段中文进去，全选，然后在菜单中选择“转换”-“统一码转换成HTML字名”。</p>
-<p>不过，输入HTML实体，网站是不会将它按照一个字符来处理的，而是一串ASCII字符，故此在搜索、切分的时候就会出现问题了。</p>
+<p>PS. 刚才网上花了不少时间读了关于面向对象的讨论和文章，看来我对于面向对象的了解还是相当片面的，只是局限在C++/Java语言对于OO的实现，而C++/Java是属于<a href="http://en.wikipedia.org/wiki/Class-based_OOP" target="_blank" rel="noopener">class-based OOP</a>，单纯的用class-based的思维去套用<a href="http://en.wikipedia.org/wiki/Prototype-based_programming" target="_blank" rel="noopener">prototype-based OOP</a>得到的结论当然不合理。另外一个错误就是我将prototype-based和object-based混为一谈了，其实完全两码事，object-based model则一般不认为是OO。花点时间去了解一下prototype-based OOP和动态编成语言应该是值得的，起码可以开拓思路。</p>
 
           
         
@@ -744,7 +831,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/38/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/38/">38</a><span class="page-number current">39</span><a class="page-number" href="/blog/page/40/">40</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/64/">64</a><a class="extend next" rel="next" href="/blog/page/40/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/38/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/38/">38</a><span class="page-number current">39</span><a class="page-number" href="/blog/page/40/">40</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/65/">65</a><a class="extend next" rel="next" href="/blog/page/40/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -785,7 +872,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -839,7 +926,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

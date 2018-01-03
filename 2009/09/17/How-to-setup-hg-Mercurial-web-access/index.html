@@ -86,31 +86,18 @@
 
 
 
-<meta name="description" content="(Platform: Windows Vista)
-
-Mercurial is already installed. 
-Install Apache. 
-Download mercurial source package to get the file hgwebdir.cgi. This file isn’t included in the Windows binary package. 
-Co">
+<meta name="description" content="(Platform: Windows Vista)  Mercurial is already installed.  Install Apache.  Download mercurial source package to get the file hgwebdir.cgi. This file isn’t included in the Windows binary package.  Co">
+<meta name="keywords" content="SoftwareDev">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to setup hg (Mercurial) web access">
 <meta property="og:url" content="http://aleung.github.io/blog/2009/09/17/How-to-setup-hg-Mercurial-web-access/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description" content="(Platform: Windows Vista)
-
-Mercurial is already installed. 
-Install Apache. 
-Download mercurial source package to get the file hgwebdir.cgi. This file isn’t included in the Windows binary package. 
-Co">
+<meta property="og:description" content="(Platform: Windows Vista)  Mercurial is already installed.  Install Apache.  Download mercurial source package to get the file hgwebdir.cgi. This file isn’t included in the Windows binary package.  Co">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-03-16T14:11:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to setup hg (Mercurial) web access">
-<meta name="twitter:description" content="(Platform: Windows Vista)
-
-Mercurial is already installed. 
-Install Apache. 
-Download mercurial source package to get the file hgwebdir.cgi. This file isn’t included in the Windows binary package. 
-Co">
+<meta name="twitter:description" content="(Platform: Windows Vista)  Mercurial is already installed.  Install Apache.  Download mercurial source package to get the file hgwebdir.cgi. This file isn’t included in the Windows binary package.  Co">
 
 
 
@@ -328,21 +315,21 @@ Co">
 <li>Extract the file library.zip in Mercurial installation folder into a directory. Use 7zip to unzip, other zip tools might fail. </li>
 <li>In Mercurial installation directory there is a foldernamed Templates.Moveit into thelibrary folder. </li>
 <li>Edit hgwebdir.py, add followinglines to add the library folderinto python library path:<br>import sys<br>sys.path.insert(0, “C:\Program Files\Mercurial\library”)</li>
-<li>Start apache, try to access in browser<br><a href="http://localhost/cgi-bin/hgwebdir.py" target="_blank" rel="external">http://localhost/cgi-bin/hgwebdir.py</a></li>
+<li>Start apache, try to access in browser<br><a href="http://localhost/cgi-bin/hgwebdir.py" target="_blank" rel="noopener">http://localhost/cgi-bin/hgwebdir.py</a></li>
 <li>If the repositories index page can shown, that’s fine. If got 500 internal error, check apache error log.<br>If the error information is like this:<br><em>The system cannot find the path specified. : couldn’t create child process: 720003: hgwebdir.py</em><br>it means Apache can’t locate the python executer. <ol>
 <li>Edit Apache’s config file httpd.conf,uncomment theline:<br>ScriptInterpreterSource registry<br>This will enable Apache to skip the script’s shebang line and use default registered handler.</li>
 </ol>
 </li>
 <li>When the index is successfully shown in browser, edit the .hg\hgrc file in each repositories to add following lines. It will enable push to repository by web access (default is read only) and enable push by http (default is requiring ssl).<br>[web]<br>allow_push = *<br>push_ssl = false</li>
 <li>Try to clone a repository by web access and modify something then push back. It should be ok. </li>
-<li>Add a line in Apache http.conf to make the URL more friendly:<br>ScriptAliasMatch ^/hg(.*) “C:/Program Files/Apache2.2/cgi-bin/hgwebdir.py$1”<br>Now the url will be:<br><a href="http://localhost/hg" target="_blank" rel="external">http://localhost/hg</a></li>
+<li>Add a line in Apache http.conf to make the URL more friendly:<br>ScriptAliasMatch ^/hg(.*) “C:/Program Files/Apache2.2/cgi-bin/hgwebdir.py$1”<br>Now the url will be:<br><a href="http://localhost/hg" target="_blank" rel="noopener">http://localhost/hg</a></li>
 </ol>
 <p>Just record the installation steps in case I need to do it againsome time in the furture. Hope thatIhaven’t missed any step :)</p>
 <p>Reference:</p>
 <ul>
-<li><a href="http://mercurial.selenic.com/wiki/PublishingRepositories" target="_blank" rel="external">http://mercurial.selenic.com/wiki/PublishingRepositories</a></li>
-<li><a href="http://mercurial.selenic.com/wiki/HgWebDirStepByStep" target="_blank" rel="external">http://mercurial.selenic.com/wiki/HgWebDirStepByStep</a></li>
-<li><a href="http://www.imladris.com/Scripts/PythonForWindows.html" target="_blank" rel="external">http://www.imladris.com/Scripts/PythonForWindows.html</a></li>
+<li><a href="http://mercurial.selenic.com/wiki/PublishingRepositories" target="_blank" rel="noopener">http://mercurial.selenic.com/wiki/PublishingRepositories</a></li>
+<li><a href="http://mercurial.selenic.com/wiki/HgWebDirStepByStep" target="_blank" rel="noopener">http://mercurial.selenic.com/wiki/HgWebDirStepByStep</a></li>
+<li><a href="http://www.imladris.com/Scripts/PythonForWindows.html" target="_blank" rel="noopener">http://www.imladris.com/Scripts/PythonForWindows.html</a></li>
 </ul>
 
       
@@ -453,7 +440,7 @@ Co">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -518,7 +505,7 @@ Co">
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

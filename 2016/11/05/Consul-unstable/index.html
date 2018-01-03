@@ -86,35 +86,22 @@
 
 
 
-<meta name="description" content="一个 Consul 集群由3个 Consul server 和近百个 Consul client 组成。观察发现集群状态不稳定，频繁出现以下现象：
-
-节点退出集群，又重新加入集群；
-重新选举 leader，有时候原来的 leader 会重新当选。
-
-对于第一个问题，分析发现原因是我们错误使用了 fail fast 策略：我们平台中会有个supervisor daemon监控着进程的状态，当进程 h">
+<meta name="description" content="一个 Consul 集群由3个 Consul server 和近百个 Consul client 组成。观察发现集群状态不稳定，频繁出现以下现象：  节点退出集群，又重新加入集群； 重新选举 leader，有时候原来的 leader 会重新当选。  对于第一个问题，分析发现原因是我们错误使用了 fail fast 策略：我们平台中会有个supervisor daemon监控着进程的状态，当进程 h">
+<meta name="keywords" content="SoftwareDev">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Consul 集群不稳定的分析">
 <meta property="og:url" content="http://aleung.github.io/blog/2016/11/05/Consul-unstable/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description" content="一个 Consul 集群由3个 Consul server 和近百个 Consul client 组成。观察发现集群状态不稳定，频繁出现以下现象：
-
-节点退出集群，又重新加入集群；
-重新选举 leader，有时候原来的 leader 会重新当选。
-
-对于第一个问题，分析发现原因是我们错误使用了 fail fast 策略：我们平台中会有个supervisor daemon监控着进程的状态，当进程 h">
-<meta property="og:image" content="http://aleung.github.io/blog/blog/attachments/2016/11/raft_state.png">
-<meta property="og:image" content="http://aleung.github.io/blog/blog/attachments/2016/11/timeline.jpg">
-<meta property="og:image" content="http://aleung.github.io/blog/blog/attachments/2016/11/consul_cluster.jpg">
+<meta property="og:description" content="一个 Consul 集群由3个 Consul server 和近百个 Consul client 组成。观察发现集群状态不稳定，频繁出现以下现象：  节点退出集群，又重新加入集群； 重新选举 leader，有时候原来的 leader 会重新当选。  对于第一个问题，分析发现原因是我们错误使用了 fail fast 策略：我们平台中会有个supervisor daemon监控着进程的状态，当进程 h">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://aleung.github.io/blog/attachments/2016/11/raft_state.png">
+<meta property="og:image" content="http://aleung.github.io/blog/attachments/2016/11/timeline.jpg">
+<meta property="og:image" content="http://aleung.github.io/blog/attachments/2016/11/consul_cluster.jpg">
 <meta property="og:updated_time" content="2016-11-05T07:31:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Consul 集群不稳定的分析">
-<meta name="twitter:description" content="一个 Consul 集群由3个 Consul server 和近百个 Consul client 组成。观察发现集群状态不稳定，频繁出现以下现象：
-
-节点退出集群，又重新加入集群；
-重新选举 leader，有时候原来的 leader 会重新当选。
-
-对于第一个问题，分析发现原因是我们错误使用了 fail fast 策略：我们平台中会有个supervisor daemon监控着进程的状态，当进程 h">
-<meta name="twitter:image" content="http://aleung.github.io/blog/blog/attachments/2016/11/raft_state.png">
+<meta name="twitter:description" content="一个 Consul 集群由3个 Consul server 和近百个 Consul client 组成。观察发现集群状态不稳定，频繁出现以下现象：  节点退出集群，又重新加入集群； 重新选举 leader，有时候原来的 leader 会重新当选。  对于第一个问题，分析发现原因是我们错误使用了 fail fast 策略：我们平台中会有个supervisor daemon监控着进程的状态，当进程 h">
+<meta name="twitter:image" content="http://aleung.github.io/blog/attachments/2016/11/raft_state.png">
 
 
 
@@ -329,13 +316,13 @@
 <p>对于第一个问题，分析发现原因是我们错误使用了 fail fast 策略：我们平台中会有个supervisor daemon监控着进程的状态，当进程 health check 失败了，就会重启进程并且发送告警。对于 Consul agent 进程，health check 调用 Consul API，API不能正常返回就认为进程状态不健康。这样做本来的用意是及时发现集群配置的错误，另外也是服务依赖管理的需要，依赖 Consul 的其它服务会等到 Consul agent 进入正常状态后才启动。但是，由于第二个问题的存在，在 leader 重新选举过程中 API 不能正常响应，Consul agent 就被当作不健康而被重启，出现了 Consul 节点退出重新加入集群的现象。本来，群集是能自动恢复到正常工作状态的，重启进程反而造成更大的负面影响。</p>
 <p>对于第二个问题，直接原因是某个 Consul server 所在的VM上有个异常的进程将CPU几乎全耗尽了，Consul 不能及时的处理集群间的通信，响应超时，产生了临时性的脑裂。但开始我们一直不能理解，单个 server 的 partitioning 为什么会影响到整个集群呢？剩余的 2 个 server 应该还是能够组成集群并保持稳定的 leader 才对。后来才发现，比起全部丢失，消息的部分丢失所引起的现象会诡异得多。</p>
 <p>这是当前 leader cm121 的日志：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">50:32 [WARN] raft: Rejecting vote from 172.17.52.84:8300 since we have a leader: 172.17.52.121:8300</div><div class="line">50:32 [ERR] raft: peer 172.17.52.84:8300 has newer term, stopping replication</div><div class="line">50:32 [INFO] raft: aborting pipeline replication to peer 172.17.52.84:8300</div><div class="line">50:32 [INFO] raft: aborting pipeline replication to peer 172.17.52.85:8300</div><div class="line">50:32 [INFO] consul: cluster leadership lost</div><div class="line">50:32 [INFO] raft: Node at 172.17.52.121:8300 [Follower] entering Follower state</div><div class="line">50:33 [WARN] raft: Heartbeat timeout reached, starting election</div><div class="line">50:33 [INFO] raft: Node at 172.17.52.121:8300 [Candidate] entering Candidate state</div><div class="line">50:34 [INFO] raft: Election won. Tally: 2</div><div class="line">50:34 [INFO] raft: Node at 172.17.52.121:8300 [Leader] entering Leader state</div><div class="line">50:34 [INFO] consul: cluster leadership acquired</div><div class="line">50:34 [INFO] consul: New leader elected: cm121</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">50:32 [WARN] raft: Rejecting vote from 172.17.52.84:8300 since we have a leader: 172.17.52.121:8300</span><br><span class="line">50:32 [ERR] raft: peer 172.17.52.84:8300 has newer term, stopping replication</span><br><span class="line">50:32 [INFO] raft: aborting pipeline replication to peer 172.17.52.84:8300</span><br><span class="line">50:32 [INFO] raft: aborting pipeline replication to peer 172.17.52.85:8300</span><br><span class="line">50:32 [INFO] consul: cluster leadership lost</span><br><span class="line">50:32 [INFO] raft: Node at 172.17.52.121:8300 [Follower] entering Follower state</span><br><span class="line">50:33 [WARN] raft: Heartbeat timeout reached, starting election</span><br><span class="line">50:33 [INFO] raft: Node at 172.17.52.121:8300 [Candidate] entering Candidate state</span><br><span class="line">50:34 [INFO] raft: Election won. Tally: 2</span><br><span class="line">50:34 [INFO] raft: Node at 172.17.52.121:8300 [Leader] entering Leader state</span><br><span class="line">50:34 [INFO] consul: cluster leadership acquired</span><br><span class="line">50:34 [INFO] consul: New leader elected: cm121</span><br></pre></td></tr></table></figure>
 <p>在这个例子中，CPU耗尽的 server 是 cm84，当前 leader 为 cm121。cm121 会定期发出 AppendEntries RPC，但 cm84 因为没有CPU资源没有处理到，等到 heartbeat timeout，cm84 错误认为当前没有 leader 了，就向所有其它 server 发出 RequestVote RPC（带有更大的 term 值），自荐为候选人，发起一轮新的投票。但是这个投票请求被其它 server 都拒绝了。</p>
 <img src="/blog/attachments/2016/11/raft_state.png">
 <p>根据状态图可知，当 leader 收到其它 server 发来的消息有更大的 team 值时，就需要交出 leader 位置，转为 follower。因此被 cm84 一捣乱，集群里面就没有 leader 了，导致接下来的超时重新选举。在新一轮选举中，cm121得到两票，重新当选为 leader。</p>
 <p>将消息的时间线画出来，其中 S1 为当前 leader (cm121)，S3 为会间歇性丢掉消息的 server (cm84)，可见 S3 如何导致重新选举 leader。</p>
 <img src="/blog/attachments/2016/11/timeline.jpg">
-<p>对于 Consul 中 raft 实现的行为：reject vote since we have a leader，似乎跟 raft 论文描述的有些出入。在 Raft <a href="https://raft.github.io/raft.pdf" target="_blank" rel="external">论文</a>中 RequestVote RPC receiver implementation 部分，没有提到已有 leader 时需要 reject 新的 vote。不过，即使没有这个检查，cm84 大部分情况下还是不能满足当选条件，因为它错失了 leader 发来的 AppendEntries RPC，它的 log 就不一定是 up-to-date 的（除非错失的 AppendEntries 没有 log entries，只是heartbeat）。cm84 不能当选，cm121被迫退位，群集还是会进入无 leader 状态。</p>
+<p>对于 Consul 中 raft 实现的行为：reject vote since we have a leader，似乎跟 raft 论文描述的有些出入。在 Raft <a href="https://raft.github.io/raft.pdf" target="_blank" rel="noopener">论文</a>中 RequestVote RPC receiver implementation 部分，没有提到已有 leader 时需要 reject 新的 vote。不过，即使没有这个检查，cm84 大部分情况下还是不能满足当选条件，因为它错失了 leader 发来的 AppendEntries RPC，它的 log 就不一定是 up-to-date 的（除非错失的 AppendEntries 没有 log entries，只是heartbeat）。cm84 不能当选，cm121被迫退位，群集还是会进入无 leader 状态。</p>
 <blockquote>
 <p><strong>RequestVote RPC</strong></p>
 <p>Invoked by candidates to gather votes (§5.2).</p>
@@ -472,7 +459,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -537,7 +524,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -86,19 +86,18 @@
 
 
 
-<meta name="description" content="当使用 Spring 作为 IoC framework 的时候，有时会利用 property placeholder 来将bean的注入属性做成可配置化。但是，一般很少会将 reference bean id 也用 property placeholder 代替，有人甚至以为这是不允许的。
-利用Spring Framework的property placeholder，将bean依赖关系配置抽离S">
+<meta name="description" content="当使用 Spring 作为 IoC framework 的时候，有时会利用 property placeholder 来将bean的注入属性做成可配置化。但是，一般很少会将 reference bean id 也用 property placeholder 代替，有人甚至以为这是不允许的。 利用Spring Framework的property placeholder，将bean依赖关系配置抽离S">
+<meta name="keywords" content="SoftwareDev,SpringFramework">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring bean reference injection definition by external configuration">
 <meta property="og:url" content="http://aleung.github.io/blog/2012/07/07/spring-bean-reference-injection-definition-by-external-configuration/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description" content="当使用 Spring 作为 IoC framework 的时候，有时会利用 property placeholder 来将bean的注入属性做成可配置化。但是，一般很少会将 reference bean id 也用 property placeholder 代替，有人甚至以为这是不允许的。
-利用Spring Framework的property placeholder，将bean依赖关系配置抽离S">
+<meta property="og:description" content="当使用 Spring 作为 IoC framework 的时候，有时会利用 property placeholder 来将bean的注入属性做成可配置化。但是，一般很少会将 reference bean id 也用 property placeholder 代替，有人甚至以为这是不允许的。 利用Spring Framework的property placeholder，将bean依赖关系配置抽离S">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-03-16T14:11:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring bean reference injection definition by external configuration">
-<meta name="twitter:description" content="当使用 Spring 作为 IoC framework 的时候，有时会利用 property placeholder 来将bean的注入属性做成可配置化。但是，一般很少会将 reference bean id 也用 property placeholder 代替，有人甚至以为这是不允许的。
-利用Spring Framework的property placeholder，将bean依赖关系配置抽离S">
+<meta name="twitter:description" content="当使用 Spring 作为 IoC framework 的时候，有时会利用 property placeholder 来将bean的注入属性做成可配置化。但是，一般很少会将 reference bean id 也用 property placeholder 代替，有人甚至以为这是不允许的。 利用Spring Framework的property placeholder，将bean依赖关系配置抽离S">
 
 
 
@@ -307,8 +306,8 @@
       
         <p>当使用 Spring 作为 IoC framework 的时候，有时会利用 property placeholder 来将bean的注入属性做成可配置化。但是，一般很少会将 reference bean id 也用 property placeholder 代替，有人甚至以为这是不允许的。</p>
 <p>利用Spring Framework的property placeholder，将bean依赖关系配置抽离Spring XML文件，就能在产品发布部署后，通过配置选项来选定不同的实现，可用于集成接口、特定业务逻辑打开关闭等。</p>
-<p><a href="http://www.oodesign.com/adapter-pattern.html" target="_blank" rel="external">Adaptor pattern</a> is widely used at the point where our product integrates with external system. Product will provide several adapters to adapt to different external system interface.<br>We deliver our product in uniform installation package for all customers. A mechanism is required to configure which adapter to be used after system is installed.</p>
-<p><a href="http://www.oodesign.com/factory-pattern.html" target="_blank" rel="external">Factory pattern</a> can be used to create the specific adapter by configuration property. But by this way we need to create factory for each kind of adapters.</p>
+<p><a href="http://www.oodesign.com/adapter-pattern.html" target="_blank" rel="noopener">Adaptor pattern</a> is widely used at the point where our product integrates with external system. Product will provide several adapters to adapt to different external system interface.<br>We deliver our product in uniform installation package for all customers. A mechanism is required to configure which adapter to be used after system is installed.</p>
+<p><a href="http://www.oodesign.com/factory-pattern.html" target="_blank" rel="noopener">Factory pattern</a> can be used to create the specific adapter by configuration property. But by this way we need to create factory for each kind of adapters.</p>
 <p>Actually Spring Framework already supports it. With property placeholder, it is able to use placeholder in bean reference and resolve the bean name from properties. The bean definition XML file is not allowed to be modified when product is released, because it’s packaged in war/ear. But properties can be modified as long as it’s store outside of the package, e.g. on file system or in configuration management (extend the PropertyPlaceholderConfigurer class).</p>
 <p>Here is a sample code snippet:<br><script src="//gist.github.com/https://gist.github.com/2934603.js"></script></p>
 
@@ -422,7 +421,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -487,7 +486,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -86,22 +86,18 @@
 
 
 
-<meta name="description" content="在上一篇博客中，我提出了在Android手机上使用SSH tunnel的想法。几天下来有了一些进展。
-首先，非常感谢Sunner，他帮忙编译出Android平台的transocks_ev binary，并且解决了一些在Android平台上运行的问题。
-在实验中，用ConnectBot + transocks_ev + iptables，HTTP和HTTPS请求都能重定向到SSH tunnel了，测">
+<meta name="description" content="在上一篇博客中，我提出了在Android手机上使用SSH tunnel的想法。几天下来有了一些进展。 首先，非常感谢Sunner，他帮忙编译出Android平台的transocks_ev binary，并且解决了一些在Android平台上运行的问题。 在实验中，用ConnectBot + transocks_ev + iptables，HTTP和HTTPS请求都能重定向到SSH tunnel了，测">
+<meta name="keywords" content="Anti-GFW,Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android手机上使用SSH tunnel的进展 (2010-06-06)">
 <meta property="og:url" content="http://aleung.github.io/blog/2010/06/07/Android-SSH-tunnel-2010-06-06-/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description" content="在上一篇博客中，我提出了在Android手机上使用SSH tunnel的想法。几天下来有了一些进展。
-首先，非常感谢Sunner，他帮忙编译出Android平台的transocks_ev binary，并且解决了一些在Android平台上运行的问题。
-在实验中，用ConnectBot + transocks_ev + iptables，HTTP和HTTPS请求都能重定向到SSH tunnel了，测">
+<meta property="og:description" content="在上一篇博客中，我提出了在Android手机上使用SSH tunnel的想法。几天下来有了一些进展。 首先，非常感谢Sunner，他帮忙编译出Android平台的transocks_ev binary，并且解决了一些在Android平台上运行的问题。 在实验中，用ConnectBot + transocks_ev + iptables，HTTP和HTTPS请求都能重定向到SSH tunnel了，测">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-03-16T14:11:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android手机上使用SSH tunnel的进展 (2010-06-06)">
-<meta name="twitter:description" content="在上一篇博客中，我提出了在Android手机上使用SSH tunnel的想法。几天下来有了一些进展。
-首先，非常感谢Sunner，他帮忙编译出Android平台的transocks_ev binary，并且解决了一些在Android平台上运行的问题。
-在实验中，用ConnectBot + transocks_ev + iptables，HTTP和HTTPS请求都能重定向到SSH tunnel了，测">
+<meta name="twitter:description" content="在上一篇博客中，我提出了在Android手机上使用SSH tunnel的想法。几天下来有了一些进展。 首先，非常感谢Sunner，他帮忙编译出Android平台的transocks_ev binary，并且解决了一些在Android平台上运行的问题。 在实验中，用ConnectBot + transocks_ev + iptables，HTTP和HTTPS请求都能重定向到SSH tunnel了，测">
 
 
 
@@ -308,8 +304,8 @@
       
 
       
-        <p>在上一篇博客中，我提出了<a href="http://good-good-study.appspot.com/blog/posts/20001" target="_blank" rel="external">在Android手机上使用SSH tunnel的想法</a>。几天下来有了一些进展。</p>
-<p>首先，非常感谢<a href="http://sunner.cn/" target="_blank" rel="external">Sunner</a>，他帮忙编译出Android平台的transocks_ev binary，并且解决了一些在Android平台上运行的问题。</p>
+        <p>在上一篇博客中，我提出了<a href="http://good-good-study.appspot.com/blog/posts/20001" target="_blank" rel="noopener">在Android手机上使用SSH tunnel的想法</a>。几天下来有了一些进展。</p>
+<p>首先，非常感谢<a href="http://sunner.cn/" target="_blank" rel="noopener">Sunner</a>，他帮忙编译出Android平台的transocks_ev binary，并且解决了一些在Android平台上运行的问题。</p>
 <p>在实验中，用ConnectBot + transocks_ev + iptables，HTTP和HTTPS请求都能重定向到SSH tunnel了，测试了浏览器和其他一些应用，无需任何额外设置就可正常访问网络。不过目前没有考虑使用非HTTP/HTTPS的应用。但现在还有两个问题：</p>
 <ol>
 <li>DNS查询还是直接出去，不能避免DNS污染</li>
@@ -319,7 +315,7 @@
 </ul>
 </li>
 </ol>
-<p>对于第一个问题，transocks_ev 不支持UDP，因此无法tunnel DNS查询请求。我在考虑参考<a href="http://code.google.com/p/cmwrap/" target="_blank" rel="external">CMWrap</a>的方案，做一个DNS proxy，转成TCP请求发出去。  </p>
+<p>对于第一个问题，transocks_ev 不支持UDP，因此无法tunnel DNS查询请求。我在考虑参考<a href="http://code.google.com/p/cmwrap/" target="_blank" rel="noopener">CMWrap</a>的方案，做一个DNS proxy，转成TCP请求发出去。  </p>
 <p>对于第二个问题，想用一个命令行ssh来代替ConnectBot。目前在Android上常用的是dropbear，但dropbear不支持SOCKS。查了linux上支持SOCKS的ssh client有OpenSSH和lsh（还有没有其他？），但是Sunner尝试了编译OpenSSH和lsh都不成功，因为它俩都太依赖gnu的一些东西了，比如glibc、glib等，而android上所有的对应的库都是从简的。因此暂时还是先用着ConnectBot，并将CPU高的问题反馈给开发者，看看有没有什么回应。</p>
 
       
@@ -432,7 +428,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -497,7 +493,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

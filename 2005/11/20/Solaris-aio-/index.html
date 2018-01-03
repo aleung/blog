@@ -87,11 +87,13 @@
 
 
 <meta name="description" content="我们程序的IRI backend使用了ACE Proactor作为TCP client的框架，proactor实质上是使用了asynchronous IO(aio)从socket上读写数据。异步IO将速度慢的I/O过程留在操作系统内部进行，不会阻塞用户线程，因此在应用中无需使用多线程也可以达到较高的效率。AIO在windows平台上使用比较广泛，称为CPIO。Solaris 9是支持aio的，按理">
+<meta name="keywords" content="SoftwareDev">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Solaris上使用aio的问题">
 <meta property="og:url" content="http://aleung.github.io/blog/2005/11/20/Solaris-aio-/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
 <meta property="og:description" content="我们程序的IRI backend使用了ACE Proactor作为TCP client的框架，proactor实质上是使用了asynchronous IO(aio)从socket上读写数据。异步IO将速度慢的I/O过程留在操作系统内部进行，不会阻塞用户线程，因此在应用中无需使用多线程也可以达到较高的效率。AIO在windows平台上使用比较广泛，称为CPIO。Solaris 9是支持aio的，按理">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-03-16T14:11:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solaris上使用aio的问题">
@@ -312,7 +314,7 @@
 <p>我们的鬼佬chief architect是hacker出身的，他跟我们一起查找问题，最终找到了原因。</p>
 <blockquote>
 <p>Some notes for us on AIO to help us better understand:</p>
-<p>[1] <a href="http://sunsite.uakom.sk/sunworldonline/swol-03-1996/swol-03-aio.html" target="_blank" rel="external">http://sunsite.uakom.sk/sunworldonline/swol-03-1996/swol-03-aio.html</a></p>
+<p>[1] <a href="http://sunsite.uakom.sk/sunworldonline/swol-03-1996/swol-03-aio.html" target="_blank" rel="noopener">http://sunsite.uakom.sk/sunworldonline/swol-03-1996/swol-03-aio.html</a></p>
 <p>[2] Keep in mind that any major improvement over standard read/write system calls requires the use of multi-processor machines, since AIOs are executed via light weight processes (LWPs). </p>
 <p>[3] aiorandom syiorandom<br>Both programs read 262,144 data blocks. Each block is 4,096 bytes. aiorandom submits a batch of 30 asynchronous reads at a time. Whenever the number of outstanding AIO operations falls below 15, it submits another batch. Results were recorded from the command timex. </p>
 <table>
@@ -345,9 +347,9 @@
 <p>[4]  However, libaio is different; it implements system functions. Depending on the numbers of submitted AIO requests, libaio creates so-called “workers” (as implemented as LWP’s) to process the IO requests. </p>
 <p>THIS IS WHAT IS KAIO .. [next line]</p>
 <p>[1]  Solaris 2.5 implements kernel-supported asynchronous I/O. The kernel has implemented special, efficient AIO assists for the libaio. </p>
-<p>[2] <a href="http://developers.sun.com/solaris/articles/thread_pools.html" target="_blank" rel="external">http://developers.sun.com/solaris/articles/thread_pools.html</a></p>
+<p>[2] <a href="http://developers.sun.com/solaris/articles/thread_pools.html" target="_blank" rel="noopener">http://developers.sun.com/solaris/articles/thread_pools.html</a></p>
 <p>Here is the code from aio.so:</p>
-<p><a href="http://cvs.opensolaris.org/source/xref/on/usr/src/uts/common/os/aio.c" target="_blank" rel="external">aio.c</a></p>
+<p><a href="http://cvs.opensolaris.org/source/xref/on/usr/src/uts/common/os/aio.c" target="_blank" rel="noopener">aio.c</a></p>
 <pre><code>394 /*  
 395  * wake up LWPs in this process that are sleeping in  
 396  * aiowait().  
@@ -484,7 +486,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -549,7 +551,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -90,6 +90,7 @@
 <meta property="og:title" content="Good good study, day day up">
 <meta property="og:url" content="http://aleung.github.io/blog/page/60/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Good good study, day day up">
 
@@ -261,6 +262,424 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2003/09/04/How-to-let-JTextArea-automatic-scroll-to-the-bottom-/" itemprop="url">
+                  如何让JTextArea自动滚动到最底?
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2003-09-04T22:52:00+08:00" content="2003-09-04">
+              2003-09-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>如果用JTextArea来做信息窗口，不断用append()显示新信息，通常会希望内容能自动滚动，保持最后增加的信息能够显示出来。利用setCaretPosition()可以实现，这个方法是设置输入光标的位置，如果光标位置超出目前可视范围，会自动滚动以保正光标可以显示出来。</p>
+<pre><code>int length = textArea.getText().length();
+textArea.setCaretPosition(length);
+</code></pre><p>如果还希望限制JTextArea中的文本长度，不让它无限制的增长，可以加上以下两行，当长度超出预订的maxTextLength后将开头的字符截除。不过美中不足的是截除无法按行进行。</p>
+<pre><code>if ( length &gt; maxTextLength ) { 
+    textArea.replaceRange(&quot;&quot;, 0, length - maxTextLength); 
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2003/09/02/Unicode-/" itemprop="url">
+                  Unicode与字符编码
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2003-09-02T22:55:00+08:00" content="2003-09-02">
+              2003-09-02
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode:"></a>Unicode:</h3><p>unicode.org制定的编码机制, 要将全世界常用文字都函括进去.<br>在1.0中是16位编码, 由U+0000到U+FFFF. 每个2byte码对应一个字符; 在2.0开始抛弃了16位限制, 原来的16位作为基本位平面, 另外增加了16个位平面, 相当于20位编码, 编码范围0到0x10FFFF.  </p>
+<h3 id="UCS"><a href="#UCS" class="headerlink" title="UCS:"></a>UCS:</h3><p>ISO制定的ISO10646标准所定义的 Universal Character Set, 采用4byte编码.  </p>
+<h3 id="Unicode与UCS的关系"><a href="#Unicode与UCS的关系" class="headerlink" title="Unicode与UCS的关系:"></a>Unicode与UCS的关系:</h3><p>ISO与unicode.org是两个不同的组织, 因此最初制定了不同的标准; 但自从unicode2.0开始, unicode采用了与ISO 10646-1相同的字库和字码, ISO也承诺ISO10646将不会给超出0x10FFFF的UCS-4编码赋值, 使得两者保持一致.  </p>
+<h3 id="UCS的编码方式"><a href="#UCS的编码方式" class="headerlink" title="UCS的编码方式:"></a>UCS的编码方式:</h3><ul>
+<li>UCS-2, 与unicode的2byte编码基本一样.   </li>
+<li>UCS-4, 4byte编码, 目前是在UCS-2前加上2个全零的byte.  </li>
+</ul>
+<h3 id="UTF-Unicode-UCS-Transformation-Format"><a href="#UTF-Unicode-UCS-Transformation-Format" class="headerlink" title="UTF: Unicode/UCS Transformation Format"></a>UTF: Unicode/UCS Transformation Format</h3><ul>
+<li>UTF-8, 8bit编码, ASCII不作变换, 其他字符做变长编码, 每个字符1-3 byte. 通常作为外码. 有以下优点:  <ul>
+<li>与CPU字节顺序无关, 可以在不同平台之间交流  </li>
+<li>容错能力高, 任何一个字节损坏后, 最多只会导致一个编码码位损失, 不会链锁错误(如GB码错一个字节就会整行乱码)   </li>
+</ul>
+</li>
+<li>UTF-16, 16bit编码, 是变长码, 大致相当于20位编码, 值在0到0x10FFFF之间, 基本上就是unicode编码的实现. 它是变长码, 与CPU字序有关, 但因为最省空间, 常作为网络传输的外码.<br>UTF-16是unicode的preferred encoding.   </li>
+<li>UTF-32, 仅使用了unicode范围(0到0x10FFFF)的32位编码, 相当于UCS-4的子集.  </li>
+</ul>
+<h3 id="UTF与unicode的关系"><a href="#UTF与unicode的关系" class="headerlink" title="UTF与unicode的关系:"></a>UTF与unicode的关系:</h3><p>Unicode是一个字符集, 可以看作为内码.<br>而UTF是一种编码方式, 它的出现是因为unicode不适宜在某些场合直接传输和处理. UTF-16直接就是unicode编码, 没有变换, 但它包含了0x00在编码内, 头256字节码的第一个byte都是0x00, 在操作系统(C语言)中有特殊意义, 会引起问题. 采用UTF-8编码对unicode的直接编码作些变换可以避免这问题, 并带来一些优点.  </p>
+<h3 id="中国国标编码"><a href="#中国国标编码" class="headerlink" title="中国国标编码:"></a>中国国标编码:</h3><ul>
+<li>GB 13000: 完全等同于ISO 10646-1/Unicode 2.1, 今后也将随ISO 10646/Unicode的标准更改而同步更改.  </li>
+<li>GBK: 对GB2312的扩充, 以容纳GB2312字符集范围以外的Unicode 2.1的统一汉字部分, 并且增加了部分unicode中没有的字符.   </li>
+<li>GB 18030-2000: 基于GB 13000, 作为Unicode 3.0的GBK扩展版本, 覆盖了所有unicode编码, 地位等同于UTF-8, UTF-16, 是一种unicode编码形式. 变长编码, 用单字节/双字节/4字节对字符编码. GB18030向下兼容GB2312/GBK.<br>GB 18030是中国所有非手持/嵌入式计算机系统的强制实施标准.  </li>
+</ul>
+<p><em>2001-11-14 (2003-9-2 补充)</em>  </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2003/08/29/java-library/" itemprop="url">
+                  java开发辅助工具,library
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2003-08-29T20:24:00+08:00" content="2003-08-29">
+              2003-08-29
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://www.zaval.org/" target="_blank" rel="noopener">http://www.zaval.org/</a> 这个网站有好几个java开发辅助工具,library. 包括了:  </p>
+<ul>
+<li>Java Resource Editor: 用于i18n/l10n的翻译 </li>
+<li>Light-Weight Visual Components Library (LwVCL): 一组基于AWT的可视控件, 估计目标是可以移植到PDA等小型设备上 </li>
+<li>Proxy Suite: an easy-to-use solution that allows monitoring TCP-based protocols, such as HTTP, NNTP and others. It is extremely useful in software development and can be used as a debug tool. </li>
+<li>轻型数据库工具 </li>
+<li>其他的一些东西, 如Java Charts Package等, 只有介绍没有下载  </li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2003/08/28/SWT-Swing-/" itemprop="url">
+                  SWT与Swing之争
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2003-08-28T20:19:00+08:00" content="2003-08-28">
+              2003-08-28
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>SWT(in Eclipse)与Swing之争, 似乎争议注意在这几方面:  </p>
+<ul>
+<li>SWT是否比Swing更快? SWT使用OS native构件, 理论上更快. 但实际比较如何, 争议很大. </li>
+<li>SWT与Swing比较, 是否更符合平台传统外观? SWT使用OS native构件,而不是象Swing一样重新写代码模拟出来. Swing支持者说用Look&amp;Feel灵活, 也可以做得不错. </li>
+<li>Swing的结构过于复杂. Swing的事件模型设计得不好. 但是swing扩展性强. </li>
+<li>Swing采用JVM的垃圾收集来回收资源, SWT提供可控的资源销毁而不采用垃圾收集.  </li>
+</ul>
+<p>这个Java英文讨论组, <a href="http://www.javalobby.org" target="_blank" rel="noopener">http://www.javalobby.org</a> , 内容还可以, search功能也比较好用.<br>看老外的论坛也是老骂架的:)  </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2003/08/27/Some-GPS-related-software-and-project/" itemprop="url">
                   一些与GPS相关的软件项目
                 </a>
@@ -307,392 +726,14 @@
           
             <p>想写个GPS有关的软件，网上找到一些相关的项目: </p>
 <ul>
-<li>Java framework for GPS <a href="http://www.aasted.org/gps/" target="_blank" rel="external">http://www.aasted.org/gps/</a><br>这个项目的目标是为各种应用程序加入GPS功能提供framework. 目前提供的是与Garmin GPS通讯的功能. </li>
-<li>Chaeron GPS library <a href="http://www.chaeron.com/gps.html" target="_blank" rel="external">http://www.chaeron.com/gps.html</a><br>类似的项目,也是作为支持库，但功能更强/完善. 支持多种平台, 包括多种PDA. 而且这看来是一个active的项目, 由一个公司支持. </li>
-<li>JavaGPS <a href="http://javagps.sourceforge.net/" target="_blank" rel="external">http://javagps.sourceforge.net/</a><br>这个项目的范围似乎比前两个窄一些, 局限于从GPS中取得当前位置数据. 从代码看来，设计也不如前两个项目规范。</li>
+<li>Java framework for GPS <a href="http://www.aasted.org/gps/" target="_blank" rel="noopener">http://www.aasted.org/gps/</a><br>这个项目的目标是为各种应用程序加入GPS功能提供framework. 目前提供的是与Garmin GPS通讯的功能. </li>
+<li>Chaeron GPS library <a href="http://www.chaeron.com/gps.html" target="_blank" rel="noopener">http://www.chaeron.com/gps.html</a><br>类似的项目,也是作为支持库，但功能更强/完善. 支持多种平台, 包括多种PDA. 而且这看来是一个active的项目, 由一个公司支持. </li>
+<li>JavaGPS <a href="http://javagps.sourceforge.net/" target="_blank" rel="noopener">http://javagps.sourceforge.net/</a><br>这个项目的范围似乎比前两个窄一些, 局限于从GPS中取得当前位置数据. 从代码看来，设计也不如前两个项目规范。</li>
 </ul>
 <p>但是，这些项目看来都是只支持从GPS取数据，而不支持传送数据给GPS。</p>
 <ul>
-<li>EPS <a href="http://eps.sourceforge.net/" target="_blank" rel="external">http://eps.sourceforge.net/</a><br>这是一个小应用程序，能够下载GPS数据并显示。这个程序能与Garmin GPS通讯，有上传/下载功能, 不过代码风格很差。</li>
+<li>EPS <a href="http://eps.sourceforge.net/" target="_blank" rel="noopener">http://eps.sourceforge.net/</a><br>这是一个小应用程序，能够下载GPS数据并显示。这个程序能与Garmin GPS通讯，有上传/下载功能, 不过代码风格很差。</li>
 </ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2003/08/26/Super-toy-car/" itemprop="url">
-                  超级玩具小车
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2003-08-26T20:17:00+08:00" content="2003-08-26">
-              2003-08-26
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>一个神奇的project, 使用了各种流行的前沿技术, 令人炫目的技术列表:  </p>
-<p><a href="http://www.idealliance.org/papers/xml02/dx_xml02/papers/05-05-05/05-05-05.html" target="_blank" rel="external">http://www.idealliance.org/papers/xml02/dx_xml02/papers/05-05-05/05-05-05.html</a>  </p>
-<p>Mobile GPS Demonstration Platform, 演示了移动通讯/GPS/WebService/XML技术的结合, 一辆装备了GPS、GPRS mobile、Java Embeded Board的玩具小车。  </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2003/08/22/Eclipse-i18n-l10n-/" itemprop="url">
-                  Eclipse的i18n/l10n辅助功能
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2003-08-22T20:15:00+08:00" content="2003-08-22">
-              2003-08-22
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Java程序的本地化，做法都是在程序中不直接写死字符串，而是通过ResourceBoundle的getString()方法，在本地语言的properties文件中读取出翻译后的字串。<br>对于已经开发好的程序，找出源代码中写死的字符串工作相当繁琐，Eclipse有这方面的辅助工具。<br>选择文件，右键菜单 source-&gt;Extenalize Strings 打开工具，能够找出源文件中的所有字符串，选择那些需要翻译，自动替换并生成properties文件。  </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2003/08/20/Java-/" itemprop="url">
-                  Java“错误模式”
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2003-08-20T19:01:00+08:00" content="2003-08-20">
-              2003-08-20
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>《诊断 Java 代码》这组文章提到了很多种“错误模式”，有时间值得看看。<br><a href="http://www.ibm.com/developerWorks/cn/java/j-diag/index.shtml" target="_blank" rel="external">http://www.ibm.com/developerWorks/cn/java/j-diag/index.shtml</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2003/08/19/Swing-components-refresh/" itemprop="url">
-                  Swing components refresh
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2003-08-19T19:30:00+08:00" content="2003-08-19">
-              2003-08-19
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Java swing编程，更改了一个JPanel的内部components后，需要改变一下窗口大小，新内容才能显示出来。<br>解决方法：调用panel.validate()。<br>对于container，添加或者改变了对象后，需要调用validate()才能重新布局并显示。</p>
 
           
         
@@ -725,7 +766,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/59/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/59/">59</a><span class="page-number current">60</span><a class="page-number" href="/blog/page/61/">61</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/64/">64</a><a class="extend next" rel="next" href="/blog/page/61/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/59/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/59/">59</a><span class="page-number current">60</span><a class="page-number" href="/blog/page/61/">61</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/65/">65</a><a class="extend next" rel="next" href="/blog/page/61/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -766,7 +807,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -820,7 +861,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

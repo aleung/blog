@@ -90,6 +90,7 @@
 <meta property="og:title" content="Good good study, day day up">
 <meta property="og:url" content="http://aleung.github.io/blog/page/23/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Good good study, day day up">
 
@@ -261,6 +262,472 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2010/03/19/Grab-Android-system-on-network-communication/" itemprop="url">
+                  抓取Android系统上的网络通信
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2010-03-19T13:33:00+08:00" content="2010-03-19">
+              2010-03-19
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Android是基于Linux的系统，这是对开发者很方便的。今天手机上网不太正常，想到抓些包来看看，于是上网google一下，就找到教程了：<a href="http://pdk.android.com/online-pdk/guide/tcpdump.html" target="_blank" rel="noopener">Debugging with Tcpdump</a>。我的ROM没有预装tcpdump（据说cm的rom有），自己编译也太麻烦了，网上也可以找到编译好的包，搜索”tcpdump-arm”可找到。</p>
+<p>有了tcpdump，要分析别人的应用干了些什么也方便多了。例如这是 Google Maps 获取network location的包：</p>
+<pre><code>POST /loc/m/api HTTP/1.1
+Connection: close
+Content-Type: application/binary
+Content-Length: 496
+Host: www.google.com
+User-Agent: GMM/3.0 (dream ERE27); gzip
+
+....&quot;location,1.0,android,android,en_US... I.....g...........g:loc/ql......
+..
+.1.0.Iandroid/google/passion/passion/mahimahi:2.1/ERD72/22132:user/release-keys.#2:l-7Yxu1UHhuUZlb5:F_iqbZnw84bV2J0q*.zh_CN2
+....CMCC .(...
+.voicesearch..
+.com.diddo.diddo.diddo..
+.apps.maps..
+.com.lim.android.automemman&quot;..
+..
+...I...... ..(.......$....I...... ..(.....I...... ..(.....I...... ..(.....I...... ..(.....I...... ..(.&quot;...I...... ..(.0..K&quot;...I...... ..(.0..J&quot;...I...... ..(.0...&quot;...I...... ..(.0...(......
+
+
+HTTP/1.1 200 OK
+Content-Type: application/binary
+Content-Disposition: attachment
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: Fri, 01 Jan 1990 00:00:00 GMT
+Date: Fri, 19 Mar 2010 04:49:31 GMT
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Content-Length: 188
+Server: GSE
+X-XSS-Protection: 0
+Connection: close
+
+..............g...)...........`.Z... $...k.......fg./,
+.....,..&quot;....cZ
+....(.
+!&apos;....S`..F...3..BP.n..j...`Q{..V..v...Z&apos;yT;.j...]..Q+.U.d.Pm.,6..aj..j_....=..T...
+goB. .U....s7.......#
+)...
+</code></pre><p>不过payload是binary的，没法直接看出里面是些什么东西。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2010/03/11/Study-of-the-issue-that-CXF-can-t-run-on-GlassFish/" itemprop="url">
+                  Study of the issue that CXF can't run on GlassFish
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2010-03-11T11:59:00+08:00" content="2010-03-11">
+              2010-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Issue"><a href="#Issue" class="headerlink" title="Issue"></a>Issue</h2><p>SOAP WS client which uses CXF can’t run on GlassFish AS. Getting ClassCastException on invoking some CXF API. The problem was described as CXF-2237 [2].</p>
+<h2 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h2><p>JAX-WS is the Java API for XML Web Service defined by JSR 224. SUN provides a JAX-WS reference implementation in Metro project, which is inside GlassFish AS. The SUN JAX-WS implement was later also merged into JDK 6. Apache CXF is another JAX-WS implementation.</p>
+<p>An application can select different JAX-WS implementation by Provider SPI. JSR 224 [4] chapter 6.2.1 defines the algorithm of Provider implementation selection:</p>
+<blockquote>
+<ol>
+<li><p>If a resource with the name of META-INF/services/javax.xml.ws.spi.Provider exists, then its first line, if present, is used as the UTF-8 encoded name of the implementation class.</p>
+</li>
+<li><p>If the ${java.home}/lib/jaxws.properties file exists and it is readable by the java.util.Properties.load(InputStream) method and it contains an entry whose key is javax.xml.ws.spi.Provider, then the value of that entry is used as the name of the implementation class.</p>
+</li>
+<li><p>If a system property with the name javax.xml.ws.spi.Provider is defined, then its value is used as the name of the implementation class.</p>
+</li>
+<li><p>Finally, a default implementation class name is used.</p>
+</li>
+</ol>
+</blockquote>
+<p>The Provider implementation class in JDK 6 is <code>com.sun.xml.internal.ws.spi.ProviderImpl</code> in rt.jar. I guess it’s the default implementation as mentioned in step 4.</p>
+<p>CXF packages META-INF/services/javax.xml.ws.spi.Provider which points to <code>org.apache.cxf.jaxws.spi.ProviderImpl</code> in cxf.jar. It will be considered in step 1.</p>
+<p>Metro also packages META-INF/services/javax.xml.ws.spi.Provider which points to <code>com.sun.xml.ws.spi.ProviderImpl</code> in webservices-rt.jar. It also will be considered in step 1.</p>
+<p>Because in GlassFish the Metro library is in system classpath, so its META-INF/services/javax.xml.ws.spi.Provider will be loaded precede over CXF’s. That’s why Metro will always be used as JAX-WS implement no matter CXF exists or not.</p>
+<h2 id="Potential-Solution"><a href="#Potential-Solution" class="headerlink" title="Potential Solution"></a>Potential Solution</h2><h3 id="Classloader-control"><a href="#Classloader-control" class="headerlink" title="Classloader control"></a>Classloader control</h3><p>If we can force the JVM to load resource from cxf.jar prior to webservices-rt.jar that will be fine. But GlassFish hasn’t the mechanism likeWebLogic’s <code>&lt;prefer-application-packages&gt;</code>[5]. After some finding we give up this approach.</p>
+<h3 id="Remove-Metro-from-GlassFish"><a href="#Remove-Metro-from-GlassFish" class="headerlink" title="Remove Metro from GlassFish"></a>Remove Metro from GlassFish</h3><p>If there is no application which deploys on the this application server that depends on Metro, we can remove Metro lib (webservices-*.jar) from GlassFish’s lib folder.</p>
+<h3 id="Change-to-Metro"><a href="#Change-to-Metro" class="headerlink" title="Change to Metro"></a>Change to Metro</h3><p>That’s nothing to say. We finally choose this way. There is almost no workload to migrate our code from CXF to Metro, because both of them follows JAX-WS specification, except that some code that calls CXF specify API need to be changed. We even don’t change the build script and still use CXF’s wsdl2java tool.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><a href="https://issues.apache.org/jira/browse/CXF-857" target="_blank" rel="noopener">CXF Issue: CXF-857</a></li>
+<li><a href="https://issues.apache.org/jira/browse/CXF-2237" target="_blank" rel="noopener">CXF Issue: CXF-2237</a></li>
+<li><a href="http://stackoverflow.com/questions/2064068/how-to-pick-cxf-over-metro-on-glassfish" target="_blank" rel="noopener">StackOverflow: How to pick CXF over Metro on Glassfish</a></li>
+<li><a href="http://jcp.org/en/jsr/detail?id=224" target="_blank" rel="noopener">JSR 224: JAX-WS 2.x</a></li>
+<li><a href="http://good-good-study.appspot.com/blog/posts/4218" target="_blank" rel="noopener">WebLogic的classloading</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2010/02/27/Portable-pedestrians-cross-the-street-warning-great/" itemprop="url">
+                  便携式行人过街警示棒
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2010-02-27T01:40:00+08:00" content="2010-02-27">
+              2010-02-27
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="http://farm5.static.flickr.com/4010/4390272360_cd4c3c040a_o.jpg" alt=""></p>
+<p>几乎每次过马路，我都恨不得手里有这样一块牌子，可以伸到身体前面，把来车挡住 —- 在没有交通灯的斑马线，十个司机有九个会毫不减速的冲过，而不会避让过马路的行人；即使在有交通灯的斑马线，如果不是路口，也有司机根本当红灯不存在。</p>
+<p>我想，能不能做个可伸缩的棒，例如是套筒的方式，里面加上弹簧，缩起来的时候大概烟盒大小，可以方便的放在口袋，当需要过马路的时候，将它弹出来，变成一米左右的长度。棒身用红、黄鲜艳颜色的反光材料覆盖。为了增大可视面积，棒伸展时需要在前端弹出一个平面，应该用个弹性钢丝圈加上薄膜可以做出来，类似可折叠太阳帽的样子。过完马路后一压就能够把警示棒收起来。</p>
+<p>Beatles四位大叔过Abbey Road时就是这样子的：</p>
+<p><img src="http://farm5.static.flickr.com/4003/4390322224_a0a6979623_o.jpg" alt=""></p>
+<p>现在激光全息成像技术还不成熟，如果能够做到便携化，还可以从口袋里掏出激光器一照，一个栅栏就出来了：</p>
+<p><img src="http://farm3.static.flickr.com/2711/4389554227_f36eafa67f_o.jpg" alt=""></p>
+<p>至于驾车人士关心的如何制止行人乱穿马路，那就是不是我考虑的问题了。我自己是遵守交通规则的，有斑马线就走斑马线，有行人交通灯就等绿灯才过。</p>
+<p>欢迎驾车人士批判，哈哈 :)</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2010/02/26/Two-questions-about-SIP-message-transport/" itemprop="url">
+                  Two questions about SIP message transport
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2010-02-26T12:30:00+08:00" content="2010-02-26">
+              2010-02-26
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="SIP-messages-are-sent-in-mix-of-UDP-and-TCP"><a href="#SIP-messages-are-sent-in-mix-of-UDP-and-TCP" class="headerlink" title="SIP messages are sent in mix of UDP and TCP"></a>SIP messages are sent in mix of UDP and TCP</h3><p>In our test we found that our client first sent SIP messages in UDP but later on it changed to TCP. Is it an issue?</p>
+<p>In RFC 3261 (SIP) chapter 18.1.1 and 18.2.1, it says:</p>
+<blockquote>
+<p>If a request is within 200 bytes of the path MTU, or if it is larger than 1300 bytes and the path MTU is unknown, the request MUST be sent using an RFC 2914 congestion controlled transport protocol, such as TCP. … This prevents fragmentation of messages over UDP and provides congestion control for larger messages.</p>
+<p>For any port and interface that a server listens on for UDP, it MUST listen on that same port and interface for TCP. This is because a message may need to be sent using TCP, rather than UDP, if it is too large.</p>
+</blockquote>
+<p>So, whether send a SIP message in UDP or TCP is decided bytransport layer. When the initial SIP message of a transaction is sent in UDP it’s possible that the consequent messages are sent in TCP.</p>
+<h3 id="SIP-MESSAGE-is-resent-in-0-5-second"><a href="#SIP-MESSAGE-is-resent-in-0-5-second" class="headerlink" title="SIP MESSAGE is resent in 0.5 second"></a>SIP MESSAGE is resent in 0.5 second</h3><p>In another test case we found that the client resends the SIP MESSAGE request in 0.5 second if it doesn’t receive the response. We know that SIP message should be resent in a specific time if no response is received. But why the interval is 0.5 second? Is it configurable in Sailfin?</p>
+<p>Also go to RFC 3261, find the answer in chapter 17.1.1.2 and 17.1.2.2:</p>
+<blockquote>
+<p>If an unreliable transport is in use, the client transaction MUST set timer E to fire in T1 seconds. If timer E fires while still in this state, the timer is reset, but this time with a value of MIN(2<em>T1, T2). When the timer fires again, it is reset to a MIN(4</em>T1, T2). … For the default values of T1 and T2, this results in intervals of 500 ms, 1 s, 2 s, 4 s, 4 s, 4 s, etc.</p>
+<p>The default value for T1 is 500 ms. T1 is an estimate of the RTT between the client and server transactions. … T1 MAY be chosen larger, and this is RECOMMENDED if it is known in advance (such as on high latency access links) that the RTT is larger.</p>
+</blockquote>
+<p>In SailFin(GlassFish) the value of T1 and T2 can be configured in admin console under: Configuration - SIP Service - SIP Protocol.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2010/02/24/Illustration-Spring-ApplicationContext-in-enterprise-application/" itemprop="url">
                   图解：Spring ApplicationContext in enterprise application
                 </a>
@@ -308,451 +775,27 @@
             <p>在一个比较复杂的enterprise application (EAR)里面，往往有多个war和ejb，如果希望使用Springframework通过IoC方式来管理及装配POJO beans，就要面对如何初始化application context，由谁来初始化，如何让这些war和ejb共享application context等问题。</p>
 <p>关于多个war、ejb共享application context的方法，在下面这两篇文章里解释得比较清楚：</p>
 <ul>
-<li><a href="http://blog.springsource.com/2007/06/11/using-a-shared-parent-application-context-in-a-multi-war-spring-application/" target="_blank" rel="external">Using a shared parent application context in a multi-war Spring application</a></li>
-<li><a href="http://springtips.blogspot.com/2007/09/using-shared-context-from-ejbs.html" target="_blank" rel="external">Using a Shared Context from EJBs</a></li>
+<li><a href="http://blog.springsource.com/2007/06/11/using-a-shared-parent-application-context-in-a-multi-war-spring-application/" target="_blank" rel="noopener">Using a shared parent application context in a multi-war Spring application</a></li>
+<li><a href="http://springtips.blogspot.com/2007/09/using-shared-context-from-ejbs.html" target="_blank" rel="noopener">Using a Shared Context from EJBs</a></li>
 </ul>
 <p>在这里，我不再详细叙述上面文章中的内容，通过图解的方式希望能让它更易理解，需要对照阅读。</p>
 <p>图中的方块、圆圈都表示实例，形状的嵌套表示它们的包含关系。在例子里，缺省值都显式写出来，方便查找。</p>
-<p><a href="http://www.flickr.com/photos/leoliang/4384915548/" target="_blank" rel="external"><img src="http://farm5.static.flickr.com/4037/4384915548_2ec7d610e6_o.png" alt="share-context-1"></a></p>
+<p><a href="http://www.flickr.com/photos/leoliang/4384915548/" target="_blank" rel="noopener"><img src="http://farm5.static.flickr.com/4037/4384915548_2ec7d610e6_o.png" alt="share-context-1"></a></p>
 <p>先看图中靛蓝色的box，是ContextSingletonBeanFactoryLocator实例，application context的共享是依靠它来实现的：对于每个locatorFactorSelector，在一个classloader的范围内只会存在一个ContextSingletonBeanFactoryLocator的实例。ContextSingletonBeanFactoryLocator内部有一个ApplicationContext（图中的天蓝色box），它的bean是由locatorFactorSelector所指向的xml文件所定义的。例如locatorFactorSelector为classpath*:beanRefContext.xml，就会寻找classpath中所有的beanRefContext.xml文件并根据它们去创建内部ApplicationContext。这个内部ApplicationContext只是其它ApplicationContext的容器，不存放application的bean。一个beanRefContext.xml文件应该像下面那样，里面是一个ApplicationContext，它才是真正的业务bean的容器。如果需要可以设置它的parent context。如果有多个beanRefContext.xml文件，就会创建多个ApplicationContext，它们通过id来标识。</p>
-<figure class="highlight xml"><figcaption><span>beanRefContext.xml</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">    <span class="tag">&lt;<span class="name">beans</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"a"</span> <span class="attr">class</span>=<span class="string">"org.springframework.context.support.ClassPathXmlApplicationContext"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">constructor-arg</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">list</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">value</span>&gt;</span>context_a.xml<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line">                <span class="tag">&lt;/<span class="name">list</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">constructor-arg</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">ref</span> <span class="attr">bean</span>=<span class="string">"b"</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">beans</span>&gt;</span></div><div class="line">``` </div><div class="line"></div><div class="line">EJB应该在onCreate()过程中通过下面的代码来获得application context，需要通过factoryKey（例子里是"a"）来指定具体是哪个context：</div><div class="line">    </div><div class="line">``` java</div><div class="line">beanFactory= ContextSingletonBeanFactoryLocator.getInstance("classpath*:beanRefContext.xml").useBeanFactory("a").getFactory();</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><figcaption><span>beanRefContext.xml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">beans</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"a"</span> <span class="attr">class</span>=<span class="string">"org.springframework.context.support.ClassPathXmlApplicationContext"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">list</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">value</span>&gt;</span>context_a.xml<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">list</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">ref</span> <span class="attr">bean</span>=<span class="string">"b"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">EJB应该在onCreate()过程中通过下面的代码来获得application context，需要通过factoryKey（例子里是"a"）来指定具体是哪个context：</span><br><span class="line">    </span><br><span class="line">``` java</span><br><span class="line">beanFactory= ContextSingletonBeanFactoryLocator.getInstance("classpath*:beanRefContext.xml").useBeanFactory("a").getFactory();</span><br></pre></td></tr></table></figure>
 <p>在war里是依靠ContextLoaderListener来启动ApplicationContext的。在web.xml里加入：</p>
-<figure class="highlight xml"><figcaption><span>web.xml    </span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span></div><div class="line">        org.springframework.web.context.ContextLoaderListener</div><div class="line">    <span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><figcaption><span>web.xml    </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span></span><br><span class="line">        org.springframework.web.context.ContextLoaderListener</span><br><span class="line">    <span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>这个application context包含的是/WEB-INF/applicationContext.xml中定义的beans。在Servlet中通过下面的代码可以获得这个context：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">beanFactory = WebApplicationContextUtils.getWebApplicationContext(<span class="keyword">this</span>.getServletContext());</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">beanFactory = WebApplicationContextUtils.getWebApplicationContext(<span class="keyword">this</span>.getServletContext());</span><br></pre></td></tr></table></figure>
 <p>但这样创建出来的是一个独立的application context，仅仅在war内部可以访问，无法做到多个war和ejb之间共享。</p>
 <p>要实现共享，就要在web.xml中再加入：</p>
-<figure class="highlight xml"><figcaption><span>web.xml</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>parentContextKey<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>b<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>locatorFactorySelector<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath*:beanRefContext.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span> <span class="comment">&lt;!-- this is the default value --&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><figcaption><span>web.xml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>parentContextKey<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>b<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>locatorFactorySelector<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath*:beanRefContext.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span> <span class="comment">&lt;!-- this is the default value --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>这样，当ContextLoaderListener创建war的application context时，会根据locatorFactorySelector去取相应的ContextSingletonBeanFactoryLocator实例，并且从locator中根据parentContextKey拿到具体的context，将这个context作为war的application context的parent。在图中，war 1的servlet可以访问到key为’b’的context，因为它是当前context的parent。</p>
 <p>最后的效果就是：哪个war或者ejb先初始化，它就会去初始化ContextSingletonBeanFactoryLocator实例，由于是singleton，只会有一个实例存在，所有的war和ejb都从这个locator里面拿到具体存放业务bean的context，实现了context的共享。</p>
-<p>在这里需要留意的是classloader，必须很清楚的知道哪些类是由哪个层次的classloader加载的：所有共享的bean，以及相关的spring jar都必须由EJB classloader加载。关于EAR的classloader及层次关系请参看 <a href="http://good-good-study.appspot.com/blog/posts/4218" target="_blank" rel="external">WebLogic的classloading</a>。</p>
+<p>在这里需要留意的是classloader，必须很清楚的知道哪些类是由哪个层次的classloader加载的：所有共享的bean，以及相关的spring jar都必须由EJB classloader加载。关于EAR的classloader及层次关系请参看 <a href="http://good-good-study.appspot.com/blog/posts/4218" target="_blank" rel="noopener">WebLogic的classloading</a>。</p>
 <p>在实际应用中，往往不需要对application context作隔离，整个ear里面所有ejb、war共享一个application context是最简便的。这时war里不需要定义任何context和context loader，与EJB一样直接使用ContextSingletonBeanFactoryLocator就可以获取到context。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">beanFactory= ContextSingletonBeanFactoryLocator.getInstance(<span class="string">"classpath*:beanRefContext.xml"</span>).useBeanFactory(<span class="string">"share-context"</span>).getFactory();</div></pre></td></tr></table></figure>
-<p><a href="http://www.flickr.com/photos/leoliang/5370082919/" target="_blank" rel="external"><img src="http://farm6.static.flickr.com/5245/5370082919_6dfc7f7b1d_z.jpg" alt="sping_shared_context"></a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2010/02/24/Recommend-a-introduced-over-the-wall-knowledge-of-the-mailing-list/" itemprop="url">
-                  推荐一个介绍翻墙知识的邮件列表
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2010-02-24T00:59:00+08:00" content="2010-02-24">
-              2010-02-24
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>订阅bypassgfw邮件列表后，可通过email定期会收到翻墙软件更新版本。订阅方法有两种：</p>
-<ol>
-<li>访问<a href="https://groups.google.de/group/bypassgfw?hl=zh-CN" target="_blank" rel="external">https://groups.google.de/group/bypassgfw?hl=zh-CN</a>(此地址已被墙)，用Google/GMail账号登录，点击右侧”加入此论坛”</li>
-<li>发邮件至 jsmith.email2009@googlemail.com 申请加入(请在标题中标明”申请加入Bypass GFW Google Group)</li>
-</ol>
-<p>以下内容摘自bypassgfw的介绍：</p>
-<blockquote>
-<p>更多翻墙软件和翻墙技巧 <a href="http://twitbrowser.net/blog" target="_blank" rel="external">http://twitbrowser.net/blog</a>墙内镜像：<a href="http://tbm001.mooo.com/" target="_blank" rel="external">http://tbm001.mooo.com/</a></p>
-<p>加入小组需Google/GMail账号，没有Google/GMail账号也可以直接发邮件至jsmith.email2009@googlemail.com申请加入(请在标题中标明”申请加入Bypass GFW Google Group)，我会手动添加到邮件列表中</p>
-<p>163和Hotmail会将小组邮件标为垃圾邮件，请尽量不要使用这两个邮箱订阅小组邮件</p>
-<p>本小组仅为发送邮件所创建，每周会发送两封附件包含有效翻墙软件的邮件至所有组员邮箱，问题讨论请到<a href="http://groups.google.com/group/bypassgfwdiscussions" target="_blank" rel="external">http://groups.google.com/group/bypassgfwdiscussions</a></p>
-<p>如果您有任何问题或无法收到邮件，请发送邮件到 jsmith.email2009@googlemail.com</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2010/02/22/JSON-support-in-JAX-RS/" itemprop="url">
-                  JSON support in JAX-RS
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2010-02-22T23:33:00+08:00" content="2010-02-22">
-              2010-02-22
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>JAX-RS is the Java API for RESTful web services. JSON is the most popular data binding of RESTful web service. In JAX-RS, Entity Providers supply mapping services between representations and their associated Java types. To support JSON representation, JSON provider is needed.</p>
-<h2 id="JSON-support-in-Jersey-and-CXF"><a href="#JSON-support-in-Jersey-and-CXF" class="headerlink" title="JSON support in Jersey and CXF"></a>JSON support in Jersey and CXF</h2><p>Both Jersey and Apache CXF support JSON data generated out of JAXB beans. Developer can generate JavatypefromXML schema (xsd) by JAXB ormanually write Java bean with annotations. Then the resource can support JSON representatons.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@XmlRootElement</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StatusInfoBean</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> String status = <span class="string">"Idle"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span> tonerRemaining = <span class="number">25</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">final</span> Collection&lt;JobInfoBean&gt; jobs = <span class="keyword">new</span> HashSet&lt;JobInfoBean&gt;();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Path</span>(<span class="string">"/status"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyResource</span> </span>&#123;</div><div class="line">    StatusInfoBean statusInfoBean = <span class="keyword">new</span> StatusInfoBean();</div><div class="line">    &#123;</div><div class="line">        statusInfoBean.jobs.add(<span class="keyword">new</span> JobInfoBean(<span class="string">"sample.doc"</span>, <span class="string">"printing..."</span>, <span class="number">13</span>));</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="meta">@GET</span></div><div class="line">    <span class="meta">@Produces</span>(<span class="string">"application/json"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> StatusInfoBean <span class="title">getStatus</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> statusInfoBean;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="meta">@PUT</span></div><div class="line">    <span class="meta">@Consumes</span>(<span class="string">"application/json"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">setStatus</span><span class="params">(StatusInfoBean status)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.statusInfoBean = status;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Cusomize-the-JSON-provider"><a href="#Cusomize-the-JSON-provider" class="headerlink" title="Cusomize the JSON provider"></a>Cusomize the JSON provider</h2><p>The behavior of the JSON provider can be customized. But the way of customization is different in Jersey and CXF.</p>
-<p>The configuration described in this article targets on Jersey 1.0.2 or higher, CXF 2.2 or higher.</p>
-<p>In Jersey, developer should implement a JAXB ContextResolver which creates JSONJAXBContext with JSONConfiguration.Different configurations can be set bybuilder pattern.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Provider</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyJAXBContextResolver</span> <span class="keyword">implements</span> <span class="title">ContextResolver</span>&lt;<span class="title">JAXBContext</span>&gt; </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> JAXBContext context;</div><div class="line">    <span class="keyword">private</span> Class[] types = &#123;StatusInfoBean.class, JobInfoBean.class&#125;;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyJAXBContextResolver</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        <span class="keyword">this</span>.context = <span class="keyword">new</span> JSONJAXBContext(</div><div class="line">                JSONConfiguration.mapped()</div><div class="line">                                   .rootUnwrapping(<span class="keyword">true</span>)</div><div class="line">                                   .arrays(<span class="string">"jobs"</span>)</div><div class="line">                                   .nonStrings(<span class="string">"pages"</span>, <span class="string">"tonerRemaining"</span>)</div><div class="line">                                   .build(),</div><div class="line">                types);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> JAXBContext <span class="title">getContext</span><span class="params">(Class&lt;?&gt; objectType)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> (types[<span class="number">0</span>].equals(objectType)) ? context : <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Further simplificationway can be found in <a href="http://blogs.sun.com/japod/entry/configuring_json_for_restful_web" target="_blank" rel="external">http://blogs.sun.com/japod/entry/configuring_json_for_restful_web</a></p>
-<p>In Apache CXF, to customize the JSON provider, developer can implement a new provider or configure the properties of org.apache.cxf.jaxrs.provider.JSONProvider.</p>
-<p>Custom provider is registered by Spring configuration:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">beans</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jaxrs:server</span> <span class="attr">id</span>=<span class="string">"customerService"</span> <span class="attr">address</span>=<span class="string">"/"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jaxrs:serviceBeans</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.CustomerService"</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">jaxrs:serviceBeans</span>&gt;</span></div><div class="line">    </div><div class="line">        <span class="tag">&lt;<span class="name">jaxrs:providers</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">ref</span> <span class="attr">bean</span>=<span class="string">"jsonProvider"</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">jaxrs:providers</span>&gt;</span></div><div class="line">    </div><div class="line">        <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"jsonProvider"</span> <span class="attr">class</span>=<span class="string">"org.apache.cxf.jaxrs.provider.JSONProvider"</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dropRootName"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"serializeAsArray"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"arrayKeys"</span> <span class="attr">value</span>=<span class="string">"true"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">list</span>&gt;</span><span class="tag">&lt;<span class="name">value</span>&gt;</span>jobs<span class="tag">&lt;/<span class="name">value</span>&gt;</span><span class="tag">&lt;/<span class="name">list</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">jaxrs:server</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="Drop-root-element-Root-unwrapping"><a href="#Drop-root-element-Root-unwrapping" class="headerlink" title="Drop root element / Root unwrapping"></a>Drop root element / Root unwrapping</h3><p>Drop root element means strip out the root element from JSON. In the following example the StatusInfoBean element is dropped.</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;<span class="attr">"status"</span>:<span class="string">"Idle"</span>,<span class="attr">"tonerRemaining"</span>:<span class="string">"25"</span>,<span class="attr">"jobs"</span>:&#123;<span class="attr">"name"</span>:<span class="string">"sample.doc"</span>,<span class="attr">"status"</span>:<span class="string">"printing..."</span>,<span class="attr">"pages"</span>:<span class="string">"13"</span>&#125;&#125;</div></pre></td></tr></table></figure>
-<p>In Jersey whether dropping root element is configured by JSONConfiguration.rootUnwrapping(). In CXF it is by JSONProvider.setDropRootElement().</p>
-<h3 id="Single-value-array"><a href="#Single-value-array" class="headerlink" title="Single value array"></a>Single value array</h3><p>Single value List object can be serialized as array or non-array. See example:</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;<span class="attr">"rows"</span>:&#123;<span class="attr">"userid"</span>:<span class="string">"1621"</span>,<span class="attr">"name"</span>:<span class="string">"Grotefend"</span>&#125;&#125;</div><div class="line">&#123;<span class="attr">"rows"</span>:[&#123;<span class="attr">"userid"</span>:<span class="string">"1621"</span>,<span class="attr">"name"</span>:<span class="string">"Grotefend"</span>&#125;]&#125;</div></pre></td></tr></table></figure>
-<p>In CXF it’s controlled by JSONProvider properties “serializeAsArray” and “arrayKeys”.</p>
-<h3 id="Namespace"><a href="#Namespace" class="headerlink" title="Namespace"></a>Namespace</h3><p>If the JAXB bean has namespace, whether to include namespace in JSON can be controlled in CXF by JSONProvider properties “ignoreNamespaces”.</p>
-<h2 id="Nature-JSON-notation"><a href="#Nature-JSON-notation" class="headerlink" title="Nature JSON notation"></a>Nature JSON notation</h2><p>Nature JSON notation is:</p>
-<ul>
-<li>root unwrapping</li>
-<li>single value List object serialized as array</li>
-<li>???</li>
-</ul>
-<p>See com.sun.jersey.api.json.JSONConfiguration.Notation</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2010/02/14/This-blog-now-support-feed-output/" itemprop="url">
-                  这个blog现在支持feed输出了
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2010-02-14T18:16:00+08:00" content="2010-02-14">
-              2010-02-14
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>支持atom比我想象中简单很多，根本用不着什么library，多加一个xml template就行了。</p>
-<p>如果你的浏览器支持，就能在地址栏右边看到feed的图标，点击就可以选择阅读器进行订阅。或者在阅读器（例如Google Reader）里面输入这个网站的地址，也可以订阅。</p>
-<p><img src="http://farm5.static.flickr.com/4058/4353315450_7d1914e9ab_o.png" alt=""></p>
-<p>PS. 这个blog的页面使用了一些HTML5标签，因此需要使用新的浏览器才能正常浏览，例如使用 Firefox 3, Chrome。如果你看到的页面不是上图的样子，说明你的浏览器 out date 啦。</p>
-<p>PPS. 我会一如既往的使用flickr来存放照片，如果你看不到照片，或者有一天你连这个blog的页面都看不到，那说明你上的只是局域网，根本不是Internet。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2010/02/14/Basic-function-complete-can-open/" itemprop="url">
-                  基本功能完备，可以公开了
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2010-02-14T18:16:00+08:00" content="2010-02-14">
-              2010-02-14
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>一个blog所需要的功能的最小集合已经完备了，可以投入使用，再边用边改进了：</p>
-<ul>
-<li>发文章</li>
-<li>文章分页显示</li>
-<li>Tag</li>
-<li>评论</li>
-<li>用户认证通过Google account进行</li>
-</ul>
-<p><a href="https://appengine.google.com/" target="_blank" rel="external">Google Application Engine</a> 提供了强大的平台，<a href="http://www.playframework.org" target="_blank" rel="external">Play Framework</a>使得Java web开发变得很简便。开发这个应用用了几天时间，不算快，但作为第一次，学习、查资料花的时间不少，上手之后的工作效率将会提高很多。另外，对我来说，HTML+CSS才是最困难的部分，基本没有做前端的经验。现在的界面是从sample里面copy出来改的，每改一点就要看看效果，边试边改。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">beanFactory= ContextSingletonBeanFactoryLocator.getInstance(<span class="string">"classpath*:beanRefContext.xml"</span>).useBeanFactory(<span class="string">"share-context"</span>).getFactory();</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.flickr.com/photos/leoliang/5370082919/" target="_blank" rel="noopener"><img src="http://farm6.static.flickr.com/5245/5370082919_6dfc7f7b1d_z.jpg" alt="sping_shared_context"></a></p>
 
           
         
@@ -785,7 +828,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/22/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/22/">22</a><span class="page-number current">23</span><a class="page-number" href="/blog/page/24/">24</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/64/">64</a><a class="extend next" rel="next" href="/blog/page/24/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/22/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/22/">22</a><span class="page-number current">23</span><a class="page-number" href="/blog/page/24/">24</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/65/">65</a><a class="extend next" rel="next" href="/blog/page/24/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -826,7 +869,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">320</span>
+              <span class="site-state-item-count">324</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -880,7 +923,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
