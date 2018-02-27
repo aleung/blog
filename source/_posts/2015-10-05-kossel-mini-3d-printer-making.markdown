@@ -4,7 +4,7 @@ title: "Kossel Mini 3D打印机制作记录 (1)"
 date: 2015-10-05 21:16:22 +0800
 comments: true
 tags:
-- DIY 
+- Maker 
 ---
 ## 缘起及设计
 
