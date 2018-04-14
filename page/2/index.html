@@ -276,6 +276,105 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-17T15:02:32+08:00" content="2017-06-17">
+              2017-06-17
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>使用 <a href="https://www.openstreetmap.org" target="_blank" rel="noopener">OpenStreetMap</a> （简称为OSM）地图数据的手机应用有好些，<a href="http://osmand.net/" target="_blank" rel="noopener">OsmAnd</a> 是其中比较优秀的一个。OsmAnd的地图数据每月更新一次，延后了半个月到一个多月。作为一个OSM mapper，期望能够马上看到和用到最近做出的修改，等一个月实在太久了。</p>
+<p>OSM原始地图数据在 <a href="http://wiki.openstreetmap.org/wiki/Planet.osm" target="_blank" rel="noopener">planet.osm</a> 的网站可以下载到，但数据文件是全球的，非常大。从 <a href="http://download.geofabrik.de/" target="_blank" rel="noopener">GeoFabrik</a> 可以下载按国家分割的数据文件。中国区的PBF格式数据是330MB。但每天重新下载一个数据包还是太大了，其实更新的数据不是很多。网站上还提供每天（planet.osm还有每小时）的变更数据包（osc文件），用 <code>osmupdate</code> 工具就能自动下载变更并且生成新的完整数据文件。 </p>
+<p>有了最新的 osm.pbf 数据文件，就可以使用 <code>OsmAndMapCreator</code> 生成 OsmAnd 可用的 OBF 格式离线地图文件了。生成的过程非常耗内存和CPU，全中国的地图在一台 Core i3-4370 CPU 的电脑上用了90分钟，需要分配 10GB 内存才够用（否则会出现 OutOfMemory 错误）。生成出来的 OBF 文件也有845MB之巨。为了缩短时间，我设置了 <code>osmupdate</code> 的<code>-b</code>参数，过滤出广东中部区域的数据，这样就快很多，几分钟搞定。</p>
+<p>处理的流程如下图。实际上安装好软件，修改好配置后，每次更新就执行一个脚本，过程全自动。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Previous full map data (osm.pbf) \</span><br><span class="line">                              [osmupdate] --&gt; Latest full map data (osm.pbf)</span><br><span class="line">            Recent changes (osc) /                      |</span><br><span class="line">                                                        v</span><br><span class="line">[OsmAnd] &lt;------ Latest offline map (obf) &lt;------- [OsmAndMapCreator]</span><br></pre></td></tr></table></figure>
+<p>步骤和脚本放在 gist：<a href="https://gist.github.com/aleung/42776348d023b689e8c337b82a3c7cd5，适用于" target="_blank" rel="noopener">https://gist.github.com/aleung/42776348d023b689e8c337b82a3c7cd5，适用于</a> MacOS 和 Linix，需要自行修改文件中的目录路径。工具在Win平台也可以用，但脚本就要重新写了。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2017/06/17/OsmAndMapCreator/" itemprop="url">
+                  使用OsmAndMapCreator及时更新OsmAnd地图
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2017-06-17T11:29:19+08:00" content="2017-06-17">
               2017-06-17
             </time>
@@ -683,140 +782,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2016/04/11/mac-installation/" itemprop="url">
-                  Hackintosh Installation
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-11T00:00:00+08:00" content="2016-04-11">
-              2016-04-11
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>装了一台黑苹果在公司里用，幸福指数大大提升。</p>
-<h1 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h1><p>硬件选型参考tonymacx86的<a href="[http://www.tonymacx86.com/building-customac-buyers-guide-march-2016.html#CustoMac_Mini](http://www.tonymacx86.com/building-customac-buyers-guide-march-2016.html#CustoMac_Mini">CustoMac Mini</a>)，算下来主机不足4000元。要保证安装顺利、功能正常和稳定，最重要的是选择推荐的主板型号，可以找到详细的安装配置教程，各种可能的坑都有人给出解决方案了。安装过程一律依据tonymacx86的guide进行，没有任何问题。SSD和机械硬盘组成fusion drive，在较低的成本上达到不错的性能和容量的兼顾。唯一问题是用了fusion driver之后hibernate就不能用了，因为Clover认不出fusion driver，找不到上面的sleep image。</p>
-<h1 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h1><p>以下内容均针对 El Capitan。</p>
-<h2 id="App安装途径"><a href="#App安装途径" class="headerlink" title="App安装途径"></a>App安装途径</h2><p>安装应用途径，按照优先顺序：</p>
-<ul>
-<li><a href="https://caskroom.github.io/" target="_blank" rel="noopener">Homebrew Cask</a></li>
-<li><a href="http://brew.sh/" target="_blank" rel="noopener">Homebrew</a></li>
-<li>App Store</li>
-<li>官网下载</li>
-</ul>
-<h3 id="升级已安装的所有brews"><a href="#升级已安装的所有brews" class="headerlink" title="升级已安装的所有brews"></a>升级已安装的所有brews</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew update</span><br><span class="line">brew upgrade</span><br></pre></td></tr></table></figure>
-<h3 id="升级已安装的所有casks"><a href="#升级已安装的所有casks" class="headerlink" title="升级已安装的所有casks"></a>升级已安装的所有casks</h3><p>From: <a href="http://apple.stackexchange.com/a/231020/13455" target="_blank" rel="noopener">http://apple.stackexchange.com/a/231020/13455</a></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s https://gist.githubusercontent.com/atais/5d3ec79e67f221cb55b7/raw/f6e6b647e6f90939c016ba88e591529d143cb33d/cash_upgrade.sh | bash /dev/stdin</span><br></pre></td></tr></table></figure>
-<h2 id="强大的命令行"><a href="#强大的命令行" class="headerlink" title="强大的命令行"></a>强大的命令行</h2><ul>
-<li>用iTerm2替换系统自带的terminal<ul>
-<li>安装 Solarized Dracula theme （不要选Solaris dark，好多工具的输出会看不见）</li>
-<li>更改字体</li>
-</ul>
-</li>
-<li>用zsh替换缺省的bash<ul>
-<li>使用 Oh-my-zsh 进行zsh的配置，以上步骤参考这里 <a href="https://gist.github.com/kevin-smets/8568070" target="_blank" rel="noopener">https://gist.github.com/kevin-smets/8568070</a></li>
-<li>设置为超酷的theme: <a href="https://gist.github.com/agnoster/3712874" target="_blank" rel="noopener">agnoster</a></li>
-</ul>
-</li>
-<li>安装 <a href="https://github.com/clvv/fasd" target="_blank" rel="noopener">fasd</a></li>
-</ul>
-<h2 id="Finder增强"><a href="#Finder增强" class="headerlink" title="Finder增强"></a>Finder增强</h2><h3 id="快速切换是否显示隐藏文件"><a href="#快速切换是否显示隐藏文件" class="headerlink" title="快速切换是否显示隐藏文件"></a>快速切换是否显示隐藏文件</h3><p>按照<a href="http://apple.stackexchange.com/questions/177132/how-to-set-h-to-enable-show-hidden-files/177138#177138" target="_blank" rel="noopener">这里</a>的方法创建一个Automator Service。</p>
-<h3 id="增强-Finder-预览文件的能力"><a href="#增强-Finder-预览文件的能力" class="headerlink" title="增强 Finder 预览文件的能力"></a>增强 Finder 预览文件的能力</h3><p>安装quick look plugins： <a href="https://github.com/sindresorhus/quick-look-plugins" target="_blank" rel="noopener">https://github.com/sindresorhus/quick-look-plugins</a></p>
-<h2 id="增强剪贴板"><a href="#增强剪贴板" class="headerlink" title="增强剪贴板"></a>增强剪贴板</h2><p>安装 ClipMenu，提供剪贴板历史功能</p>
-<h2 id="本地化Web应用"><a href="#本地化Web应用" class="headerlink" title="本地化Web应用"></a>本地化Web应用</h2><p>安装 <a href="https://github.com/dmarmor/epichrome" target="_blank" rel="noopener">epichrome</a> 将web应用（例如trello）包装为本地应用，方便使用 Mission Control 和全屏。它实际上是每个web应用绑定一个独立的chrome profile，故此还可以安装使用chrome插件。</p>
-<h2 id="一套键盘鼠标控制两台电脑"><a href="#一套键盘鼠标控制两台电脑" class="headerlink" title="一套键盘鼠标控制两台电脑"></a>一套键盘鼠标控制两台电脑</h2><p>Mac是台式机，键盘鼠标连接到Mac上，安装SynergyKM，运行为server；Win笔记本安装Synergy（网上寻找第三方编译版本，open source，但官网下载binary要收费），运行为client。</p>
-<p>使用Windows键盘，需要重新映射按键。首先是在 Preference - Keyboard - Modifier Keys 中对调 Option 和 Command 键，这样左下角三个键的位置就跟Mac的键位相同了。然后安装<a href="https://pqrs.org/osx/karabiner/" target="_blank" rel="noopener">Karabiner</a>，一个功能超强的键盘映射工具，在profile中选择enable需要的映射规则。</p>
-<p>因为用 Synergy 同时控制Win电脑，这时重映射过的键盘在 Windows 里面就很难用了。Karabiner 支持多个profile，但目前还没有根据所在屏幕自动切换的方案，解决方法是创建一个NoRemap的profile，里面不打开任何remap规则，用F6键做profile切换。</p>
-<p>Profile切换需要在Karabiner中增加自定义规则，在<code>private.xml</code>中加入下面的内容：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">vkopenurldef</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>KeyCode::VK_OPEN_URL_SHELL_switchprofile_default<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span> <span class="attr">type</span>=<span class="string">"shell"</span>&gt;</span></span><br><span class="line">        &lt;![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name Default    ]]&gt;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">vkopenurldef</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">vkopenurldef</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>KeyCode::VK_OPEN_URL_SHELL_switchprofile_noremap<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span> <span class="attr">type</span>=<span class="string">"shell"</span>&gt;</span></span><br><span class="line">        &lt;![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name NoRemap    ]]&gt;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">vkopenurldef</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">item</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Switch Profile to Default with F6<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">identifier</span>&gt;</span>private.switch1<span class="tag">&lt;/<span class="name">identifier</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">autogen</span>&gt;</span></span><br><span class="line">        __KeyToKey__</span><br><span class="line">        KeyCode::F6,</span><br><span class="line">        KeyCode::VK_OPEN_URL_SHELL_switchprofile_default</span><br><span class="line">    <span class="tag">&lt;/<span class="name">autogen</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">item</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Switch Profile to NoRemap with F6<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">identifier</span>&gt;</span>private.switch2<span class="tag">&lt;/<span class="name">identifier</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">autogen</span>&gt;</span></span><br><span class="line">        __KeyToKey__</span><br><span class="line">        KeyCode::F6,</span><br><span class="line">        KeyCode::VK_OPEN_URL_SHELL_switchprofile_noremap</span><br><span class="line">    <span class="tag">&lt;/<span class="name">autogen</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>参考自：<a href="http://apple.stackexchange.com/a/143064/13455" target="_blank" rel="noopener">http://apple.stackexchange.com/a/143064/13455</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/65/">65</a><a class="extend next" rel="next" href="/blog/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/66/">66</a><a class="extend next" rel="next" href="/blog/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -857,7 +827,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">325</span>
+              <span class="site-state-item-count">326</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

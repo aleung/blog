@@ -262,6 +262,114 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2011/11/24/NoClassDefFoundError/" itemprop="url">
+                  NoClassDefFoundError
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2011-11-24T17:35:00+08:00" content="2011-11-24">
+              2011-11-24
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>java.lang.NoClassDefFoundError 是个很讨厌的错误，你会发现明明它报告的class已经打包进应用里，没可能在classpath中找不到，然后百思不得其解。其实这个exception跟 ClassNotFoundException 不同，后者报告的类是真的找不到，而这个NoClassDefFoundError 的错误原因是：class loader无法加载这个类，因为它依赖的另外某些类无法找到。到底是什么类找不到？它不告诉你。</p>
+<p>例如，看这个exception stack trace:</p>
+<pre><code>Caused By: java.lang.NoClassDefFoundError: net/sf/cglib/proxy/Enhancer
+        at org.springframework.aop.framework.Cglib2AopProxy.createEnhancer(Cglib2AopProxy.java:228)
+        at org.springframework.aop.framework.Cglib2AopProxy.getProxy(Cglib2AopProxy.java:170)
+        at org.springframework.aop.framework.ProxyFactory.getProxy(ProxyFactory.java:112)
+        at org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator.createProxy(AbstractAutoProxyCreator.java:476)
+        at org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator.wrapIfNecessary(AbstractAutoProxyCreator.java:362)
+        at org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator.postProcessAfterInitialization(AbstractAutoProxyCreator.java:322)
+        at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:407)
+        at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1426)
+        at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:519)
+        at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:456)
+</code></pre><p>cglib.jar是在classpath里的，真正错误原因是CGLIB所依赖的asm.jar不存在。</p>
+<p>有什么好方法查出NoClassDefFoundError的root cause吗？我不知道。不用Maven管理依赖的后果啊。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2011/11/15/Nike-Lunar-Run-10-/" itemprop="url">
                   Nike Lunar Run 10公里跑总结
                 </a>
@@ -719,171 +827,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2011/09/27/Color-temperature-of-common-light-sources/" itemprop="url">
-                  Color temperature of common light sources
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2011-09-27T19:28:00+08:00" content="2011-09-27">
-              2011-09-27
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>&nbsp;</p>
-<table>
-<thead>
-<tr>
-<th>Temperature</th>
-<th>Typical Sources</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1000K</td>
-<td><strong>Candles</strong>, oil lamps</td>
-</tr>
-<tr>
-<td>2000K</td>
-<td><strong>Very early sunrise</strong>, low effect tungsten lamps</td>
-</tr>
-<tr>
-<td>2500K</td>
-<td><strong>Household light bulbs</strong>(2680K - 40 W incandescent lamp)</td>
-</tr>
-<tr>
-<td>3000K</td>
-<td>Studio lights (continuous), 200 W incandescent lamp, (<strong>3200K - Sunrise/sunset;**</strong>3400K - 1 hour from dusk/dawn**, Tungsten lamp)</td>
-</tr>
-<tr>
-<td>4000K</td>
-<td>Clear flashbulbs (now obsolete),<strong>Fluorescent</strong></td>
-</tr>
-<tr>
-<td>5000K</td>
-<td><strong>Typical average daylight</strong>, electronic flash</td>
-</tr>
-<tr>
-<td>5500K</td>
-<td>The sun at noon, (<strong>5500~6000K - vertical daylight</strong>)</td>
-</tr>
-<tr>
-<td>6000K</td>
-<td><strong>Bright sunshine with clear sky</strong></td>
-</tr>
-<tr>
-<td>7000K</td>
-<td><strong>Slightly overcast sky</strong></td>
-</tr>
-<tr>
-<td>8000K</td>
-<td><strong>Hazy sky</strong></td>
-</tr>
-<tr>
-<td>9000K</td>
-<td><strong>Open shade on clear day</strong></td>
-</tr>
-<tr>
-<td>10,000K</td>
-<td><strong>Heavily overcast sky</strong></td>
-</tr>
-<tr>
-<td>11,000K</td>
-<td><strong>Sunless blue skies</strong></td>
-</tr>
-<tr>
-<td>20,000+K</td>
-<td>Open shade in mountains on a really clear day</td>
-</tr>
-</tbody>
-</table>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/15/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/blog/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/65/">65</a><a class="extend next" rel="next" href="/blog/page/17/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/15/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/blog/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/66/">66</a><a class="extend next" rel="next" href="/blog/page/17/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -924,7 +872,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">325</span>
+              <span class="site-state-item-count">326</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

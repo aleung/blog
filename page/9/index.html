@@ -262,6 +262,108 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2013/06/16/Living-with-Art/" itemprop="url">
+                  读书摘录 - 与艺术相伴
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-06-16T00:00:00+08:00" content="2013-06-16">
+              2013-06-16
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>周末早餐时读上一段，前后一年时间，终于把这本<a href="https://book.douban.com/subject/6522008/" target="_blank" rel="noopener">《与艺术相伴》</a>读完了。</p>
+<blockquote>
+<p>艺术家的作品源于一生的经历、思考和情感；其余任何人都无法精确地复制它们。艺术品拥有多重含义。如果一些艺术品对某个人来说有某种意义，而他自己的经历、思考和情感也在其中找到了合适的位置，那么就可以说他赋予了艺术品生命。</p>
+<p>艺术家的任务是实践自己的艺术观，表达自己的观点、见解和感情，以及在内心需要的命令下进行创作。</p>
+<p>美脫離功能而存在。欣賞美時無功利性的成分在內。</p>
+<p>自然主義：具象，再次呈現可見世界，可被感官感知的外在物質現實;</p>
+<p>抽象：被想像力感知的內在精神現實</p>
+<p>位于自然主义和抽象之间的是程式化。“程式化”（stslized）形容的是这样一种具象艺术：它遵照某种早已确定的风格或套路来描绘世界。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2013/04/03/my-opinion-on-smartisan-os/" itemprop="url">
                   看老罗的锤子发布会
                 </a>
@@ -657,114 +759,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2013/03/19/maven-batch-deploy-artifacts/" itemprop="url">
-                  Batch deploy artifacts to Maven repository
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-03-19T21:32:00+08:00" content="2013-03-19">
-              2013-03-19
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>I need to migrate a Maven repository from <a href="http://www.jfrog.com/home/v_artifactory_opensource_overview" target="_blank" rel="noopener">Artifactory</a> to <a href="http://www.sonatype.org/nexus/" target="_blank" rel="noopener">Nexus</a>. Nexus’s migration <a href="http://www.sonatype.com/people/2009/03/migrating-from-artifactory-to-nexus/" target="_blank" rel="noopener">solution</a> uses its migration plugin. But our Nexus service is managed by IT team and I don’t want to bother to ask them to install a plugin.</p>
-<p>Artifactory is able to export a whole repository into file system as local repository layout (like .m2/repository folder). So I looked for import feature in Nexus, but failed.</p>
-<p>Searched on Google then I found <a href="http://stackoverflow.com/a/3304212/94148" target="_blank" rel="noopener">this answer</a> on StackOverflow. Sean provided a pom with embedded Groovy script to upload (deploy) a hierarchy of files to a Maven repository. However Sean’s solution handles groupId, artifactId and version in a way differ to what I want. It requires to specify groupId and version in pom as fixed value.</p>
-<p>I modify the Groovy script a bit to handle local repository folder layout. GroupId, artifactId and version are parsed from path of file. Here is my modified version:</p>
-<script src="//gist.github.com/https://gist.github.com/aleung/5194777.js"></script>
-<p>Before using it, modify the setting in \<deploy.basefolder\> and \<distributionmanagement\>. Make sure you have removed all non-artifact files e.g. <em>.sha1, </em>.lastUpdated from your import directory. Or you may enhance the script to filter those files out.</distributionmanagement\></deploy.basefolder\></p>
-<p>Suppose your import folder is ~/.m2/repository, put this pom.xml at ~/.m2. Run <code>cd ~/.m2; mvn install</code> then everything is done.</p>
-<p>Usually you should configure your repository to allow redeploy of an existing artifact. Otherwise you’ll get error if an artifact you want to import already exist in repository.</p>
-<p><strong>Update</strong> 2013-3-29:</p>
-<p>There is a more simple way to import artifacts into Nexus, if you have privilege to access its data folder. Just copy the files into the storage location of the repository (the path can be found in repository configuration tab on Nexus web UI), change owner and group of the copied directories and files. After that, on Nexus web UI right click the folder and choose rebuild metadata. After a while everything will be ready.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/blog/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/65/">65</a><a class="extend next" rel="next" href="/blog/page/10/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/blog/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/66/">66</a><a class="extend next" rel="next" href="/blog/page/10/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -805,7 +804,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">325</span>
+              <span class="site-state-item-count">326</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -262,6 +262,135 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2016/04/11/mac-installation/" itemprop="url">
+                  Hackintosh Installation
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-11T00:00:00+08:00" content="2016-04-11">
+              2016-04-11
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>装了一台黑苹果在公司里用，幸福指数大大提升。</p>
+<h1 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h1><p>硬件选型参考tonymacx86的<a href="[http://www.tonymacx86.com/building-customac-buyers-guide-march-2016.html#CustoMac_Mini](http://www.tonymacx86.com/building-customac-buyers-guide-march-2016.html#CustoMac_Mini">CustoMac Mini</a>)，算下来主机不足4000元。要保证安装顺利、功能正常和稳定，最重要的是选择推荐的主板型号，可以找到详细的安装配置教程，各种可能的坑都有人给出解决方案了。安装过程一律依据tonymacx86的guide进行，没有任何问题。SSD和机械硬盘组成fusion drive，在较低的成本上达到不错的性能和容量的兼顾。唯一问题是用了fusion driver之后hibernate就不能用了，因为Clover认不出fusion driver，找不到上面的sleep image。</p>
+<h1 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h1><p>以下内容均针对 El Capitan。</p>
+<h2 id="App安装途径"><a href="#App安装途径" class="headerlink" title="App安装途径"></a>App安装途径</h2><p>安装应用途径，按照优先顺序：</p>
+<ul>
+<li><a href="https://caskroom.github.io/" target="_blank" rel="noopener">Homebrew Cask</a></li>
+<li><a href="http://brew.sh/" target="_blank" rel="noopener">Homebrew</a></li>
+<li>App Store</li>
+<li>官网下载</li>
+</ul>
+<h3 id="升级已安装的所有brews"><a href="#升级已安装的所有brews" class="headerlink" title="升级已安装的所有brews"></a>升级已安装的所有brews</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew update</span><br><span class="line">brew upgrade</span><br></pre></td></tr></table></figure>
+<h3 id="升级已安装的所有casks"><a href="#升级已安装的所有casks" class="headerlink" title="升级已安装的所有casks"></a>升级已安装的所有casks</h3><p>From: <a href="http://apple.stackexchange.com/a/231020/13455" target="_blank" rel="noopener">http://apple.stackexchange.com/a/231020/13455</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s https://gist.githubusercontent.com/atais/5d3ec79e67f221cb55b7/raw/f6e6b647e6f90939c016ba88e591529d143cb33d/cash_upgrade.sh | bash /dev/stdin</span><br></pre></td></tr></table></figure>
+<h2 id="强大的命令行"><a href="#强大的命令行" class="headerlink" title="强大的命令行"></a>强大的命令行</h2><ul>
+<li>用iTerm2替换系统自带的terminal<ul>
+<li>安装 Solarized Dracula theme （不要选Solaris dark，好多工具的输出会看不见）</li>
+<li>更改字体</li>
+</ul>
+</li>
+<li>用zsh替换缺省的bash<ul>
+<li>使用 Oh-my-zsh 进行zsh的配置，以上步骤参考这里 <a href="https://gist.github.com/kevin-smets/8568070" target="_blank" rel="noopener">https://gist.github.com/kevin-smets/8568070</a></li>
+<li>设置为超酷的theme: <a href="https://gist.github.com/agnoster/3712874" target="_blank" rel="noopener">agnoster</a></li>
+</ul>
+</li>
+<li>安装 <a href="https://github.com/clvv/fasd" target="_blank" rel="noopener">fasd</a></li>
+</ul>
+<h2 id="Finder增强"><a href="#Finder增强" class="headerlink" title="Finder增强"></a>Finder增强</h2><h3 id="快速切换是否显示隐藏文件"><a href="#快速切换是否显示隐藏文件" class="headerlink" title="快速切换是否显示隐藏文件"></a>快速切换是否显示隐藏文件</h3><p>按照<a href="http://apple.stackexchange.com/questions/177132/how-to-set-h-to-enable-show-hidden-files/177138#177138" target="_blank" rel="noopener">这里</a>的方法创建一个Automator Service。</p>
+<h3 id="增强-Finder-预览文件的能力"><a href="#增强-Finder-预览文件的能力" class="headerlink" title="增强 Finder 预览文件的能力"></a>增强 Finder 预览文件的能力</h3><p>安装quick look plugins： <a href="https://github.com/sindresorhus/quick-look-plugins" target="_blank" rel="noopener">https://github.com/sindresorhus/quick-look-plugins</a></p>
+<h2 id="增强剪贴板"><a href="#增强剪贴板" class="headerlink" title="增强剪贴板"></a>增强剪贴板</h2><p>安装 ClipMenu，提供剪贴板历史功能</p>
+<h2 id="本地化Web应用"><a href="#本地化Web应用" class="headerlink" title="本地化Web应用"></a>本地化Web应用</h2><p>安装 <a href="https://github.com/dmarmor/epichrome" target="_blank" rel="noopener">epichrome</a> 将web应用（例如trello）包装为本地应用，方便使用 Mission Control 和全屏。它实际上是每个web应用绑定一个独立的chrome profile，故此还可以安装使用chrome插件。</p>
+<h2 id="一套键盘鼠标控制两台电脑"><a href="#一套键盘鼠标控制两台电脑" class="headerlink" title="一套键盘鼠标控制两台电脑"></a>一套键盘鼠标控制两台电脑</h2><p>Mac是台式机，键盘鼠标连接到Mac上，安装SynergyKM，运行为server；Win笔记本安装Synergy（网上寻找第三方编译版本，open source，但官网下载binary要收费），运行为client。</p>
+<p>使用Windows键盘，需要重新映射按键。首先是在 Preference - Keyboard - Modifier Keys 中对调 Option 和 Command 键，这样左下角三个键的位置就跟Mac的键位相同了。然后安装<a href="https://pqrs.org/osx/karabiner/" target="_blank" rel="noopener">Karabiner</a>，一个功能超强的键盘映射工具，在profile中选择enable需要的映射规则。</p>
+<p>因为用 Synergy 同时控制Win电脑，这时重映射过的键盘在 Windows 里面就很难用了。Karabiner 支持多个profile，但目前还没有根据所在屏幕自动切换的方案，解决方法是创建一个NoRemap的profile，里面不打开任何remap规则，用F6键做profile切换。</p>
+<p>Profile切换需要在Karabiner中增加自定义规则，在<code>private.xml</code>中加入下面的内容：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">vkopenurldef</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>KeyCode::VK_OPEN_URL_SHELL_switchprofile_default<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span> <span class="attr">type</span>=<span class="string">"shell"</span>&gt;</span></span><br><span class="line">        &lt;![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name Default    ]]&gt;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">vkopenurldef</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">vkopenurldef</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>KeyCode::VK_OPEN_URL_SHELL_switchprofile_noremap<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span> <span class="attr">type</span>=<span class="string">"shell"</span>&gt;</span></span><br><span class="line">        &lt;![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name NoRemap    ]]&gt;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">vkopenurldef</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">item</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Switch Profile to Default with F6<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">identifier</span>&gt;</span>private.switch1<span class="tag">&lt;/<span class="name">identifier</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">autogen</span>&gt;</span></span><br><span class="line">        __KeyToKey__</span><br><span class="line">        KeyCode::F6,</span><br><span class="line">        KeyCode::VK_OPEN_URL_SHELL_switchprofile_default</span><br><span class="line">    <span class="tag">&lt;/<span class="name">autogen</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">item</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Switch Profile to NoRemap with F6<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">identifier</span>&gt;</span>private.switch2<span class="tag">&lt;/<span class="name">identifier</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">autogen</span>&gt;</span></span><br><span class="line">        __KeyToKey__</span><br><span class="line">        KeyCode::F6,</span><br><span class="line">        KeyCode::VK_OPEN_URL_SHELL_switchprofile_noremap</span><br><span class="line">    <span class="tag">&lt;/<span class="name">autogen</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>参考自：<a href="http://apple.stackexchange.com/a/143064/13455" target="_blank" rel="noopener">http://apple.stackexchange.com/a/143064/13455</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2015/12/06/guangzhou-marathon/" itemprop="url">
                   2015 广州马拉松小结
                 </a>
@@ -662,113 +791,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2015/08/29/html-presentation-framework/" itemprop="url">
-                  HTML presentation framework
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-29T03:23:55+08:00" content="2015-08-29">
-              2015-08-29
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>最近要做一个分享，需要做个有趣一些的 slides。工作上的 slides 都是用 PowerPoints 来做的，但 ppt 放网上分享不方便，而且也不 cool，因此琢磨着弄个什么来玩玩。开始打算想用 markdown 来写，一方面是习惯了，另外也够简便。几年前就曾试过用 markdown 写一个简单的 <a href="http://aleung.github.io/presentation/markdown/slides.html">slides</a>。</p>
-<p>上网搜索一圈，发现这种打着 “HTML presentation framework” 名号的工具还真多，近些年来 HTML5、CSS、JavaScript 的广泛应用，这些基于 HTML 的演示可以做得很炫，让人耳目一新，例如这个 <a href="http://vizzuality.github.io/rollingstonesmap/" target="_blank" rel="noopener">50 Years of the Rolling Stones</a> 和 <a href="http://lightning.fm/massofplanets/#/" target="_blank" rel="noopener">Mass of Planets</a> (要允许网页使用摄像头)。</p>
-<p>比较了一下，感觉 <a href="https://github.com/hakimel/reveal.js" target="_blank" rel="noopener">reveal.js</a> 不错，也很受欢迎。后来又发现另外一个后起之秀 <a href="https://github.com/markdalgleish/bespoke.js" target="_blank" rel="noopener">bespoke.js</a>，影响力不够 reveal.js 大，但它的插件式设计更胜一筹。对了，这些工具基本上都是用 JavaScript/Node.js 等一套工具链的，前端相关的技术 js 独霸天下了。</p>
-<p>先试了一下 bespoke.js。看到 reveal.js 能使用 <a href="https://www.leapmotion.com/" target="_blank" rel="noopener">Leap Motion</a> Controller 来手势控制，演示起来会比较出彩，正好同事有一个 leap motion，可以借来玩，但是却找不到 bespoke.js 支持 leap motion 的插件。查了一下，原来 leap 有 JavaScript API，在浏览器里面能够通过事件监听获得双手各个手指的位置和手势动作的信息，API 暴露出来的已经是处理后的双手模型了，应用用起来相当方便。于是就简单的 port 了一个 <a href="https://www.npmjs.com/package/bespoke-leapmotion" target="_blank" rel="noopener">bespoke-leapmotion</a> 插件出来。但说实在的，leap motion 这东西还是中看不中用，用手势切换页面根本就不如手指头按个按键快捷和省力，手势的辨别也不够精准（这方面应用在数据处理上是可以下些功夫的）。</p>
-<img src="/blog/attachments/2015/8/leapmotion.jpg">
-<p>Bespoke.js 的 markdown 支持似乎还有些坑，总有这样那样的问题。而且在 markdown 在版面布局方面局限性也很大，做出来的 slides 显得单调了些，效果不够理想，于是又在看看直接用 HTML 来写会怎样。HTML 是足够灵活了，但是要设置排版布局又累死了，我对 HTML+CSS 也不是那么熟悉，有点想放弃用回 PowerPoint 了。 </p>
-<p>正好这个时候，发现了 <a href="http://slides.com" target="_blank" rel="noopener">slides.com</a> 这个网站，它背后用的就是 reveal.js，但它的在线编辑器真心好用啊，鼠标拖放元素，功能简洁但又足够做出漂亮的效果了。就是它了！</p>
-<img src="/blog/attachments/2015/8/slides-editor.png">
-<p>但是，我还是念念不忘 leap motion —— 演示的时候可以带来新奇的效果啊。Slides.com 自然不会有这偏门的功能，但它很良心的提供了 export to reveal.js，在上面编辑好的 slides 可以放回本地的 reveal.js 里面播放，免费用户都可以享受。嗯，看起来一切都好，可是，怎么在 slides.com 里面写好的 speaker notes 导出后都丢失了呢？查看导出文件的内容，似乎是 slides.com 内部处理 speaker notes 用的机制跟 reveal.js 不一样，存放的格式也不同了。还好，只要数据都在，还是有办法的，写个<a href="https://github.com/aleung/slides-export" target="_blank" rel="noopener">程序</a>来转换就行了。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/65/">65</a><a class="extend next" rel="next" href="/blog/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/66/">66</a><a class="extend next" rel="next" href="/blog/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -809,7 +836,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">325</span>
+              <span class="site-state-item-count">326</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

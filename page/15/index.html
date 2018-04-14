@@ -262,6 +262,103 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2012/03/10/By-mobile-phone-remote-control-Linux-backstage-radio-broadcast-requirements/" itemprop="url">
+                  用手机遥控Linux后台播放豆瓣电台
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2012-03-10T00:35:00+08:00" content="2012-03-10">
+              2012-03-10
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近买了一个<a href="http://en.wikipedia.org/wiki/Asus_EeeBox_PC" target="_blank" rel="noopener">EeeBox</a>来做home server，装Ubuntu操作系统，有不少东西可以玩。</p>
+<p>其中一个用途是连接到音响播放音乐。我比较喜欢听豆瓣电台，于是找一个豆瓣电台的客户端。Home server平常不接显示器，也不启动图形界面，常见的浏览器客户端、桌面客户端都不能用，要找命令行的。在github上找到Johnny Huang开发的<a href="https://github.com/hzqtc/fmd" target="_blank" rel="noopener">fmd</a>（Douban FM daemon），启动后在后台运行，正合我意。Fork下来给它增加了个安装脚本，能够安装为服务，开机就自动运行了。但fmd只是个后台进程，只有telnet命令接口，没法对它进行直接控制的，作者另外做了个命令行工具，叫做fmc（FMD client），用来控制fmd。但命令行工具在我这里也还是不能用—-没有显示器没有键盘—-必须能遥控才行。于是我在fmc基础上给它增加了一个web UI，称为<a href="https://github.com/aleung/fmweb" target="_blank" rel="noopener">fmweb</a>，通过手机浏览器访问，就可以控制播放了。于是，我现在在家里任何地方，都可以控制我的豆瓣电台的播放，不喜欢听，跳下一首歌。</p>
+<p>这是在Android浏览器上的截图，在iPhone、iPad上也可以用。</p>
+<p><img src="https://lh6.googleusercontent.com/-ishGby7lpTk/T1ove7Z0-rI/AAAAAAAAAoU/94_iFdmfSKw/s400/Screenshot_2012-03-09-23-41-13.png" alt=""><img src="https://lh5.googleusercontent.com/-zXp_XdbbgNk/T1ovfpnkxbI/AAAAAAAAAoc/CN-7dV4U4Xg/s400/Screenshot_2012-03-09-23-55-39.png" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2012/02/25/In-the-amazon-bought-the-computer-motherboard-and-summarizes-the-experience-of-fault-return/" itemprop="url">
                   在亚马逊买电脑主板，故障退货的经历及总结
                 </a>
@@ -646,119 +743,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2011/11/24/NoClassDefFoundError/" itemprop="url">
-                  NoClassDefFoundError
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2011-11-24T17:35:00+08:00" content="2011-11-24">
-              2011-11-24
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>java.lang.NoClassDefFoundError 是个很讨厌的错误，你会发现明明它报告的class已经打包进应用里，没可能在classpath中找不到，然后百思不得其解。其实这个exception跟 ClassNotFoundException 不同，后者报告的类是真的找不到，而这个NoClassDefFoundError 的错误原因是：class loader无法加载这个类，因为它依赖的另外某些类无法找到。到底是什么类找不到？它不告诉你。</p>
-<p>例如，看这个exception stack trace:</p>
-<pre><code>Caused By: java.lang.NoClassDefFoundError: net/sf/cglib/proxy/Enhancer
-        at org.springframework.aop.framework.Cglib2AopProxy.createEnhancer(Cglib2AopProxy.java:228)
-        at org.springframework.aop.framework.Cglib2AopProxy.getProxy(Cglib2AopProxy.java:170)
-        at org.springframework.aop.framework.ProxyFactory.getProxy(ProxyFactory.java:112)
-        at org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator.createProxy(AbstractAutoProxyCreator.java:476)
-        at org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator.wrapIfNecessary(AbstractAutoProxyCreator.java:362)
-        at org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator.postProcessAfterInitialization(AbstractAutoProxyCreator.java:322)
-        at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:407)
-        at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1426)
-        at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:519)
-        at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:456)
-</code></pre><p>cglib.jar是在classpath里的，真正错误原因是CGLIB所依赖的asm.jar不存在。</p>
-<p>有什么好方法查出NoClassDefFoundError的root cause吗？我不知道。不用Maven管理依赖的后果啊。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/14/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/blog/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/65/">65</a><a class="extend next" rel="next" href="/blog/page/16/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/14/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/blog/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/66/">66</a><a class="extend next" rel="next" href="/blog/page/16/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -799,7 +788,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">325</span>
+              <span class="site-state-item-count">326</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

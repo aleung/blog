@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://aleung.github.io/blog/"/>
-  <updated>2018-02-27T16:37:00.000Z</updated>
+  <updated>2018-04-14T12:20:21.000Z</updated>
   <id>http://aleung.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>软件项目的标准配置和自动检查更新</title>
+    <link href="http://aleung.github.io/blog/2018/04/11/project-preset/"/>
+    <id>http://aleung.github.io/blog/2018/04/11/project-preset/</id>
+    <published>2018-04-11T14:17:10.000Z</published>
+    <updated>2018-04-14T12:20:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在<a href="/blog/2017/09/07/docker-dev-env/">上一篇文章</a>中介绍了如何使用利用 docker 容器创建微服务开发环境，解决的是怎么保证同一个软件项目在任何地方都能够快速复制出一个相同的环境用于开发和测试。但是，在使用了微服务架构的产品线中，我们还面临另外一个挑战。</p><h2 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h2><p>系统由很多微服务构成，每个微服务都是一个独立的软件项目——单独的 git 代码仓库，各自的环境配置，独立的测试与发布流程。目前我们的系统中已经有了几十个这样的软件项目，而且数量还在不断增加。在我们每日的常规开发工作中，都不断的面临下面的问题：</p><ul><li>怎么快速创建出一个新的软件项目，包含所有必需的配置文件，并且符合产品线的标准开发测试流程和代码规范？</li><li>怎么保证依赖的软件／库都及时更新到合适的版本？怎么防止开发人员使用了错误的版本而导致质量隐患？</li><li>怎么防止开发人员使用了 license 不合适的第三方软件／库，导致法律风险？</li><li>对于开发团队使用的公共基础设施的更改（例如 CI 服务器的某些变更），需要修改软件项目的配置的，如何快速的在所有软件项目中完成修改？</li><li>怎么保证每个项目都应用了代码检查工具，并且及时更新到符合产品线统一定义的最新规范的配置？</li><li>需要在软件的开发测试自动化流程中引入新的步骤或工具，怎么快速的部署到所有的软件项目中？</li></ul><p>由于我们采用的开发平台和开发工具都使用了文件配置，以上的问题可以归纳为三个：</p><ul><li>首先是怎么简单快捷地创建出软件项目的一组文件；</li><li>然后是对于现有的软件项目，如何检查文件的某些内容是否符合规范（比如依赖定义中是否包含正确的版本号，CI流程定义有没有被删除掉某些步骤）；</li><li>最后是怎么去更新已有的文件内容。</li></ul><p>对于第一个问题，如何快速创建新的软件项目，业内已经有很多解决方案，通常使用称之为“脚手架” (scaffold) 工具。这些工具的本质上是基于模版创建出软件项目的一组基本文件。但是现有的脚手架工具都只能帮助新软件项目的初始化工作，并不能解决第三个问题，它们对于已经进入开发阶段的项目无能为力。而在开发实践中，根本不可能设置好项目模版就一成不变，技术在发展，流程在改进，开发流程和基础设施中也会有bug需要修复，经常会出现所有软件项目都需要做一些同样的改动的情况。</p><p>以前，遇到这样的情况，就得群发邮件，通知大家去修改。效果是可想而知的，有些项目忘记修改，有些改了但是改错了没有发现。而且大家习惯于遇到问题发现要修改的时候才找另外一个项目来抄，而不是按照邮件或文档里写的方法来改，结果抄的还是一个旧版本，或者是改漏的地方，要花大量的时间来排查问题。总之，在微服务化带来大量软件项目之后，这样的工作方式是相当低效的。</p><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>厌倦了不停的发公告、催促大家做修改、帮助不同人解决重复出现的问题，得寻找一个根本解决问题的方法。也就是要做到：</p><ul><li>所有的规范要求应该通过<strong>代码（工具）</strong>来<strong>强制</strong>检查或执行，而不是靠个人自觉</li><li>所有与规范相关的代码更新都应该<strong>自动化</strong>进行，而不需要让每个项目的维护者手工去一次次做修改</li></ul><h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>经过几个月的试用与改进，一套符合我们产品线最佳实践和规范的node.js项目通用设定以及自动配置工具最终实用化并开始全面推广，称为 SES Node.js Project Preset。</p><p>Preset 主要包含两部分：项目标准配置和自动检查更新工具。</p><h3 id="项目标准配置"><a href="#项目标准配置" class="headerlink" title="项目标准配置"></a>项目标准配置</h3><p>项目标准配置涵括了 node.js 项目从编辑环境、开发流程、代码检查、测试流程、CI设置到软件发布的软件开发周期各个环节。</p><p>开发人员日常需要执行的操作只有两个：</p><ul><li><code>yarn docker</code> - 启动 docker 开发环境，过程中会自动安装依赖，自动更新到最新preset</li><li><code>yarn test</code> - 包括了代码编译、格式化、静态代码检查、执行单元测试、冗余代码检查等</li></ul><p>代码提交到 GitLab 上，CI流程会自动执行所有检查流程，除了测试不通过外，任何规范性检查不通过都不能合并回主干（体现强制性）。</p><p>项目标准配置通过一系列的脚本、工具配置文件来实现。主要包括以下这些：</p><ul><li>项目基本的文件模版：README，LICENSE，CHANGELOG。</li><li>Git环境配置：.gitignore，.gitattributes。</li><li>代码格式：编辑器风格定义文件 .editorconfig，TypeScript代码自动格式化工具 tsfmt、tslint。</li><li>TypeScript编译与代码检查：tsc配置文件tsconfig.json，代码检查工具 tslint，重复代码检查工具 jscpd。</li><li>单元测试：mocha测试工具，nyc测试覆盖率报告。</li><li>软件依赖版本：package.json 中的 dependencies、devDependencies、optionalDependencies。</li><li>Docker 开发环境配置：docker-compose.yaml。</li><li>软件打包发布：rpm spec 以及 rpm build script。</li><li>GitLab配置：Merge Request模版、Issue模版、CI流程定义文件 .gitlab-ci.yml</li><li>NPM脚本：package.json中的scripts配置，包括 build，test，ci，rpm，docker，start，setup 等等。</li></ul><h3 id="自动检查与更新工具"><a href="#自动检查与更新工具" class="headerlink" title="自动检查与更新工具"></a>自动检查与更新工具</h3><p>这样一个工具的最底层操作都是文件的修改和拷贝。我没有自己从头构建，而是基于开源自动化项目配置工具<a href="https://github.com/sapegin/mrm" target="_blank" rel="noopener">mrm</a>。Mrm缺省支持一些task，例如 LICENSE 文件、.gitignore、编辑器格式、ESLint规则等等。缺省task的设置是一般开源项目的通用配置，对于我们产品不太适用，但是没关系，mrm也支持自定制task，提供了一组API，可以比较方便的修改包括 JSON、YML、ini、纯文本等各种格式的文件。我开发维护了一个 preset 库，包含一组自定义task，涵括了上面一节里的所有内容。</p><p>这个 mrm preset 最重要的是它不仅仅是根据预定义模版创建文件，它还分析现有项目的配置，检查是否需要更新。某些更新并不是单纯的覆盖，而是根据项目的具体情况来生成的，例如对于 docker-compose.yaml，根据里面定义了那些测试依赖容器，自动配置被测试应用的环境变量；分析 package.json 中的依赖定义，自动更新旧版本，如果发现有未列入白名单中的依赖，则告警或报错。</p><p>虽然项目标准配置涉及的东西很多，但是有了这个工具，配置起来只需要执行一条命令：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> npx -p mrm -p @ses/mrm-preset mrm all --preset @ses/mrm-preset</span><br></pre></td></tr></table></figure><p>项目只需要配置一次，以后 preset 有新版本发布，在 docker 开发环境启动时就会自动安装并且更新。</p><p>当项目标准配置需要更改，仅需要更新并发布npm包<code>@ses/mrm-preset</code> ，也无需通知大家改动，任何开发者在进入项目开发环境时就会自动修改，他将修改提交到 GitLab 即可。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>规范必需强制性执行，才能保证代码质量。只要存在可以通融走捷径的地方，必然会形成技术债务累积。</p><p>要做到项目的配置能够全自动更新，环境的配置均应该以文件保存，与代码一同保存做 git 库里 （Infrastructure as code）。例如 Jenkins 的配置就没办法跟随项目代码一起变动，而 GitLab CI 配置就可以，这也是我们迁移到 GitLab 的其中一个原因。配置最好采用声明式风格，而非命令式，这样才方便自动修改。比如NPM script容易改，若项目用 gulp.js 做make工具，就很难改。（采用声明式风格，基于文件的配置，是现在很多平台和工具的趋势，例如 Docker，GitLab CI，Kubernetes，Vagrant等等）</p><p>综合上次介绍的 docker 标准环境和这里介绍的项目标准配置，利用自动化工具，可以有效提高开发效率，避免大量由于环境、配置因素出现的问题。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在&lt;a href=&quot;/blog/2017/09/07/docker-dev-env/&quot;&gt;上一篇文章&lt;/a&gt;中介绍了如何使用利用 docker 容器创建微服务开发环境，解决的是怎么保证同一个软件项目在任何地方都能够快速复制出一个相同的环境用于开发和测试。但是，在使用了微服务架
+      
+    
+    </summary>
+    
+    
+      <category term="SoftwareDev" scheme="http://aleung.github.io/blog/tags/SoftwareDev/"/>
+    
+  </entry>
   
   <entry>
     <title>Kossel Mini 3D 打印机制作记录 (3)</title>
@@ -292,7 +315,7 @@
     <link href="http://aleung.github.io/blog/2015/10/05/kossel-mini-3d-printer-making/"/>
     <id>http://aleung.github.io/blog/2015/10/05/kossel-mini-3d-printer-making/</id>
     <published>2015-10-05T13:16:22.000Z</published>
-    <updated>2016-03-16T14:11:17.000Z</updated>
+    <updated>2018-02-27T16:38:47.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="缘起及设计"><a href="#缘起及设计" class="headerlink" title="缘起及设计"></a>缘起及设计</h2><p>一切都起源于 flyisland 转的这篇文章：<a href="http://post.smzdm.com/p/332896" target="_blank" rel="noopener">从零开始，给自己设计一台3D打印机</a>，大量的图文细节和制作过程描述吸引了我，门槛似乎也不怎么高，于是产生了做一台的想法。看了 <a href="http://www.thingiverse.com/" target="_blank" rel="noopener">Thingivers</a> 这个网站，更是发现了新的世界，打消了“有3d打印机不知道用来做什么”的疑虑，对喜欢搞制作的人来说3d打印机太有用了。</p><p>于是开始网上查找资料，了解相关信息。一开始的想法是做像那篇文章中的 XYZ 结构，大一点的打印体积（开始都是贪心的），看了 <a href="http://forums.reprap.org/" target="_blank" rel="noopener">RepRap 论坛</a>发现关于 delta 结构的讨论很热门，了解多一些后知道 delta 结构打印机的打印速度快，成本比较低，制作也不复杂，于是锁定了 <a href="http://reprap.org/wiki/Kossel" target="_blank" rel="noopener">Kossel</a> 机型，心想先做一个出来练练手，小一点也够用了，以后真玩起来有需要再做大机器。</p><p>接下来在寻找国内的资源的时候知道了 <a href="http://www.thingiverse.com/thing:388683" target="_blank" rel="noopener">K800</a> 打印机，这是国内爱好者 maximscy 在 Kossel Mini 基础上改进的以降低成本为目标的机型，原本 K800 的意思就是人民币800元可以做出来的 Kossel，但实际上基本上也还是要上千元。</p><p>K800 应该说对于推动3D打印机在国内普及有不少功劳，淘宝上有不少卖套件的。K800 降低了成本，但是毕竟还是以牺牲一点精度为代价，因此卖家也有不少“升级套餐”，例如将打印制作的元件换成铝合金元件，滑轮换回直线导轨等等。我对成本还不算很敏感，想做出来的机器质素好一点，但看下来发现套件的价格水分又太大了，而且配置不一定跟自己要求一致，于是决定自己采购元件。</p><p>最后定下来的方案基本上是原版的 Kossel Mini 方案，高度增加50mm，框架连接件用铝合金的以增加牢固程度和精度，挤出机用铝合金的套件。斜杆的制作精度要求比较高，也直接买做好的算了。</p><p>制作相关的资料信息，例如 BOM，记录在GitHub的 <a href="https://github.com/aleung/KosselPrinter" target="_blank" rel="noopener">KosselPrinter</a> 项目里。</p><h2 id="进展"><a href="#进展" class="headerlink" title="进展"></a>进展</h2><h3 id="国庆节前"><a href="#国庆节前" class="headerlink" title="国庆节前"></a>国庆节前</h3><p>计划用国庆节7天假期来制作，所有材料应该要在节前采购完毕。开始没有考虑到淘宝店家在国庆节会放假，到27号了BOM还没有完全做好，订单还没下。淘宝上采购的难度比预计要困难得多，要比较不同店家的产品，而且搜索了才知道有些元件有好多选择，要弄清楚它们的区别，相互的配套，一个变了可能设计就要改变，配套的东西也不同了。在马云家奋战一个晚上直到凌晨3点，第二天又继续买买买，终于把订单全下完，总金额1400元出头。</p><p>元件在29、30日陆续送到，其中挤出机发现配件不齐，找卖家补发。想着剩下的东西在1日都能够全部收齐了吧？</p><h3 id="10-1"><a href="#10-1" class="headerlink" title="10-1"></a>10-1</h3><p>安装框架，发现买的铝合金连接件是按照国标铝型材设计的，竖杆孔里有几条棱，而我用的是欧标铝型材，配合使用T型螺母，因为棱的存在无法压紧，只好尝试用锉刀去锉掉那条棱。另外，我买的 M3*8 螺丝显得小和短了，有点勉强，出去转了一圈，没有找到卖铝型材用螺母的地方，都放假了。</p><img src="/blog/attachments/2015/10/1.jpg"><p>铝合金连接件有一件漏打一个孔，跟店家联系，他晚上直接开车给我送一个好的过来，超好人。跟他说起欧标型材的问题，他说可以送给我一些国标 M4 方螺母，也可以塞进欧标型材的槽里的，就不需要锉掉那条棱了。</p><h3 id="10-2"><a href="#10-2" class="headerlink" title="10-2"></a>10-2</h3><p>把直线导轨装上，发现只有一根导轨的滑块能够在重力下自己下滑，另外两根摩擦力都好大，而且是不均匀，在某些地方特别卡，需要用一点力才能推过去。网上问人，说这是不正常的，要么是质量特别差，要么是旧零件翻新。只好退货了，然后就不知道应该买什么导轨，国产的似乎不可靠，台湾上银的又太贵，而且据说淘宝假货很多。</p><img src="/blog/attachments/2015/10/2.jpg"><p>快递国庆节都休息了，节前买的东西到了配送点就是没人送上门，停工待料。开始看软件、参数调整和建模方面的资料，发现入坑了，而且似乎是深不见底。</p><p>试用 <a href="http://www.openscad.org/" target="_blank" rel="noopener">OpenSCAD</a>，通过写代码的方式来建3D模型，很容易上手，做基于几何体的模型很简便（自由曲面用什么工具都不简单吧？）。</p><h3 id="10-3"><a href="#10-3" class="headerlink" title="10-3"></a>10-3</h3><p>收到M4螺丝螺母，把原来用M3螺丝螺母已经装好的框架拆掉。发现步进电机、同步轮和连接件的安装位置不太吻合，看来又要动用钢锉。要等导轨和滑车到了后确定具体位置才好动手。于是所有东西又回到一堆零件的状态。</p><p>将计划从国庆假期完成更新为10月底前完成。</p><h3 id="10-5"><a href="#10-5" class="headerlink" title="10-5"></a>10-5</h3><p>快递终于上班了，所有淘宝买的东西都送齐了。但是直线导轨退货后还没有重新购买，没有这个关键零件还是什么都做不了。</p><p>今天没有干什么东西，只是将送丝机和挤出头装配了起来。</p><img src="/blog/attachments/2015/10/3.jpg"> <img src="/blog/attachments/2015/10/4.jpg"><p><em>(To be contined…)</em></p>]]></content>
     
@@ -306,7 +329,7 @@
     </summary>
     
     
-      <category term="DIY" scheme="http://aleung.github.io/blog/tags/DIY/"/>
+      <category term="Maker" scheme="http://aleung.github.io/blog/tags/Maker/"/>
     
   </entry>
   
@@ -470,29 +493,6 @@
       
         &lt;p&gt;虽然我不是处女座的，但在有些事情上会表现得比较处女座，例如对于文档格式，我常会跟各种细节纠缠不休，为的是看起来显得完美一些。&lt;/p&gt;
 &lt;p&gt;作为软件开发者，写文档是必备的技能，而且文档里常常会出现大量英文。这里介绍一些很基本的规则，使得文档的显得专业一些。这些规则在其他类型
-      
-    
-    </summary>
-    
-    
-      <category term="Blogging" scheme="http://aleung.github.io/blog/tags/Blogging/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Jekyll</title>
-    <link href="http://aleung.github.io/blog/2015/01/26/jekyll/"/>
-    <id>http://aleung.github.io/blog/2015/01/26/jekyll/</id>
-    <published>2015-01-26T13:29:40.000Z</published>
-    <updated>2016-03-16T14:11:17.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="用-Jekyll-作为内部技术文档库"><a href="#用-Jekyll-作为内部技术文档库" class="headerlink" title="用 Jekyll 作为内部技术文档库"></a>用 Jekyll 作为内部技术文档库</h2><img src="/blog/attachments/2015/1/ecebook.png" class="right"><p>去年在公司的产品开发团队中推行了使用 <a href="http://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> 静态网站生成工具来写内部技术文档，大半年下来，效果还不错。</p><p>内部技术资料的共享和维护以前一直是个问题。开始用 Office Word 正正规规的写设计文档，维护成本太高了，往往是代码已经翻天覆地变化，文档里都没有反映出来，大家不愿意更新。而且查找起来也不方便。后来推行敏捷方法，不想让文档工作那么 heavy 了，于是用 wiki 来记录。Wiki 的问题是信息非常碎片化，大家很随意的添加新页面，整个 wiki 就像一个草稿本，写得很没有系统。网状的超链接导航令读者很迷茫，不知道需要的信息入口在哪儿，有些隐藏得很深的页面没有几个人知道它们的存在。Wiki 的在线编辑体验也不是那么好。</p><p>Jekyll 是个静态网站生成工具，采用 <a href="http://zh.m.wikipedia.org/wiki/Markdown" target="_blank" rel="noopener">markdown</a> 语法来写内容，根据模板生成 HTML 页面，发布到一个 web 服务器上，就可以用浏览器在线查看内容。Jekyll 通常用来做  blog 系统，但它用来做有组织的内容发布系统也是完全胜任的。我基本上就是仿照 Jekyll <a href="http://jekyllrb.com/docs/home/" target="_blank" rel="noopener">官方文档</a> 的风格和结构来组织我们产品的内部技术文档库。</p><p>使用 Jekyll 优点首先是编写方便，markdown 是个轻量的标记语言，上手简单，语法易记，而且有不少编辑工具支持。即使没有渲染成 HTML，也是直接可以阅读的，比起奇奇怪怪还各自不同的 wiki 语法好写多了。</p><p>在模板做得好以及安装合适的插件后，生成的文档显示效果相当漂亮，格式效果也很丰富。而且，我们使用了 <a href="https://github.com/aleung/jekyll-plantuml" target="_blank" rel="noopener">plantuml</a> 插件，可以直接用文字的方式<strong>写</strong>UML[^1]，比起以前用其他工具画图，截图，再嵌入文档这种方式方便多了。</p><p>[^1]: 参考 <a href="/blog/2014/08/23/plantuml/">PlantUML 简介</a>, <a href="/blog/2014/01/20/text-to-uml-diagram/">Text to UML Diagram</a></p><p>技术文档库的原始文件是文本格式，用 git 来做版本管理，不用担心大家同时编辑保存时会相互覆盖的问题，修改历史也很清晰。大家都是程序员，本来代码就是用 git 来管理的，文档也用 git 管理自然是很顺手的事情。使用 <a href="https://github.com/aleung/jekyll-post-revision" target="_blank" rel="noopener">jekyll-post-revision</a> 这个插件，能够在生成的页面上显示修改历史记录。</p><p>通过 <a href="https://github.com/slashdotdash/jekyll-lunr-js-search" target="_blank" rel="noopener">jekyll-lunr-js-search</a> 这个插件，能为站点提供全文搜索的能力，这也是相当方便的功能。</p><h2 id="在-Windows-上安装-Jekyll"><a href="#在-Windows-上安装-Jekyll" class="headerlink" title="在 Windows 上安装 Jekyll"></a>在 Windows 上安装 Jekyll</h2><p>Jekyll 是用 Ruby 开发的，在 Linux 和 Mac OS X 上安装使用都很简单，在系统中有 Ruby 环境的前提下（Mac 是自带的，Linux 的各种发行版都会有安装包），照着官网上的<a href="http://jekyllrb.com/docs/quickstart/" target="_blank" rel="noopener">介绍</a>，几个命令就搞定了。但是，在 Windows 下就不是那么简单了（顺便再黑一下 Windows，不使用 Microsoft 技术的开发者都应该离开它）。</p><p>在 Windows 上装过几次 Jekyll，可以写点教程减少大家摸索的时间。大致参考这篇 <a href="http://jekyll-windows.juthilo.com/" target="_blank" rel="noopener">Run Jekyll on Windows</a>。</p><h3 id="安装-Ruby"><a href="#安装-Ruby" class="headerlink" title="安装 Ruby"></a>安装 Ruby</h3><p>首先需要安装 Ruby 环境。从 <a href="http://rubyinstaller.org/downloads" target="_blank" rel="noopener">http://rubyinstaller.org/downloads</a> 下载 Ruby 2.0 和 DevKit，安装 Ruby，然后将 DevKit 解压到 <code>C:/RubyDevKit</code>，在命令行运行下面指令完成安装。</p><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> C:\RubyDevKit </span><br><span class="line">ruby dk.rb init </span><br><span class="line">ruby dk.rb install</span><br></pre></td></tr></table></figure><h3 id="安装-Jekyll-相关的-gem"><a href="#安装-Jekyll-相关的-gem" class="headerlink" title="安装 Jekyll 相关的 gem"></a>安装 Jekyll 相关的 gem</h3><p>Gem 是 Ruby 的包管理工具。在命令行执行<code>gem install</code>可从互联网的仓库直接下载和安装需要的包。如果需要代理，需要先设置环境变量<code>http_proxy</code>，如不需要则忽略第一行。其中，<code>jekyll</code>这个 gem 是必须安装的，其他的视乎环境、配置和使用的插件，可能需要装，可能不需要装。</p><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> http_proxy=http://my-proxy:<span class="number">8080</span></span><br><span class="line"></span><br><span class="line">gem install jekyll</span><br><span class="line"></span><br><span class="line">gem install kramdown</span><br><span class="line">gem install pygments</span><br><span class="line">gem install nokogiri</span><br><span class="line">gem install coderay</span><br><span class="line">gem install wdm</span><br><span class="line">gem install json</span><br></pre></td></tr></table></figure><p>如果在安装过程中出现 SSL 错误，从<a href="https://gist.github.com/luislavena/f064211759ee0f806c88" target="_blank" rel="noopener">这里</a>可以找到解决方法。</p><h3 id="使用-Jekyll"><a href="#使用-Jekyll" class="headerlink" title="使用 Jekyll"></a>使用 Jekyll</h3><p>Jekyll 的相关操作都是执行<code>jekyll</code>命令进行。后面的基本上就是看<a href="http://jekyllrb.com/docs/quickstart/" target="_blank" rel="noopener">官方文档</a>慢慢折腾了。</p><h2 id="制作-jekyll-exe"><a href="#制作-jekyll-exe" class="headerlink" title="制作 jekyll.exe"></a>制作 jekyll.exe</h2><p>上面的步骤还是有点繁琐。我们公司里的都是 Java 程序员，在电脑里装个 Ruby 环境也没有其他用处。为了推广使用，简化大家的操作，做一个 portable 的 Jekyll 可执行程序会更好。</p><p>制作的步骤基本上参考这篇 <a href="http://www.nickw.it/jekyll-dot-exe/" target="_blank" rel="noopener">Building Jekyll.exe for Windows</a>。</p><p>首先要安装 OCRA。可能还需要安装 psych，bigdecimal 这些 gem。</p><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install ocra</span><br></pre></td></tr></table></figure><p>解开 jekyll 到一个临时目录：</p><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem unpack jekyll</span><br></pre></td></tr></table></figure><p>修改<code>bin/jekyll</code>，在开头增加几个依赖声明：</p><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">require</span> <span class="string">'nokogiri'</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'jekyll-watch'</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'wdm'</span></span><br></pre></td></tr></table></figure><p>生成 exe 文件：</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ocra --add-all-core --gem-all bin/jekyll lib/jekyll/mime.types lib/site_template/**/* lib/site_template/*</span><br></pre></td></tr></table></figure><p>做出来的 jekyll.exe 需要测试一下，看看各种命令是否都能正常。视乎配置和使用插件的不同，可能需要增加更多的依赖声明。以上只是我的环境的例子，不一定适用于所有场景。</p><p>最后，我知道大家都还是懒得衣来伸手饭来张口的，就提供一个编译好的 <a href="https://github.com/f5f6/f5f6.github.io/raw/master/_bin/jekyll.exe" target="_blank" rel="noopener">jekyll.exe</a> 下载，支持 kramdown 和 coderay。但还是那句话：不一定符合你的环境。</p><hr>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;用-Jekyll-作为内部技术文档库&quot;&gt;&lt;a href=&quot;#用-Jekyll-作为内部技术文档库&quot; class=&quot;headerlink&quot; title=&quot;用 Jekyll 作为内部技术文档库&quot;&gt;&lt;/a&gt;用 Jekyll 作为内部技术文档库&lt;/h2&gt;&lt;img src=
       
     
     </summary>

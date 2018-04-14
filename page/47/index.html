@@ -262,6 +262,102 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2005/03/02/The-pearl-river-delta-shortage-regional-economic-outlook-is-not-optimistic-/" itemprop="url">
+                  珠三角民工荒，区域经济前景不容乐观？
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2005-03-02T17:14:00+08:00" content="2005-03-02">
+              2005-03-02
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>近来珠三角民工短缺的消息不断见于报端，特别是春节过后，没有再象往年一样出现南下民工大潮，许多企业都招不到工。虽然一些政府部门不时出来解释，珠三角并没有民工荒，只是结构性不均而已，只要工资给得高的企业不愁招不到工。这显然是废话，谁不知道钱多了人自然会来，明显的事实就是本区域内的企业对其所需层次劳工的吸引力不足，造成劳工流向其他地区。这不是个别个体的问题，在宏观上出现这样的情况，显然是经济出现问题了。希望那只是政府部门的公关和宣传的说法而已，如果他们真的是抱着这样的态度，而不积极应对，就更加堪忧了。</p>
+<p>珠三角的产业结构依然是以加工制造业为主，劳动密集型结构。在这里，无论是制造业还是服务业，都需要大量的外来劳工，珠三角的经济可以说很大程度上是靠外来劳工托起来的。民工荒将影响企业成本，限制企业运作规模，进一步降低竞争力。看来珠三角经济前景直不容乐观。</p>
+<p>劳工不足，只是我这些外行人能看到的一个经济的表面现象而已，相信内在隐忧更多。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2005/03/01/In-the-life-of-the-physics-problem/" itemprop="url">
                   生活中的物理学问题
                 </a>
@@ -670,123 +766,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2005/02/18/Member-function-call-delete-this-legal/" itemprop="url">
-                  成员函数调用delete this合法吗？
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2005-02-18T21:18:00+08:00" content="2005-02-18">
-              2005-02-18
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Yesterday, I discussed with Alex whether “delete this” in C++ is legal code.</p>
-<p>In some case, only the object itself knows when its life is to the end and should be destroyed, the owner of object doesn’t know it, or the object has no explicit owner. The most easy way to manger the life time of this kind of object is let it delete itself.</p>
-<p>But we doubted that “delete this” isn’t legal in C++: after the object is released, how does the execution continue?</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> &#123;</span>  </span><br><span class="line"><span class="keyword">public</span>:  </span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span></span>;  </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> A::foo()  </span><br><span class="line">&#123;  </span><br><span class="line">  <span class="comment">// do something  </span></span><br><span class="line">  <span class="keyword">delete</span> <span class="keyword">this</span>;  </span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"I commit suicide!"</span> &lt;&lt; <span class="built_in">endl</span>;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">  A* a = <span class="keyword">new</span> A;  </span><br><span class="line">  a-&gt;foo();  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>I find the answer now, it’s legal, but must be careful when using it. </p>
-<p>The following <a href="http://www.sunistudio.com/cppfaq/freestore-mgmt.html#[16.14]" target="_blank" rel="noopener">faq</a> explain it clearly:</p>
-<blockquote>
-<p>只要你小心，一个对象请求自杀(<code>delete</code> <code>this</code>).是可以的。</p>
-<p>以下是我对“小心”的定义：</p>
-<ol>
-<li>你必须100%的确定，<code>this</code>对象是用 <code>new</code>分配的（不是用<code>new[]</code>，也不是用<a href="http://www.sunistudio.com/cppfaq/dtors.html#[11.10]" target="_blank" rel="noopener">定位放置 <code>new</code></a>，也不是一个栈上的局部对象，也不是全局的，也不是另一个对象的成员，而是明白的普通的<code>new</code>）。</li>
-<li>你必须100%的确定，该成员函数是<code>this</code>对象最后调用的的成员函数。</li>
-<li>你必须100%的确定，剩下的成员函数（<code>delete</code> <code>this</code>之后的）不接触到 <code>this</code>对象任何一块（包括调用任何其他成员函数或访问任何数据成员）。</li>
-<li>你必须 100%的确定，在<code>delete</code> <code>this</code>之后不再去访问<code>this</code>指针。换句话说，你不能去检查它，将它和其他指针比较，和 <code>NULL</code>比较，打印它，转换它，对它做任何事。</li>
-</ol>
-<p>自然，对于这种情况还要习惯性地告诫：当你的指针是一个指向基类类型的指针，而没有<a href="http://www.sunistudio.com/cppfaq/virtual-functions.html#[20.4]" target="_blank" rel="noopener">虚析构函数</a>时（也不可以 <code>delete</code> <code>this</code>）。 </p>
-</blockquote>
-<p>And these ariticles also take about “delete this”:</p>
-<p><a href="http://info.tlw.cn/6079.htm" target="_blank" rel="noopener">http://info.tlw.cn/6079.htm</a><br><a href="http://blog.csdn.net/foxmail/archive/2004/09/22/113060.aspx" target="_blank" rel="noopener">http://blog.csdn.net/foxmail/archive/2004/09/22/113060.aspx</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/46/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/46/">46</a><span class="page-number current">47</span><a class="page-number" href="/blog/page/48/">48</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/65/">65</a><a class="extend next" rel="next" href="/blog/page/48/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/46/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/46/">46</a><span class="page-number current">47</span><a class="page-number" href="/blog/page/48/">48</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/66/">66</a><a class="extend next" rel="next" href="/blog/page/48/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -827,7 +811,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">325</span>
+              <span class="site-state-item-count">326</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

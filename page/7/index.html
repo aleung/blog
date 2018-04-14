@@ -262,6 +262,101 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2014/08/23/plantuml/" itemprop="url">
+                  PlantUML 简介
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-08-23T16:57:33+08:00" content="2014-08-23">
+              2014-08-23
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>关于PlantUML的简介。</p>
+<p><iframe src="//www.slideshare.net/slideshow/embed_code/38238529" width="597" height="486" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/aleung/plantuml" title="PlantUML" target="_blank">PlantUML</a> </strong> from <strong><a href="http://www.slideshare.net/aleung" target="_blank">aleung</a></strong> </div></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2014/08/23/getting-the-hang-of-web-typography/" itemprop="url">
                   Getting the Hang of Web Typography
                 </a>
@@ -700,121 +795,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2014/01/20/text-to-uml-diagram/" itemprop="url">
-                  Text to UML diagram
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-01-20T22:10:00+08:00" content="2014-01-20">
-              2014-01-20
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Usually I used <a href="http://astah.net/" target="_blank" rel="noopener">Astah</a> to draw UML diagram to put into design document in MS Word or PowerPoint format. The separation of the source and generated file making management of the UML model file a problem. And also it’s annoying to adjust a large amount of elements by dragging with mouse whenever you add something in the diagram. For a coder, typing on keyboard is faster than drawing with mouse.</p>
-<p>Now I switch to <a href="http://plantuml.com/" target="_blank" rel="noopener">PlantUML</a>. Just write UML in its <a href="http://en.wikipedia.org/wiki/Domain-specific_language" target="_blank" rel="noopener">DSL</a> and PlantUML generates the diagram. It supports most of the frequent used UML diagrams, which I use most are sequence diagram, class diagram and state diagram. Then I paste the generated diagram into slides (design document) and keep the “source” in note. No need to wonder where to find original UML model file when I need to update the diagram.</p>
-<p>The core of PlantUML is simply a jar file. It parses the text input and depends on <em>dot</em> tool from <a href="http://www.graphviz.org/" target="_blank" rel="noopener">Graphviz</a> for graph generation (except sequence diagram). </p>
-<p>There are <a href="http://www.plantuml.com/running.html" target="_blank" rel="noopener">a bunch of ways</a> to run PlantUML. I highlight some of them I prefer:</p>
-<ul>
-<li>Online editor. Best choice if you’re too lazy to install anything on your computer.</li>
-<li>Desktop (Windows): <a href="https://code.google.com/p/plant-uml-file-watcher/" target="_blank" rel="noopener">PlantUML File Watcher</a></li>
-<li>Embedded into Octopress blog platform. The below examples are using it.</li>
-<li>IDE plugin. Easy way to keep UML together with source code.</li>
-</ul>
-<p>The syntax of PlantUML’s DSL is quite intuitional, you can start to use it by following example.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">package ConsentObject &lt;&lt;Rect&gt;&gt; &#123;</span><br><span class="line">  Consent : id</span><br><span class="line">  Scope : key</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">Client - User</span><br><span class="line">(Client, User) . Consent</span><br><span class="line"> </span><br><span class="line">Consent - &quot;*&quot; Scope</span><br><span class="line"> </span><br><span class="line">Consent &quot;1&quot; -- &quot;1..*&quot; AccessToken</span><br></pre></td></tr></table></figure>
-<p>The generated diagram:</p>
-<img src="http://www.plantuml.com/plantuml/svg/K-0gI4pEJanFLN3EpojEpIlnJyfAJIvHiB490b9sTWhLN0emAGKhXSmK83SuERyW5SZ9JgtagkLIu7BEoGJ9wYg45gSMSMb0k3fWdgQ27amtI27K75q59IqbY358eag6IWgwG2b3FJsWh6DoScfnSKX-TceU0000"> 
-<p>A sequence diagram example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">title OAuth 2.0 Authorization Code Grant</span><br><span class="line"></span><br><span class="line">actor    UserAgent       as UA</span><br><span class="line">participant Application     as APP</span><br><span class="line">participant OAuthServer     as OAuth</span><br><span class="line">participant ResourceServer  as RS</span><br><span class="line"></span><br><span class="line">== Application requests authorization from user ==</span><br><span class="line">UA-&gt;APP: </span><br><span class="line">APP--&gt;UA:redirect to OAuth Server</span><br><span class="line">UA-&gt;OAuth: GET /authorize?response_type=code</span><br><span class="line">ref over UA, OAuth: user authentication\nuser confirms reqest</span><br><span class="line">OAuth--&gt;UA: redirect to App with authorization_code</span><br><span class="line">UA-&gt;APP: authorization_code</span><br><span class="line"></span><br><span class="line">== Application retrieve access token ==</span><br><span class="line">APP-&gt;OAuth: POST /token with authorization_code</span><br><span class="line">ref over APP, OAuth: client authentication</span><br><span class="line">APP&lt;--OAuth: access_token</span><br><span class="line"></span><br><span class="line">== Application access protected resource ==</span><br><span class="line">APP-&gt;RS: getResource with access_token</span><br><span class="line">RS-&gt;OAuth: validateToken(access_token)</span><br><span class="line">RS--&gt;APP: result</span><br></pre></td></tr></table></figure>
-<img src="http://www.plantuml.com/plantuml/svg/TP9FJuGm4CNl_HHpr4JKU2IYQOpPusvWkPbicZAxDh8KfyCQ_VIsfP35Fnm8RT_C-xsXRBX5MCk1N-7k-XR2XoNpfTZO3fviWx0YrR4GIhCb69_Q8Sa3TfpMoa4jHQ-8ZJQzbuFi-zReiKjIoCrc8Occ5T89QPB4hOMeH6S7qZZflAYiX2YAXGFX-u2E7QW5_fxi4GRF2aKXQfazU8GSX7zdsKCjSyB646e6jca4eqtKneqSLizRk9dQuYEXwstdSCUVFHRQpqSGxi46k5fUGQgAfg7ApoX1ldHnKzjkR-Ze0hD75h5Wn85p7XyFFen7MaJQHSSvoXzdlqV3PF24eBH6vtphD-p2FC8Kff2RTULJZaV_cSunVU6SKxSct89bqj3wFikIPFJTnUO_uH9JJvPzR6myxVYxPy2ook60F5s3H7VUigpc62VLcaOnRiF1nRdgCiZIqBp7qF8t">
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/blog/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/65/">65</a><a class="extend next" rel="next" href="/blog/page/8/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/blog/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/66/">66</a><a class="extend next" rel="next" href="/blog/page/8/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -855,7 +840,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">325</span>
+              <span class="site-state-item-count">326</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
