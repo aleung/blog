@@ -262,6 +262,105 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2003/09/11/Invalid-XML-character-msxml-dll-/" itemprop="url">
+                  Invalid XML character, msxml.dll的问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2003-09-11T22:35:00+08:00" content="2003-09-11">
+              2003-09-11
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Java程序测试中发现parse一个XML文件时出现exception, 错误信息为invalid XML character. 但这个XML文件用XMLSpy检查却没有问题.  </p>
+<p>经过查找资料, 发现是XML文件中包含了一些不允许在XML中使用的字符(控制符). XML规范中规定了允许的字符范围(<a href="http://www.w3.org/TR/REC-xml#dt-character" target="_blank" rel="noopener">http://www.w3.org/TR/REC-xml#dt-character</a>):  </p>
+<pre><code>Char ::= #x9 | #xA | #xD | [#x20-#xD7FF] | [#xE000-#xFFFD] | [#x10000-#x10FFFF]   
+</code></pre><p>包含illegal字符的XML文件不是well-formedness的, 为什么这样的文件能够生成, 并且XMLSpy不报错? 是Microsoft XML parser的问题. 这个XML文件是使用msxml.dll生成的, 估计XMLSpy用的也是msxml.dll, 这个parser的其中一个缺陷是允许某些非常字符的存在. 而Java程序中用的parser估计是sun的crimson, 这个parser严格检查XML character range, 包含非法字符就会报错.   </p>
+<p>msxml.dll的问题看来还有不少, 这里专门有谈到: <a href="http://www.xml.com/pub/a/1999/11/parser/index.html?page=2" target="_blank" rel="noopener">http://www.xml.com/pub/a/1999/11/parser/index.html?page=2</a>   </p>
+<p>为了解决此问题, 需要在生成XML前先对字符串检查, 把非法字符过滤掉. 这里提供了java的过滤函数: <a href="http://lists.ibiblio.org/pipermail/xom-interest/2003-May/000471.html" target="_blank" rel="noopener">http://lists.ibiblio.org/pipermail/xom-interest/2003-May/000471.html</a>   </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2003/09/08/MySQL-/" itemprop="url">
                   MySQL的表名大小写问题
                 </a>
@@ -673,107 +772,6 @@ textArea.setCaretPosition(length);
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2003/08/29/java-library/" itemprop="url">
-                  java开发辅助工具,library
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2003-08-29T20:24:00+08:00" content="2003-08-29">
-              2003-08-29
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://www.zaval.org/" target="_blank" rel="noopener">http://www.zaval.org/</a> 这个网站有好几个java开发辅助工具,library. 包括了:  </p>
-<ul>
-<li>Java Resource Editor: 用于i18n/l10n的翻译 </li>
-<li>Light-Weight Visual Components Library (LwVCL): 一组基于AWT的可视控件, 估计目标是可以移植到PDA等小型设备上 </li>
-<li>Proxy Suite: an easy-to-use solution that allows monitoring TCP-based protocols, such as HTTP, NNTP and others. It is extremely useful in software development and can be used as a debug tool. </li>
-<li>轻型数据库工具 </li>
-<li>其他的一些东西, 如Java Charts Package等, 只有介绍没有下载  </li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -819,7 +817,7 @@ textArea.setCaretPosition(length);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">326</span>
+              <span class="site-state-item-count">327</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

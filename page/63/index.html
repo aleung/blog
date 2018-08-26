@@ -262,6 +262,103 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2003/08/05/Robocode-/" itemprop="url">
+                  Robocode的线程与执行次序
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2003-08-05T22:59:00+08:00" content="2003-08-05">
+              2003-08-05
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Robocode的每个机器人都是一个线程，线程调度为非强占式，由战斗管理线程依次调度运行。每个线程执行到一个阻塞函数的时候，交出cpu占用权。对于AdvancedRobot，阻塞函数是excute()。  </p>
+<p>从这个角度而言，可以把robocode看作是回合制的游戏，每个回合各个robot设定要做些什么操作，即调用setXXX()，调用excute()完成本回合的操作设定。各个robot都设定完后，战斗模拟模块模拟执行各个robot的动作，并且在屏幕显示结果。下个回合，robot线程在excute()下面继续执行，直到再次调用excute()为止。  </p>
+<p>不过，setXXX()设定的操作，往往是在一个回合中执行不完的。在robocode中，一个回合是游戏中的一个时间单位，各个元素的运动都有一定的速度，需要一定单位的时间才能完成。如果上回合中设置的动作还没有完成，本回合又重新设定了，就会把新动作覆盖旧动作。  </p>
+<p>事件处理函数onXXX()，看起来是在事件发生的时候立即执行的，其实不然，还是要在回合中轮到这个robot的时候才能执行。而且若在队列中有多个事件，而某个事件处理函数调用了excute()结束了本回合的动作，那么剩下的事件就要等到下个回合才能处理了。因此，onXXX()改变的只是某个线程内部的执行次序，并不改变robot线程之间的执行次序。  </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2003/07/22/PHP-/" itemprop="url">
                   PHP代码的格式化工具
                 </a>
@@ -631,100 +728,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2003/07/14/Top-75-security-tools/" itemprop="url">
-                  Top 75 security tools
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2003-07-14T23:05:00+08:00" content="2003-07-14">
-              2003-07-14
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Top 75 security tools: <a href="http://www.insecure.org/tools.html" target="_blank" rel="noopener">http://www.insecure.org/tools.html</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -770,7 +773,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">326</span>
+              <span class="site-state-item-count">327</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

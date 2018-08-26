@@ -352,7 +352,7 @@
 <h3 id="自动检查与更新工具"><a href="#自动检查与更新工具" class="headerlink" title="自动检查与更新工具"></a>自动检查与更新工具</h3><p>这样一个工具的最底层操作都是文件的修改和拷贝。我没有自己从头构建，而是基于开源自动化项目配置工具<a href="https://github.com/sapegin/mrm" target="_blank" rel="noopener">mrm</a>。Mrm缺省支持一些task，例如 LICENSE 文件、.gitignore、编辑器格式、ESLint规则等等。缺省task的设置是一般开源项目的通用配置，对于我们产品不太适用，但是没关系，mrm也支持自定制task，提供了一组API，可以比较方便的修改包括 JSON、YML、ini、纯文本等各种格式的文件。我开发维护了一个 preset 库，包含一组自定义task，涵括了上面一节里的所有内容。</p>
 <p>这个 mrm preset 最重要的是它不仅仅是根据预定义模版创建文件，它还分析现有项目的配置，检查是否需要更新。某些更新并不是单纯的覆盖，而是根据项目的具体情况来生成的，例如对于 docker-compose.yaml，根据里面定义了那些测试依赖容器，自动配置被测试应用的环境变量；分析 package.json 中的依赖定义，自动更新旧版本，如果发现有未列入白名单中的依赖，则告警或报错。</p>
 <p>虽然项目标准配置涉及的东西很多，但是有了这个工具，配置起来只需要执行一条命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> npx -p mrm -p @ses/mrm-preset mrm all --preset @ses/mrm-preset</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> npx -p mrm -p @ses/mrm-preset mrm all --preset @ses/mrm-preset</span></span><br></pre></td></tr></table></figure>
 <p>项目只需要配置一次，以后 preset 有新版本发布，在 docker 开发环境启动时就会自动安装并且更新。</p>
 <p>当项目标准配置需要更改，仅需要更新并发布npm包<code>@ses/mrm-preset</code> ，也无需通知大家改动，任何开发者在进入项目开发环境时就会自动修改，他将修改提交到 GitLab 即可。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>规范必需强制性执行，才能保证代码质量。只要存在可以通融走捷径的地方，必然会形成技术债务累积。</p>
@@ -396,6 +396,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2018/08/26/3D-modeling-language/" rel="prev" title="3D modeling language">
+                3D modeling language <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -463,7 +467,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">326</span>
+              <span class="site-state-item-count">327</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
