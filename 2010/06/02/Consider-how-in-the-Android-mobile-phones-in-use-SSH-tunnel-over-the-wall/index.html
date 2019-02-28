@@ -314,10 +314,10 @@
 <li>如果浏览器(或者其他程序)支持使用SOCKS proxy，设置使用SSH client开放出来的SOCKS端口，就可以使用了</li>
 <li>如果浏览器(或者其他程序)不支持SOCKS proxy，只支持HTTP proxy，就需要再运行一个支持SOCKS的代理程序（例如Privoxy），将HTTP转成SOCKS</li>
 </ul>
-<p><img src="http://farm5.static.flickr.com/4046/4662779602_743c1c50c2_b.jpg" alt=""></p>
+<p><img src="http://farm5.static.flickr.com/4046/4662779602_743c1c50c2_b.jpg" alt></p>
 <p>在Android上就要麻烦一点了，因为需要网络通讯的不仅仅是浏览器，很多Android application都需要访问网络，但是它们并不支持proxy—-连HTTP proxy都不支持，更不用说SOCKS了。它们只会直接连接目标站点，如图中虚线所示，然后撞墙。</p>
 <p>但是Linux有iptables，可以设置iptables规则（需要root权限），将HTTP/HTTPS请求forward到一个transparent SOCKS proxy去。transparent SOCKS proxy的作用是将任意TCP连接转成SOCKS连接，这样就可以走SSH tunnel出去了。我分析过几乎所有的Android应用访问网络都是走HTTP/HTTPS协议的，所有仅仅处理HTTP/HTTPS就够了。</p>
-<p><img src="http://farm5.static.flickr.com/4023/4662779594_32dd9773cb_b.jpg" alt=""></p>
+<p><img src="http://farm5.static.flickr.com/4023/4662779594_32dd9773cb_b.jpg" alt></p>
 <p>Android上支持dynamic port forwarding的SSH client有<a href="http://code.google.com/p/connectbot/" target="_blank" rel="noopener">ConnectBot</a>，不过ConnectBot是一个有界面的应用，似乎不能由其他程序来控制，这样就不好做到翻墙软件的傻瓜化了。应该还是弄一个命令行的ssh client更合适。</p>
 <p>在网上搜索了一下，开源的transparent SOCKS proxy有几个：<a href="http://oss.tiggerswelt.net/transocks_ev/" target="_blank" rel="noopener">transocks_ev</a>，<a href="http://transocks.sourceforge.net/" target="_blank" rel="noopener">TranSocks</a> 和 <a href="http://darkk.net.ru/redsocks/" target="_blank" rel="noopener">redsocks</a>。从文档上看，似乎transocks_ev比较适合。</p>
 <p>但是，我现在面临的困难在于我不熟悉如何交叉编译Android平台程序（C语言），了解了一下如何搭建Android交叉编译环境，似乎挺麻烦（对我而言）。而且要让普通Linux上可运行的sshd和transocks port到Android上，也许还有一些代码要修改。不知道有没有Android系统高手能够帮忙？</p>
@@ -432,7 +432,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">327</span>
+              <span class="site-state-item-count">328</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -497,7 +497,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

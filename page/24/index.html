@@ -262,6 +262,128 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2010/03/11/Study-of-the-issue-that-CXF-can-t-run-on-GlassFish/" itemprop="url">
+                  Study of the issue that CXF can't run on GlassFish
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2010-03-11T11:59:00+08:00" content="2010-03-11">
+              2010-03-11
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Issue"><a href="#Issue" class="headerlink" title="Issue"></a>Issue</h2><p>SOAP WS client which uses CXF can’t run on GlassFish AS. Getting ClassCastException on invoking some CXF API. The problem was described as CXF-2237 [2].</p>
+<h2 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h2><p>JAX-WS is the Java API for XML Web Service defined by JSR 224. SUN provides a JAX-WS reference implementation in Metro project, which is inside GlassFish AS. The SUN JAX-WS implement was later also merged into JDK 6. Apache CXF is another JAX-WS implementation.</p>
+<p>An application can select different JAX-WS implementation by Provider SPI. JSR 224 [4] chapter 6.2.1 defines the algorithm of Provider implementation selection:</p>
+<blockquote>
+<ol>
+<li><p>If a resource with the name of META-INF/services/javax.xml.ws.spi.Provider exists, then its first line, if present, is used as the UTF-8 encoded name of the implementation class.</p>
+</li>
+<li><p>If the ${java.home}/lib/jaxws.properties file exists and it is readable by the java.util.Properties.load(InputStream) method and it contains an entry whose key is javax.xml.ws.spi.Provider, then the value of that entry is used as the name of the implementation class.</p>
+</li>
+<li><p>If a system property with the name javax.xml.ws.spi.Provider is defined, then its value is used as the name of the implementation class.</p>
+</li>
+<li><p>Finally, a default implementation class name is used.</p>
+</li>
+</ol>
+</blockquote>
+<p>The Provider implementation class in JDK 6 is <code>com.sun.xml.internal.ws.spi.ProviderImpl</code> in rt.jar. I guess it’s the default implementation as mentioned in step 4.</p>
+<p>CXF packages META-INF/services/javax.xml.ws.spi.Provider which points to <code>org.apache.cxf.jaxws.spi.ProviderImpl</code> in cxf.jar. It will be considered in step 1.</p>
+<p>Metro also packages META-INF/services/javax.xml.ws.spi.Provider which points to <code>com.sun.xml.ws.spi.ProviderImpl</code> in webservices-rt.jar. It also will be considered in step 1.</p>
+<p>Because in GlassFish the Metro library is in system classpath, so its META-INF/services/javax.xml.ws.spi.Provider will be loaded precede over CXF’s. That’s why Metro will always be used as JAX-WS implement no matter CXF exists or not.</p>
+<h2 id="Potential-Solution"><a href="#Potential-Solution" class="headerlink" title="Potential Solution"></a>Potential Solution</h2><h3 id="Classloader-control"><a href="#Classloader-control" class="headerlink" title="Classloader control"></a>Classloader control</h3><p>If we can force the JVM to load resource from cxf.jar prior to webservices-rt.jar that will be fine. But GlassFish hasn’t the mechanism likeWebLogic’s <code>&lt;prefer-application-packages&gt;</code>[5]. After some finding we give up this approach.</p>
+<h3 id="Remove-Metro-from-GlassFish"><a href="#Remove-Metro-from-GlassFish" class="headerlink" title="Remove Metro from GlassFish"></a>Remove Metro from GlassFish</h3><p>If there is no application which deploys on the this application server that depends on Metro, we can remove Metro lib (webservices-*.jar) from GlassFish’s lib folder.</p>
+<h3 id="Change-to-Metro"><a href="#Change-to-Metro" class="headerlink" title="Change to Metro"></a>Change to Metro</h3><p>That’s nothing to say. We finally choose this way. There is almost no workload to migrate our code from CXF to Metro, because both of them follows JAX-WS specification, except that some code that calls CXF specify API need to be changed. We even don’t change the build script and still use CXF’s wsdl2java tool.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><a href="https://issues.apache.org/jira/browse/CXF-857" target="_blank" rel="noopener">CXF Issue: CXF-857</a></li>
+<li><a href="https://issues.apache.org/jira/browse/CXF-2237" target="_blank" rel="noopener">CXF Issue: CXF-2237</a></li>
+<li><a href="http://stackoverflow.com/questions/2064068/how-to-pick-cxf-over-metro-on-glassfish" target="_blank" rel="noopener">StackOverflow: How to pick CXF over Metro on Glassfish</a></li>
+<li><a href="http://jcp.org/en/jsr/detail?id=224" target="_blank" rel="noopener">JSR 224: JAX-WS 2.x</a></li>
+<li><a href="http://good-good-study.appspot.com/blog/posts/4218" target="_blank" rel="noopener">WebLogic的classloading</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2010/02/27/Portable-pedestrians-cross-the-street-warning-great/" itemprop="url">
                   便携式行人过街警示棒
                 </a>
@@ -306,13 +428,13 @@
       
         
           
-            <p><img src="http://farm5.static.flickr.com/4010/4390272360_cd4c3c040a_o.jpg" alt=""></p>
+            <p><img src="http://farm5.static.flickr.com/4010/4390272360_cd4c3c040a_o.jpg" alt></p>
 <p>几乎每次过马路，我都恨不得手里有这样一块牌子，可以伸到身体前面，把来车挡住 —- 在没有交通灯的斑马线，十个司机有九个会毫不减速的冲过，而不会避让过马路的行人；即使在有交通灯的斑马线，如果不是路口，也有司机根本当红灯不存在。</p>
 <p>我想，能不能做个可伸缩的棒，例如是套筒的方式，里面加上弹簧，缩起来的时候大概烟盒大小，可以方便的放在口袋，当需要过马路的时候，将它弹出来，变成一米左右的长度。棒身用红、黄鲜艳颜色的反光材料覆盖。为了增大可视面积，棒伸展时需要在前端弹出一个平面，应该用个弹性钢丝圈加上薄膜可以做出来，类似可折叠太阳帽的样子。过完马路后一压就能够把警示棒收起来。</p>
 <p>Beatles四位大叔过Abbey Road时就是这样子的：</p>
-<p><img src="http://farm5.static.flickr.com/4003/4390322224_a0a6979623_o.jpg" alt=""></p>
+<p><img src="http://farm5.static.flickr.com/4003/4390322224_a0a6979623_o.jpg" alt></p>
 <p>现在激光全息成像技术还不成熟，如果能够做到便携化，还可以从口袋里掏出激光器一照，一个栅栏就出来了：</p>
-<p><img src="http://farm3.static.flickr.com/2711/4389554227_f36eafa67f_o.jpg" alt=""></p>
+<p><img src="http://farm3.static.flickr.com/2711/4389554227_f36eafa67f_o.jpg" alt></p>
 <p>至于驾车人士关心的如何制止行人乱穿马路，那就是不是我考虑的问题了。我自己是遵守交通规则的，有斑马线就走斑马线，有行人交通灯就等绿灯才过。</p>
 <p>欢迎驾车人士批判，哈哈 :)</p>
 
@@ -673,124 +795,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2010/02/22/JSON-support-in-JAX-RS/" itemprop="url">
-                  JSON support in JAX-RS
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2010-02-22T23:33:00+08:00" content="2010-02-22">
-              2010-02-22
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>JAX-RS is the Java API for RESTful web services. JSON is the most popular data binding of RESTful web service. In JAX-RS, Entity Providers supply mapping services between representations and their associated Java types. To support JSON representation, JSON provider is needed.</p>
-<h2 id="JSON-support-in-Jersey-and-CXF"><a href="#JSON-support-in-Jersey-and-CXF" class="headerlink" title="JSON support in Jersey and CXF"></a>JSON support in Jersey and CXF</h2><p>Both Jersey and Apache CXF support JSON data generated out of JAXB beans. Developer can generate JavatypefromXML schema (xsd) by JAXB ormanually write Java bean with annotations. Then the resource can support JSON representatons.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@XmlRootElement</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StatusInfoBean</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> String status = <span class="string">"Idle"</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> tonerRemaining = <span class="number">25</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> Collection&lt;JobInfoBean&gt; jobs = <span class="keyword">new</span> HashSet&lt;JobInfoBean&gt;();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Path</span>(<span class="string">"/status"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyResource</span> </span>&#123;</span><br><span class="line">    StatusInfoBean statusInfoBean = <span class="keyword">new</span> StatusInfoBean();</span><br><span class="line">    &#123;</span><br><span class="line">        statusInfoBean.jobs.add(<span class="keyword">new</span> JobInfoBean(<span class="string">"sample.doc"</span>, <span class="string">"printing..."</span>, <span class="number">13</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@GET</span></span><br><span class="line">    <span class="meta">@Produces</span>(<span class="string">"application/json"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> StatusInfoBean <span class="title">getStatus</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> statusInfoBean;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@PUT</span></span><br><span class="line">    <span class="meta">@Consumes</span>(<span class="string">"application/json"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">setStatus</span><span class="params">(StatusInfoBean status)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.statusInfoBean = status;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Cusomize-the-JSON-provider"><a href="#Cusomize-the-JSON-provider" class="headerlink" title="Cusomize the JSON provider"></a>Cusomize the JSON provider</h2><p>The behavior of the JSON provider can be customized. But the way of customization is different in Jersey and CXF.</p>
-<p>The configuration described in this article targets on Jersey 1.0.2 or higher, CXF 2.2 or higher.</p>
-<p>In Jersey, developer should implement a JAXB ContextResolver which creates JSONJAXBContext with JSONConfiguration.Different configurations can be set bybuilder pattern.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Provider</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyJAXBContextResolver</span> <span class="keyword">implements</span> <span class="title">ContextResolver</span>&lt;<span class="title">JAXBContext</span>&gt; </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> JAXBContext context;</span><br><span class="line">    <span class="keyword">private</span> Class[] types = &#123;StatusInfoBean.class, JobInfoBean.class&#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyJAXBContextResolver</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.context = <span class="keyword">new</span> JSONJAXBContext(</span><br><span class="line">                JSONConfiguration.mapped()</span><br><span class="line">                                   .rootUnwrapping(<span class="keyword">true</span>)</span><br><span class="line">                                   .arrays(<span class="string">"jobs"</span>)</span><br><span class="line">                                   .nonStrings(<span class="string">"pages"</span>, <span class="string">"tonerRemaining"</span>)</span><br><span class="line">                                   .build(),</span><br><span class="line">                types);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> JAXBContext <span class="title">getContext</span><span class="params">(Class&lt;?&gt; objectType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (types[<span class="number">0</span>].equals(objectType)) ? context : <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Further simplificationway can be found in <a href="http://blogs.sun.com/japod/entry/configuring_json_for_restful_web" target="_blank" rel="noopener">http://blogs.sun.com/japod/entry/configuring_json_for_restful_web</a></p>
-<p>In Apache CXF, to customize the JSON provider, developer can implement a new provider or configure the properties of org.apache.cxf.jaxrs.provider.JSONProvider.</p>
-<p>Custom provider is registered by Spring configuration:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">beans</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">jaxrs:server</span> <span class="attr">id</span>=<span class="string">"customerService"</span> <span class="attr">address</span>=<span class="string">"/"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">jaxrs:serviceBeans</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.CustomerService"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">jaxrs:serviceBeans</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">        <span class="tag">&lt;<span class="name">jaxrs:providers</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">ref</span> <span class="attr">bean</span>=<span class="string">"jsonProvider"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">jaxrs:providers</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">        <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"jsonProvider"</span> <span class="attr">class</span>=<span class="string">"org.apache.cxf.jaxrs.provider.JSONProvider"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dropRootName"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"serializeAsArray"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"arrayKeys"</span> <span class="attr">value</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">list</span>&gt;</span><span class="tag">&lt;<span class="name">value</span>&gt;</span>jobs<span class="tag">&lt;/<span class="name">value</span>&gt;</span><span class="tag">&lt;/<span class="name">list</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">jaxrs:server</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="Drop-root-element-Root-unwrapping"><a href="#Drop-root-element-Root-unwrapping" class="headerlink" title="Drop root element / Root unwrapping"></a>Drop root element / Root unwrapping</h3><p>Drop root element means strip out the root element from JSON. In the following example the StatusInfoBean element is dropped.</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"status"</span>:<span class="string">"Idle"</span>,<span class="attr">"tonerRemaining"</span>:<span class="string">"25"</span>,<span class="attr">"jobs"</span>:&#123;<span class="attr">"name"</span>:<span class="string">"sample.doc"</span>,<span class="attr">"status"</span>:<span class="string">"printing..."</span>,<span class="attr">"pages"</span>:<span class="string">"13"</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
-<p>In Jersey whether dropping root element is configured by JSONConfiguration.rootUnwrapping(). In CXF it is by JSONProvider.setDropRootElement().</p>
-<h3 id="Single-value-array"><a href="#Single-value-array" class="headerlink" title="Single value array"></a>Single value array</h3><p>Single value List object can be serialized as array or non-array. See example:</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"rows"</span>:&#123;<span class="attr">"userid"</span>:<span class="string">"1621"</span>,<span class="attr">"name"</span>:<span class="string">"Grotefend"</span>&#125;&#125;</span><br><span class="line">&#123;<span class="attr">"rows"</span>:[&#123;<span class="attr">"userid"</span>:<span class="string">"1621"</span>,<span class="attr">"name"</span>:<span class="string">"Grotefend"</span>&#125;]&#125;</span><br></pre></td></tr></table></figure>
-<p>In CXF it’s controlled by JSONProvider properties “serializeAsArray” and “arrayKeys”.</p>
-<h3 id="Namespace"><a href="#Namespace" class="headerlink" title="Namespace"></a>Namespace</h3><p>If the JAXB bean has namespace, whether to include namespace in JSON can be controlled in CXF by JSONProvider properties “ignoreNamespaces”.</p>
-<h2 id="Nature-JSON-notation"><a href="#Nature-JSON-notation" class="headerlink" title="Nature JSON notation"></a>Nature JSON notation</h2><p>Nature JSON notation is:</p>
-<ul>
-<li>root unwrapping</li>
-<li>single value List object serialized as array</li>
-<li>???</li>
-</ul>
-<p>See com.sun.jersey.api.json.JSONConfiguration.Notation</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -836,7 +840,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">327</span>
+              <span class="site-state-item-count">328</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -890,7 +894,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

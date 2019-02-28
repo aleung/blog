@@ -262,6 +262,116 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2011/09/27/RAW-/" itemprop="url">
+                  RAW照片后期处理的常用操作
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2011-09-27T22:33:00+08:00" content="2011-09-27">
+              2011-09-27
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这里讲的是 Apple Aperture 3 的操作，但其他RAW处理软件（如Photoshop Lightroom）的功能和效果也都类似，可以参考。</p>
+<h2 id="Exposure"><a href="#Exposure" class="headerlink" title="Exposure"></a>Exposure</h2><h3 id="Exposure-1"><a href="#Exposure-1" class="headerlink" title="Exposure"></a>Exposure</h3><p>黑位固定，直方图右侧拉伸。相当于相机的曝光量调整。</p>
+<p><img src="https://lh6.googleusercontent.com/-fnAGXvmnFJE/ToHQKWlruvI/AAAAAAAAAZ0/O4pdxnS64yY/s800/exposure-1.jpg" alt>》<img src="https://lh5.googleusercontent.com/-FP6Vg1nAOWI/ToHQKRFOhtI/AAAAAAAAAZ4/0lESY5sW318/s800/exposure-2.jpg" alt></p>
+<h3 id="Recovery"><a href="#Recovery" class="headerlink" title="Recovery"></a>Recovery</h3><p>利用RAW记录的额外信息恢复高光溢出部分。</p>
+<h3 id="Black-Point"><a href="#Black-Point" class="headerlink" title="Black Point"></a>Black Point</h3><p>利用RAW记录的额外信息恢复丢失的暗部细节。</p>
+<h3 id="Brightness"><a href="#Brightness" class="headerlink" title="Brightness"></a>Brightness</h3><p>黑位与白位均固定，直方图中间色调左右移动。用于调整图像的整体明暗。与level工具的亮度调节功能类似，但level工具中若只拖动一个锚点时对直方图的影响更加局部，只改变特定色调范围。</p>
+<p><img src="https://lh5.googleusercontent.com/-mKyUGov3PCc/ToHQJ9LMS-I/AAAAAAAAAZs/Z7XqqxDgQJk/s800/brightness-1.jpg" alt>》<img src="https://lh4.googleusercontent.com/-MWAZLV47es8/ToHQKHGqVNI/AAAAAAAAAZw/B4GjHYLSF_A/s800/brightness-2.jpg" alt></p>
+<h2 id="Enhance"><a href="#Enhance" class="headerlink" title="Enhance"></a>Enhance</h2><h3 id="Contrast"><a href="#Contrast" class="headerlink" title="Contrast"></a>Contrast</h3><p>中灰不变，直方图向两侧拉伸。（不建议使用，用level工具控制更准确）</p>
+<p><img src="https://lh6.googleusercontent.com/-lZY-AgmwRcU/ToHQJ3eBQMI/AAAAAAAAAZo/1lTWE0LHHoA/s800/contrast.jpg" alt></p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>增强图像局部的对比度，但不影响整体图像的对比度，直方图无整体性变化。可提高图像明暗交界的细节，例如让云朵更加立体。</p>
+<h3 id="Saturation"><a href="#Saturation" class="headerlink" title="Saturation"></a>Saturation</h3><p>让RGB三原色的直方图趋于重合或者更加离散。用于减弱色彩或者增强色彩(变鲜艳)。饱和度增加时图像细节会丢失。</p>
+<p><img src="https://lh6.googleusercontent.com/-EKHur68d4-A/ToHQKvYuHQI/AAAAAAAAAZ8/LRPgisNijDM/s800/saturation-1.jpg" alt>》<img src="https://lh3.googleusercontent.com/-NGeEU2MWZwg/ToHQLOXNoBI/AAAAAAAAAaE/hwsr11w3eS0/s800/saturation-2.jpg" alt></p>
+<h3 id="Vibrancy"><a href="#Vibrancy" class="headerlink" title="Vibrancy"></a>Vibrancy</h3><p>与saturation类似，但不影响肤色。用于人像照片中的色彩调整，但保持肤色不变。</p>
+<h2 id="Highlights-amp-Shadows"><a href="#Highlights-amp-Shadows" class="headerlink" title="Highlights &amp; Shadows"></a>Highlights &amp; Shadows</h2><p>降低高光部分亮度，但不影响中间调和暗部；提高暗部亮度，但不影响中间调和亮部。直方图上的效果是高光部分和/或暗部扩展，移向中间调位置，但实际处理并非单纯的直方图映射，运算时会考虑到周边像素的色调的影响。用于对图像中过亮或者过暗的部分进行补偿，增加色调变化细节。</p>
+<h2 id="Levels"><a href="#Levels" class="headerlink" title="Levels"></a>Levels</h2><p>将直方图进行映射变换，下横轴是输入，上横轴是输出。Aperture的levels工具可以调节四分之一色调的映射，可以完成部分本来需要使用曲线工具的调节。</p>
+<p>Levels调整是在上面几种调整的基础之上进行的，可能会抵消了前面所做的调整的效果。若非必要不应该将它与前面提到的工具混合使用。</p>
+<p><img src="https://lh3.googleusercontent.com/-Af7kvdJq3pU/ToHQKit_TwI/AAAAAAAAAaA/1x5cdJ1hZrE/s800/level-1.jpg" alt>》<img src="https://lh3.googleusercontent.com/-f0jePRCWRAI/ToHQQCnp4qI/AAAAAAAAAaI/qW_bMiOvGZw/s800/level-2.jpg" alt></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2011/09/27/Apple-Aperture-/" itemprop="url">
                   Apple Aperture 数码照片处理几板斧
                 </a>
@@ -631,7 +741,7 @@
       
         
           
-            <p><img src="https://lh5.googleusercontent.com/-d_OZsHIjLe8/TlcV3xzq-DI/AAAAAAAAATE/CGu8uwStu1k/s800/maven-concept.png" alt=""></p>
+            <p><img src="https://lh5.googleusercontent.com/-d_OZsHIjLe8/TlcV3xzq-DI/AAAAAAAAATE/CGu8uwStu1k/s800/maven-concept.png" alt></p>
 <p>(<a href="https://picasaweb.google.com/lh/photo/D_sskYHvn6CgEruCxN6lMdBJO7epb5AqjiUnD_coqoo?feat=directlink" target="_blank" rel="noopener">大图链接</a>)</p>
 <p>一年前画的，把它电子化方便日后查看。看看有没有空补充些文字说明吧。</p>
 <p>Reference:</p>
@@ -734,207 +844,11 @@
           
             <p>A typical way of adopting Maven to manage artifacts in an organization is to setup a repository manager locally. The repository manager proxies opensource repositories like Maven central from Internet, and hosts release and snapshot repositories for internal artifacts. It works fine in most cases, but when the team locales geographically in more than one site, and the bandwitdth between the sites is limited, or the artifacts are huge in size, the build performance will decrease, because uploading and downloading artifacts to/from the remove repository takes time.</p>
 <h2 id="Solution-1-Pubish-to-master-repository-download-from-local-repository"><a href="#Solution-1-Pubish-to-master-repository-download-from-local-repository" class="headerlink" title="Solution 1: Pubish to master repository, download from local repository"></a>Solution 1: Pubish to master repository, download from local repository</h2><p>Suppose on site A there is already a repository manager A, now site B is setup, what we need is a repository manager on site B that proxies both external repositories and internal repositories. Sonatype Nexus has the capability to aggregate serveral repositories / mirrories and provides download access from a single URL.</p>
-<p><img src="https://lh6.googleusercontent.com/-kQ4SwY2UV2s/Tj905hhUlJI/AAAAAAAAASc/hj_0Kxt6CQ0/s800/maven-repo-2sites-solution1.png" alt=""></p>
+<p><img src="https://lh6.googleusercontent.com/-kQ4SwY2UV2s/Tj905hhUlJI/AAAAAAAAASc/hj_0Kxt6CQ0/s800/maven-repo-2sites-solution1.png" alt></p>
 <p>By this solution, pom.xml of existing projects aren’t required to be modified. Simply add a <mirror> section with <mirrorof> value set to * into Maven setting.xml for all developers who work in site B. But the publishing of artifacts from site B is still cross sites over slow connection, so mvn deploy is not fully optimized though the download of dependencies is speeded up by cache on local repository manager.</mirrorof></mirror></p>
 <h2 id="Solution-2-Publish-to-local-repository-cross-caching"><a href="#Solution-2-Publish-to-local-repository-cross-caching" class="headerlink" title="Solution 2: Publish to local repository, cross caching"></a>Solution 2: Publish to local repository, cross caching</h2><p>This solution comes from <a href="http://www.sonatype.com/people/2011/07/video-multi-master-configuration-for-nexus/" target="_blank" rel="noopener">Sonatype Blog</a>. Artifacts are always publish to repository on local site, each repository is cached by other site’s repository manager.</p>
-<p><img src="https://lh4.googleusercontent.com/-XJdyMrSafCM/Tj905psGecI/AAAAAAAAASg/lGJsgsjir7I/s800/maven-repo-2sites-solution2.png" alt=""></p>
+<p><img src="https://lh4.googleusercontent.com/-XJdyMrSafCM/Tj905psGecI/AAAAAAAAASg/lGJsgsjir7I/s800/maven-repo-2sites-solution2.png" alt></p>
 <p>This solution looks good if one artifact is owned by one site. But I’m wondering if it works in the situation that both sites publish the same SNAPSHOT artifact to its local repository manager. For example, foo-1.0.0-SNAPSHOT.jar was already deployed on Repository Manger A, and then on Repository Manager B a newer edition of the jar is deployed, how can site A get the later one?</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2011/06/26/Determine-priority/" itemprop="url">
-                  确定优先级
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2011-06-26T15:38:00+08:00" content="2011-06-26">
-              2011-06-26
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在我们的工作中，不时需要评估工作任务的优先级：例如下个版本的软件应该加入的功能，又或者对之前工作回顾列出的一大堆改进项目，在一轮头脑风暴之后，发现需要做的事情是如此之多，而能投入的资源显得如此至少，怎么挑选出最有价值的事情来做就成了头痛的事。</p>
-<p>过往，我们常做的方法是，召集一个会议，大家一起来为每个任务评分：分别评估出任务的工作量级和重要性（1、2、3… 最重要为1），然后将两者相乘得到一个分数，根据这个分数对任务排序。这种做法是期望能找出重要性比较高，但是又不太难完成的任务。但很不幸，越是重要的任务往往工作量越大—-如果有重要而简单的任务，我们早就把它做了，不需要等到这个会议的召开—-得到的分数差距不大。印象中，我参加过的评估会，都没有得出什么有用的结论，最终做的决策似乎跟评估没有太多的关系。</p>
-<p>你可能会指出，这个评估模型根本就是不对的，工作量和重要性两者相乘得不出有意义的数字。但我们都不够聪明，没有想到一个足够简单而直观的方法。（回过头来看，应该是我们谁都没有花心思去想过。为什么？为什么？为什么？！）</p>
-<p>今天读”<a href="http://book.douban.com/subject/4163938/" target="_blank" rel="noopener">More Joel on Software</a>“，第36节介绍了他们用的方法，值得借鉴。</p>
-<p>首先评估每项任务的工作量（成本），得到一个数字，其实这个数字是什么单位无所谓，story point也好，$也好，在例子里用的是$，金额。</p>
-<table>
-<thead>
-<tr>
-<th>功能</th>
-<th style="text-align:right">成本</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>个性化首页</td>
-<td style="text-align:right">$10 </td>
-</tr>
-<tr>
-<td>轻松安排软件开放进程</td>
-<td style="text-align:right">$4</td>
-</tr>
-<tr>
-<td>追踪资金到账时间</td>
-<td style="text-align:right">$5</td>
-</tr>
-<tr>
-<td>允许对bug分叉(fork)</td>
-<td style="text-align:right">$1</td>
-</tr>
-</tbody>
-</table>
-<p>然后规定每人手上只有限量的资金，例如$20，可以用来购买这些功能。每个人根据自己对功能的重要性判断来决定应该为每个功能分配多少钱。例如：我觉得追踪资金到账时间是没有用的功能，一分钱也不分给它；安排软件开发过程很重要，我愿意出两倍的钱；而允许对bug分叉更重要，出4倍的钱；而个性化首页不是那么重要，所以我只愿意出80%的钱。故此，我的资金这样分配：</p>
-<table>
-<thead>
-<tr>
-<th>功能</th>
-<th style="text-align:right">成本</th>
-<th style="text-align:right">销售额</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>个性化首页</td>
-<td style="text-align:right">$10</td>
-<td style="text-align:right">$8</td>
-</tr>
-<tr>
-<td>轻松安排软件开放进程</td>
-<td style="text-align:right">$4</td>
-<td style="text-align:right">$8</td>
-</tr>
-<tr>
-<td>追踪资金到账时间</td>
-<td style="text-align:right">$5</td>
-<td style="text-align:right">$0</td>
-</tr>
-<tr>
-<td>允许对bug分叉(fork)</td>
-<td style="text-align:right">$1</td>
-<td style="text-align:right">$4</td>
-</tr>
-</tbody>
-</table>
-<p>这个过程其实就是一个已经按照成本加权的优先级评估。每个人在评估时已经综合考虑了成本和重要性。</p>
-<p>将每个功能从各人手中获得的资金累加起来，再除以成本，就得到一个投资收益率，很明显，投资收益率最高的功能就是应该最优先做的。</p>
-<table>
-<thead>
-<tr>
-<th>功能</th>
-<th style="text-align:right">成本</th>
-<th style="text-align:right">总销售额</th>
-<th style="text-align:right">投资收益率</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>个性化首页</td>
-<td style="text-align:right">$10</td>
-<td style="text-align:right">$45</td>
-<td style="text-align:right">4.5</td>
-</tr>
-<tr>
-<td>轻松安排软件开放进程</td>
-<td style="text-align:right">$4</td>
-<td style="text-align:right">$36</td>
-<td style="text-align:right">9</td>
-</tr>
-<tr>
-<td>追踪资金到账时间</td>
-<td style="text-align:right">$5</td>
-<td style="text-align:right">$12</td>
-<td style="text-align:right">2.4</td>
-</tr>
-<tr>
-<td>允许对bug分叉(fork)</td>
-<td style="text-align:right">$1</td>
-<td style="text-align:right">$7</td>
-<td style="text-align:right">7</td>
-</tr>
-</tbody>
-</table>
-<p>下次排任务优先级的时候，我们应该尝试一下这种方法。</p>
-<p>P.S. 回头再想一下，这个方法其实跟我们以前用的工作量乘以重要性级别的方法本质上是一样的，但是我们过去用的重要性级别1、2、3、4、5没有定量关系，说不出不同级别之间的重要性相差多少倍，因此相乘出来的数字就没有比较价值了。另外，每人手上持有有限量资金进行分配这种方式更接近我们日常的思维模式，调动起人的直觉，类似于planning game。</p>
 
           
         
@@ -1008,7 +922,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">327</span>
+              <span class="site-state-item-count">328</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1062,7 +976,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

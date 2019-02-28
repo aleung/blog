@@ -4,6 +4,57 @@
   
     
     <entry>
+      <title><![CDATA[燃气热水器恒温控制]]></title>
+      <url>http://aleung.github.io/blog/2019/02/25/thermostatic-water-heater/</url>
+      <content type="html"><![CDATA[<p>为了选购热水器，做了好多功课。不像软件开发和电脑硬件领域，网上通过搜索引擎很难找到相关的专业一些的技术资料，大量的都是营销的文章，里面的技术相关的信息很混乱甚至是错误的。</p>
+<p>在看了各种广告、资料后，自己摸索总结了一些关于燃气热水器的恒温控制的原理。</p>
+<h2 id="最基本的燃气热水器工作原理"><a href="#最基本的燃气热水器工作原理" class="headerlink" title="最基本的燃气热水器工作原理"></a>最基本的燃气热水器工作原理</h2><p>下图是最基本的燃气热水器的原理图，没有自动恒温功能，也就是老旧的那些机械旋钮控制的热水器。</p>
+<img src="/blog/attachments/2019/2/heater-1.png">
+<p>两个阀门分别在水回路和燃气回路中，分别控制水流量和火力。可是在好多热水器中，水回路阀门的旋钮是标记为“水温调节”的，根本就是乱写。我以前就总是搞不清楚这两个旋钮怎么用——既然都有水温调节了还要控制火力干什么。</p>
+<img src="/blog/attachments/2018/2/old-heater-control.jpg">
+<p>如果希望出水水温高一些，调节燃气阀增加供气量让火力猛一些。但是，如果进水水温太低，即使火力全开了，都到不了期望出水温度，怎么办呢？那就要控制水流量，让通过的水流少一些，就可以加热到更高温度了。这个就是所谓“水温调节”旋钮的真正作用。</p>
+<p>根据我的推理，燃气热水器的水流量-温升工作范围大致上应该是处于如下图的阴影区域中。</p>
+<img src="/blog/attachments/2018/2/working_area.jpg">
+<ul>
+<li>纵轴是水流量，横轴为水的温升。</li>
+<li>上面水平线是水路管道可以达到的最大流量。</li>
+<li>下面水平线是水流感应的最小工作流量，少于这个流量会自动熄火保护。</li>
+<li>左侧绿色曲线为火力最小时的工作曲线。更小火焰就不能稳定燃烧，会熄火。如果最小温升过大，在水温较高的夏天就会出现热水太热的问题。分段燃烧、微火苗之类的技术是尽量让这个曲线往左移，</li>
+<li>右侧红色曲线是火力最大时的工作曲线，流量越大，温度升高得越少。其中，当温升为25度时对于的流量就是热水器的额定产热水能力，单位为升/分钟。比如，产热水能力为10L的热水器，要将水温升高50度，水流量最大不可能超过5L/min，否则温度上不去。</li>
+</ul>
+<h2 id="简单的恒温控制"><a href="#简单的恒温控制" class="headerlink" title="简单的恒温控制"></a>简单的恒温控制</h2><h3 id="水温恒定控制"><a href="#水温恒定控制" class="headerlink" title="水温恒定控制"></a>水温恒定控制</h3><p>热水器正常稳定燃烧的情况下，如果进水的温度不变，水流量也是固定的，出来的水温应该是稳定的。在一次洗澡的过程中，进水温度也不会有什么变化（除去刚开始时室内管道里的水温可能会不一样，过一会就稳定了），但是水量却是会变化的，原因很多，包括水压不稳定、其他地方用水影响、调节水龙头等等，水流量一变，水温就不恒定了。</p>
+<p>需要让出水温度自动保持恒定，需要加入反馈控制回路。简单的方法就是探测出水口的温度，与设定温度相比较，据此控制火力大小。</p>
+<img src="/blog/attachments/2019/2/heater-2.png">
+<p>我估计大部分低端恒温热水器的恒温控制就是这样的原理。热水器上没有机械旋钮了，变成了数码的温度设定和显示。</p>
+<h3 id="自动水量调节"><a href="#自动水量调节" class="headerlink" title="自动水量调节"></a>自动水量调节</h3><p>但是有个问题，当进水温度太低时，即使火力最大也是无法输出达到设定温度的热水的，看之前的图的红色工作曲线。老式热水器怎么办呢？可以人手把水量旋钮关小一些，水流量小了温升就大了。可是现在的是电脑控制数字设定的热水器啊，怎么还能靠人去调节水量呢？</p>
+<p>于是稍高一个档次的热水器就在进水水路上增加一个自动水量调节装置，这是一个记忆合金控制的阀门，会跟随进水温度而自动调节开度，水温越低它就关得越小，相当于你在冬天将热水器的进水角阀关小一点的效果。</p>
+<p><strong>自动水量调节是不能提高恒温精度的！</strong>它解决的是冬天热水不够热的问题，解决方法是根据进水温度自动限制水流量，也就是相当于将水阀关小一点。当然，后果就是夏天你用大花洒可以畅快的洗澡，冬天可能就不行了，水量会变小。但是它至少保证了温度是足够的。</p>
+<p>还有些热水器有“变升”功能，通过按钮选择不同的升数，说白了也就是控制进水阀门而已，选择小一点的升数就是将阀门关小一些。看看商家宣传的春秋笔法：夏天大水量的时候说舒爽，冬天水量上不去，他就不提舒爽却说节水了。</p>
+<p>记忆合金自动水量调节虽然能够根据进水温度调节水流量，但是它不知道用户设定的期望出水温度，也就是不知道温差。例如15度水温，水量全开加热到35度是没问题的，要加热到50度就不行了。那么这个自动水量调节到底在15度水温时应该限制水量吗？限制多少合适？出厂时只能根据某个出水温度来设定流量，假设是40度，那么当你把热水器设置到50度，它温度还是上不去；而设置到35度时，本来水流量可以大一些的，它却给限制了。</p>
+<h1 id="进阶的恒温控制"><a href="#进阶的恒温控制" class="headerlink" title="进阶的恒温控制"></a>进阶的恒温控制</h1><h3 id="水量伺服"><a href="#水量伺服" class="headerlink" title="水量伺服"></a>水量伺服</h3><p>水量伺服功能在比较高档的热水器才有装备，它是一个由伺服电机驱动的进水阀门，通过控制器能够比较精准的控制开合程度。</p>
+<img src="/blog/attachments/2019/2/heater-3.png">
+<p>水量伺服的主要用途还是类似于自动水量调节，在进水温度与期望水温温差过大时降低流量。因为它是受控的，比起不能控制的自动水量调节有更强的功能：</p>
+<ul>
+<li>根据进水温度传感器能够得知与期望水温的温差，根据温差控制合理的水流量，保证设置到什么温度都能产出符合设定温度的热水。</li>
+<li>稳定水流量：当水压发生变化，例如其他地方开水关水，会影响到热水器水流量。热水器控制器通过流量传感器监控到流量的瞬间变化，可以控制水量伺服阀门动作，去抑制流量的变化。</li>
+<li>前面说到保持恒温主要是靠燃气比例阀调节火力，但是火力的调节到水温变化是有一些时间滞后的，因此温度会出现波动。有了水量伺服，控制器可以同时调节火力和微调水流量（也称为“水气双调”），达到更迅速的出水温度调节效果。</li>
+<li>开机快速出水：刚点火时，水管、热交换器都是冷的，需要加热一段时间后才能逐渐到达设定温度。有了水量伺服，可以在刚开机时限制比较小的水流量，让它更快的升温；到达设定温度后，再放大回正常的水流量。</li>
+</ul>
+<p>严格来说，带有水量伺服的才能叫水气双调，但是现在很多宣传将记忆合金自动水量调节也称为水气双调，其实那个水量根本不能被控制。</p>
+<h3 id="更多的传感器和控制手段"><a href="#更多的传感器和控制手段" class="headerlink" title="更多的传感器和控制手段"></a>更多的传感器和控制手段</h3><p>对于恒温控制，最重要（必备）的是出水温度传感器。高级热水器会增加更多的传感器用于恒温控制，例如进水温度传感器、水流量传感器。更多的控制部件，除了最基本的燃气比例阀，还有上面提到的水量伺服。我不确定风机转速调节是否会影响温度。反正就是从两个方面控制：更精确的控制燃烧，更灵敏的控制水流量。</p>
+<h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><p>虽然说传感器越多，控制手段越多，就提供了更精确控制的可能性，但是实际效果如何，还得看控制器的算法。现在的恒温热水器控制器都是微处理器运行软件，应该都是基于 <a href="https://www.wikiwand.com/zh-hant/PID%E6%8E%A7%E5%88%B6%E5%99%A8" target="_blank" rel="noopener">PID 控制</a>算法，但是参数细节和各种优化手段学问就大了。</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> HomeAppliance </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[3D modeling language]]></title>
       <url>http://aleung.github.io/blog/2018/08/26/3D-modeling-language/</url>
       <content type="html"><![CDATA[<p>做好3d打印机，需要制作些什么就自己建模了。大部分的CAD工具都是图形交互式的，也就是靠鼠标把模型”画“出来，但我更喜欢通过建模语言来把模型描述出来。在网上搜寻和试用了一些基于3D建模语言的CAD工具，将我了解的记录一下。</p>
@@ -735,7 +786,7 @@
       <url>http://aleung.github.io/blog/2015/09/20/continuous-learning/</url>
       <content type="html"><![CDATA[<p>上次<a href="/blog/2015/08/29/html-presentation-framework/">提到</a>用 HTML 做的 presentation，是在公司里做的关于持续学习的一个分享。</p>
 <p><em>注意：看绿色导航箭头，是可以向下翻页的。有些背景图片可能需要翻墙才能看到，否则会变成空白。</em></p>
-<iframe src="//slides.com/aleung/goodgoodstudy/embed?style=light" width="800" height="600" scrolling="no" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen></iframe>
+<iframe src="//slides.com/aleung/goodgoodstudy/embed?style=light" width="800" height="600" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ]]></content>
       
         
@@ -1325,7 +1376,7 @@
 <p>To enable CORS (cross origin resource sharing), add below into <code>/etc/elasticsearch/elasticsearch.yml</code>:</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">http.cors.enabled:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 <h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p>The scala script <code>feed_graphite.scala</code> generates mock API metrics data for demo. The Grafana portal is defined as <code>api.json</code>. Both files are stored in this <a href="https://gist.github.com/aleung/1ec7e56bfa9448af920b" target="_blank" rel="noopener">gist</a>.</p>
-<p><img src="/attachments/2014/12/api-metrics-demo.png" alt=""></p>
+<p><img src="/attachments/2014/12/api-metrics-demo.png" alt></p>
 ]]></content>
       
         
@@ -2470,7 +2521,7 @@ parallel(data)
 <p>我曾经在之乎问过一个问题：人眼若多一种新的视椎细胞可感应可见光范围内的另外一个波长的光，人看到的色彩会有什么变化吗？看到的颜色更多？ 后来我想明白了，是会看到更多的颜色的，准确的说，是能够分辨出更多不同的颜色。在只有三种感受器时，有些不同波长组合的混合光产生的刺激是一样的，大脑区分不出，将它们当作同样的颜色，但假若增加另一种波长的感受器后，这个感受器感应到的刺激不同，就能够分辨为不同色彩了。至于这个颜色是什么？我们不可能知道，因为颜色仅仅是一种心理反应。如此类推，不同动物看到的色彩也是不一样的，因为不同动物眼睛的视锥细胞的波长响应曲线不同，而且数量也不一定一样。假如有某种外星人有四种甚至更多的色彩感受器，那他们会认为地球人全是色盲，地球人到他们的世界里可能连分辨交通灯都有问题——如果他们还用交通灯。另外，所谓三原色，也是针对人而言的。</p>
 <p>既然色彩只是种心理反应（感觉），那为了准确描述色彩和进行分析，就需要建立色彩模型。根据关注的角度不同，不同的研究者拿出了不同的色彩模型，例如孟塞尔颜色立体模型、CIE L<em> a</em> b* 模型。其中 CIE XYZ 模型应该是最能反映人的颜色视觉的，因为它的制定就是通过大量实验来测定人对三种特定波长光线S、M、L（约对应于红绿蓝）的刺激值X，Y，Z。实验方式是让人同时观察目标色光线和SML三组标准光的混合光，调节S/M/L的光强，使得人眼感觉混合光和目标色光线的颜色完全一样，从而得出目标色的XYZ值。CIE XYZ色彩空间是色彩管理的基础。</p>
 <p>CIE XYZ定义了一个三维空间，展现起来不如二维图形直观。经常用来表示色彩空间大小的二维马蹄型图称为CIE xy色度图，如下图。它的纵横座标xy是根据XYZ推导出来的，x=X/(X+Y+Z), y=Y/(X+Y+Z), z=Z/(X+Y+Z), x+y+z=1。彩色的马蹄形范围表示人眼可见的全部色彩范围。在数码相机和电脑显示中使用的RGB色彩空间在CIE xy色度图中反映为三角形范围，三个顶点分别为R/G/B三原色。</p>
-<p><img src="/attachments/2012/9/gamut.jpg" alt=""></p>
+<p><img src="/attachments/2012/9/gamut.jpg" alt></p>
 <p>不考虑印刷，摄影爱好者一般会接触到的色彩空间也就是AdobeRGB和sRGB。从图中可见，AdobeRGB的色域比sRGB广，特别是在蓝绿色系方面，AdobeRGB能够表现的色彩比sRGB丰富很多。我查找不到资料描述各种数码相机的感光元件能够记录下来的色域有多大，但一般的说法是一般数码单反所能记录的色彩范围都比sRGB广，接近或大于AdobeRGB。因此，专业的摄影都会选择AdobeRGB色彩空间来保存图像文档。但问题是，我们的显示器并不能展现这么广的色域，民用型号通常都只能再现sRGB色彩空间或更小一点（广色域显示器会比sRGB大，但一般还是达不到AdobeRGB），因此照片中记录的部分颜色是无法在显示器上原汁原味的再现出来的（这里先不考虑显示器没有校准导致偏色问题），超出设备色彩空间的颜色只能用接近的来替换，例如翠绿色的海水就没有那么漂亮了。另外一个问题是有些软件，例如不是最新版本的浏览器，是不支持色彩管理的，它不会将照片的色彩空间映射到显示器的色彩空间以保持在可显示范围内的颜色一致，而是将照片中的RGB值当作设备色彩空间的值来直接显示。如果照片用的是sRGB还好，因为显示器本身大致符合sRGB，颜色偏差不会太多，但若照片是用色域更广的AdobeRGB的，色彩偏差就严重了。所以数码相机的说明书上一般会建议如果照片仅在电脑上观看最好选择sRGB。</p>
 <p>不过，数码相机的色彩空间设置仅仅是针对JPG格式的，如果用RAW格式，保存的是传感器得到的原始值，实际上是数码相机设备色彩空间，而不是任何标准色彩空间。当在电脑中用RAW处理软件打开时，会将照片由设备色彩空间映射到软件设定的工作空间。我用Apple Aperture打开Nikon的RAW，看到它是被标识为AdobeRGB色彩空间。用数码单反的话，最好还是选择RAW格式，因为记录的信息多，后期处理的余地就大很多。</p>
 <p>See also:</p>
@@ -2489,14 +2540,14 @@ parallel(data)
     <entry>
       <title><![CDATA[广州跑步路线：二沙岛]]></title>
       <url>http://aleung.github.io/blog/2012/09/10/running-route-ersha/</url>
-      <content type="html"><![CDATA[<p><img src="/attachments/2012/9/ersha_sat.jpg" alt=""></p>
+      <content type="html"><![CDATA[<p><img src="/attachments/2012/9/ersha_sat.jpg" alt></p>
 <p>环岛一周约4.4km，其实只能算环半岛，因为岛西面一大段的沿江堤岸是公众不能进入的。车道大部分是沥青路面，晴澜路段水泥路面，人行道是铺石路面。环岛道路汽车不多，在注意安全的前提下可以靠边跑车道。</p>
 <p>虽然算不上有什么景观，但二沙岛上的都是别墅和高级会所，环境幽静，江边视野开阔，跑起来挺舒服。</p>
 <p>晚上晴波路音乐厅美术馆一段江边比较热闹点，有游客、玩单车和玩音乐的，其他路段都比较僻静，特别的北面晴澜路段。但每隔一段距离就有保安坐在路旁，毕竟这里是富人区，治安有保障。</p>
 <p>岛中央是几个大草坪，上面有橡胶铺设的步道，跑步也不错，但就是拐弯多，断断续续，总长度也不够长。</p>
 <p>岛中央大通路/烟雨路有公交车途经。往东过广州大桥可以接着跑珠江新城临江大道，往西沿大通路过桥也可以接着沿江边跑，因此二沙岛可以作为沿珠江跑路线的一段。</p>
 <p>总体来说也是可以推荐的跑步路线。</p>
-<p><img src="/attachments/2012/9/ersha_map.jpg" alt=""></p>
+<p><img src="/attachments/2012/9/ersha_map.jpg" alt></p>
 <p>其他跑步路线介绍：<a href="/2012/09/09/running-route">广州跑步路线：索引</a></p>
 ]]></content>
       
@@ -2512,14 +2563,14 @@ parallel(data)
     <entry>
       <title><![CDATA[广州跑步路线: 麓湖]]></title>
       <url>http://aleung.github.io/blog/2012/09/09/running-route-luhu/</url>
-      <content type="html"><![CDATA[<p><img src="/attachments/2012/9/luhu_sat.jpg" alt=""></p>
+      <content type="html"><![CDATA[<p><img src="/attachments/2012/9/luhu_sat.jpg" alt></p>
 <p>麓湖的跑步路线是环绕着湖一周的路。路面包括木栈道、柏油车道、砖铺人行道，麓湖路属于绿道系统的部分有木栈道，其余环湖路线的人行道很窄，可以跑到车道边上，但有来车时需要注意安全。</p>
 <p>麓湖是广州为数不多的大湖泊，比一般公园的湖要大很多，周边都是山头绿地，环境和景色都不错。可惜环湖的车道虽然不是主干道，但来往车辆还是不少，汽车尾气导致空气还是一般。</p>
 <p>虽然周边环境偏僻些，但白天游人不少，路上也不时会见到跑友，安全不成问题。我没有晚上去跑过，估计会比较僻静，安全上需要小心。附近麓景路、麓湖路都有公交车站。</p>
 <p>环湖一圈约3.5km，总上升59m，基本上不算多大起伏。</p>
-<p><img src="/attachments/2012/9/luhu_elevation.jpg" alt=""></p>
+<p><img src="/attachments/2012/9/luhu_elevation.jpg" alt></p>
 <p>总体来说是不错的跑步路线，推荐。</p>
-<p><img src="/attachments/2012/9/luhu_map.jpg" alt=""></p>
+<p><img src="/attachments/2012/9/luhu_map.jpg" alt></p>
 <p>其他跑步路线介绍：<a href="/2012/09/09/running-route">广州跑步路线：索引</a></p>
 ]]></content>
       
@@ -2583,7 +2634,7 @@ parallel(data)
 &lt;/max-threads-constraint&gt;
 </code></pre><p>The capacity constraint defines the maximum number of requests that can be queued (waiting for thread) or are executing. Overload action, e.g. refuse with HTTP response code 503, is taken after the capacity is reached. </p>
 <p>I draw a picture to show the threadpool and queue. Requests dispatched with different WorkManager are in different color.</p>
-<p><img src="/attachments/2012/8/workmanager.jpg" alt=""></p>
+<p><img src="/attachments/2012/8/workmanager.jpg" alt></p>
 <ul>
 <li>Self-tuning thread pool thread allocation ratio amoung WorkManagers is affected by request class. </li>
 <li>Minimum threads constraint limits: never queue request, unless <code>executing &gt;= min-threads-constraint.count</code></li>
@@ -2617,9 +2668,9 @@ parallel(data)
 <p>Apigee is an API management platform and services company. It benefits both API providers and developers who build their apps with APIs.</p>
 <h2 id="Apigee-Enterprise"><a href="#Apigee-Enterprise" class="headerlink" title="Apigee Enterprise"></a>Apigee Enterprise</h2><p>Apigee Enterprise product is an API proxy plus developer portal.</p>
 <p>Usually when an organization open its internal services or data to external, it develops the API and exposure it, with necessary document published. Application developers learn the API by reading the document, and then code to use the API.</p>
-<p><img src="/attachments/2012/7/api.png" alt=""></p>
+<p><img src="/attachments/2012/7/api.png" alt></p>
 <p>Apigee helps API provider by providing API management, security, analytics etc. It provides developer portal for API provider to management developer onboarding, and also help developer to learn the API by playing with it.</p>
-<p><img src="/attachments/2012/7/api_with_apigee.png" alt=""></p>
+<p><img src="/attachments/2012/7/api_with_apigee.png" alt></p>
 <h2 id="Console-To-Go"><a href="#Console-To-Go" class="headerlink" title="Console To-Go"></a>Console To-Go</h2><p>Apigee Enterprise features are not available to free subscriber of Apigee, excepts the console that let developer learn an API by playing with it. Apigee opens this service to free subscriber as Console To-Go.</p>
 <p>I try to create my own Console To-Go:</p>
 <p>Create an API on Google Application Engine: <a href="http://api-playground.appspot.com/time" target="_blank" rel="noopener">time API</a> , it simply return the current time since epoch.</p>
@@ -2919,7 +2970,7 @@ parallel(data)
       <content type="html"><![CDATA[<p>最近买了一个<a href="http://en.wikipedia.org/wiki/Asus_EeeBox_PC" target="_blank" rel="noopener">EeeBox</a>来做home server，装Ubuntu操作系统，有不少东西可以玩。</p>
 <p>其中一个用途是连接到音响播放音乐。我比较喜欢听豆瓣电台，于是找一个豆瓣电台的客户端。Home server平常不接显示器，也不启动图形界面，常见的浏览器客户端、桌面客户端都不能用，要找命令行的。在github上找到Johnny Huang开发的<a href="https://github.com/hzqtc/fmd" target="_blank" rel="noopener">fmd</a>（Douban FM daemon），启动后在后台运行，正合我意。Fork下来给它增加了个安装脚本，能够安装为服务，开机就自动运行了。但fmd只是个后台进程，只有telnet命令接口，没法对它进行直接控制的，作者另外做了个命令行工具，叫做fmc（FMD client），用来控制fmd。但命令行工具在我这里也还是不能用—-没有显示器没有键盘—-必须能遥控才行。于是我在fmc基础上给它增加了一个web UI，称为<a href="https://github.com/aleung/fmweb" target="_blank" rel="noopener">fmweb</a>，通过手机浏览器访问，就可以控制播放了。于是，我现在在家里任何地方，都可以控制我的豆瓣电台的播放，不喜欢听，跳下一首歌。</p>
 <p>这是在Android浏览器上的截图，在iPhone、iPad上也可以用。</p>
-<p><img src="https://lh6.googleusercontent.com/-ishGby7lpTk/T1ove7Z0-rI/AAAAAAAAAoU/94_iFdmfSKw/s400/Screenshot_2012-03-09-23-41-13.png" alt=""><img src="https://lh5.googleusercontent.com/-zXp_XdbbgNk/T1ovfpnkxbI/AAAAAAAAAoc/CN-7dV4U4Xg/s400/Screenshot_2012-03-09-23-55-39.png" alt=""></p>
+<p><img src="https://lh6.googleusercontent.com/-ishGby7lpTk/T1ove7Z0-rI/AAAAAAAAAoU/94_iFdmfSKw/s400/Screenshot_2012-03-09-23-41-13.png" alt><img src="https://lh5.googleusercontent.com/-zXp_XdbbgNk/T1ovfpnkxbI/AAAAAAAAAoc/CN-7dV4U4Xg/s400/Screenshot_2012-03-09-23-55-39.png" alt></p>
 ]]></content>
       
         
@@ -2960,7 +3011,7 @@ parallel(data)
       <url>http://aleung.github.io/blog/2012/02/19/Extend-the-toilet-bowl-cleaning-treasure-blue-bubble-use-of-the-time-small-skills/</url>
       <content type="html"><![CDATA[<p>以前马桶放的洁厕宝（蓝泡泡）总是不耐用，声称普通使用可达一个月，但实际上头几天冲的水颜色很深，一个星期后颜色就非常淡了，根本用不到一个月，原因是溶解速度控制不了，太快了。</p>
 <p>为了防止过快溶解，给洁厕宝增加一个”外套”。我选的是大开口的口香糖盒子，大小比较合适，能把整块洁厕宝放进去，瓶口合上比较严实。在瓶身开上几个直径3～5mm左右的洞，洞不能太小也不能太大。开始可以先开三四个，如果实验发现洁厕宝溶解不出来再加开几个。怎么开洞就看你手上有什么工具了，我试过几种工具，发现用美工刀最容易，三刀开出一个三角形的洞。做好后把洁厕宝放进去，盖上盖子，扔马桶水箱里就行了。因为盒子里有空气，可能它不会自己沉下去，需要把它按进水里，把空气排出来。水箱里有水垢，不是那么好看，就不把照片贴出来了。</p>
-<p><img src="https://lh4.googleusercontent.com/-c5HKYk_j34o/T0EL4Y6tMcI/AAAAAAAAAnY/YnGOTSAfDBY/s800/toilet_%201%20%281%29.jpg" alt=""><img src="https://lh4.googleusercontent.com/-xujCGkefLQY/T0EL5g-crrI/AAAAAAAAAng/aVK2tmecsC0/s800/toilet_%202%20%281%29.jpg" alt=""><img src="https://lh3.googleusercontent.com/-lDnmsRQFEiQ/T0EL7i1DpCI/AAAAAAAAAno/GCn5dEHM9dc/s800/toilet_%203%20%281%29.jpg" alt=""></p>
+<p><img src="https://lh4.googleusercontent.com/-c5HKYk_j34o/T0EL4Y6tMcI/AAAAAAAAAnY/YnGOTSAfDBY/s800/toilet_%201%20%281%29.jpg" alt><img src="https://lh4.googleusercontent.com/-xujCGkefLQY/T0EL5g-crrI/AAAAAAAAAng/aVK2tmecsC0/s800/toilet_%202%20%281%29.jpg" alt><img src="https://lh3.googleusercontent.com/-lDnmsRQFEiQ/T0EL7i1DpCI/AAAAAAAAAno/GCn5dEHM9dc/s800/toilet_%203%20%281%29.jpg" alt></p>
 <p>加了”外套”后，效果相当显著，一颗洁厕宝大概能用三个月。去年家人出差多，竟然用了半年！</p>
 ]]></content>
       
@@ -3107,21 +3158,21 @@ parallel(data)
       <url>http://aleung.github.io/blog/2011/09/27/RAW-/</url>
       <content type="html"><![CDATA[<p>这里讲的是 Apple Aperture 3 的操作，但其他RAW处理软件（如Photoshop Lightroom）的功能和效果也都类似，可以参考。</p>
 <h2 id="Exposure"><a href="#Exposure" class="headerlink" title="Exposure"></a>Exposure</h2><h3 id="Exposure-1"><a href="#Exposure-1" class="headerlink" title="Exposure"></a>Exposure</h3><p>黑位固定，直方图右侧拉伸。相当于相机的曝光量调整。</p>
-<p><img src="https://lh6.googleusercontent.com/-fnAGXvmnFJE/ToHQKWlruvI/AAAAAAAAAZ0/O4pdxnS64yY/s800/exposure-1.jpg" alt="">》<img src="https://lh5.googleusercontent.com/-FP6Vg1nAOWI/ToHQKRFOhtI/AAAAAAAAAZ4/0lESY5sW318/s800/exposure-2.jpg" alt=""></p>
+<p><img src="https://lh6.googleusercontent.com/-fnAGXvmnFJE/ToHQKWlruvI/AAAAAAAAAZ0/O4pdxnS64yY/s800/exposure-1.jpg" alt>》<img src="https://lh5.googleusercontent.com/-FP6Vg1nAOWI/ToHQKRFOhtI/AAAAAAAAAZ4/0lESY5sW318/s800/exposure-2.jpg" alt></p>
 <h3 id="Recovery"><a href="#Recovery" class="headerlink" title="Recovery"></a>Recovery</h3><p>利用RAW记录的额外信息恢复高光溢出部分。</p>
 <h3 id="Black-Point"><a href="#Black-Point" class="headerlink" title="Black Point"></a>Black Point</h3><p>利用RAW记录的额外信息恢复丢失的暗部细节。</p>
 <h3 id="Brightness"><a href="#Brightness" class="headerlink" title="Brightness"></a>Brightness</h3><p>黑位与白位均固定，直方图中间色调左右移动。用于调整图像的整体明暗。与level工具的亮度调节功能类似，但level工具中若只拖动一个锚点时对直方图的影响更加局部，只改变特定色调范围。</p>
-<p><img src="https://lh5.googleusercontent.com/-mKyUGov3PCc/ToHQJ9LMS-I/AAAAAAAAAZs/Z7XqqxDgQJk/s800/brightness-1.jpg" alt="">》<img src="https://lh4.googleusercontent.com/-MWAZLV47es8/ToHQKHGqVNI/AAAAAAAAAZw/B4GjHYLSF_A/s800/brightness-2.jpg" alt=""></p>
+<p><img src="https://lh5.googleusercontent.com/-mKyUGov3PCc/ToHQJ9LMS-I/AAAAAAAAAZs/Z7XqqxDgQJk/s800/brightness-1.jpg" alt>》<img src="https://lh4.googleusercontent.com/-MWAZLV47es8/ToHQKHGqVNI/AAAAAAAAAZw/B4GjHYLSF_A/s800/brightness-2.jpg" alt></p>
 <h2 id="Enhance"><a href="#Enhance" class="headerlink" title="Enhance"></a>Enhance</h2><h3 id="Contrast"><a href="#Contrast" class="headerlink" title="Contrast"></a>Contrast</h3><p>中灰不变，直方图向两侧拉伸。（不建议使用，用level工具控制更准确）</p>
-<p><img src="https://lh6.googleusercontent.com/-lZY-AgmwRcU/ToHQJ3eBQMI/AAAAAAAAAZo/1lTWE0LHHoA/s800/contrast.jpg" alt=""></p>
+<p><img src="https://lh6.googleusercontent.com/-lZY-AgmwRcU/ToHQJ3eBQMI/AAAAAAAAAZo/1lTWE0LHHoA/s800/contrast.jpg" alt></p>
 <h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>增强图像局部的对比度，但不影响整体图像的对比度，直方图无整体性变化。可提高图像明暗交界的细节，例如让云朵更加立体。</p>
 <h3 id="Saturation"><a href="#Saturation" class="headerlink" title="Saturation"></a>Saturation</h3><p>让RGB三原色的直方图趋于重合或者更加离散。用于减弱色彩或者增强色彩(变鲜艳)。饱和度增加时图像细节会丢失。</p>
-<p><img src="https://lh6.googleusercontent.com/-EKHur68d4-A/ToHQKvYuHQI/AAAAAAAAAZ8/LRPgisNijDM/s800/saturation-1.jpg" alt="">》<img src="https://lh3.googleusercontent.com/-NGeEU2MWZwg/ToHQLOXNoBI/AAAAAAAAAaE/hwsr11w3eS0/s800/saturation-2.jpg" alt=""></p>
+<p><img src="https://lh6.googleusercontent.com/-EKHur68d4-A/ToHQKvYuHQI/AAAAAAAAAZ8/LRPgisNijDM/s800/saturation-1.jpg" alt>》<img src="https://lh3.googleusercontent.com/-NGeEU2MWZwg/ToHQLOXNoBI/AAAAAAAAAaE/hwsr11w3eS0/s800/saturation-2.jpg" alt></p>
 <h3 id="Vibrancy"><a href="#Vibrancy" class="headerlink" title="Vibrancy"></a>Vibrancy</h3><p>与saturation类似，但不影响肤色。用于人像照片中的色彩调整，但保持肤色不变。</p>
 <h2 id="Highlights-amp-Shadows"><a href="#Highlights-amp-Shadows" class="headerlink" title="Highlights &amp; Shadows"></a>Highlights &amp; Shadows</h2><p>降低高光部分亮度，但不影响中间调和暗部；提高暗部亮度，但不影响中间调和亮部。直方图上的效果是高光部分和/或暗部扩展，移向中间调位置，但实际处理并非单纯的直方图映射，运算时会考虑到周边像素的色调的影响。用于对图像中过亮或者过暗的部分进行补偿，增加色调变化细节。</p>
 <h2 id="Levels"><a href="#Levels" class="headerlink" title="Levels"></a>Levels</h2><p>将直方图进行映射变换，下横轴是输入，上横轴是输出。Aperture的levels工具可以调节四分之一色调的映射，可以完成部分本来需要使用曲线工具的调节。</p>
 <p>Levels调整是在上面几种调整的基础之上进行的，可能会抵消了前面所做的调整的效果。若非必要不应该将它与前面提到的工具混合使用。</p>
-<p><img src="https://lh3.googleusercontent.com/-Af7kvdJq3pU/ToHQKit_TwI/AAAAAAAAAaA/1x5cdJ1hZrE/s800/level-1.jpg" alt="">》<img src="https://lh3.googleusercontent.com/-f0jePRCWRAI/ToHQQCnp4qI/AAAAAAAAAaI/qW_bMiOvGZw/s800/level-2.jpg" alt=""></p>
+<p><img src="https://lh3.googleusercontent.com/-Af7kvdJq3pU/ToHQKit_TwI/AAAAAAAAAaA/1x5cdJ1hZrE/s800/level-1.jpg" alt>》<img src="https://lh3.googleusercontent.com/-f0jePRCWRAI/ToHQQCnp4qI/AAAAAAAAAaI/qW_bMiOvGZw/s800/level-2.jpg" alt></p>
 ]]></content>
       
         
@@ -3303,7 +3354,7 @@ parallel(data)
     <entry>
       <title><![CDATA[Maven Lifecycle Concepts]]></title>
       <url>http://aleung.github.io/blog/2011/08/26/Maven-Lifecycle-Concepts/</url>
-      <content type="html"><![CDATA[<p><img src="https://lh5.googleusercontent.com/-d_OZsHIjLe8/TlcV3xzq-DI/AAAAAAAAATE/CGu8uwStu1k/s800/maven-concept.png" alt=""></p>
+      <content type="html"><![CDATA[<p><img src="https://lh5.googleusercontent.com/-d_OZsHIjLe8/TlcV3xzq-DI/AAAAAAAAATE/CGu8uwStu1k/s800/maven-concept.png" alt></p>
 <p>(<a href="https://picasaweb.google.com/lh/photo/D_sskYHvn6CgEruCxN6lMdBJO7epb5AqjiUnD_coqoo?feat=directlink" target="_blank" rel="noopener">大图链接</a>)</p>
 <p>一年前画的，把它电子化方便日后查看。看看有没有空补充些文字说明吧。</p>
 <p>Reference:</p>
@@ -3329,10 +3380,10 @@ parallel(data)
       <url>http://aleung.github.io/blog/2011/08/08/Maven-artifact-repository-setup-for-multiple-sites-team/</url>
       <content type="html"><![CDATA[<p>A typical way of adopting Maven to manage artifacts in an organization is to setup a repository manager locally. The repository manager proxies opensource repositories like Maven central from Internet, and hosts release and snapshot repositories for internal artifacts. It works fine in most cases, but when the team locales geographically in more than one site, and the bandwitdth between the sites is limited, or the artifacts are huge in size, the build performance will decrease, because uploading and downloading artifacts to/from the remove repository takes time.</p>
 <h2 id="Solution-1-Pubish-to-master-repository-download-from-local-repository"><a href="#Solution-1-Pubish-to-master-repository-download-from-local-repository" class="headerlink" title="Solution 1: Pubish to master repository, download from local repository"></a>Solution 1: Pubish to master repository, download from local repository</h2><p>Suppose on site A there is already a repository manager A, now site B is setup, what we need is a repository manager on site B that proxies both external repositories and internal repositories. Sonatype Nexus has the capability to aggregate serveral repositories / mirrories and provides download access from a single URL.</p>
-<p><img src="https://lh6.googleusercontent.com/-kQ4SwY2UV2s/Tj905hhUlJI/AAAAAAAAASc/hj_0Kxt6CQ0/s800/maven-repo-2sites-solution1.png" alt=""></p>
+<p><img src="https://lh6.googleusercontent.com/-kQ4SwY2UV2s/Tj905hhUlJI/AAAAAAAAASc/hj_0Kxt6CQ0/s800/maven-repo-2sites-solution1.png" alt></p>
 <p>By this solution, pom.xml of existing projects aren’t required to be modified. Simply add a <mirror> section with <mirrorof> value set to * into Maven setting.xml for all developers who work in site B. But the publishing of artifacts from site B is still cross sites over slow connection, so mvn deploy is not fully optimized though the download of dependencies is speeded up by cache on local repository manager.</mirrorof></mirror></p>
 <h2 id="Solution-2-Publish-to-local-repository-cross-caching"><a href="#Solution-2-Publish-to-local-repository-cross-caching" class="headerlink" title="Solution 2: Publish to local repository, cross caching"></a>Solution 2: Publish to local repository, cross caching</h2><p>This solution comes from <a href="http://www.sonatype.com/people/2011/07/video-multi-master-configuration-for-nexus/" target="_blank" rel="noopener">Sonatype Blog</a>. Artifacts are always publish to repository on local site, each repository is cached by other site’s repository manager.</p>
-<p><img src="https://lh4.googleusercontent.com/-XJdyMrSafCM/Tj905psGecI/AAAAAAAAASg/lGJsgsjir7I/s800/maven-repo-2sites-solution2.png" alt=""></p>
+<p><img src="https://lh4.googleusercontent.com/-XJdyMrSafCM/Tj905psGecI/AAAAAAAAASg/lGJsgsjir7I/s800/maven-repo-2sites-solution2.png" alt></p>
 <p>This solution looks good if one artifact is owned by one site. But I’m wondering if it works in the situation that both sites publish the same SNAPSHOT artifact to its local repository manager. For example, foo-1.0.0-SNAPSHOT.jar was already deployed on Repository Manger A, and then on Repository Manager B a newer edition of the jar is deployed, how can site A get the later one?</p>
 ]]></content>
       
@@ -3621,7 +3672,7 @@ parallel(data)
       <title><![CDATA[新浪微博API黑名单威武]]></title>
       <url>http://aleung.github.io/blog/2011/03/13/Sina-micro-bo-API-blacklist-terrible/</url>
       <content type="html"><![CDATA[<p>因为有些tweet没有同步到新浪微博，查看了 <a href="http://good-good-study.appspot.com/blog/posts/111001" target="_blank" rel="noopener">TwitterSinaSync</a> 的运行日志，发现了这样的记录：</p>
-<p><a href="http://www.flickr.com/photos/leoliang/5519631639/" target="_blank" rel="noopener"><img src="http://farm6.static.flickr.com/5057/5519631639_5b0593fd42_z.jpg" alt=""></a></p>
+<p><a href="http://www.flickr.com/photos/leoliang/5519631639/" target="_blank" rel="noopener"><img src="http://farm6.static.flickr.com/5057/5519631639_5b0593fd42_z.jpg" alt></a></p>
 <p>前一个tweet（绿色框）正常同步到了新浪微博，而接下来一个就失败（红色框），错误信息是黑名单用户。显然是tweet中的某些内容触发了黑名单机制，在这里估计是”twitter”。</p>
 <p>一旦用户被列入了黑名单，接下来对这个用户的操作都会失败。看下面的例子，第一条是成功的，第二个失败后，接下来的tweet的同步都失败了，即使内容看起来绝无敏感词。其实我也猜不出第二条tweet中哪个词触发了加入黑名单，是”境外”？还是”mranti”？</p>
 <p><a href="http://www.flickr.com/photos/leoliang/5519631597/" target="_blank" rel="noopener"><img src="http://farm6.static.flickr.com/5217/5519631597_e6064611fc_z.jpg" alt="sina_blacklist_1"></a></p>
@@ -3795,7 +3846,7 @@ parallel(data)
 <ol>
 <li>原始版本是<a href="http://code.google.com/p/twitter2sina/" target="_blank" rel="noopener">twitter2sina</a>，没有使用新浪微博API，已经失效</li>
 <li>@cutemic的<a href="http://cutemic.posterous.com/twitter" target="_blank" rel="noopener">修改版本</a>，改成使用新浪微博API</li>
-<li>我修改的<a href="">TwitterSinaSync</a></li>
+<li>我修改的<a href>TwitterSinaSync</a></li>
 </ol>
 <p>主要特性：</p>
 <ul>
@@ -3804,7 +3855,7 @@ parallel(data)
 <li>支持多用户：多组twitter-微博同步绑定</li>
 <li>新用户凭管理员提供的邀请链接才能加入，方便私人分享</li>
 </ul>
-<p><a href="https://github.com/aleung/TwitterSinaSync" target="_blank" rel="noopener">代码</a>托管在GitHub，bug report 和 feature request可以往<a href="">这里</a>提交。</p>
+<p><a href="https://github.com/aleung/TwitterSinaSync" target="_blank" rel="noopener">代码</a>托管在GitHub，bug report 和 feature request可以往<a href>这里</a>提交。</p>
 <p><em><strong>Updated 2011-7-7:</strong></em></p>
 <p>由于新浪微博对API使用过滤异常的严格，这个应用基本上用处不大了，普通内容的tweet，大概十条里只有两三条能够成功同步，见<a href="http://good-good-study.appspot.com/blog/posts/124001" target="_blank" rel="noopener">新浪微博API黑名单威武</a>。如果应用能够通过审核，也许过滤会放宽一些，但是根据新浪微博API的用户协议，是不能用于从其他微博系统同步信息的，更何况是Twitter，通过审核的可能性微乎其微。故此我不再维护这个软件了，也不再提供邀请码，请谅解。</p>
 ]]></content>
@@ -4181,10 +4232,10 @@ parallel(data)
 <li>如果浏览器(或者其他程序)支持使用SOCKS proxy，设置使用SSH client开放出来的SOCKS端口，就可以使用了</li>
 <li>如果浏览器(或者其他程序)不支持SOCKS proxy，只支持HTTP proxy，就需要再运行一个支持SOCKS的代理程序（例如Privoxy），将HTTP转成SOCKS</li>
 </ul>
-<p><img src="http://farm5.static.flickr.com/4046/4662779602_743c1c50c2_b.jpg" alt=""></p>
+<p><img src="http://farm5.static.flickr.com/4046/4662779602_743c1c50c2_b.jpg" alt></p>
 <p>在Android上就要麻烦一点了，因为需要网络通讯的不仅仅是浏览器，很多Android application都需要访问网络，但是它们并不支持proxy—-连HTTP proxy都不支持，更不用说SOCKS了。它们只会直接连接目标站点，如图中虚线所示，然后撞墙。</p>
 <p>但是Linux有iptables，可以设置iptables规则（需要root权限），将HTTP/HTTPS请求forward到一个transparent SOCKS proxy去。transparent SOCKS proxy的作用是将任意TCP连接转成SOCKS连接，这样就可以走SSH tunnel出去了。我分析过几乎所有的Android应用访问网络都是走HTTP/HTTPS协议的，所有仅仅处理HTTP/HTTPS就够了。</p>
-<p><img src="http://farm5.static.flickr.com/4023/4662779594_32dd9773cb_b.jpg" alt=""></p>
+<p><img src="http://farm5.static.flickr.com/4023/4662779594_32dd9773cb_b.jpg" alt></p>
 <p>Android上支持dynamic port forwarding的SSH client有<a href="http://code.google.com/p/connectbot/" target="_blank" rel="noopener">ConnectBot</a>，不过ConnectBot是一个有界面的应用，似乎不能由其他程序来控制，这样就不好做到翻墙软件的傻瓜化了。应该还是弄一个命令行的ssh client更合适。</p>
 <p>在网上搜索了一下，开源的transparent SOCKS proxy有几个：<a href="http://oss.tiggerswelt.net/transocks_ev/" target="_blank" rel="noopener">transocks_ev</a>，<a href="http://transocks.sourceforge.net/" target="_blank" rel="noopener">TranSocks</a> 和 <a href="http://darkk.net.ru/redsocks/" target="_blank" rel="noopener">redsocks</a>。从文档上看，似乎transocks_ev比较适合。</p>
 <p>但是，我现在面临的困难在于我不熟悉如何交叉编译Android平台程序（C语言），了解了一下如何搭建Android交叉编译环境，似乎挺麻烦（对我而言）。而且要让普通Linux上可运行的sshd和transocks port到Android上，也许还有一些代码要修改。不知道有没有Android系统高手能够帮忙？</p>
@@ -4413,13 +4464,13 @@ goB. .U....s7.......#
     <entry>
       <title><![CDATA[便携式行人过街警示棒]]></title>
       <url>http://aleung.github.io/blog/2010/02/27/Portable-pedestrians-cross-the-street-warning-great/</url>
-      <content type="html"><![CDATA[<p><img src="http://farm5.static.flickr.com/4010/4390272360_cd4c3c040a_o.jpg" alt=""></p>
+      <content type="html"><![CDATA[<p><img src="http://farm5.static.flickr.com/4010/4390272360_cd4c3c040a_o.jpg" alt></p>
 <p>几乎每次过马路，我都恨不得手里有这样一块牌子，可以伸到身体前面，把来车挡住 —- 在没有交通灯的斑马线，十个司机有九个会毫不减速的冲过，而不会避让过马路的行人；即使在有交通灯的斑马线，如果不是路口，也有司机根本当红灯不存在。</p>
 <p>我想，能不能做个可伸缩的棒，例如是套筒的方式，里面加上弹簧，缩起来的时候大概烟盒大小，可以方便的放在口袋，当需要过马路的时候，将它弹出来，变成一米左右的长度。棒身用红、黄鲜艳颜色的反光材料覆盖。为了增大可视面积，棒伸展时需要在前端弹出一个平面，应该用个弹性钢丝圈加上薄膜可以做出来，类似可折叠太阳帽的样子。过完马路后一压就能够把警示棒收起来。</p>
 <p>Beatles四位大叔过Abbey Road时就是这样子的：</p>
-<p><img src="http://farm5.static.flickr.com/4003/4390322224_a0a6979623_o.jpg" alt=""></p>
+<p><img src="http://farm5.static.flickr.com/4003/4390322224_a0a6979623_o.jpg" alt></p>
 <p>现在激光全息成像技术还不成熟，如果能够做到便携化，还可以从口袋里掏出激光器一照，一个栅栏就出来了：</p>
-<p><img src="http://farm3.static.flickr.com/2711/4389554227_f36eafa67f_o.jpg" alt=""></p>
+<p><img src="http://farm3.static.flickr.com/2711/4389554227_f36eafa67f_o.jpg" alt></p>
 <p>至于驾车人士关心的如何制止行人乱穿马路，那就是不是我考虑的问题了。我自己是遵守交通规则的，有斑马线就走斑马线，有行人交通灯就等绿灯才过。</p>
 <p>欢迎驾车人士批判，哈哈 :)</p>
 ]]></content>
@@ -4574,7 +4625,7 @@ goB. .U....s7.......#
       <url>http://aleung.github.io/blog/2010/02/14/This-blog-now-support-feed-output/</url>
       <content type="html"><![CDATA[<p>支持atom比我想象中简单很多，根本用不着什么library，多加一个xml template就行了。</p>
 <p>如果你的浏览器支持，就能在地址栏右边看到feed的图标，点击就可以选择阅读器进行订阅。或者在阅读器（例如Google Reader）里面输入这个网站的地址，也可以订阅。</p>
-<p><img src="http://farm5.static.flickr.com/4058/4353315450_7d1914e9ab_o.png" alt=""></p>
+<p><img src="http://farm5.static.flickr.com/4058/4353315450_7d1914e9ab_o.png" alt></p>
 <p>PS. 这个blog的页面使用了一些HTML5标签，因此需要使用新的浏览器才能正常浏览，例如使用 Firefox 3, Chrome。如果你看到的页面不是上图的样子，说明你的浏览器 out date 啦。</p>
 <p>PPS. 我会一如既往的使用flickr来存放照片，如果你看不到照片，或者有一天你连这个blog的页面都看不到，那说明你上的只是局域网，根本不是Internet。</p>
 ]]></content>
@@ -4622,7 +4673,7 @@ goB. .U....s7.......#
 <hr>
 <p>去向未定，但想继续看我的blog，估计都得学几招翻墙功夫了</p>
 <p>请bookmark这个地址：<a href="http://feeds.feedburner.com/GoodGoodStudyDayDayUp" target="_blank" rel="noopener">http://feeds.feedburner.com/GoodGoodStudyDayDayUp</a></p>
-<p><img src="http://farm5.static.flickr.com/4030/4356716336_bd25956bc6_o.jpg" alt=""></p>
+<p><img src="http://farm5.static.flickr.com/4030/4356716336_bd25956bc6_o.jpg" alt></p>
 ]]></content>
       
         
@@ -4660,9 +4711,9 @@ goB. .U....s7.......#
       <url>http://aleung.github.io/blog/2009/12/27/Google-China-Map-offset-2/</url>
       <content type="html"><![CDATA[<p>接着<a href="/2009/12/26/Google-China-Map-offset-1/">昨天的分析</a>。</p>
 <p>已经发现在纬线上的偏移值呈现出明显的规律性，这个规律不难拟合出来。利用拟合出来的函数将这个高频扰动抵消之后，得到了这样的曲线：</p>
-<p><img src="/attachments/2009/12/4382498800_1bc9e586dd_o.jpg" alt=""></p>
+<p><img src="/attachments/2009/12/4382498800_1bc9e586dd_o.jpg" alt></p>
 <p>看起来相当完美。那在看看将它应用到大尺度上效果如何：</p>
-<p><img src="/attachments/2009/12/4381740587_73cd1113fd_o.jpg" alt=""></p>
+<p><img src="/attachments/2009/12/4381740587_73cd1113fd_o.jpg" alt></p>
 <p>有微小的抖动，看来参数细节还需要微调一下，不过要求不高的话其实已经可以接受了。</p>
 <p>接下来，在这张图上又发现了规律…… 嗯，我不能继续写下去了。</p>
 <p>其实对于离线应用，进一步的分析不做也没有关系了，并不需要将整个函数拟合出来，剩余的工作可以通过查表法来做，然后插值再加回高频扰动。因为知道了高频扰动的函数后，就能够用较低的采样频率来记录偏移量，即使将整个表放内存里，占用的空间大小也可以接受。</p>
@@ -4685,22 +4736,22 @@ goB. .U....s7.......#
 <p>接下来，我对偏移数据做了一些分析。纵坐标是18级地图的偏移量。</p>
 <p>首先是较小尺度，在经纬度1度的范围内每0.01度取得一个偏移值。</p>
 <p>图一：纬度不变，经度1度变化范围内，偏移量的变化（横坐标数字为经度0.01度）</p>
-<p><img src="/attachments/2009/12/4382500790_05a7a3af13_o.jpg" alt=""></p>
+<p><img src="/attachments/2009/12/4382500790_05a7a3af13_o.jpg" alt></p>
 <p>图二，与图一相同的数据，可以看出偏移在平面上的变化</p>
-<p><img src="/attachments/2009/12/4382501234_2a060a3355_o.jpg" alt=""></p>
+<p><img src="/attachments/2009/12/4382501234_2a060a3355_o.jpg" alt></p>
 <p>图三，经度不变，纬度1度变化范围内，偏移量的变化（横坐标数字为纬度0.01度）。可见偏移量变化不如经度变化时大。</p>
-<p><img src="/attachments/2009/12/4382501616_0902aeee3e_o.jpg" alt=""></p>
+<p><img src="/attachments/2009/12/4382501616_0902aeee3e_o.jpg" alt></p>
 <p>图四，与图三相同的数据，可以看出偏移在平面上的变化</p>
-<p><img src="/attachments/2009/12/4382501968_d960178154_o.jpg" alt=""></p>
+<p><img src="/attachments/2009/12/4382501968_d960178154_o.jpg" alt></p>
 <p>图五，经度纬度均1度范围内，偏移在平面上的变化。其实是图二与图四&ldquo;相乘&rdquo;的结果。</p>
-<p><img src="/attachments/2009/12/4381741057_b10a5de8ca_o.jpg" alt=""></p>
+<p><img src="/attachments/2009/12/4381741057_b10a5de8ca_o.jpg" alt></p>
 <p>接下来从大尺度上看看。</p>
 <p>图六，北纬40度的纬线上偏移值变化图，横坐标为经度。看得出以经度1度为周期呈现出一定的规律性，在y向偏移量上特别明显。</p>
-<p><img src="/attachments/2009/12/4382499286_a837b8022d_o.jpg" alt=""></p>
+<p><img src="/attachments/2009/12/4382499286_a837b8022d_o.jpg" alt></p>
 <p>图七，东经116度的经线上偏移值变化图，横坐标为纬度。这个就没有奇怪的小波动了，而且x向偏移似乎可以非常理想的用二次曲线来拟合。</p>
-<p><img src="/attachments/2009/12/4381742115_a15b5e01c5_o.jpg" alt=""></p>
+<p><img src="/attachments/2009/12/4381742115_a15b5e01c5_o.jpg" alt></p>
 <p>图八，刚才在图六中发现纬线上的偏移值呈现出规律性，这里放大来看看。很明显是以1度为周期的。</p>
-<p><img src="/attachments/2009/12/4382498276_2952ffa74c_o.jpg" alt=""></p>
+<p><img src="/attachments/2009/12/4382498276_2952ffa74c_o.jpg" alt></p>
 <p>暂无结论。请看<a href="/2009/12/27/Google-China-Map-offset-2/">续篇</a>。</p>
 ]]></content>
       
@@ -4783,15 +4834,15 @@ goB. .U....s7.......#
       <title><![CDATA[The world can change in a day]]></title>
       <url>http://aleung.github.io/blog/2009/11/03/The-world-can-change-in-a-day/</url>
       <content type="html"><![CDATA[<p>8 November 1989</p>
-<p><img src="/attachments/2009/11/CapeTimes-BerlinWall.jpg" alt=""></p>
+<p><img src="/attachments/2009/11/CapeTimes-BerlinWall.jpg" alt></p>
 <p>9 November 1989, the wall fell. </p>
 <p>柏林人民踊跃翻墙的塲景：</p>
-<p><img src="/attachments/2009/11/OverBerlinWall.jpg" alt=""></p>
+<p><img src="/attachments/2009/11/OverBerlinWall.jpg" alt></p>
 <p>当年柏林是被这样的高墻分隔的：</p>
-<p><img src="/attachments/2009/11/BerlinWallMap.jpg" alt=""></p>
+<p><img src="/attachments/2009/11/BerlinWallMap.jpg" alt></p>
 <p>如今残存的墙上的壁画，反映了当年翻墙的种种途径：</p>
-<p><img src="/attachments/2009/11/BerlinWallPicture1.jpg" alt=""></p>
-<p><img src="/attachments/2009/11/BerlinWallPicture2.jpg" alt=""></p>
+<p><img src="/attachments/2009/11/BerlinWallPicture1.jpg" alt></p>
+<p><img src="/attachments/2009/11/BerlinWallPicture2.jpg" alt></p>
 <p>—— 纪念柏林墙倒下20周年</p>
 ]]></content>
       
@@ -4815,7 +4866,7 @@ goB. .U....s7.......#
 <p>Wallpaper Label 软件的另外一个作用是设置Android手机的桌面墙纸。Android系统自带的墙纸设置工具需要把图片剪切为4:3比例，无法设置其他比例的墙纸。4:3比例对于缺省的3屏是比较合适的，但当桌面屏幕数量更多的时候，这个比例就显得太窄了，左右切换屏幕时墙纸的画面基本没有多少移动。用 Home Screen Label 来设置墙纸没有4:3比例的限制，可以设置宽屏墙纸。</p>
 <p>用作墙纸的图片文件需要存放在SD卡的wallpapers目录中。软件也提供了保存当前墙纸的功能，可将现在正使用的墙纸保存到SD卡上。</p>
 <p>这是5个屏幕合成的效果图，可以看出宽屏墙纸画面效果：</p>
-<p><img src="/attachments/2009/10/wallpaperlabel3.jpg" alt=""></p>
+<p><img src="/attachments/2009/10/wallpaperlabel3.jpg" alt></p>
 <p>软件在Android Market上下载安装，搜索”Wallpaper Label”就可以找到。<br>(2012-7 update: Android自身功能不断增强，这个软件已经没什么用处，早已下架)</p>
 ]]></content>
       
@@ -5475,15 +5526,15 @@ goB. .U....s7.......#
 <p>从<a href="http://news.dayoo.com/gov/200902/26/36198_5370659.htm" target="_blank" rel="noopener">新闻</a>上看，即将开通的五号线也会安装疏散平台。一、二号线估计是因为隧道没有预留宽度，所以无法安装。</p>
 <p>顺便show几张照片，是前段时间去参观海瑞克隧道设备公司时拍的，广州地铁的大部分隧道盾构工程所用的盾构机都是由海瑞克提供的。</p>
 <p>盾构机前部盾体的结构图：  </p>
-<p><img src="/attachments/2009/3/Herrenknecht1.jpg" alt=""></p>
+<p><img src="/attachments/2009/3/Herrenknecht1.jpg" alt></p>
 <p>整个盾构机像火车一样很长，一节节台车组成。车间里这台盾构机才刚开始组装，提供给云南的一个水利工程用的，工程师介绍说共有三十多节：</p>
-<p><img src="/attachments/2009/3/Herrenknecht2.jpg" alt=""></p>
+<p><img src="/attachments/2009/3/Herrenknecht2.jpg" alt></p>
 <p>准备组装的刀盘驱动部分：</p>
-<p><img src="/attachments/2009/3/Herrenknecht3.jpg" alt=""></p>
+<p><img src="/attachments/2009/3/Herrenknecht3.jpg" alt></p>
 <p>左面是回收回来的旧滚刀，右面是展台上的滚刀，和适合不同地质条件的刀体。岩石就是靠这些滚刀压碎的：</p>
-<p><img src="/attachments/2009/3/Herrenknecht4.jpg" alt=""></p>
+<p><img src="/attachments/2009/3/Herrenknecht4.jpg" alt></p>
 <p>我参观的时候厂房里没有组装好的机器，从网上找来两张照片。上图看到的是盾构机的前部，红色的刀盘，上面镶嵌的黑色的就是刀具。从照片看似乎就是在我参观的那个车间。下图是一台硬岩掘进机的侧面。</p>
-<p><img src="/attachments/2009/3/Herrenknecht5.jpg" alt=""><br><img src="/attachments/2009/3/Herrenknecht6.jpg" alt=""></p>
+<p><img src="/attachments/2009/3/Herrenknecht5.jpg" alt><br><img src="/attachments/2009/3/Herrenknecht6.jpg" alt></p>
 ]]></content>
       
         
@@ -5499,7 +5550,7 @@ goB. .U....s7.......#
       <title><![CDATA[日程管理适合做在哪里: 记事本? PC? PDA? 手机? 手表!]]></title>
       <url>http://aleung.github.io/blog/2009/02/19/Schedule-management-for-where-notepad-PC-PDA-Mobile-phone-Watch-/</url>
       <content type="html"><![CDATA[<p>做日常管理，传统用纸质记事本，电脑化之后是PC，便携设备出现后是PDA和现在流行的智能手机。但其实还有一个很好的途径一直被忽略了，那就是：</p>
-<p><a href="http://www.mrjoneswatches.com/average-day/" target="_blank" rel="noopener"><img src="/attachments/2009/2/watch.jpg" alt=""></a></p>
+<p><a href="http://www.mrjoneswatches.com/average-day/" target="_blank" rel="noopener"><img src="/attachments/2009/2/watch.jpg" alt></a></p>
 <p>这是一个很有创意的设计，相信戴起来也很cool，但恐怕实用价值不大：表盘上标的是”a breakdown of what average people do on an average day”，但每个人都有自己的行事方式，没有多少人是一个average的人吧？</p>
 <p>除非—-表盘是可以个性化定制的。但是，一个人的时间安排还是会变化的啊。好，扩展一下思路，引入高科技吧：想象一下，上图的表盘并不是印制出来的，而是高分辨率的电子显示屏，将一天的日程安排显示出来；日程安排是通过无线网络与服务器同步的（例如Google Calendar）。</p>
 <p>再想象一下使用的场景：你正在休息室喝咖啡，同事冲进去说：”啊，你躲在这里啊，我有个新idea想跟你讨论一下，有空吗？”，你抬起手一看表，”现在九点二十五分，我喝完这杯咖啡九点半要开会，下午也已经有安排了，呃，十一点到十二点是有空的，可以吗？”</p>
@@ -5870,7 +5921,7 @@ goB. .U....s7.......#
       <title><![CDATA[四川汶川县发生M7.8级地震]]></title>
       <url>http://aleung.github.io/blog/2008/05/13/Wenchuan-county-sichuan-M7-8-earthquake-happened/</url>
       <content type="html"><![CDATA[<p>四川汶川县境内今天14:28发生7.8级地震，震中距离成都市区约90km，距离彭州市区约66km。14:54发生的5.7级余震距离彭州市区约22km。</p>
-<p><img src="http://photo1.bababian.com/upload11/20080512/02D8796E47266104909DE6C9CD15F921.jpg" alt=""></p>
+<p><img src="http://photo1.bababian.com/upload11/20080512/02D8796E47266104909DE6C9CD15F921.jpg" alt></p>
 <p>上图数据来自USGS（US Geological Survey，美国地质勘探局），<a href="http://earthquake.usgs.gov/eqcenter/recenteqsww/Maps/10/105_30.php" target="_blank" rel="noopener">这里</a>可以看到此次地震以及余震的信息(一周内有效)。</p>
 ]]></content>
       
@@ -6196,11 +6247,11 @@ goB. .U....s7.......#
       <content type="html"><![CDATA[<p>ClearCaseWeb is a simple web-based utility for browsing files stored in ClearCase. With it you can get the list of recent changed files and find out who is the last modifier of each line in a file in a very handy maner. The original idea to develop ClearCaseWeb is to overcome the lack of GUI for cleartool annotation. It’s inspired by <a href="http://www.freebsd.org/projects/cvsweb.html" target="_blank" rel="noopener">CVSWeb</a>, which is widely used in open source community.</p>
 <p>Screenshots: </p>
 <p>Annotation View</p>
-<p><img src="http://farm1.static.flickr.com/186/439704788_26969d28be.jpg" alt=""></p>
+<p><img src="http://farm1.static.flickr.com/186/439704788_26969d28be.jpg" alt></p>
 <p>Browse View</p>
-<p><img src="http://farm1.static.flickr.com/168/439704790_204c0d2c98.jpg" alt=""></p>
+<p><img src="http://farm1.static.flickr.com/168/439704790_204c0d2c98.jpg" alt></p>
 <p>Recent Changes View</p>
-<p><img src="http://farm1.static.flickr.com/175/439704792_3da1066a9b.jpg" alt=""></p>
+<p><img src="http://farm1.static.flickr.com/175/439704792_3da1066a9b.jpg" alt></p>
 <p>ClearCaseWeb is developed in php. Currently it only works on Windows with ClearCase dynamic view successfully configurated.</p>
 <p>Download:</p>
 <ul>
@@ -6225,7 +6276,7 @@ goB. .U....s7.......#
 <p>先把要处理的目标数据准备好：一列是输入数据A3:A66（在例子中为了清晰，已经排序，实际没有必要），另外一列是分组间隔D3:D21，在这里每个区间的大小是10。</p>
 <p>对于每个区间的频率，我希望输出在E3:E21区域。用鼠标将这个区域框起来，然后输入公式 =FREQUENCY(A3:A66,D3:D21)。FREQUENCY函数有两个参数，第一个是要分析的目标数据，第二个是分组间隔值，都需要是数组。输出也是一个数组，因此需要按 Ctrl-Shift-Enter 来结束公式的输入，表明这是数组公式。(数组公式会显示为有个花括号括起来)</p>
 <p>公式输入后，马上就能看到计算的结果了，如果希望更清晰些，可以做一张图。依然是选中E3:E21区域，菜单中选中插入图表，照着向导操作。在第二步选择DataSource中，需要在”Serials”中指定X轴区域为C3:C21(或D3:D21)，否则X轴数据会变成1、2、3…</p>
-<p><img src="http://farm1.static.flickr.com/162/422940441_9279aaa292_o.jpg" alt=""></p>
+<p><img src="http://farm1.static.flickr.com/162/422940441_9279aaa292_o.jpg" alt></p>
 <p>从图中，可以明显看出大部分数据范围在50-120之间，峰值为90-100。</p>
 <p><a href="http://soft.yesky.com/office/283/2639283.shtml" target="_blank" rel="noopener">这个网页</a>介绍了另外一种方法，通过Excel数据分析功能来实现上面做的事情，更加简单。但是Excel缺省安装中没有数据分析功能。</p>
 <p>Reference：<a href="http://www0.ccidnet.com/school/office//2001/06/26/70_4531.html" target="_blank" rel="noopener">Excel统计函数</a></p>
@@ -6339,7 +6390,7 @@ goB. .U....s7.......#
     <entry>
       <title><![CDATA[很久很久没有更新了]]></title>
       <url>http://aleung.github.io/blog/2007/01/27/No-update-for-a-long-long-time/</url>
-      <content type="html"><![CDATA[<p>好像没有什么好写的，贴张照片吧<br><img src="http://farm1.static.flickr.com/136/369778069_a78a5ac873.jpg" alt="">  </p>
+      <content type="html"><![CDATA[<p>好像没有什么好写的，贴张照片吧<br><img src="http://farm1.static.flickr.com/136/369778069_a78a5ac873.jpg" alt>  </p>
 ]]></content>
       
         
@@ -6527,7 +6578,7 @@ goB. .U....s7.......#
     <entry>
       <title><![CDATA[Homebuilt bicycle trailer]]></title>
       <url>http://aleung.github.io/blog/2006/07/31/Homebuilt-bicycle-trailer/</url>
-      <content type="html"><![CDATA[<p>挺实用的一个东西，用来运点东西挺方便。但不知道在国内会不会被警察叔叔抓？<a href="http://www.flickr.com/photos/bikeman04/201520772/in/pool-make/" target="_blank" rel="noopener"><br><img src="http://static.flickr.com/62/201520772_efc6874999.jpg" alt=""></a>  </p>
+      <content type="html"><![CDATA[<p>挺实用的一个东西，用来运点东西挺方便。但不知道在国内会不会被警察叔叔抓？<a href="http://www.flickr.com/photos/bikeman04/201520772/in/pool-make/" target="_blank" rel="noopener"><br><img src="http://static.flickr.com/62/201520772_efc6874999.jpg" alt></a>  </p>
 ]]></content>
       
         
@@ -6595,6 +6646,22 @@ goB. .U....s7.......#
     </entry>
     
     <entry>
+      <title><![CDATA[还是blogline好用]]></title>
+      <url>http://aleung.github.io/blog/2006/07/14/Or-blogline-works-better/</url>
+      <content type="html"><![CDATA[<p>试过了好几种RSS阅读器，换来换去都感觉总是差那么一点点不够好用。最终还是用回了<a href="http://www.bloglines.com/" target="_blank" rel="noopener">blogline</a>,简单、方便，这就够了。不过前提是网络的速度够快，好像在国内访问的速度不怎么样，也许又得换了。</p>
+<p>2009-5-31 Updated: 现在应该改为”还是Google Reader好用” <img src="http://public.blogbus.com/biaoqing/163/11.gif" alt></p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> Web </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[DIY交流网站]]></title>
       <url>http://aleung.github.io/blog/2006/07/14/DIY-/</url>
       <content type="html"><![CDATA[<p>喜欢DIY的人不应该错过这个网站，<a href="http://www.instructables.com" target="_blank" rel="noopener">instructables</a> ，在这里分享DIY的创意，可以看看人家做了些什么好玩的东西，是怎么做的，也可以将自己的经验发布出来。</p>
@@ -6604,22 +6671,6 @@ goB. .U....s7.......#
         <tags>
             
             <tag> DIY </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[还是blogline好用]]></title>
-      <url>http://aleung.github.io/blog/2006/07/14/Or-blogline-works-better/</url>
-      <content type="html"><![CDATA[<p>试过了好几种RSS阅读器，换来换去都感觉总是差那么一点点不够好用。最终还是用回了<a href="http://www.bloglines.com/" target="_blank" rel="noopener">blogline</a>,简单、方便，这就够了。不过前提是网络的速度够快，好像在国内访问的速度不怎么样，也许又得换了。</p>
-<p>2009-5-31 Updated: 现在应该改为”还是Google Reader好用” <img src="http://public.blogbus.com/biaoqing/163/11.gif" alt=""></p>
-]]></content>
-      
-        
-        <tags>
-            
-            <tag> Web </tag>
             
         </tags>
         
@@ -6767,16 +6818,16 @@ goB. .U....s7.......#
 <p>[右中]：小的锯口或者曲线自己用曲线锯来锯。操作电锯的时候要注意个人防护，这东西锯起来粉尘和噪音都很大，要戴上口罩塞起耳朵。前面的管子是吸尘器的管，吸尘器在做这些家居工程的时候很管用，无论是锯还是钻，将吸尘管放在工位旁边可以吸走大部分粉尘。曲线锯可以锯曲线也可以锯直线，刚开始锯不好，练熟手后顺了。</p>
 <p>[左下]：锯好的板子</p>
 <p>[右下]：在架身的木板上打孔，用来放置可调的搁板</p>
-<p><img src="/attachments/2006/4/131333600_ae4b3f8297_o.jpg" alt=""></p>
+<p><img src="/attachments/2006/4/131333600_ae4b3f8297_o.jpg" alt></p>
 <p>[左上]：密度板硬度很高，如果要直接上木螺丝会非常费劲，而且容易开裂。先用小号钻头钻个螺丝孔，上起来就非常轻松了。</p>
 <p>[右上]：连接件采用角码，便宜并且安装容易。商品的家具不会这样做的，太不专业了，但是他们用的连接件需要钻孔的加工精度很高，人家用钻床的，手电钻无法保证足够精度。</p>
 <p>[中]：等待装配的架身，已经钻好孔，上了角码。</p>
 <p>[右中]：装配，用角码连接正交的两块板。</p>
 <p>[左下]：手电钻可以当作电动螺丝批用，不过力矩不好控制。</p>
 <p>[右下]：装配中的架子。</p>
-<p><img src="/attachments/2006/4/131333601_5a5c3eea0e_o.jpg" alt=""></p>
+<p><img src="/attachments/2006/4/131333601_5a5c3eea0e_o.jpg" alt></p>
 <p>这是做好的成品。再去布艺市场做了一块窗帘，将架子遮起来。</p>
-<p><img src="/attachments/2006/4/131384360_07664ea8cb_o.jpg" alt=""></p>
+<p><img src="/attachments/2006/4/131384360_07664ea8cb_o.jpg" alt></p>
 ]]></content>
       
         
@@ -8393,7 +8444,7 @@ ZIGGY
 <p>一个图像文件，里面保存的是一堆数据，怎么知道它是哪个色彩空间？我们需要给它贴一个”标签”，在标签里说明这些数据采用的是什么色彩空间，当支持色彩管理的图像处理软件读取这个文件时，先看看标签，就知道怎么去做色彩空间的转换了。ICC profile，就是这样的”标签”，它保存着一组数据，包含了这个色彩空间与PCS之间的换算关系。把ICC profile数据嵌入到图像文件里面，图像文件就能对数据的色彩空间作出自描述。但是，千万别把profile弄错了，如果一个文件，它的数据实际上是A色彩空间的，你把B色彩空间的profile指定给它，图象处理软件就会把它当成B色彩空间来转换，造成偏色。就像一个网页，明明是GB2312编码的，你把它当成big5来打开，就会出现乱码。</p>
 <p>CYE XYZ够标准了，但在实际的图像处理中并不使用，常用的标准色彩空间是sRGB、Adobe RGB等，为什么？首先，xyz这样的坐标系不直观，如果是RGB坐标系，R的数值大了，你就知道是偏红了，但x增大了，但你不知道它有什么实际意义。其次，CYE XYZ色彩空间的范围太大了，远远超出设备、材料能表现的色彩范围，如果用同样的精度来量化，就需要更大的数据长度，而多出来那部分其实是没有意义的，因为不可能用到，浪费了存储空间。反正已经知道了每个色彩空间与XYZ空间的换算关系了，就可以在任意两个空间进行转换。</p>
 <p>空间转换过程是可能会有损失的（引起色彩变化）。一个原因是换算引起的精度损失，不过这一般可以忽略。主要的损失是发生在大空间往小空间转换时，在源空间可以表示出来的颜色，不再目标空间的范围内，转换引擎只好用一种接近的颜色来代替，造成了色彩的失真。例如，九寨沟的水那种碧中带蓝的颜色就无法在sRGB空间中表现出来。下图表示常用的色彩空间的色域。</p>
-<p><img src="http://www.normankoren.com/Sachs_gamut_chart_2_640.jpg" alt=""></p>
+<p><img src="http://www.normankoren.com/Sachs_gamut_chart_2_640.jpg" alt></p>
 <p>ICC profile描述的是色彩空间的特性。前面说过了，每个设备都有自己的色彩空间，因此也应该有一个相应的profile。准确的profile需要采用专业仪器测试得出，普通用户是没有这样的条件的，只能采用设备厂商给出的profile。如果质量控制得好，同一个型号的产品的特性会比较相似，基本上还是可以接受的。低档设备可能厂家不提供profile，这样的设备就无法进行准确的色彩管理了。对于没有profile的设备，可以当作它的色彩空间是sRGB来处理，因为sRGB是一个比较通用的标准，设备设计时往往都会尽量符合这个标准的。</p>
 <p>具有色彩管理功能的软件（例如photoshop），可以根据设备的profile，先将图像转换为设备所用的色彩空间，再送给设备输出，这样颜色就能保持一致。但是有些设备（或者驱动程序）已经内置了色彩管理功能，它能够接收标准色彩空间（例如sRGB）的数据，在内部转换成设备色彩空间再输出。这时候photoshop就不应该做预转换，否则重复转换也是造成失真。</p>
 <p>正因为有这么多不同的情况，色彩管理才变得很复杂和难以理解，输入、处理、输出各个环节都是相关的，一个环节的错误就会引起最终结果的错误，配置的时候要非常小心。</p>
@@ -8534,7 +8585,7 @@ ZIGGY
 </ul>
 <p>有关mind map和FreeMind，还可以看看flyisland的介绍。<a href="http://www.blogbus.com/blogbus/blog/diary.php?diaryid=348523" target="_blank" rel="noopener">http://flyisland.blogbus.com/logs/348523.html</a></p>
 <p>这个就是我试用FreeMind时做的练习，同时也归纳出它的基本使用方法，希望能再进一步减少你的学习时间吧:)</p>
-<p><img src="http://sunnyday.cn2k.net/photo/freemind_usage.gif" alt=""></p>
+<p><img src="http://sunnyday.cn2k.net/photo/freemind_usage.gif" alt></p>
 ]]></content>
       
         
@@ -9300,7 +9351,7 @@ ZIGGY
       <title><![CDATA[Garmin GPS map76s 解剖]]></title>
       <url>http://aleung.github.io/blog/2003/11/26/Garmin-GPS-map76s-/</url>
       <content type="html"><![CDATA[<p>EE times 的一篇<a href="http://www.eet.com/sys/uth/OEG20020710S0026" target="_blank" rel="noopener">文章</a>介绍了Garmin GPS map76s的内部模块结构，下图是引自该文章的。</p>
-<p><img src="http://img.cmpnet.com/eet/news/02/July/UTH1226.gif" alt=""></p>
+<p><img src="http://img.cmpnet.com/eet/news/02/July/UTH1226.gif" alt></p>
 <p>据分析，这样一个GPS的成本价不足100美圆，可是现在市场价是差不多400美圆！好赚吧？:)</p>
 <p>从照片中可以看到，四螺旋天线垂直安装在顶部，因此GPS在直立放置时的信号接收效果是最好的。</p>
 ]]></content>
