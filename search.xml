@@ -30,7 +30,7 @@
 <p><strong>自动水量调节是不能提高恒温精度的！</strong>它解决的是冬天热水不够热的问题，解决方法是根据进水温度自动限制水流量，也就是相当于将水阀关小一点。当然，后果就是夏天你用大花洒可以畅快的洗澡，冬天可能就不行了，水量会变小。但是它至少保证了温度是足够的。</p>
 <p>还有些热水器有“变升”功能，通过按钮选择不同的升数，说白了也就是控制进水阀门而已，选择小一点的升数就是将阀门关小一些。看看商家宣传的春秋笔法：夏天大水量的时候说舒爽，冬天水量上不去，他就不提舒爽却说节水了。</p>
 <p>记忆合金自动水量调节虽然能够根据进水温度调节水流量，但是它不知道用户设定的期望出水温度，也就是不知道温差。例如15度水温，水量全开加热到35度是没问题的，要加热到50度就不行了。那么这个自动水量调节在进水温度15度时应不应该限制水量呢？限制多少合适？出厂时只能根据某个出水温度来设定流量，假设是40度，那么当你把热水器设置到50度，它温度还是上不去；而设置到35度时，本来水流量可以大一些的，它却给限制了。</p>
-<h1 id="进阶的恒温控制"><a href="#进阶的恒温控制" class="headerlink" title="进阶的恒温控制"></a>进阶的恒温控制</h1><h3 id="水量伺服"><a href="#水量伺服" class="headerlink" title="水量伺服"></a>水量伺服</h3><p>水量伺服功能在比较高档的热水器才有装备，它是一个由伺服电机驱动的进水阀门，通过控制器能够比较精准的控制开合程度。</p>
+<h2 id="进阶的恒温控制"><a href="#进阶的恒温控制" class="headerlink" title="进阶的恒温控制"></a>进阶的恒温控制</h2><h3 id="水量伺服"><a href="#水量伺服" class="headerlink" title="水量伺服"></a>水量伺服</h3><p>水量伺服功能在比较高档的热水器才有装备，它是一个由伺服电机驱动的进水阀门，通过控制器能够比较精准的控制开合程度。</p>
 <img src="/blog/attachments/2019/2/heater-3.png">
 <p>水量伺服的主要用途还是类似于自动水量调节，在进水温度与期望水温温差过大时降低流量。因为它是受控的，比起不能控制的自动水量调节有更强的功能：</p>
 <ul>
@@ -6645,21 +6645,6 @@ goB. .U....s7.......#
     </entry>
     
     <entry>
-      <title><![CDATA[DIY交流网站]]></title>
-      <url>http://aleung.github.io/blog/2006/07/14/DIY-/</url>
-      <content type="html"><![CDATA[<p>喜欢DIY的人不应该错过这个网站，<a href="http://www.instructables.com" target="_blank" rel="noopener">instructables</a> ，在这里分享DIY的创意，可以看看人家做了些什么好玩的东西，是怎么做的，也可以将自己的经验发布出来。</p>
-]]></content>
-      
-        
-        <tags>
-            
-            <tag> DIY </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[还是blogline好用]]></title>
       <url>http://aleung.github.io/blog/2006/07/14/Or-blogline-works-better/</url>
       <content type="html"><![CDATA[<p>试过了好几种RSS阅读器，换来换去都感觉总是差那么一点点不够好用。最终还是用回了<a href="http://www.bloglines.com/" target="_blank" rel="noopener">blogline</a>,简单、方便，这就够了。不过前提是网络的速度够快，好像在国内访问的速度不怎么样，也许又得换了。</p>
@@ -6670,6 +6655,21 @@ goB. .U....s7.......#
         <tags>
             
             <tag> Web </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[DIY交流网站]]></title>
+      <url>http://aleung.github.io/blog/2006/07/14/DIY-/</url>
+      <content type="html"><![CDATA[<p>喜欢DIY的人不应该错过这个网站，<a href="http://www.instructables.com" target="_blank" rel="noopener">instructables</a> ，在这里分享DIY的创意，可以看看人家做了些什么好玩的东西，是怎么做的，也可以将自己的经验发布出来。</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> DIY </tag>
             
         </tags>
         
