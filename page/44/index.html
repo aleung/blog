@@ -1,310 +1,291 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
-  
 
 
-<html class="theme-next muse use-motion">
+<html class="theme-next gemini use-motion" lang="zh-CN">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=7.2.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=7.2.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=7.2.0">
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=7.2.0" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css?v=7.2.0">
 
 
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
 
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/blog/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-
-  <link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.2" />
-
-
-
-
-
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="Good good study, day day up">
-<meta property="og:url" content="http://aleung.github.io/blog/page/44/index.html">
-<meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Good good study, day day up">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
+    root: '/blog/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},
+    search: {
+      root: '/blog/',
+      path: 'search.xml'
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
     }
   };
 </script>
 
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Good good study, day day up">
+<meta property="og:url" content="http://aleung.github.io/blog/page/44/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Good good study, day day up">
+  <link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
+  <link rel="canonical" href="http://aleung.github.io/blog/page/44/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Good good study, day day up</title>
+  
 
 
 
-  <link rel="canonical" href="http://aleung.github.io/blog/page/44/"/>
 
 
-  <title> Good good study, day day up </title>
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
 </head>
 
-<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
-  
-
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-right page-home">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
 
-  <div class="custom-logo-site-title">
-    <a href="/blog/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Good good study, day day up</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Good good study, day day up</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">aleung的学习笔记, aleung的idea</p>
+      
   </div>
-  <p class="site-subtitle">aleung的学习笔记, aleung的idea</p>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
+
 
 <nav class="site-nav">
-  
-
-  
     <ul id="menu" class="menu">
-      
         
-        <li class="menu-item menu-item-home">
-          <a href="/blog/" rel="section">
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/blog/archives" rel="section">
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/blog/tags" rel="section">
-            
-            标签
-          </a>
-        </li>
+          
+          <li class="menu-item menu-item-tags">
       
-        
-        <li class="menu-item menu-item-schedule">
-          <a href="/blog/schedule" rel="section">
-            
-            日程
-          </a>
-        </li>
+    
       
+    
 
+    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">52</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
       
+    
+      
+    
+
+    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">328</span></a>
+
+  </li>
         <li class="menu-item menu-item-search">
+          <a href="javascript:;" class="popup-trigger">
           
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-            搜索
-          </a>
+            <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
         </li>
       
     </ul>
-  
-
-  
     <div class="site-search">
       
-  <div class="popup">
- <span class="search-icon fa fa-search"></span>
- <input type="text" id="local-search-input">
- <div id="local-search-result"></div>
- <span class="popup-btn-close">close</span>
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
 </div>
 
 
     </div>
-  
 </nav>
 
- </div>
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+            
+
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
-    
       
 
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2005/12/02/C-/">
 
-  
-  
-  
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
       <header class="post-header">
 
         
-        
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/blog/2005/12/02/C-/" itemprop="url">
-                  C++中生成格式化字符串方法的性能比较
-                </a>
+                
+                <a href="/blog/2005/12/02/C-/" class="post-title-link" itemprop="url">C++中生成格式化字符串方法的性能比较</a>
               
             
           </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2005-12-02 22:28:00" itemprop="dateCreated datePublished" datetime="2005-12-02T22:28:00+08:00">2005-12-02</time>
             </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2005-12-02T22:28:00+08:00" content="2005-12-02">
-              2005-12-02
-            </time>
-          </span>
-
           
+            
 
-          
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
             
           
 
-          
+          <br>
 
-          
-          
-
-          
         </div>
       </header>
+
     
-
-
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           
             <p>在C++中进行格式化字符串的生成，通常有两种方法。一种是C风格的，使用sprintf生成格式化字符串，用str系列字符串函数进行字符串（实际是内存buffer）的拼接、拷贝等操作。另外一种是C++风格的，用string stream类通过流操作来生成格式化的字符串。</p>
 <p>在使用上，两种方法各有长短，在这里不作分析。我发现的问题是string stream的效率相对C的方法效率比较低。</p>
@@ -316,92 +297,92 @@
       
     </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
+    
+    
+    
 
     <footer class="post-footer">
-      
-
-      
-
-      
-      
         <div class="post-eof"></div>
-      
     </footer>
+  </div>
+  
+  
+  
   </article>
 
-
     
       
 
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2005/11/28/The-network-of-killing-game-formerly-known-as-F2F-face-to-face-/">
 
-  
-  
-  
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
       <header class="post-header">
 
         
-        
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/blog/2005/11/28/The-network-of-killing-game-formerly-known-as-F2F-face-to-face-/" itemprop="url">
-                  网络上的杀人游戏（原名：F2F—面对面）
-                </a>
+                
+                <a href="/blog/2005/11/28/The-network-of-killing-game-formerly-known-as-F2F-face-to-face-/" class="post-title-link" itemprop="url">网络上的杀人游戏（原名：F2F—面对面）</a>
               
             
           </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2005-11-28 07:40:00" itemprop="dateCreated datePublished" datetime="2005-11-28T07:40:00+08:00">2005-11-28</time>
             </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2005-11-28T07:40:00+08:00" content="2005-11-28">
-              2005-11-28
-            </time>
-          </span>
-
           
+            
 
-          
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
             
           
 
-          
+          <br>
 
-          
-          
-
-          
         </div>
       </header>
+
     
-
-
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           
             <p>不要以为我说的是流行的杀人游戏，虽然也有人将这个游戏搬到网上来玩。我下面要贴出来的是一部小说，原名是F2F(face to face)，可能是译者觉得“网络上的杀人游戏”这个直白的名字更加让人容易了解小说的内容。</p>
 <p>我读到这小说的中文翻译是在1997年春节，是清华大学的一个同学给我的。（那时还不知道有杀人这种游戏）。当时同学叫我不要传出去，因为译者可能想要出版。今天整理旧文件的时候把这个document翻出来了，google上搜索一下，没有找到任何相关的资料，看来书是没有出成。都过了那么久了，不忍心让它埋没了，把它贴出来共享一下。在此向翻译者致敬（抱歉我不知道他的名字）！</p>
@@ -671,92 +652,92 @@ ZIGGY
       
     </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
+    
+    
+    
 
     <footer class="post-footer">
-      
-
-      
-
-      
-      
         <div class="post-eof"></div>
-      
     </footer>
+  </div>
+  
+  
+  
   </article>
 
-
     
       
 
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2005/11/20/Solaris-aio-/">
 
-  
-  
-  
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
       <header class="post-header">
 
         
-        
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/blog/2005/11/20/Solaris-aio-/" itemprop="url">
-                  Solaris上使用aio的问题
-                </a>
+                
+                <a href="/blog/2005/11/20/Solaris-aio-/" class="post-title-link" itemprop="url">Solaris上使用aio的问题</a>
               
             
           </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2005-11-20 02:17:00" itemprop="dateCreated datePublished" datetime="2005-11-20T02:17:00+08:00">2005-11-20</time>
             </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2005-11-20T02:17:00+08:00" content="2005-11-20">
-              2005-11-20
-            </time>
-          </span>
-
           
+            
 
-          
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
             
           
 
-          
+          <br>
 
-          
-          
-
-          
         </div>
       </header>
+
     
-
-
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           
             <p>我们程序的IRI backend使用了ACE Proactor作为TCP client的框架，proactor实质上是使用了asynchronous IO(aio)从socket上读写数据。异步IO将速度慢的I/O过程留在操作系统内部进行，不会阻塞用户线程，因此在应用中无需使用多线程也可以达到较高的效率。AIO在windows平台上使用比较广泛，称为CPIO。Solaris 9是支持aio的，按理说不会有什么问题，可是我们的程序就出现了很多奇怪的问题。</p>
 <ul>
@@ -768,9 +749,16 @@ ZIGGY
 <p>我们的鬼佬chief architect是hacker出身的，他跟我们一起查找问题，最终找到了原因。</p>
 <blockquote>
 <p>Some notes for us on AIO to help us better understand:</p>
+</blockquote>
 <p>[1] <a href="http://sunsite.uakom.sk/sunworldonline/swol-03-1996/swol-03-aio.html" target="_blank" rel="noopener">http://sunsite.uakom.sk/sunworldonline/swol-03-1996/swol-03-aio.html</a></p>
+<blockquote>
+</blockquote>
 <p>[2] Keep in mind that any major improvement over standard read/write system calls requires the use of multi-processor machines, since AIOs are executed via light weight processes (LWPs). </p>
+<blockquote>
+</blockquote>
 <p>[3] aiorandom syiorandom<br>Both programs read 262,144 data blocks. Each block is 4,096 bytes. aiorandom submits a batch of 30 asynchronous reads at a time. Whenever the number of outstanding AIO operations falls below 15, it submits another batch. Results were recorded from the command timex. </p>
+<blockquote>
+</blockquote>
 <table>
 <thead>
 <tr>
@@ -797,13 +785,29 @@ ZIGGY
 </tr>
 </tbody>
 </table>
+<blockquote>
+</blockquote>
 <p>For aiorandom, this is a speed-up of close to 30 percent in real (elapsed) time. Note how aiorandom consumed more user CPU time due to the extra work associated with managing the AIO-related data structures. System CPU time doubled thanks to aiorandom running multiple LWPs. Keep this in mind on busy, multi-user systems since heavy AIO applications will depress the performance of other apps. </p>
+<blockquote>
+</blockquote>
 <p>[4]  However, libaio is different; it implements system functions. Depending on the numbers of submitted AIO requests, libaio creates so-called “workers” (as implemented as LWP’s) to process the IO requests. </p>
+<blockquote>
+</blockquote>
 <p>THIS IS WHAT IS KAIO .. [next line]</p>
+<blockquote>
+</blockquote>
 <p>[1]  Solaris 2.5 implements kernel-supported asynchronous I/O. The kernel has implemented special, efficient AIO assists for the libaio. </p>
+<blockquote>
+</blockquote>
 <p>[2] <a href="http://developers.sun.com/solaris/articles/thread_pools.html" target="_blank" rel="noopener">http://developers.sun.com/solaris/articles/thread_pools.html</a></p>
+<blockquote>
+</blockquote>
 <p>Here is the code from aio.so:</p>
+<blockquote>
+</blockquote>
 <p><a href="http://cvs.opensolaris.org/source/xref/on/usr/src/uts/common/os/aio.c" target="_blank" rel="noopener">aio.c</a></p>
+<blockquote>
+</blockquote>
 <pre><code>394 /*  
 395  * wake up LWPs in this process that are sleeping in  
 396  * aiowait().  
@@ -824,11 +828,18 @@ ZIGGY
 411   
 412  return (0);  
 413 }
-</code></pre><p>If the application uses a third party library that implements asynchronous operations, this may not be the best solution. This is because of the “anonymous” nature of aiowait(), which returns the result of any asynchronous read or write operation. And if a third party AIO library is used in the application, this means that aiowait() could return result sets of the third party library AIO calls as well. Due to obvious interface disparities, this could lead to unpredictable behavior. </p>
-<p>.. i find out some very interesting things about the aio … especially<br>the CPU usage being high is very normal .. good if you want<br>to make a high capacity/performance server that will run on<br>its own on a SMP machine .. then aio gives a very strong<br>efficiency and raw performance .. but use extra CPU because<br>the process have very high granularity of checking all async<br>operations .. much higher than a user space thread .. </p>
-<p>however this kind of server will hog CPU and if used in a mixed<br>environment with many other systems on same host will not be<br>a good solution .. also such process have no ability to define<br>filters on the async events they listen for .. they will always get<br>interrupts from any kind of asynch event in the system . .then<br>have to go through that array of 1024 pointers and check if any<br>of the non-null pointers in there will contain an event for them ….<br>(thats why if you connect truss -p the CPU goes down .. all sigs<br>are blocked for a process inside truss) </p>
-<p>the behaviour with CPU etc. that we see in ismapserver seems<br>quite ‘normal’ for the aio .. from what i can read the last days and<br>from what you can see in the solaris os code. (you can also look<br>in kernel.c and condvar.c) </p>
+</code></pre><blockquote>
 </blockquote>
+<p>If the application uses a third party library that implements asynchronous operations, this may not be the best solution. This is because of the “anonymous” nature of aiowait(), which returns the result of any asynchronous read or write operation. And if a third party AIO library is used in the application, this means that aiowait() could return result sets of the third party library AIO calls as well. Due to obvious interface disparities, this could lead to unpredictable behavior. </p>
+<blockquote>
+</blockquote>
+<p>.. i find out some very interesting things about the aio … especially<br>the CPU usage being high is very normal .. good if you want<br>to make a high capacity/performance server that will run on<br>its own on a SMP machine .. then aio gives a very strong<br>efficiency and raw performance .. but use extra CPU because<br>the process have very high granularity of checking all async<br>operations .. much higher than a user space thread .. </p>
+<blockquote>
+</blockquote>
+<p>however this kind of server will hog CPU and if used in a mixed<br>environment with many other systems on same host will not be<br>a good solution .. also such process have no ability to define<br>filters on the async events they listen for .. they will always get<br>interrupts from any kind of asynch event in the system . .then<br>have to go through that array of 1024 pointers and check if any<br>of the non-null pointers in there will contain an event for them ….<br>(thats why if you connect truss -p the CPU goes down .. all sigs<br>are blocked for a process inside truss) </p>
+<blockquote>
+</blockquote>
+<p>the behaviour with CPU etc. that we see in ismapserver seems<br>quite ‘normal’ for the aio .. from what i can read the last days and<br>from what you can see in the solaris os code. (you can also look<br>in kernel.c and condvar.c) </p>
 <p>看来aio并不是那么好用，对于我们的程序而言，IRI接口的网络吞吐量并不是瓶颈，而且我们的程序本来就是多线程程序，其实并不需要使用aio。程序中的其他网络接口使用的TP Reactor（基于多线程，select）就工作得很好，效率也远超出需求了。对于IRI backend，甚至用一个线程收一个线程发就够了，因为不需要处理太多connection，线程数量在这里不是问题。</p>
 <p>还是应该遵循用最简单的方法来解决问题的原则。</p>
 
@@ -837,92 +848,92 @@ ZIGGY
       
     </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
+    
+    
+    
 
     <footer class="post-footer">
-      
-
-      
-
-      
-      
         <div class="post-eof"></div>
-      
     </footer>
+  </div>
+  
+  
+  
   </article>
 
-
     
       
 
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2005/11/10/Memory-allocator-/">
 
-  
-  
-  
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
       <header class="post-header">
 
         
-        
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/blog/2005/11/10/Memory-allocator-/" itemprop="url">
-                  Memory allocator影响多线程程序效率
-                </a>
+                
+                <a href="/blog/2005/11/10/Memory-allocator-/" class="post-title-link" itemprop="url">Memory allocator影响多线程程序效率</a>
               
             
           </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2005-11-10 02:14:00" itemprop="dateCreated datePublished" datetime="2005-11-10T02:14:00+08:00">2005-11-10</time>
             </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2005-11-10T02:14:00+08:00" content="2005-11-10">
-              2005-11-10
-            </time>
-          </span>
-
           
+            
 
-          
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
             
           
 
-          
+          <br>
 
-          
-          
-
-          
         </div>
       </header>
+
     
-
-
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           
             <p>在8个双内核CPU的SUN 4900上运行多线程程序居然比起2个CPU的440更慢，发现原因在于memory allocator的问题，缺省的malloc库只适合于单线程，内存操作是序列化进行的。更换了mtmalloc就正常了。另外还有一个选择是用libumem。</p>
 <p><a href="http://developers.sun.com/solaris/articles/multiproc/multiproc.html" target="_blank" rel="noopener">http://developers.sun.com/solaris/articles/multiproc/multiproc.html</a></p>
@@ -935,92 +946,92 @@ ZIGGY
       
     </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
+    
+    
+    
 
     <footer class="post-footer">
-      
-
-      
-
-      
-      
         <div class="post-eof"></div>
-      
     </footer>
+  </div>
+  
+  
+  
   </article>
 
-
     
       
 
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2005/11/05/Collection-and-hiding-disc/">
 
-  
-  
-  
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
       <header class="post-header">
 
         
-        
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/blog/2005/11/05/Collection-and-hiding-disc/" itemprop="url">
-                  藏书与藏碟
-                </a>
+                
+                <a href="/blog/2005/11/05/Collection-and-hiding-disc/" class="post-title-link" itemprop="url">藏书与藏碟</a>
               
             
           </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2005-11-05 01:32:00" itemprop="dateCreated datePublished" datetime="2005-11-05T01:32:00+08:00">2005-11-05</time>
             </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2005-11-05T01:32:00+08:00" content="2005-11-05">
-              2005-11-05
-            </time>
-          </span>
-
           
+            
 
-          
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
             
           
 
-          
+          <br>
 
-          
-          
-
-          
         </div>
       </header>
+
     
-
-
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           
             <p>书买了不少，放在办公室的书柜里老是被人家拿走就失踪了，时间长了自己都忘记自己有哪些书了。本来想找过软件来记录藏书资料的，却找着了一个网站 <a href="http://www.listal.com/" target="_blank" rel="noopener">www.listal.com</a> ,在线管理自己的book/music/dvd。而且它能够根据ISBN号自动从 <a href="http://amazon.com/" target="_blank" rel="noopener">amazon.com</a> 获取书籍的信息。</p>
 <p>我的页面是 <a href="http://aleung.listal.com/" target="_blank" rel="noopener">aleung.listal.com</a> ，上面列出的都是英文版的书，其实我英文没有这么厉害，大部分都是中译版，不过为了能够自动取得书籍信息，我都登记了原版书的编号。有空试试把DVD也记录上去。</p>
@@ -1031,45 +1042,32 @@ ZIGGY
       
     </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
+    
+    
+    
 
     <footer class="post-footer">
-      
-
-      
-
-      
-      
         <div class="post-eof"></div>
-      
     </footer>
+  </div>
+  
+  
+  
   </article>
-
 
     
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/43/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/43/">43</a><span class="page-number current">44</span><a class="page-number" href="/blog/page/45/">45</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/66/">66</a><a class="extend next" rel="next" href="/blog/page/45/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/43/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/43/">43</a><span class="page-number current">44</span><a class="page-number" href="/blog/page/45/">45</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/66/">66</a><a class="extend next" rel="next" href="/blog/page/45/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
-
 
 
           </div>
           
 
-
-          
-
         </div>
-        
           
   
   <div class="sidebar-toggle">
@@ -1083,153 +1081,212 @@ ZIGGY
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
-      
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
 
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Leo Liang</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">328</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
       
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/blog/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="feed-link motion-element">
+    <a href="/blog/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars.io/gravatar/leoliang@gmail.com"
-               alt="Leo Liang" />
-          <p class="site-author-name" itemprop="name">Leo Liang</p>
-          <p class="site-description motion-element" itemprop="description"></p>
+
+
         </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/blog/archives">
-              <span class="site-state-item-count">328</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/blog/tags">
-                <span class="site-state-item-count">52</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/blog/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-      </section>
-
-      
+      </div>
 
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Leo Liang</span>
 </div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
 
         
+
+
+
+
+
+
+
 
         
       </div>
     </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+
   </div>
 
   
+  <script src="/blog/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
+  <script src="/blog/js/utils.js?v=7.2.0"></script>
+  <script src="/blog/js/motion.js?v=7.2.0"></script>
 
-
-
-
-
-
+  
+  <script src="/blog/js/affix.js?v=7.2.0"></script>
+  <script src="/blog/js/schemes/pisces.js?v=7.2.0"></script>
 
 
 
   
 
+  <script src="/blog/js/next-boot.js?v=7.2.0"></script>
 
-
-  
-  <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.2"></script>
-
-  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.2"></script>
-
-
-
-  
   
 
   
@@ -1237,155 +1294,45 @@ ZIGGY
   
 
 
-  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.2"></script>
-
-
-
-  
-
-
-
   
 
 
 
 
-  
-  
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length == 0) {
-       search_path = "search.xml";
-    }
-    var path = "/blog/" + search_path;
-    // monitor main search box;
-
-    function proceedsearch() {
-      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-    'use strict';
-    $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function( xmlResponse ) {
-            // get the contents from search data
-            isfetched = true;
-            $('.popup').detach().appendTo('.header-inner');
-            var datas = $( "entry", xmlResponse ).map(function() {
-                return {
-                    title: $( "title", this ).text(),
-                    content: $("content",this).text(),
-                    url: $( "url" , this).text()
-                };
-            }).get();
-            var $input = document.getElementById(search_id);
-            var $resultContent = document.getElementById(content_id);
-            $input.addEventListener('input', function(){
-                var matchcounts = 0;
-                var str='<ul class=\"search-result-list\">';
-                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                $resultContent.innerHTML = "";
-                if (this.value.trim().length > 1) {
-                // perform local searching
-                datas.forEach(function(data) {
-                    var isMatch = false;
-                    var content_index = [];
-                    var data_title = data.title.trim().toLowerCase();
-                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                    var data_url = decodeURIComponent(data.url);
-                    var index_title = -1;
-                    var index_content = -1;
-                    var first_occur = -1;
-                    // only match artiles with not empty titles and contents
-                    if(data_title != '') {
-                        keywords.forEach(function(keyword, i) {
-                            index_title = data_title.indexOf(keyword);
-                            index_content = data_content.indexOf(keyword);
-                            if( index_title >= 0 || index_content >= 0 ){
-                                isMatch = true;
-								if (i == 0) {
-                                    first_occur = index_content;
-                                }
-                            } 
-							
-                        });
-                    }
-                    // show search results
-                    if (isMatch) {
-                        matchcounts += 1;
-                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                        var content = data.content.trim().replace(/<[^>]+>/g,"");
-                        if (first_occur >= 0) {
-                            // cut out 100 characters
-                            var start = first_occur - 20;
-                            var end = first_occur + 80;
-                            if(start < 0){
-                                start = 0;
-                            }
-                            if(start == 0){
-                                end = 50;
-                            }
-                            if(end > content.length){
-                                end = content.length;
-                            }
-                            var match_content = content.substring(start, end);
-                            // highlight all keywords
-                            keywords.forEach(function(keyword){
-                                var regS = new RegExp(keyword, "gi");
-                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                            });
-
-                            str += "<p class=\"search-result\">" + match_content +"...</p>"
-                        }
-                        str += "</li>";
-                    }
-                })};
-                str += "</ul>";
-                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-                $resultContent.innerHTML = str;
-            });
-            proceedsearch();
-        }
-    });}
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-
-    });
-
-    $('.popup-btn-close').click(function(e){
-      $('.popup').hide();
-      $(".popoverlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-  </script>
 
 
-  
 
-  
 
-  
 
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/blog/js/local-search.js?v=7.2.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
 
 </body>

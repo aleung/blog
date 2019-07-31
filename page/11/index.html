@@ -1,310 +1,291 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
-  
 
 
-<html class="theme-next muse use-motion">
+<html class="theme-next gemini use-motion" lang="zh-CN">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=7.2.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=7.2.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=7.2.0">
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=7.2.0" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css?v=7.2.0">
 
 
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
 
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/blog/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-
-  <link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.2" />
-
-
-
-
-
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="Good good study, day day up">
-<meta property="og:url" content="http://aleung.github.io/blog/page/11/index.html">
-<meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Good good study, day day up">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
+    root: '/blog/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},
+    search: {
+      root: '/blog/',
+      path: 'search.xml'
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
     }
   };
 </script>
 
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Good good study, day day up">
+<meta property="og:url" content="http://aleung.github.io/blog/page/11/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Good good study, day day up">
+  <link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
+  <link rel="canonical" href="http://aleung.github.io/blog/page/11/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Good good study, day day up</title>
+  
 
 
 
-  <link rel="canonical" href="http://aleung.github.io/blog/page/11/"/>
 
 
-  <title> Good good study, day day up </title>
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
 </head>
 
-<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
-  
-
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-right page-home">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
 
-  <div class="custom-logo-site-title">
-    <a href="/blog/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Good good study, day day up</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Good good study, day day up</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">aleung的学习笔记, aleung的idea</p>
+      
   </div>
-  <p class="site-subtitle">aleung的学习笔记, aleung的idea</p>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
+
 
 <nav class="site-nav">
-  
-
-  
     <ul id="menu" class="menu">
-      
         
-        <li class="menu-item menu-item-home">
-          <a href="/blog/" rel="section">
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/blog/archives" rel="section">
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/blog/tags" rel="section">
-            
-            标签
-          </a>
-        </li>
+          
+          <li class="menu-item menu-item-tags">
       
-        
-        <li class="menu-item menu-item-schedule">
-          <a href="/blog/schedule" rel="section">
-            
-            日程
-          </a>
-        </li>
+    
       
+    
 
+    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">52</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
       
+    
+      
+    
+
+    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">328</span></a>
+
+  </li>
         <li class="menu-item menu-item-search">
+          <a href="javascript:;" class="popup-trigger">
           
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-            搜索
-          </a>
+            <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
         </li>
       
     </ul>
-  
-
-  
     <div class="site-search">
       
-  <div class="popup">
- <span class="search-icon fa fa-search"></span>
- <input type="text" id="local-search-input">
- <div id="local-search-result"></div>
- <span class="popup-btn-close">close</span>
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
 </div>
 
 
     </div>
-  
 </nav>
 
- </div>
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+            
+
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
-    
       
 
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2013/02/09/beginning-r/">
 
-  
-  
-  
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
       <header class="post-header">
 
         
-        
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/blog/2013/02/09/beginning-r/" itemprop="url">
-                  R初略学习笔记
-                </a>
+                
+                <a href="/blog/2013/02/09/beginning-r/" class="post-title-link" itemprop="url">R初略学习笔记</a>
               
             
           </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2013-02-09 14:18:00" itemprop="dateCreated datePublished" datetime="2013-02-09T14:18:00+08:00">2013-02-09</time>
             </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-02-09T14:18:00+08:00" content="2013-02-09">
-              2013-02-09
-            </time>
-          </span>
-
           
+            
 
-          
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
             
           
 
-          
+          <br>
 
-          
-          
-
-          
         </div>
       </header>
+
     
-
-
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           
             <h2 id="包管理"><a href="#包管理" class="headerlink" title="包管理"></a>包管理</h2><p>从CRAN安装一个包：<code>install.packages(&quot;pkg_name&quot;)</code></p>
 <p>加载包：<code>library(package)</code></p>
@@ -609,92 +590,92 @@ parallel(data)
       
     </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
+    
+    
+    
 
     <footer class="post-footer">
-      
-
-      
-
-      
-      
         <div class="post-eof"></div>
-      
     </footer>
+  </div>
+  
+  
+  
   </article>
 
-
     
       
 
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2013/01/08/keyboard-and-mouse/">
 
-  
-  
-  
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
       <header class="post-header">
 
         
-        
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/blog/2013/01/08/keyboard-and-mouse/" itemprop="url">
-                  人體工學鍵盤鼠標組合
-                </a>
+                
+                <a href="/blog/2013/01/08/keyboard-and-mouse/" class="post-title-link" itemprop="url">人體工學鍵盤鼠標組合</a>
               
             
           </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2013-01-08 23:00:00" itemprop="dateCreated datePublished" datetime="2013-01-08T23:00:00+08:00">2013-01-08</time>
             </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-01-08T23:00:00+08:00" content="2013-01-08">
-              2013-01-08
-            </time>
-          </span>
-
           
+            
 
-          
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
             
           
 
-          
+          <br>
 
-          
-          
-
-          
         </div>
       </header>
+
     
-
-
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           
             <p>作為悲催的程序猿，每天的大部份時間都是陪伴鼠標鍵盤度過的，一套合適的鼠標鍵盤非常重要，可以降低得職業病的機率。尋找人體工學的鼠標鍵盤並不容易，現在這套用了好些時間了，感覺很滿意。</p>
 <img src="/blog/attachments/2013/1/keyboard_mouse.jpg">
@@ -713,92 +694,92 @@ parallel(data)
       
     </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
+    
+    
+    
 
     <footer class="post-footer">
-      
-
-      
-
-      
-      
         <div class="post-eof"></div>
-      
     </footer>
+  </div>
+  
+  
+  
   </article>
 
-
     
       
 
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2012/12/30/mi2-usb-debug-on-osx/">
 
-  
-  
-  
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
       <header class="post-header">
 
         
-        
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/blog/2012/12/30/mi2-usb-debug-on-osx/" itemprop="url">
-                  怎样在OSX上adb连接小米2
-                </a>
+                
+                <a href="/blog/2012/12/30/mi2-usb-debug-on-osx/" class="post-title-link" itemprop="url">怎样在OSX上adb连接小米2</a>
               
             
           </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2012-12-30 20:24:00" itemprop="dateCreated datePublished" datetime="2012-12-30T20:24:00+08:00">2012-12-30</time>
             </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-12-30T20:24:00+08:00" content="2012-12-30">
-              2012-12-30
-            </time>
-          </span>
-
           
+            
 
-          
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
             
           
 
-          
+          <br>
 
-          
-          
-
-          
         </div>
       </header>
+
     
-
-
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           
             <p>小米2手机在Mac OSX上，adb识别不到设备，Eclipse的DDMS也连不上设备，这样手机就不能用来开发了。实际上，只有在Windows上才需要安装USB驱动程序，在Linux、OSX上并不需要，设别不到小米2手机是因为adb不知道这手机的USB Vendor ID。Android SDK<a href="http://developer.android.com/tools/device.html" target="_blank" rel="noopener">文档</a>里就列出了一些Android设备厂商的vendor ID，不过当然不包括小米，因此要自己找出小米的vendor ID。用IORegistryExplorer（据说是包含在Developer Tool里，反正我的机器上装了）可以查看连接上的USB设备的信息。选择IOUSB，可以看到名为“MI 2”的设备，idVendor是0x2717。</p>
 <p>将这个Vendor ID作为独立一行加进文件 ~/.android/adb_usb.ini 中。装了Android SDK这个目录和文件应该就存在的，如果不存在就自己创建。修改完adb_usb.ini后执行 adb kill-server 重启adb，再执行 adb devices，就能看到小米2手机了。再打开Eclipse，也能够正常设别到手机，一切OK。</p>
@@ -809,92 +790,92 @@ parallel(data)
       
     </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
+    
+    
+    
 
     <footer class="post-footer">
-      
-
-      
-
-      
-      
         <div class="post-eof"></div>
-      
     </footer>
+  </div>
+  
+  
+  
   </article>
 
-
     
       
 
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2012/12/23/mi2/">
 
-  
-  
-  
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
       <header class="post-header">
 
         
-        
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/blog/2012/12/23/mi2/" itemprop="url">
-                  四儿子无望，粗粮也好吧
-                </a>
+                
+                <a href="/blog/2012/12/23/mi2/" class="post-title-link" itemprop="url">四儿子无望，粗粮也好吧</a>
               
             
           </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2012-12-23 14:03:00" itemprop="dateCreated datePublished" datetime="2012-12-23T14:03:00+08:00">2012-12-23</time>
             </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-12-23T14:03:00+08:00" content="2012-12-23">
-              2012-12-23
-            </time>
-          </span>
-
           
+            
 
-          
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
             
           
 
-          
+          <br>
 
-          
-          
-
-          
         </div>
       </header>
+
     
-
-
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           
             <img src="/blog/attachments/2012/12/mi2_focus_01s.jpg">
 <p>Xperia U 手機用了半年，<a href="/2012/07/22/xperia-u/">開始感覺</a>還不錯，可是升級到ICS之後就慢得不行，歸咎下來應該還是因為RAM太小只有512M。於是動了換機的念頭。本來看中的是人稱Google四兒子的 Nexus 4，高配置白菜價，還有Google最新系統的保證，可是開賣以來奇貨可居，市場價炒到上三千。幾個月內都是沒什麼希望買到了。本來我是沒有關注小米2的，偶然的機會朋友可以買到現貨，問我要不要，上網查了一輪，發現小米2也不錯，於是就買了。用了10天，感覺挺滿意。</p>
@@ -909,92 +890,92 @@ parallel(data)
       
     </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
+    
+    
+    
 
     <footer class="post-footer">
-      
-
-      
-
-      
-      
         <div class="post-eof"></div>
-      
     </footer>
+  </div>
+  
+  
+  
   </article>
 
-
     
       
 
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2012/12/11/my-first-half-marathon/">
 
-  
-  
-  
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
       <header class="post-header">
 
         
-        
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/blog/2012/12/11/my-first-half-marathon/" itemprop="url">
-                  我的首個半馬拉松
-                </a>
+                
+                <a href="/blog/2012/12/11/my-first-half-marathon/" class="post-title-link" itemprop="url">我的首個半馬拉松</a>
               
             
           </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2012-12-11 22:25:00" itemprop="dateCreated datePublished" datetime="2012-12-11T22:25:00+08:00">2012-12-11</time>
             </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-12-11T22:25:00+08:00" content="2012-12-11">
-              2012-12-11
-            </time>
-          </span>
-
           
+            
 
-          
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
             
           
 
-          
+          <br>
 
-          
-          
-
-          
         </div>
       </header>
+
     
-
-
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           
             <p>11月18日，廣州首屆馬拉松賽，也是我跑的第一次半馬拉松。過去大半個月了，還是記錄一下吧。</p>
 <p>看回以前寫的blog，應該是在2005年底開始跑步的，也不記得當時爲什麼突然有了要經常性跑步的想法。那時傍晚下班後在天河公園跑，跑步是作爲鍛鍊和放鬆，一次跑半小時左右，最多5、6公里，根本不敢想象自己能跑21公里的半馬拉松。雖然跑了好多年，但都是斷斷續續，有時一停就幾個月，跑的頻率也低，最多一週兩次，一直都是維持在只能連續跑5公里左右水平。</p>
@@ -1007,7 +988,11 @@ parallel(data)
 <p>跑完時比較興奮，發了好幾條tweets：</p>
 <blockquote>
 <p>我的首个半马拉松，官方計時1:51:23，完成了两小时内的目标。前十公里留力比较多，下次可以不用那么保守。</p>
+</blockquote>
+<blockquote>
 <p>參加大規模長跑活動的感覺跟平常自己跑很不一樣，喜歡跑步的朋友都值得嘗試一下，無所謂速度，能在關門時間前跑完就行了。很多人一起跑，興奮度高很多，超過自己平常速度也會覺得很輕鬆；寬闊的馬路車輛全不見了，讓你暢快的跑在路中心；路旁觀衆的鼓勵讓你心中充滿溫暖。</p>
+</blockquote>
+<blockquote>
 <p>马拉松赛道上，视障参赛者由引导员陪同赛跑，两人的手用带子系在一起。路上见到好多组，男女都有。看到他们，我觉得很感动，我们跑步，再困难也难不过他们。</p>
 </blockquote>
 <p>跑完後，又沒有了目標了。不知道以後會不會去跑個全馬，半馬跟全馬的區別還是挺大的，對我來說最重要的是不要把膝蓋跑傷了，享受跑步的樂趣，而不是追求成績。</p>
@@ -1017,45 +1002,32 @@ parallel(data)
       
     </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
+    
+    
+    
 
     <footer class="post-footer">
-      
-
-      
-
-      
-      
         <div class="post-eof"></div>
-      
     </footer>
+  </div>
+  
+  
+  
   </article>
-
 
     
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/blog/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/66/">66</a><a class="extend next" rel="next" href="/blog/page/12/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/blog/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/66/">66</a><a class="extend next" rel="next" href="/blog/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
-
 
 
           </div>
           
 
-
-          
-
         </div>
-        
           
   
   <div class="sidebar-toggle">
@@ -1069,153 +1041,212 @@ parallel(data)
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
-      
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
 
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Leo Liang</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">328</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
       
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/blog/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="feed-link motion-element">
+    <a href="/blog/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars.io/gravatar/leoliang@gmail.com"
-               alt="Leo Liang" />
-          <p class="site-author-name" itemprop="name">Leo Liang</p>
-          <p class="site-description motion-element" itemprop="description"></p>
+
+
         </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/blog/archives">
-              <span class="site-state-item-count">328</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/blog/tags">
-                <span class="site-state-item-count">52</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/blog/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-      </section>
-
-      
+      </div>
 
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Leo Liang</span>
 </div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
 
         
+
+
+
+
+
+
+
 
         
       </div>
     </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+
   </div>
 
   
+  <script src="/blog/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
+  <script src="/blog/js/utils.js?v=7.2.0"></script>
+  <script src="/blog/js/motion.js?v=7.2.0"></script>
 
-
-
-
-
-
+  
+  <script src="/blog/js/affix.js?v=7.2.0"></script>
+  <script src="/blog/js/schemes/pisces.js?v=7.2.0"></script>
 
 
 
   
 
+  <script src="/blog/js/next-boot.js?v=7.2.0"></script>
 
-
-  
-  <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.2"></script>
-
-  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.2"></script>
-
-
-
-  
   
 
   
@@ -1223,155 +1254,45 @@ parallel(data)
   
 
 
-  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.2"></script>
-
-
-
-  
-
-
-
   
 
 
 
 
-  
-  
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length == 0) {
-       search_path = "search.xml";
-    }
-    var path = "/blog/" + search_path;
-    // monitor main search box;
-
-    function proceedsearch() {
-      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-    'use strict';
-    $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function( xmlResponse ) {
-            // get the contents from search data
-            isfetched = true;
-            $('.popup').detach().appendTo('.header-inner');
-            var datas = $( "entry", xmlResponse ).map(function() {
-                return {
-                    title: $( "title", this ).text(),
-                    content: $("content",this).text(),
-                    url: $( "url" , this).text()
-                };
-            }).get();
-            var $input = document.getElementById(search_id);
-            var $resultContent = document.getElementById(content_id);
-            $input.addEventListener('input', function(){
-                var matchcounts = 0;
-                var str='<ul class=\"search-result-list\">';
-                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                $resultContent.innerHTML = "";
-                if (this.value.trim().length > 1) {
-                // perform local searching
-                datas.forEach(function(data) {
-                    var isMatch = false;
-                    var content_index = [];
-                    var data_title = data.title.trim().toLowerCase();
-                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                    var data_url = decodeURIComponent(data.url);
-                    var index_title = -1;
-                    var index_content = -1;
-                    var first_occur = -1;
-                    // only match artiles with not empty titles and contents
-                    if(data_title != '') {
-                        keywords.forEach(function(keyword, i) {
-                            index_title = data_title.indexOf(keyword);
-                            index_content = data_content.indexOf(keyword);
-                            if( index_title >= 0 || index_content >= 0 ){
-                                isMatch = true;
-								if (i == 0) {
-                                    first_occur = index_content;
-                                }
-                            } 
-							
-                        });
-                    }
-                    // show search results
-                    if (isMatch) {
-                        matchcounts += 1;
-                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                        var content = data.content.trim().replace(/<[^>]+>/g,"");
-                        if (first_occur >= 0) {
-                            // cut out 100 characters
-                            var start = first_occur - 20;
-                            var end = first_occur + 80;
-                            if(start < 0){
-                                start = 0;
-                            }
-                            if(start == 0){
-                                end = 50;
-                            }
-                            if(end > content.length){
-                                end = content.length;
-                            }
-                            var match_content = content.substring(start, end);
-                            // highlight all keywords
-                            keywords.forEach(function(keyword){
-                                var regS = new RegExp(keyword, "gi");
-                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                            });
-
-                            str += "<p class=\"search-result\">" + match_content +"...</p>"
-                        }
-                        str += "</li>";
-                    }
-                })};
-                str += "</ul>";
-                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-                $resultContent.innerHTML = str;
-            });
-            proceedsearch();
-        }
-    });}
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-
-    });
-
-    $('.popup-btn-close').click(function(e){
-      $('.popup').hide();
-      $(".popoverlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-  </script>
 
 
-  
 
-  
 
-  
 
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/blog/js/local-search.js?v=7.2.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
 
 </body>

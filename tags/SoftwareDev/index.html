@@ -1,271 +1,259 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
-  
 
 
-<html class="theme-next muse use-motion">
+<html class="theme-next gemini use-motion" lang="zh-CN">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=7.2.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=7.2.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=7.2.0">
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=7.2.0" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css?v=7.2.0">
 
 
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
 
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/blog/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-
-  <link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.2" />
-
-
-
-
-
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="Good good study, day day up">
-<meta property="og:url" content="http://aleung.github.io/blog/tags/SoftwareDev/index.html">
-<meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Good good study, day day up">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
+    root: '/blog/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},
+    search: {
+      root: '/blog/',
+      path: 'search.xml'
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
     }
   };
 </script>
 
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Good good study, day day up">
+<meta property="og:url" content="http://aleung.github.io/blog/tags/SoftwareDev/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Good good study, day day up">
+  <link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
+  <link rel="canonical" href="http://aleung.github.io/blog/tags/SoftwareDev/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>标签: SoftwareDev | Good good study, day day up</title>
+  
 
 
 
-  <link rel="canonical" href="http://aleung.github.io/blog/tags/SoftwareDev/"/>
 
 
-  <title> 标签: SoftwareDev | Good good study, day day up </title>
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
 </head>
 
-<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
-  
-
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container sidebar-position-right ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
 
-  <div class="custom-logo-site-title">
-    <a href="/blog/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Good good study, day day up</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Good good study, day day up</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">aleung的学习笔记, aleung的idea</p>
+      
   </div>
-  <p class="site-subtitle">aleung的学习笔记, aleung的idea</p>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
+
 
 <nav class="site-nav">
-  
-
-  
     <ul id="menu" class="menu">
-      
         
-        <li class="menu-item menu-item-home">
-          <a href="/blog/" rel="section">
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/blog/archives" rel="section">
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/blog/tags" rel="section">
-            
-            标签
-          </a>
-        </li>
+          
+          <li class="menu-item menu-item-tags menu-item-active">
       
-        
-        <li class="menu-item menu-item-schedule">
-          <a href="/blog/schedule" rel="section">
-            
-            日程
-          </a>
-        </li>
+    
       
+    
 
+    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">52</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
       
+    
+      
+    
+
+    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">328</span></a>
+
+  </li>
         <li class="menu-item menu-item-search">
+          <a href="javascript:;" class="popup-trigger">
           
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-            搜索
-          </a>
+            <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
         </li>
       
     </ul>
-  
-
-  
     <div class="site-search">
       
-  <div class="popup">
- <span class="search-icon fa fa-search"></span>
- <input type="text" id="local-search-input">
- <div id="local-search-result"></div>
- <span class="popup-btn-close">close</span>
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
 </div>
 
 
     </div>
-  
 </nav>
 
- </div>
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+            
+
+    
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        SoftwareDev
-        <small>标签</small>
-      </h2>
-    </div>
+  
+  
+  
+  <div class="post-block tag">
 
-    
-      
+    <div id="posts" class="posts-collapse">
+      <div class="collection-title">
+        <h1>SoftwareDev<small>标签</small>
+        </h1>
+      </div>
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2018/04/11/project-preset/" itemprop="url">
+            
+              <span itemprop="name">软件项目的标准配置和自动检查更新</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2018/04/11/project-preset/" itemprop="url">
-              
-                <span itemprop="name">软件项目的标准配置和自动检查更新</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2018-04-11T22:17:10+08:00"
-              content="2018-04-11" >
+              content="2018-04-11">
           04-11
         </time>
       </div>
@@ -274,26 +262,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2017/09/07/docker-dev-env/" itemprop="url">
+            
+              <span itemprop="name">Microservice development environment make easy with Docker</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2017/09/07/docker-dev-env/" itemprop="url">
-              
-                <span itemprop="name">Microservice development environment make easy with Docker</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2017-09-07T13:37:23+08:00"
-              content="2017-09-07" >
+              content="2017-09-07">
           09-07
         </time>
       </div>
@@ -302,26 +289,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2017/06/21/pact/" itemprop="url">
+            
+              <span itemprop="name">Pact - 微服务的契约测试</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2017/06/21/pact/" itemprop="url">
-              
-                <span itemprop="name">Pact - 微服务的契约测试</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2017-06-21T14:52:23+08:00"
-              content="2017-06-21" >
+              content="2017-06-21">
           06-21
         </time>
       </div>
@@ -330,26 +316,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2017/01/06/Use-OpenJDK-in-proprietary-software/" itemprop="url">
+            
+              <span itemprop="name">在非GPL应用中使用OpenJDK的法律问题</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2017/01/06/Use-OpenJDK-in-proprietary-software/" itemprop="url">
-              
-                <span itemprop="name">在非GPL应用中使用OpenJDK的法律问题</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2017-01-06T22:56:07+08:00"
-              content="2017-01-06" >
+              content="2017-01-06">
           01-06
         </time>
       </div>
@@ -358,26 +343,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2016/11/05/Consul-unstable/" itemprop="url">
+            
+              <span itemprop="name">Consul 集群不稳定的分析</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2016/11/05/Consul-unstable/" itemprop="url">
-              
-                <span itemprop="name">Consul 集群不稳定的分析</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2016-11-05T11:22:20+08:00"
-              content="2016-11-05" >
+              content="2016-11-05">
           11-05
         </time>
       </div>
@@ -386,26 +370,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2015/09/20/quality-of-free-software/" itemprop="url">
+            
+              <span itemprop="name">自由软件质量不如软件企业自己开发的可靠？</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2015/09/20/quality-of-free-software/" itemprop="url">
-              
-                <span itemprop="name">自由软件质量不如软件企业自己开发的可靠？</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2015-09-20T12:31:29+08:00"
-              content="2015-09-20" >
+              content="2015-09-20">
           09-20
         </time>
       </div>
@@ -414,26 +397,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2015/07/28/CAP/" itemprop="url">
+            
+              <span itemprop="name">CAP</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2015/07/28/CAP/" itemprop="url">
-              
-                <span itemprop="name">CAP</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2015-07-28T00:00:00+08:00"
-              content="2015-07-28" >
+              content="2015-07-28">
           07-28
         </time>
       </div>
@@ -442,26 +424,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2015/04/03/jekyll-swagger-ui/" itemprop="url">
+            
+              <span itemprop="name">Jekyll 与 Swagger UI 集成</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2015/04/03/jekyll-swagger-ui/" itemprop="url">
-              
-                <span itemprop="name">Jekyll 与 Swagger UI 集成</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2015-04-03T00:00:00+08:00"
-              content="2015-04-03" >
+              content="2015-04-03">
           04-03
         </time>
       </div>
@@ -470,26 +451,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2015/01/25/fp/" itemprop="url">
+            
+              <span itemprop="name"> 同事们关于 FP 语言的讨论</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2015/01/25/fp/" itemprop="url">
-              
-                <span itemprop="name"> 同事们关于 FP 语言的讨论</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2015-01-25T12:41:14+08:00"
-              content="2015-01-25" >
+              content="2015-01-25">
           01-25
         </time>
       </div>
@@ -498,26 +478,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2015/01/06/haskell/" itemprop="url">
+            
+              <span itemprop="name">Haskell</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2015/01/06/haskell/" itemprop="url">
-              
-                <span itemprop="name">Haskell</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2015-01-06T22:03:35+08:00"
-              content="2015-01-06" >
+              content="2015-01-06">
           01-06
         </time>
       </div>
@@ -526,26 +505,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2014/12/26/getting-start-with-sbt/" itemprop="url">
+            
+              <span itemprop="name">Getting start with sbt</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2014/12/26/getting-start-with-sbt/" itemprop="url">
-              
-                <span itemprop="name">Getting start with sbt</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2014-12-26T17:17:50+08:00"
-              content="2014-12-26" >
+              content="2014-12-26">
           12-26
         </time>
       </div>
@@ -554,26 +532,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2014/12/26/ivy-introduction-for-maven-user/" itemprop="url">
+            
+              <span itemprop="name">Ivy Introduction for Maven User</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2014/12/26/ivy-introduction-for-maven-user/" itemprop="url">
-              
-                <span itemprop="name">Ivy Introduction for Maven User</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2014-12-26T01:11:52+08:00"
-              content="2014-12-26" >
+              content="2014-12-26">
           12-26
         </time>
       </div>
@@ -582,26 +559,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2014/12/14/api-metrics-demo/" itemprop="url">
+            
+              <span itemprop="name">API metrics demo</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2014/12/14/api-metrics-demo/" itemprop="url">
-              
-                <span itemprop="name">API metrics demo</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2014-12-14T17:21:17+08:00"
-              content="2014-12-14" >
+              content="2014-12-14">
           12-14
         </time>
       </div>
@@ -610,26 +586,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2014/08/23/plantuml/" itemprop="url">
+            
+              <span itemprop="name">PlantUML 简介</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2014/08/23/plantuml/" itemprop="url">
-              
-                <span itemprop="name">PlantUML 简介</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2014-08-23T16:57:33+08:00"
-              content="2014-08-23" >
+              content="2014-08-23">
           08-23
         </time>
       </div>
@@ -638,26 +613,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2014/01/20/text-to-uml-diagram/" itemprop="url">
+            
+              <span itemprop="name">Text to UML diagram</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2014/01/20/text-to-uml-diagram/" itemprop="url">
-              
-                <span itemprop="name">Text to UML diagram</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2014-01-20T22:10:00+08:00"
-              content="2014-01-20" >
+              content="2014-01-20">
           01-20
         </time>
       </div>
@@ -666,26 +640,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2013/12/08/intercept-android-https-traffic/" itemprop="url">
+            
+              <span itemprop="name">拦截Android应用HTTPS通讯内容</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2013/12/08/intercept-android-https-traffic/" itemprop="url">
-              
-                <span itemprop="name">拦截Android应用HTTPS通讯内容</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2013-12-08T15:03:00+08:00"
-              content="2013-12-08" >
+              content="2013-12-08">
           12-08
         </time>
       </div>
@@ -694,26 +667,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2013/10/21/du-of-software-design/" itemprop="url">
+            
+              <span itemprop="name">软件设计之度</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2013/10/21/du-of-software-design/" itemprop="url">
-              
-                <span itemprop="name">软件设计之度</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2013-10-21T22:30:00+08:00"
-              content="2013-10-21" >
+              content="2013-10-21">
           10-21
         </time>
       </div>
@@ -722,26 +694,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2013/03/30/maven-unique-non-unique-snapshot-conflict/" itemprop="url">
+            
+              <span itemprop="name">Solving Maven unique and non-unique snapshot conflict</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2013/03/30/maven-unique-non-unique-snapshot-conflict/" itemprop="url">
-              
-                <span itemprop="name">Solving Maven unique and non-unique snapshot conflict</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2013-03-30T00:04:00+08:00"
-              content="2013-03-30" >
+              content="2013-03-30">
           03-30
         </time>
       </div>
@@ -750,26 +721,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2013/03/22/clean-aged-artifacts-from-artifactory/" itemprop="url">
+            
+              <span itemprop="name">Clean aged artifacts from Artifactory</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2013/03/22/clean-aged-artifacts-from-artifactory/" itemprop="url">
-              
-                <span itemprop="name">Clean aged artifacts from Artifactory</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2013-03-22T23:21:00+08:00"
-              content="2013-03-22" >
+              content="2013-03-22">
           03-22
         </time>
       </div>
@@ -778,26 +748,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2013/03/19/maven-batch-deploy-artifacts/" itemprop="url">
+            
+              <span itemprop="name">Batch deploy artifacts to Maven repository</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2013/03/19/maven-batch-deploy-artifacts/" itemprop="url">
-              
-                <span itemprop="name">Batch deploy artifacts to Maven repository</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2013-03-19T21:32:00+08:00"
-              content="2013-03-19" >
+              content="2013-03-19">
           03-19
         </time>
       </div>
@@ -806,26 +775,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2012/10/06/change-locale-in-android-application/" itemprop="url">
+            
+              <span itemprop="name">Android: 在應用中設定locale</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2012/10/06/change-locale-in-android-application/" itemprop="url">
-              
-                <span itemprop="name">Android: 在應用中設定locale</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2012-10-06T00:25:00+08:00"
-              content="2012-10-06" >
+              content="2012-10-06">
           10-06
         </time>
       </div>
@@ -834,26 +802,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2012/09/17/Java-volatile-/" itemprop="url">
+            
+              <span itemprop="name">Java的volatile关键字的作用</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2012/09/17/Java-volatile-/" itemprop="url">
-              
-                <span itemprop="name">Java的volatile关键字的作用</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2012-09-17T00:00:00+08:00"
-              content="2012-09-17" >
+              content="2012-09-17">
           09-17
         </time>
       </div>
@@ -862,26 +829,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2012/07/07/spring-bean-reference-injection-definition-by-external-configuration/" itemprop="url">
+            
+              <span itemprop="name">Spring bean reference injection definition by external configuration</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2012/07/07/spring-bean-reference-injection-definition-by-external-configuration/" itemprop="url">
-              
-                <span itemprop="name">Spring bean reference injection definition by external configuration</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2012-07-07T21:38:00+08:00"
-              content="2012-07-07" >
+              content="2012-07-07">
           07-07
         </time>
       </div>
@@ -890,26 +856,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2012/06/30/redesign-of-software-development-workspace/" itemprop="url">
+            
+              <span itemprop="name">软件团队工作空间再设计</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2012/06/30/redesign-of-software-development-workspace/" itemprop="url">
-              
-                <span itemprop="name">软件团队工作空间再设计</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2012-06-30T22:24:00+08:00"
-              content="2012-06-30" >
+              content="2012-06-30">
           06-30
         </time>
       </div>
@@ -918,26 +883,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2012/06/09/Some-reading-record/" itemprop="url">
+            
+              <span itemprop="name">一些读书记录</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2012/06/09/Some-reading-record/" itemprop="url">
-              
-                <span itemprop="name">一些读书记录</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2012-06-09T11:56:00+08:00"
-              content="2012-06-09" >
+              content="2012-06-09">
           06-09
         </time>
       </div>
@@ -946,26 +910,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2012/03/10/By-mobile-phone-remote-control-Linux-backstage-radio-broadcast-requirements/" itemprop="url">
+            
+              <span itemprop="name">用手机遥控Linux后台播放豆瓣电台</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2012/03/10/By-mobile-phone-remote-control-Linux-backstage-radio-broadcast-requirements/" itemprop="url">
-              
-                <span itemprop="name">用手机遥控Linux后台播放豆瓣电台</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2012-03-10T00:35:00+08:00"
-              content="2012-03-10" >
+              content="2012-03-10">
           03-10
         </time>
       </div>
@@ -974,26 +937,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2011/12/24/Running-training-software-development-XiaoJi-RunningCadence-step-frequency/" itemprop="url">
+            
+              <span itemprop="name">跑步步频训练软件 RunningCadence 开发小记</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2011/12/24/Running-training-software-development-XiaoJi-RunningCadence-step-frequency/" itemprop="url">
-              
-                <span itemprop="name">跑步步频训练软件 RunningCadence 开发小记</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2011-12-24T00:16:00+08:00"
-              content="2011-12-24" >
+              content="2011-12-24">
           12-24
         </time>
       </div>
@@ -1002,26 +964,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2011/11/24/NoClassDefFoundError/" itemprop="url">
+            
+              <span itemprop="name">NoClassDefFoundError</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2011/11/24/NoClassDefFoundError/" itemprop="url">
-              
-                <span itemprop="name">NoClassDefFoundError</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2011-11-24T17:35:00+08:00"
-              content="2011-11-24" >
+              content="2011-11-24">
           11-24
         </time>
       </div>
@@ -1030,26 +991,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2011/11/08/Dump-beans-information-from-live-Spring-application-context/" itemprop="url">
+            
+              <span itemprop="name">Dump beans information from live Spring application context</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2011/11/08/Dump-beans-information-from-live-Spring-application-context/" itemprop="url">
-              
-                <span itemprop="name">Dump beans information from live Spring application context</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2011-11-08T18:42:00+08:00"
-              content="2011-11-08" >
+              content="2011-11-08">
           11-08
         </time>
       </div>
@@ -1058,26 +1018,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2011/08/26/Maven-Lifecycle-Concepts/" itemprop="url">
+            
+              <span itemprop="name">Maven Lifecycle Concepts</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2011/08/26/Maven-Lifecycle-Concepts/" itemprop="url">
-              
-                <span itemprop="name">Maven Lifecycle Concepts</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2011-08-26T11:51:00+08:00"
-              content="2011-08-26" >
+              content="2011-08-26">
           08-26
         </time>
       </div>
@@ -1086,26 +1045,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2011/08/08/Maven-artifact-repository-setup-for-multiple-sites-team/" itemprop="url">
+            
+              <span itemprop="name">Maven artifact repository setup for multiple sites team</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2011/08/08/Maven-artifact-repository-setup-for-multiple-sites-team/" itemprop="url">
-              
-                <span itemprop="name">Maven artifact repository setup for multiple sites team</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2011-08-08T18:20:00+08:00"
-              content="2011-08-08" >
+              content="2011-08-08">
           08-08
         </time>
       </div>
@@ -1114,26 +1072,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2011/06/26/Determine-priority/" itemprop="url">
+            
+              <span itemprop="name">确定优先级</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2011/06/26/Determine-priority/" itemprop="url">
-              
-                <span itemprop="name">确定优先级</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2011-06-26T15:38:00+08:00"
-              content="2011-06-26" >
+              content="2011-06-26">
           06-26
         </time>
       </div>
@@ -1142,26 +1099,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2011/04/10/Drag-and-drop-list-view-on-Android/" itemprop="url">
+            
+              <span itemprop="name">Drag and drop list view on Android</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2011/04/10/Drag-and-drop-list-view-on-Android/" itemprop="url">
-              
-                <span itemprop="name">Drag and drop list view on Android</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2011-04-10T06:05:00+08:00"
-              content="2011-04-10" >
+              content="2011-04-10">
           04-10
         </time>
       </div>
@@ -1170,26 +1126,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2011/03/24/My-task-management-tools-function-prototype-has-been-completed/" itemprop="url">
+            
+              <span itemprop="name">我的任务管理工具功能原型已经完成</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2011/03/24/My-task-management-tools-function-prototype-has-been-completed/" itemprop="url">
-              
-                <span itemprop="name">我的任务管理工具功能原型已经完成</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2011-03-24T05:13:00+08:00"
-              content="2011-03-24" >
+              content="2011-03-24">
           03-24
         </time>
       </div>
@@ -1198,26 +1153,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2011/03/21/Diagram-of-WebLogic-MBean-navigation/" itemprop="url">
+            
+              <span itemprop="name">Diagram of WebLogic MBean navigation</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2011/03/21/Diagram-of-WebLogic-MBean-navigation/" itemprop="url">
-              
-                <span itemprop="name">Diagram of WebLogic MBean navigation</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2011-03-21T18:37:00+08:00"
-              content="2011-03-21" >
+              content="2011-03-21">
           03-21
         </time>
       </div>
@@ -1226,26 +1180,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2011/03/13/Sina-micro-bo-API-blacklist-terrible/" itemprop="url">
+            
+              <span itemprop="name">新浪微博API黑名单威武</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2011/03/13/Sina-micro-bo-API-blacklist-terrible/" itemprop="url">
-              
-                <span itemprop="name">新浪微博API黑名单威武</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2011-03-13T01:40:00+08:00"
-              content="2011-03-13" >
+              content="2011-03-13">
           03-13
         </time>
       </div>
@@ -1254,26 +1207,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2010/12/16/Android-activity-lifecycle-in-UML-state-machine-diagram/" itemprop="url">
+            
+              <span itemprop="name">Android activity lifecycle in UML state machine diagram</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2010/12/16/Android-activity-lifecycle-in-UML-state-machine-diagram/" itemprop="url">
-              
-                <span itemprop="name">Android activity lifecycle in UML state machine diagram</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2010-12-16T06:25:00+08:00"
-              content="2010-12-16" >
+              content="2010-12-16">
           12-16
         </time>
       </div>
@@ -1282,26 +1234,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2010/12/10/Tiny-HTTP-Server-by-Java/" itemprop="url">
+            
+              <span itemprop="name">Tiny HTTP Server by Java</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2010/12/10/Tiny-HTTP-Server-by-Java/" itemprop="url">
-              
-                <span itemprop="name">Tiny HTTP Server by Java</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2010-12-10T06:56:00+08:00"
-              content="2010-12-10" >
+              content="2010-12-10">
           12-10
         </time>
       </div>
@@ -1310,26 +1261,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2010/11/02/WebLogic-Resource-Adapter-JCA-WorkManager-/" itemprop="url">
+            
+              <span itemprop="name">WebLogic在非Resource Adapter里直接使用JCA WorkManager的失败尝试</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2010/11/02/WebLogic-Resource-Adapter-JCA-WorkManager-/" itemprop="url">
-              
-                <span itemprop="name">WebLogic在非Resource Adapter里直接使用JCA WorkManager的失败尝试</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2010-11-02T05:43:00+08:00"
-              content="2010-11-02" >
+              content="2010-11-02">
           11-02
         </time>
       </div>
@@ -1338,26 +1288,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2010/03/11/Study-of-the-issue-that-CXF-can-t-run-on-GlassFish/" itemprop="url">
+            
+              <span itemprop="name">Study of the issue that CXF can't run on GlassFish</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2010/03/11/Study-of-the-issue-that-CXF-can-t-run-on-GlassFish/" itemprop="url">
-              
-                <span itemprop="name">Study of the issue that CXF can't run on GlassFish</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2010-03-11T11:59:00+08:00"
-              content="2010-03-11" >
+              content="2010-03-11">
           03-11
         </time>
       </div>
@@ -1366,26 +1315,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2010/02/26/Two-questions-about-SIP-message-transport/" itemprop="url">
+            
+              <span itemprop="name">Two questions about SIP message transport</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2010/02/26/Two-questions-about-SIP-message-transport/" itemprop="url">
-              
-                <span itemprop="name">Two questions about SIP message transport</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2010-02-26T12:30:00+08:00"
-              content="2010-02-26" >
+              content="2010-02-26">
           02-26
         </time>
       </div>
@@ -1394,26 +1342,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2010/02/24/Illustration-Spring-ApplicationContext-in-enterprise-application/" itemprop="url">
+            
+              <span itemprop="name">图解：Spring ApplicationContext in enterprise application</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2010/02/24/Illustration-Spring-ApplicationContext-in-enterprise-application/" itemprop="url">
-              
-                <span itemprop="name">图解：Spring ApplicationContext in enterprise application</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2010-02-24T21:46:00+08:00"
-              content="2010-02-24" >
+              content="2010-02-24">
           02-24
         </time>
       </div>
@@ -1422,26 +1369,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2010/02/22/JSON-support-in-JAX-RS/" itemprop="url">
+            
+              <span itemprop="name">JSON support in JAX-RS</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2010/02/22/JSON-support-in-JAX-RS/" itemprop="url">
-              
-                <span itemprop="name">JSON support in JAX-RS</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2010-02-22T23:33:00+08:00"
-              content="2010-02-22" >
+              content="2010-02-22">
           02-22
         </time>
       </div>
@@ -1450,26 +1396,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2010/02/14/Basic-function-complete-can-open/" itemprop="url">
+            
+              <span itemprop="name">基本功能完备，可以公开了</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2010/02/14/Basic-function-complete-can-open/" itemprop="url">
-              
-                <span itemprop="name">基本功能完备，可以公开了</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2010-02-14T18:16:00+08:00"
-              content="2010-02-14" >
+              content="2010-02-14">
           02-14
         </time>
       </div>
@@ -1478,26 +1423,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2009/09/27/WebLogic-classloading/" itemprop="url">
+            
+              <span itemprop="name">WebLogic的classloading</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2009/09/27/WebLogic-classloading/" itemprop="url">
-              
-                <span itemprop="name">WebLogic的classloading</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2009-09-27T07:23:00+08:00"
-              content="2009-09-27" >
+              content="2009-09-27">
           09-27
         </time>
       </div>
@@ -1506,26 +1450,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2009/09/17/How-to-setup-hg-Mercurial-web-access/" itemprop="url">
+            
+              <span itemprop="name">How to setup hg (Mercurial) web access</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2009/09/17/How-to-setup-hg-Mercurial-web-access/" itemprop="url">
-              
-                <span itemprop="name">How to setup hg (Mercurial) web access</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2009-09-17T03:08:00+08:00"
-              content="2009-09-17" >
+              content="2009-09-17">
           09-17
         </time>
       </div>
@@ -1534,26 +1477,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2008/06/18/Line-break-in-MANIFEST-class-path/" itemprop="url">
+            
+              <span itemprop="name">Line break in MANIFEST class-path</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2008/06/18/Line-break-in-MANIFEST-class-path/" itemprop="url">
-              
-                <span itemprop="name">Line break in MANIFEST class-path</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2008-06-18T08:00:00+08:00"
-              content="2008-06-18" >
+              content="2008-06-18">
           06-18
         </time>
       </div>
@@ -1562,26 +1504,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2007/07/03/How-to-customize-Eclipse/" itemprop="url">
+            
+              <span itemprop="name">How to customize Eclipse</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2007/07/03/How-to-customize-Eclipse/" itemprop="url">
-              
-                <span itemprop="name">How to customize Eclipse</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2007-07-03T21:18:00+08:00"
-              content="2007-07-03" >
+              content="2007-07-03">
           07-03
         </time>
       </div>
@@ -1590,26 +1531,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2007/03/31/ClearCaseWeb/" itemprop="url">
+            
+              <span itemprop="name">ClearCaseWeb</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2007/03/31/ClearCaseWeb/" itemprop="url">
-              
-                <span itemprop="name">ClearCaseWeb</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2007-03-31T05:16:00+08:00"
-              content="2007-03-31" >
+              content="2007-03-31">
           03-31
         </time>
       </div>
@@ -1618,26 +1558,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2007/03/08/Understand-the-JVM-memory-management-and-garbage-collection/" itemprop="url">
+            
+              <span itemprop="name">了解JVM的内存管理与垃圾回收</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2007/03/08/Understand-the-JVM-memory-management-and-garbage-collection/" itemprop="url">
-              
-                <span itemprop="name">了解JVM的内存管理与垃圾回收</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2007-03-08T04:31:00+08:00"
-              content="2007-03-08" >
+              content="2007-03-08">
           03-08
         </time>
       </div>
@@ -1646,26 +1585,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2006/08/29/I-Love-Audio-Player-Basic-Design/" itemprop="url">
+            
+              <span itemprop="name">‘I Love’ audio player - basic design</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2006/08/29/I-Love-Audio-Player-Basic-Design/" itemprop="url">
-              
-                <span itemprop="name">‘I Love’ audio player - basic design</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2006-08-29T02:19:00+08:00"
-              content="2006-08-29" >
+              content="2006-08-29">
           08-29
         </time>
       </div>
@@ -1674,26 +1612,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2006/07/15/Embedded-script-/" itemprop="url">
+            
+              <span itemprop="name">Embedded script 初接触</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2006/07/15/Embedded-script-/" itemprop="url">
-              
-                <span itemprop="name">Embedded script 初接触</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2006-07-15T08:00:00+08:00"
-              content="2006-07-15" >
+              content="2006-07-15">
           07-15
         </time>
       </div>
@@ -1702,26 +1639,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2006/01/06/Version-control-with-UML-reverse-engineering/" itemprop="url">
+            
+              <span itemprop="name">Version control with UML reverse engineering</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2006/01/06/Version-control-with-UML-reverse-engineering/" itemprop="url">
-              
-                <span itemprop="name">Version control with UML reverse engineering</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2006-01-06T02:18:00+08:00"
-              content="2006-01-06" >
+              content="2006-01-06">
           01-06
         </time>
       </div>
@@ -1730,26 +1666,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2005/12/03/ACE-concept-map/" itemprop="url">
+            
+              <span itemprop="name">ACE concept map</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2005/12/03/ACE-concept-map/" itemprop="url">
-              
-                <span itemprop="name">ACE concept map</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2005-12-03T02:16:00+08:00"
-              content="2005-12-03" >
+              content="2005-12-03">
           12-03
         </time>
       </div>
@@ -1758,26 +1693,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2005/12/02/C-/" itemprop="url">
+            
+              <span itemprop="name">C++中生成格式化字符串方法的性能比较</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2005/12/02/C-/" itemprop="url">
-              
-                <span itemprop="name">C++中生成格式化字符串方法的性能比较</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2005-12-02T22:28:00+08:00"
-              content="2005-12-02" >
+              content="2005-12-02">
           12-02
         </time>
       </div>
@@ -1786,26 +1720,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2005/11/20/Solaris-aio-/" itemprop="url">
+            
+              <span itemprop="name">Solaris上使用aio的问题</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2005/11/20/Solaris-aio-/" itemprop="url">
-              
-                <span itemprop="name">Solaris上使用aio的问题</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2005-11-20T02:17:00+08:00"
-              content="2005-11-20" >
+              content="2005-11-20">
           11-20
         </time>
       </div>
@@ -1814,26 +1747,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2005/11/10/Memory-allocator-/" itemprop="url">
+            
+              <span itemprop="name">Memory allocator影响多线程程序效率</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2005/11/10/Memory-allocator-/" itemprop="url">
-              
-                <span itemprop="name">Memory allocator影响多线程程序效率</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2005-11-10T02:14:00+08:00"
-              content="2005-11-10" >
+              content="2005-11-10">
           11-10
         </time>
       </div>
@@ -1842,26 +1774,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2005/05/30/Peopleware/" itemprop="url">
+            
+              <span itemprop="name">Peopleware</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2005/05/30/Peopleware/" itemprop="url">
-              
-                <span itemprop="name">Peopleware</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2005-05-30T23:30:00+08:00"
-              content="2005-05-30" >
+              content="2005-05-30">
           05-30
         </time>
       </div>
@@ -1870,26 +1801,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2005/05/10/code-google-com/" itemprop="url">
+            
+              <span itemprop="name">code.google.com</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2005/05/10/code-google-com/" itemprop="url">
-              
-                <span itemprop="name">code.google.com</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2005-05-10T06:11:00+08:00"
-              content="2005-05-10" >
+              content="2005-05-10">
           05-10
         </time>
       </div>
@@ -1898,26 +1828,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2005/03/04/15th-Jolt-Awards-finalists/" itemprop="url">
+            
+              <span itemprop="name">15th Jolt Awards finalists</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2005/03/04/15th-Jolt-Awards-finalists/" itemprop="url">
-              
-                <span itemprop="name">15th Jolt Awards finalists</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2005-03-04T17:02:00+08:00"
-              content="2005-03-04" >
+              content="2005-03-04">
           03-04
         </time>
       </div>
@@ -1926,26 +1855,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2005/02/24/Use-MPC-to-generate-makefile-for-you/" itemprop="url">
+            
+              <span itemprop="name">Use MPC to generate makefile for you</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2005/02/24/Use-MPC-to-generate-makefile-for-you/" itemprop="url">
-              
-                <span itemprop="name">Use MPC to generate makefile for you</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2005-02-24T04:15:00+08:00"
-              content="2005-02-24" >
+              content="2005-02-24">
           02-24
         </time>
       </div>
@@ -1954,26 +1882,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2005/02/18/Member-function-call-delete-this-legal/" itemprop="url">
+            
+              <span itemprop="name">成员函数调用delete this合法吗？</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2005/02/18/Member-function-call-delete-this-legal/" itemprop="url">
-              
-                <span itemprop="name">成员函数调用delete this合法吗？</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2005-02-18T21:18:00+08:00"
-              content="2005-02-18" >
+              content="2005-02-18">
           02-18
         </time>
       </div>
@@ -1982,26 +1909,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2004/12/13/String-fuzzy-matching/" itemprop="url">
+            
+              <span itemprop="name">字符串模糊匹配</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2004/12/13/String-fuzzy-matching/" itemprop="url">
-              
-                <span itemprop="name">字符串模糊匹配</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2004-12-13T17:35:00+08:00"
-              content="2004-12-13" >
+              content="2004-12-13">
           12-13
         </time>
       </div>
@@ -2010,26 +1936,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2004/09/07/Bayesian-filter-with-to-achieve-the-BBS-speech-to-be-automatic-check/" itemprop="url">
+            
+              <span itemprop="name">用bayesian过滤来实现论坛发言自动检查</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2004/09/07/Bayesian-filter-with-to-achieve-the-BBS-speech-to-be-automatic-check/" itemprop="url">
-              
-                <span itemprop="name">用bayesian过滤来实现论坛发言自动检查</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2004-09-07T07:21:00+08:00"
-              content="2004-09-07" >
+              content="2004-09-07">
           09-07
         </time>
       </div>
@@ -2038,26 +1963,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2004/07/10/Speech-browse-technical-specifications-profile/" itemprop="url">
+            
+              <span itemprop="name">语音浏览技术规范简介</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2004/07/10/Speech-browse-technical-specifications-profile/" itemprop="url">
-              
-                <span itemprop="name">语音浏览技术规范简介</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2004-07-10T00:59:00+08:00"
-              content="2004-07-10" >
+              content="2004-07-10">
           07-10
         </time>
       </div>
@@ -2066,26 +1990,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2004/07/01/Doxygen-/" itemprop="url">
+            
+              <span itemprop="name">Doxygen不能支持中文文件名/路径:(</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2004/07/01/Doxygen-/" itemprop="url">
-              
-                <span itemprop="name">Doxygen不能支持中文文件名/路径:(</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2004-07-01T03:44:00+08:00"
-              content="2004-07-01" >
+              content="2004-07-01">
           07-01
         </time>
       </div>
@@ -2094,26 +2017,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2004/06/12/The-programmer-head/" itemprop="url">
+            
+              <span itemprop="name">程序员之胡思乱想</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2004/06/12/The-programmer-head/" itemprop="url">
-              
-                <span itemprop="name">程序员之胡思乱想</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2004-06-12T07:01:00+08:00"
-              content="2004-06-12" >
+              content="2004-06-12">
           06-12
         </time>
       </div>
@@ -2122,26 +2044,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2004/05/26/C-C-i18n/" itemprop="url">
+            
+              <span itemprop="name">C/C++中的i18n</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2004/05/26/C-C-i18n/" itemprop="url">
-              
-                <span itemprop="name">C/C++中的i18n</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2004-05-26T21:44:00+08:00"
-              content="2004-05-26" >
+              content="2004-05-26">
           05-26
         </time>
       </div>
@@ -2150,26 +2071,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2004/04/30/Promising-subversion/" itemprop="url">
+            
+              <span itemprop="name">前景光明的subversion</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2004/04/30/Promising-subversion/" itemprop="url">
-              
-                <span itemprop="name">前景光明的subversion</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2004-04-30T23:47:00+08:00"
-              content="2004-04-30" >
+              content="2004-04-30">
           04-30
         </time>
       </div>
@@ -2178,26 +2098,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2004/04/30/Solve-Xerces-C-XML-parser-EnitiyResolver-doesn-t-work-in-the-problem/" itemprop="url">
+            
+              <span itemprop="name">解决Xerces-C XML parser中EnitiyResolver不起作用的问题</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2004/04/30/Solve-Xerces-C-XML-parser-EnitiyResolver-doesn-t-work-in-the-problem/" itemprop="url">
-              
-                <span itemprop="name">解决Xerces-C XML parser中EnitiyResolver不起作用的问题</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2004-04-30T01:32:00+08:00"
-              content="2004-04-30" >
+              content="2004-04-30">
           04-30
         </time>
       </div>
@@ -2206,26 +2125,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2004/04/10/How-to-increase-the-number-of-Windows-programs-thread-/" itemprop="url">
+            
+              <span itemprop="name">如何增加windows程序的线程数量?</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2004/04/10/How-to-increase-the-number-of-Windows-programs-thread-/" itemprop="url">
-              
-                <span itemprop="name">如何增加windows程序的线程数量?</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2004-04-10T06:10:00+08:00"
-              content="2004-04-10" >
+              content="2004-04-10">
           04-10
         </time>
       </div>
@@ -2234,26 +2152,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2003/12/09/SQuirrel-Java-GUI-client-for-JDBC-compliant-database/" itemprop="url">
+            
+              <span itemprop="name">SQuirrel : Java GUI client for JDBC compliant database</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2003/12/09/SQuirrel-Java-GUI-client-for-JDBC-compliant-database/" itemprop="url">
-              
-                <span itemprop="name">SQuirrel : Java GUI client for JDBC compliant database</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2003-12-09T20:33:00+08:00"
-              content="2003-12-09" >
+              content="2003-12-09">
           12-09
         </time>
       </div>
@@ -2262,26 +2179,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2003/12/09/Jacksum-java-utility-for-computing-checksum/" itemprop="url">
+            
+              <span itemprop="name">Jacksum : java utility for computing checksum</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2003/12/09/Jacksum-java-utility-for-computing-checksum/" itemprop="url">
-              
-                <span itemprop="name">Jacksum : java utility for computing checksum</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2003-12-09T20:31:00+08:00"
-              content="2003-12-09" >
+              content="2003-12-09">
           12-09
         </time>
       </div>
@@ -2290,26 +2206,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2003/11/08/MySQL-/" itemprop="url">
+            
+              <span itemprop="name">MySQL的锁</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2003/11/08/MySQL-/" itemprop="url">
-              
-                <span itemprop="name">MySQL的锁</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2003-11-08T02:54:00+08:00"
-              content="2003-11-08" >
+              content="2003-11-08">
           11-08
         </time>
       </div>
@@ -2318,26 +2233,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2003/09/11/Invalid-XML-character-msxml-dll-/" itemprop="url">
+            
+              <span itemprop="name">Invalid XML character, msxml.dll的问题</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2003/09/11/Invalid-XML-character-msxml-dll-/" itemprop="url">
-              
-                <span itemprop="name">Invalid XML character, msxml.dll的问题</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2003-09-11T22:35:00+08:00"
-              content="2003-09-11" >
+              content="2003-09-11">
           09-11
         </time>
       </div>
@@ -2346,26 +2260,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2003/09/08/MySQL-/" itemprop="url">
+            
+              <span itemprop="name">MySQL的表名大小写问题</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2003/09/08/MySQL-/" itemprop="url">
-              
-                <span itemprop="name">MySQL的表名大小写问题</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2003-09-08T22:44:00+08:00"
-              content="2003-09-08" >
+              content="2003-09-08">
           09-08
         </time>
       </div>
@@ -2374,26 +2287,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2003/09/08/Java-XML-API/" itemprop="url">
+            
+              <span itemprop="name">Java的几种XML语法分析API</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2003/09/08/Java-XML-API/" itemprop="url">
-              
-                <span itemprop="name">Java的几种XML语法分析API</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2003-09-08T22:42:00+08:00"
-              content="2003-09-08" >
+              content="2003-09-08">
           09-08
         </time>
       </div>
@@ -2402,26 +2314,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2003/09/04/How-to-let-JTextArea-automatic-scroll-to-the-bottom-/" itemprop="url">
+            
+              <span itemprop="name">如何让JTextArea自动滚动到最底?</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2003/09/04/How-to-let-JTextArea-automatic-scroll-to-the-bottom-/" itemprop="url">
-              
-                <span itemprop="name">如何让JTextArea自动滚动到最底?</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2003-09-04T22:52:00+08:00"
-              content="2003-09-04" >
+              content="2003-09-04">
           09-04
         </time>
       </div>
@@ -2430,26 +2341,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2003/09/02/Unicode-/" itemprop="url">
+            
+              <span itemprop="name">Unicode与字符编码</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2003/09/02/Unicode-/" itemprop="url">
-              
-                <span itemprop="name">Unicode与字符编码</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2003-09-02T22:55:00+08:00"
-              content="2003-09-02" >
+              content="2003-09-02">
           09-02
         </time>
       </div>
@@ -2458,26 +2368,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2003/08/28/SWT-Swing-/" itemprop="url">
+            
+              <span itemprop="name">SWT与Swing之争</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2003/08/28/SWT-Swing-/" itemprop="url">
-              
-                <span itemprop="name">SWT与Swing之争</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2003-08-28T20:19:00+08:00"
-              content="2003-08-28" >
+              content="2003-08-28">
           08-28
         </time>
       </div>
@@ -2486,26 +2395,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2003/08/22/Eclipse-i18n-l10n-/" itemprop="url">
+            
+              <span itemprop="name">Eclipse的i18n/l10n辅助功能</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2003/08/22/Eclipse-i18n-l10n-/" itemprop="url">
-              
-                <span itemprop="name">Eclipse的i18n/l10n辅助功能</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2003-08-22T20:15:00+08:00"
-              content="2003-08-22" >
+              content="2003-08-22">
           08-22
         </time>
       </div>
@@ -2514,26 +2422,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2003/08/20/Java-/" itemprop="url">
+            
+              <span itemprop="name">Java“错误模式”</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2003/08/20/Java-/" itemprop="url">
-              
-                <span itemprop="name">Java“错误模式”</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2003-08-20T19:01:00+08:00"
-              content="2003-08-20" >
+              content="2003-08-20">
           08-20
         </time>
       </div>
@@ -2542,26 +2449,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2003/08/19/Swing-components-refresh/" itemprop="url">
+            
+              <span itemprop="name">Swing components refresh</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2003/08/19/Swing-components-refresh/" itemprop="url">
-              
-                <span itemprop="name">Swing components refresh</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2003-08-19T19:30:00+08:00"
-              content="2003-08-19" >
+              content="2003-08-19">
           08-19
         </time>
       </div>
@@ -2570,26 +2476,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2003/08/18/MySQL-NOT-NULL-/" itemprop="url">
+            
+              <span itemprop="name">MySQL是不会理会字段的NOT NULL标记的!</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2003/08/18/MySQL-NOT-NULL-/" itemprop="url">
-              
-                <span itemprop="name">MySQL是不会理会字段的NOT NULL标记的!</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2003-08-18T22:58:00+08:00"
-              content="2003-08-18" >
+              content="2003-08-18">
           08-18
         </time>
       </div>
@@ -2598,26 +2503,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2003/08/18/Java-/" itemprop="url">
+            
+              <span itemprop="name">Java字符转换问题</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2003/08/18/Java-/" itemprop="url">
-              
-                <span itemprop="name">Java字符转换问题</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2003-08-18T22:57:00+08:00"
-              content="2003-08-18" >
+              content="2003-08-18">
           08-18
         </time>
       </div>
@@ -2626,26 +2530,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2003/08/05/Robocode-/" itemprop="url">
+            
+              <span itemprop="name">Robocode的线程与执行次序</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2003/08/05/Robocode-/" itemprop="url">
-              
-                <span itemprop="name">Robocode的线程与执行次序</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2003-08-05T22:59:00+08:00"
-              content="2003-08-05" >
+              content="2003-08-05">
           08-05
         </time>
       </div>
@@ -2654,26 +2557,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2003/07/21/What-is-FXP-/" itemprop="url">
+            
+              <span itemprop="name">What is FXP?</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2003/07/21/What-is-FXP-/" itemprop="url">
-              
-                <span itemprop="name">What is FXP?</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2003-07-21T23:02:00+08:00"
-              content="2003-07-21" >
+              content="2003-07-21">
           07-21
         </time>
       </div>
@@ -2682,26 +2584,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2003/07/10/Liberal-XP/" itemprop="url">
+            
+              <span itemprop="name">自由主义的XP</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2003/07/10/Liberal-XP/" itemprop="url">
-              
-                <span itemprop="name">自由主义的XP</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2003-07-10T23:06:00+08:00"
-              content="2003-07-10" >
+              content="2003-07-10">
           07-10
         </time>
       </div>
@@ -2710,26 +2611,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2003/07/01/Java-profilor/" itemprop="url">
+            
+              <span itemprop="name">Java profilor</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2003/07/01/Java-profilor/" itemprop="url">
-              
-                <span itemprop="name">Java profilor</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2003-07-01T21:21:00+08:00"
-              content="2003-07-01" >
+              content="2003-07-01">
           07-01
         </time>
       </div>
@@ -2738,26 +2638,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2003/06/12/Version-control-software/" itemprop="url">
+            
+              <span itemprop="name">版本控制的软件</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2003/06/12/Version-control-software/" itemprop="url">
-              
-                <span itemprop="name">版本控制的软件</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2003-06-12T00:05:00+08:00"
-              content="2003-06-12" >
+              content="2003-06-12">
           06-12
         </time>
       </div>
@@ -2766,26 +2665,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2003/06/03/In-the-relationship-between-database-to-store-the-tree-structure/" itemprop="url">
+            
+              <span itemprop="name">在关系数据库中保存树状结构</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2003/06/03/In-the-relationship-between-database-to-store-the-tree-structure/" itemprop="url">
-              
-                <span itemprop="name">在关系数据库中保存树状结构</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2003-06-03T00:07:00+08:00"
-              content="2003-06-03" >
+              content="2003-06-03">
           06-03
         </time>
       </div>
@@ -2794,26 +2692,25 @@
   </article>
 
 
-    
       
+        
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+          <a class="post-title-link" href="/blog/2003/05/29/The-author-s-suggestion-to-WebCatcher-personal-development-software-development-management-/" itemprop="url">
+            
+              <span itemprop="name">给WebCatcher作者的建议（个人开发软件的开发管理问题）</span>
+            
+          </a>
         
-            <a class="post-title-link" href="/blog/2003/05/29/The-author-s-suggestion-to-WebCatcher-personal-development-software-development-management-/" itemprop="url">
-              
-                <span itemprop="name">给WebCatcher作者的建议（个人开发软件的开发管理问题）</span>
-              
-            </a>
-        
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
               datetime="2003-05-29T03:00:00+08:00"
-              content="2003-05-29" >
+              content="2003-05-29">
           05-29
         </time>
       </div>
@@ -2822,20 +2719,22 @@
   </article>
 
 
-    
+      
+    </div>
+
   </div>
+  
+  
+  
 
   
+
 
 
           </div>
           
 
-
-          
-
         </div>
-        
           
   
   <div class="sidebar-toggle">
@@ -2849,153 +2748,212 @@
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
-      
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
 
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Leo Liang</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">328</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
       
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/blog/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="feed-link motion-element">
+    <a href="/blog/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars.io/gravatar/leoliang@gmail.com"
-               alt="Leo Liang" />
-          <p class="site-author-name" itemprop="name">Leo Liang</p>
-          <p class="site-description motion-element" itemprop="description"></p>
+
+
         </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/blog/archives">
-              <span class="site-state-item-count">328</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/blog/tags">
-                <span class="site-state-item-count">52</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/blog/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-      </section>
-
-      
+      </div>
 
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Leo Liang</span>
 </div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
 
         
+
+
+
+
+
+
+
 
         
       </div>
     </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+
   </div>
 
   
+  <script src="/blog/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
+  <script src="/blog/js/utils.js?v=7.2.0"></script>
+  <script src="/blog/js/motion.js?v=7.2.0"></script>
 
-
-
-
-
-
+  
+  <script src="/blog/js/affix.js?v=7.2.0"></script>
+  <script src="/blog/js/schemes/pisces.js?v=7.2.0"></script>
 
 
 
   
 
+  <script src="/blog/js/next-boot.js?v=7.2.0"></script>
 
-
-  
-  <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.2"></script>
-
-  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.2"></script>
-
-
-
-  
   
 
   
@@ -3003,155 +2961,45 @@
   
 
 
-  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.2"></script>
-
-
-
-  
-
-
-
   
 
 
 
 
-  
-  
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length == 0) {
-       search_path = "search.xml";
-    }
-    var path = "/blog/" + search_path;
-    // monitor main search box;
-
-    function proceedsearch() {
-      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-    'use strict';
-    $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function( xmlResponse ) {
-            // get the contents from search data
-            isfetched = true;
-            $('.popup').detach().appendTo('.header-inner');
-            var datas = $( "entry", xmlResponse ).map(function() {
-                return {
-                    title: $( "title", this ).text(),
-                    content: $("content",this).text(),
-                    url: $( "url" , this).text()
-                };
-            }).get();
-            var $input = document.getElementById(search_id);
-            var $resultContent = document.getElementById(content_id);
-            $input.addEventListener('input', function(){
-                var matchcounts = 0;
-                var str='<ul class=\"search-result-list\">';
-                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                $resultContent.innerHTML = "";
-                if (this.value.trim().length > 1) {
-                // perform local searching
-                datas.forEach(function(data) {
-                    var isMatch = false;
-                    var content_index = [];
-                    var data_title = data.title.trim().toLowerCase();
-                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                    var data_url = decodeURIComponent(data.url);
-                    var index_title = -1;
-                    var index_content = -1;
-                    var first_occur = -1;
-                    // only match artiles with not empty titles and contents
-                    if(data_title != '') {
-                        keywords.forEach(function(keyword, i) {
-                            index_title = data_title.indexOf(keyword);
-                            index_content = data_content.indexOf(keyword);
-                            if( index_title >= 0 || index_content >= 0 ){
-                                isMatch = true;
-								if (i == 0) {
-                                    first_occur = index_content;
-                                }
-                            } 
-							
-                        });
-                    }
-                    // show search results
-                    if (isMatch) {
-                        matchcounts += 1;
-                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                        var content = data.content.trim().replace(/<[^>]+>/g,"");
-                        if (first_occur >= 0) {
-                            // cut out 100 characters
-                            var start = first_occur - 20;
-                            var end = first_occur + 80;
-                            if(start < 0){
-                                start = 0;
-                            }
-                            if(start == 0){
-                                end = 50;
-                            }
-                            if(end > content.length){
-                                end = content.length;
-                            }
-                            var match_content = content.substring(start, end);
-                            // highlight all keywords
-                            keywords.forEach(function(keyword){
-                                var regS = new RegExp(keyword, "gi");
-                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                            });
-
-                            str += "<p class=\"search-result\">" + match_content +"...</p>"
-                        }
-                        str += "</li>";
-                    }
-                })};
-                str += "</ul>";
-                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-                $resultContent.innerHTML = str;
-            });
-            proceedsearch();
-        }
-    });}
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-
-    });
-
-    $('.popup-btn-close').click(function(e){
-      $('.popup').hide();
-      $(".popoverlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-  </script>
 
 
-  
 
-  
 
-  
 
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/blog/js/local-search.js?v=7.2.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
 
 </body>
