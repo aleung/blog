@@ -511,30 +511,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[使用OsmAndMapCreator及时更新OsmAnd地图]]></title>
-      <url>http://aleung.github.io/blog/2017/06/17/OsmAndMapCreator/</url>
-      <content type="html"><![CDATA[<p>使用 <a href="https://www.openstreetmap.org" target="_blank" rel="noopener">OpenStreetMap</a> （简称为OSM）地图数据的手机应用有好些，<a href="http://osmand.net/" target="_blank" rel="noopener">OsmAnd</a> 是其中比较优秀的一个。OsmAnd的地图数据每月更新一次，延后了半个月到一个多月。作为一个OSM mapper，期望能够马上看到和用到最近做出的修改，等一个月实在太久了。</p>
-<p>OSM原始地图数据在 <a href="http://wiki.openstreetmap.org/wiki/Planet.osm" target="_blank" rel="noopener">planet.osm</a> 的网站可以下载到，但数据文件是全球的，非常大。从 <a href="http://download.geofabrik.de/" target="_blank" rel="noopener">GeoFabrik</a> 可以下载按国家分割的数据文件。中国区的PBF格式数据是330MB。但每天重新下载一个数据包还是太大了，其实更新的数据不是很多。网站上还提供每天（planet.osm还有每小时）的变更数据包（osc文件），用 <code>osmupdate</code> 工具就能自动下载变更并且生成新的完整数据文件。 </p>
-<p>有了最新的 osm.pbf 数据文件，就可以使用 <code>OsmAndMapCreator</code> 生成 OsmAnd 可用的 OBF 格式离线地图文件了。生成的过程非常耗内存和CPU，全中国的地图在一台 Core i3-4370 CPU 的电脑上用了90分钟，需要分配 10GB 内存才够用（否则会出现 OutOfMemory 错误）。生成出来的 OBF 文件也有845MB之巨。为了缩短时间，我设置了 <code>osmupdate</code> 的<code>-b</code>参数，过滤出广东中部区域的数据，这样就快很多，几分钟搞定。</p>
-<p>处理的流程如下图。实际上安装好软件，修改好配置后，每次更新就执行一个脚本，过程全自动。</p>
-<pre><code>Previous full map data (osm.pbf) \
-                              [osmupdate] --&gt; Latest full map data (osm.pbf)
-            Recent changes (osc) /                      |
-                                                        v
-[OsmAnd] &lt;------ Latest offline map (obf) &lt;------- [OsmAndMapCreator]
-</code></pre><p>步骤和脚本放在 gist：<a href="https://gist.github.com/aleung/42776348d023b689e8c337b82a3c7cd5，适用于" target="_blank" rel="noopener">https://gist.github.com/aleung/42776348d023b689e8c337b82a3c7cd5，适用于</a> MacOS 和 Linix，需要自行修改文件中的目录路径。工具在Win平台也可以用，但脚本就要重新写了。</p>
-]]></content>
-      
-        
-        <tags>
-            
-            <tag> GPS_GIS </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[在非GPL应用中使用OpenJDK的法律问题]]></title>
       <url>http://aleung.github.io/blog/2017/01/06/Use-OpenJDK-in-proprietary-software/</url>
       <content type="html"><![CDATA[<p>大家都知道 Oracle JDK 在商业应用场合是需要购买 license 的，往往会选择 OpenJDK 来规避。但是，OpenJDK 的 license 是 GPL，GPL 是一种 “传染性” 的协议，那么 OpenJDK 是否可以在非 GPL 应用中使用呢？</p>

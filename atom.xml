@@ -206,29 +206,6 @@
   </entry>
   
   <entry>
-    <title>使用OsmAndMapCreator及时更新OsmAnd地图</title>
-    <link href="http://aleung.github.io/blog/2017/06/17/OsmAndMapCreator/"/>
-    <id>http://aleung.github.io/blog/2017/06/17/OsmAndMapCreator/</id>
-    <published>2017-06-17T03:29:19.000Z</published>
-    <updated>2017-12-31T06:38:38.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>使用 <a href="https://www.openstreetmap.org" target="_blank" rel="noopener">OpenStreetMap</a> （简称为OSM）地图数据的手机应用有好些，<a href="http://osmand.net/" target="_blank" rel="noopener">OsmAnd</a> 是其中比较优秀的一个。OsmAnd的地图数据每月更新一次，延后了半个月到一个多月。作为一个OSM mapper，期望能够马上看到和用到最近做出的修改，等一个月实在太久了。</p><p>OSM原始地图数据在 <a href="http://wiki.openstreetmap.org/wiki/Planet.osm" target="_blank" rel="noopener">planet.osm</a> 的网站可以下载到，但数据文件是全球的，非常大。从 <a href="http://download.geofabrik.de/" target="_blank" rel="noopener">GeoFabrik</a> 可以下载按国家分割的数据文件。中国区的PBF格式数据是330MB。但每天重新下载一个数据包还是太大了，其实更新的数据不是很多。网站上还提供每天（planet.osm还有每小时）的变更数据包（osc文件），用 <code>osmupdate</code> 工具就能自动下载变更并且生成新的完整数据文件。 </p><p>有了最新的 osm.pbf 数据文件，就可以使用 <code>OsmAndMapCreator</code> 生成 OsmAnd 可用的 OBF 格式离线地图文件了。生成的过程非常耗内存和CPU，全中国的地图在一台 Core i3-4370 CPU 的电脑上用了90分钟，需要分配 10GB 内存才够用（否则会出现 OutOfMemory 错误）。生成出来的 OBF 文件也有845MB之巨。为了缩短时间，我设置了 <code>osmupdate</code> 的<code>-b</code>参数，过滤出广东中部区域的数据，这样就快很多，几分钟搞定。</p><p>处理的流程如下图。实际上安装好软件，修改好配置后，每次更新就执行一个脚本，过程全自动。</p><pre><code>Previous full map data (osm.pbf) \                              [osmupdate] --&gt; Latest full map data (osm.pbf)            Recent changes (osc) /                      |                                                        v[OsmAnd] &lt;------ Latest offline map (obf) &lt;------- [OsmAndMapCreator]</code></pre><p>步骤和脚本放在 gist：<a href="https://gist.github.com/aleung/42776348d023b689e8c337b82a3c7cd5，适用于" target="_blank" rel="noopener">https://gist.github.com/aleung/42776348d023b689e8c337b82a3c7cd5，适用于</a> MacOS 和 Linix，需要自行修改文件中的目录路径。工具在Win平台也可以用，但脚本就要重新写了。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;使用 &lt;a href=&quot;https://www.openstreetmap.org&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;OpenStreetMap&lt;/a&gt; （简称为OSM）地图数据的手机应用有好些，&lt;a href=&quot;http://osmand.n
-      
-    
-    </summary>
-    
-    
-      <category term="GPS_GIS" scheme="http://aleung.github.io/blog/tags/GPS-GIS/"/>
-    
-  </entry>
-  
-  <entry>
     <title>在非GPL应用中使用OpenJDK的法律问题</title>
     <link href="http://aleung.github.io/blog/2017/01/06/Use-OpenJDK-in-proprietary-software/"/>
     <id>http://aleung.github.io/blog/2017/01/06/Use-OpenJDK-in-proprietary-software/</id>
@@ -500,6 +477,29 @@
     
     
       <category term="Reading" scheme="http://aleung.github.io/blog/tags/Reading/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Jekyll 与 Swagger UI 集成</title>
+    <link href="http://aleung.github.io/blog/2015/04/03/jekyll-swagger-ui/"/>
+    <id>http://aleung.github.io/blog/2015/04/03/jekyll-swagger-ui/</id>
+    <published>2015-04-02T16:00:00.000Z</published>
+    <updated>2016-08-30T16:40:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="http://swagger.io/" target="_blank" rel="noopener">Swagger</a> 是被广泛使用的用于 REST API 描述和文档化的框架。它制定了一个用于描述 REST API 的规范，提供了一组工具用于编辑 API 描述文件、生成测试客户端、生成文档等等。<a href="https://github.com/swagger-api/swagger-ui" target="_blank" rel="noopener">Swagger UI</a> 是其中的用于生成文档的工具。</p><p><a href="http://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> 是深受程序员喜爱的静态网站生成工具，通常用来做 blog 站点，我们的工作团队也<a href="/blog/2015/01/26/jekyll/">用它来做内部的技术文档库</a>。</p><p>在 Jekyll 里描述我们产品的 REST API，编辑排版是比较繁琐的事情，不同的 API 描述也没有统一的风格，因此考虑到引入 Swagger 来规范化 API 定义。</p><p>为此，写了一个简单的 <a href="https://github.com/aleung/jekyll-swagger-ui" target="_blank" rel="noopener">Jekyll 插件</a>，只要像下面例子那样在 markdown 中简单的插入 <code>swagger</code> tag，指定 API 描述文件，相应的 API 文档就会由 Swagger UI 生成并嵌入在页面中。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% swagger /api/my-api.json %&#125;</span><br></pre></td></tr></table></figure><p>安装使用方法请参看 <a href="https://github.com/aleung/jekyll-swagger-ui" target="_blank" rel="noopener">README</a>。另外，Swagger UI 没有考虑到在一个页面中显示多组 API，会有些显示问题，已经提交 pull request，下个版本有望修复，暂时可以先下载我的修改版本，详见 README。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;http://swagger.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Swagger&lt;/a&gt; 是被广泛使用的用于 REST API 描述和文档化的框架。它制定了一个用于描述 REST API 的规范，提供了一组工具用于编辑 
+      
+    
+    </summary>
+    
+    
+      <category term="SoftwareDev" scheme="http://aleung.github.io/blog/tags/SoftwareDev/"/>
     
   </entry>
   

@@ -167,7 +167,7 @@
       
     
 
-    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">328</span></a>
+    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">327</span></a>
 
   </li>
         <li class="menu-item menu-item-search">
@@ -214,111 +214,6 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2008/06/17/How-to-allow-remote-application-setting-display-to-the-SUSE-linux-desktop/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leo Liang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good good study, day day up">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2008/06/17/How-to-allow-remote-application-setting-display-to-the-SUSE-linux-desktop/" class="post-title-link" itemprop="url">How to allow remote application setting display to the SUSE linux desktop</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2008-06-17 20:59:00" itemprop="dateCreated datePublished" datetime="2008-06-17T20:59:00+08:00">2008-06-17</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
-              </span>
-            
-          
-
-          <br>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            <ol>
-<li>Allow remote TCP connection to the X server. You need root privilege to config it. </li>
-</ol>
-<p>Just run gdmsetup. This will open a window with multiple tabs. In the Security tab, disabled the line that says “Deny TCP connections to the X server”. Close the window and then log out of your current X session. You need to restart gdm for this to work.  The easiest way to do that is to go to a console login, login as root, change to run level 3 (just type “init 3”) and then return to run level 5 (“init 5”) to restart gdm.<br>Ref: <a href="http://www.graphics-muse.org/wp/?p=69" target="_blank" rel="noopener">http://www.graphics-muse.org/wp/?p=69</a></p>
-<ol start="2">
-<li>Add remote host into X server access control</li>
-</ol>
-<p>Run xhost _remote_host_ip_</p>
-<ol start="3">
-<li>Set DISPLAY environment variable in remote host before execute the application</li>
-</ol>
-<p>setenv DISPLAY _display_host_ip_:0.0</p>
-
-          
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
       
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -404,6 +299,8 @@
         
       
     </div>
+
+    
 
     
     
@@ -500,6 +397,8 @@
         
       
     </div>
+
+    
 
     
     
@@ -603,6 +502,8 @@
     </div>
 
     
+
+    
     
     
 
@@ -701,6 +602,140 @@
     </div>
 
     
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2007/12/08/A-strict-scientific-attitude-all-have-no-calculate-what-scientists/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/2007/12/08/A-strict-scientific-attitude-all-have-no-calculate-what-scientists/" class="post-title-link" itemprop="url">一点严谨的科学态度都没有，算什么科学家</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2007-12-08 03:06:00" itemprop="dateCreated datePublished" datetime="2007-12-08T03:06:00+08:00">2007-12-08</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
+            
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>摘自网易新闻《<a href="http://news.163.com/07/1207/06/3V3C3V5G0001124J.html" target="_blank" rel="noopener">欧阳自远强调月照真实 称拼接误差不值一谈</a>》：</p>
+<blockquote>
+<p><strong>南都</strong>：最近网上对嫦娥月照有一些争论，特别是嫦娥月照比美国拍的”多”了一个陨石坑的问题很多人都关心，有网友说是拼接错误造成的……  </p>
+</blockquote>
+<blockquote>
+<p><strong>欧阳自远</strong>：这个问题分两个层次来讲：第一，中国的照片是真是假，这是原则问题，这是丝毫不容许乱说的，<em>这是对我们国家的侮辱</em>，这是对1.7万人工作成果的否定，这是原则问题，我希望你们能够理解这一点。  </p>
+</blockquote>
+<blockquote>
+<p>第二个问题，美国的图是1994年拍到，2005年才校核了，多少年？10年啊，我们这个图才3天啊，对不对？<strong><em>这技术拼接上有一些具体……因为牵涉到很多很多因素，我认为没什么关系的</em></strong>，我们还没有最后定型啊，所以我的意思啊，不能以此认为是假的，而且那个事情也没有多大争论的意义。  </p>
+</blockquote>
+<blockquote>
+<p>我认为不要去纠缠这些问题，为什么呢？这个是真假的问题，真假是不允许有任何怀疑的，难道我们会去做假吗？那么多人，这是侮辱啊，所以我要说清楚。  </p>
+</blockquote>
+<blockquote>
+<p><strong>南都</strong>：那就是说，我们在3天内，采用技术拼接出来的图片，可能在拼接过程中有一定瑕疵，但美国人是用10年时间才拼接出来的图片，不一定能说明他……  </p>
+</blockquote>
+<blockquote>
+<p><strong>欧阳自远</strong>：他也有很多问题啊，<em>我跟你说啊，不要在这个问题上面，我建议你就讲真假问题，不要讲后面的，那个没有多大意思</em>。  </p>
+</blockquote>
+<blockquote>
+<p><strong>南都</strong>：问题是，在网络上，那个多了的陨石坑大家议论很多……  </p>
+</blockquote>
+<blockquote>
+<p><strong>欧阳</strong>：我告诉你一个问题，阿波罗还是假的呢，你知道现在还在争论这个问题。美国航空航天局对这个问题什么态度？  </p>
+</blockquote>
+<blockquote>
+<p><strong>南都</strong>：回避，不争论。  </p>
+</blockquote>
+<blockquote>
+<p><strong>欧阳自远</strong>：不是回避，是不值得一驳。现在这个问题，我也觉得，不值得一谈，置之不理，为什么？<strong><em>这种小儿科的问题，不要谈</em></strong>。另一个问题就是争论，你让网友去争论吧，媒体不必去掺和了，好不好？  </p>
+</blockquote>
+<blockquote>
+<p><strong><em>我们就谈真假，不去谈细节了。细节，坦白讲你们搞不懂的</em></strong>，你知道有多少繁琐的细节啊，你去扯这个扯不清楚啊。 </p>
+</blockquote>
+<p>图像拼接的细节没有关系？那么花这么多钱发射个嫦娥就是为了开个新闻发布会的？</p>
+<p>技术细节别人不懂，就你们专家才懂？只有你们才懂，所以就可以随便糊弄了？看看天文爱好者是怎么分析的：<a href="http://www.astron.sh.cn/cgi-bin/topic.cgi?forum=52&amp;topic=92" target="_blank" rel="noopener">疑问：欧阳自远说的嫦娥月照上的新撞击坑</a></p>
+<p>首席科学家也就是这么一个德行，中国科学界能搞出什么名堂来？ </p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
     
     
 
@@ -751,7 +786,7 @@
         
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">328</span>
+          <span class="site-state-item-count">327</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

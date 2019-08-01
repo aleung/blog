@@ -167,7 +167,7 @@
       
     
 
-    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">328</span></a>
+    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">327</span></a>
 
   </li>
         <li class="menu-item menu-item-search">
@@ -214,131 +214,6 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2016/11/05/Consul-unstable/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leo Liang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good good study, day day up">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2016/11/05/Consul-unstable/" class="post-title-link" itemprop="url">Consul 集群不稳定的分析</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-11-05 11:22:20 / 修改时间：15:31:48" itemprop="dateCreated datePublished" datetime="2016-11-05T11:22:20+08:00">2016-11-05</time>
-            </span>
-          
-            
-
-            
-          
-
-          <br>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            <p>一个 Consul 集群由3个 Consul server 和近百个 Consul client 组成。观察发现集群状态不稳定，频繁出现以下现象：</p>
-<ol>
-<li>节点退出集群，又重新加入集群；</li>
-<li>重新选举 leader，有时候原来的 leader 会重新当选。</li>
-</ol>
-<p>对于第一个问题，分析发现原因是我们错误使用了 fail fast 策略：我们平台中会有个supervisor daemon监控着进程的状态，当进程 health check 失败了，就会重启进程并且发送告警。对于 Consul agent 进程，health check 调用 Consul API，API不能正常返回就认为进程状态不健康。这样做本来的用意是及时发现集群配置的错误，另外也是服务依赖管理的需要，依赖 Consul 的其它服务会等到 Consul agent 进入正常状态后才启动。但是，由于第二个问题的存在，在 leader 重新选举过程中 API 不能正常响应，Consul agent 就被当作不健康而被重启，出现了 Consul 节点退出重新加入集群的现象。本来，群集是能自动恢复到正常工作状态的，重启进程反而造成更大的负面影响。</p>
-<p>对于第二个问题，直接原因是某个 Consul server 所在的VM上有个异常的进程将CPU几乎全耗尽了，Consul 不能及时的处理集群间的通信，响应超时，产生了临时性的脑裂。但开始我们一直不能理解，单个 server 的 partitioning 为什么会影响到整个集群呢？剩余的 2 个 server 应该还是能够组成集群并保持稳定的 leader 才对。后来才发现，比起全部丢失，消息的部分丢失所引起的现象会诡异得多。</p>
-<p>这是当前 leader cm121 的日志：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">50:32 [WARN] raft: Rejecting vote from 172.17.52.84:8300 since we have a leader: 172.17.52.121:8300</span><br><span class="line">50:32 [ERR] raft: peer 172.17.52.84:8300 has newer term, stopping replication</span><br><span class="line">50:32 [INFO] raft: aborting pipeline replication to peer 172.17.52.84:8300</span><br><span class="line">50:32 [INFO] raft: aborting pipeline replication to peer 172.17.52.85:8300</span><br><span class="line">50:32 [INFO] consul: cluster leadership lost</span><br><span class="line">50:32 [INFO] raft: Node at 172.17.52.121:8300 [Follower] entering Follower state</span><br><span class="line">50:33 [WARN] raft: Heartbeat timeout reached, starting election</span><br><span class="line">50:33 [INFO] raft: Node at 172.17.52.121:8300 [Candidate] entering Candidate state</span><br><span class="line">50:34 [INFO] raft: Election won. Tally: 2</span><br><span class="line">50:34 [INFO] raft: Node at 172.17.52.121:8300 [Leader] entering Leader state</span><br><span class="line">50:34 [INFO] consul: cluster leadership acquired</span><br><span class="line">50:34 [INFO] consul: New leader elected: cm121</span><br></pre></td></tr></table></figure>
-<p>在这个例子中，CPU耗尽的 server 是 cm84，当前 leader 为 cm121。cm121 会定期发出 AppendEntries RPC，但 cm84 因为没有CPU资源没有处理到，等到 heartbeat timeout，cm84 错误认为当前没有 leader 了，就向所有其它 server 发出 RequestVote RPC（带有更大的 term 值），自荐为候选人，发起一轮新的投票。但是这个投票请求被其它 server 都拒绝了。</p>
-<img src="/blog/attachments/2016/11/raft_state.png">
-<p>根据状态图可知，当 leader 收到其它 server 发来的消息有更大的 team 值时，就需要交出 leader 位置，转为 follower。因此被 cm84 一捣乱，集群里面就没有 leader 了，导致接下来的超时重新选举。在新一轮选举中，cm121得到两票，重新当选为 leader。</p>
-<p>将消息的时间线画出来，其中 S1 为当前 leader (cm121)，S3 为会间歇性丢掉消息的 server (cm84)，可见 S3 如何导致重新选举 leader。</p>
-<img src="/blog/attachments/2016/11/timeline.jpg">
-<p>对于 Consul 中 raft 实现的行为：reject vote since we have a leader，似乎跟 raft 论文描述的有些出入。在 Raft <a href="https://raft.github.io/raft.pdf" target="_blank" rel="noopener">论文</a>中 RequestVote RPC receiver implementation 部分，没有提到已有 leader 时需要 reject 新的 vote。不过，即使没有这个检查，cm84 大部分情况下还是不能满足当选条件，因为它错失了 leader 发来的 AppendEntries RPC，它的 log 就不一定是 up-to-date 的（除非错失的 AppendEntries 没有 log entries，只是heartbeat）。cm84 不能当选，cm121被迫退位，群集还是会进入无 leader 状态。</p>
-<blockquote>
-<p><strong>RequestVote RPC</strong></p>
-<p>Invoked by candidates to gather votes (§5.2).</p>
-<p>Arguments:</p>
-<ul>
-<li>term : candidate’s term</li>
-<li>candidateId : candidate requesting vote</li>
-<li>lastLogIndex : index of candidate’s last log entry (§5.4)</li>
-<li>lastLogTerm : term of candidate’s last log entry (§5.4)</li>
-</ul>
-<p>Results:</p>
-<ul>
-<li>term : currentTerm, for candidate to update itself</li>
-<li>voteGranted : true means candidate received vote</li>
-</ul>
-<p>Receiver implementation:</p>
-<ol>
-<li>Reply false if term &lt; currentTerm (§5.1)</li>
-<li>If votedFor is null or candidateId, and candidate’s log is at<br>least as up-to-date as receiver’s log, grant vote (§5.2, §5.4)</li>
-</ol>
-</blockquote>
-<p>下一步要做的是避免 Consul 进程得不到足够的CPU资源，计划尝试修改 Consul 进程的 nice 来提高调度优先级，或者配置 CPU affinity 绑定一个CPU核给 Consul。</p>
-<p>另外，在分析过程中也进一步加深了对 Consul 的理解。</p>
-<p>Consul agent 分为两种：server 和 client。实际上，这里是两个不同层次的群集（当涉及到多个 datacenter 时，还多一个 WAN layer，这里就不讨论了）。</p>
-<img src="/blog/attachments/2016/11/consul_cluster.jpg">
-<p>所有 server 通过 Raft 协议组成一个集群，是一个 CP 系统。Consul 的 catelog 和 KV store 服务都是在这个 raft 集群中提供的，虽然 API 在 client 上也提供，但 client 只是转发给 server 来处理。集群中只会选出最多一个 leader，能容忍 partition 的发生（脑裂）。当存在 pratitioning 时，leader 在有多数 server 的分区里，只有少数 server 的分区选不出 leader。数据写入都由 leader 处理，保证了强一致性。 数据读取根据一致性要求（consistency mode），可以由 leader 或者 follower 处理。在没有选出 leader 的时候，Consul 的大部分 API 会不可用（consistency mode 为 stale 的读请求应该可以处理，需要测试确认一下）。</p>
-<p>所有 consul agent，包括 server 和 client，组成一个更大的集群，就是平常所说的 consul cluster。这个集群是通过 Serf 协议（一种 gossip 协议）组成的，是一个AP系统，用于 consul 节点的发现和管理。AP系统只能保证最终一致性，因此 consul 节点的加入或者离开，是不能立刻被整个群集所见到的。</p>
-
-          
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
       
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -409,6 +284,8 @@
         
       
     </div>
+
+    
 
     
     
@@ -540,6 +417,8 @@
     </div>
 
     
+
+    
     
     
 
@@ -651,6 +530,8 @@
         
       
     </div>
+
+    
 
     
     
@@ -767,6 +648,108 @@
     </div>
 
     
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2015/09/20/quality-of-free-software/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/2015/09/20/quality-of-free-software/" class="post-title-link" itemprop="url">自由软件质量不如软件企业自己开发的可靠？</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-09-20 12:31:29" itemprop="dateCreated datePublished" datetime="2015-09-20T12:31:29+08:00">2015-09-20</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
+            
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>在软件企业中开发产品/项目，做技术选型时经常会听到的一个说法是：选择开源自由软件，会不会质量不够有保障？还是我们自己做好一些。</p>
+<p>自由软件遵循的是完全的市场经济，面对的是残酷的竞争。如果项目做得不好，满足不了需求，就会无人问津而最终被废弃掉，使用者才不心痛已经有多少人力物力已经投入到这个项目中。项目设计太差，代码太烂，同样也吸引不了贡献者，导致原有贡献者的离开或者另起炉灶。对比的看，软件企业中开发的软件项目就如受着国家保护的国企，虽然也面临外部竞争，但在内部怎么也还是自家孩子，再烂也很难让大家承认它的失败，要放弃更加是艰难的决定，往往意味影响好些人的仕途。因此，你会看到很多企业开发的软件项目很烂，因为它们本来应该死掉的，但被强制维持着生命。</p>
+<p>从软件开发者的平均水平这个角度来看，自由软件项目也优于企业开发的软件项目。当然，这里谈的自由软件项目是指有一组稳定贡献者有明确蓝图的，这样才能与企业项目相比较，个人练手的项目不算在内。试想一下，在一个软件企业里面，水平足矣为自由软件提交代码的开发者占了多少比例？但是那些尚不能为自由软件项目提交代码的开发者，在企业里面可是天天写代码的，甚至大部分代码是出自他们之手。</p>
+<p>泛泛的说，在某个领域，如果可选的自由软件有不少，那么排名前列的项目，质量基本上不需要太过担心。</p>
+<p>上面是我对自由软件质量担忧的看法，但这当然不代表就可以随意选择使用自由软件，技术选型中需要评估的东西还有很多。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
     
     
 
@@ -817,7 +800,7 @@
         
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">328</span>
+          <span class="site-state-item-count">327</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

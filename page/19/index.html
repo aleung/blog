@@ -167,7 +167,7 @@
       
     
 
-    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">328</span></a>
+    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">327</span></a>
 
   </li>
         <li class="menu-item menu-item-search">
@@ -214,105 +214,6 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2011/03/13/Sina-micro-bo-API-blacklist-terrible/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leo Liang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good good study, day day up">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2011/03/13/Sina-micro-bo-API-blacklist-terrible/" class="post-title-link" itemprop="url">新浪微博API黑名单威武</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2011-03-13 01:40:00" itemprop="dateCreated datePublished" datetime="2011-03-13T01:40:00+08:00">2011-03-13</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
-              </span>
-            
-          
-
-          <br>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            <p>因为有些tweet没有同步到新浪微博，查看了 <a href="http://good-good-study.appspot.com/blog/posts/111001" target="_blank" rel="noopener">TwitterSinaSync</a> 的运行日志，发现了这样的记录：</p>
-<p><a href="http://www.flickr.com/photos/leoliang/5519631639/" target="_blank" rel="noopener"><img src="http://farm6.static.flickr.com/5057/5519631639_5b0593fd42_z.jpg" alt></a></p>
-<p>前一个tweet（绿色框）正常同步到了新浪微博，而接下来一个就失败（红色框），错误信息是黑名单用户。显然是tweet中的某些内容触发了黑名单机制，在这里估计是”twitter”。</p>
-<p>一旦用户被列入了黑名单，接下来对这个用户的操作都会失败。看下面的例子，第一条是成功的，第二个失败后，接下来的tweet的同步都失败了，即使内容看起来绝无敏感词。其实我也猜不出第二条tweet中哪个词触发了加入黑名单，是”境外”？还是”mranti”？</p>
-<p><a href="http://www.flickr.com/photos/leoliang/5519631597/" target="_blank" rel="noopener"><img src="http://farm6.static.flickr.com/5217/5519631597_e6064611fc_z.jpg" alt="sina_blacklist_1"></a></p>
-<p>目前新浪微博API的自动触发黑名单是临时性的，过一段时间后用户就可以继续使用，不过不知道它内部有没有什么计数器什么的。为此，我修改了 TwitterSinaSync，当用户被列入黑名单后会暂停同步一段时间。这个版本还处理了用户撤销新浪API授权的情况，会自动将用户删除。用户可以用原邀请链接重新开通。请到<a href="https://github.com/aleung/TwitterSinaSync" target="_blank" rel="noopener">TwitterSinaSync@github</a>下载 2.3 版本源代码。</p>
-
-          
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
       
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -487,6 +388,8 @@
     </div>
 
     
+
+    
     
     
 
@@ -586,6 +489,8 @@
     </div>
 
     
+
+    
     
     
 
@@ -680,6 +585,8 @@
         
       
     </div>
+
+    
 
     
     
@@ -795,6 +702,108 @@
     </div>
 
     
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2011/01/14/GQueuesInbox-Send-item-to-your-GQueues-inbox-with-Android-device-anywhere-anytime/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/2011/01/14/GQueuesInbox-Send-item-to-your-GQueues-inbox-with-Android-device-anywhere-anytime/" class="post-title-link" itemprop="url">GQueuesInbox : Send item to your GQueues inbox with Android device anywhere anytime</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2011-01-14 05:15:00" itemprop="dateCreated datePublished" datetime="2011-01-14T05:15:00+08:00">2011-01-14</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2011-01-17 05:16:00" itemprop="dateModified" datetime="2011-01-17T05:16:00+08:00">2011-01-17</time>
+              </span>
+            
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <img src="http://farm6.static.flickr.com/5285/5360976023_928916d839_m.jpg" class="right" title="GQueueInbox">
+<p>去年底<a href="https://www.rememberthemilk.com/" target="_blank" rel="noopener">RememberTheMilk</a>的pro帐号到期了，于是又折腾了一下看看有没有好用的类似工具，发现了一个在线任务管理的新秀：<a href="http://www.gqueues.com" target="_blank" rel="noopener">GQueues</a>。GQueues的功能和界面都不错，我比较喜欢它的一点是没有用高中低的任务优先级，而是让你在列表中拖放任务改变顺序，排在最顶的就是需要优先处理的。有些事情你很难界定应该是属于重要性高还是重要性中等，但是如果几件事情放在一起，就很容易分出哪个相对更重要一些。</p>
+<p>但是，GQueues没有开发手机本地应用，在手机上只能通过浏览器访问。虽然它的网站有专门为移动设备优化，但还是不如本地应用便捷。而且很重要一点，不是任何时候都能访问到网络的，想起一件要做的事情，却因为连不上网而无法记录下来，只能留在脑子里或者要记录到别的地方，这样不符合GTD的原则。</p>
+<p>为此，我写了一个简单的Android应用，做的唯一事情就是往GQueues inbox里面添加新任务，并且允许离线使用：如果没有网络，任务会暂存起来，在有网络的时候后台自动发送出去。软件介绍：<a href="http://www.appbrain.com/app/gqueuesinbox/leoliang.gqueuesinbox" target="_blank" rel="noopener">http://www.appbrain.com/app/gqueuesinbox/leoliang.gqueuesinbox</a></p>
+<p>不过，因为GQueues部署在Google App Engine上的，IP地址被GFW屏蔽，在国内无法直接访问。解决办法是自己将可以访问的IP配置到hosts文件里面，无论是PC还是手机都要如此处理。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
     
     
 
@@ -845,7 +854,7 @@
         
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">328</span>
+          <span class="site-state-item-count">327</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

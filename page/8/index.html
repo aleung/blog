@@ -167,7 +167,7 @@
       
     
 
-    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">328</span></a>
+    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">327</span></a>
 
   </li>
         <li class="menu-item menu-item-search">
@@ -214,108 +214,6 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2014/04/03/zhong-guo-di-tu-pian-yi/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leo Liang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good good study, day day up">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2014/04/03/zhong-guo-di-tu-pian-yi/" class="post-title-link" itemprop="url">中國電子地圖偏移</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2014-04-03 07:43:45" itemprop="dateCreated datePublished" datetime="2014-04-03T07:43:45+08:00">2014-04-03</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
-              </span>
-            
-          
-
-          <br>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            <p>幾年前我寫過對Google中國地圖偏移規律的分析(<a href="/2009/12/26/Google-China-Map-offset-1/">1</a>)(<a href="/2009/12/27/Google-China-Map-offset-2/">2</a>)，根據抓取到的偏移量數據，大概看出呈現了<code>sin(a)+sin(3a)</code>這樣的函數曲線規律，並且這個函數以不同頻率和幅度疊加了兩次。當時我推導出函數及其係數，利用它去校正偏移，在百公里範圍的區域內已經非常理想，但是在全國大範圍的不同區域，係數需要有點不同，也就是擬合函數還是差了一些低頻率的細節。不過當時的分析細節我也不敢在博客裏面寫，後來我也沒有再搞地圖方面的應用開發了，就把這個放下。</p>
-<p>實際上這個地圖偏移並不是Google自己搞的算法，而是國家測繪局以立法的形式統一要求加的，稱為地形图非线性保密处理，所有從事國內電子地圖的廠商應該都得到了這個算法，實際上並起不到什麼所謂保護國家安全和國家利益的作用（保護行業壟斷者利益倒是真的），但是這個地圖偏移對地理信息處理和GPS技術的民用化起到了巨大的阻礙作用，近年各種與地理位置相關的應用如雨後春筍般湧現，但都為中國地圖的偏移而頭痛不已，後來由於下面提到的算法的流傳，問題得以解決，但增加很多不必要的複雜性和浪費開發、數據處理的人力。在我看來，這個地圖非線性加密處理在地理信息領域就像GFW在互聯網信息領域一樣，浪費了大量社會財富來對技術發展與應用進行封鎖。<a href="http://baike.baidu.com/view/2356807.htm#2_2" target="_blank" rel="noopener">李成名</a>，你真的成名了。</p>
-<p>感謝Internet，感謝open source，現在這個偏移算法在網上已經可以輕松找到了。</p>
-<p>網上流傳的原始算法是<a href="http://emq.googlecode.com/svn/emq/src/Algorithm/Coords/Converter.java" target="_blank" rel="noopener">這個Java文件</a>，然後有人整理過代碼，接力開發出多種語言版本。在『A Fork of Stuffs』博客裏，<a href="http://blog.csdn.net/coolypf/article/details/8686588" target="_blank" rel="noopener">地球坐标系 (WGS-84) 到火星坐标系 (GCJ-02) 的转换算法</a>給出了C#實現，這個博客另外一篇<a href="http://blog.csdn.net/coolypf/article/details/8569813" target="_blank" rel="noopener">火星坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换算法</a>也很有用。而使用比較方便應該是下面的github代碼庫：</p>
-<ul>
-<li><a href="https://github.com/googollee/eviltransform" target="_blank" rel="noopener">googollee/eviltransform</a>: C, go, JavaScript, php語言版本</li>
-<li><a href="https://github.com/Leask/EvilTransform" target="_blank" rel="noopener">Leask/EvilTransform</a>: Java和C#語言版本，似乎就是將前面介紹的代碼收集到github裏面，沒有改動。</li>
-</ul>
-<p>另外，github裏還有一個項目 <a href="https://github.com/fourcels/lbs" target="_blank" rel="noopener">fourcels/lbs</a> 是用查表法來糾偏的，裏面的偏移數據（共9M）說不定就是早期從Google地圖服務上抓下來的。但現在有了算法，查表法的價值就不大了。</p>
-
-          
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
       
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -417,6 +315,8 @@
         
       
     </div>
+
+    
 
     
     
@@ -529,6 +429,8 @@
     </div>
 
     
+
+    
     
     
 
@@ -632,6 +534,8 @@
         
       
     </div>
+
+    
 
     
     
@@ -755,6 +659,105 @@
     </div>
 
     
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2013/10/21/du-of-software-design/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/2013/10/21/du-of-software-design/" class="post-title-link" itemprop="url">软件设计之度</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2013-10-21 22:30:00" itemprop="dateCreated datePublished" datetime="2013-10-21T22:30:00+08:00">2013-10-21</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
+            
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>上个月在公司里分享的主题。Slideshare上看不到页面的动画效果，页面里的东西混一起了，要下载原PowerPoint文件看才行。</p>
+<iframe src="http://www.slideshare.net/slideshow/embed_code/26482993" width="595" height="487" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen></iframe>
+
+          
+        
+      
+    </div>
+
+    
+
+    
     
     
 
@@ -805,7 +808,7 @@
         
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">328</span>
+          <span class="site-state-item-count">327</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
