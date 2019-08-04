@@ -167,7 +167,7 @@
       
     
 
-    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">327</span></a>
+    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">328</span></a>
 
   </li>
         <li class="menu-item menu-item-search">
@@ -221,7 +221,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2010/11/02/WebLogic-Resource-Adapter-JCA-WorkManager-/">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2006/07/14/Or-blogline-works-better/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leo Liang">
@@ -238,7 +238,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/blog/2010/11/02/WebLogic-Resource-Adapter-JCA-WorkManager-/" class="post-title-link" itemprop="url">WebLogic在非Resource Adapter里直接使用JCA WorkManager的失败尝试</a>
+                <a href="/blog/2006/07/14/Or-blogline-works-better/" class="post-title-link" itemprop="url">还是blogline好用</a>
               
             
           </h1>
@@ -257,7 +257,7 @@
                 
               
 
-              <time title="创建时间：2010-11-02 05:43:00" itemprop="dateCreated datePublished" datetime="2010-11-02T05:43:00+08:00">2010-11-02</time>
+              <time title="创建时间：2006-07-14 08:00:00" itemprop="dateCreated datePublished" datetime="2006-07-14T08:00:00+08:00">2006-07-14</time>
             </span>
           
             
@@ -287,18 +287,21 @@
 
       
           
-            <p>JCA 1.5 规范定义了WorkManager API，能方便的进行任务的(多线程)并行处理。按照JCA规范的原意，WorkManager是仅提供给Resource Adapter使用的，容器会提供WorkManager实例并通过BootstrapContext注入到adapter中。可是，有时在其他场合，例如EJB、Servlet中，也希望能将请求拆分，使用WorkManager并行处理，但JEE规范中并没有提供这样的机制。</p>
-<p>WebLogic提供了CommonJ WorkManager API，可用于任意应用中，但这个API不在JEE规范之中，因此GlassFish是不支持的。而且，使用WebLogic CommonJ WorkManager时需要在ejb-jar.xml中加入一个类型为commonj.work.WorkManager的resource reference，这样同一个ejb包就不能在不同application server间通用了，因此我还是希望能找到一种通用的方法。</p>
-<p>SpringFramework的org.springframework.jca.work包为GlassFish和JBoss提供了在Resource Adapter外部使用JCA 1.5 WorkManager的简便方法。看了for GlassFish的源代码，发现它其实是调用了GlassFish内部的factory去直接创建WorkManager，那么对GlassFish是否也可以这样做呢？</p>
-<p>反编译WebLogic的jar包，发现commonj WorkManager和connector WorkManager实际上都是delegate到一个weblogic.work.WorkManager实现的，也就是说在WebLogic里，CommonJ和JCA的WorkManager的底层实现其实都是同样的。接下来找到了weblogic.work.WorkManagerFactory，它有find和findOrCreate方法可返回weblogic.work.WorkManager实例，也许就是可以拿到weblogic-ejb-jar.xml里面定义的weblogic WorkManager。拿到了内部的weblogic.work.WorkManager实例后，再调用weblogic.connector.work.WorkManager的create方法，将这个内部WorkManger包裹到JCA WorkManager中，那么我们的应用就可以使用这个JCA WorkManager了，通过Spring的WorkManagerTaskExecutor来很方便的调度任务，上层的逻辑就可以做到与应用服务器无关。看起来很美。</p>
-<p><a href="http://www.flickr.com/photos/leoliang/5137622842/" target="_blank" rel="noopener"><img src="http://farm2.static.flickr.com/1208/5137622842_a9b4e5fda8_b.jpg" alt="WLS-WorkManager"></a></p>
-<p>可是结果是残酷的。写了一个测试程序，结果是通过这个WorkManagerFactory可以成功的获取到weblogic.work.WorkManager实例，也能够创建出包裹的JCA WorkManager，可是真正要使用它来执行work时，它很坚定的拒绝了，抛出异常信息：Attempt to create Work outside the context of the Connector container。</p>
-<p>查看代码，发现weblogic.connector.work.WorkManager及WorkImpl内部会寻找相应的RAInstanceManager，并且WorkImpl需要用到rarClassloader，看来它设计上还是与resource adapter相关的。一涉及到classloader，我无心恋战了，算了，就此打住。</p>
-<p>P.S. 既然说到WorkManager，就推荐一下我的同事写的相关的一篇blog：<a href="http://www.javaeye.com/topic/623825" target="_blank" rel="noopener">application server 下的任务异步/并行执行方案</a></p>
-<p>P.P.S. 我后来采用的解决方案是让build system可以根据需要为不同的 target application server 选择不同的 deployment descriptor 来build相应的artifacts。</p>
-<p>P.P.P.S. 回头再读一下，发现文章里中文英文混杂得很厉害。没办法了，那些专业术语都是看惯英文了，用中文翻译了反而别扭。</p>
+            <p>
+              试过了好几种RSS阅读器，换来换去都感觉总是差那么一点点不够好用。最终还是用回了blogline,简单、方便，这就够了。不过前提是网络的速度够快，好像在国内访问的速度不怎么样，也许又得换了。
+2009-5-31 Updated: 现在应该改为”还是Google Reader好用” 
 
+              
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2006/07/14/Or-blogline-works-better/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -326,7 +329,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2010/09/28/Andriod-TransProxy/">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2006/07/03/Everyone-can-edit-Geocaching-of-Chinese-guide/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leo Liang">
@@ -343,7 +346,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/blog/2010/09/28/Andriod-TransProxy/" class="post-title-link" itemprop="url">Andriod TransProxy</a>
+                <a href="/blog/2006/07/03/Everyone-can-edit-Geocaching-of-Chinese-guide/" class="post-title-link" itemprop="url">人人可编辑的Geocaching中文指南</a>
               
             
           </h1>
@@ -362,7 +365,7 @@
                 
               
 
-              <time title="创建时间：2010-09-28 06:13:00" itemprop="dateCreated datePublished" datetime="2010-09-28T06:13:00+08:00">2010-09-28</time>
+              <time title="创建时间：2006-07-03 08:00:00" itemprop="dateCreated datePublished" datetime="2006-07-03T08:00:00+08:00">2006-07-03</time>
             </span>
           
             
@@ -392,11 +395,19 @@
 
       
           
-            <p>关注我之前写的Android翻墙系列文章<a href="/2010/06/02/Consider-how-in-the-Android-mobile-phones-in-use-SSH-tunnel-over-the-wall">1</a>, <a href="/2010/06/07/Android-SSH-tunnel-2010-06-06-">2</a>, <a href="/2010/07/31/Android-SSH-tunnel-prototype">3</a>的朋友请留意一下这个应用：<a href="http://forum.xda-developers.com/showthread.php?t=766569" target="_blank" rel="noopener">TransProxy</a>。这个应用的v3版本集成了HTTP transparent proxy (使用<a href="http://transproxy.sourceforge.net/" target="_blank" rel="noopener">Transproxy</a>)、HTTPS/SOCKS redirector (使用<a href="http://darkk.net.ru/redsocks/" target="_blank" rel="noopener">redsocks</a>) 、iptables script 并提供了配置、控制的界面。理论上，结合TransProxy和ConnectBot就可以实现Android上通过SSH tunnel翻墙，请参考<a href="/2010/06/02/Consider-how-in-the-Android-mobile-phones-in-use-SSH-tunnel-over-the-wall">这里</a>的第二张图片：ConnectBot实现了SSH client，TransProxy提供了transparent socks proxy并且设置iptables。</p>
-<p>不过，我刚刚将TransProxy和ConnectBot配合运行起来试了一下，并没有成功，并且手机又遇到了100% CPU占用的问题，只能手工将ConnectBot kill了。ConnectBot当前最新的snapshot版本都还是没有解决这个<a href="http://code.google.com/p/connectbot/issues/detail?id=299" target="_blank" rel="noopener">bug</a>，大家快去给这个bug加星，促使开发者优先解决吧。</p>
-<p>鉴于我目前暂时处于肉身翻墙状态，没有积极性去进一步实验了，各位动手试试吧，有结果记得共享出来。另外，目前TransProxy的作者还在相当勤快的改进这个应用，不妨到xda-developers论坛与他交流。  </p>
-
+            <p>
+              最近一年，随着GPS使用者的增加，geocaching开始在国内媒体上有所介绍，也出现了一些相关的网站。但是因为大家都没有多少玩的经验，很多人都只是找过一两个cache，甚至还没有找过，就开始自己藏cache了，对规则的理解也出现了偏差。例如将cache埋藏在地下，找的时候居然要带铲子去挖；为了能让寻宝者知道往哪里挖，就将藏宝地点的照片贴出来。这样，寻宝过程完全变成了单纯的GPS定位，寻找的乐趣都
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2006/07/03/Everyone-can-edit-Geocaching-of-Chinese-guide/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -424,7 +435,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2010/07/31/Android-SSH-tunnel-prototype/">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2006/06/28/How-does-not-support-Chinese-sites-in-the-input-Chinese-information/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leo Liang">
@@ -441,7 +452,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/blog/2010/07/31/Android-SSH-tunnel-prototype/" class="post-title-link" itemprop="url">Android手机上使用SSH tunnel：prototype</a>
+                <a href="/blog/2006/06/28/How-does-not-support-Chinese-sites-in-the-input-Chinese-information/" class="post-title-link" itemprop="url">如何在不支持中文的网站中输入中文信息</a>
               
             
           </h1>
@@ -460,122 +471,7 @@
                 
               
 
-              <time title="创建时间：2010-07-31 00:17:00" itemprop="dateCreated datePublished" datetime="2010-07-31T00:17:00+08:00">2010-07-31</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2010-08-23 10:04:00" itemprop="dateModified" datetime="2010-08-23T10:04:00+08:00">2010-08-23</time>
-              </span>
-            
-          
-
-          <br>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            <p>在上次写下<a href="/2010/06/07/Android-SSH-tunnel-2010-06-06-">进展</a>之后，就真的没有任何进展了。本来打算完成之后会发布成开源软件的，但现在看来遥遥无期。有人问我iptables命令怎么写，就把简要介绍放这里吧。</p>
-<ol>
-<li>首先确认你有Android系统的root权限，下面的操作要以root身份登录到shell进行</li>
-<li>将transocks_ev放到Android系统中，目录随你喜欢。这里<a href="http://cid-e1c6bc07e3f505a3.office.live.com/self.aspx/.Public/transocks%5E_ev-android.zip" target="_blank" rel="noopener">下载</a>已编译的transocks_ev for Android可执行文件，解压后文件的MD5：6a0c3500bcd24ab7b706c8caf34f15ba</li>
-<li>从Android Market下载ConnectBot，配置好你的ssh帐号，记得设置port forwarding，端口为9050</li>
-<li>在ConnectBot中连接ssh</li>
-<li><p>在shell中运行transocks_ev:  </p>
-<p>transocks_ev -S 127.0.0.1 -s 9050</p>
-</li>
-<li><p>在shell中执行iptables命令： </p>
-<p>iptables -t nat -F<br>iptables -t nat -A OUTPUT -m owner –cmd-owner transocks_ev -j RETURN<br>iptables -t nat -A OUTPUT -m owner –cmd-owner org.connectbot -j RETURN<br>iptables -t nat -A OUTPUT -p tcp –dport 80 -j REDIRECT –to-ports 1211<br>iptables -t nat -A OUTPUT -p tcp –dport 443 -j REDIRECT –to-ports 1211</p>
-</li>
-<li><p>这时所有的HTTP/HTTPS流量都会通过ssh tunnel了，但DNS查询不会，所以依然无法访问被DNS污染的网站</p>
-</li>
-<li>断开ConnectBot连接</li>
-<li>在shell中kill掉transocks_ev进程</li>
-<li><p>在shell中执行iptables命令：</p>
-<p>iptables -t nat -F</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2010/07/30/Swimming-feeling/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leo Liang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good good study, day day up">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2010/07/30/Swimming-feeling/" class="post-title-link" itemprop="url">游泳感想</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2010-07-30 22:49:00" itemprop="dateCreated datePublished" datetime="2010-07-30T22:49:00+08:00">2010-07-30</time>
+              <time title="创建时间：2006-06-28 12:23:00" itemprop="dateCreated datePublished" datetime="2006-06-28T12:23:00+08:00">2006-06-28</time>
             </span>
           
             
@@ -605,11 +501,20 @@
 
       
           
-            <p>几天前去游泳，连续游了四十分钟，没有感觉到累，倒是游得很无聊。一路就是看着池底白晃晃的瓷片和黑色的泳道线，到头了转个身一蹬池壁，又是单调的白与黑。见不到养眼的泳装美女来分散一下注意力，一路只好默念着这是第十个来回，第十一个来回，目标是十五个，目标是十五个……游得无聊，倒是有了两个想法。</p>
-<p>首先是想为什么没有音乐听听呢？跑步的时候可以戴着耳机听音乐，游泳也应该可以才对。做防水的播放器和防水的耳机，难度应该不大，说不定已经有这样的产品了，只是没有普及。</p>
-<p>第二个想法有意思些。我在海里看过珊瑚，离岸不远的浅水，只要把头沉入水中，就能见到海底犹如大花园一般的珊瑚世界。如果整个游泳池底铺上大显示屏，游泳池也可以变身为虚拟海底世界。五彩斑斓的珊瑚随着水波微微摇曳，鱼群在其中穿梭。假若结合电脑控制的虚拟现实系统，加上感应器，还可让鱼群在你游近时飞快逃开，而海豚就伴在你左右。</p>
-
+            <p>
+              有些网站不支持汉字，输入的中文字符显示不出来，变成了问号。geocaching.com就是这样。这通常是在文字处理的某个过程中只能处理7bit字符，将汉字过滤掉了。
+在HTML/XML中对于这种在字符集以外的字符的表示有一种特殊方法：字符实体(character entity)，用字符实体来代替一个字符，相当于编程语言里面的转义符。HTML字符实体都是用&amp;开头，分号结尾的，又分为两种，命名
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2006/06/28/How-does-not-support-Chinese-sites-in-the-input-Chinese-information/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -637,7 +542,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2010/06/28/Panasonic-H540U-washing-machine-design-flaws/">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2006/06/17/Photographs-of-the-geographical-location-information/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leo Liang">
@@ -654,7 +559,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/blog/2010/06/28/Panasonic-H540U-washing-machine-design-flaws/" class="post-title-link" itemprop="url">松下H540U洗衣机的设计缺陷</a>
+                <a href="/blog/2006/06/17/Photographs-of-the-geographical-location-information/" class="post-title-link" itemprop="url">照片的地理位置信息</a>
               
             
           </h1>
@@ -673,7 +578,7 @@
                 
               
 
-              <time title="创建时间：2010-06-28 18:35:00" itemprop="dateCreated datePublished" datetime="2010-06-28T18:35:00+08:00">2010-06-28</time>
+              <time title="创建时间：2006-06-17 08:59:00" itemprop="dateCreated datePublished" datetime="2006-06-17T08:59:00+08:00">2006-06-17</time>
             </span>
           
             
@@ -703,17 +608,663 @@
 
       
           
-            <p>家里的松下H540U波轮洗衣机，使用了大概一年半左右开始出现撞桶现象，就是在洗衣的过程中，每次波轮起动（或反转）时，洗衣桶会碰撞到箱体。因为箱体相应位置贴了防撞海绵，摩擦时发出很大很难听的”吱吱”的声音。打开上盖检查过，发现是箱体吊挂系统变形所致，我觉得这属于设计上的缺陷。</p>
-<p>如果不清楚波轮洗衣机吊挂系统的结构，可以看看<a href="http://wenku.baidu.com/view/b996ea335a8102d276a22ff5.html" target="_blank" rel="noopener">全自动波轮洗衣机培训手册</a>的3.1节。洗衣机的桶体是靠四根吊杆悬挂在箱体的四个角上的，如果吊杆的长度不一致就会造成桶体不平衡。</p>
-<p>从照片中可以看出，箱体前面两个角用来悬挂吊杆的角铁都已经变形下沉，而后面的两个角则正常，这样就造成桶体前倾，在洗衣的时候不平衡自然就频频撞击箱体了。</p>
-<p><a href="http://www.flickr.com/photos/leoliang/4741375101/" target="_blank" rel="noopener"><img src="http://farm5.static.flickr.com/4143/4741375101_8ae3ce01eb.jpg" alt="H540U front-right"></a> <a href="http://www.flickr.com/photos/leoliang/4741375099/" target="_blank" rel="noopener"><img src="http://farm5.static.flickr.com/4093/4741375099_9191b131d3.jpg" alt="H540U front-left"></a> <a href="http://www.flickr.com/photos/leoliang/4741375103/" target="_blank" rel="noopener"><img src="http://farm5.static.flickr.com/4143/4741375103_3675a8e073.jpg" alt="H540U rear-left"></a></p>
-<p>为了外形美观，箱体前面的两条边做成了大圆弧，也许是为了加工方便的缘故，悬挂吊杆的角铁在圆弧部分并没有与箱体接触，是悬空的，起到支撑作用的只有侧面的一部分，由于强度不足在使用一段时间后就变形了。这款洗衣机在最高水位时桶内的重量超过50公斤，平常洗衣就算不满也有30～40公斤。箱体后侧两条边是直角，箱体支持角铁的的长度足够长，就没有发生变形。</p>
-<p>如果箱体前边不要做这么大的圆弧，像后面两角一样，就不会有问题；如果圆弧不能放弃，那就应该在圆弧处也翻出一条边，与角铁焊接在一起不让其悬空，不过这样的加工难度会大很多。但无论如何，设计的时候应该要考虑到其强度是否足够支持正常使用负荷，因此我说这是设计的缺陷。</p>
-<p>因为箱体只保修一年，出现问题时已经过保了，不能更换。师傅给我的建议是将洗衣机前面两脚垫高，以补偿桶身的倾斜。比较奇怪的是，挂杆的长度居然是无法调节的，不知道是师傅嫌麻烦还是真的不能调。如果不能调，怎么控制生产装配过程出现的误差？</p>
-<p>我怀疑其他型号乃止其他厂家的洗衣机都可能会有同样问题—-如果它们的箱体做成大圆弧，选购的时候要留意一下该处的支撑结构。对于H540U，把头伸进桶口处勉强可以看到悬挂角铁，如果看不到或者光线不足，可以用相机拍摄。</p>
-<p>我对这款洗衣机的功能还是比较满意的，但是一些非关键性的地方的设计和质量还是有不足。除了这个变形问题，还出现过上盖连接处塑料件断开和进水盒开裂漏水，幸好都属于保修范围更换了。</p>
-
+            <p>
+              在JPG图像的 EXIF meta data 中，有一组是与地理位置信息相关的，包括经纬度、高度、方向等，可以记录拍摄图像当时的位置信息。不过，目前内置GPS或者带有GPS接口的相机还非常少见，所以这组数据通常是空的。
+World-Wide Media eXchange 提供了免费工具 WWMX Location Stamper，能够依照数码照片的拍摄时间将GPS记录的track的位置信息设置到照
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2006/06/17/Photographs-of-the-geographical-location-information/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2006/06/15/Geocaching-in-Stockholm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/2006/06/15/Geocaching-in-Stockholm/" class="post-title-link" itemprop="url">Geocaching in Stockholm</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2006-06-15 02:28:00" itemprop="dateCreated datePublished" datetime="2006-06-15T02:28:00+08:00">2006-06-15</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
+            
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>
+              在中国大陆玩geocaching（GPS寻宝）的人估计没有多少个，hide和seek cache的还大多数都是来中国的外国人。可是在欧美的发达国家就不一样了，大量的cache和玩家。在Stockholm区域的cache就有数百个，好多cache的访问次数都几十上百的，有的logbook都换了几本。 
+Stockholm这个城市非常适合玩geocaching，这里到处都有公园，城市周边大片大片都是郊
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2006/06/15/Geocaching-in-Stockholm/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2006/05/13/From-satellites-look-at-all-the-places-I-ve-been/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/2006/05/13/From-satellites-look-at-all-the-places-I-ve-been/" class="post-title-link" itemprop="url">从卫星上看看我去过的地方</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2006-05-13 06:27:00" itemprop="dateCreated datePublished" datetime="2006-05-13T06:27:00+08:00">2006-05-13</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
+            
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>
+              昨天介绍了办公室的结构，后来在google map上看看，卫星照片非常清晰的显示出了大楼的形状，如果在图上加个标记，就可以让大家有个直观的了解了。Google map自己没有提供这样的功能，不过查到了另外一个网站Wayfaring可以做到，在这个网站上可以创建自己的地图，添加waypoint，附加文字图片说明，好玩极了。  
+这就是我的stockholm地图，我会不断将自己的行踪添加上去的:)ht
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2006/05/13/From-satellites-look-at-all-the-places-I-ve-been/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2006/05/12/Each-have-independent-office-with-the-Windows/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/2006/05/12/Each-have-independent-office-with-the-Windows/" class="post-title-link" itemprop="url">每人都有带窗户的独立办公室</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2006-05-12 08:01:00" itemprop="dateCreated datePublished" datetime="2006-05-12T08:01:00+08:00">2006-05-12</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
+            
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>
+              我在Stockholm上班的地方叫Kista，Kista是IT企业聚集的地区，被称为瑞典的硅谷，按照我们的叫法，应该是高新技术产业开发区了:) 在这里最大的公司是Ericsson，好多building都是Ericsson的，到处可见它的标志。据说这个地区最初是因为爱立信而发展起来的，但现在有很多不同的企业进驻了，周围逛一圈，看到很多出名的IT企业，还包括中国的华为。
+我上班的大楼占地面积挺大，是一
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2006/05/12/Each-have-independent-office-with-the-Windows/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2006/04/20/Furniture-DIY-shoe-rack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/2006/04/20/Furniture-DIY-shoe-rack/" class="post-title-link" itemprop="url">家具DIY——鞋架</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2006-04-20 07:58:00" itemprop="dateCreated datePublished" datetime="2006-04-20T07:58:00+08:00">2006-04-20</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
+            
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>
+              打算在家的入户门后面放一个鞋架，收纳全家人日常穿着的鞋子，和换季暂不穿着的鞋子。为了充分利用空间，鞋架要做得比较高，最好一直到天花板。因为在门背后，架子不能影响开门。这样的要求显然不可能有任何成品可以满足，因为已经有自己做书桌的经验，这次还是打算自己动手做。
+其实自制板式家具不是很困难，需要的工具也不特别。下面的照片记录了制作的过程。
+[左上]：使用的板材是已经贴面的中密度板，2.4m x 1.2
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2006/04/20/Furniture-DIY-shoe-rack/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2006/04/19/See-how-foreigners-write-Chinese-articles/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/2006/04/19/See-how-foreigners-write-Chinese-articles/" class="post-title-link" itemprop="url">看外国人怎么写中文文章</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2006-04-19 21:29:00" itemprop="dateCreated datePublished" datetime="2006-04-19T21:29:00+08:00">2006-04-19</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
+            
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>
+              看这个”喜欢学中文的美国老外”的blog，他的写中文文章的方法跟我们很不同，先用拼音将文章通篇写出来，再用软件转化为汉字。
+最近学英语，也在思考语言的表音和表意这个问题。拉丁文是一种表音的文字，而中文（汉字）是综合了表音和表意的功能，应该是更多的偏于表意。因为在汉语学习中有”认字”这个说法。中国（大陆）曾经有将汉字拼音化的计划，但因为汉字有表意的特点，单纯的拼音化并不成功。有关汉字、拼音化文字和表
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2006/04/19/See-how-foreigners-write-Chinese-articles/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2006/04/10/CP950-/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/2006/04/10/CP950-/" class="post-title-link" itemprop="url">CP950相机拆装记录</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2006-04-10 00:34:00" itemprop="dateCreated datePublished" datetime="2006-04-10T00:34:00+08:00">2006-04-10</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
+            
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>
+              我的古董数码相机Nikon Coolpix 950已经服役五年多了，去年终于不能工作，表现为快门无法打开。最初是开机后快门打不开，但多按几次后就能正常，但后来就怎么都开不了了。
+原来就打算将它拆开看看的，刚好最近在无忌上看到了一篇帖子，介绍995的镜头的拆卸。看完后来了兴趣，今天把相机的镜头部分拆开了（这款相机的镜头与机身是分离的）。反正死马当作活马医，弄不好也不心痛。一层层拆下来，最终将快门组件
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2006/04/10/CP950-/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -738,7 +1289,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/20/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/blog/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/66/">66</a><a class="extend next" rel="next" href="/blog/page/22/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/20/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/blog/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/33/">33</a><a class="extend next" rel="next" href="/blog/page/22/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -771,7 +1322,7 @@
         
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">327</span>
+          <span class="site-state-item-count">328</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

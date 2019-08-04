@@ -4,9 +4,40 @@
   
     
     <entry>
+      <title><![CDATA[DIY人体工学分体键盘]]></title>
+      <url>http://aleung.github.io/blog/2019/08/04/DIY-keyboard/</url>
+      <content type="html"><![CDATA[<img src="/blog/attachments/2019/8/mini-thumb-dactyl.jpg">
+<p>去年底今年初先后做了两个分体的人体工学键盘。</p>
+<a id="more"></a>
+<p>用着微软的人体工学键盘4000好多年了（以前写过<a href="/blog/2013/01/08/keyboard-and-mouse/">一篇介绍</a>，里面也有照片），对它唯一不满的地方是太大了，占用了桌面不少空间。实际上我根本用不着小键盘，如果不要右边那一块，桌面就宽敞不少。</p>
+<p>对市面有售的键盘又做了一番了解，找不到合适的。本来左右手分区的键盘就很罕见，符合我的期望，并且买得到和买得起根本没有。不过倒是发现有不少爱好者自己设计制作键盘并且开源的，有3D打印机打印壳体，做起来似乎不会太难。Reddit的 <a href="https://www.reddit.com/r/MechanicalKeyboards/" target="_blank" rel="noopener">r/MechanicalKeyboards</a> 是爱好者的其中一个大本营，上面各种各样的键盘让人眼花缭乱。其中，一款叫做 <a href="https://github.com/adereth/dactyl-keyboard" target="_blank" rel="noopener">Dactyl</a> 的键盘，和由它派生出来的 <a href="https://github.com/tshort/dactyl-keyboard" target="_blank" rel="noopener">Dactyl-Manuform</a> 键盘，有不少人制作过，资料相对齐全些，外形也比较符合我的要求：左右手按键分离、带倾斜度适应手掌自然摆放的角度、占地不多。</p>
+<p>做键盘首先要做的功课的选择什么键轴（按键键体）和什么键帽。大部分的机械键盘爱好者玩的也就是把这些东西换来换去。我对机械键盘没有什么情结，除了在年代久远的时候用过的 IBM PC 是机械键盘，实在理解不了噼里啪啦的敲键快感在哪里。不过要自己做，能买到的键必然是机械按键了。各种各样的键轴在发烧友口中说得神乎其神，我就挑选了据说是最平庸的 Cherry 茶轴。另外，键帽也有不同高度、倾斜度和材质的讲究。我要做的键盘的键盘体自身已经带有弧度，就不需要键帽再有高度、弧度的区别，所以选择了DSA规格的无刻（上面没有印字）键帽。</p>
+<p>受了网上一些文章的影响，第一个键盘选择了比较激进的最少键位的方案：主键盘区为3行10列，连数字键都没有，很多按键需要靠同时按拇指区的切换键来打出来。这样做的好处是手在键盘的位置是固定的，手腕就搁在手托上按什么键都不需要挪动。但是代价就是脑子不够用了：拇指需要按的切换键太多，记不住。</p>
+<img src="/blog/attachments/2019/8/dactyl-manuform.jpg">
+<p>用了几个星期，还是难以做到肌肉记忆不去想怎么去按键，于是打算再做了一个多些按键的。之前选择最少键位方案的另外一个原因是我的3D打印机可打印面积不够大，加一行或者加一列都会超出打印床的大小了，因此首先得解决怎么能够适应打印面积的问题。</p>
+<p>第一个想法是将拇指区与主键盘区分离成两个部分独立打印。这就需要修改壳体的3D模型。Dactyl 这个项目比较有意思，模型是用Clojure程序生成的，因此我也就顺便（被迫）学习了 Clojure，感受还不错，终于有机会接触 lisp 风格的函数式编程了。做出来的版本是这个：<a href="https://github.com/aleung/mini-thumb-dactyl-keyboard#dactyl-manuform-thumb-part-printed-separately-wip" target="_blank" rel="noopener">dactyl_split.clj</a>，打印过一个样品出来，但我没有最终完善它的所有细节，因为有了一个新的想法。</p>
+<p>Manuform的拇指区每边有6个键。一个大拇指要按6个键太困难了，有些键的位置比较难够得着，记忆的负荷也太大，总是要想一想按哪个。按照自己用下来的情况，一个拇指可以比较容易的靠肌肉记忆按2个键，最多也就是控制3个键。把拇指区改小了，打印面积也就缩小了。</p>
+<p>于是就做出了我的派生作品：<a href="https://github.com/aleung/mini-thumb-dactyl-keyboard#mini-thumb-dactyl" target="_blank" rel="noopener">Mini Thumb Dactyl</a> —— 缩小了拇指区的 Dactyl-Manuform。也就是标题照片里面的键盘。这个即使增加了一行和一列，都能够在我的3D打印机上打出来。</p>
+<p>制作一个键盘主要包括三部分的工作：壳体、电路、固件（firmware）。壳体用3D打印机打印，如果别人做好的现成的STL模型不满足要求，就要自己去修改。电路的核心是 <a href="https://www.wikiwand.com/zh-hk/Arduino" target="_blank" rel="noopener">Arduino</a> 兼容的电路板，因为左右手键盘是独立的，两边各一片。Firmware基于开源的键盘固件 <a href="https://qmk.fm/" target="_blank" rel="noopener">QMK</a>，不需要自己编码，但是它的配置与按键电路连接相关（不同的按键数量会不同），按键映射也需要自己去配置。</p>
+<p>开源作品是不同开发者在前人基础上不断改进的过程，但也带来了很多版本分支。网上的资料比较零碎，没有从头到尾的系统有条理的文档，而且不同资料有些描述各不一样，分别适应于某个特定的分支。寻找资料、整理信息、理清关系是比较麻烦的事情。因此我把制作的具体过程中的所有关键信息整理写成了一份 <a href="https://github.com/aleung/mini-thumb-dactyl-keyboard/blob/master/guide/index.md" target="_blank" rel="noopener">How to Make a Dactyl Manuform Keyboard</a> ，以此为主线，相关的知识点可以再去阅读、搜索。</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> Gadget </tag>
+            
+            <tag> Maker </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[燃气热水器恒温控制]]></title>
       <url>http://aleung.github.io/blog/2019/02/25/thermostatic-water-heater/</url>
       <content type="html"><![CDATA[<p>为了选购热水器，做了好多功课。不像软件开发和电脑硬件领域，网上通过搜索引擎很难找到相关的专业一些的技术资料，大量的都是营销的文章，里面的技术相关的信息很混乱甚至是错误的。在看了各种广告、资料后，自己摸索总结了一些关于燃气热水器的恒温控制的原理。</p>
+<a id="more"></a>
 <h2 id="最基本的燃气热水器工作原理"><a href="#最基本的燃气热水器工作原理" class="headerlink" title="最基本的燃气热水器工作原理"></a>最基本的燃气热水器工作原理</h2><p>下图是最基本的燃气热水器的原理图，没有自动恒温功能，也就是老旧的那些机械旋钮控制的热水器。</p>
 <img src="/blog/attachments/2019/2/heater-1.png">
 <p>两个阀门分别在水回路和燃气回路中，分别控制水流量和火力。可是在好多热水器中，水回路阀门的旋钮是标记为“水温调节”的，根本就是乱写。我以前就总是搞不清楚这两个旋钮怎么用——既然都有水温调节了还要控制火力干什么。</p>
@@ -56,7 +87,9 @@
     <entry>
       <title><![CDATA[3D modeling language]]></title>
       <url>http://aleung.github.io/blog/2018/08/26/3D-modeling-language/</url>
-      <content type="html"><![CDATA[<p>做好3d打印机，需要制作些什么就自己建模了。大部分的CAD工具都是图形交互式的，也就是靠鼠标把模型”画“出来，但我更喜欢通过建模语言来把模型描述出来。在网上搜寻和试用了一些基于3D建模语言的CAD工具，将我了解的记录一下。</p>
+      <content type="html"><![CDATA[<img src="/blog/attachments/2018/8/openscad.png">
+<p>做好3d打印机，需要制作些什么就自己建模了。大部分的CAD工具都是图形交互式的，也就是靠鼠标把模型”画“出来，但我更喜欢通过建模语言来把模型描述出来。在网上搜寻和试用了一些基于3D建模语言的CAD工具，将我了解的记录一下。</p>
+<a id="more"></a>
 <h1 id="CAD建模语言"><a href="#CAD建模语言" class="headerlink" title="CAD建模语言"></a>CAD建模语言</h1><h4 id="OpenSCAD"><a href="#OpenSCAD" class="headerlink" title="OpenSCAD"></a>OpenSCAD</h4><p>网站：<a href="http://www.openscad.org/" target="_blank" rel="noopener">http://www.openscad.org/</a></p>
 <p>文档：<a href="http://www.openscad.org/cheatsheet/index.html" target="_blank" rel="noopener">http://www.openscad.org/cheatsheet/index.html</a></p>
 <p>这个领域的领头项目，知名度最高，使用者最多。 </p>
@@ -274,11 +307,12 @@
     <entry>
       <title><![CDATA[Kossel Mini 3D打印机制作记录 (2)]]></title>
       <url>http://aleung.github.io/blog/2017/12/31/kossel-mini-3d-printer-making/</url>
-      <content type="html"><![CDATA[<p><a href="/blog/2015/10/05/kossel-mini-3d-printer-making/">上一篇</a>是2015年国庆写的，当时是滑轨质量不行需要更换。后来重新买了滑轨，装配起来，测试过电路板、电机正常，然后就停工了。一放两年，这两个星期终于重新拿出来，继续制作。</p>
+      <content type="html"><![CDATA[<img src="/blog/attachments/2017/12/kossel.jpg">
+<p><a href="/blog/2015/10/05/kossel-mini-3d-printer-making/">上一篇</a>是2015年国庆写的，当时是滑轨质量不行需要更换。后来重新买了滑轨，装配起来，测试过电路板、电机正常，然后就停工了。一放两年，这两个星期终于重新拿出来，继续制作。</p>
+<a id="more"></a>
 <p>两年过去，Kossel打印机已经不是DIY热门了，搜索到的新信息很少。另一方面，淘宝上配件的价格普遍下降了不少。</p>
-<h1 id="装配"><a href="#装配" class="headerlink" title="装配"></a>装配</h1><p>其实主要部分在2015年底已经装好了，就差滑车限位开关和挤出机没装上。</p>
-<p>上面的接线理过了还是有些乱，等能打印后设计个外壳把电路板罩上。</p>
-<img src="/blog/attachments/2017/12/kossel.jpg">
+<h1 id="装配"><a href="#装配" class="headerlink" title="装配"></a>装配</h1><p>其实主要部分在2015年底已经装好了，就差滑车限位开关和挤出机没装上。装起来后就是上面照片的样子啦。</p>
+<p>电线虽然已经理过了还是有些乱，等能打印后设计个外壳把电路板罩上。</p>
 <h1 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h1><p>装配还好，调试才是累人的活。</p>
 <p>升级到最新的 Merlin 固件，delta结构打印机的配置参数减少了一些，网上的调试教程普遍是两三年前的，针对旧版本固件，已经不适用了。</p>
 <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>Delta 结构打印机的坐标原点在打印床正中心，三根立柱依次编号为 alpha / beta / gamma，但也有称为 X, Y, Z 柱，不能跟坐标系的三个轴混淆。三根立柱和xy平面的位置关系如下图，圆形为可打印半径。需要先计算好A, B, C 三点的xy坐标，后面调试要用。</p>
@@ -407,6 +441,7 @@
       <url>http://aleung.github.io/blog/2017/09/07/docker-dev-env/</url>
       <content type="html"><![CDATA[<p>正在负责的产品线已经全面转为基于 node.js 技术栈微服务架构，为了提高开发效率，我希望能创建一个标准的、容易创建的开发环境，以改善开发环境之间不一致、可能不完备、创建配置麻烦的现状。</p>
 <p>对这个开发环境的要求是 lightweight，reproducible 和 portable。</p>
+<a id="more"></a>
 <p>开始尝试的是 <a href="https://www.vagrantup.com/" target="_blank" rel="noopener">Vagrant</a>，但感觉缺点还是不少：provision 过程麻烦了些；如果要同时进行不同的开发就要运行多个VM，占用资源比较多；而且有个关键问题没找到好的解决方法：Windows 的文件系统不支持符号链接 (symbolic link)，而 npm install 时会依赖于符号链接，VM 使用 Windows host 的共享目录时在里面执行 npm install 会出错。</p>
 <p>这时 docker 进入了视野，容器的轻量、自包含一切的特性很满足我对标准化开发环境的要求。经过几天折腾，搞出了这样一套环境，初步试用还比较满意。</p>
 <p>这个基于 docker 的开发环境做到了这些：</p>
@@ -451,6 +486,7 @@
       <url>http://aleung.github.io/blog/2017/06/21/pact/</url>
       <content type="html"><![CDATA[<p>微服务架构的系统中，存在着大量的服务，每个服务开放出接口（作为provider），接口可以被很多其他服务调用（consume）。接口API是服务提供者和服务消费者之间的契约，理论上，只要测试了双方的实现都完全符合API，就可以保证它们能够正常的集成到一起；但在现实场景中，对API难以给出非常精确的定义，覆盖测试完整API的工作量也会非常巨大，再加上随着API的演进，要验证兼容性更是很麻烦。</p>
 <p>消费者驱动契约（<a href="http://martinfowler.com/articles/consumerDrivenContracts.html" target="_blank" rel="noopener">Consumer Driven Contract</a>）测试试图解决这个问题。它从接口的消费者出发，记录下消费者使用接口的各种场景，以此作为契约，验证接口的提供者是否符合。<a href="https://docs.pact.io/" target="_blank" rel="noopener">Pact</a> 就是支持针对 HTTP API 的消费者驱动契约测试的工具。</p>
+<a id="more"></a>
 <p>传统上会将测试做以下分类：</p>
 <ul>
 <li>单元测试：测试单个service</li>
@@ -491,7 +527,9 @@
     <entry>
       <title><![CDATA[使用OsmAndMapCreator及时更新OsmAnd地图]]></title>
       <url>http://aleung.github.io/blog/2017/06/17/OsmAndMapCreator/</url>
-      <content type="html"><![CDATA[<p>使用 <a href="https://www.openstreetmap.org" target="_blank" rel="noopener">OpenStreetMap</a> （简称为OSM）地图数据的手机应用有好些，<a href="http://osmand.net/" target="_blank" rel="noopener">OsmAnd</a> 是其中比较优秀的一个。OsmAnd的地图数据每月更新一次，延后了半个月到一个多月。作为一个OSM mapper，期望能够马上看到和用到最近做出的修改，等一个月实在太久了。</p>
+      <content type="html"><![CDATA[<img src="/blog/attachments/2017/6/osmand.jpg">
+<p>使用 <a href="https://www.openstreetmap.org" target="_blank" rel="noopener">OpenStreetMap</a> （简称为OSM）地图数据的手机应用有好些，<a href="http://osmand.net/" target="_blank" rel="noopener">OsmAnd</a> 是其中比较优秀的一个。OsmAnd的地图数据每月更新一次，延后了半个月到一个多月。作为一个OSM mapper，期望能够马上看到和用到最近做出的修改，等一个月实在太久了。</p>
+<a id="more"></a>
 <p>OSM原始地图数据在 <a href="http://wiki.openstreetmap.org/wiki/Planet.osm" target="_blank" rel="noopener">planet.osm</a> 的网站可以下载到，但数据文件是全球的，非常大。从 <a href="http://download.geofabrik.de/" target="_blank" rel="noopener">GeoFabrik</a> 可以下载按国家分割的数据文件。中国区的PBF格式数据是330MB。但每天重新下载一个数据包还是太大了，其实更新的数据不是很多。网站上还提供每天（planet.osm还有每小时）的变更数据包（osc文件），用 <code>osmupdate</code> 工具就能自动下载变更并且生成新的完整数据文件。 </p>
 <p>有了最新的 osm.pbf 数据文件，就可以使用 <code>OsmAndMapCreator</code> 生成 OsmAnd 可用的 OBF 格式离线地图文件了。生成的过程非常耗内存和CPU，全中国的地图在一台 Core i3-4370 CPU 的电脑上用了90分钟，需要分配 10GB 内存才够用（否则会出现 OutOfMemory 错误）。生成出来的 OBF 文件也有845MB之巨。为了缩短时间，我设置了 <code>osmupdate</code> 的<code>-b</code>参数，过滤出广东中部区域的数据，这样就快很多，几分钟搞定。</p>
 <p>处理的流程如下图。实际上安装好软件，修改好配置后，每次更新就执行一个脚本，过程全自动。</p>
@@ -514,6 +552,7 @@
       <title><![CDATA[在非GPL应用中使用OpenJDK的法律问题]]></title>
       <url>http://aleung.github.io/blog/2017/01/06/Use-OpenJDK-in-proprietary-software/</url>
       <content type="html"><![CDATA[<p>大家都知道 Oracle JDK 在商业应用场合是需要购买 license 的，往往会选择 OpenJDK 来规避。但是，OpenJDK 的 license 是 GPL，GPL 是一种 “传染性” 的协议，那么 OpenJDK 是否可以在非 GPL 应用中使用呢？</p>
+<a id="more"></a>
 <p>在 <a href="http://stackoverflow.com/" target="_blank" rel="noopener">StackOverflow</a>、<a href="http://opensource.stackexchange.com/" target="_blank" rel="noopener">Open Source Stack Exchange</a> 中搜索到一些相关的讨论，大部分答案是认为可以使用，应用无需因此用 GPL 发布，但也有人提出质疑。</p>
 <p>在 OpenJDK 网站中的 <a href="http://openjdk.java.net/faq/" target="_blank" rel="noopener">FAQ</a>是这么写的：</p>
 <blockquote>
@@ -844,6 +883,7 @@
       <content type="html"><![CDATA[<img src="/blog/attachments/2015/6/TheEndOfEternity.jpg" class="right">
 <p>花了几天空余时间，看完了阿西莫夫的科幻小说<a href="http://book.douban.com/subject/25829693/" target="_blank" rel="noopener">《永恒的终结》</a>。</p>
 <p>在我的印象中，阿西莫夫的科幻小说是以逻辑严谨为特征的。他的好多作品都是设定在未来背景的侦探推理小说。小学时代读他的“机器人系列”，还以为机器人三大定律真的是生产机器人都需要固化的逻辑。总之，感觉他的书基本上都是烧脑之作，读起来要细细思考琢磨的。</p>
+<a id="more"></a>
 <p><em>（提示: 有关键情节透露）</em></p>
 <p>在《永恒的终结》的设定中，时间的流逝是绝对的、单向的。即使在永恒时空，依然存在着时间的流逝（所谓的物理时间）。时间作用在永恒之人身上，他们依然会变老。严格的说，在整部小说的设定中，只存在一个时空，也就是一般时空。并不存在着一个独立的永恒时空，永恒时空其实是锚定在一般时空之上的一个个节点（在某些世纪上存在一个分区），永恒时空的时间跟一般时空的时间是同步的流逝的。</p>
 <p>《永恒的终结》并没有引入其他科幻小说常用的平行时空的概念，或者说即使有平行时空，他们（永恒之人）也只能在其中一个时空上活动。永恒之人的特别之处在于他们拥有着在时间轴上穿行的能力，他们能够到达时空上的任何一个时刻（也包括空间位置，但这在故事中不是重点）。将时空中的活动想象为一盘按正常速度播放录像带，永恒之人就是能够倒退或者快进到录像带的某个时刻进行播放。无论如何，在这（唯一的）时空之中，因果率是起作用的，也就是说，这盘录像带的剧情是合乎因果情理来发展的，前一时刻的事件产生的后果会反映到后面的时刻中。永恒之人在时空之中穿梭观察，以一个旁观者的身份，他可以看到一件事情发生的前因后果。</p>
@@ -896,6 +936,7 @@
       <url>http://aleung.github.io/blog/2015/02/05/typesetting-basic/</url>
       <content type="html"><![CDATA[<p>虽然我不是处女座的，但在有些事情上会表现得比较处女座，例如对于文档格式，我常会跟各种细节纠缠不休，为的是看起来显得完美一些。</p>
 <p>作为软件开发者，写文档是必备的技能，而且文档里常常会出现大量英文。这里介绍一些很基本的规则，使得文档的显得专业一些。这些规则在其他类型的文章里也是适用的。</p>
+<a id="more"></a>
 <h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><h3 id="用段落，不要强制换行"><a href="#用段落，不要强制换行" class="headerlink" title="用段落，不要强制换行"></a>用段落，不要强制换行</h3><p>在我看来，禁止使用强制换行，是没有特例的（我们不写诗歌）。在必须保留原始换行的地方，应该作为 preformatted text block（HTML 的 <code>PRE</code>，markdown 的 4 空格缩进段落）出现。</p>
 <h3 id="保持一致性"><a href="#保持一致性" class="headerlink" title="保持一致性"></a>保持一致性</h3><p>保持标点、字体等元素的一致性，整篇文档看起来清晰整齐，可读性高。</p>
 <p>在这方面常见问题有：</p>
@@ -940,8 +981,9 @@
     <entry>
       <title><![CDATA[Jekyll]]></title>
       <url>http://aleung.github.io/blog/2015/01/26/jekyll/</url>
-      <content type="html"><![CDATA[<h2 id="用-Jekyll-作为内部技术文档库"><a href="#用-Jekyll-作为内部技术文档库" class="headerlink" title="用 Jekyll 作为内部技术文档库"></a>用 Jekyll 作为内部技术文档库</h2><img src="/blog/attachments/2015/1/ecebook.png" class="right">
-<p>去年在公司的产品开发团队中推行了使用 <a href="http://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> 静态网站生成工具来写内部技术文档，大半年下来，效果还不错。</p>
+      <content type="html"><![CDATA[<img src="/blog/attachments/2015/1/ecebook.png">
+<h2 id="用-Jekyll-作为内部技术文档库"><a href="#用-Jekyll-作为内部技术文档库" class="headerlink" title="用 Jekyll 作为内部技术文档库"></a>用 Jekyll 作为内部技术文档库</h2><p>去年在公司的产品开发团队中推行了使用 <a href="http://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> 静态网站生成工具来写内部技术文档，大半年下来，效果还不错。</p>
+<a id="more"></a>
 <p>内部技术资料的共享和维护以前一直是个问题。开始用 Office Word 正正规规的写设计文档，维护成本太高了，往往是代码已经翻天覆地变化，文档里都没有反映出来，大家不愿意更新。而且查找起来也不方便。后来推行敏捷方法，不想让文档工作那么 heavy 了，于是用 wiki 来记录。Wiki 的问题是信息非常碎片化，大家很随意的添加新页面，整个 wiki 就像一个草稿本，写得很没有系统。网状的超链接导航令读者很迷茫，不知道需要的信息入口在哪儿，有些隐藏得很深的页面没有几个人知道它们的存在。Wiki 的在线编辑体验也不是那么好。</p>
 <p>Jekyll 是个静态网站生成工具，采用 <a href="http://zh.m.wikipedia.org/wiki/Markdown" target="_blank" rel="noopener">markdown</a> 语法来写内容，根据模板生成 HTML 页面，发布到一个 web 服务器上，就可以用浏览器在线查看内容。Jekyll 通常用来做  blog 系统，但它用来做有组织的内容发布系统也是完全胜任的。我基本上就是仿照 Jekyll <a href="http://jekyllrb.com/docs/home/" target="_blank" rel="noopener">官方文档</a> 的风格和结构来组织我们产品的内部技术文档库。</p>
 <p>使用 Jekyll 优点首先是编写方便，markdown 是个轻量的标记语言，上手简单，语法易记，而且有不少编辑工具支持。即使没有渲染成 HTML，也是直接可以阅读的，比起奇奇怪怪还各自不同的 wiki 语法好写多了。</p>
@@ -1125,8 +1167,11 @@
     <entry>
       <title><![CDATA[大鹏新年马拉松]]></title>
       <url>http://aleung.github.io/blog/2015/01/02/da-peng-new-year-marathon/</url>
-      <content type="html"><![CDATA[<p>Pacer数据丢了，没法分析心率和速度 :( </p>
+      <content type="html"><![CDATA[<img src="/blog/attachments/2015/1/route.jpg">
+<img src="/blog/attachments/2015/1/elevation.jpg">
+<p>Pacer数据丢了，没法分析心率和速度 :( </p>
 <p>净成绩 4:17:47，比广马要好些。之前训练很少，按照玩玩的心态去跑，没有设定时间目标，也没有预定配速，就按照舒服的速度跑。</p>
+<a id="more"></a>
 <p>起跑后速度不快，大家的速度也平均，不像其他赛事一样起跑速度都很快，应该是因为只有全马，大家都是有经验的。开始几公里步速大概在5’50”上下，感觉跟平常训练很像，步伐轻快，心率也没有一下飙高。太阳没出来，有点风，罩着雨衣到8km 才脱下。</p>
 <p>十几公里那段跑得比较舒畅，步速也不知不觉加快到5分十几秒的样子。这段落偶有小上下坡，新柏油路面，很舒服。18km 吃能量胶，以免20km 后能量不足。这时我还挺乐观的以为能跑进410。</p>
 <p>过了半程 开始觉得膝关节不适，比以往出现得早太多了，而且二十多公里后开始变成水泥路面。心肺状态倒是很好，基本不喘气。</p>
@@ -1139,8 +1184,6 @@
 <p>冲线后除了挂上奖牌，组委会还很贴心的准备了披风给披上，真温暖。从马路下去会场有好多级台阶，也专设了一个斜坡供大家下去。虽然是斜坡，我都只能慢慢蹭下去，膝关节累得弯不了了，志愿者马上过了扶我到医疗点喷药。傍晚大巴回到广州，下车后走路都一拐一拐，右膝的旧患，在弯曲时痛，不能受力，特别是下不了楼梯。休息一晚后，感觉好很多。</p>
 <p>这次跑的心率一直很平稳，起跑几公里没有一下子飙升，十公里后一直维持在160以内，从头到尾都没有特别气喘吁吁的，没有那种肌肉糖原消耗尽突然有氧功能跟不上的感觉。早餐吃了三碗粥，一个鸡蛋，几个红薯，一瓶运动饮料直到起跑前喝完。跟往常一样，水站不喝水，饮料站都喝一些饮料。18km 能量胶，25km 半根香蕉，30km 左右能量胶，35km 半根香蕉，觉得能量补充足够了。带来3个能量胶剩了一个，补给站也没有多拿食物，感觉不需要。</p>
 <p>但是，依然困扰的是小腿后侧肌肉抽筋的问题，上次盐田半马在最后一公里也出现了。广马前的训练几次三十多公里没有出现过。广马天气热太阳晒，这次气温很适宜，还吃了盐丸，还是出现。应该问题还是训练得少，肌肉不能坚持长时间运动。</p>
-<img src="/blog/attachments/2015/1/route.jpg">
-<img src="/blog/attachments/2015/1/elevation.jpg">
 ]]></content>
       
         
@@ -1468,8 +1511,9 @@
     <entry>
       <title><![CDATA[是灰霾吗？]]></title>
       <url>http://aleung.github.io/blog/2014/09/16/smog/</url>
-      <content type="html"><![CDATA[<p>看 Google Maps 上面的卫星图，珠江新城一带一片灰蒙蒙，但是有个奇怪的现象：高层建筑的楼顶似乎会清晰一些。</p>
-<img src="/blog/attachments/2014/9/smog.png">
+      <content type="html"><![CDATA[<img src="/blog/attachments/2014/9/smog.png">
+<p>看 Google Maps 上面的卫星图，珠江新城一带一片灰蒙蒙，但是有个奇怪的现象：高层建筑的楼顶似乎会清晰一些。</p>
+<a id="more"></a>
 <p>在图上最显眼的超高层建筑就是东塔和西塔了，东塔目前仍在建（好像已经封顶了），不知道卫星图是什么时候的，看起来也起码建得跟西塔一样高了。查了一下西塔（IFC-广州国际金融中心）的高度是440米。在图上看出西塔的2/3高度以下要灰一些，另外在建的东塔和旁边一个同样在建但高度只有1/3左右的建筑的屋顶的清晰度也有对比。是不是因为接近地面的灰霾影响了通透度，而灰霾主要沉积在距离地表二三百米以内的低空？</p>
 ]]></content>
       
@@ -1615,9 +1659,10 @@
     <entry>
       <title><![CDATA[Pebble]]></title>
       <url>http://aleung.github.io/blog/2014/03/15/pebble/</url>
-      <content type="html"><![CDATA[<p><a href="http://getpebble.com/" target="_blank" rel="noopener">Pebble手錶</a>戴了兩個星期，如果用一句話來總結感受，那就是：基本滿意，但還沒到愛不釋手的程度，沒有帶來驚喜。</p>
+      <content type="html"><![CDATA[<img src="/blog/attachments/2014/3/pebbles.jpg">
+<p><a href="http://getpebble.com/" target="_blank" rel="noopener">Pebble手錶</a>戴了兩個星期，如果用一句話來總結感受，那就是：基本滿意，但還沒到愛不釋手的程度，沒有帶來驚喜。</p>
+<a id="more"></a>
 <p>首先，Pebble真的是一隻手錶，可以看時間。如果你有幸用過各種『智能手環』，就會明白為什麼這麽說了。我戴過<a href="https://jawbone.com/up" target="_blank" rel="noopener">Jawbone UP</a>一段時間，試過好多次下意識的擡起手腕來看，然後才想起那貨是沒有任何顯示的。</p>
-<img src="/blog/attachments/2014/3/pebbles.jpg" class="right">
 <p>佩戴舒適度上說，Pebble還過得去，塑料錶帶的柔軟度不錯，反正我已經習慣了24小時戴在手腕上的感覺。在這之前，我都有十幾年沒有戴過手錶了吧。</p>
 <p>外形應該是我最不在意的一項了，但不得不說 Pebble 外形上太普通。我的黑色版本，正面看弧形表面，與黑白顯示屏融為一體，還算有點現代感，但側面看就很『薯鈍』的樣子 —— 厚，按鈕粗曠，左邊還有很突兀的幾個充電觸點。</p>
 <p>手錶用的是 144x168 的低分辨率黑白e-paper屏幕，在現在手機電腦都視網膜屏的時代，這個分辨率真是超低了。E-paper的對比度很高，無論什麼光線條件下都非常清晰，雖然分辨率低，實際顯示文字的效果還是不差的。圖像？就算了吧，除了像素少，這個屏還連灰度都顯示不了。不知道這個e-paper跟Kindle之類閱讀器的屏是不是同樣的技術，但看起來還是有區別：Pebble屏的像素邊緣很銳利，顯示直接改變沒有殘影，不像Kindle要全屏反色刷一次。</p>

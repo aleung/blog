@@ -167,7 +167,7 @@
       
     
 
-    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">327</span></a>
+    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">328</span></a>
 
   </li>
         <li class="menu-item menu-item-search">
@@ -221,7 +221,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2012/07/07/spring-bean-reference-injection-definition-by-external-configuration/">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2009/11/03/The-world-can-change-in-a-day/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leo Liang">
@@ -238,7 +238,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/blog/2012/07/07/spring-bean-reference-injection-definition-by-external-configuration/" class="post-title-link" itemprop="url">Spring bean reference injection definition by external configuration</a>
+                <a href="/blog/2009/11/03/The-world-can-change-in-a-day/" class="post-title-link" itemprop="url">The world can change in a day</a>
               
             
           </h1>
@@ -257,7 +257,7 @@
                 
               
 
-              <time title="创建时间：2012-07-07 21:38:00" itemprop="dateCreated datePublished" datetime="2012-07-07T21:38:00+08:00">2012-07-07</time>
+              <time title="创建时间：2009-11-03 08:39:00" itemprop="dateCreated datePublished" datetime="2009-11-03T08:39:00+08:00">2009-11-03</time>
             </span>
           
             
@@ -287,14 +287,30 @@
 
       
           
-            <p>当使用 Spring 作为 IoC framework 的时候，有时会利用 property placeholder 来将bean的注入属性做成可配置化。但是，一般很少会将 reference bean id 也用 property placeholder 代替，有人甚至以为这是不允许的。</p>
-<p>利用Spring Framework的property placeholder，将bean依赖关系配置抽离Spring XML文件，就能在产品发布部署后，通过配置选项来选定不同的实现，可用于集成接口、特定业务逻辑打开关闭等。</p>
-<p><a href="http://www.oodesign.com/adapter-pattern.html" target="_blank" rel="noopener">Adaptor pattern</a> is widely used at the point where our product integrates with external system. Product will provide several adapters to adapt to different external system interface.<br>We deliver our product in uniform installation package for all customers. A mechanism is required to configure which adapter to be used after system is installed.</p>
-<p><a href="http://www.oodesign.com/factory-pattern.html" target="_blank" rel="noopener">Factory pattern</a> can be used to create the specific adapter by configuration property. But by this way we need to create factory for each kind of adapters.</p>
-<p>Actually Spring Framework already supports it. With property placeholder, it is able to use placeholder in bean reference and resolve the bean name from properties. The bean definition XML file is not allowed to be modified when product is released, because it’s packaged in war/ear. But properties can be modified as long as it’s store outside of the package, e.g. on file system or in configuration management (extend the PropertyPlaceholderConfigurer class).</p>
-<p>Here is a sample code snippet:<br><script src="//gist.github.com/https://gist.github.com/2934603.js"></script></p>
+            <p>
+              8 November 1989
 
+9 November 1989, the wall fell. 
+柏林人民踊跃翻墙的塲景：
+
+当年柏林是被这样的高墻分隔的：
+
+如今残存的墙上的壁画，反映了当年翻墙的种种途径：
+
+
+—— 纪念柏林墙倒下20周年
+
+              
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2009/11/03/The-world-can-change-in-a-day/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -322,7 +338,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2012/06/30/redesign-of-software-development-workspace/">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2009/10/31/Android-Wallpaper-Label/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leo Liang">
@@ -339,7 +355,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/blog/2012/06/30/redesign-of-software-development-workspace/" class="post-title-link" itemprop="url">软件团队工作空间再设计</a>
+                <a href="/blog/2009/10/31/Android-Wallpaper-Label/" class="post-title-link" itemprop="url">Android软件：Wallpaper Label</a>
               
             
           </h1>
@@ -358,7 +374,7 @@
                 
               
 
-              <time title="创建时间：2012-06-30 22:24:00" itemprop="dateCreated datePublished" datetime="2012-06-30T22:24:00+08:00">2012-06-30</time>
+              <time title="创建时间：2009-10-31 09:14:00" itemprop="dateCreated datePublished" datetime="2009-10-31T09:14:00+08:00">2009-10-31</time>
             </span>
           
             
@@ -388,19 +404,23 @@
 
       
           
-            <p>软件团队的办公室空间可以分为三大类：团队工作空间，会议空间，公共区域。</p>
-<p>敏捷团队在工作过程中需要有比较多沟通，团队工作空间需要为此准备必要的设施，例如带有白板的讨论区域，这样就不需要讨论一些事情都要跑很远找会议室；供张贴东西的墙面；公共信息显示屏，显示CI状态之类。</p>
-<p>每个人的座位当然是越宽敞越好，即使条件限制，最低限度也需要保证可以增加一个人并排坐一起结对编程或讨论问题。因此应该用长条型的桌子，而不是曲尺型的桌子。</p>
-<p>不同团队之间的空间有一定的隔离，减少相互影响，因为团队内的讨论对他人是噪音。并且，空间的尺度对心理也有影响，需要合适的尺度，过大的大厅一排排整齐排列的桌子的心理效果不好。</p>
-<p>将公共区域，例如休息区、茶水间、打印机等，放在各个区域空间的交汇点，一方面是方便各个区域的人的到达，另外是形成汇聚点，成为人们的交流场所。公司里面需要创造让不同团队成员见面交流的机会。公共区域特别应该是开放性的，不带有物理边界，才能彰显公共属性，例如茶水间休息区与走廊不应该设墙，让它们融合起来，这样大家路过的时候就能够打个招呼聊上几句。休息家具款式可以多样化，颜色也可选择鲜明多彩的，让空间生动有活力。</p>
-<p>其实不仅是公共区域，团队区域之间也应该是柔性边界。柔性边界会鼓励人们进入不同的区域，在软件公司里并没有什么理由要为员工进入一个普通区域造成障碍。人从一个大厅进入另一个大厅，心理不会有异样感，但如果要穿过一个门进入一个坐了人的封闭的房间，那他必须是有专门目的才会这样做。</p>
-<p>会议室相对团队空间来说，私密性会强一些。在软件公司里开会，白板是很重要的，会议室的白板（或者用玻璃）的面积应该尽量的大，越大越好，画不下要擦掉影响思路，有可能的话将整面墙都做白版。会议室面积小，密闭空间的压抑感会特别严重，用玻璃做墙面可以改善空间感。由于团队工作空间是开放性的，需要多留一些小会议室(quite room)，或者半开放小隔间作为不受干扰的环境来临时使用。</p>
-<p>人喜欢在窗户旁边工作：与外界空间的连通感，扩大心理空间，不会有幽闭压抑感；自然采光与通风。因此有窗的空间应该留作给人长时间活动的空间，而不是用作偶然才有人使用的用途，如果用作储物、机房就更浪费了。</p>
-<p><em>后记：</em></p>
-<p><em>差不多两年前在荷兰工作的时候，对于欧洲的办公环境深有感触，回到国内后就有了这些想法，不过一直没有动笔写下来。期望在国内有类似欧洲的环境在目前显然是不现实的，但如果是在一开始设计办公环境的时候考虑更多人的因素，其实在不增加成本的情况下也能有所改善。最重要的是观念。</em></p>
-<p><em>另外还有更早的一篇<a href="/2006/05/12/Each-have-independent-office-with-the-Windows">每人都有带窗户的独立办公室</a>，是在瑞典工作的时候写的。</em></p>
+            <p>
+              
+Android与IPhone类似，都是有多个桌面屏幕，用手指划一下就可以左右切换屏幕。Android缺省设置只有3屏，但一些mod可以修改屏幕个数，例如设置为5屏。
+在IPhone上，屏幕的数量以及当前处于第几个屏幕是通过界面中下方的小圆点来指示的。但在Android上就没有类似的指示，有时候用户不知道现在正显示的是哪一屏，应该往左还是往右翻屏。
 
+我开发的这个软件 Wallpaper Labe
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2009/10/31/Android-Wallpaper-Label/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -428,7 +448,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2012/06/25/migrate-my-blog-to-github/">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2009/09/27/WebLogic-classloading/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leo Liang">
@@ -445,7 +465,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/blog/2012/06/25/migrate-my-blog-to-github/" class="post-title-link" itemprop="url">migrate my blog to github</a>
+                <a href="/blog/2009/09/27/WebLogic-classloading/" class="post-title-link" itemprop="url">WebLogic的classloading</a>
               
             
           </h1>
@@ -464,7 +484,7 @@
                 
               
 
-              <time title="创建时间：2012-06-25 23:40:00" itemprop="dateCreated datePublished" datetime="2012-06-25T23:40:00+08:00">2012-06-25</time>
+              <time title="创建时间：2009-09-27 07:23:00" itemprop="dateCreated datePublished" datetime="2009-09-27T07:23:00+08:00">2009-09-27</time>
             </span>
           
             
@@ -477,7 +497,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+                <time title="修改时间：2010-02-22 23:18:00" itemprop="dateModified" datetime="2010-02-22T23:18:00+08:00">2010-02-22</time>
               </span>
             
           
@@ -494,31 +514,30 @@
 
       
           
-            <p>个人blog再一次搬家，从 Google Application Engine (GAE) 搬到 github 上来。原来的<a href="http://good-good-study.appspot.com/" target="_blank" rel="noopener">地址</a>依然能够访问，但是不会再更新了，新文章都发到这里。Feed订阅地址不变，建议使用Google Reader订阅本站。</p>
-<h2 id="搬迁原因"><a href="#搬迁原因" class="headerlink" title="搬迁原因"></a>搬迁原因</h2><p>上一次从blogbus搬到GAE，是因为忍受不了审查制度。GAE后来也被墙了，但是即使如此，我也不会为了读者数量而再使用国内的blog服务，在被审查的状态下写东西。</p>
-<p>这次搬到github，最主要的动机是为了使用<a href="http://octopress.org/" target="_blank" rel="noopener">Octopress</a>这个blog framework。</p>
-<h3 id="好玩"><a href="#好玩" class="headerlink" title="好玩"></a>好玩</h3><p>这个是最重要的原因。写blog不是什么正事，本来就是兴趣而已。之前搬离blogbus，选择了GAE的原因就是尝试一下GAE和PlayFramework编程。这次就是为了尝试Octopress。</p>
-<h3 id="使用markdown写作"><a href="#使用markdown写作" class="headerlink" title="使用markdown写作"></a>使用markdown写作</h3><p>Octopress使用markdown语法。接触markdown语法是在github项目的README页面上，还有<a href="http://stackoverflow.com" target="_blank" rel="noopener">StackOverflow</a>里发帖用的也是markdown。刚开始觉得又是另一种wiki语法，但慢慢习惯了发现很好用：语法不太复杂，常用的格式不难记住；基本上常用的格式都覆盖了，实在不行还可以直接写HTML；原始文本的阅读性很好，不像HTML没法直接看；排版容易，文本编辑器就可以，而HTML的WYSIWYG编辑器生成的内容经常格式错乱需要手工再编辑。</p>
-<h3 id="访问速度提高"><a href="#访问速度提高" class="headerlink" title="访问速度提高"></a>访问速度提高</h3><p>原来在GAE上的blog因为访问量少，服务进程闲置一段时间就会关闭，新请求进来要实例化新服务进程。我用的是PlayFramework，每次初始化都要等上十来秒左右，因此打开首个页面一定要等，体验很不好。</p>
-<p>Octopress是在本地生成HTML页面后静态发布，速度自然不慢。不过缺省页面模版有些引用的资源下载速度不快，也有些可能被墙了，影响页面加载时间，下一步需要优化一下。</p>
-<h3 id="版本管理与备份"><a href="#版本管理与备份" class="headerlink" title="版本管理与备份"></a>版本管理与备份</h3><p>Octopress最好用的特性就是跟github集成，发布到github上。整个blog就是一个git project，天然就有版本管理了。放在github上，我也不需要考虑备份问题了。</p>
-<h3 id="目前没有被墙"><a href="#目前没有被墙" class="headerlink" title="目前没有被墙"></a>目前没有被墙</h3><p>目前github是可以直接访问的，因此可以方便大陆读者。不过这个是最次要的原因了，因为作为一个优秀的网络服务，github说不定哪天就被GFW给认证了。另外，前面说过页面里面嵌入的某些资源是被墙的，我还没有测试过对访问会带来什么影响。</p>
-<h2 id="搬迁过程"><a href="#搬迁过程" class="headerlink" title="搬迁过程"></a>搬迁过程</h2><p>Octopress的搭建不算难，需要安装ruby和一些gem，按照文档指导，再Google一下就能搞掂。按照文档做了一些配置，也没什么问题。缺省不支持tag，找了两个<a href="https://github.com/robbyedwards/octopress-tag-pages" target="_blank" rel="noopener">插件</a>装上去。模版和theme都用缺省的，稍微改了一点点，反正不在乎有没有个性了，我自己做也不一定好看，以后再说吧。缺省style显示不出表格，也需要改一点css。网上的资料不少，遇到问题Google一下大都能找到答案。</p>
-<p>然后就是旧文章的迁移了，我原来的blog能够将所有数据用json格式导出，现在就要将它转换成新系统的文件格式；原来的文章正文是HTML，需要转换成markdown语法。不懂ruby，于是找了个python写的转换工具<a href="http://www.aaronsw.com/2002/html2text/" target="_blank" rel="noopener">html2txt</a>，自己再写点脚本就好了。</p>
-<p>问题还是有一些的：</p>
-<p>Post的时间很奇怪：如果精确到秒，Octopress(其实是Jekyll)会认为这是UTC时间，在generate的时候变换为本地时区，页面里的帖子时间就加了8个小时；如果不精确到秒，只是分钟，那它就会当做本地时间而不做变换。我都不知道这是by design还是bug，不懂ruby看了下代码不得要领。后来我就把时间全部都改成只保留到分钟，绕开这个问题算了。</p>
-<p>Ruby不支持中文URL，因此有几个问题：</p>
-<ol>
-<li>文章URL不能是中文</li>
-<li>tag URL不能是中文</li>
-<li>文章中不能带有中文URL的链接。</li>
-</ol>
-<p>对于1，可以不用标题而只是用id来做post URL，但我觉得permalink还是用标题更cool一些，将中文翻译成英文好了。Google translate的API不公开了，本来想用Bing translate的API，但它要用OAuth2认证，我嫌要写太多代码了，后来找到有道翻译的API，效果还行。</p>
-<p>对于2，因为tag的URL与显示是一致的，不能象post permalink那样做。网上的一些解决方法都比较复杂，不能保证日后升级兼容性，我干脆全部用英文做tag算了。</p>
-<p>对于3，搜索了一遍旧文章，只有一个链接是中文的，而且已经失效了，故此也不需要花功夫了。</p>
-<p>最后，就是还需要人工去check一遍老文章，看看自动转换的格式有没有问题，顺便回顾一下以前写的东西，有需要修改补充的就更新一下。</p>
+            <p>
+              一直对classloading的了解不是很清晰，每次遇到涉及WebLogic的classpath设置、classloading问题debug时都要去网上搜索资料。现在把资料整理下来。
 
+### 
+各层级classloader加载的类的范围
+Bootstrap classloader
+
+Core Java libraries (/lib)
+
+
+Extension classloader
+
+JRE e
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2009/09/27/WebLogic-classloading/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -546,7 +565,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2012/06/24/try-octopress-markdown-features/">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2009/09/25/Prepare-10-km-run/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leo Liang">
@@ -563,7 +582,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/blog/2012/06/24/try-octopress-markdown-features/" class="post-title-link" itemprop="url">试验 Octopress 的各种特性</a>
+                <a href="/blog/2009/09/25/Prepare-10-km-run/" class="post-title-link" itemprop="url">准备10km跑</a>
               
             
           </h1>
@@ -582,7 +601,7 @@
                 
               
 
-              <time title="创建时间：2012-06-24 23:08:00" itemprop="dateCreated datePublished" datetime="2012-06-24T23:08:00+08:00">2012-06-24</time>
+              <time title="创建时间：2009-09-25 05:21:00" itemprop="dateCreated datePublished" datetime="2009-09-25T05:21:00+08:00">2009-09-25</time>
             </span>
           
             
@@ -595,7 +614,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+                <time title="修改时间：2011-11-08 22:02:00" itemprop="dateModified" datetime="2011-11-08T22:02:00+08:00">2011-11-08</time>
               </span>
             
           
@@ -612,37 +631,21 @@
 
       
           
-            <p>这个blog使用的markdown解释器是<a href="http://kramdown.rubyforge.org/quickref.html" target="_blank" rel="noopener">kramdown</a>，比起标准markdown有所增强。再加上Jekyll的一些插件特供的特殊功能。</p>
-<h2 id="Markdown基本语法"><a href="#Markdown基本语法" class="headerlink" title="Markdown基本语法"></a>Markdown基本语法</h2><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p>标题用<code>#</code>开头，一个井号是一级标题，两个井号是二级标题，井号越多字体越小。</p>
-<p>一级标题也可以通过在标题的下一行用<code>========</code>来标注，二级标题就是<code>---------</code>。更小的标题就不能用这种方式了。</p>
-<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p>行内式链接：</p>
-<pre><code>This is a [link](http://example.com).
-</code></pre><p>参考式链接：在链接文字的方括号后面再接上另一个方括号，而在第二个方括号里面要填入用以辨识链接的标记（若省略则与链接文字相同），接着，在文件的任意处，把这个标记的链接内容定义出来。</p>
-<pre><code>This is [an example][1] reference-style link.
-
-[1]: http://example.com
-</code></pre><p>参考式链接可以提高 markdown 文本的易读性。</p>
-<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p>与链接类似，区别是前面增加叹号<code>!</code>：</p>
-<pre><code>![text](link)
-</code></pre><p>另一种图片语法是由插件支持的，用<code>{</code> <code>%</code>包围的img标签，后面跟着图片URL，在URL前可以加入可选的css class名称，如：<code>left</code>, <code>right</code>，得到文字环绕效果。</p>
-<h3 id="引用-blockquote"><a href="#引用-blockquote" class="headerlink" title="引用 (blockquote)"></a>引用 (blockquote)</h3><p>用<code>&gt;</code>开头的一个段落：</p>
-<blockquote>
-<p>Stay hungry…<br>stay foolish.</p>
-</blockquote>
-<p>用四个空格缩进的段落，会按原始格式显示，相当于HTML的<code>&lt;pre&gt;</code>的效果：</p>
-<pre><code>+----+
-|    |
-+----+
-</code></pre><p>也可以通过在原始格式引用段落的前后各加一行波浪号`<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 显示效果</span><br><span class="line"></span><br><span class="line">用`*`或`_`包围的文字会用斜体显示：</span><br><span class="line"></span><br><span class="line">Some of these words *are emphasized*.</span><br><span class="line"></span><br><span class="line">如果双重符号`**`或`__`则会用粗体显示：</span><br><span class="line"></span><br><span class="line">Use two asterisks for **strong emphasis**.</span><br><span class="line"></span><br><span class="line">用`` ` ``包围的文字按代码格式显示。</span><br><span class="line"></span><br><span class="line">### 列表</span><br><span class="line"></span><br><span class="line">用`*`, `+`, `-`开头的行都会作为列表项。子项缩进两个空格。</span><br><span class="line"></span><br><span class="line">+ 加号开头的段落</span><br><span class="line">  + 缩进两个空格，加号开头</span><br><span class="line">    + 再缩进两个空格，三级项目</span><br><span class="line">- 其次</span><br><span class="line"></span><br><span class="line">表格</span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">注意第二行的分割线的冒号位置，决定了这一列的对齐方式。</span><br><span class="line"></span><br><span class="line">    No.   | Name    | Status  |</span><br><span class="line">    -----:|:--------|:-------:|</span><br><span class="line">    1     | Alaph   | done    |</span><br><span class="line">    2     | Beta    | ongoing |</span><br><span class="line">    10000 | Release | n/a     | </span><br><span class="line"></span><br><span class="line">效果：</span><br><span class="line"></span><br><span class="line">No.   | Name    | Status  |</span><br><span class="line">-----:|:--------|:-------:|</span><br><span class="line">1     | Alaph   | done    |</span><br><span class="line">2     | Beta    | ongoing |</span><br><span class="line">10000 | Release | n/a     | </span><br><span class="line"></span><br><span class="line">### 脚注</span><br><span class="line"></span><br><span class="line">增加脚注[^1]很简单，就是这样：`[^1]`</span><br><span class="line"></span><br><span class="line">脚注定义的写法是以`[^1]: `开头，后面跟着定义。</span><br><span class="line"></span><br><span class="line">[^1]: 脚注一定会显示在最末尾。</span><br><span class="line"></span><br><span class="line">嵌入代码</span><br><span class="line">-----------</span><br><span class="line"></span><br><span class="line">下面的嵌入代码的方式都是由插件提供的，并非markdown语法。</span><br><span class="line"></span><br><span class="line">### 代码高亮</span><br></pre></td></tr></table></figure></p>
- <figure class="highlight plain"><figcaption><span>[title] [url] [link text]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code snippet</span><br></pre></td></tr></table></figure>
-<p><del>~</del></p>
-<p>效果：</p>
-<figure class="highlight java"><figcaption><span>HelloWorld.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello, World"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="嵌入Gist"><a href="#嵌入Gist" class="headerlink" title="嵌入Gist"></a>嵌入Gist</h3><script src="//gist.github.com/2934603.js"></script>
-<p>方法是写一个用<code>{</code> <code>%</code>包围的gist标签，后面带上id。</p>
-<hr>
-
+            <p>
+              一直都想体验一下正式的长跑活动，也可以给自己跑步一个动力。得知10月24日在广州大学城Nike举办10公里跑活动，就报名参加了。
+上个月感觉腰椎的问题有一点点要复发的迹象，就停止了跑步。接下来9月份都在北京出差，跑鞋也没有带过来。算下来一个月没有跑步了。离活动只剩1个月了，怎么也得训练一下，于是今天去迪卡侬把T-shirt、短裤、袜子、跑鞋买了一套回来，去附近的公园跑步。
+开始从住处到公园的500
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2009/09/25/Prepare-10-km-run/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -670,7 +673,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2012/06/09/Some-reading-record/">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2009/09/17/How-to-setup-hg-Mercurial-web-access/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leo Liang">
@@ -687,7 +690,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/blog/2012/06/09/Some-reading-record/" class="post-title-link" itemprop="url">一些读书记录</a>
+                <a href="/blog/2009/09/17/How-to-setup-hg-Mercurial-web-access/" class="post-title-link" itemprop="url">How to setup hg (Mercurial) web access</a>
               
             
           </h1>
@@ -706,7 +709,7 @@
                 
               
 
-              <time title="创建时间：2012-06-09 11:56:00" itemprop="dateCreated datePublished" datetime="2012-06-09T11:56:00+08:00">2012-06-09</time>
+              <time title="创建时间：2009-09-17 03:08:00" itemprop="dateCreated datePublished" datetime="2009-09-17T03:08:00+08:00">2009-09-17</time>
             </span>
           
             
@@ -736,15 +739,562 @@
 
       
           
-            <p>前几个月看了些软件开发相关的书，读的时候有时有感悟就发条tweet，在这里备份一下。  </p>
-<h3 id="梦断代码"><a href="#梦断代码" class="headerlink" title="梦断代码"></a><a href="http://book.douban.com/subject/6526454/" target="_blank" rel="noopener">梦断代码</a></h3><p>开始阅读《梦断代码》，一个历时多年的软件项目惨败的故事。其实类似的案例很多很多，不过大家都不愿意承认失败，或者将失败轻描淡写而已。</p>
-<p>可复用软件之梦有一悖论：几乎总能找到一段满足大部分需要的代码，但这些拿来的代码所不能做到的部分，恰是本项目与众不同的创新之处。</p>
-<p>软件开发的时间估算始终是恒久难题，敏捷方法能做到的只是对于短期估算有改善：通过任务切分和开发团队亲自估算让数值看起来可靠些，通过计算迭代速率等手段让估算值反映团队近期状态；但对于长期估算，答案依然是：你丫别问了，到时自然就知道。</p>
-<p>《梦断代码》讲了一帮聪明人是怎么把事情搞砸的。因此我非常感兴趣Linux项目是怎么运作的，Linus怎么把这么多聪明人弄到一起合作，而且似乎成效相当不错。</p>
-<p>在周五下班的地铁上看完了《梦断代码》，没有做计划也没有刻意定目标，但已经是在周五读完的第三本书，每周一本。就像连续三个叠代都准时交付。</p>
-<h3 id="设计原本"><a href="#设计原本" class="headerlink" title="设计原本"></a><a href="http://book.douban.com/subject/5406042/" target="_blank" rel="noopener">设计原本</a></h3><p>一个设计，一个人能完成就不要让其他人参与，增加的人手会削弱设计的一致性，概念的完整性。一个职责，一个部门负责就好，多部门合作带来各自的利益考虑和冲突。</p>
+            <p>
+              (Platform: Windows Vista)
 
+Mercurial is already installed. 
+Install Apache. 
+Download mercurial source package to get the file hgwebdir.cgi. This file isn’t included in the Windows binary package. 
+Co
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2009/09/17/How-to-setup-hg-Mercurial-web-access/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2009/08/17/When-a-medical-results-for-positive/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/2009/08/17/When-a-medical-results-for-positive/" class="post-title-link" itemprop="url">当体检结果为阳性</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2009-08-17 07:42:00" itemprop="dateCreated datePublished" datetime="2009-08-17T07:42:00+08:00">2009-08-17</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
+            
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>
+              假设你在体检后，发现体检报告里面有一个项目的检验结果为阳性，你去问医生：这是什么意思？医生一面阴沉的告诉你：这个检查项目结果为阳性，说明你有可能患上了XXX病，虽然这个病不算常见，根据统计数据，患病率约为十万分之一，但是，患上的后果非常严重，基本上是不治之症。啊？！你抱着侥幸的心理再问医生：没理由啊？我身体好好的，有没有可能是检查出错了啊？医生一面严肃的说：不排除这样的可能性，但是，这个检查的可靠
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2009/08/17/When-a-medical-results-for-positive/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2009/08/10/In-order-to-support-to-promote-social-fairness-and-justice-and-I-give-male-au-donations/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/2009/08/10/In-order-to-support-to-promote-social-fairness-and-justice-and-I-give-male-au-donations/" class="post-title-link" itemprop="url">为了支持推动社会公平正义，我给公盟捐款</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2009-08-10 08:49:00" itemprop="dateCreated datePublished" datetime="2009-08-10T08:49:00+08:00">2009-08-10</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
+            
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>
+              公盟是什么首先，这是在一些资料中对公盟的介绍：公盟是一家以个案援助和法律研究为依托致力于推动国家的民主法治进程和实现社会公平正义的公益性民间组织，坚持”法治、理性、建设和非暴力”的原则对具有制度变革意义的典型个案进行法律援助、实证调察和法律研究，倡导公民行动，维护公平正义，推动社会进步。它的口号是”为了公共利益“。
+自2003年以来，公盟做了很多的工作，包括参与代理维权官司，撰写研究报告，举办研讨
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2009/08/10/In-order-to-support-to-promote-social-fairness-and-justice-and-I-give-male-au-donations/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2009/08/04/Outlook2007-/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/2009/08/04/Outlook2007-/" class="post-title-link" itemprop="url">Outlook2007日历的改进</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2009-08-04 07:18:00" itemprop="dateCreated datePublished" datetime="2009-08-04T07:18:00+08:00">2009-08-04</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2010-06-23 17:25:00" itemprop="dateModified" datetime="2010-06-23T17:25:00+08:00">2010-06-23</time>
+              </span>
+            
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>
+              
+之前在《为什么不能合在一起》一文中，我提到期望的时间管理系统是这样的：
+
+在展现上，能够将一天里已经安排好具体时间的事件，和没有安排具体时间，但是需要在这天内做（根据Start date和Due date）的任务显示在同一界面上，什么时候该做什么就一目了然了。在操作上，将一个任务拖放到日历中，或者输入开始结束时间，就能为任务安排计划的执行时间，并且显示在日历中。
+
+最近升级到Outlook 20
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2009/08/04/Outlook2007-/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2009/08/03/To-clean-the-mirror-is-not-a-simple-task/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/2009/08/03/To-clean-the-mirror-is-not-a-simple-task/" class="post-title-link" itemprop="url">擦镜子不是简单的任务</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2009-08-03 01:02:00" itemprop="dateCreated datePublished" datetime="2009-08-03T01:02:00+08:00">2009-08-03</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
+            
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>
+              镜子使用一段时间后，就会蒙上一层雾气，还有手指印或者水痕（浴室里的镜子），不像刚买回来那样明亮。怎么擦干净它呢？这可不是一件简单的任务，至少对我而言。
+最初，我是用最常规的方法，用水浸湿抹布来擦，这样擦完之后手指印依然还在，因为手指印是油脂，并且留下一道道水痕，比擦之前更难看。后来，我看到公共场所的清洁工人擦玻璃是用洗涤剂抹湿玻璃，然后用橡皮刮把水刮干净，一点水痕都不会留，于是我也买了一个橡皮刮回
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2009/08/03/To-clean-the-mirror-is-not-a-simple-task/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2009/06/25/Protests-against-the-relevant-departments-blockade-Google-network-services/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/2009/06/25/Protests-against-the-relevant-departments-blockade-Google-network-services/" class="post-title-link" itemprop="url">抗议有关部门封锁Google网络服务</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2009-06-25 07:18:00" itemprop="dateCreated datePublished" datetime="2009-06-25T07:18:00+08:00">2009-06-25</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
+            
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>
+              封锁Google网络服务（包括邮件服务、地图服务、手机服务、搜索服务等）侵犯了公民获取信息的权利，侵犯了公民的通信自由。
+
+              
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2009/06/25/Protests-against-the-relevant-departments-blockade-Google-network-services/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -769,7 +1319,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/13/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/blog/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/66/">66</a><a class="extend next" rel="next" href="/blog/page/15/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/13/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/blog/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/33/">33</a><a class="extend next" rel="next" href="/blog/page/15/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -802,7 +1352,7 @@
         
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">327</span>
+          <span class="site-state-item-count">328</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

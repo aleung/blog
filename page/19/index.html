@@ -167,7 +167,7 @@
       
     
 
-    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">327</span></a>
+    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">328</span></a>
 
   </li>
         <li class="menu-item menu-item-search">
@@ -221,7 +221,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2011/02/28/Task-management-tools/">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2007/07/03/How-to-customize-Eclipse/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leo Liang">
@@ -238,7 +238,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/blog/2011/02/28/Task-management-tools/" class="post-title-link" itemprop="url">任务管理工具</a>
+                <a href="/blog/2007/07/03/How-to-customize-Eclipse/" class="post-title-link" itemprop="url">How to customize Eclipse</a>
               
             
           </h1>
@@ -257,196 +257,7 @@
                 
               
 
-              <time title="创建时间：2011-02-28 07:51:00" itemprop="dateCreated datePublished" datetime="2011-02-28T07:51:00+08:00">2011-02-28</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2011-03-02 02:19:00" itemprop="dateModified" datetime="2011-03-02T02:19:00+08:00">2011-03-02</time>
-              </span>
-            
-          
-
-          <br>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            <p>首先，我得承认：我又在折腾了。</p>
-<p>这些年来，用过好多种任务管理（to-do）工具，包括low-tech的，电子化的，始终没有一个完全满意。最近一段时间又纠结于此，寻找、尝试各种工具，花了不少时间，真是有点本末倒置啊。</p>
-<p>经过多年的练习，已经逐渐明确了自己对任务管理工具的需求是什么：（优先级从高到低排列）</p>
-<ul>
-<li><strong>Available on both PC and Android, data are synchonized between devices</strong><br>手机是随身携带的，因此要支持Android手机，并且在网络离线时也要可用；手机输入文字速度还是比电脑上慢，屏幕小有局限，输入、整理等工作在电脑上做更有效率。</li>
-<li><strong>随时都可以快速将新的任务记录下来</strong><br>这是GTD中所强调的inbox的功能。创建新任务的界面必须尽可能简单，需要输入的信息和步骤越少越好。</li>
-<li><strong>Be able to set start date of a task, hide future tasks</strong><br>这个功能很多工具都缺乏。Start date与due date是不同的：due date是dead line，大部分任务没有due date；start date是自己对任务的安排。对于不需要马上做的任务，安排好开始的时间，就从当前任务列表里隐藏了，可以更专注于当前任务。</li>
-<li><strong>区分不同任务：new（inbox），scheduled，someday；方便的改变任务类型</strong><br>新任务的记录是清空大脑的过程，需要review后安排具体处理时间；someday是那种还没有想到该什么时候做的任务（也有可能是其实不需要做的）</li>
-<li><strong>Easily schedule / reschedule tasks</strong><br>用简便的操作就可以安排任务执行的时间</li>
-<li><strong>Recurrent task</strong></li>
-<li><strong>Integrate with calendar</strong><br>日程表跟任务列表整合起来，相互可以转换。以前写过<a href="http://good-good-study.appspot.com/blog/posts/3184" target="_blank" rel="noopener">一些想法</a>。</li>
-<li><strong>Set due date to a task</strong></li>
-<li><strong>Sort tasks in list by drag’n’drop</strong><br>相比起为任务设置priority，我更喜欢直接将任务拖放改变顺序。有时候说不清一个任务到底属于哪个priority，但会知道几个任务中哪个应该先做。</li>
-<li><strong>Apply tag to a task</strong></li>
-<li><strong>Batch operation</strong></li>
-</ul>
-<p>最近将网上找到比较出名的工具都试用过了，记录下简单的评价（针对我的需求的）：</p>
-<ul>
-<li>Remember The Milk <ul>
-<li>功能完善，使用方便</li>
-<li>Web及Android均可离线使用</li>
-<li>不支持 start date</li>
-</ul>
-</li>
-<li>Toodledo <ul>
-<li>Very rich feature set, too heavy</li>
-<li>Complex, unfriendly UI</li>
-<li><strike>不支持 start date</strike></li>
-</ul>
-</li>
-<li>Todoist <ul>
-<li>不支持 start date</li>
-</ul>
-</li>
-<li>Todo.ly <ul>
-<li>不支持 start date</li>
-</ul>
-</li>
-<li>Stay Useful <ul>
-<li>Simple and neat, nice user experience</li>
-<li>没有someday任务，最远只能安排到next week</li>
-<li>支持浏览器离线使用，但在Android上显示没有适应屏幕大小</li>
-<li>免费试用30天，购买$4</li>
-</ul>
-</li>
-<li>Google Tasks <ul>
-<li>不支持 start date</li>
-<li>将任务移到另外一个列表的操作不够简便</li>
-</ul>
-</li>
-<li>Hiveminder <ul>
-<li>No offline access on Android</li>
-</ul>
-</li>
-<li>Nozbe <ul>
-<li>功能完善</li>
-<li>Too expensive: $9.95/month</li>
-</ul>
-</li>
-<li>Tadalist <ul>
-<li>It’s only list of items with checkbox, nothing more</li>
-</ul>
-</li>
-<li>itumz <ul>
-<li>It’s only list of items with checkbox, nothing more</li>
-</ul>
-</li>
-<li>zirr.us <ul>
-<li>Show tasks in tag cloud style</li>
-<li>No start date, only due date</li>
-</ul>
-</li>
-<li>TeuxDeux <ul>
-<li>Day (5 days shown in one screen) + someday, drag’n’drop</li>
-<li>Good user experience</li>
-<li>Can not show all tasks, have to scroll to the date</li>
-<li>No due date</li>
-<li>No recurrent task</li>
-<li>Doesn’t work on Android (native app is underway?)</li>
-</ul>
-</li>
-<li>TaskWarrior <ul>
-<li>CLI</li>
-<li>Good enough feature set</li>
-<li>No Android client</li>
-</ul>
-</li>
-<li>GQueues <ul>
-<li>No start date</li>
-<li>No Android client, 支持浏览器离线访问，但体验不够好</li>
-</ul>
-</li>
-</ul>
-<p>总结下来，就是没有一个能够同时满足我的需求的前几项的。故此我又有了自己做一个的想法，大概的思路已经有了，下次再写。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2011/02/14/Independent-blog-of-a-week/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leo Liang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good good study, day day up">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2011/02/14/Independent-blog-of-a-week/" class="post-title-link" itemprop="url">独立博客一周年纪念</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2011-02-14 01:34:00" itemprop="dateCreated datePublished" datetime="2011-02-14T01:34:00+08:00">2011-02-14</time>
+              <time title="创建时间：2007-07-03 21:18:00" itemprop="dateCreated datePublished" datetime="2007-07-03T21:18:00+08:00">2007-07-03</time>
             </span>
           
             
@@ -476,14 +287,21 @@
 
       
           
-            <p>Good good study, day day up 这个博客从2001年就开始写，正如副标题所说，定位为记录学习心得和一些想法（之前我还有另外一个摄影、旅行主题的博客），基本上谈的就是理科生的话题。原来一直是放在BlogBus上的，直到去年初，实在忍受不了BlogBus疯狂的内容审查，搬出来做独立博客。</p>
-<p>查看历史记录，在这个搭建于Google App Engine上的新blog上发的<a href="http://good-good-study.appspot.com/blog/posts/1001" target="_blank" rel="noopener">第一篇文章</a>是在去年的2月14日，居然是在情人节！今天是2月13日，也就是这个独立博客已经一周岁了。</p>
-<p>统计一下新blog这一年里发布的文章有30篇（不包括更新的旧文章），平均两周一篇，比我自己印象中的多了。希望自己今后能够继续保持这样一个习惯。最热门的文章是”<a href="http://good-good-study.appspot.com/blog/posts/20001" target="_blank" rel="noopener">在Android手机上使用SSH tunnel翻墙</a>“，其次是”<a href="http://good-good-study.appspot.com/blog/posts/3224" target="_blank" rel="noopener">Google中国地图偏移</a>“。</p>
-<p>新的blog留言需要用Google帐号登录，spam是全没有了，但是留言也冷清了好多。没想到什么办法既方便又能杜绝spam的。不知道有没有方法通过Google Buzz或者Twitter来留言呢。另外一个问题是搬家之后搜索引擎的收录不理想，一些关键字的搜索结果还是指向我原来的blog。</p>
-<p>搬到GAE上，就已经准备好要被墙，一年下来appspot.com被封被解封反复多次，似乎到目前为止这个blog还能直接访问（不知道不同地区的情况）。但是，即使被封也不会再搬回墙内，作为一个软件开发者，受困于信息封锁就意味着被技术发展所抛弃，我的博客读者不应该是这样的人。有人说翻墙太麻烦，老想找免费的方法当然麻烦，还是花点钱买个ssh帐号吧，便宜的就是一年几美元。每个月上百的ADSL费用都舍得花了，就不要吝啬这一年几十块钱了，无障碍获取信息的价值就远远值回来了。</p>
-<p>就写到这里吧。</p>
-
+            <p>
+              要定制一个Eclipse特别版本非常简单，由于它是完全”绿色”安装的，只需要解开原始发布包，修改里面的配置，重新打包即可。重新打包前，要将configuration目录中的子目录都删除，只保留config.ini文件。
+添加plugin，通过菜单的Help - Software Updates - Find and Install进行。
+对于eclipse网站下载的Eclipse SDK, 客户化
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2007/07/03/How-to-customize-Eclipse/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -511,7 +329,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2011/02/11/Android-ssh-/">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2007/06/28/I-realized-I-Love-Player/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leo Liang">
@@ -528,7 +346,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/blog/2011/02/11/Android-ssh-/" class="post-title-link" itemprop="url">Android用户的好消息：用ssh翻墙</a>
+                <a href="/blog/2007/06/28/I-realized-I-Love-Player/" class="post-title-link" itemprop="url">实现了我的 I Love Player 了</a>
               
             
           </h1>
@@ -547,7 +365,7 @@
                 
               
 
-              <time title="创建时间：2011-02-11 20:41:00" itemprop="dateCreated datePublished" datetime="2011-02-11T20:41:00+08:00">2011-02-11</time>
+              <time title="创建时间：2007-06-28 02:17:00" itemprop="dateCreated datePublished" datetime="2007-06-28T02:17:00+08:00">2007-06-28</time>
             </span>
           
             
@@ -560,7 +378,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2011-02-13 19:59:00" itemprop="dateModified" datetime="2011-02-13T19:59:00+08:00">2011-02-13</time>
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
               </span>
             
           
@@ -577,11 +395,20 @@
 
       
           
-            <p>之前我写过一系列<a href="http://good-good-study.appspot.com/blog/posts/90001" target="_blank" rel="noopener">文章</a>介绍Android系统用ssh翻墙的想法，现在有人把整合的软件做出来了：<a href="http://madeye.me/2011/02/10/ssh-tunnel-on-the-android-application-puff-android-edition/" target="_blank" rel="noopener">sshtunnel</a></p>
-<p>与TransProxy类似，sshtunnel也是内置了redsocks作为HTTPS/SOCKS redirector，使用iptables重定向网络流，不同的是它还使用了trilead-ssh2代码（作者说来自于ConnectBot）来做SSH client，因此这一个程序就可以完成整个过程，操作简单。根据文档说明和大致浏览代码，貌似没有使用SSH dynamic port forwarding，而是要求SSH server端安装了HTTP代理服务器，SSH连接纯粹是tunnel了到服务端HTTP proxy的连接。</p>
-<p>Update: <a href="https://twitter.com/#!/ofmax/status/36717058762739712" target="_blank" rel="noopener">作者说</a>，不使用SSH dynamic port forwarding是因为受限于Android手机的机能。我之前测试用ConnectBot做SOCKS proxy的时候就总是遇到CPU占用100%的问题，估计作者说的就是这个。</p>
-
+            <p>
+              去年写下关于 “I Love” audio player的想法，曾想过自己开发的，但我没有开发这方面软件的经验，要学习的东西太多了，也没有时间精力来做。前段时间xlla朋友给我留言，介绍iPod的智能播放列表，我一下子兴趣又上来了，上网再次搜索一番，这次真给我找到了好几款支持智能播放列表的播放器软件，有些功能跟我期望的已经差不多了。我以前就想，不可能没有人想到的:)
+第一个是KDE环境下的Amar
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2007/06/28/I-realized-I-Love-Player/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -609,7 +436,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2011/02/11/TwitterSinaSync-Twitter-/">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2007/06/24/Flickr-I-wanna-Flickr/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leo Liang">
@@ -626,7 +453,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/blog/2011/02/11/TwitterSinaSync-Twitter-/" class="post-title-link" itemprop="url">TwitterSinaSync，自动同步Twitter信息到新浪微博</a>
+                <a href="/blog/2007/06/24/Flickr-I-wanna-Flickr/" class="post-title-link" itemprop="url">Flickr! I wanna Flickr</a>
               
             
           </h1>
@@ -645,7 +472,7 @@
                 
               
 
-              <time title="创建时间：2011-02-11 05:31:00" itemprop="dateCreated datePublished" datetime="2011-02-11T05:31:00+08:00">2011-02-11</time>
+              <time title="创建时间：2007-06-24 19:44:00" itemprop="dateCreated datePublished" datetime="2007-06-24T19:44:00+08:00">2007-06-24</time>
             </span>
           
             
@@ -658,7 +485,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2011-07-08 00:03:00" itemprop="dateModified" datetime="2011-07-08T00:03:00+08:00">2011-07-08</time>
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
               </span>
             
           
@@ -675,28 +502,20 @@
 
       
           
-            <p>之前寻找同步twitter到新浪微博的方法，没有尝试到满意的。@cutemic<a href="http://cutemic.posterous.com/twitter" target="_blank" rel="noopener">介绍说</a>他是在GAE上跑一个叫twitter2sina的python程序，周期性读取自己的tweets，再调用API发送到新浪微博。</p>
-<p>程序员的基本素质是懒惰，因此我问@cutemic他安装的程序是否支持多用户，如果支持，我就懒得自己折腾，让他给我加个用户好了。很可惜，他的程序是要将新浪微博用户名密码hard code到程序里的，那我只能自力更生了。</p>
-<p>装起来之后，本着助人为乐的精神，考虑把这个服务也提供给别人使用。看看代码，调用新浪微博API是用Basic HTTP认证的，需要提供用户名和密码，这样太没有安全感了，别人不敢用的。如果改成OAuth，用户就不需要提供密码了。</p>
-<p>动手尝试修改，于是，就有了这个<a href="https://github.com/aleung/TwitterSinaSync" target="_blank" rel="noopener">TwitterSinaSync</a>。</p>
-<p>代码大概的历史：</p>
-<ol>
-<li>原始版本是<a href="http://code.google.com/p/twitter2sina/" target="_blank" rel="noopener">twitter2sina</a>，没有使用新浪微博API，已经失效</li>
-<li>@cutemic的<a href="http://cutemic.posterous.com/twitter" target="_blank" rel="noopener">修改版本</a>，改成使用新浪微博API</li>
-<li>我修改的<a href>TwitterSinaSync</a></li>
-</ol>
-<p>主要特性：</p>
-<ul>
-<li>部署于Google App Engine，免费、可靠、方便的云计算环境</li>
-<li>使用新浪微博API OAuth认证，用户不需要提供密码，保证安全</li>
-<li>支持多用户：多组twitter-微博同步绑定</li>
-<li>新用户凭管理员提供的邀请链接才能加入，方便私人分享</li>
-</ul>
-<p><a href="https://github.com/aleung/TwitterSinaSync" target="_blank" rel="noopener">代码</a>托管在GitHub，bug report 和 feature request可以往<a href>这里</a>提交。</p>
-<p><em><strong>Updated 2011-7-7:</strong></em></p>
-<p>由于新浪微博对API使用过滤异常的严格，这个应用基本上用处不大了，普通内容的tweet，大概十条里只有两三条能够成功同步，见<a href="http://good-good-study.appspot.com/blog/posts/124001" target="_blank" rel="noopener">新浪微博API黑名单威武</a>。如果应用能够通过审核，也许过滤会放宽一些，但是根据新浪微博API的用户协议，是不能用于从其他微博系统同步信息的，更何况是Twitter，通过审核的可能性微乎其微。故此我不再维护这个软件了，也不再提供邀请码，请谅解。</p>
-
+            <p>
+              党和政府出于对广大网民的深切爱护, 于前段时间将大家喜爱的全球影响力最大的在线相册网站 flickr.com 列入了功夫网(ＧＦＷ). 等待了半月有余, 未见有变化, 看来是被功夫网永久性收录了.
+我等良民一向坚决支持拥护中央的英明决策，可是无奈我网上的所有照片、配文图表都存放在flickr中. 经过深刻的自我反省和严格的自我审查, 我确认我存放在flickr中的图片并没有反对宪法所确定的基本原则
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2007/06/24/Flickr-I-wanna-Flickr/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -724,7 +543,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2011/01/14/GQueuesInbox-Send-item-to-your-GQueues-inbox-with-Android-device-anywhere-anytime/">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2007/06/05/The-first-call-110/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leo Liang">
@@ -741,7 +560,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/blog/2011/01/14/GQueuesInbox-Send-item-to-your-GQueues-inbox-with-Android-device-anywhere-anytime/" class="post-title-link" itemprop="url">GQueuesInbox : Send item to your GQueues inbox with Android device anywhere anytime</a>
+                <a href="/blog/2007/06/05/The-first-call-110/" class="post-title-link" itemprop="url">第一次打110</a>
               
             
           </h1>
@@ -760,7 +579,7 @@
                 
               
 
-              <time title="创建时间：2011-01-14 05:15:00" itemprop="dateCreated datePublished" datetime="2011-01-14T05:15:00+08:00">2011-01-14</time>
+              <time title="创建时间：2007-06-05 18:20:00" itemprop="dateCreated datePublished" datetime="2007-06-05T18:20:00+08:00">2007-06-05</time>
             </span>
           
             
@@ -773,7 +592,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2011-01-17 05:16:00" itemprop="dateModified" datetime="2011-01-17T05:16:00+08:00">2011-01-17</time>
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
               </span>
             
           
@@ -790,13 +609,668 @@
 
       
           
-            <img src="http://farm6.static.flickr.com/5285/5360976023_928916d839_m.jpg" class="right" title="GQueueInbox">
-<p>去年底<a href="https://www.rememberthemilk.com/" target="_blank" rel="noopener">RememberTheMilk</a>的pro帐号到期了，于是又折腾了一下看看有没有好用的类似工具，发现了一个在线任务管理的新秀：<a href="http://www.gqueues.com" target="_blank" rel="noopener">GQueues</a>。GQueues的功能和界面都不错，我比较喜欢它的一点是没有用高中低的任务优先级，而是让你在列表中拖放任务改变顺序，排在最顶的就是需要优先处理的。有些事情你很难界定应该是属于重要性高还是重要性中等，但是如果几件事情放在一起，就很容易分出哪个相对更重要一些。</p>
-<p>但是，GQueues没有开发手机本地应用，在手机上只能通过浏览器访问。虽然它的网站有专门为移动设备优化，但还是不如本地应用便捷。而且很重要一点，不是任何时候都能访问到网络的，想起一件要做的事情，却因为连不上网而无法记录下来，只能留在脑子里或者要记录到别的地方，这样不符合GTD的原则。</p>
-<p>为此，我写了一个简单的Android应用，做的唯一事情就是往GQueues inbox里面添加新任务，并且允许离线使用：如果没有网络，任务会暂存起来，在有网络的时候后台自动发送出去。软件介绍：<a href="http://www.appbrain.com/app/gqueuesinbox/leoliang.gqueuesinbox" target="_blank" rel="noopener">http://www.appbrain.com/app/gqueuesinbox/leoliang.gqueuesinbox</a></p>
-<p>不过，因为GQueues部署在Google App Engine上的，IP地址被GFW屏蔽，在国内无法直接访问。解决办法是自己将可以访问的IP配置到hosts文件里面，无论是PC还是手机都要如此处理。</p>
-
+            <p>
+              早上9点多钟，经过华景新城天桥看到一伙人在设赌局骗人，几个做势的人拿着一百块钱的票子踊跃下注。有个刚从市场买菜回来的阿婆似乎已经被吸引住了。
+以往见到类似情况，最多是心里骂两句骗子，今天我想到了报警。我也想看看110的反应速度到底是怎样的。拿出手机拨打110，一拨就通了，但只是反反复复的播放录音：我们将尽快接通你的电话。一直等了70秒钟左右，听到”接警员忙，请稍后再拨”。失望。再拨打一次，依然是反
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2007/06/05/The-first-call-110/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2007/05/28/Who-will-attack-the-system-/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/2007/05/28/Who-will-attack-the-system-/" class="post-title-link" itemprop="url">Who will attack the system?</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2007-05-28 06:25:00" itemprop="dateCreated datePublished" datetime="2007-05-28T06:25:00+08:00">2007-05-28</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
+            
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>
+              在一份关于某产品的安全考虑的presentation中看到这么一段话：
+Who will attack the system?
+
+Script KiddiesFocus on DoS and simple attacks (“just for fun”) 
+Sophisticated/Dedicated outside attackerWell educated and spend much ti
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2007/05/28/Who-will-attack-the-system-/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2007/05/28/Finally-find-the-most-appropriate-file-synchronization-backup-tools/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/2007/05/28/Finally-find-the-most-appropriate-file-synchronization-backup-tools/" class="post-title-link" itemprop="url">终于找到了最合适的文件同步/备份工具</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2007-05-28 06:06:00" itemprop="dateCreated datePublished" datetime="2007-05-28T06:06:00+08:00">2007-05-28</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
+            
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>
+              很长时间以来，都为怎么在多台电脑之间同步文件而头痛。使用过不少的同步软件，都有或多或少的不足之处。因为两边的文件都可能被编辑，同步软件必须要足够自动化，能够自动判断同步的方向，只进行增量同步，并且要能够识别出文件的删除，别删了之后一同步又回来了。 
+现在终于找到了一个满足要求的软件：Unison，经过差不多三个月的使用，感觉相当满意，可以介绍出来了。 
+在我看来，Unison的优点有这些： 
+
+除
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2007/05/28/Finally-find-the-most-appropriate-file-synchronization-backup-tools/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2007/03/31/ClearCaseWeb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/2007/03/31/ClearCaseWeb/" class="post-title-link" itemprop="url">ClearCaseWeb</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2007-03-31 05:16:00" itemprop="dateCreated datePublished" datetime="2007-03-31T05:16:00+08:00">2007-03-31</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
+            
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>
+              ClearCaseWeb is a simple web-based utility for browsing files stored in ClearCase. With it you can get the list of recent changed files and find out who is the last modifier of each line in a file in 
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2007/03/31/ClearCaseWeb/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2007/03/17/Use-of-Excel-grouping-statistics-and-generate-histogram/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/2007/03/17/Use-of-Excel-grouping-statistics-and-generate-histogram/" class="post-title-link" itemprop="url">利用Excel进行分组统计及生成直方图</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2007-03-17 02:19:00" itemprop="dateCreated datePublished" datetime="2007-03-17T02:19:00+08:00">2007-03-17</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2010-11-02 06:15:00" itemprop="dateModified" datetime="2010-11-02T06:15:00+08:00">2010-11-02</time>
+              </span>
+            
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>
+              统计分析时经常需要统计一组数据处于各个区间的数量分别有多少，也称为数据的频率分布。例如考试成绩出来了，老师要统计不及格(&lt;60)、及格(60~80)、良好(80~90)、优(90~100)的人数有多少。
+使用Excel的FREQUENCY函数，可以很简单的实现这个目标：
+先把要处理的目标数据准备好：一列是输入数据A3:A66（在例子中为了清晰，已经排序，实际没有必要），另外一列是分组间隔D3
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2007/03/17/Use-of-Excel-grouping-statistics-and-generate-histogram/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2007/03/15/Windows-symbolic-link-/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/2007/03/15/Windows-symbolic-link-/" class="post-title-link" itemprop="url">Windows的symbolic link支持</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2007-03-15 21:32:00" itemprop="dateCreated datePublished" datetime="2007-03-15T21:32:00+08:00">2007-03-15</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
+            
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>
+              UNIX类的操作系统支持symbolic link [2]，可以通过”ln -s”命令来创建。但是在Windows操作系统中，却没有提供这样的功能，文件管理就不如UNIX方便。
+虽然Windows的shortcut在功能上有点类似于symbolic link，但还不是一个层面的东西，因为OS并没有管理它，要靠应用程序来处理。在DOS窗口里面dir看看一个shortcut是什么样子的，就知道有什么不
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2007/03/15/Windows-symbolic-link-/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2007/03/08/Understand-the-JVM-memory-management-and-garbage-collection/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/2007/03/08/Understand-the-JVM-memory-management-and-garbage-collection/" class="post-title-link" itemprop="url">了解JVM的内存管理与垃圾回收</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2007-03-08 04:31:00" itemprop="dateCreated datePublished" datetime="2007-03-08T04:31:00+08:00">2007-03-08</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
+            
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>
+              Java语言具备GC(垃圾回收)的能力，内存管理不需要应用程序去过问，这很方便。但是，GC是怎么进行的，JVM的内存参数应该怎么调整，如何优化，往往我们不是太清楚。看过一些资料后，对Sun JVM的内存管理以及垃圾回收的机制大概有了一个概念，这里将这些资料归纳和翻译出来。本文内容主要基于Sun JVM 1.3.1，在后续版本中有不少优化措施，但是这些基本概念还是不变的。
+这里假设大家对GC的概念和
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/blog/2007/03/08/Understand-the-JVM-memory-management-and-garbage-collection/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -821,7 +1295,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/18/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/blog/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/66/">66</a><a class="extend next" rel="next" href="/blog/page/20/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/18/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/blog/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/33/">33</a><a class="extend next" rel="next" href="/blog/page/20/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -854,7 +1328,7 @@
         
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">327</span>
+          <span class="site-state-item-count">328</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
