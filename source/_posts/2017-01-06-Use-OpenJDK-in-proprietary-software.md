@@ -10,6 +10,8 @@ tags:
 
 大家都知道 Oracle JDK 在商业应用场合是需要购买 license 的，往往会选择 OpenJDK 来规避。但是，OpenJDK 的 license 是 GPL，GPL 是一种 “传染性” 的协议，那么 OpenJDK 是否可以在非 GPL 应用中使用呢？
 
+<!-- more -->
+
 在 [StackOverflow](http://stackoverflow.com/)、[Open Source Stack Exchange](http://opensource.stackexchange.com/) 中搜索到一些相关的讨论，大部分答案是认为可以使用，应用无需因此用 GPL 发布，但也有人提出质疑。
 
 在 OpenJDK 网站中的 [FAQ](http://openjdk.java.net/faq/)是这么写的：

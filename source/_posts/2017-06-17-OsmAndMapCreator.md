@@ -4,7 +4,11 @@ date: 2017-06-17 15:02:32
 tags: [GPS_GIS, Map]
 ---
 
+{%img /attachments/2017/6/osmand.jpg %}
+
 使用 [OpenStreetMap](https://www.openstreetmap.org) （简称为OSM）地图数据的手机应用有好些，[OsmAnd](http://osmand.net/) 是其中比较优秀的一个。OsmAnd的地图数据每月更新一次，延后了半个月到一个多月。作为一个OSM mapper，期望能够马上看到和用到最近做出的修改，等一个月实在太久了。
+
+<!-- more -->
 
 OSM原始地图数据在 [planet.osm](http://wiki.openstreetmap.org/wiki/Planet.osm) 的网站可以下载到，但数据文件是全球的，非常大。从 [GeoFabrik](http://download.geofabrik.de/) 可以下载按国家分割的数据文件。中国区的PBF格式数据是330MB。但每天重新下载一个数据包还是太大了，其实更新的数据不是很多。网站上还提供每天（planet.osm还有每小时）的变更数据包（osc文件），用 `osmupdate` 工具就能自动下载变更并且生成新的完整数据文件。 
 

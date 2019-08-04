@@ -9,6 +9,8 @@ tags:
 
 对这个开发环境的要求是 lightweight，reproducible 和 portable。
 
+<!-- more -->
+
 开始尝试的是 [Vagrant](https://www.vagrantup.com/)，但感觉缺点还是不少：provision 过程麻烦了些；如果要同时进行不同的开发就要运行多个VM，占用资源比较多；而且有个关键问题没找到好的解决方法：Windows 的文件系统不支持符号链接 (symbolic link)，而 npm install 时会依赖于符号链接，VM 使用 Windows host 的共享目录时在里面执行 npm install 会出错。
 
 这时 docker 进入了视野，容器的轻量、自包含一切的特性很满足我对标准化开发环境的要求。经过几天折腾，搞出了这样一套环境，初步试用还比较满意。

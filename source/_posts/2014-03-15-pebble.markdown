@@ -6,11 +6,13 @@ comments: true
 tags:
 - Gadget
 ---
+{%img /attachments/2014/3/pebbles.jpg %}
+
 [Pebble手錶](http://getpebble.com/)戴了兩個星期，如果用一句話來總結感受，那就是：基本滿意，但還沒到愛不釋手的程度，沒有帶來驚喜。
 
-首先，Pebble真的是一隻手錶，可以看時間。如果你有幸用過各種『智能手環』，就會明白為什麼這麽說了。我戴過[Jawbone UP](https://jawbone.com/up)一段時間，試過好多次下意識的擡起手腕來看，然後才想起那貨是沒有任何顯示的。
+<!-- more -->
 
-{%img right /attachments/2014/3/pebbles.jpg %}
+首先，Pebble真的是一隻手錶，可以看時間。如果你有幸用過各種『智能手環』，就會明白為什麼這麽說了。我戴過[Jawbone UP](https://jawbone.com/up)一段時間，試過好多次下意識的擡起手腕來看，然後才想起那貨是沒有任何顯示的。
 
 佩戴舒適度上說，Pebble還過得去，塑料錶帶的柔軟度不錯，反正我已經習慣了24小時戴在手腕上的感覺。在這之前，我都有十幾年沒有戴過手錶了吧。
 
