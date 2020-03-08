@@ -1,83 +1,50 @@
 <!DOCTYPE html>
-
-
-
-
-
-<html class="theme-next gemini use-motion" lang="zh-CN">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="generator" content="Hexo 3.9.0">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=7.2.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=7.2.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=7.2.0">
-  <link rel="mask-icon" href="/blog/images/logo.svg?v=7.2.0" color="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+  <link rel="manifest" href="/blog/images/manifest.json">
 
-<link rel="stylesheet" href="/blog/css/main.css?v=7.2.0">
-
-
-<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+<link rel="stylesheet" href="/blog/css/main.css">
 
 
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/blog/',
-    scheme: 'Gemini',
-    version: '7.2.0',
-    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},
-    search: {
-      root: '/blog/',
-      path: 'search.xml'
-    },
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    }
-  };
-</script>
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
   <meta name="description" content="用 Jekyll 作为内部技术文档库去年在公司的产品开发团队中推行了使用 Jekyll 静态网站生成工具来写内部技术文档，大半年下来，效果还不错。">
-<meta name="keywords" content="Blogging">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Jekyll">
 <meta property="og:url" content="http://aleung.github.io/blog/2015/01/26/jekyll/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
 <meta property="og:description" content="用 Jekyll 作为内部技术文档库去年在公司的产品开发团队中推行了使用 Jekyll 静态网站生成工具来写内部技术文档，大半年下来，效果还不错。">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://aleung.github.io/blog/attachments/2015/1/ecebook.png">
-<meta property="og:updated_time" content="2019-08-04T11:16:06.710Z">
+<meta property="article:published_time" content="2015-01-26T13:29:40.000Z">
+<meta property="article:modified_time" content="2019-08-04T11:16:06.710Z">
+<meta property="article:author" content="Leo Liang">
+<meta property="article:tag" content="Blogging">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jekyll">
-<meta name="twitter:description" content="用 Jekyll 作为内部技术文档库去年在公司的产品开发团队中推行了使用 Jekyll 静态网站生成工具来写内部技术文档，大半年下来，效果还不错。">
 <meta name="twitter:image" content="http://aleung.github.io/blog/attachments/2015/1/ecebook.png">
-  <link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
-  <link rel="canonical" href="http://aleung.github.io/blog/2015/01/26/jekyll/">
+
+<link rel="canonical" href="http://aleung.github.io/blog/2015/01/26/jekyll/">
 
 
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : false,
+    isPost : true
   };
 </script>
 
@@ -89,11 +56,8 @@
 
 
 
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -102,9 +66,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -116,18 +79,26 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  <div class="container sidebar-position-right page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
   <div class="site-meta">
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/blog/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Good good study, day day up</span>
@@ -135,153 +106,115 @@
       </a>
     </div>
         <p class="site-subtitle">aleung的学习笔记, aleung的idea</p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
   </div>
 </div>
-
 
 
 <nav class="site-nav">
-    <ul id="menu" class="menu">
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-      
-    
-      
-    
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">52</span></a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">52</span></a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-      
-    
-      
-    
+        <li class="menu-item menu-item-archives">
 
-    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">328</span></a>
+    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">329</span></a>
 
   </li>
-        <li class="menu-item menu-item-search">
-          <a href="javascript:;" class="popup-trigger">
-          
-            <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-        </li>
-      
-    </ul>
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
   </div>
-  <div id="local-search-result"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
 </div>
 
+  </div>
+</div>
 
-    </div>
-</nav>
-
+  </div>
 </div>
     </header>
 
     
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+
+          <div class="content">
             
 
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2015/01/26/jekyll/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2015/01/26/jekyll/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">Jekyll
-
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          Jekyll
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2015-01-26 21:29:40" itemprop="dateCreated datePublished" datetime="2015-01-26T21:29:40+08:00">2015-01-26</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-08-04 19:16:06" itemprop="dateModified" datetime="2019-08-04T19:16:06+08:00">2019-08-04</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -292,9 +225,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <img src="/blog/attachments/2015/1/ecebook.png">
+        <img src="/blog/attachments/2015/1/ecebook.png" class="">
+
 <h2 id="用-Jekyll-作为内部技术文档库"><a href="#用-Jekyll-作为内部技术文档库" class="headerlink" title="用 Jekyll 作为内部技术文档库"></a>用 Jekyll 作为内部技术文档库</h2><p>去年在公司的产品开发团队中推行了使用 <a href="http://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> 静态网站生成工具来写内部技术文档，大半年下来，效果还不错。</p>
 <a id="more"></a>
+
 <p>内部技术资料的共享和维护以前一直是个问题。开始用 Office Word 正正规规的写设计文档，维护成本太高了，往往是代码已经翻天覆地变化，文档里都没有反映出来，大家不愿意更新。而且查找起来也不方便。后来推行敏捷方法，不想让文档工作那么 heavy 了，于是用 wiki 来记录。Wiki 的问题是信息非常碎片化，大家很随意的添加新页面，整个 wiki 就像一个草稿本，写得很没有系统。网状的超链接导航令读者很迷茫，不知道需要的信息入口在哪儿，有些隐藏得很深的页面没有几个人知道它们的存在。Wiki 的在线编辑体验也不是那么好。</p>
 <p>Jekyll 是个静态网站生成工具，采用 <a href="http://zh.m.wikipedia.org/wiki/Markdown" target="_blank" rel="noopener">markdown</a> 语法来写内容，根据模板生成 HTML 页面，发布到一个 web 服务器上，就可以用浏览器在线查看内容。Jekyll 通常用来做  blog 系统，但它用来做有组织的内容发布系统也是完全胜任的。我基本上就是仿照 Jekyll <a href="http://jekyllrb.com/docs/home/" target="_blank" rel="noopener">官方文档</a> 的风格和结构来组织我们产品的内部技术文档库。</p>
 <p>使用 Jekyll 优点首先是编写方便，markdown 是个轻量的标记语言，上手简单，语法易记，而且有不少编辑工具支持。即使没有渲染成 HTML，也是直接可以阅读的，比起奇奇怪怪还各自不同的 wiki 语法好写多了。</p>
@@ -306,278 +241,152 @@
 <p>在 Windows 上装过几次 Jekyll，可以写点教程减少大家摸索的时间。大致参考这篇 <a href="http://jekyll-windows.juthilo.com/" target="_blank" rel="noopener">Run Jekyll on Windows</a>。</p>
 <h3 id="安装-Ruby"><a href="#安装-Ruby" class="headerlink" title="安装 Ruby"></a>安装 Ruby</h3><p>首先需要安装 Ruby 环境。从 <a href="http://rubyinstaller.org/downloads" target="_blank" rel="noopener">http://rubyinstaller.org/downloads</a> 下载 Ruby 2.0 和 DevKit，安装 Ruby，然后将 DevKit 解压到 <code>C:/RubyDevKit</code>，在命令行运行下面指令完成安装。</p>
 <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> C:\RubyDevKit </span><br><span class="line">ruby dk.rb init </span><br><span class="line">ruby dk.rb install</span><br></pre></td></tr></table></figure>
+
 <h3 id="安装-Jekyll-相关的-gem"><a href="#安装-Jekyll-相关的-gem" class="headerlink" title="安装 Jekyll 相关的 gem"></a>安装 Jekyll 相关的 gem</h3><p>Gem 是 Ruby 的包管理工具。在命令行执行<code>gem install</code>可从互联网的仓库直接下载和安装需要的包。如果需要代理，需要先设置环境变量<code>http_proxy</code>，如不需要则忽略第一行。其中，<code>jekyll</code>这个 gem 是必须安装的，其他的视乎环境、配置和使用的插件，可能需要装，可能不需要装。</p>
 <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> http_proxy=http://my-proxy:<span class="number">8080</span></span><br><span class="line"></span><br><span class="line">gem install jekyll</span><br><span class="line"></span><br><span class="line">gem install kramdown</span><br><span class="line">gem install pygments</span><br><span class="line">gem install nokogiri</span><br><span class="line">gem install coderay</span><br><span class="line">gem install wdm</span><br><span class="line">gem install json</span><br></pre></td></tr></table></figure>
+
 <p>如果在安装过程中出现 SSL 错误，从<a href="https://gist.github.com/luislavena/f064211759ee0f806c88" target="_blank" rel="noopener">这里</a>可以找到解决方法。</p>
 <h3 id="使用-Jekyll"><a href="#使用-Jekyll" class="headerlink" title="使用 Jekyll"></a>使用 Jekyll</h3><p>Jekyll 的相关操作都是执行<code>jekyll</code>命令进行。后面的基本上就是看<a href="http://jekyllrb.com/docs/quickstart/" target="_blank" rel="noopener">官方文档</a>慢慢折腾了。</p>
 <h2 id="制作-jekyll-exe"><a href="#制作-jekyll-exe" class="headerlink" title="制作 jekyll.exe"></a>制作 jekyll.exe</h2><p>上面的步骤还是有点繁琐。我们公司里的都是 Java 程序员，在电脑里装个 Ruby 环境也没有其他用处。为了推广使用，简化大家的操作，做一个 portable 的 Jekyll 可执行程序会更好。</p>
 <p>制作的步骤基本上参考这篇 <a href="http://www.nickw.it/jekyll-dot-exe/" target="_blank" rel="noopener">Building Jekyll.exe for Windows</a>。</p>
 <p>首先要安装 OCRA。可能还需要安装 psych，bigdecimal 这些 gem。</p>
 <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install ocra</span><br></pre></td></tr></table></figure>
+
 <p>解开 jekyll 到一个临时目录：</p>
 <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem unpack jekyll</span><br></pre></td></tr></table></figure>
+
 <p>修改<code>bin/jekyll</code>，在开头增加几个依赖声明：</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">require</span> <span class="string">'nokogiri'</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'jekyll-watch'</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'wdm'</span></span><br></pre></td></tr></table></figure>
+
 <p>生成 exe 文件：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ocra --add-all-core --gem-all bin/jekyll lib/jekyll/mime.types lib/site_template/**/* lib/site_template/*</span><br></pre></td></tr></table></figure>
+
 <p>做出来的 jekyll.exe 需要测试一下，看看各种命令是否都能正常。视乎配置和使用插件的不同，可能需要增加更多的依赖声明。以上只是我的环境的例子，不一定适用于所有场景。</p>
 <p>最后，我知道大家都还是懒得衣来伸手饭来张口的，就提供一个编译好的 <a href="https://github.com/f5f6/f5f6.github.io/raw/master/_bin/jekyll.exe" target="_blank" rel="noopener">jekyll.exe</a> 下载，支持 kramdown 和 coderay。但还是那句话：不一定符合你的环境。</p>
 <hr>
 
     </div>
 
-    
-      <hr>
-<div class="recommended_posts">
-    
-    
-    <div class="recommended_posts_header">推荐文章 </div>
-    <ul>
-        
-            <li><a href="http://aleung.github.io/blog/2016/08/30/update/">Blog update</a></li>
-        
-            <li><a href="http://aleung.github.io/blog/2015/02/05/typesetting-basic/">几条基础排版规则，让文档显得专业</a></li>
-        
-            <li><a href="http://aleung.github.io/blog/2012/06/25/migrate-my-blog-to-github/">migrate my blog to github</a></li>
-        
-    </ul>
-    
-</div>
-
-    
 
     
     
     
 
-    <footer class="post-footer">
+      <footer class="post-footer">
           
-        
-        <div class="post-tags">
-            <a href="/blog/tags/Blogging/" rel="tag"><i class="fa fa-tag"></i> Blogging</a>
-          
-        </div>
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-              <a href="/blog/2015/01/25/fp/" rel="next" title=" 同事们关于 FP 语言的讨论">
-                <i class="fa fa-chevron-left"></i>  同事们关于 FP 语言的讨论
-              </a>
-            
+          <div class="post-tags">
+              <a href="/blog/tags/Blogging/" rel="tag"><i class="fa fa-tag"></i> Blogging</a>
           </div>
 
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-              <a href="/blog/2015/02/05/typesetting-basic/" rel="prev" title="几条基础排版规则，让文档显得专业">
-                几条基础排版规则，让文档显得专业 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-  </div>
+        
 
 
-          </div>
-          
-    
-    <div class="comments" id="gitalk-container"></div>
-  
-
-
-        </div>
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2015/01/25/fp/" rel="prev" title=" 同事们关于 FP 语言的讨论">
+      <i class="fa fa-chevron-left"></i>  同事们关于 FP 语言的讨论
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2015/02/05/typesetting-basic/" rel="next" title="几条基础排版规则，让文档显得专业">
+      几条基础排版规则，让文档显得专业 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
 
-  <aside id="sidebar" class="sidebar">
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
     <div class="sidebar-inner">
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#用-Jekyll-作为内部技术文档库"><span class="nav-number">1.</span> <span class="nav-text">用 Jekyll 作为内部技术文档库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-Windows-上安装-Jekyll"><span class="nav-number">2.</span> <span class="nav-text">在 Windows 上安装 Jekyll</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-Ruby"><span class="nav-number">2.1.</span> <span class="nav-text">安装 Ruby</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-Jekyll-相关的-gem"><span class="nav-number">2.2.</span> <span class="nav-text">安装 Jekyll 相关的 gem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Jekyll"><span class="nav-number">2.3.</span> <span class="nav-text">使用 Jekyll</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#制作-jekyll-exe"><span class="nav-number">3.</span> <span class="nav-text">制作 jekyll.exe</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="/blog/images/android-chrome-512x512.png">
   <p class="site-author-name" itemprop="name">Leo Liang</p>
-  <div class="site-description motion-element" itemprop="description"></div>
+  <div class="site-description" itemprop="description"></div>
 </div>
-  <nav class="site-state motion-element">
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">328</span>
+          <span class="site-state-item-count">329</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-tags">
-        
-          
             <a href="/blog/tags/">
           
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
         <span class="site-state-item-count">52</span>
-        <span class="site-state-item-name">标签</span>
-        </a>
+        <span class="site-state-item-name">标签</span></a>
       </div>
-    
   </nav>
-  <div class="feed-link motion-element">
-    <a href="/blog/atom.xml" rel="alternate">
-      <i class="fa fa-rss"></i>RSS
-    </a>
-  </div>
+</div>
 
 
 
-        </div>
       </div>
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#用-Jekyll-作为内部技术文档库"><span class="nav-number">1.</span> <span class="nav-text">用 Jekyll 作为内部技术文档库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-Windows-上安装-Jekyll"><span class="nav-number">2.</span> <span class="nav-text">在 Windows 上安装 Jekyll</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-Ruby"><span class="nav-number">2.1.</span> <span class="nav-text">安装 Ruby</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-Jekyll-相关的-gem"><span class="nav-number">2.2.</span> <span class="nav-text">安装 Jekyll 相关的 gem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Jekyll"><span class="nav-number">2.3.</span> <span class="nav-text">使用 Jekyll</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#制作-jekyll-exe"><span class="nav-number">3.</span> <span class="nav-text">制作 jekyll.exe</span></a></li></ol></div>
-            
-
-          </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
         </div>
-      <!--/noindex-->
-      
 
     </div>
   </aside>
@@ -587,17 +396,24 @@
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Leo Liang</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
 
         
 
@@ -608,44 +424,26 @@
 
 
 
-        
       </div>
     </footer>
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-      </div>
-
-    
-
   </div>
 
   
-  <script src="/blog/lib/jquery/index.js?v=3.4.1"></script>
-  <script src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
 
-  <script src="/blog/js/utils.js?v=7.2.0"></script>
-  <script src="/blog/js/motion.js?v=7.2.0"></script>
+<script src="/blog/js/utils.js"></script>
 
-  
-  <script src="/blog/js/affix.js?v=7.2.0"></script>
-  <script src="/blog/js/schemes/pisces.js?v=7.2.0"></script>
+<script src="/blog/js/motion.js"></script>
 
 
-
-  
-  <script src="/blog/js/scrollspy.js?v=7.2.0"></script>
-<script src="/blog/js/post-details.js?v=7.2.0"></script>
+<script src="/blog/js/schemes/pisces.js"></script>
 
 
+<script src="/blog/js/next-boot.js"></script>
 
-  <script src="/blog/js/next-boot.js?v=7.2.0"></script>
 
-  
-
-  
-
-  
 
 
   
@@ -653,6 +451,8 @@
 
 
 
+  
+<script src="/blog/js/local-search.js"></script>
 
 
 
@@ -666,46 +466,29 @@
 
 
 
+  
 
+  
 
-
-
-
-
-  <script src="/blog/js/local-search.js?v=7.2.0"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
-<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
 
 <script>
-  var gitalk = new Gitalk({
-    clientID: '578b819466ead4247b6e',
-    clientSecret: '6a36866b9ae12bc5b0b1f0df95c98cbb2ed7ef61',
-    repo: 'blog-comments',
-    owner: 'aleung',
-    admin: ['aleung'],
-    id: md5(location.pathname),
-      language: window.navigator.language || window.navigator.userLanguage,
-    
-    distractionFreeMode: 'true'
-  });
-  gitalk.render('gitalk-container');
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '578b819466ead4247b6e',
+      clientSecret: '6a36866b9ae12bc5b0b1f0df95c98cbb2ed7ef61',
+      repo        : 'blog-comments',
+      owner       : 'aleung',
+      admin       : ['aleung'],
+      id          : 'b30a032978fee27e1a3797342b679556',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
 </script>
-
 
 </body>
 </html>

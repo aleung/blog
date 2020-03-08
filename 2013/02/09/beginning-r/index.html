@@ -1,81 +1,49 @@
 <!DOCTYPE html>
-
-
-
-
-
-<html class="theme-next gemini use-motion" lang="zh-CN">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="generator" content="Hexo 3.9.0">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=7.2.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=7.2.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=7.2.0">
-  <link rel="mask-icon" href="/blog/images/logo.svg?v=7.2.0" color="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+  <link rel="manifest" href="/blog/images/manifest.json">
 
-<link rel="stylesheet" href="/blog/css/main.css?v=7.2.0">
-
-
-<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+<link rel="stylesheet" href="/blog/css/main.css">
 
 
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/blog/',
-    scheme: 'Gemini',
-    version: '7.2.0',
-    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},
-    search: {
-      root: '/blog/',
-      path: 'search.xml'
-    },
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    }
-  };
-</script>
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
 
-  <meta name="description" content="包管理从CRAN安装一个包：install.packages(&amp;quot;pkg_name&amp;quot;) 加载包：library(package) R的基本数据类型在R里面一个元素的基本数据类型称为 mode。每个对象都有mode属性。 基本数据类型包括：数值(实数) numeric，复数 complex，字符(串) character，逻辑(布尔) logical 和 raw。NA表示没有值。">
-<meta name="keywords" content="Statistics,DataVisualization">
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="包管理从CRAN安装一个包：install.packages(&quot;pkg_name&quot;) 加载包：library(package) R的基本数据类型在R里面一个元素的基本数据类型称为 mode。每个对象都有mode属性。 基本数据类型包括：数值(实数) numeric，复数 complex，字符(串) character，逻辑(布尔) logical 和 raw。NA表示没有值。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="R初略学习笔记">
 <meta property="og:url" content="http://aleung.github.io/blog/2013/02/09/beginning-r/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description" content="包管理从CRAN安装一个包：install.packages(&amp;quot;pkg_name&amp;quot;) 加载包：library(package) R的基本数据类型在R里面一个元素的基本数据类型称为 mode。每个对象都有mode属性。 基本数据类型包括：数值(实数) numeric，复数 complex，字符(串) character，逻辑(布尔) logical 和 raw。NA表示没有值。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2016-03-16T14:11:17.000Z">
+<meta property="og:description" content="包管理从CRAN安装一个包：install.packages(&quot;pkg_name&quot;) 加载包：library(package) R的基本数据类型在R里面一个元素的基本数据类型称为 mode。每个对象都有mode属性。 基本数据类型包括：数值(实数) numeric，复数 complex，字符(串) character，逻辑(布尔) logical 和 raw。NA表示没有值。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2013-02-09T06:18:00.000Z">
+<meta property="article:modified_time" content="2016-03-16T14:11:17.000Z">
+<meta property="article:author" content="Leo Liang">
+<meta property="article:tag" content="Statistics">
+<meta property="article:tag" content="DataVisualization">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="R初略学习笔记">
-<meta name="twitter:description" content="包管理从CRAN安装一个包：install.packages(&amp;quot;pkg_name&amp;quot;) 加载包：library(package) R的基本数据类型在R里面一个元素的基本数据类型称为 mode。每个对象都有mode属性。 基本数据类型包括：数值(实数) numeric，复数 complex，字符(串) character，逻辑(布尔) logical 和 raw。NA表示没有值。">
-  <link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
-  <link rel="canonical" href="http://aleung.github.io/blog/2013/02/09/beginning-r/">
+
+<link rel="canonical" href="http://aleung.github.io/blog/2013/02/09/beginning-r/">
 
 
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : false,
+    isPost : true
   };
 </script>
 
@@ -87,11 +55,8 @@
 
 
 
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -100,9 +65,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -114,18 +78,26 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  <div class="container sidebar-position-right page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
   <div class="site-meta">
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/blog/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Good good study, day day up</span>
@@ -133,153 +105,115 @@
       </a>
     </div>
         <p class="site-subtitle">aleung的学习笔记, aleung的idea</p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
   </div>
 </div>
-
 
 
 <nav class="site-nav">
-    <ul id="menu" class="menu">
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-      
-    
-      
-    
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">52</span></a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">52</span></a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-      
-    
-      
-    
+        <li class="menu-item menu-item-archives">
 
-    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">328</span></a>
+    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">329</span></a>
 
   </li>
-        <li class="menu-item menu-item-search">
-          <a href="javascript:;" class="popup-trigger">
-          
-            <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-        </li>
-      
-    </ul>
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
   </div>
-  <div id="local-search-result"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
 </div>
 
+  </div>
+</div>
 
-    </div>
-</nav>
-
+  </div>
 </div>
     </header>
 
     
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+
+          <div class="content">
             
 
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2013/02/09/beginning-r/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2013/02/09/beginning-r/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">R初略学习笔记
-
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          R初略学习笔记
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2013-02-09 14:18:00" itemprop="dateCreated datePublished" datetime="2013-02-09T14:18:00+08:00">2013-02-09</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -297,8 +231,7 @@
 <p>基本数据类型之间的转换通过 as.<em>something</em>() 函数进行，例如 <code>as.character()</code>, <code>as.integer()</code>。</p>
 <h2 id="R的数据对象类型"><a href="#R的数据对象类型" class="headerlink" title="R的数据对象类型"></a>R的数据对象类型</h2><h3 id="向量-vector"><a href="#向量-vector" class="headerlink" title="向量 vector"></a>向量 vector</h3><p>向量由一组相同类型的元素组成。</p>
 <p>用函数 c() 可以构造出向量：</p>
-<pre><code>x &lt;- c(10.4, 5.6, 3.1, 21.7)
-</code></pre><p>如果要生成元素为序列的向量，简单的方法是用冒号，如 1:7，复杂的方法是函数 seq()。另外，函数 rep() 可以根据已有向量的元素重复来生成新向量。</p>
+<pre><code>x &lt;- c(10.4, 5.6, 3.1, 21.7)</code></pre><p>如果要生成元素为序列的向量，简单的方法是用冒号，如 1:7，复杂的方法是函数 seq()。另外，函数 rep() 可以根据已有向量的元素重复来生成新向量。</p>
 <p>向量中的某个元素通过 [] 访问，如 <code>x[3]</code>，注意，下标从1开始！方括号中下标位置放的可以是向量，称为索引向量 index vector，这时候会根据索引取出特定元素构成新的向量。例如 <code>x[1:10]</code> 取出x的前10个元素。</p>
 <p>对向量做运算，是对向量的每个元素做独立运算，结果是一个相同元素个数的新向量。</p>
 <h3 id="因子-factor"><a href="#因子-factor" class="headerlink" title="因子 factor"></a>因子 factor</h3><p><strong>TODO</strong>：没懂</p>
@@ -322,267 +255,213 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:left">函数</th>
-<th style="text-align:left">说明</th>
+<th align="left">函数</th>
+<th align="left">说明</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left">plot(x)</td>
-<td style="text-align:left">以x的元素值为纵坐标、以序号为横坐标绘图</td>
-<td></td>
+<tbody><tr>
+<td align="left">plot(x)</td>
+<td align="left">以x的元素值为纵坐标、以序号为横坐标绘图</td>
 </tr>
 <tr>
-<td style="text-align:left">plot(x, y)</td>
-<td style="text-align:left">x(在x-轴上)与y(在y-轴上)的二元作图。根据type参数可以画出多种类型的图。</td>
-<td></td>
+<td align="left">plot(x, y)</td>
+<td align="left">x(在x-轴上)与y(在y-轴上)的二元作图。根据type参数可以画出多种类型的图。</td>
 </tr>
 <tr>
-<td style="text-align:left">sunflowerplot(x,y)</td>
-<td style="text-align:left">同上 但是以相似坐标的点作为花朵,其花瓣数目为点的个数</td>
-<td></td>
+<td align="left">sunflowerplot(x,y)</td>
+<td align="left">同上 但是以相似坐标的点作为花朵,其花瓣数目为点的个数</td>
 </tr>
 <tr>
-<td style="text-align:left">pie(x)</td>
-<td style="text-align:left">饼图</td>
-<td></td>
+<td align="left">pie(x)</td>
+<td align="left">饼图</td>
 </tr>
 <tr>
-<td style="text-align:left">boxplot(x)</td>
-<td style="text-align:left">盒形图(“box-and-whiskers”)</td>
-<td></td>
+<td align="left">boxplot(x)</td>
+<td align="left">盒形图(“box-and-whiskers”)</td>
 </tr>
 <tr>
-<td style="text-align:left">stripchart(x)</td>
-<td style="text-align:left">把x的值画在一条线段上,样本量较小时可作为盒形图的替代</td>
-<td></td>
+<td align="left">stripchart(x)</td>
+<td align="left">把x的值画在一条线段上,样本量较小时可作为盒形图的替代</td>
 </tr>
 <tr>
-<td style="text-align:left">coplot(x~y\</td>
-<td style="text-align:left">z)</td>
-<td>关于z的每个数值(或数值区间)绘制x与y的二元图</td>
-<td></td>
+<td align="left">coplot(x~y|z)</td>
+<td align="left">关于z的每个数值(或数值区间)绘制x与y的二元图</td>
 </tr>
 <tr>
-<td style="text-align:left">interaction.plot(f1, f2, y)</td>
-<td style="text-align:left">如果f1和f2是因子,作y的均值图,以f1的不同值作为x轴, 而f2的不同值对应不同曲线;可以用选项fun指定y的其他的统计量(缺省计算均值,fun=mean)</td>
-<td></td>
+<td align="left">interaction.plot(f1, f2, y)</td>
+<td align="left">如果f1和f2是因子,作y的均值图,以f1的不同值作为x轴, 而f2的不同值对应不同曲线;可以用选项fun指定y的其他的统计量(缺省计算均值,fun=mean)</td>
 </tr>
 <tr>
-<td style="text-align:left">matplot(x,y)</td>
-<td style="text-align:left">二元图,其中x的第一列对应y的第一列,x的第二列对应y的第二 列,依次类推。</td>
-<td></td>
+<td align="left">matplot(x,y)</td>
+<td align="left">二元图,其中x的第一列对应y的第一列,x的第二列对应y的第二 列,依次类推。</td>
 </tr>
 <tr>
-<td style="text-align:left">dotchart(x)</td>
-<td style="text-align:left">如果x是数据框,作Cleveland点图(逐行逐列累加图)</td>
-<td></td>
+<td align="left">dotchart(x)</td>
+<td align="left">如果x是数据框,作Cleveland点图(逐行逐列累加图)</td>
 </tr>
 <tr>
-<td style="text-align:left">fourfoldplot(x)</td>
-<td style="text-align:left">用四个四分之一圆显示2X2列联表情况(x必须是dim=c(2, 2, k)的数组,或者是dim=c(2, 2)的矩阵,如果k = 1)</td>
-<td></td>
+<td align="left">fourfoldplot(x)</td>
+<td align="left">用四个四分之一圆显示2X2列联表情况(x必须是dim=c(2, 2, k)的数组,或者是dim=c(2, 2)的矩阵,如果k = 1)</td>
 </tr>
 <tr>
-<td style="text-align:left">assocplot(x)</td>
-<td style="text-align:left">Cohen–Friendly图,显示在二维列联表中行、列变量偏离独立性 的程度</td>
-<td></td>
+<td align="left">assocplot(x)</td>
+<td align="left">Cohen–Friendly图,显示在二维列联表中行、列变量偏离独立性 的程度</td>
 </tr>
 <tr>
-<td style="text-align:left">mosaicplot(x)</td>
-<td style="text-align:left">列联表的对数线性回归残差的马赛克图</td>
-<td></td>
+<td align="left">mosaicplot(x)</td>
+<td align="left">列联表的对数线性回归残差的马赛克图</td>
 </tr>
 <tr>
-<td style="text-align:left">pairs(x)</td>
-<td style="text-align:left">如果x是矩阵或是数据框,作x的各列之间的二元图</td>
-<td></td>
+<td align="left">pairs(x)</td>
+<td align="left">如果x是矩阵或是数据框,作x的各列之间的二元图</td>
 </tr>
 <tr>
-<td style="text-align:left">plot.ts(x)</td>
-<td style="text-align:left">如果x是类”ts”的对象,作x的时间序列曲线,x可以是多元的, 但是序列必须有相同的频率和时间</td>
-<td></td>
+<td align="left">plot.ts(x)</td>
+<td align="left">如果x是类”ts”的对象,作x的时间序列曲线,x可以是多元的, 但是序列必须有相同的频率和时间</td>
 </tr>
 <tr>
-<td style="text-align:left">ts.plot(x)</td>
-<td style="text-align:left">同上,但如果x是多元的,序列可有不同的时间但须有相同的频 率</td>
-<td></td>
+<td align="left">ts.plot(x)</td>
+<td align="left">同上,但如果x是多元的,序列可有不同的时间但须有相同的频 率</td>
 </tr>
 <tr>
-<td style="text-align:left">hist(x)</td>
-<td style="text-align:left">x的频率直方图</td>
-<td></td>
+<td align="left">hist(x)</td>
+<td align="left">x的频率直方图</td>
 </tr>
 <tr>
-<td style="text-align:left">barplot(x)</td>
-<td style="text-align:left">x的值的条形图</td>
-<td></td>
+<td align="left">barplot(x)</td>
+<td align="left">x的值的条形图</td>
 </tr>
 <tr>
-<td style="text-align:left">qqnorm(x)</td>
-<td style="text-align:left">正态分位数-分位数图</td>
-<td></td>
+<td align="left">qqnorm(x)</td>
+<td align="left">正态分位数-分位数图</td>
 </tr>
 <tr>
-<td style="text-align:left">qqplot(x, y)</td>
-<td style="text-align:left">y对x的分位数-分位数图</td>
-<td></td>
+<td align="left">qqplot(x, y)</td>
+<td align="left">y对x的分位数-分位数图</td>
 </tr>
 <tr>
-<td style="text-align:left">contour(x, y, z)</td>
-<td style="text-align:left">等高线图(画曲线时用内插补充空白的值),x和y必须为向量 ,z必须为矩阵 , 使得dim(z)=c(length(x), length(y))(x和y可以省略)</td>
-<td></td>
+<td align="left">contour(x, y, z)</td>
+<td align="left">等高线图(画曲线时用内插补充空白的值),x和y必须为向量 ,z必须为矩阵 , 使得dim(z)=c(length(x), length(y))(x和y可以省略)</td>
 </tr>
 <tr>
-<td style="text-align:left">filled.contour (x,y, z)</td>
-<td style="text-align:left">同上,等高线之间的区域是彩色的,并且绘制彩色对应的值的图 例</td>
-<td></td>
+<td align="left">filled.contour (x,y, z)</td>
+<td align="left">同上,等高线之间的区域是彩色的,并且绘制彩色对应的值的图 例</td>
 </tr>
 <tr>
-<td style="text-align:left">image(x, y, z)</td>
-<td style="text-align:left">同上,但是实际数据大小用不同色彩表示</td>
-<td></td>
+<td align="left">image(x, y, z)</td>
+<td align="left">同上,但是实际数据大小用不同色彩表示</td>
 </tr>
 <tr>
-<td style="text-align:left">persp(x, y, z)</td>
-<td style="text-align:left">同上,但为透视图</td>
-<td></td>
+<td align="left">persp(x, y, z)</td>
+<td align="left">同上,但为透视图</td>
 </tr>
 <tr>
-<td style="text-align:left">stars(x)</td>
-<td style="text-align:left">如果x是矩阵或者数据框,用星形和线段画出</td>
-<td></td>
+<td align="left">stars(x)</td>
+<td align="left">如果x是矩阵或者数据框,用星形和线段画出</td>
 </tr>
 <tr>
-<td style="text-align:left">symbols(x, y, …)</td>
-<td style="text-align:left">在由x和y给定坐标画符号(圆,正方形,长方形,星,温度计式 或者盒形图),符号的类型、大小、颜色等由另外的变量指定</td>
-<td></td>
+<td align="left">symbols(x, y, …)</td>
+<td align="left">在由x和y给定坐标画符号(圆,正方形,长方形,星,温度计式 或者盒形图),符号的类型、大小、颜色等由另外的变量指定</td>
 </tr>
 <tr>
-<td style="text-align:left">termplot(mod.obj)</td>
-<td style="text-align:left">回归模型(mod.obj)的(偏)影响图</td>
-<td></td>
+<td align="left">termplot(mod.obj)</td>
+<td align="left">回归模型(mod.obj)的(偏)影响图</td>
 </tr>
 <tr>
-<td style="text-align:left">heatmap(x)</td>
-<td style="text-align:left">热度图</td>
-<td></td>
+<td align="left">heatmap(x)</td>
+<td align="left">热度图</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="需要工具包支持的高级绘图"><a href="#需要工具包支持的高级绘图" class="headerlink" title="需要工具包支持的高级绘图"></a>需要工具包支持的高级绘图</h4><p><strong>板块层级图 tree map</strong></p>
 <p>用矩形面积来表示数值，可用于分析磁盘空间占用</p>
 <pre><code>library(portfolio)
-map.market(id, area, group, color)
-</code></pre><p><strong>平行坐标图</strong></p>
+map.market(id, area, group, color)</code></pre><p><strong>平行坐标图</strong></p>
 <pre><code>library(lattice)
-parallel(data)
-</code></pre><h3 id="低级绘图命令"><a href="#低级绘图命令" class="headerlink" title="低级绘图命令"></a>低级绘图命令</h3><p>R里面有一套绘图函数是作用于现存的图形上的:称为低级作图命 令(low-level plotting commands)。下面有一些主要的:</p>
+parallel(data)</code></pre><h3 id="低级绘图命令"><a href="#低级绘图命令" class="headerlink" title="低级绘图命令"></a>低级绘图命令</h3><p>R里面有一套绘图函数是作用于现存的图形上的:称为低级作图命 令(low-level plotting commands)。下面有一些主要的:</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">函数</th>
-<th style="text-align:left">说明</th>
+<th align="left">函数</th>
+<th align="left">说明</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left">scatter.smooth(x, y, …)</td>
-<td style="text-align:left">LOESS(局部加权散点平滑)拟合曲线</td>
-<td></td>
+<tbody><tr>
+<td align="left">scatter.smooth(x, y, …)</td>
+<td align="left">LOESS(局部加权散点平滑)拟合曲线</td>
 </tr>
 <tr>
-<td style="text-align:left">points(x, y)</td>
-<td style="text-align:left">添加点(可以使用选项type=)</td>
-<td></td>
+<td align="left">points(x, y)</td>
+<td align="left">添加点(可以使用选项type=)</td>
 </tr>
 <tr>
-<td style="text-align:left">lines(x, y)</td>
-<td style="text-align:left">同上,但是添加线</td>
-<td></td>
+<td align="left">lines(x, y)</td>
+<td align="left">同上,但是添加线</td>
 </tr>
 <tr>
-<td style="text-align:left">text(x, y, labels,…)</td>
-<td style="text-align:left">在(x,y)处添加用labels指定的文字;典型的用法是: plot(x, y, type=”n”); text(x, y, names)</td>
-<td></td>
+<td align="left">text(x, y, labels,…)</td>
+<td align="left">在(x,y)处添加用labels指定的文字;典型的用法是: plot(x, y, type=”n”); text(x, y, names)</td>
 </tr>
 <tr>
-<td style="text-align:left">mtext(text,side=3, line=0,…)</td>
-<td style="text-align:left">在边空添加用text指定的文字,用side指定添加到哪一边(参照 下面的axis());line指定添加的文字距离绘图区域的行数</td>
-<td></td>
+<td align="left">mtext(text,side=3, line=0,…)</td>
+<td align="left">在边空添加用text指定的文字,用side指定添加到哪一边(参照 下面的axis());line指定添加的文字距离绘图区域的行数</td>
 </tr>
 <tr>
-<td style="text-align:left">segments(x0, y0,x1, y1)</td>
-<td style="text-align:left">从(x0,y0)各点到(x1,y1)各点画线段</td>
-<td></td>
+<td align="left">segments(x0, y0,x1, y1)</td>
+<td align="left">从(x0,y0)各点到(x1,y1)各点画线段</td>
 </tr>
 <tr>
-<td style="text-align:left">arrows(x0, y0,x1, y1, angle= 30,code=2)</td>
-<td style="text-align:left">同上但加画箭头,如果code=2则在各(x0,y0)处画箭头,如 果code=1则在各(x1,y1)处画箭头,如果code=3则在两端都画箭头; angle控制箭头轴到箭头边的角度</td>
-<td></td>
+<td align="left">arrows(x0, y0,x1, y1, angle= 30,code=2)</td>
+<td align="left">同上但加画箭头,如果code=2则在各(x0,y0)处画箭头,如 果code=1则在各(x1,y1)处画箭头,如果code=3则在两端都画箭头; angle控制箭头轴到箭头边的角度</td>
 </tr>
 <tr>
-<td style="text-align:left">abline(a,b)</td>
-<td style="text-align:left">绘制斜率为b和截距为a的直线</td>
-<td></td>
+<td align="left">abline(a,b)</td>
+<td align="left">绘制斜率为b和截距为a的直线</td>
 </tr>
 <tr>
-<td style="text-align:left">abline(h=y)</td>
-<td style="text-align:left">在纵坐标y处画水平线</td>
-<td></td>
+<td align="left">abline(h=y)</td>
+<td align="left">在纵坐标y处画水平线</td>
 </tr>
 <tr>
-<td style="text-align:left">abline(v=x)</td>
-<td style="text-align:left">在横坐标x处画垂直线</td>
-<td></td>
+<td align="left">abline(v=x)</td>
+<td align="left">在横坐标x处画垂直线</td>
 </tr>
 <tr>
-<td style="text-align:left">abline(lm.obj)</td>
-<td style="text-align:left">画由lm.obj确定的回归线(参照第五章)</td>
-<td></td>
+<td align="left">abline(lm.obj)</td>
+<td align="left">画由lm.obj确定的回归线(参照第五章)</td>
 </tr>
 <tr>
-<td style="text-align:left">rect(x1, y1, x2, y2)</td>
-<td style="text-align:left">绘制长方形,(x1, y1)为左下角,(x2,y2)为右上角</td>
-<td></td>
+<td align="left">rect(x1, y1, x2, y2)</td>
+<td align="left">绘制长方形,(x1, y1)为左下角,(x2,y2)为右上角</td>
 </tr>
 <tr>
-<td style="text-align:left">polygon(x, y)</td>
-<td style="text-align:left">绘制连接各x,y坐标确定的点的多边形</td>
-<td></td>
+<td align="left">polygon(x, y)</td>
+<td align="left">绘制连接各x,y坐标确定的点的多边形</td>
 </tr>
 <tr>
-<td style="text-align:left">legend(x, y, legend)</td>
-<td style="text-align:left">在点(x,y)处添加图例,说明内容由legend给定</td>
-<td></td>
+<td align="left">legend(x, y, legend)</td>
+<td align="left">在点(x,y)处添加图例,说明内容由legend给定</td>
 </tr>
 <tr>
-<td style="text-align:left">title()</td>
-<td style="text-align:left">添加标题,也可添加一个副标题</td>
-<td></td>
+<td align="left">title()</td>
+<td align="left">添加标题,也可添加一个副标题</td>
 </tr>
 <tr>
-<td style="text-align:left">axis(side, vect)</td>
-<td style="text-align:left">画坐标轴,side=1时画在下边,side=2时画在左边,side=3时画在上边,side=4时画在右边。可选参数at指定画刻度线的位置坐标</td>
-<td></td>
+<td align="left">axis(side, vect)</td>
+<td align="left">画坐标轴,side=1时画在下边,side=2时画在左边,side=3时画在上边,side=4时画在右边。可选参数at指定画刻度线的位置坐标</td>
 </tr>
 <tr>
-<td style="text-align:left">box()</td>
-<td style="text-align:left">在当前的图上加上边框</td>
-<td></td>
+<td align="left">box()</td>
+<td align="left">在当前的图上加上边框</td>
 </tr>
 <tr>
-<td style="text-align:left">rug(x)</td>
-<td style="text-align:left">在x-轴上用短线画出x数据的位置</td>
-<td></td>
+<td align="left">rug(x)</td>
+<td align="left">在x-轴上用短线画出x数据的位置</td>
 </tr>
 <tr>
-<td style="text-align:left">locator(n, type=”n”, …)</td>
-<td style="text-align:left">在用户用鼠标在图上点击n次后返回n次点击的坐标(x, y);并可以在点击处绘制符号(type=”p”时)或连线(type=”l”时),缺省情 况下不画符号或连线</td>
-<td></td>
+<td align="left">locator(n, type=”n”, …)</td>
+<td align="left">在用户用鼠标在图上点击n次后返回n次点击的坐标(x, y);并可以在点击处绘制符号(type=”p”时)或连线(type=”l”时),缺省情 况下不画符号或连线</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
 <li>R for Beginners</li>
 <li>An Introduction to R</li>
@@ -590,258 +469,127 @@ parallel(data)
 
     </div>
 
-    
-      <hr>
-<div class="recommended_posts">
-    
-    
-    <div class="recommended_posts_header">推荐文章 </div>
-    <ul>
-        
-            <li><a href="http://aleung.github.io/blog/2014/12/14/api-metrics-demo/">API metrics demo</a></li>
-        
-            <li><a href="http://aleung.github.io/blog/2007/03/17/Use-of-Excel-grouping-statistics-and-generate-histogram/">利用Excel进行分组统计及生成直方图</a></li>
-        
-    </ul>
-    
-</div>
-
-    
 
     
     
     
 
-    <footer class="post-footer">
+      <footer class="post-footer">
           
-        
-        <div class="post-tags">
-            <a href="/blog/tags/Statistics/" rel="tag"><i class="fa fa-tag"></i> Statistics</a>
-          
-            <a href="/blog/tags/DataVisualization/" rel="tag"><i class="fa fa-tag"></i> DataVisualization</a>
-          
-        </div>
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-              <a href="/blog/2013/01/08/keyboard-and-mouse/" rel="next" title="人體工學鍵盤鼠標組合">
-                <i class="fa fa-chevron-left"></i> 人體工學鍵盤鼠標組合
-              </a>
-            
+          <div class="post-tags">
+              <a href="/blog/tags/Statistics/" rel="tag"><i class="fa fa-tag"></i> Statistics</a>
+              <a href="/blog/tags/DataVisualization/" rel="tag"><i class="fa fa-tag"></i> DataVisualization</a>
           </div>
 
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-              <a href="/blog/2013/03/10/which-app-is-draining-your-android-bettery/" rel="prev" title="怎么处理Android耗电严重的问题">
-                怎么处理Android耗电严重的问题 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-  </div>
+        
 
 
-          </div>
-          
-    
-    <div class="comments" id="gitalk-container"></div>
-  
-
-
-        </div>
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2013/01/08/keyboard-and-mouse/" rel="prev" title="人體工學鍵盤鼠標組合">
+      <i class="fa fa-chevron-left"></i> 人體工學鍵盤鼠標組合
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2013/03/10/which-app-is-draining-your-android-bettery/" rel="next" title="怎么处理Android耗电严重的问题">
+      怎么处理Android耗电严重的问题 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
 
-  <aside id="sidebar" class="sidebar">
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
     <div class="sidebar-inner">
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#包管理"><span class="nav-number">1.</span> <span class="nav-text">包管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#R的基本数据类型"><span class="nav-number">2.</span> <span class="nav-text">R的基本数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#R的数据对象类型"><span class="nav-number">3.</span> <span class="nav-text">R的数据对象类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#向量-vector"><span class="nav-number">3.1.</span> <span class="nav-text">向量 vector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#因子-factor"><span class="nav-number">3.2.</span> <span class="nav-text">因子 factor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组-array"><span class="nav-number">3.3.</span> <span class="nav-text">数组 array</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表-list"><span class="nav-number">3.4.</span> <span class="nav-text">列表 list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据帧-data-frame"><span class="nav-number">3.5.</span> <span class="nav-text">数据帧 data frame</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取数据"><span class="nav-number">4.</span> <span class="nav-text">读取数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绘图"><span class="nav-number">5.</span> <span class="nav-text">绘图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#高级绘图函数"><span class="nav-number">5.1.</span> <span class="nav-text">高级绘图函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#低级绘图命令"><span class="nav-number">5.2.</span> <span class="nav-text">低级绘图命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">6.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="/blog/images/android-chrome-512x512.png">
   <p class="site-author-name" itemprop="name">Leo Liang</p>
-  <div class="site-description motion-element" itemprop="description"></div>
+  <div class="site-description" itemprop="description"></div>
 </div>
-  <nav class="site-state motion-element">
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">328</span>
+          <span class="site-state-item-count">329</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-tags">
-        
-          
             <a href="/blog/tags/">
           
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
         <span class="site-state-item-count">52</span>
-        <span class="site-state-item-name">标签</span>
-        </a>
+        <span class="site-state-item-name">标签</span></a>
       </div>
-    
   </nav>
-  <div class="feed-link motion-element">
-    <a href="/blog/atom.xml" rel="alternate">
-      <i class="fa fa-rss"></i>RSS
-    </a>
-  </div>
+</div>
 
 
 
-        </div>
       </div>
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#包管理"><span class="nav-number">1.</span> <span class="nav-text">包管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#R的基本数据类型"><span class="nav-number">2.</span> <span class="nav-text">R的基本数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#R的数据对象类型"><span class="nav-number">3.</span> <span class="nav-text">R的数据对象类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#向量-vector"><span class="nav-number">3.1.</span> <span class="nav-text">向量 vector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#因子-factor"><span class="nav-number">3.2.</span> <span class="nav-text">因子 factor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组-array"><span class="nav-number">3.3.</span> <span class="nav-text">数组 array</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表-list"><span class="nav-number">3.4.</span> <span class="nav-text">列表 list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据帧-data-frame"><span class="nav-number">3.5.</span> <span class="nav-text">数据帧 data frame</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取数据"><span class="nav-number">4.</span> <span class="nav-text">读取数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绘图"><span class="nav-number">5.</span> <span class="nav-text">绘图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#高级绘图函数"><span class="nav-number">5.1.</span> <span class="nav-text">高级绘图函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#低级绘图命令"><span class="nav-number">5.2.</span> <span class="nav-text">低级绘图命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">6.</span> <span class="nav-text">Reference</span></a></li></ol></div>
-            
-
-          </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
         </div>
-      <!--/noindex-->
-      
 
     </div>
   </aside>
@@ -851,17 +599,24 @@ parallel(data)
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Leo Liang</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
 
         
 
@@ -872,44 +627,26 @@ parallel(data)
 
 
 
-        
       </div>
     </footer>
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-      </div>
-
-    
-
   </div>
 
   
-  <script src="/blog/lib/jquery/index.js?v=3.4.1"></script>
-  <script src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
 
-  <script src="/blog/js/utils.js?v=7.2.0"></script>
-  <script src="/blog/js/motion.js?v=7.2.0"></script>
+<script src="/blog/js/utils.js"></script>
 
-  
-  <script src="/blog/js/affix.js?v=7.2.0"></script>
-  <script src="/blog/js/schemes/pisces.js?v=7.2.0"></script>
+<script src="/blog/js/motion.js"></script>
 
 
-
-  
-  <script src="/blog/js/scrollspy.js?v=7.2.0"></script>
-<script src="/blog/js/post-details.js?v=7.2.0"></script>
+<script src="/blog/js/schemes/pisces.js"></script>
 
 
+<script src="/blog/js/next-boot.js"></script>
 
-  <script src="/blog/js/next-boot.js?v=7.2.0"></script>
 
-  
-
-  
-
-  
 
 
   
@@ -917,6 +654,8 @@ parallel(data)
 
 
 
+  
+<script src="/blog/js/local-search.js"></script>
 
 
 
@@ -930,46 +669,29 @@ parallel(data)
 
 
 
+  
 
+  
 
-
-
-
-
-  <script src="/blog/js/local-search.js?v=7.2.0"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
-<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
 
 <script>
-  var gitalk = new Gitalk({
-    clientID: '578b819466ead4247b6e',
-    clientSecret: '6a36866b9ae12bc5b0b1f0df95c98cbb2ed7ef61',
-    repo: 'blog-comments',
-    owner: 'aleung',
-    admin: ['aleung'],
-    id: md5(location.pathname),
-      language: window.navigator.language || window.navigator.userLanguage,
-    
-    distractionFreeMode: 'true'
-  });
-  gitalk.render('gitalk-container');
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '578b819466ead4247b6e',
+      clientSecret: '6a36866b9ae12bc5b0b1f0df95c98cbb2ed7ef61',
+      repo        : 'blog-comments',
+      owner       : 'aleung',
+      admin       : ['aleung'],
+      id          : '74d9957ce7b81f3892970cb7d5f80cbf',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
 </script>
-
 
 </body>
 </html>

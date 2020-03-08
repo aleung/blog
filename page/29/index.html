@@ -1,76 +1,43 @@
 <!DOCTYPE html>
-
-
-
-
-
-<html class="theme-next gemini use-motion" lang="zh-CN">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="generator" content="Hexo 3.9.0">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=7.2.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=7.2.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=7.2.0">
-  <link rel="mask-icon" href="/blog/images/logo.svg?v=7.2.0" color="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+  <link rel="manifest" href="/blog/images/manifest.json">
 
-<link rel="stylesheet" href="/blog/css/main.css?v=7.2.0">
-
-
-<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+<link rel="stylesheet" href="/blog/css/main.css">
 
 
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/blog/',
-    scheme: 'Gemini',
-    version: '7.2.0',
-    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},
-    search: {
-      root: '/blog/',
-      path: 'search.xml'
-    },
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    }
-  };
-</script>
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
   <meta property="og:type" content="website">
 <meta property="og:title" content="Good good study, day day up">
 <meta property="og:url" content="http://aleung.github.io/blog/page/29/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Leo Liang">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Good good study, day day up">
-  <link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
-  <link rel="canonical" href="http://aleung.github.io/blog/page/29/">
+
+<link rel="canonical" href="http://aleung.github.io/blog/page/29/">
 
 
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : true,
+    isPost : false
   };
 </script>
 
@@ -82,11 +49,8 @@
 
 
 
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -95,9 +59,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -109,18 +72,26 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  <div class="container sidebar-position-right page-home">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
   <div class="site-meta">
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/blog/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Good good study, day day up</span>
@@ -128,154 +99,183 @@
       </a>
     </div>
         <p class="site-subtitle">aleung的学习笔记, aleung的idea</p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
   </div>
 </div>
-
 
 
 <nav class="site-nav">
-    <ul id="menu" class="menu">
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-      
-    
-      
-    
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">52</span></a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">52</span></a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-      
-    
-      
-    
+        <li class="menu-item menu-item-archives">
 
-    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">328</span></a>
+    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">329</span></a>
 
   </li>
-        <li class="menu-item menu-item-search">
-          <a href="javascript:;" class="popup-trigger">
-          
-            <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-        </li>
-      
-    </ul>
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
   </div>
-  <div id="local-search-result"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
 </div>
 
+  </div>
+</div>
 
-    </div>
-</nav>
-
+  </div>
 </div>
     </header>
 
     
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+
+          <div class="content">
             
 
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <div class="posts-expand">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2003/12/17/Two-minutes-principle/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2003/12/17/Idea-/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2003/12/17/Two-minutes-principle/" class="post-title-link" itemprop="url">两分钟原则</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2003/12/17/Idea-/" class="post-title-link" itemprop="url">Idea的记录</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
+              <time title="创建时间：2003-12-17 00:47:00" itemprop="dateCreated datePublished" datetime="2003-12-17T00:47:00+08:00">2003-12-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>记录idea最有效的方法应该是纸和笔，比较符合思维习惯。电脑是好工具，但是电脑不一定在身边，思维最有创造性的时候往往是在非工作状态中，例如洗澡、走在路上的时候。有idea的时候必须尽快记录下来，即使打断了当前的工作。有idea的时候是最有价值的。另一方面，电脑输入的速度也不一定赶得上思维，还有可能因为软件人机界面而局限了思维（Tablet PC是一个好的方向，我以前写过一点有关的<a href="http://blogbus.com/blogbus/blog/diary.php?diaryid=52190" target="_blank" rel="noopener">东西</a>）。我也打算尝试用palm来做记录，不知道这样的小机器是否能够提供象纸笔一样足够灵活的记录手段。</p>
+<p>电子化是资料整理利用的有力途径，在一定的时间，必须把笔记本中的记录整理输入到电脑中。我习惯是以日期排列，日记的形式。资料整理应该是作为必做的任务，例如在todo list中加入一项：_整理记事本xx页的记录_。网上的blog可以说是个副产品，我并不会用internet上的blog来作为主要记录手段，太不可靠；在网上公布出来，是希望知识与思维能够共享。</p>
+
+      
+    </div>
+
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2003/12/17/Two-minutes-principle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2003/12/17/Two-minutes-principle/" class="post-title-link" itemprop="url">两分钟原则</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2003-12-17 00:33:00" itemprop="dateCreated datePublished" datetime="2003-12-17T00:33:00+08:00">2003-12-17</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -286,102 +286,62 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              在Getting Things Done中看到的最能够立即起作用的就是这个“两分钟原则”了：在两分钟内可以完成的事情，马上去解决。其实很多事情并不是做起来又多困难，只是出于惰性不想去做而已。遵循两分钟原则，不给自己逃避的借口，将会大大减少todo list中的事务的数量，从百事缠身中解脱出来。如果该完成的事情没有完成，实际上并逃避不开，这些未完成事务的阴影始终会萦绕在心头，当堆积很多时，就造成心理
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2003/12/17/Two-minutes-principle/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p>在<a href="http://www.davidco.com/international.php" target="_blank" rel="noopener">Getting Things Done</a>中看到的最能够立即起作用的就是这个“两分钟原则”了：<strong>在两分钟内可以完成的事情，马上去解决</strong>。其实很多事情并不是做起来又多困难，只是出于惰性不想去做而已。遵循两分钟原则，不给自己逃避的借口，将会大大减少todo list中的事务的数量，从百事缠身中解脱出来。如果该完成的事情没有完成，实际上并逃避不开，这些未完成事务的阴影始终会萦绕在心头，当堆积很多时，就造成心理压力。</p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2003/12/12/SRTM-/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2003/12/12/SRTM-/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2003/12/12/SRTM-/" class="post-title-link" itemprop="url">SRTM数据中国部分终于可以下载了</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2003/12/12/SRTM-/" class="post-title-link" itemprop="url">SRTM数据中国部分终于可以下载了</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2003-12-12 23:43:00" itemprop="dateCreated datePublished" datetime="2003-12-12T23:43:00+08:00">2003-12-12</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -392,105 +352,64 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              SRTM数据中国部分终于可以下载了，盼望了几年啊。精度比GTOPO30的高多了。
-ftp://edcsgs9.cr.usgs.gov/pub/data/srtmEurasia目录下是亚欧大陆的数据，是SRTM-3，3arc精度，大概90米。
-在OZI的DEM数据格式中选择GLOBE（ARCVIEW）格式就可以打开；用MicroDEM可以对多种DEM数据进行处理。
+          <p>SRTM数据中国部分终于可以下载了，盼望了几年啊。精度比GTOPO30的高多了。</p>
+<p><a href="ftp://edcsgs9.cr.usgs.gov/pub/data/srtm">ftp://edcsgs9.cr.usgs.gov/pub/data/srtm</a><br>Eurasia目录下是亚欧大陆的数据，是SRTM-3，3arc精度，大概90米。</p>
+<p>在OZI的DEM数据格式中选择GLOBE（ARCVIEW）格式就可以打开；用MicroDEM可以对多种DEM数据进行处理。</p>
 
-              
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2003/12/12/SRTM-/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2003/12/10/Crazy-download-a-movie/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2003/12/10/Crazy-download-a-movie/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2003/12/10/Crazy-download-a-movie/" class="post-title-link" itemprop="url">疯狂下载电影吧</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2003/12/10/Crazy-download-a-movie/" class="post-title-link" itemprop="url">疯狂下载电影吧</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2003-12-10 21:32:00" itemprop="dateCreated datePublished" datetime="2003-12-10T21:32:00+08:00">2003-12-10</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -501,126 +420,104 @@ ftp://edcsgs9.cr.usgs.gov/pub/data/srtmEurasia目录下是亚欧大陆的数据�
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              在sourceforge上无意中留意到top download list, 看看什么软件最热门？这是前20位：
-1
-eMule
-2
-BitTorrent
-3
-DC++
-4
-VirtualDub
-5
-Azureus - BitTorrent Client
-6
-CDex
-7
-guliverkli
-8
-phpBB
-9
-Gordian Knot
-10
-Gaim
-11
-eMule Plus
-12
-ffdsh
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2003/12/10/Crazy-download-a-movie/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p>在<a href="http://sourceforge.net" target="_blank" rel="noopener">sourceforge</a>上无意中留意到<a href="http://sourceforge.net/top/toplist.php?type=downloads_week" target="_blank" rel="noopener">top download list</a>, 看看什么软件最热门？这是前20位：</p>
+<p>1</p>
+<p><a href="http://sourceforge.net/projects/emule/" target="_blank" rel="noopener">eMule</a></p>
+<p>2</p>
+<p><a href="http://sourceforge.net/projects/bittorrent/" target="_blank" rel="noopener">BitTorrent</a></p>
+<p>3</p>
+<p><a href="http://sourceforge.net/projects/dcplusplus/" target="_blank" rel="noopener">DC++</a></p>
+<p>4</p>
+<p><a href="http://sourceforge.net/projects/virtualdub/" target="_blank" rel="noopener">VirtualDub</a></p>
+<p>5</p>
+<p><a href="http://sourceforge.net/projects/azureus/" target="_blank" rel="noopener">Azureus - BitTorrent Client</a></p>
+<p>6</p>
+<p><a href="http://sourceforge.net/projects/cdexos/" target="_blank" rel="noopener">CDex</a></p>
+<p>7</p>
+<p><a href="http://sourceforge.net/projects/guliverkli/" target="_blank" rel="noopener">guliverkli</a></p>
+<p>8</p>
+<p><a href="http://sourceforge.net/projects/phpbb/" target="_blank" rel="noopener">phpBB</a></p>
+<p>9</p>
+<p><a href="http://sourceforge.net/projects/gordianknot/" target="_blank" rel="noopener">Gordian Knot</a></p>
+<p>10</p>
+<p><a href="http://sourceforge.net/projects/gaim/" target="_blank" rel="noopener">Gaim</a></p>
+<p>11</p>
+<p><a href="http://sourceforge.net/projects/emuleplus/" target="_blank" rel="noopener">eMule Plus</a></p>
+<p>12</p>
+<p><a href="http://sourceforge.net/projects/ffdshow/" target="_blank" rel="noopener">ffdshow</a></p>
+<p>13</p>
+<p><a href="http://sourceforge.net/projects/ac3filter/" target="_blank" rel="noopener">AC3Filter</a></p>
+<p>14</p>
+<p><a href="http://sourceforge.net/projects/btplusplus/" target="_blank" rel="noopener">BitTorrent++</a></p>
+<p>15</p>
+<p><a href="http://sourceforge.net/projects/vnc-tight/" target="_blank" rel="noopener">TightVNC</a></p>
+<p>16</p>
+<p><a href="http://sourceforge.net/projects/flaskmpeg/" target="_blank" rel="noopener">FlasKMPEG</a></p>
+<p>17</p>
+<p><a href="http://sourceforge.net/projects/pingpong-abc/" target="_blank" rel="noopener">ABC [Yet Another Bittorrent Client]</a></p>
+<p>18</p>
+<p><a href="http://sourceforge.net/projects/phpmyadmin/" target="_blank" rel="noopener">phpMyAdmin</a></p>
+<p>19</p>
+<p><a href="http://sourceforge.net/projects/zsnes/" target="_blank" rel="noopener">ZSNES</a></p>
+<p>20</p>
+<p><a href="http://sourceforge.net/projects/winscp/" target="_blank" rel="noopener">WinSCP</a></p>
+<p>与P2P相关的是1,2,3,5,11,14,17，占了35%；与media(audio/video)相关的是4,6,7,9,12,13,16，也占了35%。</p>
+<p>可见，现在网络的大热点是什么？大家都在疯狂的下载电影，哈哈！</p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2003/12/09/Use-Google-do-calculator/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2003/12/09/Use-Google-do-calculator/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2003/12/09/Use-Google-do-calculator/" class="post-title-link" itemprop="url">用google做计算器</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2003/12/09/Use-Google-do-calculator/" class="post-title-link" itemprop="url">用google做计算器</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2003-12-09 23:05:00" itemprop="dateCreated datePublished" datetime="2003-12-09T23:05:00+08:00">2003-12-09</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -631,105 +528,64 @@ ffdsh
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              google总是令人赞叹，各种出色的idea。
-google计算器，不是什么技术，却给用户带来很大的方便。
-我用的是MyIE，设置了google作为缺省搜索，因此只要把运算表达式在地址栏上输入，回车，结果就出来了。
+          <p>google总是令人赞叹，各种出色的idea。</p>
+<p><a href="http://www.google.com/intl/zh-CN/help/features.html#calculator" target="_blank" rel="noopener">google计算器</a>，不是什么技术，却给用户带来很大的方便。</p>
+<p>我用的是MyIE，设置了google作为缺省搜索，因此只要把运算表达式在地址栏上输入，回车，结果就出来了。</p>
 
-              
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2003/12/09/Use-Google-do-calculator/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2003/12/09/SQuirrel-Java-GUI-client-for-JDBC-compliant-database/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2003/12/09/SQuirrel-Java-GUI-client-for-JDBC-compliant-database/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2003/12/09/SQuirrel-Java-GUI-client-for-JDBC-compliant-database/" class="post-title-link" itemprop="url">SQuirrel : Java GUI client for JDBC compliant database</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2003/12/09/SQuirrel-Java-GUI-client-for-JDBC-compliant-database/" class="post-title-link" itemprop="url">SQuirrel : Java GUI client for JDBC compliant database</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2003-12-09 20:33:00" itemprop="dateCreated datePublished" datetime="2003-12-09T20:33:00+08:00">2003-12-09</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -740,103 +596,62 @@ google计算器，不是什么技术，却给用户带来很大的方便。
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              SQuirreL SQL Client is a graphical Java program that will allow you to view the structure of a JDBC compliant database, browse the data in tables, issue SQL commands etc.
+          <p><strong><a href="http://squirrel-sql.sourceforge.net/" target="_blank" rel="noopener">SQuirreL</a></strong> SQL Client is a graphical Java program that will allow you to view the structure of a JDBC compliant database, browse the data in tables, issue SQL commands etc.</p>
 
-              
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2003/12/09/SQuirrel-Java-GUI-client-for-JDBC-compliant-database/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2003/12/09/Jacksum-java-utility-for-computing-checksum/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2003/12/09/Jacksum-java-utility-for-computing-checksum/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2003/12/09/Jacksum-java-utility-for-computing-checksum/" class="post-title-link" itemprop="url">Jacksum : java utility for computing checksum</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2003/12/09/Jacksum-java-utility-for-computing-checksum/" class="post-title-link" itemprop="url">Jacksum : java utility for computing checksum</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2003-12-09 20:31:00" itemprop="dateCreated datePublished" datetime="2003-12-09T20:31:00+08:00">2003-12-09</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -847,104 +662,64 @@ google计算器，不是什么技术，却给用户带来很大的方便。
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              Jacksum is a free and platform independent utility for computing and verifying checksums, CRCs and message digests as well as timestamps of files. 
-Jacksum is entirely written in Java. 
-It supports mo
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2003/12/09/Jacksum-java-utility-for-computing-checksum/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p><strong><a href="http://www.jonelo.de/java/jacksum/index.html" target="_blank" rel="noopener">Jacksum</a></strong> is a free and platform independent utility for computing and verifying checksums, CRCs and message digests as well as timestamps of files. </p>
+<p>Jacksum is entirely written in <em>Java</em>. </p>
+<p>It supports most common checksum algorithms (<em>Adler32, BSD sum, POSIX cksum, CRC-16, CRC-32, MD2, MD4, MD5, RIPEMD-128, RIPEMD-160, SHA-1, SHA-256, SHA-384, SHA-512, Unix System V sum, sum8, sum16, sum24, sum32, Whirlpool and xor8</em>)</p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2003/12/04/Used-as-a-OziExplorer-for-reproduction-of-the-production-of-ASTER-presents-the-satellite/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2003/12/04/Used-as-a-OziExplorer-for-reproduction-of-the-production-of-ASTER-presents-the-satellite/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2003/12/04/Used-as-a-OziExplorer-for-reproduction-of-the-production-of-ASTER-presents-the-satellite/" class="post-title-link" itemprop="url">用作OziExplorer底图的ASTER卫星遥感图的制作</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2003/12/04/Used-as-a-OziExplorer-for-reproduction-of-the-production-of-ASTER-presents-the-satellite/" class="post-title-link" itemprop="url">用作OziExplorer底图的ASTER卫星遥感图的制作</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2003-12-04 18:04:00" itemprop="dateCreated datePublished" datetime="2003-12-04T18:04:00+08:00">2003-12-04</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -955,105 +730,69 @@ It supports mo
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              
-下载ASTER L1B数据，AST_09(或者AST_07,未知有何区别)格式。数据包括两个文件，hdf0是15m VNIR(band 1-3)，hdf1是30m SWIR(band 4-9)，一般只需要hdf0。 
-用MultiSpecWin打开hdf文件，将各个band分别保存为tif文件 
-用photoshop打开三个band的tif文件，按照RGB模式通道合成为一个文件，采用231合成的
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2003/12/04/Used-as-a-OziExplorer-for-reproduction-of-the-production-of-ASTER-presents-the-satellite/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <ol>
+<li>下载ASTER L1B数据，AST_09(或者AST_07,未知有何区别)格式。数据包括两个文件，hdf0是15m VNIR(band 1-3)，hdf1是30m SWIR(band 4-9)，一般只需要hdf0。 </li>
+<li>用MultiSpecWin打开hdf文件，将各个band分别保存为tif文件 </li>
+<li>用photoshop打开三个band的tif文件，按照RGB模式通道合成为一个文件，采用231合成的效果比较好。 </li>
+<li>在photoshop中对图像进行直方图调整、锐化，保存为jpg </li>
+<li>用ECW compressser将jpg转换为ecw格式 </li>
+<li>在OziExplorer中校准, 投影设为UTM，然后用META FILE里面的四个点来作为校准点，分别是图像（包括黑色部分）的四个角。  </li>
+</ol>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2003/12/03/Social-software/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2003/12/03/Social-software/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2003/12/03/Social-software/" class="post-title-link" itemprop="url">社会性软件</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2003/12/03/Social-software/" class="post-title-link" itemprop="url">社会性软件</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2003-12-03 04:09:00" itemprop="dateCreated datePublished" datetime="2003-12-03T04:09:00+08:00">2003-12-03</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2012-06-18 23:26:00" itemprop="dateModified" datetime="2012-06-18T23:26:00+08:00">2012-06-18</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -1064,103 +803,66 @@ It supports mo
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              今来在blog中比较关注的一个热点是社会性软件，似乎现在中文blog群体中比较活跃的一些人是做教育的，因此对这方面的探讨比较多。
-对于社会学方面的东西我不大懂，对社会性软件的概念也是一知半解，不过有个软件是很令我感兴趣的：SubEthaEdit。这个软件提供了通过网络多人共同进行文本编辑的功能，从screenshot上看，有点象IM聊天的多个参与者，共同对文件进行修改，通过不同颜色可以区别出不同人
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2003/12/03/Social-software/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p>今来在blog中比较关注的一个热点是社会性软件，似乎现在中文blog群体中比较活跃的一些人是做教育的，因此对这方面的探讨比较多。</p>
+<p>对于社会学方面的东西我不大懂，对社会性软件的概念也是一知半解，不过有个软件是很令我感兴趣的：<a href="http://www.codingmonkeys.de/subethaedit/" target="_blank" rel="noopener">SubEthaEdit</a>。这个软件提供了通过网络多人共同进行文本编辑的功能，从<a href="http://wwwbruegge.in.tum.de/projects/hydra/subethaedit/screenshots.html" target="_blank" rel="noopener">screenshot</a>上看，有点象IM聊天的多个参与者，共同对文件进行修改，通过不同颜色可以区别出不同人改动的部分。</p>
+<p>软件的说明中提及了此软件可以用于pair programming，我想如果这样的软件真的能够达到实用化的话，基于网络的远程PP也是有可能的。即使不是远程PP，对于工作小组内部的商讨事情也会带来很大的方便。</p>
+<p>可惜软件是用于Mac OS X的，没有办法试用。</p>
+<p>交流真是工作中非常重要的一部分，想想每天多少人在天空飞来飞去，就是为了参加半天的会议，能有一次见面交流的机会。电话、网络等等各种先进科技，目前都还是未能让人们能自如的交流，提供真切的体验。这是一个极具潜力的领域。</p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2003/11/26/Garmin-GPS-map76s-/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2003/11/26/Garmin-GPS-map76s-/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2003/11/26/Garmin-GPS-map76s-/" class="post-title-link" itemprop="url">Garmin GPS map76s 解剖</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2003/11/26/Garmin-GPS-map76s-/" class="post-title-link" itemprop="url">Garmin GPS map76s 解剖</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2003-11-26 23:49:00" itemprop="dateCreated datePublished" datetime="2003-11-26T23:49:00+08:00">2003-11-26</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -1171,156 +873,27 @@ It supports mo
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              EE times 的一篇文章介绍了Garmin GPS map76s的内部模块结构，下图是引自该文章的。
+          <p>EE times 的一篇<a href="http://www.eet.com/sys/uth/OEG20020710S0026" target="_blank" rel="noopener">文章</a>介绍了Garmin GPS map76s的内部模块结构，下图是引自该文章的。</p>
+<p><img src="http://img.cmpnet.com/eet/news/02/July/UTH1226.gif" alt=""></p>
+<p>据分析，这样一个GPS的成本价不足100美圆，可是现在市场价是差不多400美圆！好赚吧？:)</p>
+<p>从照片中可以看到，四螺旋天线垂直安装在顶部，因此GPS在直立放置时的信号接收效果是最好的。</p>
 
-据分析，这样一个GPS的成本价不足100美圆，可是现在市场价是差不多400美圆！好赚吧？:)
-从照片中可以看到，四螺旋天线垂直安装在顶部，因此GPS在直立放置时的信号接收效果是最好的。
-
-              
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2003/11/26/Garmin-GPS-map76s-/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2003/11/26/Outdoor-activities-should-choose-what-types-of-GPS-/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leo Liang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good good study, day day up">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2003/11/26/Outdoor-activities-should-choose-what-types-of-GPS-/" class="post-title-link" itemprop="url">户外活动应该选择什么型号的GPS？</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2003-11-26 01:36:00" itemprop="dateCreated datePublished" datetime="2003-11-26T01:36:00+08:00">2003-11-26</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2012-06-18 23:41:00" itemprop="dateModified" datetime="2012-06-18T23:41:00+08:00">2012-06-18</time>
-              </span>
-            
-          
-
-          <br>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            <p>
-              在玩户外的人中，GPS的拥有量开始增加，什么型号的GPS适合户外使用？我在买GPS之前看过不少资料，可以参考一下。
-GPS information是一个很值得看的站点，几大GPS厂家的设备信息、GPS相关软件、使用心得等等资料非常齐全。
-该网站里面一篇文章Important features for a hiking GPS介绍了什么GPS适合于hiking使用。
-摘录部分出来：
-
-Below a
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2003/11/26/Outdoor-activities-should-choose-what-types-of-GPS-/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-    
-  </section>
 
   
   <nav class="pagination">
@@ -1328,170 +901,90 @@ Below a
   </nav>
 
 
+
           </div>
           
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
           
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
-  <aside id="sidebar" class="sidebar">
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="/blog/images/android-chrome-512x512.png">
   <p class="site-author-name" itemprop="name">Leo Liang</p>
-  <div class="site-description motion-element" itemprop="description"></div>
+  <div class="site-description" itemprop="description"></div>
 </div>
-  <nav class="site-state motion-element">
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">328</span>
+          <span class="site-state-item-count">329</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-tags">
-        
-          
             <a href="/blog/tags/">
           
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
         <span class="site-state-item-count">52</span>
-        <span class="site-state-item-name">标签</span>
-        </a>
+        <span class="site-state-item-name">标签</span></a>
       </div>
-    
   </nav>
-  <div class="feed-link motion-element">
-    <a href="/blog/atom.xml" rel="alternate">
-      <i class="fa fa-rss"></i>RSS
-    </a>
-  </div>
+</div>
 
 
 
-        </div>
       </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
 
     </div>
   </aside>
@@ -1501,17 +994,24 @@ Below a
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Leo Liang</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
 
         
 
@@ -1522,40 +1022,26 @@ Below a
 
 
 
-        
       </div>
     </footer>
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-      </div>
-
-    
-
   </div>
 
   
-  <script src="/blog/lib/jquery/index.js?v=3.4.1"></script>
-  <script src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
 
-  <script src="/blog/js/utils.js?v=7.2.0"></script>
-  <script src="/blog/js/motion.js?v=7.2.0"></script>
+<script src="/blog/js/utils.js"></script>
 
-  
-  <script src="/blog/js/affix.js?v=7.2.0"></script>
-  <script src="/blog/js/schemes/pisces.js?v=7.2.0"></script>
+<script src="/blog/js/motion.js"></script>
 
 
+<script src="/blog/js/schemes/pisces.js"></script>
 
-  
 
-  <script src="/blog/js/next-boot.js?v=7.2.0"></script>
+<script src="/blog/js/next-boot.js"></script>
 
-  
 
-  
-
-  
 
 
   
@@ -1563,6 +1049,8 @@ Below a
 
 
 
+  
+<script src="/blog/js/local-search.js"></script>
 
 
 
@@ -1576,27 +1064,9 @@ Below a
 
 
 
+  
 
-
-
-
-
-
-  <script src="/blog/js/local-search.js?v=7.2.0"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+  
 
 
 </body>

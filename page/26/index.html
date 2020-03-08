@@ -1,76 +1,43 @@
 <!DOCTYPE html>
-
-
-
-
-
-<html class="theme-next gemini use-motion" lang="zh-CN">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="generator" content="Hexo 3.9.0">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=7.2.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=7.2.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=7.2.0">
-  <link rel="mask-icon" href="/blog/images/logo.svg?v=7.2.0" color="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+  <link rel="manifest" href="/blog/images/manifest.json">
 
-<link rel="stylesheet" href="/blog/css/main.css?v=7.2.0">
-
-
-<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+<link rel="stylesheet" href="/blog/css/main.css">
 
 
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/blog/',
-    scheme: 'Gemini',
-    version: '7.2.0',
-    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},
-    search: {
-      root: '/blog/',
-      path: 'search.xml'
-    },
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    }
-  };
-</script>
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
   <meta property="og:type" content="website">
 <meta property="og:title" content="Good good study, day day up">
 <meta property="og:url" content="http://aleung.github.io/blog/page/26/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Leo Liang">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Good good study, day day up">
-  <link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
-  <link rel="canonical" href="http://aleung.github.io/blog/page/26/">
+
+<link rel="canonical" href="http://aleung.github.io/blog/page/26/">
 
 
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : true,
+    isPost : false
   };
 </script>
 
@@ -82,11 +49,8 @@
 
 
 
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -95,9 +59,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -109,18 +72,26 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  <div class="container sidebar-position-right page-home">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
   <div class="site-meta">
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/blog/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Good good study, day day up</span>
@@ -128,154 +99,188 @@
       </a>
     </div>
         <p class="site-subtitle">aleung的学习笔记, aleung的idea</p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
   </div>
 </div>
-
 
 
 <nav class="site-nav">
-    <ul id="menu" class="menu">
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-      
-    
-      
-    
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">52</span></a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">52</span></a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-      
-    
-      
-    
+        <li class="menu-item menu-item-archives">
 
-    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">328</span></a>
+    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">329</span></a>
 
   </li>
-        <li class="menu-item menu-item-search">
-          <a href="javascript:;" class="popup-trigger">
-          
-            <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-        </li>
-      
-    </ul>
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
   </div>
-  <div id="local-search-result"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
 </div>
 
+  </div>
+</div>
 
-    </div>
-</nav>
-
+  </div>
 </div>
     </header>
 
     
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+
+          <div class="content">
             
 
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <div class="posts-expand">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2004/09/14/Picasa-/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2004/09/19/A-luxury-buy-a-LCD-it/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2004/09/14/Picasa-/" class="post-title-link" itemprop="url">Picasa, 适合家用的图片管理软件</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2004/09/19/A-luxury-buy-a-LCD-it/" class="post-title-link" itemprop="url">奢侈一下，买台液晶吧</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
+              <time title="创建时间：2004-09-19 06:36:00" itemprop="dateCreated datePublished" datetime="2004-09-19T06:36:00+08:00">2004-09-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>家里的显示器比较老了，用起来总是感觉不爽。我的电脑除去上网文字处理等日常使用外，用途主要是两个，照片编辑和GPS/GIS应用。现在的显示器两个不爽：一个是尺寸问题，15寸只能上800*600，用photoshop调整照片时就算把工具panel全部关闭也看不全，在OziExplorer里面看地图也嫌显示范围不够大。另一个是显示效果不佳，感觉不锐，总有点灰蒙蒙似的，颜色也不够艳丽。</p>
+<p>最初想法是换个好些的CRT，不考虑液晶。一方面是液晶贵，另外“专业人士”都说在图像处理方面液晶比CRT还差得远。年初的时候了解过市场行情，才发现17寸的特丽珑已经停产了，钻石珑的好显示器也没有几款，CRT市场变成了高端和底端两个断层。贵的买不起，便宜的又不见得比现在用的好太多，就算了。</p>
+<p>前几天在整理一些照片的时候，又被刺激了一下神经，更换显示器再次提上日程来。17寸CRT没有什么好选择，那么看看19寸，象点样子的都要三四千，而且这么大的显示器又笨重又占地方，再看看现在好些的LCD，效果也比以前改进不少了，不如还是LCD吧。还有，虽然现在都在宣传多少毫秒17寸液晶跌破3000元了，但是那些货色实际效果都只是一般的。看看人家推荐的型号，一查价格，哇，都是七八千的。一路看下来，将我的心理承受价位不断推高。我知道了，很多人就是这样一步步“中毒”的:)</p>
+<p>网上看得不少了，今天去逛电脑城，看看实物是怎样的。每进一个店面，伙计都热情招呼，“想看些什么？CRT还是液晶”，“液晶，17寸的”，“哦，17寸液晶就是这款了，正在做特价……”，伙计往往都是指着最低档的一款向我介绍。显然，我的样貌打扮都象个学生。样品演示的大多都是严重ps过头的图片，艳丽无比，却毫无层次，每个LCD都像灯箱一样，看不出什么区别，估计大部分人也就是看看外形挑便宜的买吧。店员的水平通常也麻麻，除了不断重复12毫秒500比1之类的话外就说不出产品的其他优点了。也是的，懂得多的人也不会在电脑城买东西。有意思的是在一家店看sony的样品，我让店员放些图片来看效果，她找遍硬盘都没有找到，居然想到个点子，登录自己的163邮箱，把私人邮件里面的数码照片拿出来show。</p>
+<p>我不玩游戏，也不打算用电脑来看电影，应用都是静态图像为主，因此刷新速度什么的并不重要，关键是色彩还原效果。主要看两方面，暗部层次表现和可视角度范围。如果观看位置上下偏一点，画面的明暗就有变化，这就不可接受了，调整照片的时候根本不知道应该以什么亮度为准。依照这个标准，电脑城里有样品演示的17寸主流产品几乎没有一个及格:( 唯一感觉很好的是samsung 173p，看来TN面版的可视角度都不行，PVA面版的才可以接受。至于暗部的表现能力，LCD比起CRT始终还是差一些，看灰阶都还比不上我现在用的这台低档CRT。</p>
+<p>本来想看看高档产品的效果比较一下的，例如EIZO之类的无忌毒友老挂在嘴边的品牌，可是走了几个电脑城都没有看到有样品摆出来，卖的都是三星LG菲利浦等大众品牌。</p>
+<p>看来选定的是173p了，就等广州市场什么时候降价——人家上海都卖4200了，广州还报五千多。</p>
+
+      
+    </div>
+
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2004/09/14/Picasa-/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2004/09/14/Picasa-/" class="post-title-link" itemprop="url">Picasa, 适合家用的图片管理软件</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2004-09-14 07:05:00" itemprop="dateCreated datePublished" datetime="2004-09-14T07:05:00+08:00">2004-09-14</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -286,103 +291,64 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              Google出品，必属精品。我发现我对google已经产生了一种不由自主的崇拜，从google search到gmail，blogger（可惜在国内被封），和这个picasa。也许，google是另外一个apple——拥有自己一群忠实的fans，形成了独特的文化。
-Picasa是最近google收购回来的一个图片管理软件。过去，图片浏览管理大多都是用ACDSee，picasa有什么不同？新的用户体
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2004/09/14/Picasa-/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p>Google出品，必属精品。我发现我对google已经产生了一种不由自主的崇拜，从google search到gmail，blogger（可惜在国内被封），和这个picasa。也许，google是另外一个apple——拥有自己一群忠实的fans，形成了独特的文化。</p>
+<p><a href="http://www.picasa.com/picasa/" target="_blank" rel="noopener">Picasa</a>是最近google收购回来的一个图片管理软件。过去，图片浏览管理大多都是用ACDSee，picasa有什么不同？新的用户体验，就像gmail不同于其他webmail，不是拥有同样功能的仿制品，而是带来了一种新的资料管理（整理）模式。图片按照album组织，根据timeline显示，操作界面简单、舒服。据说，picase与mac的iPhoto类似，不过我没有iMac无缘试用iPhoto。</p>
+<p>Picasa还有很多缺点，例如不能显示中文，无法显示EXIF信息，不能添加注释，不提供zoom… 目前它看来还不能替代ACDSee，但这个软件看来挺有前途，值得期待。</p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2004/09/07/Bayesian-filter-with-to-achieve-the-BBS-speech-to-be-automatic-check/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2004/09/07/Bayesian-filter-with-to-achieve-the-BBS-speech-to-be-automatic-check/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2004/09/07/Bayesian-filter-with-to-achieve-the-BBS-speech-to-be-automatic-check/" class="post-title-link" itemprop="url">用bayesian过滤来实现论坛发言自动检查</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2004/09/07/Bayesian-filter-with-to-achieve-the-BBS-speech-to-be-automatic-check/" class="post-title-link" itemprop="url">用bayesian过滤来实现论坛发言自动检查</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2004-09-07 07:21:00" itemprop="dateCreated datePublished" datetime="2004-09-07T07:21:00+08:00">2004-09-07</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -393,106 +359,71 @@ Picasa是最近google收购回来的一个图片管理软件。过去，图片�
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              Bayesian过滤已经广泛用于邮件系统的anti-spam功能中，通过统计分析出spam邮件词语的统计特征，实现自动识别。
-根据这个思路，也可以将bayesian过滤用在论坛的发言检查中，以减少版主工作量。
-考虑到要易于与现有论坛系统集成，发言过滤器可以做成webservice之类的服务，提供两个功能调用：
+          <p>Bayesian过滤已经广泛用于邮件系统的anti-spam功能中，通过统计分析出spam邮件词语的统计特征，实现自动识别。</p>
+<p>根据这个思路，也可以将bayesian过滤用在论坛的发言检查中，以减少版主工作量。</p>
+<p>考虑到要易于与现有论坛系统集成，发言过滤器可以做成webservice之类的服务，提供两个功能调用：</p>
+<ul>
+<li>void train(String content, boolean isMatch) </li>
+<li>boolean filter(String content)</li>
+</ul>
+<p>前者让发言过滤系统学习，分析content特征；后者让系统分析content是否应该被过滤，返回值也可以是一个浮点数，表示分析出是敏感内容的可能性（确定性）。</p>
+<p>对于论坛系统，如果本来已经支持版主审核功能的话，改造很简单。用户发言，调用filter方法，如果返回false，直接设置为已审核状态，直接显示；如果返回true，设置为待审核状态，等待版主人工审核。版主审核时，将选择是否需要过滤此内容，调用train方法，让过滤器学习。</p>
+<p><a href="http://classifier4j.sourceforge.net/" target="_blank" rel="noopener">Classifier4J</a>可以用于过滤器的开发，已经提供了Bayesian分类功能，需要补充的是中文分词的实现。</p>
 
-void train(String content, boolean isMatch)
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2004/09/07/Bayesian-filter-with-to-achieve-the-BBS-speech-to-be-automatic-check/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2004/08/26/Mind-map-FreeMind/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2004/08/26/Mind-map-FreeMind/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2004/08/26/Mind-map-FreeMind/" class="post-title-link" itemprop="url">Mind map, FreeMind</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2004/08/26/Mind-map-FreeMind/" class="post-title-link" itemprop="url">Mind map, FreeMind</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2004-08-26 02:08:00" itemprop="dateCreated datePublished" datetime="2004-08-26T02:08:00+08:00">2004-08-26</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -503,103 +434,76 @@ void train(String content, boolean isMatch)
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              Mind map，中文翻译为”思维导图”。听起来有点玄乎，说白了就是以图像方式记录思路或者描述事物的一种方法。（看看下面的图就有直观了解了）。在我的理解中，mind map是辅助整理思路和思维扩展的一个工具，一方面以层次化的形式将思路条理化，另一方面能快速记录下头脑中闪现的想法，特别适合于头脑风暴的场合。
-两年前看到有关mind map的介绍，当时非常感兴趣，跑去图书馆把Tony Buzan的书借
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2004/08/26/Mind-map-FreeMind/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p>Mind map，中文翻译为”思维导图”。听起来有点玄乎，说白了就是以图像方式记录思路或者描述事物的一种方法。（看看下面的图就有直观了解了）。在我的理解中，mind map是辅助整理思路和思维扩展的一个工具，一方面以层次化的形式将思路条理化，另一方面能快速记录下头脑中闪现的想法，特别适合于头脑风暴的场合。</p>
+<p>两年前看到有关mind map的介绍，当时非常感兴趣，跑去图书馆把Tony Buzan的书借来看。惭愧的是，书放到过期都没有看几页，因为对那些心理学的理论不感兴趣。Tony Buzan在书中把这个方法吹嘘得神乎其神，我总觉得他有黄婆卖瓜之嫌。Mind map从本质上与outline（大纲）差不多，它的很多长处用outline也可以实现。但他说到人的大脑对于文字、图像、声音是由不同的区域处理的，图像的方式可以刺激大脑的特定区域，比单纯文字要好，对此我是很有体会的，一向以来我都比较喜欢以画图的方式来思考问题。</p>
+<p>当时试用过几款mind map软件，最好的应当算是MindManager了，但用了一段时间，没有养成习惯，也就没有感觉到什么特别的好处，还是放弃了。后来我在需要整理思路的时候都是采用outline：如果写文档，在word里面采用大纲视图；日常的笔记，我喜欢用CyberArticle，它是使用HTML格式的，用列表或者项目符号也很方便的组织大纲；palm上也有类似的工具，但用得不多。如果需要记录思维，而不希望因为记录的过程而束缚思路，我更习惯用纸和笔。</p>
+<p>其实不是mind map不好，而是这些软件在人机交互界面上都未能突破电脑与纸笔之间的隔阂。用手写画，眼睛看着纸上的图像获得反馈，是我们最习惯的方式。使用电脑之后，中间环节插入到这个过程中，大脑需要处理如何进行电脑录入，特别是当软件设计得不好，操作复杂，或者响应速度慢时，反馈过程立马被打断了，造成了思维的障碍。从这个角度看，tablet PC应当是优于键盘鼠标输入的普通电脑的，以前我曾经写过<a href="http://www.blogbus.com/blogbus/blog/diary.php?diaryid=52190" target="_blank" rel="noopener">这方面的想法</a>。</p>
+<p>今天<a href="http://www.blogbus.com/blogbus/blog/diary.php?diaryid=348523" target="_blank" rel="noopener">flyisland</a>推荐的软件<a href="http://freemind.sourceforge.net/" target="_blank" rel="noopener">FreeMind</a>，试用了一下，感觉很不错。</p>
+<ul>
+<li>首先，功能简洁实用，虽然并没有MindManager那么强大，但是常用的都有了 </li>
+<li>使用简单，试了一个小时左右，大部分的功能都已经掌握了。学习曲线平缓，对于这样一种通用型工具很重要 </li>
+<li>使用非常方便，常用功能用键盘就可以控制，不需要鼠标，这样的操作界面可以进行快速记录，减少对思路的阻碍 </li>
+<li>虽然是用java开发的，内存占用不算多，运行速度也快。对mind map软件来说速度是很重要的，如果经常出现用户察觉到的等待，就没有什么使用价值了 </li>
+<li>Open source！</li>
+</ul>
+<p>有关mind map和FreeMind，还可以看看flyisland的介绍。<a href="http://www.blogbus.com/blogbus/blog/diary.php?diaryid=348523" target="_blank" rel="noopener">http://flyisland.blogbus.com/logs/348523.html</a></p>
+<p>这个就是我试用FreeMind时做的练习，同时也归纳出它的基本使用方法，希望能再进一步减少你的学习时间吧:)</p>
+<p><img src="http://sunnyday.cn2k.net/photo/freemind_usage.gif" alt=""></p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2004/08/04/The-poor-who-newsletter/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2004/08/04/The-poor-who-newsletter/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2004/08/04/The-poor-who-newsletter/" class="post-title-link" itemprop="url">可怜的腾迅</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2004/08/04/The-poor-who-newsletter/" class="post-title-link" itemprop="url">可怜的腾迅</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2004-08-04 21:43:00" itemprop="dateCreated datePublished" datetime="2004-08-04T21:43:00+08:00">2004-08-04</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -610,103 +514,68 @@ void train(String content, boolean isMatch)
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              所谓树大招风，腾迅这回可是中招了，面对愤青们打着爱国主义和民族主义旗号的攻势，却是苦水只能往肚子里咽。QQ的主要用户群是青少年学生，正是最热血沸腾的年龄，看来这次事件对腾迅的影响不可谓不大。
-看看QQ游戏里面都过滤些什么单词吧，在QQ安装目录里面找出COMToolKit.dll这个文件，用VC把它打开（或者其它的能查看资源的工具，实在没有，用UltraEdit也可以，不过会夹杂着很多乱码），就可以
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2004/08/04/The-poor-who-newsletter/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p>所谓树大招风，腾迅这回可是中招了，面对愤青们打着爱国主义和民族主义旗号的攻势，却是苦水只能往肚子里咽。QQ的主要用户群是青少年学生，正是最热血沸腾的年龄，看来这次事件对腾迅的影响不可谓不大。</p>
+<p>看看QQ游戏里面都过滤些什么单词吧，在QQ安装目录里面找出COMToolKit.dll这个文件，用VC把它打开（或者其它的能查看资源的工具，实在没有，用UltraEdit也可以，不过会夹杂着很多乱码），就可以看到有两个叫做“DIRTYWORD”的资源，id分别为9001和9002，在鼠标右键菜单中选择导出，把它们存入文件，用文本编辑器打开，怎样，大开眼界吧？好多词，我们这些良民百姓都不知道有什么含意。</p>
+<p>可以看看 <a href="http://forum.future.org.cn/showthread.php?p=618922" target="_blank" rel="noopener">http://forum.future.org.cn/showthread.php?p=618922</a>的21楼（不知道最初出自哪里），有详细一点的介绍。作者是个反日派，他的结论也挺有意思：</p>
+<blockquote>
+<p>从这个过滤词表看，可以得出几个结论：第一个结论，大家说话都不怎么流畅，全是他妈的弱势群体，谁也别笑话谁。以后坛子上的反腐斗士和自由派，别老拿这个来数落俺们反日派。俺们也互相体谅。第二个结论，政府对民族主义算是比较纵容的了，虽然也提防着，但主要也就提防大家上 街，网上骂骂，一般来说是安全的。第三个结论，别骂腾讯。尽管腾讯的发家有那么些不光彩的地方，但这事怪不了它。不负责任胡乱攻击只会给我们多树敌人。</p>
+</blockquote>
+<p>最后一段是奉劝我们自己人的。第一句话是奉劝新网友的。新网友别每天就知道灌水起哄，“把腾讯移交有关部门处理”啥的，惹人家笑话。不管你将来准备加入什么思潮流派，第一步应该是了解自己的处境，别以为教科书上说你是国家的主人，你就真的信了。了解了自己的处境，才能改变它。第二句话是奉劝老网友的，过滤词什么的，大家在网上混那么多年的，都知道是谁干的，老虎谁都不敢打不敢骂，这也没什么丢脸的，不敢骂就不敢呗，抓住一只小猫暴扁干嘛？充英雄吗？表演自己的怯懦而已。   </p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2004/07/10/Speech-browse-technical-specifications-profile/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2004/07/10/Speech-browse-technical-specifications-profile/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2004/07/10/Speech-browse-technical-specifications-profile/" class="post-title-link" itemprop="url">语音浏览技术规范简介</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2004/07/10/Speech-browse-technical-specifications-profile/" class="post-title-link" itemprop="url">语音浏览技术规范简介</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2004-07-10 00:59:00" itemprop="dateCreated datePublished" datetime="2004-07-10T00:59:00+08:00">2004-07-10</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -717,103 +586,87 @@ void train(String content, boolean isMatch)
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              一直以来，在CTI领域语音应用的开发都是采用各厂商的专有技术的，每个平台厂商都伴随自己的平台推出一套语音业务开发的规范，有些是脚本式的语言，有些是图形化的流程，这些规范受限于平台，相互之间没有兼容性，基于这些专有规范开发出来的语音业务很难从一个厂商的平台移植到另一个厂商的平台。
-另外一方面，这些专有的语音业务开发规范的体系是非开放性的，业务控制局限在语音平台内部，与外界系统进行交互只能通过有限的途
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2004/07/10/Speech-browse-technical-specifications-profile/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p>一直以来，在CTI领域语音应用的开发都是采用各厂商的专有技术的，每个平台厂商都伴随自己的平台推出一套语音业务开发的规范，有些是脚本式的语言，有些是图形化的流程，这些规范受限于平台，相互之间没有兼容性，基于这些专有规范开发出来的语音业务很难从一个厂商的平台移植到另一个厂商的平台。</p>
+<p>另外一方面，这些专有的语音业务开发规范的体系是非开放性的，业务控制局限在语音平台内部，与外界系统进行交互只能通过有限的途径，例如访问数据库、数据访问网关，开发COM接口组件等。造成难于与外部系统有机集成，集成成本高。在业务开发上，也因为业务处理逻辑与用户交互控制混合在一起，使得复杂业务的开发难度和维护难度都比较高。</p>
+<p>近年来，随着网络技术的发展，各种业务应用都纷纷往网络方向发展，充分利用internet的数据自由流动和协议标准化的优势，CTI技术与web技术融合的需求越来越大。基于web的各种开发技术也迅速发展并成熟，包括J2EE、.NET、WebService等等，web应用开发渐渐变得快捷而高效。另外一方面，随着手机、PDA等手持设备的发展，对于延伸使用者界面，多模式互动的需求越来越多，提供键盘、笔输入、语音等多种输入手段，各种文字、影音输出途径，语音应用和传统文字/图形应用的界限越来越模糊。</p>
+<p>在这样的趋势下，业界研究推出了多种涉及语音技术的标准规范。其中，W3C（World Wide Web Consortium）走在前面，其下的语音浏览器工作组等多个工作组进行的标准规范制定工作都涉及了语音技术。目前，对于电话和语音应用领域，重要的规范有三个，分别为VoiceXML, CCXML(Call Control eXtensible Markup Language), SALT(Speech Application Language Tags)。</p>
+<p>这三个规范都是基于XML的，这是因为XML作为一种可扩展的通用标记语言，有着标准化、结构化的特点，并且对于XML的生成、传输、解析、验证、查询都已经有一系列相当成熟的技术和编程开发包，存在着很大的优势。但XML本身并不说明什么，它只是用来描述规范的一种语言，支持XML跟支持VoiceXML、CCXML这些规范是完全两回事。</p>
+<p>这三个规范应用在系统中，部署架构基本是相同的，从高层次来看，由两个主要模块构成：文档服务器（document server）和电话语音平台（speech/telephony platform）。文档服务器由web server、database server、application server等构成，可以使用J2EE或者.NET平台。业务应用部署在文档服务器上，它响应电话语音平台发送来的请求，生成XML规范文档。电话语音平台包括了解释器、TTS、ASR等部分，它解释执行文档，负责与用户的交互界面。</p>
+<p>电话语音平台与PSTN接口，或者提供VoIP支持。当一个呼叫进入系统，电话语音平台分析出业务类别，通过HTTP协议向文档服务器发起请求。文档服务器执行业务应用，生成VoiceXML或者CCXML规范的文档，返回给电话语音平台。电话语音平台内置了VoiceXML或者CCXML浏览器，解释执行文档内容，控制ASR与TTS操作，与电话用户进行交互。TTS服务器将文字合成为语音，播放给用户；ASR服务器接受用户的语音输入，利用语法规则(grammar)将用户说话内容识别为文本数据，平台在脚本控制下根据输入内容判断下一步的执行。</p>
+<p>大多数情况下，基于web的应用都会采用易于扩展的架构，将核心服务逻辑（业务逻辑）与表示细节（VoiceXML, CCXML, SALT, HTML, WML）分离开。某些场合下还会将应用对话状态的维护与表示层分离，以实现表示语言机制的无关性，这样同一个应用可以采用web（HTML）、wap（WML）、语音（VoiceXML/CCXML）等不同的表示形式，适应PC、PDA、电话等多种用户终端。</p>
+<p>使用这些XML系列标准技术规范的系统与过去传统专有规范的系统在架构上有所不同，使用标准规范的系统，业务的部署与平台的部署是分离的，相互通过HTTP协议松耦合，业务采用URL进行定位。这使得业务的分布部署变得非常简单。业务的开发采用web应用开发完全相同的模式，使得语音业务开发人员可以充分利用web应用开发的技术和经验。并且，用较小的代价就可以实现语音应用与web应用集成，或者实现应用的多种表示形式，适应不同的客户终端。</p>
+<h4 id="VoiceXML"><a href="#VoiceXML" class="headerlink" title="VoiceXML"></a>VoiceXML</h4><p>VoiceXML可以理解为另外一种表示语言，类似于HTML和WML。它是一种表述对话（dialog）的语言，用来控制业务过程中的人机交互过程，适用于面向电话、手机等终端设备的语音应用，例如自动客户服务、自助查询系统、个人消息系统等。</p>
+<p>将VoiceXML与HTML对比，就能很容易理解了。浏览器解释后，HTML表示的内容是以文字图像方式显示在屏幕上的，VoiceXML的内容是以语言的方式播放给用户的。HTML接收用户的文字输入和鼠标点击，VoiceXML接受用户的语音输入，进行语音识别，或者是通过电话按键输入DTMF数据。</p>
+<p>VoiceXML是一种独立的语言，不能内嵌到现有的web语言中（如HTML，WML）。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0"?&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">vxml</span> <span class="attr">version</span>=<span class="string">"2.0"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">catch</span> <span class="attr">event</span>=<span class="string">"event.exit"</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">exit</span> /&gt;</span>   </span><br><span class="line"><span class="tag">&lt;/<span class="name">catch</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">menu</span> <span class="attr">id</span>=<span class="string">"choose_menu_option"</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">prompt</span>&gt;</span>  </span><br><span class="line">You are in a demo for content services.  </span><br><span class="line">To obtain stock quotes, say stocks or say 1.   </span><br><span class="line">For weather information, say weather or press 2.  </span><br><span class="line">For news, say news or press 3.  </span><br><span class="line"><span class="tag">&lt;/<span class="name">prompt</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">choice</span> <span class="attr">dtmf</span>=<span class="string">"1"</span> <span class="attr">next</span>=<span class="string">"#stocks_menu_option"</span>&gt;</span>stocks<span class="tag">&lt;/<span class="name">choice</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">choice</span> <span class="attr">dtmf</span>=<span class="string">"2"</span> <span class="attr">next</span>=<span class="string">"#weather_menu_option"</span>&gt;</span>weather<span class="tag">&lt;/<span class="name">choice</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">choice</span> <span class="attr">dtmf</span>=<span class="string">"3"</span> <span class="attr">next</span>=<span class="string">"#news_menu_option"</span>&gt;</span>news<span class="tag">&lt;/<span class="name">choice</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">nomatch</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">prompt</span>&gt;</span>I could not understand what you said, please try again<span class="tag">&lt;/<span class="name">prompt</span>&gt;</span>   </span><br><span class="line"><span class="tag">&lt;<span class="name">reprompt</span>/&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">nomatch</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">noinput</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">reprompt</span>/&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">noinput</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">menu</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"stocks_menu_option"</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">block</span>&gt;</span>  </span><br><span class="line">...  </span><br><span class="line"><span class="tag">&lt;/<span class="name">block</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"weather_menu_option"</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"city"</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">grammar</span> <span class="attr">type</span>=<span class="string">"application/srgs+xml"</span> <span class="attr">src</span>=<span class="string">"cities.grxml"</span>/&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">prompt</span>&gt;</span>Pleasesaythe city's name<span class="tag">&lt;/<span class="name">prompt</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">field</span>&gt;</span>  </span><br><span class="line">...  </span><br><span class="line"><span class="tag">&lt;<span class="name">filled</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">submit</span> <span class="attr">next</span>=<span class="string">"http://host/weather.do"</span>/&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">filled</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"news_menu_option"</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">block</span>&gt;</span>  </span><br><span class="line">...  </span><br><span class="line"><span class="tag">&lt;/<span class="name">block</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">vxml</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>从例子可以看出，VoiceXML描述的是一个个对话，menu和form是对话的两种形式。menu是列出选择项，供用户选择；form是播放提示语言，接受用户输入。</p>
+<p>&lt;prompt&gt;、&lt;audio&gt;控制语音输出，输出有两种方式，一种是利用TTS将文本合成为语音，另一种是播放预先录制好的语音文件（如vox，wav）。为了控制合成语音的过程，提供丰富的语音表现形式，要求VoiceXML解释器支持SSML（Speech Synthesis Markup Language）语言，SSML可以控制TTS如何合成语音，例如重音、停顿、声调、数字播报方式等。</p>
+<p>语音输入的识别是通过语法规则控制的，&lt;grammar&gt;指定输入项采用什么语法规则进行识别，语法规则要求使用SRGS(Speech Recognition Grammar Specification)规范的格式来描述。</p>
+<p>VoiceXML的执行顺序是有内置的规则的，称为FIA（Form Interpretation Algorithm），解释器根据FIA选择对话，执行对话中的输入、输出操作。为了提供对例外情况的控制手段，改变执行流程，VoiceXML具备事件机制，通过&lt;throw&gt;, &lt;catch&gt;, &lt;noinput&gt;, &lt;error&gt;,&lt;help&gt;, &lt;nomatch&gt;等元素可以抛出事件和捕获事件。</p>
+<p>通过&lt;goto&gt;、&lt;submit&gt;等控制元素，能实现对话之间或者文档之间的转移。</p>
+<p>在VoiceXML中，可以嵌入ECMAScript(即通常说的JavaScript）代码，实现客户端的运算功能。</p>
+<p>VoiceXML提供了一些机制实现扩展和重用，&lt;object&gt;元素供实现平台定义的功能，&lt;subdialog&gt;可以实现语音组件的重用。</p>
+<p>VoiceXML的目的是用来控制语音方式的人机交互过程的，因而它缺乏对呼叫的控制能力。例如会议、呼叫控制、建立呼叫、拒绝呼叫等等都无法实现。</p>
+<h4 id="CCXML"><a href="#CCXML" class="headerlink" title="CCXML"></a>CCXML</h4><p>针对VoiceXML在呼叫控制方面的不足，CCXML补充了这部分的功能。它能够发起呼叫、过滤和路由进入的呼叫、处理外部的异步事件。并且它能支持多方会议，可以将VoiceXML实例作为参与者加入会议，并控制VoiceXML的执行和停止。与VoiceXML类似，由CCXML浏览器负责解释执行CCXML文档。</p>
+<p>CCXML可以独立使用，但很多情况下是与VoiceXML配合使用，CCXML控制整个呼叫模型，VoiceXML控制每个呼叫中的用户交互。单纯的VoiceXML是无法实现电话QQ之类的涉及到多方通话的业务的，利用CCXML就有可能实现了。</p>
+<p><em>（未完成）</em></p>
+<p><em>原来计划写成一篇介绍VoiceXML、CCXML和SALT，并且比较异同点的文章的，后来因为工作安排的原因半途而废了。CCXML日后如果需要，可能会进一步研究，到时也许会补上；SALT在我的工作中不会涉及，不打算在上面花时间了。</em></p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2004/07/09/Intelligence-of-Google/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2004/07/09/Intelligence-of-Google/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2004/07/09/Intelligence-of-Google/" class="post-title-link" itemprop="url">智能的google</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2004/07/09/Intelligence-of-Google/" class="post-title-link" itemprop="url">智能的google</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2004-07-09 19:58:00" itemprop="dateCreated datePublished" datetime="2004-07-09T19:58:00+08:00">2004-07-09</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -824,103 +677,62 @@ void train(String content, boolean isMatch)
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              今天偶然发现，google搜索能够识别同义词。输入“优点”作为搜索关键字，它会帮你把带有“好处”这个关键字的页面都搜索出来。
+          <p>今天偶然发现，google搜索能够识别同义词。输入“优点”作为搜索关键字，它会帮你把带有“好处”这个关键字的页面都搜索出来。</p>
 
-              
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2004/07/09/Intelligence-of-Google/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2004/07/07/Windows-/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2004/07/07/Windows-/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2004/07/07/Windows-/" class="post-title-link" itemprop="url">Windows系统错误的查找</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2004/07/07/Windows-/" class="post-title-link" itemprop="url">Windows系统错误的查找</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2004-07-07 17:17:00" itemprop="dateCreated datePublished" datetime="2004-07-07T17:17:00+08:00">2004-07-07</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -931,105 +743,64 @@ void train(String content, boolean isMatch)
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              最近两次启动windows 2000, 启动时间莫名其妙的长, 居然要5分钟, 我还以为死机了:(
-实在忍受不了, 查看”事件管理器”, 发现有几个错误. 在网上搜索一下, 发现了一个好网站eventid.net, 可以查找到事件的详细解释和解决办法.
-一查才知道, 原来好几个错误都是由于DNS没有正确设置引起的, 晕:( 昨天改过IP, 把DNS设错了, 居然会造成启动慢的问题.
+          <p>最近两次启动windows 2000, 启动时间莫名其妙的长, 居然要5分钟, 我还以为死机了:(</p>
+<p>实在忍受不了, 查看”事件管理器”, 发现有几个错误. 在网上搜索一下, 发现了一个好网站<a href="http://www.eventid.net" target="_blank" rel="noopener">eventid.net</a>, 可以查找到事件的详细解释和解决办法.</p>
+<p>一查才知道, 原来好几个错误都是由于DNS没有正确设置引起的, 晕:( 昨天改过IP, 把DNS设错了, 居然会造成启动慢的问题.</p>
 
-              
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2004/07/07/Windows-/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2004/07/01/Doxygen-/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2004/07/01/Doxygen-/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2004/07/01/Doxygen-/" class="post-title-link" itemprop="url">Doxygen不能支持中文文件名/路径:(</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2004/07/01/Doxygen-/" class="post-title-link" itemprop="url">Doxygen不能支持中文文件名/路径:(</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2004-07-01 03:44:00" itemprop="dateCreated datePublished" datetime="2004-07-01T03:44:00+08:00">2004-07-01</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -1040,103 +811,66 @@ void train(String content, boolean isMatch)
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              Doxygen是一个很不错的文档生成程序，类似于JavaDoc的功能，但是能支持C++/C/Java和其他的好些语言。今天在使用的时候，发现doxygen不能处理带有中文的文件名或者路径，就把源代码下载回来，看看是什么问题。
-问题很容易定位出来，又是unicode和字符集转换的问题，字符集真是让人头痛的东西:(。当在windows平台上运行时，它使用了WideCharToMultiByte来转换字
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2004/07/01/Doxygen-/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p><a href="http://www.stack.nl/~dimitri/doxygen" target="_blank" rel="noopener">Doxygen</a>是一个很不错的文档生成程序，类似于JavaDoc的功能，但是能支持C++/C/Java和其他的好些语言。今天在使用的时候，发现doxygen不能处理带有中文的文件名或者路径，就把源代码下载回来，看看是什么问题。</p>
+<p>问题很容易定位出来，又是unicode和字符集转换的问题，字符集真是让人头痛的东西:(。当在windows平台上运行时，它使用了WideCharToMultiByte来转换字符集，但没有判断当前locale，只是用了CP_ACP(ANSI)code page，故此对于中文就转换成为乱码了（其他multi-byte字符集也会有问题）。</p>
+<p>本来想改的，发现doxygen底层用的都是QT的代码，什么QString, QCString，完全是自己独立的一套东西，好些地方似乎都没有考虑mbs字符集的问题，实在跟不下去了，也不知道它的国际化是怎么做的，KDE也是基于QT函数库的呀，也许是windows版本的问题？放弃，给doxygen作者写了个bug report，看看他会不会去修改吧。</p>
+<p>ps.</p>
+<p>忍不住又再看了一下代码：不从根本上解决问题，只做个临时解决方案，把code page写死为936（简体中文），该可以吧？谁知还是不行:( 再跟踪一下，发现这个程序一点都不i18n friendly，虽然内部使用unicode，但是输入/输出转换都只是按照ascii/Latin1编码来做转换，在英文环境下就正常，一旦使用了非拉丁字符集就出问题了。这样用unicode跟不用有什么区别啊？！</p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2004/06/30/MicroDEM-/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2004/06/30/MicroDEM-/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2004/06/30/MicroDEM-/" class="post-title-link" itemprop="url">MicroDEM制图所需地理数据转换方法</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2004/06/30/MicroDEM-/" class="post-title-link" itemprop="url">MicroDEM制图所需地理数据转换方法</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2004-06-30 01:23:00" itemprop="dateCreated datePublished" datetime="2004-06-30T01:23:00+08:00">2004-06-30</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -1147,152 +881,25 @@ void train(String content, boolean isMatch)
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              MicroDEM使用dbase来保存数据, 但一般通用的地理数据都是MIF格式较多。MicroDEM不支持import其他格式的数据。
-其实MicroDEM中的dbase就是shp格式。数据可以使用GlobalMapper来转换, 读取mif文件, export vector data为shapefile, 会生成3个文件, 其中一个是dbf, MicroDEM可读取的格式.
+          <p>MicroDEM使用dbase来保存数据, 但一般通用的地理数据都是MIF格式较多。MicroDEM不支持import其他格式的数据。</p>
+<p>其实MicroDEM中的dbase就是shp格式。数据可以使用GlobalMapper来转换, 读取mif文件, export vector data为shapefile, 会生成3个文件, 其中一个是dbf, MicroDEM可读取的格式.</p>
 
-              
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2004/06/30/MicroDEM-/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2004/06/29/Image-format-is-introduced-JPG-GIF-BMP-PNG-ecw/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leo Liang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good good study, day day up">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2004/06/29/Image-format-is-introduced-JPG-GIF-BMP-PNG-ecw/" class="post-title-link" itemprop="url">图像格式介绍: jpg, gif, bmp, png, ecw......</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2004-06-29 21:39:00" itemprop="dateCreated datePublished" datetime="2004-06-29T21:39:00+08:00">2004-06-29</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
-              </span>
-            
-          
-
-          <br>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            <p>
-              图像格式介绍在网上有很多资料, 随便google一下都能找到. 这是我在论坛上回复别人的帖子, 顺手也帖到这儿.
-这几种格式都是光栅图像格式(除了光栅格式还有一种是矢量格式), 描述的是图像点阵的色彩数据.
-BMP格式是最简单的格式，基本就是图像点阵的内存拷贝。没有任何压缩，也无法表示格外的数据。现在很少用BMP来做图像数据交换了。
-GIF和PNG都是索引色彩, 也就是不直接描述象素的颜色, 只是
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2004/06/29/Image-format-is-introduced-JPG-GIF-BMP-PNG-ecw/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-    
-  </section>
 
   
   <nav class="pagination">
@@ -1300,170 +907,90 @@ GIF和PNG都是索引色彩, 也就是不直接描述象素的颜色, 只是
   </nav>
 
 
+
           </div>
           
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
           
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
-  <aside id="sidebar" class="sidebar">
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="/blog/images/android-chrome-512x512.png">
   <p class="site-author-name" itemprop="name">Leo Liang</p>
-  <div class="site-description motion-element" itemprop="description"></div>
+  <div class="site-description" itemprop="description"></div>
 </div>
-  <nav class="site-state motion-element">
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">328</span>
+          <span class="site-state-item-count">329</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-tags">
-        
-          
             <a href="/blog/tags/">
           
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
         <span class="site-state-item-count">52</span>
-        <span class="site-state-item-name">标签</span>
-        </a>
+        <span class="site-state-item-name">标签</span></a>
       </div>
-    
   </nav>
-  <div class="feed-link motion-element">
-    <a href="/blog/atom.xml" rel="alternate">
-      <i class="fa fa-rss"></i>RSS
-    </a>
-  </div>
+</div>
 
 
 
-        </div>
       </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
 
     </div>
   </aside>
@@ -1473,17 +1000,24 @@ GIF和PNG都是索引色彩, 也就是不直接描述象素的颜色, 只是
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Leo Liang</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
 
         
 
@@ -1494,40 +1028,26 @@ GIF和PNG都是索引色彩, 也就是不直接描述象素的颜色, 只是
 
 
 
-        
       </div>
     </footer>
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-      </div>
-
-    
-
   </div>
 
   
-  <script src="/blog/lib/jquery/index.js?v=3.4.1"></script>
-  <script src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
 
-  <script src="/blog/js/utils.js?v=7.2.0"></script>
-  <script src="/blog/js/motion.js?v=7.2.0"></script>
+<script src="/blog/js/utils.js"></script>
 
-  
-  <script src="/blog/js/affix.js?v=7.2.0"></script>
-  <script src="/blog/js/schemes/pisces.js?v=7.2.0"></script>
+<script src="/blog/js/motion.js"></script>
 
 
+<script src="/blog/js/schemes/pisces.js"></script>
 
-  
 
-  <script src="/blog/js/next-boot.js?v=7.2.0"></script>
+<script src="/blog/js/next-boot.js"></script>
 
-  
 
-  
-
-  
 
 
   
@@ -1535,6 +1055,8 @@ GIF和PNG都是索引色彩, 也就是不直接描述象素的颜色, 只是
 
 
 
+  
+<script src="/blog/js/local-search.js"></script>
 
 
 
@@ -1548,27 +1070,9 @@ GIF和PNG都是索引色彩, 也就是不直接描述象素的颜色, 只是
 
 
 
+  
 
-
-
-
-
-
-  <script src="/blog/js/local-search.js?v=7.2.0"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+  
 
 
 </body>

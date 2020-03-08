@@ -1,76 +1,43 @@
 <!DOCTYPE html>
-
-
-
-
-
-<html class="theme-next gemini use-motion" lang="zh-CN">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="generator" content="Hexo 3.9.0">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=7.2.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=7.2.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=7.2.0">
-  <link rel="mask-icon" href="/blog/images/logo.svg?v=7.2.0" color="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+  <link rel="manifest" href="/blog/images/manifest.json">
 
-<link rel="stylesheet" href="/blog/css/main.css?v=7.2.0">
-
-
-<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+<link rel="stylesheet" href="/blog/css/main.css">
 
 
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/blog/',
-    scheme: 'Gemini',
-    version: '7.2.0',
-    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},
-    search: {
-      root: '/blog/',
-      path: 'search.xml'
-    },
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    }
-  };
-</script>
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
   <meta property="og:type" content="website">
 <meta property="og:title" content="Good good study, day day up">
 <meta property="og:url" content="http://aleung.github.io/blog/page/9/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Leo Liang">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Good good study, day day up">
-  <link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
-  <link rel="canonical" href="http://aleung.github.io/blog/page/9/">
+
+<link rel="canonical" href="http://aleung.github.io/blog/page/9/">
 
 
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : true,
+    isPost : false
   };
 </script>
 
@@ -82,11 +49,8 @@
 
 
 
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -95,9 +59,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -109,18 +72,26 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  <div class="container sidebar-position-right page-home">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
   <div class="site-meta">
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/blog/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Good good study, day day up</span>
@@ -128,154 +99,198 @@
       </a>
     </div>
         <p class="site-subtitle">aleung的学习笔记, aleung的idea</p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
   </div>
 </div>
-
 
 
 <nav class="site-nav">
-    <ul id="menu" class="menu">
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-      
-    
-      
-    
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">52</span></a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">52</span></a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-      
-    
-      
-    
+        <li class="menu-item menu-item-archives">
 
-    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">328</span></a>
+    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">329</span></a>
 
   </li>
-        <li class="menu-item menu-item-search">
-          <a href="javascript:;" class="popup-trigger">
-          
-            <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-        </li>
-      
-    </ul>
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
   </div>
-  <div id="local-search-result"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
 </div>
 
+  </div>
+</div>
 
-    </div>
-</nav>
-
+  </div>
 </div>
     </header>
 
     
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+
+          <div class="content">
             
 
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <div class="posts-expand">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2011/09/27/RAW-/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2011/11/08/Dump-beans-information-from-live-Spring-application-context/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2011/09/27/RAW-/" class="post-title-link" itemprop="url">RAW照片后期处理的常用操作</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2011/11/08/Dump-beans-information-from-live-Spring-application-context/" class="post-title-link" itemprop="url">Dump beans information from live Spring application context</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
+              <time title="创建时间：2011-11-08 18:42:00" itemprop="dateCreated datePublished" datetime="2011-11-08T18:42:00+08:00">2011-11-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>To maintain the Spring application context in a large application is not an easy job. There may be dozens of beans, whenever you want to make changes, you have to be very clear on there dependency. After serveral rounds of update, some beans might be orphan, they’re unused any more but you don’t know.</p>
+<p>Spring IDE provides bean cross reference view and bean graph view that can help to analysis the bean relationship. But what Spring IDE has is a static view of the beans. In our project the application context is complicated: it scans classpath for all bean definition XML files and load them; application context created in WAR package inherits parent application context which is defines in EJB classpath; some beans are marked with annotation and loaded by <a href="context:component-scan">context:component-scan</a>, rather than define in XML file. I doubt Spring IDE can show the dynamic bean view as it is in runtime. What’s more, Spring IDE isn’t available at our standard development environment.</p>
+<p>Inspired by a StackOverflow <a href="http://stackoverflow.com/questions/5850639/how-to-keep-track-of-all-the-autowired-stuff-while-using-spring-ioc/5851872#5851872" target="_blank" rel="noopener">answer</a>, I created an ApplicationContextDumper. Add it into application context, it will dump all beans and their dependencies in the current context and parent contexts (if any) into log file when the application context initialization finishes. It also lists the beans which aren’t referenced.</p>
+<script src="//gist.github.com/1347171.js?file=ApplicationContextDumper.java"></script>
+
+<p>Here is an example. We have two application contexts. Please be noticed that the ApplicationContextDumper has been added into applicationContext.xml.</p>
+<script src="//gist.github.com/1347171.js?file=applicationContext.xml"></script>
+<script src="//gist.github.com/1347171.js?file=parentContext.xml"></script>
+
+<p>parentBeanFactory is the parent of myBeanFactory:</p>
+<script src="//gist.github.com/1347171.js?file=beanRefContext.xml"></script>
+
+<p>In main, loads application context from beanRefContext.xml. </p>
+<script src="//gist.github.com/1347171.js?file=main.java"></script>
+
+<p>The application context is dumped in log:</p>
+<script src="//gist.github.com/1347171.js?file=output"></script>
+
+      
+    </div>
+
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2011/09/27/RAW-/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2011/09/27/RAW-/" class="post-title-link" itemprop="url">RAW照片后期处理的常用操作</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2011-09-27 22:33:00" itemprop="dateCreated datePublished" datetime="2011-09-27T22:33:00+08:00">2011-09-27</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -286,107 +301,78 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              这里讲的是 Apple Aperture 3 的操作，但其他RAW处理软件（如Photoshop Lightroom）的功能和效果也都类似，可以参考。
-ExposureExposure黑位固定，直方图右侧拉伸。相当于相机的曝光量调整。
-》
-Recovery利用RAW记录的额外信息恢复高光溢出部分。
-Black Point利用RAW记录的额外信息恢复丢失的暗部细节。
-Brightness黑位与白位均
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2011/09/27/RAW-/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p>这里讲的是 Apple Aperture 3 的操作，但其他RAW处理软件（如Photoshop Lightroom）的功能和效果也都类似，可以参考。</p>
+<h2 id="Exposure"><a href="#Exposure" class="headerlink" title="Exposure"></a>Exposure</h2><h3 id="Exposure-1"><a href="#Exposure-1" class="headerlink" title="Exposure"></a>Exposure</h3><p>黑位固定，直方图右侧拉伸。相当于相机的曝光量调整。</p>
+<p><img src="https://lh6.googleusercontent.com/-fnAGXvmnFJE/ToHQKWlruvI/AAAAAAAAAZ0/O4pdxnS64yY/s800/exposure-1.jpg" alt="">)》<img src="https://lh5.googleusercontent.com/-FP6Vg1nAOWI/ToHQKRFOhtI/AAAAAAAAAZ4/0lESY5sW318/s800/exposure-2.jpg" alt=""></p>
+<h3 id="Recovery"><a href="#Recovery" class="headerlink" title="Recovery"></a>Recovery</h3><p>利用RAW记录的额外信息恢复高光溢出部分。</p>
+<h3 id="Black-Point"><a href="#Black-Point" class="headerlink" title="Black Point"></a>Black Point</h3><p>利用RAW记录的额外信息恢复丢失的暗部细节。</p>
+<h3 id="Brightness"><a href="#Brightness" class="headerlink" title="Brightness"></a>Brightness</h3><p>黑位与白位均固定，直方图中间色调左右移动。用于调整图像的整体明暗。与level工具的亮度调节功能类似，但level工具中若只拖动一个锚点时对直方图的影响更加局部，只改变特定色调范围。</p>
+<p><img src="https://lh5.googleusercontent.com/-mKyUGov3PCc/ToHQJ9LMS-I/AAAAAAAAAZs/Z7XqqxDgQJk/s800/brightness-1.jpg" alt="">)》<img src="https://lh4.googleusercontent.com/-MWAZLV47es8/ToHQKHGqVNI/AAAAAAAAAZw/B4GjHYLSF_A/s800/brightness-2.jpg" alt=""></p>
+<h2 id="Enhance"><a href="#Enhance" class="headerlink" title="Enhance"></a>Enhance</h2><h3 id="Contrast"><a href="#Contrast" class="headerlink" title="Contrast"></a>Contrast</h3><p>中灰不变，直方图向两侧拉伸。（不建议使用，用level工具控制更准确）</p>
+<p><img src="https://lh6.googleusercontent.com/-lZY-AgmwRcU/ToHQJ3eBQMI/AAAAAAAAAZo/1lTWE0LHHoA/s800/contrast.jpg" alt=""></p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>增强图像局部的对比度，但不影响整体图像的对比度，直方图无整体性变化。可提高图像明暗交界的细节，例如让云朵更加立体。</p>
+<h3 id="Saturation"><a href="#Saturation" class="headerlink" title="Saturation"></a>Saturation</h3><p>让RGB三原色的直方图趋于重合或者更加离散。用于减弱色彩或者增强色彩(变鲜艳)。饱和度增加时图像细节会丢失。</p>
+<p><img src="https://lh6.googleusercontent.com/-EKHur68d4-A/ToHQKvYuHQI/AAAAAAAAAZ8/LRPgisNijDM/s800/saturation-1.jpg" alt="">)》<img src="https://lh3.googleusercontent.com/-NGeEU2MWZwg/ToHQLOXNoBI/AAAAAAAAAaE/hwsr11w3eS0/s800/saturation-2.jpg" alt=""></p>
+<h3 id="Vibrancy"><a href="#Vibrancy" class="headerlink" title="Vibrancy"></a>Vibrancy</h3><p>与saturation类似，但不影响肤色。用于人像照片中的色彩调整，但保持肤色不变。</p>
+<h2 id="Highlights-amp-Shadows"><a href="#Highlights-amp-Shadows" class="headerlink" title="Highlights &amp; Shadows"></a>Highlights &amp; Shadows</h2><p>降低高光部分亮度，但不影响中间调和暗部；提高暗部亮度，但不影响中间调和亮部。直方图上的效果是高光部分和/或暗部扩展，移向中间调位置，但实际处理并非单纯的直方图映射，运算时会考虑到周边像素的色调的影响。用于对图像中过亮或者过暗的部分进行补偿，增加色调变化细节。</p>
+<h2 id="Levels"><a href="#Levels" class="headerlink" title="Levels"></a>Levels</h2><p>将直方图进行映射变换，下横轴是输入，上横轴是输出。Aperture的levels工具可以调节四分之一色调的映射，可以完成部分本来需要使用曲线工具的调节。</p>
+<p>Levels调整是在上面几种调整的基础之上进行的，可能会抵消了前面所做的调整的效果。若非必要不应该将它与前面提到的工具混合使用。</p>
+<p><img src="https://lh3.googleusercontent.com/-Af7kvdJq3pU/ToHQKit_TwI/AAAAAAAAAaA/1x5cdJ1hZrE/s800/level-1.jpg" alt="">)》<img src="https://lh3.googleusercontent.com/-f0jePRCWRAI/ToHQQCnp4qI/AAAAAAAAAaI/qW_bMiOvGZw/s800/level-2.jpg" alt=""></p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2011/09/27/Apple-Aperture-/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2011/09/27/Apple-Aperture-/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2011/09/27/Apple-Aperture-/" class="post-title-link" itemprop="url">Apple Aperture 数码照片处理几板斧</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2011/09/27/Apple-Aperture-/" class="post-title-link" itemprop="url">Apple Aperture 数码照片处理几板斧</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2011-09-27 22:04:00" itemprop="dateCreated datePublished" datetime="2011-09-27T22:04:00+08:00">2011-09-27</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -397,104 +383,132 @@ Brightness黑位与白位均
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              
-以前都用Photoshop来处理照片，刚开始用Aperture，还真不太适应，用了几天兼阅读了help，慢慢有些了解了。对于照片的后期处理，其实用什么工具都大同小异，基本上就是几板斧。没拍好的照片也没有必要费心去调，直接删除就得了。
-基本原则：使用RAW格式拍摄RAW记录了拍摄时的原始信息，而jpg是已经经过相机处理之后的图像。用RAW格式提供了后期处理的更多可能性，例如曝光的增减（当然是小范围
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2011/09/27/Apple-Aperture-/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <img src="https://lh5.googleusercontent.com/-MGOVmxQlebs/ToHSOBbvsCI/AAAAAAAAAaQ/ZgUEHwlGelk/s800/aperture3.jpg" class="right">
+
+<p>以前都用Photoshop来处理照片，刚开始用Aperture，还真不太适应，用了几天兼阅读了help，慢慢有些了解了。对于照片的后期处理，其实用什么工具都大同小异，基本上就是几板斧。没拍好的照片也没有必要费心去调，直接删除就得了。</p>
+<h2 id="基本原则：使用RAW格式拍摄"><a href="#基本原则：使用RAW格式拍摄" class="headerlink" title="基本原则：使用RAW格式拍摄"></a>基本原则：使用RAW格式拍摄</h2><p>RAW记录了拍摄时的原始信息，而jpg是已经经过相机处理之后的图像。用RAW格式提供了后期处理的更多可能性，例如曝光的增减（当然是小范围内了），白平衡的重新设定。</p>
+<h2 id="基本调整"><a href="#基本调整" class="headerlink" title="基本调整"></a>基本调整</h2><ul>
+<li><strong>图像倾斜矫正及裁剪</strong>：Viewer下方的工具栏有图标，或者用快捷键G和C。</li>
+<li><strong>色温校准</strong>：相机的自动百平衡经常不太准确，需要在White Balance设置正确色温，常见光源的色温表在<a href="http://good-good-study.appspot.com/blog/posts/152001" target="_blank" rel="noopener">这儿</a>；另外用 Enhance － Tint 可以分别调节高光／中间调／暗部的偏色。</li>
+<li><strong>曝光调整</strong>：用快捷键Alt－Shift－H打开暗部与高光溢出显示，调节Exposure让图像曝光正常。Highlights &amp; Shadows可以挽救部分高光、暗部细节。如果要进一步调整，使用Enhance及Level。调整过程中，快捷键M可查看原始图像（Master）作对比。</li>
+</ul>
+<p>调整方法见<a href="http://good-good-study.appspot.com/blog/posts/153002" target="_blank" rel="noopener">RAW照片后期处理的常用操作</a></p>
+<h2 id="其他调整"><a href="#其他调整" class="headerlink" title="其他调整"></a>其他调整</h2><ul>
+<li><strong>色差纠正</strong>（消除紫边）：Chromatic Aberration</li>
+<li><strong>降噪</strong>：Noise Reduction</li>
+<li><strong>图像锐化</strong>：Edge Sharpen</li>
+</ul>
+<h2 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h2><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>V</td>
+<td>Switch view mode (browser / split view / viewer)</td>
+</tr>
+<tr>
+<td>I, H</td>
+<td>Show Inspector</td>
+</tr>
+<tr>
+<td>F</td>
+<td>Full screen</td>
+</tr>
+<tr>
+<td>W</td>
+<td>Switch Inspector tab (Library / Metadata / Adjustments)</td>
+</tr>
+<tr>
+<td>Y</td>
+<td>Show metadata</td>
+</tr>
+<tr>
+<td>T</td>
+<td>Show metadata tooltips</td>
+</tr>
+<tr>
+<td>M</td>
+<td>Show master image</td>
+</tr>
+<tr>
+<td>Z</td>
+<td>Zoom 100%</td>
+</tr>
+<tr>
+<td>`</td>
+<td>Loupe</td>
+</tr>
+<tr>
+<td>Alt-Shift-H</td>
+<td>Highlight hot &amp; cold areas</td>
+</tr>
+<tr>
+<td>Alt-F</td>
+<td>Show focus points</td>
+</tr>
+<tr>
+<td>0~5</td>
+<td>Rating</td>
+</tr>
+</tbody></table>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2011/09/27/Color-temperature-of-common-light-sources/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2011/09/27/Color-temperature-of-common-light-sources/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2011/09/27/Color-temperature-of-common-light-sources/" class="post-title-link" itemprop="url">Color temperature of common light sources</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2011/09/27/Color-temperature-of-common-light-sources/" class="post-title-link" itemprop="url">Color temperature of common light sources</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2011-09-27 19:28:00" itemprop="dateCreated datePublished" datetime="2011-09-27T19:28:00+08:00">2011-09-27</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -505,125 +519,126 @@ Brightness黑位与白位均
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              &nbsp;
+          <p>&nbsp;</p>
+<table>
+<thead>
+<tr>
+<th>Temperature</th>
+<th>Typical Sources</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1000K</td>
+<td><strong>Candles</strong>, oil lamps</td>
+</tr>
+<tr>
+<td>2000K</td>
+<td><strong>Very early sunrise</strong>, low effect tungsten lamps</td>
+</tr>
+<tr>
+<td>2500K</td>
+<td><strong>Household light bulbs</strong>(2680K - 40 W incandescent lamp)</td>
+</tr>
+<tr>
+<td>3000K</td>
+<td>Studio lights (continuous), 200 W incandescent lamp, (<strong>3200K - Sunrise/sunset;**</strong>3400K - 1 hour from dusk/dawn**, Tungsten lamp)</td>
+</tr>
+<tr>
+<td>4000K</td>
+<td>Clear flashbulbs (now obsolete),<strong>Fluorescent</strong></td>
+</tr>
+<tr>
+<td>5000K</td>
+<td><strong>Typical average daylight</strong>, electronic flash</td>
+</tr>
+<tr>
+<td>5500K</td>
+<td>The sun at noon, (<strong>5500~6000K - vertical daylight</strong>)</td>
+</tr>
+<tr>
+<td>6000K</td>
+<td><strong>Bright sunshine with clear sky</strong></td>
+</tr>
+<tr>
+<td>7000K</td>
+<td><strong>Slightly overcast sky</strong></td>
+</tr>
+<tr>
+<td>8000K</td>
+<td><strong>Hazy sky</strong></td>
+</tr>
+<tr>
+<td>9000K</td>
+<td><strong>Open shade on clear day</strong></td>
+</tr>
+<tr>
+<td>10,000K</td>
+<td><strong>Heavily overcast sky</strong></td>
+</tr>
+<tr>
+<td>11,000K</td>
+<td><strong>Sunless blue skies</strong></td>
+</tr>
+<tr>
+<td>20,000+K</td>
+<td>Open shade in mountains on a really clear day</td>
+</tr>
+</tbody></table>
 
-
-
-Temperature
-Typical Sources
-
-
-
-
-1000K
-Candles, oil lamps
-
-
-2000K
-Very early sunrise, low effect tungsten lamps
-
-
-2500K
-Household light bulbs(2680K - 40 W incandescent lamp)
-
-
-3000K
-Studio li
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2011/09/27/Color-temperature-of-common-light-sources/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2011/08/26/Maven-Lifecycle-Concepts/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2011/08/26/Maven-Lifecycle-Concepts/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2011/08/26/Maven-Lifecycle-Concepts/" class="post-title-link" itemprop="url">Maven Lifecycle Concepts</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2011/08/26/Maven-Lifecycle-Concepts/" class="post-title-link" itemprop="url">Maven Lifecycle Concepts</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2011-08-26 11:51:00" itemprop="dateCreated datePublished" datetime="2011-08-26T11:51:00+08:00">2011-08-26</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -634,110 +649,69 @@ Studio li
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              
-(大图链接)
-一年前画的，把它电子化方便日后查看。看看有没有空补充些文字说明吧。
-Reference:
+          <p><img src="https://lh5.googleusercontent.com/-d_OZsHIjLe8/TlcV3xzq-DI/AAAAAAAAATE/CGu8uwStu1k/s800/maven-concept.png" alt=""></p>
+<p>(<a href="https://picasaweb.google.com/lh/photo/D_sskYHvn6CgEruCxN6lMdBJO7epb5AqjiUnD_coqoo?feat=directlink" target="_blank" rel="noopener">大图链接</a>)</p>
+<p>一年前画的，把它电子化方便日后查看。看看有没有空补充些文字说明吧。</p>
+<p>Reference:</p>
+<ul>
+<li>DZone Refcardz: <a href="http://refcardz.dzone.com/refcardz/apache-maven-2" target="_blank" rel="noopener">Apache Maven 2</a></li>
+<li><a href="http://gavin-chen.iteye.com/blog/336607" target="_blank" rel="noopener">Maven plugin中的lifecycle、phase、goal、mojo概念及作用的理解</a></li>
+</ul>
 
-DZone Refcardz: Apache Maven 2
-Maven plugin中的lifecycle、phase、goal、mojo概念及作用的理解
-
-
-              
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2011/08/26/Maven-Lifecycle-Concepts/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2011/08/08/Maven-artifact-repository-setup-for-multiple-sites-team/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2011/08/08/Maven-artifact-repository-setup-for-multiple-sites-team/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2011/08/08/Maven-artifact-repository-setup-for-multiple-sites-team/" class="post-title-link" itemprop="url">Maven artifact repository setup for multiple sites team</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2011/08/08/Maven-artifact-repository-setup-for-multiple-sites-team/" class="post-title-link" itemprop="url">Maven artifact repository setup for multiple sites team</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2011-08-08 18:20:00" itemprop="dateCreated datePublished" datetime="2011-08-08T18:20:00+08:00">2011-08-08</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2011-08-09 10:17:00" itemprop="dateModified" datetime="2011-08-09T10:17:00+08:00">2011-08-09</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -748,102 +722,68 @@ Maven plugin中的lifecycle、phase、goal、mojo概念及作用的理解
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              A typical way of adopting Maven to manage artifacts in an organization is to setup a repository manager locally. The repository manager proxies opensource repositories like Maven central from Internet
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2011/08/08/Maven-artifact-repository-setup-for-multiple-sites-team/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p>A typical way of adopting Maven to manage artifacts in an organization is to setup a repository manager locally. The repository manager proxies opensource repositories like Maven central from Internet, and hosts release and snapshot repositories for internal artifacts. It works fine in most cases, but when the team locales geographically in more than one site, and the bandwitdth between the sites is limited, or the artifacts are huge in size, the build performance will decrease, because uploading and downloading artifacts to/from the remove repository takes time.</p>
+<h2 id="Solution-1-Pubish-to-master-repository-download-from-local-repository"><a href="#Solution-1-Pubish-to-master-repository-download-from-local-repository" class="headerlink" title="Solution 1: Pubish to master repository, download from local repository"></a>Solution 1: Pubish to master repository, download from local repository</h2><p>Suppose on site A there is already a repository manager A, now site B is setup, what we need is a repository manager on site B that proxies both external repositories and internal repositories. Sonatype Nexus has the capability to aggregate serveral repositories / mirrories and provides download access from a single URL.</p>
+<p><img src="https://lh6.googleusercontent.com/-kQ4SwY2UV2s/Tj905hhUlJI/AAAAAAAAASc/hj_0Kxt6CQ0/s800/maven-repo-2sites-solution1.png" alt=""></p>
+<p>By this solution, pom.xml of existing projects aren’t required to be modified. Simply add a <mirror> section with <mirrorOf> value set to * into Maven setting.xml for all developers who work in site B. But the publishing of artifacts from site B is still cross sites over slow connection, so mvn deploy is not fully optimized though the download of dependencies is speeded up by cache on local repository manager.</p>
+<h2 id="Solution-2-Publish-to-local-repository-cross-caching"><a href="#Solution-2-Publish-to-local-repository-cross-caching" class="headerlink" title="Solution 2: Publish to local repository, cross caching"></a>Solution 2: Publish to local repository, cross caching</h2><p>This solution comes from <a href="http://www.sonatype.com/people/2011/07/video-multi-master-configuration-for-nexus/" target="_blank" rel="noopener">Sonatype Blog</a>. Artifacts are always publish to repository on local site, each repository is cached by other site’s repository manager.</p>
+<p><img src="https://lh4.googleusercontent.com/-XJdyMrSafCM/Tj905psGecI/AAAAAAAAASg/lGJsgsjir7I/s800/maven-repo-2sites-solution2.png" alt=""></p>
+<p>This solution looks good if one artifact is owned by one site. But I’m wondering if it works in the situation that both sites publish the same SNAPSHOT artifact to its local repository manager. For example, foo-1.0.0-SNAPSHOT.jar was already deployed on Repository Manger A, and then on Repository Manager B a newer edition of the jar is deployed, how can site A get the later one?</p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2011/06/26/Determine-priority/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2011/06/26/Determine-priority/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2011/06/26/Determine-priority/" class="post-title-link" itemprop="url">确定优先级</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2011/06/26/Determine-priority/" class="post-title-link" itemprop="url">确定优先级</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2011-06-26 15:38:00" itemprop="dateCreated datePublished" datetime="2011-06-26T15:38:00+08:00">2011-06-26</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -854,103 +794,158 @@ Maven plugin中的lifecycle、phase、goal、mojo概念及作用的理解
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              在我们的工作中，不时需要评估工作任务的优先级：例如下个版本的软件应该加入的功能，又或者对之前工作回顾列出的一大堆改进项目，在一轮头脑风暴之后，发现需要做的事情是如此之多，而能投入的资源显得如此至少，怎么挑选出最有价值的事情来做就成了头痛的事。
-过往，我们常做的方法是，召集一个会议，大家一起来为每个任务评分：分别评估出任务的工作量级和重要性（1、2、3… 最重要为1），然后将两者相乘得到一个分数，根
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2011/06/26/Determine-priority/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p>在我们的工作中，不时需要评估工作任务的优先级：例如下个版本的软件应该加入的功能，又或者对之前工作回顾列出的一大堆改进项目，在一轮头脑风暴之后，发现需要做的事情是如此之多，而能投入的资源显得如此至少，怎么挑选出最有价值的事情来做就成了头痛的事。</p>
+<p>过往，我们常做的方法是，召集一个会议，大家一起来为每个任务评分：分别评估出任务的工作量级和重要性（1、2、3… 最重要为1），然后将两者相乘得到一个分数，根据这个分数对任务排序。这种做法是期望能找出重要性比较高，但是又不太难完成的任务。但很不幸，越是重要的任务往往工作量越大—-如果有重要而简单的任务，我们早就把它做了，不需要等到这个会议的召开—-得到的分数差距不大。印象中，我参加过的评估会，都没有得出什么有用的结论，最终做的决策似乎跟评估没有太多的关系。</p>
+<p>你可能会指出，这个评估模型根本就是不对的，工作量和重要性两者相乘得不出有意义的数字。但我们都不够聪明，没有想到一个足够简单而直观的方法。（回过头来看，应该是我们谁都没有花心思去想过。为什么？为什么？为什么？！）</p>
+<p>今天读”<a href="http://book.douban.com/subject/4163938/" target="_blank" rel="noopener">More Joel on Software</a>“，第36节介绍了他们用的方法，值得借鉴。</p>
+<p>首先评估每项任务的工作量（成本），得到一个数字，其实这个数字是什么单位无所谓，story point也好，$也好，在例子里用的是$，金额。</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th align="right">成本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>个性化首页</td>
+<td align="right">$10</td>
+</tr>
+<tr>
+<td>轻松安排软件开放进程</td>
+<td align="right">$4</td>
+</tr>
+<tr>
+<td>追踪资金到账时间</td>
+<td align="right">$5</td>
+</tr>
+<tr>
+<td>允许对bug分叉(fork)</td>
+<td align="right">$1</td>
+</tr>
+</tbody></table>
+<p>然后规定每人手上只有限量的资金，例如$20，可以用来购买这些功能。每个人根据自己对功能的重要性判断来决定应该为每个功能分配多少钱。例如：我觉得追踪资金到账时间是没有用的功能，一分钱也不分给它；安排软件开发过程很重要，我愿意出两倍的钱；而允许对bug分叉更重要，出4倍的钱；而个性化首页不是那么重要，所以我只愿意出80%的钱。故此，我的资金这样分配：</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th align="right">成本</th>
+<th align="right">销售额</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>个性化首页</td>
+<td align="right">$10</td>
+<td align="right">$8</td>
+</tr>
+<tr>
+<td>轻松安排软件开放进程</td>
+<td align="right">$4</td>
+<td align="right">$8</td>
+</tr>
+<tr>
+<td>追踪资金到账时间</td>
+<td align="right">$5</td>
+<td align="right">$0</td>
+</tr>
+<tr>
+<td>允许对bug分叉(fork)</td>
+<td align="right">$1</td>
+<td align="right">$4</td>
+</tr>
+</tbody></table>
+<p>这个过程其实就是一个已经按照成本加权的优先级评估。每个人在评估时已经综合考虑了成本和重要性。</p>
+<p>将每个功能从各人手中获得的资金累加起来，再除以成本，就得到一个投资收益率，很明显，投资收益率最高的功能就是应该最优先做的。</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th align="right">成本</th>
+<th align="right">总销售额</th>
+<th align="right">投资收益率</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>个性化首页</td>
+<td align="right">$10</td>
+<td align="right">$45</td>
+<td align="right">4.5</td>
+</tr>
+<tr>
+<td>轻松安排软件开放进程</td>
+<td align="right">$4</td>
+<td align="right">$36</td>
+<td align="right">9</td>
+</tr>
+<tr>
+<td>追踪资金到账时间</td>
+<td align="right">$5</td>
+<td align="right">$12</td>
+<td align="right">2.4</td>
+</tr>
+<tr>
+<td>允许对bug分叉(fork)</td>
+<td align="right">$1</td>
+<td align="right">$7</td>
+<td align="right">7</td>
+</tr>
+</tbody></table>
+<p>下次排任务优先级的时候，我们应该尝试一下这种方法。</p>
+<p>P.S. 回头再想一下，这个方法其实跟我们以前用的工作量乘以重要性级别的方法本质上是一样的，但是我们过去用的重要性级别1、2、3、4、5没有定量关系，说不出不同级别之间的重要性相差多少倍，因此相乘出来的数字就没有比较价值了。另外，每人手上持有有限量资金进行分配这种方式更接近我们日常的思维模式，调动起人的直觉，类似于planning game。</p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2011/04/10/Drag-and-drop-list-view-on-Android/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2011/04/10/Drag-and-drop-list-view-on-Android/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2011/04/10/Drag-and-drop-list-view-on-Android/" class="post-title-link" itemprop="url">Drag and drop list view on Android</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2011/04/10/Drag-and-drop-list-view-on-Android/" class="post-title-link" itemprop="url">Drag and drop list view on Android</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2011-04-10 06:05:00" itemprop="dateCreated datePublished" datetime="2011-04-10T06:05:00+08:00">2011-04-10</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -961,103 +956,71 @@ Maven plugin中的lifecycle、phase、goal、mojo概念及作用的理解
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              I didn’t expect that implementing a drag and drop list view on Android is so difficult. It took me more than one week to get it work.
-Android SDK doesn’t provide too much support on drag and drop, at 
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2011/04/10/Drag-and-drop-list-view-on-Android/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p>I didn’t expect that implementing a drag and drop list view on Android is so difficult. It took me more than one week to get it work.</p>
+<p>Android SDK doesn’t provide too much support on drag and drop, at least there is no out of box API that can be used till Android 3.0 Honeycomb. It’s said that drag and drop support is improved in Android 3.0 SDK, I didn’t learn it yet because Android 3.0 hasn’t come to mobile device.</p>
+<p>At first I looked for open source implementation of drag and drop list view. After searching on Internet I did find some examples and library, e.g. <a href="https://github.com/commonsguy/cwac-touchlist" target="_blank" rel="noopener">CWAC TouchListView</a> , they all derives from source code of Android music application. However they don’t fit for my application: First, they require to specify the height of item view in code or in layout file, that also implicitly force all item views in the same height. In my application the list view has two item view types, which differ in height. Even if item views are in same height, I don’t like the way that specifying exact value of height, I perfer to set <code>layout_height</code> to <code>wrap_content</code> and let it automatically calculates the value. Second, by those implementation, on each list item view there must be a “grabber” element. User moves an item by putting finger on the grabber then drag. I want to keep UI of my application as clean as it can, I would like to active item dragging by long press on an item, instead of drag a grabber. So I implement my version of drag and drop list view, the source code is at GitHub: <a href="https://github.com/aleung/tasks365/blob/master/tasks365/src/leoliang/tasks365/DraggableListView.java" target="_blank" rel="noopener">DraggableListView</a>. It isn’t perfect yet, still has large room for improvement.</p>
+<p>A ListView shows items in a vertically scrolling list. The items can be refered by their position in the list. When there are a lot of items, only portion of them are visible. A visible item view can be retrieved by calling <code>ListView.getChildAt()</code>. Please be noticed that child view index is different to item position. In the code you will find these two values need to be converted between each other.</p>
+<p><a href="http://www.flickr.com/photos/leoliang/5603506949/" target="_blank" rel="noopener"><img src="http://farm6.static.flickr.com/5267/5603506949_627d31073c.jpg" alt="listview"></a></p>
+<p>Long press on an item is detected by<code>GestureDetector</code>, then a dragging object is created. The dragging object represents on UI by an ImageView, which is a copy of the view of the item to be moved. The dragging object moves on screen following user’s finger. Untill user’s finger leave touch screen, the list items do not change their order, they just expand or shrink to simulate item dragging.</p>
+<p>In below diagram, dragging object is in green. Item at position 3 is being dragged in this example. When dragging starts, the view of item 3 shrinks its height to 1 to make it invisible (I didn’t investigate why height should be 1 instead of 0). User sees item 3 is dragged, actually it’s the dragging object – clone of the item 3 view. When dragging object is hovering at a position, the item view at that position expands to make an empty space, so looks like that it is being pushed aside by the dragging object.</p>
+<p><a href="http://www.flickr.com/photos/leoliang/5604090272/" target="_blank" rel="noopener"><img src="http://farm6.static.flickr.com/5101/5604090272_641594fa57_m.jpg" alt="listview-dnp-1"></a><a href="http://www.flickr.com/photos/leoliang/5603507715/" target="_blank" rel="noopener"><img src="http://farm6.static.flickr.com/5188/5603507715_d47cb49532_m.jpg" alt="listview-dnp-2"></a></p>
+<p>Here is a screenshot of demo:</p>
+<p><a href="http://www.flickr.com/photos/leoliang/5603811095/" target="_blank" rel="noopener"><img src="http://farm5.static.flickr.com/4099/5603811095_f2f7c52c79.jpg" alt="DraggableListView"></a></p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2011/03/24/My-task-management-tools-function-prototype-has-been-completed/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2011/03/24/My-task-management-tools-function-prototype-has-been-completed/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2011/03/24/My-task-management-tools-function-prototype-has-been-completed/" class="post-title-link" itemprop="url">我的任务管理工具功能原型已经完成</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2011/03/24/My-task-management-tools-function-prototype-has-been-completed/" class="post-title-link" itemprop="url">我的任务管理工具功能原型已经完成</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2011-03-24 05:13:00" itemprop="dateCreated datePublished" datetime="2011-03-24T05:13:00+08:00">2011-03-24</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -1068,103 +1031,81 @@ Android SDK doesn’t provide too much support on drag and drop, at
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              在上一篇blog里面列出了我个人对任务管理工具的需求以及对比较热门的工具的分析。由于现有工具没有那款能够满足我的几点主要需求，于是就产生了自己做一个的想法。前几天，功能性原型完成，已经正式用了起来，下一步要做的工作是界面设计和交互设计。
-目前做的是Android手机应用，web端还没有考虑。一方面是手机几乎不离身，保证了随时可用，另一方面是web端使用现有的服务已经勉强可以满足要求，下面我会说明。
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2011/03/24/My-task-management-tools-function-prototype-has-been-completed/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p>在<a href="http://good-good-study.appspot.com/blog/posts/119001" target="_blank" rel="noopener">上一篇blog</a>里面列出了我个人对任务管理工具的需求以及对比较热门的工具的分析。由于现有工具没有那款能够满足我的几点主要需求，于是就产生了自己做一个的想法。前几天，功能性原型完成，已经正式用了起来，下一步要做的工作是界面设计和交互设计。</p>
+<p>目前做的是Android手机应用，web端还没有考虑。一方面是手机几乎不离身，保证了随时可用，另一方面是web端使用现有的服务已经勉强可以满足要求，下面我会说明。</p>
+<p>从功能定位上，主要是受了<a href="http://stayuseful.com/" target="_blank" rel="noopener">StayUseful</a>和<a href="http://teuxdeux.com" target="_blank" rel="noopener">TeuxDeux</a>的影响，目标是要做成简洁、轻量级的任务列表，强调对任务进行计划安排，专注于当天以及最近几天的任务。</p>
+<ul>
+<li>单日任务列表：在一个页面里列出一天的所有任务。只显示计划在此一天执行的任务，保证专注性。缺省的页面是当天，可快速导航到最近几天。</li>
+<li>用简单的操作可更改任务的执行日期。</li>
+<li>过去没有完成的任务自动放到”今天”，要么马上去完成它，要么重新安排执行日期。</li>
+<li>任务可设置due date，对于有due date的任务，会显示出剩余天数或者过期天数。</li>
+<li>任务不设优先级，但可以加星。单日任务列表中，任务可以拖放排序。</li>
+<li>数据与云端同步。</li>
+</ul>
+<p>因为目标要做到数据与云端同步，这自己从零开始实现工作量太大了，所以一开始就计划基于网上现有的服务基础之上开发。最初物色的对象是Google Tasks，但发现Google Tasks尚未开放API，虽然已经有Android应用可以做到与Google Tasks同步，但它们是靠hack Google的网页前端与后端通信接口来实现的，实现起来既麻烦也不可靠。接下来发现Google Calendar是一个更好的选择：</p>
+<ul>
+<li>Android Calendar与云端的Google Calendar之间几乎是实时同步，无论在哪边做修改，几秒钟之后另外一边就能看到变动。</li>
+<li>Android Calendar提供Provider接口供其他Android应用调用，开发简便，并且Android Calendar是open source的，有问题可以直接看代码。</li>
+<li>Web端可使用Google Calendar，虽然不能实现我需要的全部功能，但基本的都可以做到。</li>
+<li>为实现日程表跟任务列表的整合提供了可能。Google Calendar还能与其他系统同步，提高扩展性。</li>
+</ul>
+<p>具体做起来其实不难，就是将一些task专有的数据放进Calendar的Event里面。Google Calendar的event数据对象没有供存放扩展数据的字段，我就将task数据用JSON格式放进description里面了。</p>
+<p>好了，下一步怎样做出简洁、易用、高效的交互界面才是困难所在。另外，给它起个好名字也很难，有什么建议么？</p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2011/03/21/Diagram-of-WebLogic-MBean-navigation/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2011/03/21/Diagram-of-WebLogic-MBean-navigation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2011/03/21/Diagram-of-WebLogic-MBean-navigation/" class="post-title-link" itemprop="url">Diagram of WebLogic MBean navigation</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2011/03/21/Diagram-of-WebLogic-MBean-navigation/" class="post-title-link" itemprop="url">Diagram of WebLogic MBean navigation</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2011-03-21 18:37:00" itemprop="dateCreated datePublished" datetime="2011-03-21T18:37:00+08:00">2011-03-21</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -1175,160 +1116,26 @@ Android SDK doesn’t provide too much support on drag and drop, at
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              It isn’t a full diagram that presents all WebLogic MBeans. Only the MBeans I’m interesting in are shown.
+          <p>It isn’t a full diagram that presents all WebLogic MBeans. Only the MBeans I’m interesting in are shown.</p>
+<p><a href="http://www.flickr.com/photos/leoliang/5546496754/" target="_blank" rel="noopener"><img src="http://farm6.static.flickr.com/5056/5546496754_181f58ec69_b.jpg" alt="WeblogicMBean"></a></p>
+<p>Reference:<a href="http://download.oracle.com/docs/cd/E15051_01/wls/docs103/wlsmbeanref/core/index.html" target="_blank" rel="noopener">The WebLogic Server® MBean Reference</a></p>
 
-Reference:The WebLogic Server® MBean Reference
-
-              
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2011/03/21/Diagram-of-WebLogic-MBean-navigation/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2011/03/19/His-shan-zhishi-the-Dutch-Brabant-2010-sustainable-development-and-balance-report/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leo Liang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good good study, day day up">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2011/03/19/His-shan-zhishi-the-Dutch-Brabant-2010-sustainable-development-and-balance-report/" class="post-title-link" itemprop="url">他山之石：荷兰Brabant 2010年可持续发展与平衡报告书</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2011-03-19 05:56:00" itemprop="dateCreated datePublished" datetime="2011-03-19T05:56:00+08:00">2011-03-19</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
-              </span>
-            
-          
-
-          <br>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            <p>
-               
-今天在公司休息区看到了一本政府出版物，《2010年Brabant可持续发展与平衡报告书》，Brabant是荷兰南部的一个省份。
-我对这本册子相当感兴趣，关心的主要有几点：
-
-政府如何进行信息公开；
-如何达致可持续发展，怎样维持经济、文化与生态的平衡；
-民众关心哪些方面的指标；
-怎样对政府的成绩进行评定；
-怎样通过图表、文字、数据和颜色将信息清晰的展现出来，让普通民众都能读懂。
-
-全书共238页
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2011/03/19/His-shan-zhishi-the-Dutch-Brabant-2010-sustainable-development-and-balance-report/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-    
-  </section>
 
   
   <nav class="pagination">
@@ -1336,170 +1143,90 @@ Reference:The WebLogic Server® MBean Reference
   </nav>
 
 
+
           </div>
           
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
           
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
-  <aside id="sidebar" class="sidebar">
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="/blog/images/android-chrome-512x512.png">
   <p class="site-author-name" itemprop="name">Leo Liang</p>
-  <div class="site-description motion-element" itemprop="description"></div>
+  <div class="site-description" itemprop="description"></div>
 </div>
-  <nav class="site-state motion-element">
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">328</span>
+          <span class="site-state-item-count">329</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-tags">
-        
-          
             <a href="/blog/tags/">
           
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
         <span class="site-state-item-count">52</span>
-        <span class="site-state-item-name">标签</span>
-        </a>
+        <span class="site-state-item-name">标签</span></a>
       </div>
-    
   </nav>
-  <div class="feed-link motion-element">
-    <a href="/blog/atom.xml" rel="alternate">
-      <i class="fa fa-rss"></i>RSS
-    </a>
-  </div>
+</div>
 
 
 
-        </div>
       </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
 
     </div>
   </aside>
@@ -1509,17 +1236,24 @@ Reference:The WebLogic Server® MBean Reference
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Leo Liang</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
 
         
 
@@ -1530,40 +1264,26 @@ Reference:The WebLogic Server® MBean Reference
 
 
 
-        
       </div>
     </footer>
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-      </div>
-
-    
-
   </div>
 
   
-  <script src="/blog/lib/jquery/index.js?v=3.4.1"></script>
-  <script src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
 
-  <script src="/blog/js/utils.js?v=7.2.0"></script>
-  <script src="/blog/js/motion.js?v=7.2.0"></script>
+<script src="/blog/js/utils.js"></script>
 
-  
-  <script src="/blog/js/affix.js?v=7.2.0"></script>
-  <script src="/blog/js/schemes/pisces.js?v=7.2.0"></script>
+<script src="/blog/js/motion.js"></script>
 
 
+<script src="/blog/js/schemes/pisces.js"></script>
 
-  
 
-  <script src="/blog/js/next-boot.js?v=7.2.0"></script>
+<script src="/blog/js/next-boot.js"></script>
 
-  
 
-  
-
-  
 
 
   
@@ -1571,6 +1291,8 @@ Reference:The WebLogic Server® MBean Reference
 
 
 
+  
+<script src="/blog/js/local-search.js"></script>
 
 
 
@@ -1584,27 +1306,9 @@ Reference:The WebLogic Server® MBean Reference
 
 
 
+  
 
-
-
-
-
-
-  <script src="/blog/js/local-search.js?v=7.2.0"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+  
 
 
 </body>

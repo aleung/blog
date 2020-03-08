@@ -1,76 +1,43 @@
 <!DOCTYPE html>
-
-
-
-
-
-<html class="theme-next gemini use-motion" lang="zh-CN">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="generator" content="Hexo 3.9.0">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=7.2.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=7.2.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=7.2.0">
-  <link rel="mask-icon" href="/blog/images/logo.svg?v=7.2.0" color="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+  <link rel="manifest" href="/blog/images/manifest.json">
 
-<link rel="stylesheet" href="/blog/css/main.css?v=7.2.0">
-
-
-<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+<link rel="stylesheet" href="/blog/css/main.css">
 
 
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/blog/',
-    scheme: 'Gemini',
-    version: '7.2.0',
-    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},
-    search: {
-      root: '/blog/',
-      path: 'search.xml'
-    },
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    }
-  };
-</script>
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
   <meta property="og:type" content="website">
 <meta property="og:title" content="Good good study, day day up">
 <meta property="og:url" content="http://aleung.github.io/blog/page/31/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Leo Liang">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Good good study, day day up">
-  <link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
-  <link rel="canonical" href="http://aleung.github.io/blog/page/31/">
+
+<link rel="canonical" href="http://aleung.github.io/blog/page/31/">
 
 
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : true,
+    isPost : false
   };
 </script>
 
@@ -82,11 +49,8 @@
 
 
 
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -95,9 +59,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -109,18 +72,26 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  <div class="container sidebar-position-right page-home">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
   <div class="site-meta">
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/blog/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Good good study, day day up</span>
@@ -128,154 +99,186 @@
       </a>
     </div>
         <p class="site-subtitle">aleung的学习笔记, aleung的idea</p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
   </div>
 </div>
-
 
 
 <nav class="site-nav">
-    <ul id="menu" class="menu">
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-      
-    
-      
-    
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">52</span></a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">52</span></a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-      
-    
-      
-    
+        <li class="menu-item menu-item-archives">
 
-    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">328</span></a>
+    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">329</span></a>
 
   </li>
-        <li class="menu-item menu-item-search">
-          <a href="javascript:;" class="popup-trigger">
-          
-            <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-        </li>
-      
-    </ul>
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
   </div>
-  <div id="local-search-result"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
 </div>
 
+  </div>
+</div>
 
-    </div>
-</nav>
-
+  </div>
 </div>
     </header>
 
     
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+
+          <div class="content">
             
 
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <div class="posts-expand">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2003/09/02/Unicode-/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2003/09/04/How-to-let-JTextArea-automatic-scroll-to-the-bottom-/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2003/09/02/Unicode-/" class="post-title-link" itemprop="url">Unicode与字符编码</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2003/09/04/How-to-let-JTextArea-automatic-scroll-to-the-bottom-/" class="post-title-link" itemprop="url">如何让JTextArea自动滚动到最底?</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
+              <time title="创建时间：2003-09-04 22:52:00" itemprop="dateCreated datePublished" datetime="2003-09-04T22:52:00+08:00">2003-09-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2012-06-18 23:35:00" itemprop="dateModified" datetime="2012-06-18T23:35:00+08:00">2012-06-18</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>如果用JTextArea来做信息窗口，不断用append()显示新信息，通常会希望内容能自动滚动，保持最后增加的信息能够显示出来。利用setCaretPosition()可以实现，这个方法是设置输入光标的位置，如果光标位置超出目前可视范围，会自动滚动以保正光标可以显示出来。</p>
+<pre><code>int length = textArea.getText().length();
+textArea.setCaretPosition(length);</code></pre><p>如果还希望限制JTextArea中的文本长度，不让它无限制的增长，可以加上以下两行，当长度超出预订的maxTextLength后将开头的字符截除。不过美中不足的是截除无法按行进行。</p>
+<pre><code>if ( length &gt; maxTextLength ) { 
+    textArea.replaceRange(&quot;&quot;, 0, length - maxTextLength); 
+}</code></pre>
+      
+    </div>
+
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2003/09/02/Unicode-/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2003/09/02/Unicode-/" class="post-title-link" itemprop="url">Unicode与字符编码</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2003-09-02 22:55:00" itemprop="dateCreated datePublished" datetime="2003-09-02T22:55:00+08:00">2003-09-02</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -286,103 +289,84 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              Unicode:unicode.org制定的编码机制, 要将全世界常用文字都函括进去.在1.0中是16位编码, 由U+0000到U+FFFF. 每个2byte码对应一个字符; 在2.0开始抛弃了16位限制, 原来的16位作为基本位平面, 另外增加了16个位平面, 相当于20位编码, 编码范围0到0x10FFFF.  
-UCS:ISO制定的ISO10646标准所定义的 Universal Chara
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2003/09/02/Unicode-/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <h3 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode:"></a>Unicode:</h3><p>unicode.org制定的编码机制, 要将全世界常用文字都函括进去.<br>在1.0中是16位编码, 由U+0000到U+FFFF. 每个2byte码对应一个字符; 在2.0开始抛弃了16位限制, 原来的16位作为基本位平面, 另外增加了16个位平面, 相当于20位编码, 编码范围0到0x10FFFF.  </p>
+<h3 id="UCS"><a href="#UCS" class="headerlink" title="UCS:"></a>UCS:</h3><p>ISO制定的ISO10646标准所定义的 Universal Character Set, 采用4byte编码.  </p>
+<h3 id="Unicode与UCS的关系"><a href="#Unicode与UCS的关系" class="headerlink" title="Unicode与UCS的关系:"></a>Unicode与UCS的关系:</h3><p>ISO与unicode.org是两个不同的组织, 因此最初制定了不同的标准; 但自从unicode2.0开始, unicode采用了与ISO 10646-1相同的字库和字码, ISO也承诺ISO10646将不会给超出0x10FFFF的UCS-4编码赋值, 使得两者保持一致.  </p>
+<h3 id="UCS的编码方式"><a href="#UCS的编码方式" class="headerlink" title="UCS的编码方式:"></a>UCS的编码方式:</h3><ul>
+<li>UCS-2, 与unicode的2byte编码基本一样.   </li>
+<li>UCS-4, 4byte编码, 目前是在UCS-2前加上2个全零的byte.  </li>
+</ul>
+<h3 id="UTF-Unicode-UCS-Transformation-Format"><a href="#UTF-Unicode-UCS-Transformation-Format" class="headerlink" title="UTF: Unicode/UCS Transformation Format"></a>UTF: Unicode/UCS Transformation Format</h3><ul>
+<li>UTF-8, 8bit编码, ASCII不作变换, 其他字符做变长编码, 每个字符1-3 byte. 通常作为外码. 有以下优点:  <ul>
+<li>与CPU字节顺序无关, 可以在不同平台之间交流  </li>
+<li>容错能力高, 任何一个字节损坏后, 最多只会导致一个编码码位损失, 不会链锁错误(如GB码错一个字节就会整行乱码)   </li>
+</ul>
+</li>
+<li>UTF-16, 16bit编码, 是变长码, 大致相当于20位编码, 值在0到0x10FFFF之间, 基本上就是unicode编码的实现. 它是变长码, 与CPU字序有关, 但因为最省空间, 常作为网络传输的外码.<br>UTF-16是unicode的preferred encoding.   </li>
+<li>UTF-32, 仅使用了unicode范围(0到0x10FFFF)的32位编码, 相当于UCS-4的子集.  </li>
+</ul>
+<h3 id="UTF与unicode的关系"><a href="#UTF与unicode的关系" class="headerlink" title="UTF与unicode的关系:"></a>UTF与unicode的关系:</h3><p>Unicode是一个字符集, 可以看作为内码.<br>而UTF是一种编码方式, 它的出现是因为unicode不适宜在某些场合直接传输和处理. UTF-16直接就是unicode编码, 没有变换, 但它包含了0x00在编码内, 头256字节码的第一个byte都是0x00, 在操作系统(C语言)中有特殊意义, 会引起问题. 采用UTF-8编码对unicode的直接编码作些变换可以避免这问题, 并带来一些优点.  </p>
+<h3 id="中国国标编码"><a href="#中国国标编码" class="headerlink" title="中国国标编码:"></a>中国国标编码:</h3><ul>
+<li>GB 13000: 完全等同于ISO 10646-1/Unicode 2.1, 今后也将随ISO 10646/Unicode的标准更改而同步更改.  </li>
+<li>GBK: 对GB2312的扩充, 以容纳GB2312字符集范围以外的Unicode 2.1的统一汉字部分, 并且增加了部分unicode中没有的字符.   </li>
+<li>GB 18030-2000: 基于GB 13000, 作为Unicode 3.0的GBK扩展版本, 覆盖了所有unicode编码, 地位等同于UTF-8, UTF-16, 是一种unicode编码形式. 变长编码, 用单字节/双字节/4字节对字符编码. GB18030向下兼容GB2312/GBK.<br>GB 18030是中国所有非手持/嵌入式计算机系统的强制实施标准.  </li>
+</ul>
+<p><em>2001-11-14 (2003-9-2 补充)</em>  </p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2003/08/29/java-library/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2003/08/29/java-library/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2003/08/29/java-library/" class="post-title-link" itemprop="url">java开发辅助工具,library</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2003/08/29/java-library/" class="post-title-link" itemprop="url">java开发辅助工具,library</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2003-08-29 20:24:00" itemprop="dateCreated datePublished" datetime="2003-08-29T20:24:00+08:00">2003-08-29</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -393,106 +377,69 @@ UCS:ISO制定的ISO10646标准所定义的 Universal Chara
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              http://www.zaval.org/ 这个网站有好几个java开发辅助工具,library. 包括了:  
+          <p><a href="http://www.zaval.org/" target="_blank" rel="noopener">http://www.zaval.org/</a> 这个网站有好几个java开发辅助工具,library. 包括了:  </p>
+<ul>
+<li>Java Resource Editor: 用于i18n/l10n的翻译 </li>
+<li>Light-Weight Visual Components Library (LwVCL): 一组基于AWT的可视控件, 估计目标是可以移植到PDA等小型设备上 </li>
+<li>Proxy Suite: an easy-to-use solution that allows monitoring TCP-based protocols, such as HTTP, NNTP and others. It is extremely useful in software development and can be used as a debug tool. </li>
+<li>轻型数据库工具 </li>
+<li>其他的一些东西, 如Java Charts Package等, 只有介绍没有下载  </li>
+</ul>
 
-Java Resource Editor: 用于i18n/l10n的翻译 
-Light-Weight Visual Components Library (LwVCL): 一组基于AWT的可视控件, 估计目标是可以移植到PDA等小型设备上 
-Proxy Suite: an easy-
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2003/08/29/java-library/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2003/08/28/SWT-Swing-/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2003/08/28/SWT-Swing-/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2003/08/28/SWT-Swing-/" class="post-title-link" itemprop="url">SWT与Swing之争</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2003/08/28/SWT-Swing-/" class="post-title-link" itemprop="url">SWT与Swing之争</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2003-08-28 20:19:00" itemprop="dateCreated datePublished" datetime="2003-08-28T20:19:00+08:00">2003-08-28</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -503,106 +450,69 @@ Proxy Suite: an easy-
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              SWT(in Eclipse)与Swing之争, 似乎争议注意在这几方面:  
+          <p>SWT(in Eclipse)与Swing之争, 似乎争议注意在这几方面:  </p>
+<ul>
+<li>SWT是否比Swing更快? SWT使用OS native构件, 理论上更快. 但实际比较如何, 争议很大. </li>
+<li>SWT与Swing比较, 是否更符合平台传统外观? SWT使用OS native构件,而不是象Swing一样重新写代码模拟出来. Swing支持者说用Look&amp;Feel灵活, 也可以做得不错. </li>
+<li>Swing的结构过于复杂. Swing的事件模型设计得不好. 但是swing扩展性强. </li>
+<li>Swing采用JVM的垃圾收集来回收资源, SWT提供可控的资源销毁而不采用垃圾收集.  </li>
+</ul>
+<p>这个Java英文讨论组, <a href="http://www.javalobby.org" target="_blank" rel="noopener">http://www.javalobby.org</a> , 内容还可以, search功能也比较好用.<br>看老外的论坛也是老骂架的:)  </p>
 
-SWT是否比Swing更快? SWT使用OS native构件, 理论上更快. 但实际比较如何, 争议很大. 
-SWT与Swing比较, 是否更符合平台传统外观? SWT使用OS native构件,而不是象Swing一样重新写代码模拟出来. Swing支持者说用Look&amp;Feel灵活, 也可以做得不错. 
-S
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2003/08/28/SWT-Swing-/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2003/08/27/Some-GPS-related-software-and-project/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2003/08/27/Some-GPS-related-software-and-project/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2003/08/27/Some-GPS-related-software-and-project/" class="post-title-link" itemprop="url">一些与GPS相关的软件项目</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2003/08/27/Some-GPS-related-software-and-project/" class="post-title-link" itemprop="url">一些与GPS相关的软件项目</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2003-08-27 01:11:00" itemprop="dateCreated datePublished" datetime="2003-08-27T01:11:00+08:00">2003-08-27</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -613,105 +523,71 @@ S
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              想写个GPS有关的软件，网上找到一些相关的项目: 
+          <p>想写个GPS有关的软件，网上找到一些相关的项目: </p>
+<ul>
+<li>Java framework for GPS <a href="http://www.aasted.org/gps/" target="_blank" rel="noopener">http://www.aasted.org/gps/</a><br>这个项目的目标是为各种应用程序加入GPS功能提供framework. 目前提供的是与Garmin GPS通讯的功能. </li>
+<li>Chaeron GPS library <a href="http://www.chaeron.com/gps.html" target="_blank" rel="noopener">http://www.chaeron.com/gps.html</a><br>类似的项目,也是作为支持库，但功能更强/完善. 支持多种平台, 包括多种PDA. 而且这看来是一个active的项目, 由一个公司支持. </li>
+<li>JavaGPS <a href="http://javagps.sourceforge.net/" target="_blank" rel="noopener">http://javagps.sourceforge.net/</a><br>这个项目的范围似乎比前两个窄一些, 局限于从GPS中取得当前位置数据. 从代码看来，设计也不如前两个项目规范。</li>
+</ul>
+<p>但是，这些项目看来都是只支持从GPS取数据，而不支持传送数据给GPS。</p>
+<ul>
+<li>EPS <a href="http://eps.sourceforge.net/" target="_blank" rel="noopener">http://eps.sourceforge.net/</a><br>这是一个小应用程序，能够下载GPS数据并显示。这个程序能与Garmin GPS通讯，有上传/下载功能, 不过代码风格很差。</li>
+</ul>
 
-Java framework for GPS http://www.aasted.org/gps/这个项目的目标是为各种应用程序加入GPS功能提供framework. 目前提供的是与Garmin GPS通讯的功能. 
-Chaeron GPS library http://www.chaeron.com/gps.html类似的项目,也是作为支持库
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2003/08/27/Some-GPS-related-software-and-project/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2003/08/26/Super-toy-car/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2003/08/26/Super-toy-car/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2003/08/26/Super-toy-car/" class="post-title-link" itemprop="url">超级玩具小车</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2003/08/26/Super-toy-car/" class="post-title-link" itemprop="url">超级玩具小车</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2003-08-26 20:17:00" itemprop="dateCreated datePublished" datetime="2003-08-26T20:17:00+08:00">2003-08-26</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -722,104 +598,64 @@ Chaeron GPS library http://www.chaeron.com/gps.html类似的项目,也是作为�
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              一个神奇的project, 使用了各种流行的前沿技术, 令人炫目的技术列表:  
-http://www.idealliance.org/papers/xml02/dx_xml02/papers/05-05-05/05-05-05.html  
-Mobile GPS Demonstration Platform, 演示了移动通讯/GPS/WebService/XML技术的结合, 一辆装备了GPS、G
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2003/08/26/Super-toy-car/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p>一个神奇的project, 使用了各种流行的前沿技术, 令人炫目的技术列表:  </p>
+<p><a href="http://www.idealliance.org/papers/xml02/dx_xml02/papers/05-05-05/05-05-05.html" target="_blank" rel="noopener">http://www.idealliance.org/papers/xml02/dx_xml02/papers/05-05-05/05-05-05.html</a>  </p>
+<p>Mobile GPS Demonstration Platform, 演示了移动通讯/GPS/WebService/XML技术的结合, 一辆装备了GPS、GPRS mobile、Java Embeded Board的玩具小车。  </p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2003/08/22/Eclipse-i18n-l10n-/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2003/08/22/Eclipse-i18n-l10n-/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2003/08/22/Eclipse-i18n-l10n-/" class="post-title-link" itemprop="url">Eclipse的i18n/l10n辅助功能</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2003/08/22/Eclipse-i18n-l10n-/" class="post-title-link" itemprop="url">Eclipse的i18n/l10n辅助功能</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2003-08-22 20:15:00" itemprop="dateCreated datePublished" datetime="2003-08-22T20:15:00+08:00">2003-08-22</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -830,102 +666,62 @@ Mobile GPS Demonstration Platform, 演示了移动通讯/GPS/WebService/XML技�
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              Java程序的本地化，做法都是在程序中不直接写死字符串，而是通过ResourceBoundle的getString()方法，在本地语言的properties文件中读取出翻译后的字串。对于已经开发好的程序，找出源代码中写死的字符串工作相当繁琐，Eclipse有这方面的辅助工具。选择文件，右键菜单 source-&gt;Extenalize Strings 打开工具，能够找出源文件中的所有字符串，选择
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2003/08/22/Eclipse-i18n-l10n-/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p>Java程序的本地化，做法都是在程序中不直接写死字符串，而是通过ResourceBoundle的getString()方法，在本地语言的properties文件中读取出翻译后的字串。<br>对于已经开发好的程序，找出源代码中写死的字符串工作相当繁琐，Eclipse有这方面的辅助工具。<br>选择文件，右键菜单 source-&gt;Extenalize Strings 打开工具，能够找出源文件中的所有字符串，选择那些需要翻译，自动替换并生成properties文件。  </p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2003/08/20/Java-/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2003/08/20/Java-/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2003/08/20/Java-/" class="post-title-link" itemprop="url">Java“错误模式”</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2003/08/20/Java-/" class="post-title-link" itemprop="url">Java“错误模式”</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2003-08-20 19:01:00" itemprop="dateCreated datePublished" datetime="2003-08-20T19:01:00+08:00">2003-08-20</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -936,103 +732,62 @@ Mobile GPS Demonstration Platform, 演示了移动通讯/GPS/WebService/XML技�
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              《诊断 Java 代码》这组文章提到了很多种“错误模式”，有时间值得看看。http://www.ibm.com/developerWorks/cn/java/j-diag/index.shtml
+          <p>《诊断 Java 代码》这组文章提到了很多种“错误模式”，有时间值得看看。<br><a href="http://www.ibm.com/developerWorks/cn/java/j-diag/index.shtml" target="_blank" rel="noopener">http://www.ibm.com/developerWorks/cn/java/j-diag/index.shtml</a></p>
 
-              
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2003/08/20/Java-/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2003/08/19/Swing-components-refresh/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2003/08/19/Swing-components-refresh/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2003/08/19/Swing-components-refresh/" class="post-title-link" itemprop="url">Swing components refresh</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2003/08/19/Swing-components-refresh/" class="post-title-link" itemprop="url">Swing components refresh</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2003-08-19 19:30:00" itemprop="dateCreated datePublished" datetime="2003-08-19T19:30:00+08:00">2003-08-19</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -1043,103 +798,62 @@ Mobile GPS Demonstration Platform, 演示了移动通讯/GPS/WebService/XML技�
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              Java swing编程，更改了一个JPanel的内部components后，需要改变一下窗口大小，新内容才能显示出来。解决方法：调用panel.validate()。对于container，添加或者改变了对象后，需要调用validate()才能重新布局并显示。
+          <p>Java swing编程，更改了一个JPanel的内部components后，需要改变一下窗口大小，新内容才能显示出来。<br>解决方法：调用panel.validate()。<br>对于container，添加或者改变了对象后，需要调用validate()才能重新布局并显示。</p>
 
-              
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2003/08/19/Swing-components-refresh/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2003/08/18/MySQL-NOT-NULL-/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2003/08/18/MySQL-NOT-NULL-/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2003/08/18/MySQL-NOT-NULL-/" class="post-title-link" itemprop="url">MySQL是不会理会字段的NOT NULL标记的!</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2003/08/18/MySQL-NOT-NULL-/" class="post-title-link" itemprop="url">MySQL是不会理会字段的NOT NULL标记的!</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2003-08-18 22:58:00" itemprop="dateCreated datePublished" datetime="2003-08-18T22:58:00+08:00">2003-08-18</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -1150,149 +864,24 @@ Mobile GPS Demonstration Platform, 演示了移动通讯/GPS/WebService/XML技�
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              原来MySQL是不会理会字段的NOT NULL标记的!按照MySQL manual中1.8.5.2节的说法: 当插入的字段的值不符号要求的时候, 不会出错, 而是用一个最接近的”合理”值来替代. 对于NOT NULL的varchar字段, 替换的值是空字符串’’. 这不是等于没有设定NOT NULL吗? 真是莫名其妙.只好在程序里面来控制了
+          <p>原来MySQL是不会理会字段的NOT NULL标记的!<br>按照MySQL manual中1.8.5.2节的说法: 当插入的字段的值不符号要求的时候, 不会出错, 而是用一个最接近的”合理”值来替代. 对于NOT NULL的varchar字段, 替换的值是空字符串’’. 这不是等于没有设定NOT NULL吗? 真是莫名其妙.<br>只好在程序里面来控制了</p>
 
-              
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2003/08/18/MySQL-NOT-NULL-/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2003/08/18/Java-/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leo Liang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good good study, day day up">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2003/08/18/Java-/" class="post-title-link" itemprop="url">Java字符转换问题</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2003-08-18 22:57:00" itemprop="dateCreated datePublished" datetime="2003-08-18T22:57:00+08:00">2003-08-18</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
-              </span>
-            
-          
-
-          <br>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            <p>
-              字符编码问题一直都是令人头痛，查阅资料，写下了《java 字符转换问题的学习笔记》。
-什么是字节流与字符流的转换? 什么时候会做转换?字符就是char类型, 是双字节的, 用unicode, 一个char就是实际上的一个字符；字节就是byte类型, 是单字节的，实际的字符串根据编码不同，用单字节或者双字节来表示。常用的String类型核心就是char[]，String.length()就是char
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2003/08/18/Java-/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-    
-  </section>
 
   
   <nav class="pagination">
@@ -1300,170 +889,90 @@ Mobile GPS Demonstration Platform, 演示了移动通讯/GPS/WebService/XML技�
   </nav>
 
 
+
           </div>
           
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
           
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
-  <aside id="sidebar" class="sidebar">
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="/blog/images/android-chrome-512x512.png">
   <p class="site-author-name" itemprop="name">Leo Liang</p>
-  <div class="site-description motion-element" itemprop="description"></div>
+  <div class="site-description" itemprop="description"></div>
 </div>
-  <nav class="site-state motion-element">
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">328</span>
+          <span class="site-state-item-count">329</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-tags">
-        
-          
             <a href="/blog/tags/">
           
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
         <span class="site-state-item-count">52</span>
-        <span class="site-state-item-name">标签</span>
-        </a>
+        <span class="site-state-item-name">标签</span></a>
       </div>
-    
   </nav>
-  <div class="feed-link motion-element">
-    <a href="/blog/atom.xml" rel="alternate">
-      <i class="fa fa-rss"></i>RSS
-    </a>
-  </div>
+</div>
 
 
 
-        </div>
       </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
 
     </div>
   </aside>
@@ -1473,17 +982,24 @@ Mobile GPS Demonstration Platform, 演示了移动通讯/GPS/WebService/XML技�
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Leo Liang</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
 
         
 
@@ -1494,40 +1010,26 @@ Mobile GPS Demonstration Platform, 演示了移动通讯/GPS/WebService/XML技�
 
 
 
-        
       </div>
     </footer>
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-      </div>
-
-    
-
   </div>
 
   
-  <script src="/blog/lib/jquery/index.js?v=3.4.1"></script>
-  <script src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
 
-  <script src="/blog/js/utils.js?v=7.2.0"></script>
-  <script src="/blog/js/motion.js?v=7.2.0"></script>
+<script src="/blog/js/utils.js"></script>
 
-  
-  <script src="/blog/js/affix.js?v=7.2.0"></script>
-  <script src="/blog/js/schemes/pisces.js?v=7.2.0"></script>
+<script src="/blog/js/motion.js"></script>
 
 
+<script src="/blog/js/schemes/pisces.js"></script>
 
-  
 
-  <script src="/blog/js/next-boot.js?v=7.2.0"></script>
+<script src="/blog/js/next-boot.js"></script>
 
-  
 
-  
-
-  
 
 
   
@@ -1535,6 +1037,8 @@ Mobile GPS Demonstration Platform, 演示了移动通讯/GPS/WebService/XML技�
 
 
 
+  
+<script src="/blog/js/local-search.js"></script>
 
 
 
@@ -1548,27 +1052,9 @@ Mobile GPS Demonstration Platform, 演示了移动通讯/GPS/WebService/XML技�
 
 
 
+  
 
-
-
-
-
-
-  <script src="/blog/js/local-search.js?v=7.2.0"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+  
 
 
 </body>

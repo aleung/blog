@@ -1,76 +1,43 @@
 <!DOCTYPE html>
-
-
-
-
-
-<html class="theme-next gemini use-motion" lang="zh-CN">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="generator" content="Hexo 3.9.0">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=7.2.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=7.2.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=7.2.0">
-  <link rel="mask-icon" href="/blog/images/logo.svg?v=7.2.0" color="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+  <link rel="manifest" href="/blog/images/manifest.json">
 
-<link rel="stylesheet" href="/blog/css/main.css?v=7.2.0">
-
-
-<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+<link rel="stylesheet" href="/blog/css/main.css">
 
 
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/blog/',
-    scheme: 'Gemini',
-    version: '7.2.0',
-    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},
-    search: {
-      root: '/blog/',
-      path: 'search.xml'
-    },
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    }
-  };
-</script>
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
   <meta property="og:type" content="website">
 <meta property="og:title" content="Good good study, day day up">
 <meta property="og:url" content="http://aleung.github.io/blog/page/28/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Leo Liang">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Good good study, day day up">
-  <link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
-  <link rel="canonical" href="http://aleung.github.io/blog/page/28/">
+
+<link rel="canonical" href="http://aleung.github.io/blog/page/28/">
 
 
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : true,
+    isPost : false
   };
 </script>
 
@@ -82,11 +49,8 @@
 
 
 
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -95,9 +59,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -109,18 +72,26 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  <div class="container sidebar-position-right page-home">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
   <div class="site-meta">
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/blog/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Good good study, day day up</span>
@@ -128,154 +99,190 @@
       </a>
     </div>
         <p class="site-subtitle">aleung的学习笔记, aleung的idea</p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
   </div>
 </div>
-
 
 
 <nav class="site-nav">
-    <ul id="menu" class="menu">
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-      
-    
-      
-    
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">52</span></a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">52</span></a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-      
-    
-      
-    
+        <li class="menu-item menu-item-archives">
 
-    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">328</span></a>
+    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">329</span></a>
 
   </li>
-        <li class="menu-item menu-item-search">
-          <a href="javascript:;" class="popup-trigger">
-          
-            <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-        </li>
-      
-    </ul>
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
   </div>
-  <div id="local-search-result"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
 </div>
 
+  </div>
+</div>
 
-    </div>
-</nav>
-
+  </div>
 </div>
     </header>
 
     
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+
+          <div class="content">
             
 
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <div class="posts-expand">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2004/04/05/Target-plan/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2004/04/10/How-to-increase-the-number-of-Windows-programs-thread-/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2004/04/05/Target-plan/" class="post-title-link" itemprop="url">目标，计划</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2004/04/10/How-to-increase-the-number-of-Windows-programs-thread-/" class="post-title-link" itemprop="url">如何增加windows程序的线程数量?</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
+              <time title="创建时间：2004-04-10 06:10:00" itemprop="dateCreated datePublished" datetime="2004-04-10T06:10:00+08:00">2004-04-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>编写测试程序, 发现超过1000个线程, 程序执行就会出现内存错误. 原来我还以为是windows对线程数量有限制, 查资料才知道支持线程多少并不是操作系统决定的, 而是与程序的堆栈空间大小有关.</p>
+<p>在VC中, 修改Project Setting - Link - Stack allocation - Reserve, 缺省为1M(0x100000), 将这个数值降低, 也就是减少每个线程的栈空间大小, 就可以增加线程数量. 这是因为用户地址空间总共是2GB, 线程保留栈空间大小乘以线程数量不能大于2GB.</p>
+<p>因为上下文切换的开销, 线程过多效率会降低, 我做这个测试程序就是想知道这个效率曲线到底是怎样的.</p>
+<p>以下为网上找到的资料:</p>
+<p>I just found this under CreateThread() in MSDN:  </p>
+<p>The number of threads a process can create is limited by the available virtual memory. By default, every thread has one megabyte of stack space. Therefore, you can create at most 2028 threads. If you reduce the default stack size, you can create more threads. However, your application will have better performance if you create one thread per processor and build queues of requests for which the application maintains the context information. A thread would process all requests in a queue before processing requests in the next queue.  </p>
+<p>So the number of threads you can create is capped by the 2 GB user address space available to your process.  </p>
+<p>So you have a few choices, as I see it:  </p>
+<p>1) Run multiple copies of your server at once and coordinate between them. You will need endless amounts of swap space.<br>2) Reduce the amount of stack used per thread (lowering from 1 Mb to 100Kb should get you 40,000 threads).<br>3) Re-architect your app to not require one thread per connection. Have each thread monitor many connections using (for example) a select() call.</p>
+
+      
+    </div>
+
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2004/04/05/Target-plan/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2004/04/05/Target-plan/" class="post-title-link" itemprop="url">目标，计划</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2004-04-05 07:02:00" itemprop="dateCreated datePublished" datetime="2004-04-05T07:02:00+08:00">2004-04-05</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -286,104 +293,66 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              不知不觉的，差不多三十岁了。都说三十是人生一个关口，对于一名程序员尤甚。即将告别人生的一个段落，回望过去，看到自己存在不少缺点；展望未来，路要怎么走，不免有些患得患失。
-前两天跟flyisland聊天，他说（书上说）：失败的最重要原因，是没有长期目标；第二个原因，是没有短期目标。是啊，总是觉得时间过得很快，到底时间是怎么过去的呢？做些什么不做些什么，年轻的时候可以恣意而行，但现在不行了。
-经常会有
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2004/04/05/Target-plan/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p>不知不觉的，差不多三十岁了。都说三十是人生一个关口，对于一名程序员尤甚。即将告别人生的一个段落，回望过去，看到自己存在不少缺点；展望未来，路要怎么走，不免有些患得患失。</p>
+<p>前两天跟<a href="http://flyisland.blogbus.com" target="_blank" rel="noopener">flyisland</a>聊天，他说（书上说）：失败的最重要原因，是没有长期目标；第二个原因，是没有短期目标。是啊，总是觉得时间过得很快，到底时间是怎么过去的呢？做些什么不做些什么，年轻的时候可以恣意而行，但现在不行了。</p>
+<p>经常会有这样的时候：无所事事不知道该干些什么，过后又后悔浪费了时间。目标不一定要很远大，它指引的是方向，帮助自己排除干扰，做出每个选择，什么是值得做的。不是说做的每件事情都需要有意义，而是做完之后不需要后悔就好了。多些思考，少些漫无目的，</p>
+<p><a href="http://huamin.blogone.net/" target="_blank" rel="noopener">长夜孤灯</a>（很好的名字），这个blog的主人把他在人生目标，个人计划这方面的思考记录下来。看了很有同感，为人理性，爱好思考，但个性稍微消沉，容易患得患失，似乎自己与作者有共通之处（flyisland也是这么说的，难道大家都一样？）。他提到的很多问题也是我的问题，看看他写的东西，反思自己，很有好处。</p>
+<p>应该怎样做？继续思考，坚持于行动，一点一点改进。记录下来，自勉。</p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2004/03/28/Delicious-bookmarks/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2004/03/28/Delicious-bookmarks/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2004/03/28/Delicious-bookmarks/" class="post-title-link" itemprop="url">美味书签</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2004/03/28/Delicious-bookmarks/" class="post-title-link" itemprop="url">美味书签</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2004-03-28 17:50:00" itemprop="dateCreated datePublished" datetime="2004-03-28T17:50:00+08:00">2004-03-28</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -394,106 +363,73 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              早就在别的blog上听说过del.icio.us这个网站了, 不过我一直对社会性网络这类东西不大感冒, 以为del.icio.us也是这些而已.
-前两天又看到别人介绍, 经不住好奇心上去看了一下, 哇, 原来是好东西! 立马申请一个, 并且介绍给朋友.
-在我看来, 这个网站的主要作用有:
+          <p>早就在别的blog上听说过<a href="http://del.icio.us/" target="_blank" rel="noopener">del.icio.us</a>这个网站了, 不过我一直对社会性网络这类东西不大感冒, 以为del.icio.us也是这些而已.</p>
+<p>前两天又看到别人介绍, 经不住好奇心上去看了一下, 哇, 原来是好东西! 立马申请一个, 并且介绍给朋友.</p>
+<p>在我看来, 这个网站的主要作用有:</p>
+<ul>
+<li><p>Bookmark, 分类记录看过的感兴趣的网页, 并且按时间排列. 经常都会发生这样的情况: 网上看过某篇文章, 后来要找怎么都找不回来了. del.icio.us就可以帮助解决这样的问题. 它比浏览器的bookmark要方便灵活, 随处可访问, 可以添加注释, 每个书签可以设置多个分类标记.</p>
+</li>
+<li><p>Share, 将自己觉得有意思的网页推荐给别人. 不需要再用email或者IM来发网址了.</p>
+</li>
+<li><p>交流作用, 订阅别人的书签, 了解别人关注的内容. 通过书签的owner, 看看谁与自己关注着相同的话题. 如果这个网站能够加入一些功能, 实现大家对书签内容的评论就更好了.</p>
+</li>
+</ul>
+<p>罗嗦了这么多, 我的美味书签是: <a href="http://del.icio.us/aleung" target="_blank" rel="noopener">http://del.icio.us/aleung</a></p>
 
-Bookmark, 分类记录看过的感兴趣的网页, 并且按时间排列. 经常都会发生这样的情况: 网上看过某篇文
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2004/03/28/Delicious-bookmarks/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2004/03/01/MeeSoft-/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2004/03/01/MeeSoft-/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2004/03/01/MeeSoft-/" class="post-title-link" itemprop="url">MeeSoft的软件</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2004/03/01/MeeSoft-/" class="post-title-link" itemprop="url">MeeSoft的软件</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2004-03-01 03:11:00" itemprop="dateCreated datePublished" datetime="2004-03-01T03:11:00+08:00">2004-03-01</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -504,103 +440,62 @@ Bookmark, 分类记录看过的感兴趣的网页, 并且按时间排列. 经常
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              MeeSoft(http://meesoft.logicnet.dk/)这个网站有不少有意思的免费软件，包括Command(还记得DOS时代的NC吗？)、SmartMorph、图象增强(可以修复对焦不准的照片啊!)、图表制作、mp3管理、HTML优化等等。
+          <p>MeeSoft(<a href="http://meesoft.logicnet.dk/" target="_blank" rel="noopener">http://meesoft.logicnet.dk/</a>)这个网站有不少有意思的免费软件，包括Command(还记得DOS时代的NC吗？)、SmartMorph、图象增强(可以修复对焦不准的照片啊!)、图表制作、mp3管理、HTML优化等等。</p>
 
-              
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2004/03/01/MeeSoft-/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2004/02/22/MAPSOURCE-software-to-lose-weight/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2004/02/22/MAPSOURCE-software-to-lose-weight/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2004/02/22/MAPSOURCE-software-to-lose-weight/" class="post-title-link" itemprop="url">给MAPSOURCE软件减肥</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2004/02/22/MAPSOURCE-software-to-lose-weight/" class="post-title-link" itemprop="url">给MAPSOURCE软件减肥</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2004-02-22 03:04:00" itemprop="dateCreated datePublished" datetime="2004-02-22T03:04:00+08:00">2004-02-22</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -611,103 +506,62 @@ Bookmark, 分类记录看过的感兴趣的网页, 并且按时间排列. 经常
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              MAPSOURCE软件按经纬度的块存储文件，可以把世界其它地方的块删除，仅保留中国地区的文件块,从04309845.IMG到04311439.IMG，节约不少硬盘空间。不用担心，世界地图依然存在的，只是局部细节没有了，我想不必关心美国的乡村小路吧？
+          <p>MAPSOURCE软件按经纬度的块存储文件，可以把世界其它地方的块删除，仅保留中国地区的文件块,从04309845.IMG到04311439.IMG，节约不少硬盘空间。不用担心，世界地图依然存在的，只是局部细节没有了，我想不必关心美国的乡村小路吧？</p>
 
-              
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2004/02/22/MAPSOURCE-software-to-lose-weight/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2004/02/20/If-you-get-used-to-using-UNIX-commands-so-in-Windows-/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2004/02/20/If-you-get-used-to-using-UNIX-commands-so-in-Windows-/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2004/02/20/If-you-get-used-to-using-UNIX-commands-so-in-Windows-/" class="post-title-link" itemprop="url">如果你习惯使用UNIX的命令，那么在Windows中...</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2004/02/20/If-you-get-used-to-using-UNIX-commands-so-in-Windows-/" class="post-title-link" itemprop="url">如果你习惯使用UNIX的命令，那么在Windows中...</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2004-02-20 03:00:00" itemprop="dateCreated datePublished" datetime="2004-02-20T03:00:00+08:00">2004-02-20</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -718,103 +572,63 @@ Bookmark, 分类记录看过的感兴趣的网页, 并且按时间排列. 经常
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              unxutils.sourceforge.net 提供了一系列的unix工具在win32平台上的移植版本. 这些版本是完全基于win32平台的, 不像cygwin那样还需要一个模拟层.
-Windows 2000 command line 中的 for 命令用于对一组文件中的每个执行某特定命令，类似于unix的 find * -exec command ，功能很强大，具体参数用 for /? 查看。
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2004/02/20/If-you-get-used-to-using-UNIX-commands-so-in-Windows-/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p><a href="http://unxutils.sourceforge.net" target="_blank" rel="noopener">unxutils.sourceforge.net</a> 提供了一系列的unix工具在win32平台上的移植版本. 这些版本是完全基于win32平台的, 不像cygwin那样还需要一个模拟层.</p>
+<p>Windows 2000 command line 中的 for 命令用于对一组文件中的每个执行某特定命令，类似于unix的 find * -exec command ，功能很强大，具体参数用 for /? 查看。</p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2004/02/18/The-Japanese-weak-minded-invention-/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2004/02/18/The-Japanese-weak-minded-invention-/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2004/02/18/The-Japanese-weak-minded-invention-/" class="post-title-link" itemprop="url">日本人的弱智发明？</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2004/02/18/The-Japanese-weak-minded-invention-/" class="post-title-link" itemprop="url">日本人的弱智发明？</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2004-02-18 21:26:00" itemprop="dateCreated datePublished" datetime="2004-02-18T21:26:00+08:00">2004-02-18</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -825,105 +639,64 @@ Windows 2000 command line 中的 for 命令用于对一组文件中的每个执�
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              在网上看到的“日本人八大弱智发明”，看来大家很看不起这些所谓的发明（还是因为这是日本人发明的？）
-这些发明真的很弱智吗？我不这样认为。这八个发明都是解决现实生活中的实际问题的，虽然不见得都实用，但毕竟是对问题的一个解决方案。我倒是佩服这些发明者的创造能力，不是所有的发明都能成为伟大发明，但伟大发明必然是建立在不断的思维锻炼的基础之上。
-限制、扼杀创造力，是否教育和传统思维的悲哀？
+          <p>在网上看到的“<a href="http://blogger.cn/vidar/posts/13278.aspx#FeedBack" target="_blank" rel="noopener">日本人八大弱智发明</a>”，看来大家很看不起这些所谓的发明（还是因为这是日本人发明的？）</p>
+<p>这些发明真的很弱智吗？我不这样认为。这八个发明都是解决现实生活中的实际问题的，虽然不见得都实用，但毕竟是对问题的一个解决方案。我倒是佩服这些发明者的创造能力，不是所有的发明都能成为伟大发明，但伟大发明必然是建立在不断的思维锻炼的基础之上。</p>
+<p>限制、扼杀创造力，是否教育和传统思维的悲哀？</p>
 
-              
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2004/02/18/The-Japanese-weak-minded-invention-/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2004/02/13/Work-time-statistics/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2004/02/13/Work-time-statistics/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2004/02/13/Work-time-statistics/" class="post-title-link" itemprop="url">工作时间统计</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2004/02/13/Work-time-statistics/" class="post-title-link" itemprop="url">工作时间统计</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2004-02-13 17:18:00" itemprop="dateCreated datePublished" datetime="2004-02-13T17:18:00+08:00">2004-02-13</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -934,104 +707,67 @@ Windows 2000 command line 中的 for 命令用于对一组文件中的每个执�
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              同事推荐Office2003的joural功能，能够自动统计在office上做的各项工作的时间记录，如写Word文档，写PPT文档，用Visio作图，处理Email等。很方便进行工作量的统计。
-对工作时间做记录，不光可以对工作量做统计，对于个人的时间管理、有效利用时间都很有好处。
-我的pda上就有个小程序做时间记录的，我现在设置了 工作、学习、事务、消遣 几个分类，做事情前点一点，做完之后点一点，
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2004/02/13/Work-time-statistics/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p>同事推荐Office2003的joural功能，能够自动统计在office上做的各项工作的时间记录，如写Word文档，写PPT文档，用Visio作图，处理Email等。<br>很方便进行工作量的统计。</p>
+<p>对工作时间做记录，不光可以对工作量做统计，对于个人的时间管理、有效利用时间都很有好处。</p>
+<p>我的pda上就有个小程序做时间记录的，我现在设置了 工作、学习、事务、消遣 几个分类，做事情前点一点，做完之后点一点，就会把花费的时间记录下来。这样可以统计出有多少时间是用于工作，多少时间看书学习，阅读邮件之类的事务耗了多少时间，上网看新闻等消遣又用了多少时间。掌握了这些数据，可帮助改善个人的时间利用效率。</p>
+<p>如果要用来统计各项目的工作时间，再按项目细分就可以了。虽然看起来记录有点麻烦，其实习惯了就好，不就是点个按钮嘛。</p>
+<p>Palm上的这个工具叫Punch Time Clock， PC上应该也有类似的程序的。</p>
+<p>不过真要按时间统计计算工作量，还有个观念问题。我今天工作了一天，统计出来的工作时间是4小时，要提交上去上司怎么说？偷懒？不行，怎么也得填个8小时。要真的按4小时算了，下次有同样任务，哦，你上次4小时做出来的，好，给你半天时间!实际上，真正有效的工作时间能占总工作时间的一半，已经不错了，各研究资料都是这么说的。</p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2004/01/06/Use-GPSMap-76-firmware-to-GPS-76-upgrade/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2004/01/06/Use-GPSMap-76-firmware-to-GPS-76-upgrade/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2004/01/06/Use-GPSMap-76-firmware-to-GPS-76-upgrade/" class="post-title-link" itemprop="url">用GPSMap 76 firmware给GPS 76升级</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2004/01/06/Use-GPSMap-76-firmware-to-GPS-76-upgrade/" class="post-title-link" itemprop="url">用GPSMap 76 firmware给GPS 76升级</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2004-01-06 22:49:00" itemprop="dateCreated datePublished" datetime="2004-01-06T22:49:00+08:00">2004-01-06</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -1042,106 +778,82 @@ Windows 2000 command line 中的 for 命令用于对一组文件中的每个执�
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              根据网上新闻组有关“用legend firmware update venture”讨论的提示，今天冒险进行试验，成功的用GPSMap 76 v3.3 firmware将我的GPS 76升级。
-升级的好处：
+          <p>根据网上新闻组有关“用legend firmware update venture”讨论的提示，今天冒险进行试验，成功的用GPSMap 76 v3.3 firmware将我的GPS 76升级。</p>
+<p>升级的好处：</p>
+<ul>
+<li>Number of waypoints from 500 to 1000</li>
+<li>Number of track points in active tracklog from 2000 to 10000</li>
+<li>Number of Routes / number of waypoints per route from 50/50 to 50/125</li>
+</ul>
+<p>升级的坏处：</p>
+<ul>
+<li>Not support POI database anymore</li>
+<li>Warranty void</li>
+</ul>
+<p>Steps:</p>
+<ol>
+<li>Download a firmware update for GPSMap 76 from Garmin website or from the following URL:<br><a href="http://www.tramsoft.ch/gps/garmin_gpsmap76-firmware-upgrades_en.html" target="_blank" rel="noopener">http://www.tramsoft.ch/gps/garmin_gpsmap76-firmware-upgrades_en.html</a></li>
+<li>Extract the downloaded self-extractarchive file to a folder. There should be three files: a ROM image (rgn file), an update tool (exe file) and a readme file. </li>
+<li>Notice that the ROM image is named as 017702000xxx.rgn,xxx is the firmware version number, 177 is the product number of GPSMap 76. You can’t direct use this file to update the GPS 76 because of the incorrect product number. Change the rgn file name from 177 to 173 which is the product number of GPS 76. </li>
+<li>Backup all date in your GPS 76. </li>
+<li>The exciting time comes. Do it as a normal firmware update. </li>
+<li>After about 2 minutes nervous waiting, it done. Enjoy your GPS 76 with 1000 waypoints and 10000track points!</li>
+</ol>
 
-Number of waypoints from 500 to 1000
-Number of track points in active tracklog from 2000 to 100
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2004/01/06/Use-GPSMap-76-firmware-to-GPS-76-upgrade/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2003/12/30/Time-management-goals/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2003/12/30/Time-management-goals/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2003/12/30/Time-management-goals/" class="post-title-link" itemprop="url">时间管理的目标</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2003/12/30/Time-management-goals/" class="post-title-link" itemprop="url">时间管理的目标</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2003-12-30 18:26:00" itemprop="dateCreated datePublished" datetime="2003-12-30T18:26:00+08:00">2003-12-30</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -1152,147 +864,28 @@ Number of track points in active tracklog from 2000 to 100
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              不遗忘任何要做的事情，不让要做的事情太多。两者好像矛盾，实际不然。不遗忘任何要做的事情，就是要把任何要做的事，不分大小不分轻重，通通纳入到一个系统中管理。事情到底是否重要，留待后边归类和用优先级来判别，全部收集的目的就在于不让自己害怕遗忘了什么事情而造成压力，并且统一管理要做的事情后，才可能实现其他的时间管理目标。不让要做的事情太多，是指通过对事情分类，划分场合，来减少具体某一时间要做的事情。例如
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2003/12/30/Time-management-goals/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p><strong>不遗忘任何要做的事情，不让要做的事情太多</strong>。两者好像矛盾，实际不然。不遗忘任何要做的事情，就是要把任何要做的事，不分大小不分轻重，通通纳入到一个系统中管理。事情到底是否重要，留待后边归类和用优先级来判别，全部收集的目的就在于不让自己害怕遗忘了什么事情而造成压力，并且统一管理要做的事情后，才可能实现其他的时间管理目标。不让要做的事情太多，是指通过对事情分类，划分场合，来减少具体某一时间要做的事情。例如目前暂时不需要处理的事情，放到someday maybe分类中，就可以从心头中抛开了，等到定期review时再来考虑它。把事情划分成需要在不同场合完成，在具体的一个场合只看到当前要做的事情，这样就能减少纷乱。比如在@home这个场合，需要做的事情是搞卫生、看书之类的，不要让工作的事情烦着；要去银行取钱、购买东西什么的，记录在@out这个场合的待办事宜中，上班时就不需要惦记着它。</p>
+<p><strong>让时间使用得更有效率</strong>。不是想起什么就做什么，而是做最有价值的事情。按照四象限法则，事情的优先级可以按照重要性和紧急性两个坐标划分为四象限。重要性是指事情的作用，是否完成它引起的后果是否重要；紧急性是指时间，要求立刻完成还是可以延迟。其中以紧急性优先，重要性次之，因此应该是先做“紧急且重要”的事情，然后是“紧急但不那么重要”，再做“重要但不紧急”，“既不重要又不紧急”的事情最后才做。优先级是并不加入完成难易的因素在里面的。如果做事情不按优先级来选择，就会终日忙碌于优先级低的小事情，而重要的事情还是没有完成。</p>
+<p><strong>平衡人生中的各个方面</strong>。想要做的事和需要做的事通常是不完全一致的，想要做的事是出于自己内在的驱动力，可能是兴趣、可能是习惯，需要做的事是出于外在的要求，例如谋生、人际关系。大家都希望从事的工作就是自己的兴趣，实际上哪有这么理想呢，而且内在驱动力和外在要求都在不断变化中，这就要求在两者间取得平衡。如果不加以管理，往往在兴趣爱好方面情会放越来越多的时间精力进去，而忽视了其他方面。</p>
+<p>要让时间管理达到效果，可能还有很重要的一点就是要<strong><em>信任</em></strong>自己的时间管理系统，相信这样的管理是有效的，遵循它的建议去做。在使用的过程中再不断调整，让它越来越符合自己的情况。</p>
+<p>目前有关时间管理的书籍、工具，似乎比较偏向于从事管理、商务工作的人士，他们是工作往往是在与人沟通的比重比较大，事务性的事情较多；而我们这些从事技术工作的人，工作重点与他们不一样，在运用时间管理方法时还不能照搬，到底该怎样调整，还是比较伤脑筋的:(</p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2003/12/17/Idea-/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leo Liang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good good study, day day up">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2003/12/17/Idea-/" class="post-title-link" itemprop="url">Idea的记录</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2003-12-17 00:47:00" itemprop="dateCreated datePublished" datetime="2003-12-17T00:47:00+08:00">2003-12-17</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
-              </span>
-            
-          
-
-          <br>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            <p>
-              记录idea最有效的方法应该是纸和笔，比较符合思维习惯。电脑是好工具，但是电脑不一定在身边，思维最有创造性的时候往往是在非工作状态中，例如洗澡、走在路上的时候。有idea的时候必须尽快记录下来，即使打断了当前的工作。有idea的时候是最有价值的。另一方面，电脑输入的速度也不一定赶得上思维，还有可能因为软件人机界面而局限了思维（Tablet PC是一个好的方向，我以前写过一点有关的东西）。我也打算尝
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2003/12/17/Idea-/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-    
-  </section>
 
   
   <nav class="pagination">
@@ -1300,170 +893,90 @@ Number of track points in active tracklog from 2000 to 100
   </nav>
 
 
+
           </div>
           
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
           
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
-  <aside id="sidebar" class="sidebar">
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="/blog/images/android-chrome-512x512.png">
   <p class="site-author-name" itemprop="name">Leo Liang</p>
-  <div class="site-description motion-element" itemprop="description"></div>
+  <div class="site-description" itemprop="description"></div>
 </div>
-  <nav class="site-state motion-element">
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">328</span>
+          <span class="site-state-item-count">329</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-tags">
-        
-          
             <a href="/blog/tags/">
           
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
         <span class="site-state-item-count">52</span>
-        <span class="site-state-item-name">标签</span>
-        </a>
+        <span class="site-state-item-name">标签</span></a>
       </div>
-    
   </nav>
-  <div class="feed-link motion-element">
-    <a href="/blog/atom.xml" rel="alternate">
-      <i class="fa fa-rss"></i>RSS
-    </a>
-  </div>
+</div>
 
 
 
-        </div>
       </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
 
     </div>
   </aside>
@@ -1473,17 +986,24 @@ Number of track points in active tracklog from 2000 to 100
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Leo Liang</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
 
         
 
@@ -1494,40 +1014,26 @@ Number of track points in active tracklog from 2000 to 100
 
 
 
-        
       </div>
     </footer>
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-      </div>
-
-    
-
   </div>
 
   
-  <script src="/blog/lib/jquery/index.js?v=3.4.1"></script>
-  <script src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
 
-  <script src="/blog/js/utils.js?v=7.2.0"></script>
-  <script src="/blog/js/motion.js?v=7.2.0"></script>
+<script src="/blog/js/utils.js"></script>
 
-  
-  <script src="/blog/js/affix.js?v=7.2.0"></script>
-  <script src="/blog/js/schemes/pisces.js?v=7.2.0"></script>
+<script src="/blog/js/motion.js"></script>
 
 
+<script src="/blog/js/schemes/pisces.js"></script>
 
-  
 
-  <script src="/blog/js/next-boot.js?v=7.2.0"></script>
+<script src="/blog/js/next-boot.js"></script>
 
-  
 
-  
-
-  
 
 
   
@@ -1535,6 +1041,8 @@ Number of track points in active tracklog from 2000 to 100
 
 
 
+  
+<script src="/blog/js/local-search.js"></script>
 
 
 
@@ -1548,27 +1056,9 @@ Number of track points in active tracklog from 2000 to 100
 
 
 
+  
 
-
-
-
-
-
-  <script src="/blog/js/local-search.js?v=7.2.0"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+  
 
 
 </body>

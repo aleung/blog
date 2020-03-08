@@ -1,76 +1,43 @@
 <!DOCTYPE html>
-
-
-
-
-
-<html class="theme-next gemini use-motion" lang="zh-CN">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="generator" content="Hexo 3.9.0">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=7.2.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=7.2.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=7.2.0">
-  <link rel="mask-icon" href="/blog/images/logo.svg?v=7.2.0" color="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+  <link rel="manifest" href="/blog/images/manifest.json">
 
-<link rel="stylesheet" href="/blog/css/main.css?v=7.2.0">
-
-
-<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+<link rel="stylesheet" href="/blog/css/main.css">
 
 
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/blog/',
-    scheme: 'Gemini',
-    version: '7.2.0',
-    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},
-    search: {
-      root: '/blog/',
-      path: 'search.xml'
-    },
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    }
-  };
-</script>
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
   <meta property="og:type" content="website">
 <meta property="og:title" content="Good good study, day day up">
 <meta property="og:url" content="http://aleung.github.io/blog/page/11/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Leo Liang">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Good good study, day day up">
-  <link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
-  <link rel="canonical" href="http://aleung.github.io/blog/page/11/">
+
+<link rel="canonical" href="http://aleung.github.io/blog/page/11/">
 
 
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : true,
+    isPost : false
   };
 </script>
 
@@ -82,11 +49,8 @@
 
 
 
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -95,9 +59,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -109,18 +72,26 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  <div class="container sidebar-position-right page-home">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
   <div class="site-meta">
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/blog/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Good good study, day day up</span>
@@ -128,154 +99,186 @@
       </a>
     </div>
         <p class="site-subtitle">aleung的学习笔记, aleung的idea</p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
   </div>
 </div>
-
 
 
 <nav class="site-nav">
-    <ul id="menu" class="menu">
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-      
-    
-      
-    
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">52</span></a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">52</span></a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-      
-    
-      
-    
+        <li class="menu-item menu-item-archives">
 
-    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">328</span></a>
+    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">329</span></a>
 
   </li>
-        <li class="menu-item menu-item-search">
-          <a href="javascript:;" class="popup-trigger">
-          
-            <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-        </li>
-      
-    </ul>
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
   </div>
-  <div id="local-search-result"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
 </div>
 
+  </div>
+</div>
 
-    </div>
-</nav>
-
+  </div>
 </div>
     </header>
 
     
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+
+          <div class="content">
             
 
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <div class="posts-expand">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2010/11/13/right-of-way/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2010/12/10/Tiny-HTTP-Server-by-Java/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2010/11/13/right-of-way/" class="post-title-link" itemprop="url">路权</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2010/12/10/Tiny-HTTP-Server-by-Java/" class="post-title-link" itemprop="url">Tiny HTTP Server by Java</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
+              <time title="创建时间：2010-12-10 06:56:00" itemprop="dateCreated datePublished" datetime="2010-12-10T06:56:00+08:00">2010-12-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2011-11-08 21:50:00" itemprop="dateModified" datetime="2011-11-08T21:50:00+08:00">2011-11-08</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>前两天在项目的测试环境中发现有一个Java实现的 Tiny HTTP server，就一个Java文件，不知道同事从哪里找来的。用来临时从服务器上下载些文件，或者查看HTML文档（例如 JUnit test report, JavaDoc）之类的非常方便。它只支持HTTP GET方法，URL必须指向一个文件。我顺手修改了一下，让它可以列出目录，这样用起来更加方便一些。</p>
+<script src="//gist.github.com/1347769.js"></script>
+
+<p>运行时可带两个参数：port, http root directory。例如:</p>
+<pre><code>$JAVA_HOME/bin/java httpServer 8080 /tmp/test-report</code></pre><p>P.S. 网上搜索一下，我的同事应该是从这里找到这段代码的：<a href="http://www.java2s.com/Code/Java/Tiny-Application/HttpServer.htm" target="_blank" rel="noopener">http://www.java2s.com/Code/Java/Tiny-Application/HttpServer.htm</a></p>
+
+      
+    </div>
+
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2010/11/13/right-of-way/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2010/11/13/right-of-way/" class="post-title-link" itemprop="url">路权</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2010-11-13 07:01:00" itemprop="dateCreated datePublished" datetime="2010-11-13T07:01:00+08:00">2010-11-13</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -286,103 +289,69 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              第一次到荷兰的时候，同行同事就说，荷兰人开车怎么都不让行人啊。住的酒店附近几条路都不宽，也就是广州小区里的道路的宽度，车也不多，路口没有交通灯也没有斑马线，但是我们过马路的时候汽车都不让我们，跟在瑞典受到的礼遇差远了。当时我们就说，看来荷兰人不如瑞典人谦让啊。
-但后来呆的时间长了，发现也不全是这样，当在斑马线上要过马路时，即使我们习惯的站在路边等待，即使汽车以很快的速度飙过来，大多数司机都会将车停
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2010/11/13/right-of-way/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p>第一次到荷兰的时候，同行同事就说，荷兰人开车怎么都不让行人啊。住的酒店附近几条路都不宽，也就是广州小区里的道路的宽度，车也不多，路口没有交通灯也没有斑马线，但是我们过马路的时候汽车都不让我们，跟在瑞典受到的礼遇差远了。当时我们就说，看来荷兰人不如瑞典人谦让啊。</p>
+<p>但后来呆的时间长了，发现也不全是这样，当在斑马线上要过马路时，即使我们习惯的站在路边等待，即使汽车以很快的速度飙过来，大多数司机都会将车停在斑马线前让我们过去。我就想，也许是刚来的时候定论下得太早了，其实多数荷兰司机也让行人的。</p>
+<p>抱着这种”在路口过马路时汽车会让行人”的心态，在一些路口又碰了麻烦。住处的附近有个丁字路口，准备右转的车会停在路口前，我经常趁这个机会就过马路，以为他们是故意让我的。但有时我刚要过马路的时候它又起步了。</p>
+<p>后来，我才发现了区别：那个丁字路口虽然用横穿马路的线标示行人自行车横过的路线，但却没有画斑马线。在有斑马线的地方，即使你只是站在路边，多数汽车都会完全停下让你先过；而想在没斑马线的地方过马路就得非常小心，一定要完全没车才能过，汽车不会作丝毫减速避让。这与道路的宽度没有关系，与车辆多少行人多少也没有关系，一切按照标识。习惯了之后就发现这非常好，行人车辆都守规矩，行人不怕被车撞，车辆不担心撞到人，相互都不会影响到对方。</p>
+<p>类似的情况也体现在车辆行驶上。在欧洲，坐车离开城市范围后，公路往往都不宽，甚至只有两车道，不时会有分叉路口或者十字路口，都没有交通灯的，但是司机一路都开得很快，不会在路口前减速，仿佛他从来不担心路口会有车驶出来。仔细观察后发现路口前都会有交通标志，用粗线和细线标出交会的道路，我们走的路是粗线，司机是不会减速的，但如果我们走的路是细线，司机就会在路口前减速或者停下来。</p>
+<p>在这里面有一个路权（Right of way）的概念非常重要，路权是使用道路的权利。斑马线标志着在这个区域中行人拥有比车辆优先的路权，因此车辆要停下来等行人通行；而在没有斑马线的地方，行人过马路不能影响汽车的通行，因为车辆有优先路权（对此，不同地方的交通法规可能不一样）。在没有交通灯的路口，主要道路上的车辆有优先路权，因此岔道上的车只能在完全不会影响主要道路上车辆通行的时候才能驶出来。有交通灯的路口，绿灯表示得到路权。在路口，直行车辆比左转车辆路权优先，因此左转车不能强行挡住对面来车而左转。</p>
+<p>在发达国家（也包括香港、澳门），虽然多数道路都狭窄，平交路口密集且大都不设交通灯，交通依然相当顺畅，道路通行效率很高。这其实并不是什么礼让不礼让的问题，关键是明确每个参与者所拥有的权利，大家相互尊重对方的权利，依照规则行事。我没有考车牌，不知道中国的交通法规里有没有与西方国家相同的路权的概念，不过就算有，在每个人的心中和实际执行中都是不存在的。</p>
+<p>由这个路权想开，我觉得西方国家发达，其中一个因素是他们能够很好的将社会中各个个体的关系及利益冲突通过权利（right）来明晰、规范和协调，保障了整个社会运作的效率。而中国人向来缺乏权利意识，也没有对权利的尊重，我们认的只是权力（power）。</p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2010/11/02/WebLogic-Resource-Adapter-JCA-WorkManager-/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2010/11/02/WebLogic-Resource-Adapter-JCA-WorkManager-/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2010/11/02/WebLogic-Resource-Adapter-JCA-WorkManager-/" class="post-title-link" itemprop="url">WebLogic在非Resource Adapter里直接使用JCA WorkManager的失败尝试</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2010/11/02/WebLogic-Resource-Adapter-JCA-WorkManager-/" class="post-title-link" itemprop="url">WebLogic在非Resource Adapter里直接使用JCA WorkManager的失败尝试</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2010-11-02 05:43:00" itemprop="dateCreated datePublished" datetime="2010-11-02T05:43:00+08:00">2010-11-02</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -393,102 +362,71 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              JCA 1.5 规范定义了WorkManager API，能方便的进行任务的(多线程)并行处理。按照JCA规范的原意，WorkManager是仅提供给Resource Adapter使用的，容器会提供WorkManager实例并通过BootstrapContext注入到adapter中。可是，有时在其他场合，例如EJB、Servlet中，也希望能将请求拆分，使用WorkManager并行处理，但J
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2010/11/02/WebLogic-Resource-Adapter-JCA-WorkManager-/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p>JCA 1.5 规范定义了WorkManager API，能方便的进行任务的(多线程)并行处理。按照JCA规范的原意，WorkManager是仅提供给Resource Adapter使用的，容器会提供WorkManager实例并通过BootstrapContext注入到adapter中。可是，有时在其他场合，例如EJB、Servlet中，也希望能将请求拆分，使用WorkManager并行处理，但JEE规范中并没有提供这样的机制。</p>
+<p>WebLogic提供了CommonJ WorkManager API，可用于任意应用中，但这个API不在JEE规范之中，因此GlassFish是不支持的。而且，使用WebLogic CommonJ WorkManager时需要在ejb-jar.xml中加入一个类型为commonj.work.WorkManager的resource reference，这样同一个ejb包就不能在不同application server间通用了，因此我还是希望能找到一种通用的方法。</p>
+<p>SpringFramework的org.springframework.jca.work包为GlassFish和JBoss提供了在Resource Adapter外部使用JCA 1.5 WorkManager的简便方法。看了for GlassFish的源代码，发现它其实是调用了GlassFish内部的factory去直接创建WorkManager，那么对GlassFish是否也可以这样做呢？</p>
+<p>反编译WebLogic的jar包，发现commonj WorkManager和connector WorkManager实际上都是delegate到一个weblogic.work.WorkManager实现的，也就是说在WebLogic里，CommonJ和JCA的WorkManager的底层实现其实都是同样的。接下来找到了weblogic.work.WorkManagerFactory，它有find和findOrCreate方法可返回weblogic.work.WorkManager实例，也许就是可以拿到weblogic-ejb-jar.xml里面定义的weblogic WorkManager。拿到了内部的weblogic.work.WorkManager实例后，再调用weblogic.connector.work.WorkManager的create方法，将这个内部WorkManger包裹到JCA WorkManager中，那么我们的应用就可以使用这个JCA WorkManager了，通过Spring的WorkManagerTaskExecutor来很方便的调度任务，上层的逻辑就可以做到与应用服务器无关。看起来很美。</p>
+<p><a href="http://www.flickr.com/photos/leoliang/5137622842/" target="_blank" rel="noopener"><img src="http://farm2.static.flickr.com/1208/5137622842_a9b4e5fda8_b.jpg" alt="WLS-WorkManager"></a></p>
+<p>可是结果是残酷的。写了一个测试程序，结果是通过这个WorkManagerFactory可以成功的获取到weblogic.work.WorkManager实例，也能够创建出包裹的JCA WorkManager，可是真正要使用它来执行work时，它很坚定的拒绝了，抛出异常信息：Attempt to create Work outside the context of the Connector container。</p>
+<p>查看代码，发现weblogic.connector.work.WorkManager及WorkImpl内部会寻找相应的RAInstanceManager，并且WorkImpl需要用到rarClassloader，看来它设计上还是与resource adapter相关的。一涉及到classloader，我无心恋战了，算了，就此打住。</p>
+<p>P.S. 既然说到WorkManager，就推荐一下我的同事写的相关的一篇blog：<a href="http://www.javaeye.com/topic/623825" target="_blank" rel="noopener">application server 下的任务异步/并行执行方案</a></p>
+<p>P.P.S. 我后来采用的解决方案是让build system可以根据需要为不同的 target application server 选择不同的 deployment descriptor 来build相应的artifacts。</p>
+<p>P.P.P.S. 回头再读一下，发现文章里中文英文混杂得很厉害。没办法了，那些专业术语都是看惯英文了，用中文翻译了反而别扭。</p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2010/09/28/Andriod-TransProxy/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2010/09/28/Andriod-TransProxy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2010/09/28/Andriod-TransProxy/" class="post-title-link" itemprop="url">Andriod TransProxy</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2010/09/28/Andriod-TransProxy/" class="post-title-link" itemprop="url">Andriod TransProxy</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2010-09-28 06:13:00" itemprop="dateCreated datePublished" datetime="2010-09-28T06:13:00+08:00">2010-09-28</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -499,102 +437,64 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              关注我之前写的Android翻墙系列文章1, 2, 3的朋友请留意一下这个应用：TransProxy。这个应用的v3版本集成了HTTP transparent proxy (使用Transproxy)、HTTPS/SOCKS redirector (使用redsocks) 、iptables script 并提供了配置、控制的界面。理论上，结合TransProxy和ConnectBot就可以实现A
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2010/09/28/Andriod-TransProxy/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p>关注我之前写的Android翻墙系列文章<a href="/2010/06/02/Consider-how-in-the-Android-mobile-phones-in-use-SSH-tunnel-over-the-wall">1</a>, <a href="/2010/06/07/Android-SSH-tunnel-2010-06-06-">2</a>, <a href="/2010/07/31/Android-SSH-tunnel-prototype">3</a>的朋友请留意一下这个应用：<a href="http://forum.xda-developers.com/showthread.php?t=766569" target="_blank" rel="noopener">TransProxy</a>。这个应用的v3版本集成了HTTP transparent proxy (使用<a href="http://transproxy.sourceforge.net/" target="_blank" rel="noopener">Transproxy</a>)、HTTPS/SOCKS redirector (使用<a href="http://darkk.net.ru/redsocks/" target="_blank" rel="noopener">redsocks</a>) 、iptables script 并提供了配置、控制的界面。理论上，结合TransProxy和ConnectBot就可以实现Android上通过SSH tunnel翻墙，请参考<a href="/2010/06/02/Consider-how-in-the-Android-mobile-phones-in-use-SSH-tunnel-over-the-wall">这里</a>的第二张图片：ConnectBot实现了SSH client，TransProxy提供了transparent socks proxy并且设置iptables。</p>
+<p>不过，我刚刚将TransProxy和ConnectBot配合运行起来试了一下，并没有成功，并且手机又遇到了100% CPU占用的问题，只能手工将ConnectBot kill了。ConnectBot当前最新的snapshot版本都还是没有解决这个<a href="http://code.google.com/p/connectbot/issues/detail?id=299" target="_blank" rel="noopener">bug</a>，大家快去给这个bug加星，促使开发者优先解决吧。</p>
+<p>鉴于我目前暂时处于肉身翻墙状态，没有积极性去进一步实验了，各位动手试试吧，有结果记得共享出来。另外，目前TransProxy的作者还在相当勤快的改进这个应用，不妨到xda-developers论坛与他交流。  </p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2010/07/31/Android-SSH-tunnel-prototype/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2010/07/31/Android-SSH-tunnel-prototype/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2010/07/31/Android-SSH-tunnel-prototype/" class="post-title-link" itemprop="url">Android手机上使用SSH tunnel：prototype</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2010/07/31/Android-SSH-tunnel-prototype/" class="post-title-link" itemprop="url">Android手机上使用SSH tunnel：prototype</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2010-07-31 00:17:00" itemprop="dateCreated datePublished" datetime="2010-07-31T00:17:00+08:00">2010-07-31</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2010-08-23 10:04:00" itemprop="dateModified" datetime="2010-08-23T10:04:00+08:00">2010-08-23</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -605,105 +505,87 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              在上次写下进展之后，就真的没有任何进展了。本来打算完成之后会发布成开源软件的，但现在看来遥遥无期。有人问我iptables命令怎么写，就把简要介绍放这里吧。
+          <p>在上次写下<a href="/2010/06/07/Android-SSH-tunnel-2010-06-06-">进展</a>之后，就真的没有任何进展了。本来打算完成之后会发布成开源软件的，但现在看来遥遥无期。有人问我iptables命令怎么写，就把简要介绍放这里吧。</p>
+<ol>
+<li><p>首先确认你有Android系统的root权限，下面的操作要以root身份登录到shell进行</p>
+</li>
+<li><p>将transocks_ev放到Android系统中，目录随你喜欢。这里<a href="http://cid-e1c6bc07e3f505a3.office.live.com/self.aspx/.Public/transocks%5E_ev-android.zip" target="_blank" rel="noopener">下载</a>已编译的transocks_ev for Android可执行文件，解压后文件的MD5：6a0c3500bcd24ab7b706c8caf34f15ba</p>
+</li>
+<li><p>从Android Market下载ConnectBot，配置好你的ssh帐号，记得设置port forwarding，端口为9050</p>
+</li>
+<li><p>在ConnectBot中连接ssh</p>
+</li>
+<li><p>在shell中运行transocks_ev:  </p>
+<p>transocks_ev -S 127.0.0.1 -s 9050</p>
+</li>
+<li><p>在shell中执行iptables命令： </p>
+<p>iptables -t nat -F<br>iptables -t nat -A OUTPUT -m owner –cmd-owner transocks_ev -j RETURN<br>iptables -t nat -A OUTPUT -m owner –cmd-owner org.connectbot -j RETURN<br>iptables -t nat -A OUTPUT -p tcp –dport 80 -j REDIRECT –to-ports 1211<br>iptables -t nat -A OUTPUT -p tcp –dport 443 -j REDIRECT –to-ports 1211</p>
+</li>
+<li><p>这时所有的HTTP/HTTPS流量都会通过ssh tunnel了，但DNS查询不会，所以依然无法访问被DNS污染的网站</p>
+</li>
+<li><p>断开ConnectBot连接</p>
+</li>
+<li><p>在shell中kill掉transocks_ev进程</p>
+</li>
+<li><p>在shell中执行iptables命令：</p>
+<p>iptables -t nat -F</p>
+</li>
+</ol>
 
-首先确认你有Android系统的root权限，下面的操作要以root身份登录到shell进行
-将transocks_ev放到Android系统中，目录随你喜欢。这里下载已编译的transocks_ev for Android可执行文件，解压
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2010/07/31/Android-SSH-tunnel-prototype/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2010/07/30/Swimming-feeling/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2010/07/30/Swimming-feeling/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2010/07/30/Swimming-feeling/" class="post-title-link" itemprop="url">游泳感想</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2010/07/30/Swimming-feeling/" class="post-title-link" itemprop="url">游泳感想</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2010-07-30 22:49:00" itemprop="dateCreated datePublished" datetime="2010-07-30T22:49:00+08:00">2010-07-30</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -714,103 +596,64 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              几天前去游泳，连续游了四十分钟，没有感觉到累，倒是游得很无聊。一路就是看着池底白晃晃的瓷片和黑色的泳道线，到头了转个身一蹬池壁，又是单调的白与黑。见不到养眼的泳装美女来分散一下注意力，一路只好默念着这是第十个来回，第十一个来回，目标是十五个，目标是十五个……游得无聊，倒是有了两个想法。
-首先是想为什么没有音乐听听呢？跑步的时候可以戴着耳机听音乐，游泳也应该可以才对。做防水的播放器和防水的耳机，难度
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2010/07/30/Swimming-feeling/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p>几天前去游泳，连续游了四十分钟，没有感觉到累，倒是游得很无聊。一路就是看着池底白晃晃的瓷片和黑色的泳道线，到头了转个身一蹬池壁，又是单调的白与黑。见不到养眼的泳装美女来分散一下注意力，一路只好默念着这是第十个来回，第十一个来回，目标是十五个，目标是十五个……游得无聊，倒是有了两个想法。</p>
+<p>首先是想为什么没有音乐听听呢？跑步的时候可以戴着耳机听音乐，游泳也应该可以才对。做防水的播放器和防水的耳机，难度应该不大，说不定已经有这样的产品了，只是没有普及。</p>
+<p>第二个想法有意思些。我在海里看过珊瑚，离岸不远的浅水，只要把头沉入水中，就能见到海底犹如大花园一般的珊瑚世界。如果整个游泳池底铺上大显示屏，游泳池也可以变身为虚拟海底世界。五彩斑斓的珊瑚随着水波微微摇曳，鱼群在其中穿梭。假若结合电脑控制的虚拟现实系统，加上感应器，还可让鱼群在你游近时飞快逃开，而海豚就伴在你左右。</p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2010/06/28/Panasonic-H540U-washing-machine-design-flaws/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2010/06/28/Panasonic-H540U-washing-machine-design-flaws/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2010/06/28/Panasonic-H540U-washing-machine-design-flaws/" class="post-title-link" itemprop="url">松下H540U洗衣机的设计缺陷</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2010/06/28/Panasonic-H540U-washing-machine-design-flaws/" class="post-title-link" itemprop="url">松下H540U洗衣机的设计缺陷</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2010-06-28 18:35:00" itemprop="dateCreated datePublished" datetime="2010-06-28T18:35:00+08:00">2010-06-28</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -821,103 +664,70 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              家里的松下H540U波轮洗衣机，使用了大概一年半左右开始出现撞桶现象，就是在洗衣的过程中，每次波轮起动（或反转）时，洗衣桶会碰撞到箱体。因为箱体相应位置贴了防撞海绵，摩擦时发出很大很难听的”吱吱”的声音。打开上盖检查过，发现是箱体吊挂系统变形所致，我觉得这属于设计上的缺陷。
-如果不清楚波轮洗衣机吊挂系统的结构，可以看看全自动波轮洗衣机培训手册的3.1节。洗衣机的桶体是靠四根吊杆悬挂在箱体的四个角上
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2010/06/28/Panasonic-H540U-washing-machine-design-flaws/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p>家里的松下H540U波轮洗衣机，使用了大概一年半左右开始出现撞桶现象，就是在洗衣的过程中，每次波轮起动（或反转）时，洗衣桶会碰撞到箱体。因为箱体相应位置贴了防撞海绵，摩擦时发出很大很难听的”吱吱”的声音。打开上盖检查过，发现是箱体吊挂系统变形所致，我觉得这属于设计上的缺陷。</p>
+<p>如果不清楚波轮洗衣机吊挂系统的结构，可以看看<a href="http://wenku.baidu.com/view/b996ea335a8102d276a22ff5.html" target="_blank" rel="noopener">全自动波轮洗衣机培训手册</a>的3.1节。洗衣机的桶体是靠四根吊杆悬挂在箱体的四个角上的，如果吊杆的长度不一致就会造成桶体不平衡。</p>
+<p>从照片中可以看出，箱体前面两个角用来悬挂吊杆的角铁都已经变形下沉，而后面的两个角则正常，这样就造成桶体前倾，在洗衣的时候不平衡自然就频频撞击箱体了。</p>
+<p><a href="http://www.flickr.com/photos/leoliang/4741375101/" target="_blank" rel="noopener"><img src="http://farm5.static.flickr.com/4143/4741375101_8ae3ce01eb.jpg" alt="H540U front-right"></a> <a href="http://www.flickr.com/photos/leoliang/4741375099/" target="_blank" rel="noopener"><img src="http://farm5.static.flickr.com/4093/4741375099_9191b131d3.jpg" alt="H540U front-left"></a> <a href="http://www.flickr.com/photos/leoliang/4741375103/" target="_blank" rel="noopener"><img src="http://farm5.static.flickr.com/4143/4741375103_3675a8e073.jpg" alt="H540U rear-left"></a></p>
+<p>为了外形美观，箱体前面的两条边做成了大圆弧，也许是为了加工方便的缘故，悬挂吊杆的角铁在圆弧部分并没有与箱体接触，是悬空的，起到支撑作用的只有侧面的一部分，由于强度不足在使用一段时间后就变形了。这款洗衣机在最高水位时桶内的重量超过50公斤，平常洗衣就算不满也有30～40公斤。箱体后侧两条边是直角，箱体支持角铁的的长度足够长，就没有发生变形。</p>
+<p>如果箱体前边不要做这么大的圆弧，像后面两角一样，就不会有问题；如果圆弧不能放弃，那就应该在圆弧处也翻出一条边，与角铁焊接在一起不让其悬空，不过这样的加工难度会大很多。但无论如何，设计的时候应该要考虑到其强度是否足够支持正常使用负荷，因此我说这是设计的缺陷。</p>
+<p>因为箱体只保修一年，出现问题时已经过保了，不能更换。师傅给我的建议是将洗衣机前面两脚垫高，以补偿桶身的倾斜。比较奇怪的是，挂杆的长度居然是无法调节的，不知道是师傅嫌麻烦还是真的不能调。如果不能调，怎么控制生产装配过程出现的误差？</p>
+<p>我怀疑其他型号乃止其他厂家的洗衣机都可能会有同样问题—-如果它们的箱体做成大圆弧，选购的时候要留意一下该处的支撑结构。对于H540U，把头伸进桶口处勉强可以看到悬挂角铁，如果看不到或者光线不足，可以用相机拍摄。</p>
+<p>我对这款洗衣机的功能还是比较满意的，但是一些非关键性的地方的设计和质量还是有不足。除了这个变形问题，还出现过上盖连接处塑料件断开和进水盒开裂漏水，幸好都属于保修范围更换了。</p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2010/06/28/Amazing-I-got-the-geocoin-which-was-sent-to-me-from-Italy-two-years-ago-/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2010/06/28/Amazing-I-got-the-geocoin-which-was-sent-to-me-from-Italy-two-years-ago-/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2010/06/28/Amazing-I-got-the-geocoin-which-was-sent-to-me-from-Italy-two-years-ago-/" class="post-title-link" itemprop="url">Amazing, I got the geocoin which was sent to me from Italy two years ago!</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2010/06/28/Amazing-I-got-the-geocoin-which-was-sent-to-me-from-Italy-two-years-ago-/" class="post-title-link" itemprop="url">Amazing, I got the geocoin which was sent to me from Italy two years ago!</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2010-06-28 16:35:00" itemprop="dateCreated datePublished" datetime="2010-06-28T16:35:00+08:00">2010-06-28</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -928,103 +738,68 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              
-This picture was taken at 18:44 18-Jun-2010, when I picked up the geocoin ALEUNG 1 from the cache Golden Triangle. The coin has traveled for two and a half years and over 21 thousand kilometers fromV
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2010/06/28/Amazing-I-got-the-geocoin-which-was-sent-to-me-from-Italy-two-years-ago-/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p><a href="http://www.flickr.com/photos/leoliang/4741853682/" target="_blank" rel="noopener"><img src="http://farm5.static.flickr.com/4121/4741853682_e9e93e2010.jpg" alt="Geocoin ALEUNG 1"></a></p>
+<p>This picture was taken at 18:44 18-Jun-2010, when I picked up the geocoin <a href="http://www.geocaching.com/track/details.aspx?id=1007428" target="_blank" rel="noopener">ALEUNG 1</a> from the cache <a href="http://www.geocaching.com/seek/cache_details.aspx?guid=f4f03572-94c5-440a-ae7e-ce1f755a069b" target="_blank" rel="noopener">Golden Triangle</a>. The coin has traveled for two and a half years and over 21 thousand kilometers fromVeneto, Italy before it came to Guangzhou, China.</p>
+<p>If you don’t know what is Geocaching, please refer to the definition on <a href="http://en.wikipedia.org/wiki/Geocaching" target="_blank" rel="noopener">Wikipedia</a>. In simple saying, it’s a game that someone hide something (a cache) and publish the coordinate (latitude and longitude) on Internet and then other players seek it with help of a GPS receiver. <a href="http://en.wikipedia.org/wiki/Geocoin" target="_blank" rel="noopener">Geocoin</a> is a special kind of coin each has an unique number that can be traced on geocaching website. Geocaching players pick up a coin from one cache and drop it into another cache, so that the coin can travel from cache to cache, even around the world.</p>
+<p>The story began from Oct 2006, Italian geocacher <a href="http://www.geocaching.com/profile/?guid=b160e421-bca1-4b08-9c48-7944b4f019dc" target="_blank" rel="noopener">i5fzi</a> came to Guangzhou for the Canton Fair. He contacted me on <a href="http://www.geocaching.com/" target="_blank" rel="noopener">geocaching.com</a>.He didn’t know me before, but I was almost the only cacher in Guangzhou at that time. So it was geocaching that make us know each other. He kindly invited me for dinner and I suggested him some caches to find.</p>
+<p>After i5fzi came back to Italy, he sent out several geocoins as present to me and Cherrie, who was his translator in Guangzhou. The goal of these coins are to reach my caches in Guangzhou. But unfortunately most of the geocoins were missed in there trip, this one I got is the only survival – I am so lucky to get it.</p>
+<p>From this <a href="http://www.geocaching.com/track/map_gm.aspx?ID=1007428" target="_blank" rel="noopener">map</a> you can see where the coin has been in. It visited some places in Europe then flied to HongKong, and then held by AirQ for a long time, until it was put in Guangzhou. I also thank AirQ, if AirQ didn’t hold and take it to Guangzhou, I guess this coin would have been lost as its friends. The last hotel the coin slept was KowloonW’s <a href="http://www.geocaching.com/seek/cache_details.aspx?guid=f4f03572-94c5-440a-ae7e-ce1f755a069b" target="_blank" rel="noopener">Golden Triangle</a>, but it isn’t shown on the map because not recorded on the website. KowloonW was very nice to keep the coin to avoid loss until I have time to fetch it.</p>
+<p>Geocaching is so an amazing game. Thank you, all my friends in this game!</p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2010/06/23/Time-management-tool-design-the-task-of-precise-plan-time-step-by-step/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2010/06/23/Time-management-tool-design-the-task-of-precise-plan-time-step-by-step/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2010/06/23/Time-management-tool-design-the-task-of-precise-plan-time-step-by-step/" class="post-title-link" itemprop="url">时间管理工具的设计：任务计划时间的逐步精确</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2010/06/23/Time-management-tool-design-the-task-of-precise-plan-time-step-by-step/" class="post-title-link" itemprop="url">时间管理工具的设计：任务计划时间的逐步精确</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2010-06-23 23:27:00" itemprop="dateCreated datePublished" datetime="2010-06-23T23:27:00+08:00">2010-06-23</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -1035,103 +810,73 @@ This picture was taken at 18:44 18-Jun-2010, when I picked up the geocoin ALEUNG
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              我管理待办事情的基本方法是维护一个列表，将所有要做的事情都记录下来，然后安排具体的时间来处理它们。传统的时间管理工具分为任务管理和日程管理两大类，相互独立，而我需要将它们结合起来用，故此以前写过为什么不能合在一起一文。后来，也发现Outlook 2007已经将两者做了一定程度的整合。
-今天又再思考了一下：任务管理就是一个逐步细化的过程，包括执行时间的具体化和操作步骤的细化（拆分子任务）。理想的工具
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2010/06/23/Time-management-tool-design-the-task-of-precise-plan-time-step-by-step/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p>我管理待办事情的基本方法是维护一个列表，将所有要做的事情都记录下来，然后安排具体的时间来处理它们。传统的时间管理工具分为任务管理和日程管理两大类，相互独立，而我需要将它们结合起来用，故此以前写过<a href="http://good-good-study.appspot.com/blog/posts/3184" target="_blank" rel="noopener">为什么不能合在一起</a>一文。后来，也发现<a href="http://good-good-study.appspot.com/blog/posts/3212" target="_blank" rel="noopener">Outlook 2007已经将两者做了一定程度的整合</a>。</p>
+<p>今天又再思考了一下：任务管理就是一个逐步细化的过程，包括执行时间的具体化和操作步骤的细化（拆分子任务）。理想的工具应该对整个过程都提供支持。</p>
+<p>当新增一个任务时，外界往往并没有指定执行任务的具体时间，可能会有一个deadline，只要在deadline之前完成都是可以的，这时就是传统时间管理工具说称的 task。为了完成此任务，需要安排一个具体的时间段去执行它，在传统的时间管理工具上，就是要为此任务创建一个日程安排 (event)。但在实际操作中，你往往不能一下子就确定在哪个明确的时间去执行任务，而是先确定一个大概的时间范围，再逐步的精确。目前我还没有见到哪个工具能够为这个过程提供支持。</p>
+<p>我设想的时间管理系统应该用一个统一的模型来存储任务与日程，因为它们本质上是同样的东西。任务有一个属性，是计划执行的时间。计划执行时间可以为空，说明还没有为此任务指定执行时间。计划执行时间不一定是精确时间类型，可以有不同精度级别的时间类型，包括：年 / 季度 / 月份 / 周 / 天 / 时间段 / 时 / 分。随着计划的逐步细化，赋予任务计划执行时间越来越高精度的时间。</p>
+<p>例如，我和Bob很久没见，想一起吃午饭聚聚旧，于是电话联络。Bob刚好出差了，要下个月中旬才回来，所以我们初定时间在下个月的第四周（Week 29），我在时间管理系统中添加了 Dinner with Bob 这一项，并设计划时间为 W29。到了week 28的周末，我review任务时看到了这项，就跟Bob再确认时间，发现周一中午大家都有时间，但是具体几点钟要看周一早上与餐厅订座时才能确认，于是我把这项任务的计划时间更新为周一，但这还不是最精确的时间。周一早上，订座确认了，再把任务的具体时间12:00～13:00设置上去。</p>
+<p>我也大概设想了一下用户界面，应该有一个可缩放的时间视图，就像电子地图的缩放一样，既可以查看大时间范围内的任务安排，也可以查看具体精确的时间计划。用Excel画了界面原型，比较粗糙，实际做时当然需要细致的考虑用户体验了。左右拖动进行时间的缩放，具体某个时间列的上下滚动进行时间的选择。要为某个任务安排或者修改执行时间，可以通过拖拽到时间视图相应的位置来做到。</p>
+<p><a href="http://www.flickr.com/photos/leoliang/4727145212/" target="_blank" rel="noopener"><img src="http://farm2.static.flickr.com/1387/4727145212_e90a483c0b_m.jpg" alt="scheduler-day"></a></p>
+<p>为任务安排大概的时间（Week 29）：</p>
+<p><a href="http://www.flickr.com/photos/leoliang/4727145218/" target="_blank" rel="noopener"><img src="http://farm2.static.flickr.com/1253/4727145218_5a3c9cb27e.jpg" alt="scheduler-week"></a></p>
+<p>为任务安排具体精确的时间：</p>
+<p><a href="http://www.flickr.com/photos/leoliang/4727145214/" target="_blank" rel="noopener"><img src="http://farm2.static.flickr.com/1010/4727145214_0175c6f578.jpg" alt="scheduler-minute"></a></p>
+<p><em>（我并没有开发这样一个时间管理工具的计划，不过如果你有这样的打算，并且也认同我的这种思路，不妨与我联系）</em></p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2010/06/07/Android-SSH-tunnel-2010-06-06-/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2010/06/07/Android-SSH-tunnel-2010-06-06-/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2010/06/07/Android-SSH-tunnel-2010-06-06-/" class="post-title-link" itemprop="url">Android手机上使用SSH tunnel的进展 (2010-06-06)</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2010/06/07/Android-SSH-tunnel-2010-06-06-/" class="post-title-link" itemprop="url">Android手机上使用SSH tunnel的进展 (2010-06-06)</a>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2010-06-07 13:22:00" itemprop="dateCreated datePublished" datetime="2010-06-07T13:22:00+08:00">2010-06-07</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -1142,152 +887,36 @@ This picture was taken at 18:44 18-Jun-2010, when I picked up the geocoin ALEUNG
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>
-              在上一篇博客中，我提出了在Android手机上使用SSH tunnel的想法。几天下来有了一些进展。
-首先，非常感谢Sunner，他帮忙编译出Android平台的transocks_ev binary，并且解决了一些在Android平台上运行的问题。
-在实验中，用ConnectBot + transocks_ev + iptables，HTTP和HTTPS请求都能重定向到SSH tunnel了，测
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2010/06/07/Android-SSH-tunnel-2010-06-06-/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+          <p>在上一篇博客中，我提出了<a href="http://good-good-study.appspot.com/blog/posts/20001" target="_blank" rel="noopener">在Android手机上使用SSH tunnel的想法</a>。几天下来有了一些进展。</p>
+<p>首先，非常感谢<a href="http://sunner.cn/" target="_blank" rel="noopener">Sunner</a>，他帮忙编译出Android平台的transocks_ev binary，并且解决了一些在Android平台上运行的问题。</p>
+<p>在实验中，用ConnectBot + transocks_ev + iptables，HTTP和HTTPS请求都能重定向到SSH tunnel了，测试了浏览器和其他一些应用，无需任何额外设置就可正常访问网络。不过目前没有考虑使用非HTTP/HTTPS的应用。但现在还有两个问题：</p>
+<ol>
+<li>DNS查询还是直接出去，不能避免DNS污染</li>
+<li>现在用ConnectBot作为ssh client，并不合适： <ul>
+<li>在port forwarding时ConnectBot CPU占用非常高，达到99%，估计是有bug。</li>
+<li>ConnectBot的连接和断开需要手动控制，密码也要在界面输入，无法做到整个翻墙过程单击执行。</li>
+</ul>
+</li>
+</ol>
+<p>对于第一个问题，transocks_ev 不支持UDP，因此无法tunnel DNS查询请求。我在考虑参考<a href="http://code.google.com/p/cmwrap/" target="_blank" rel="noopener">CMWrap</a>的方案，做一个DNS proxy，转成TCP请求发出去。  </p>
+<p>对于第二个问题，想用一个命令行ssh来代替ConnectBot。目前在Android上常用的是dropbear，但dropbear不支持SOCKS。查了linux上支持SOCKS的ssh client有OpenSSH和lsh（还有没有其他？），但是Sunner尝试了编译OpenSSH和lsh都不成功，因为它俩都太依赖gnu的一些东西了，比如glibc、glib等，而android上所有的对应的库都是从简的。因此暂时还是先用着ConnectBot，并将CPU高的问题反馈给开发者，看看有没有什么回应。</p>
+
       
     </div>
 
-    
 
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2010/06/02/Consider-how-in-the-Android-mobile-phones-in-use-SSH-tunnel-over-the-wall/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Leo Liang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good good study, day day up">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/blog/2010/06/02/Consider-how-in-the-Android-mobile-phones-in-use-SSH-tunnel-over-the-wall/" class="post-title-link" itemprop="url">在考虑怎样在Android手机上使用SSH tunnel翻墙</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2010-06-02 14:53:00" itemprop="dateCreated datePublished" datetime="2010-06-02T14:53:00+08:00">2010-06-02</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
-              </span>
-            
-          
-
-          <br>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            <p>
-              目前在PC上使用SSH tunnel翻墙是一个相当广泛使用的方案，国外SSH帐号的获取不是太难，购买起来价格也比VPN帐号要便宜。但是在智能手机上目前还不能使用SSH方案，只能用VPN。Android系统是基于Linux的，特别是root了之后，基本上要玩什么都随心所欲了。因此Android上是应该也可以使用SSH tunnel的。
-先看看Windows上是怎样设置SSH翻墙的：
-
-首先需要有个支
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/blog/2010/06/02/Consider-how-in-the-Android-mobile-phones-in-use-SSH-tunnel-over-the-wall/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-    
-  </section>
 
   
   <nav class="pagination">
@@ -1295,170 +924,90 @@ This picture was taken at 18:44 18-Jun-2010, when I picked up the geocoin ALEUNG
   </nav>
 
 
+
           </div>
           
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
           
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
-  <aside id="sidebar" class="sidebar">
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="/blog/images/android-chrome-512x512.png">
   <p class="site-author-name" itemprop="name">Leo Liang</p>
-  <div class="site-description motion-element" itemprop="description"></div>
+  <div class="site-description" itemprop="description"></div>
 </div>
-  <nav class="site-state motion-element">
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">328</span>
+          <span class="site-state-item-count">329</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-tags">
-        
-          
             <a href="/blog/tags/">
           
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
         <span class="site-state-item-count">52</span>
-        <span class="site-state-item-name">标签</span>
-        </a>
+        <span class="site-state-item-name">标签</span></a>
       </div>
-    
   </nav>
-  <div class="feed-link motion-element">
-    <a href="/blog/atom.xml" rel="alternate">
-      <i class="fa fa-rss"></i>RSS
-    </a>
-  </div>
+</div>
 
 
 
-        </div>
       </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
 
     </div>
   </aside>
@@ -1468,17 +1017,24 @@ This picture was taken at 18:44 18-Jun-2010, when I picked up the geocoin ALEUNG
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Leo Liang</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
 
         
 
@@ -1489,40 +1045,26 @@ This picture was taken at 18:44 18-Jun-2010, when I picked up the geocoin ALEUNG
 
 
 
-        
       </div>
     </footer>
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-      </div>
-
-    
-
   </div>
 
   
-  <script src="/blog/lib/jquery/index.js?v=3.4.1"></script>
-  <script src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
 
-  <script src="/blog/js/utils.js?v=7.2.0"></script>
-  <script src="/blog/js/motion.js?v=7.2.0"></script>
+<script src="/blog/js/utils.js"></script>
 
-  
-  <script src="/blog/js/affix.js?v=7.2.0"></script>
-  <script src="/blog/js/schemes/pisces.js?v=7.2.0"></script>
+<script src="/blog/js/motion.js"></script>
 
 
+<script src="/blog/js/schemes/pisces.js"></script>
 
-  
 
-  <script src="/blog/js/next-boot.js?v=7.2.0"></script>
+<script src="/blog/js/next-boot.js"></script>
 
-  
 
-  
-
-  
 
 
   
@@ -1530,6 +1072,8 @@ This picture was taken at 18:44 18-Jun-2010, when I picked up the geocoin ALEUNG
 
 
 
+  
+<script src="/blog/js/local-search.js"></script>
 
 
 
@@ -1543,27 +1087,9 @@ This picture was taken at 18:44 18-Jun-2010, when I picked up the geocoin ALEUNG
 
 
 
+  
 
-
-
-
-
-
-  <script src="/blog/js/local-search.js?v=7.2.0"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+  
 
 
 </body>

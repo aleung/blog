@@ -1,81 +1,48 @@
 <!DOCTYPE html>
-
-
-
-
-
-<html class="theme-next gemini use-motion" lang="zh-CN">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="generator" content="Hexo 3.9.0">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=7.2.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=7.2.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=7.2.0">
-  <link rel="mask-icon" href="/blog/images/logo.svg?v=7.2.0" color="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+  <link rel="manifest" href="/blog/images/manifest.json">
 
-<link rel="stylesheet" href="/blog/css/main.css?v=7.2.0">
-
-
-<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+<link rel="stylesheet" href="/blog/css/main.css">
 
 
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/blog/',
-    scheme: 'Gemini',
-    version: '7.2.0',
-    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},
-    search: {
-      root: '/blog/',
-      path: 'search.xml'
-    },
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    }
-  };
-</script>
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
 
-  <meta name="description" content="这个blog使用的markdown解释器是kramdown，比起标准markdown有所增强。再加上Jekyll的一些插件特供的特殊功能。 Markdown基本语法标题标题用#开头，一个井号是一级标题，两个井号是二级标题，井号越多字体越小。 一级标题也可以通过在标题的下一行用========来标注，二级标题就是---------。更小的标题就不能用这种方式了。 链接行内式链接： This is a">
-<meta name="keywords" content="Blogging">
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="这个blog使用的markdown解释器是kramdown，比起标准markdown有所增强。再加上Jekyll的一些插件特供的特殊功能。 Markdown基本语法标题标题用#开头，一个井号是一级标题，两个井号是二级标题，井号越多字体越小。 一级标题也可以通过在标题的下一行用&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;来标注，二级标题就是---------。更小的标题就不能用这种方式了。 链接行内式链接： This is a">
 <meta property="og:type" content="article">
 <meta property="og:title" content="试验 Octopress 的各种特性">
 <meta property="og:url" content="http://aleung.github.io/blog/2012/06/24/try-octopress-markdown-features/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description" content="这个blog使用的markdown解释器是kramdown，比起标准markdown有所增强。再加上Jekyll的一些插件特供的特殊功能。 Markdown基本语法标题标题用#开头，一个井号是一级标题，两个井号是二级标题，井号越多字体越小。 一级标题也可以通过在标题的下一行用========来标注，二级标题就是---------。更小的标题就不能用这种方式了。 链接行内式链接： This is a">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2016-03-16T14:11:17.000Z">
+<meta property="og:description" content="这个blog使用的markdown解释器是kramdown，比起标准markdown有所增强。再加上Jekyll的一些插件特供的特殊功能。 Markdown基本语法标题标题用#开头，一个井号是一级标题，两个井号是二级标题，井号越多字体越小。 一级标题也可以通过在标题的下一行用&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;来标注，二级标题就是---------。更小的标题就不能用这种方式了。 链接行内式链接： This is a">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2012-06-24T15:08:00.000Z">
+<meta property="article:modified_time" content="2016-03-16T14:11:17.000Z">
+<meta property="article:author" content="Leo Liang">
+<meta property="article:tag" content="Blogging">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="试验 Octopress 的各种特性">
-<meta name="twitter:description" content="这个blog使用的markdown解释器是kramdown，比起标准markdown有所增强。再加上Jekyll的一些插件特供的特殊功能。 Markdown基本语法标题标题用#开头，一个井号是一级标题，两个井号是二级标题，井号越多字体越小。 一级标题也可以通过在标题的下一行用========来标注，二级标题就是---------。更小的标题就不能用这种方式了。 链接行内式链接： This is a">
-  <link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
-  <link rel="canonical" href="http://aleung.github.io/blog/2012/06/24/try-octopress-markdown-features/">
+
+<link rel="canonical" href="http://aleung.github.io/blog/2012/06/24/try-octopress-markdown-features/">
 
 
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : false,
+    isPost : true
   };
 </script>
 
@@ -87,11 +54,8 @@
 
 
 
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -100,9 +64,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -114,18 +77,26 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  <div class="container sidebar-position-right page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
   <div class="site-meta">
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/blog/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Good good study, day day up</span>
@@ -133,153 +104,115 @@
       </a>
     </div>
         <p class="site-subtitle">aleung的学习笔记, aleung的idea</p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
   </div>
 </div>
-
 
 
 <nav class="site-nav">
-    <ul id="menu" class="menu">
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-      
-    
-      
-    
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">52</span></a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">52</span></a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-      
-    
-      
-    
+        <li class="menu-item menu-item-archives">
 
-    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">328</span></a>
+    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">329</span></a>
 
   </li>
-        <li class="menu-item menu-item-search">
-          <a href="javascript:;" class="popup-trigger">
-          
-            <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-        </li>
-      
-    </ul>
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
   </div>
-  <div id="local-search-result"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
 </div>
 
+  </div>
+</div>
 
-    </div>
-</nav>
-
+  </div>
 </div>
     </header>
 
     
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+
+          <div class="content">
             
 
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2012/06/24/try-octopress-markdown-features/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2012/06/24/try-octopress-markdown-features/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">试验 Octopress 的各种特性
-
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          试验 Octopress 的各种特性
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2012-06-24 23:08:00" itemprop="dateCreated datePublished" datetime="2012-06-24T23:08:00+08:00">2012-06-24</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
               </span>
-            
-          
 
-          <br>
+          
 
         </div>
       </header>
@@ -294,15 +227,12 @@
 <h2 id="Markdown基本语法"><a href="#Markdown基本语法" class="headerlink" title="Markdown基本语法"></a>Markdown基本语法</h2><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p>标题用<code>#</code>开头，一个井号是一级标题，两个井号是二级标题，井号越多字体越小。</p>
 <p>一级标题也可以通过在标题的下一行用<code>========</code>来标注，二级标题就是<code>---------</code>。更小的标题就不能用这种方式了。</p>
 <h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p>行内式链接：</p>
-<pre><code>This is a [link](http://example.com).
-</code></pre><p>参考式链接：在链接文字的方括号后面再接上另一个方括号，而在第二个方括号里面要填入用以辨识链接的标记（若省略则与链接文字相同），接着，在文件的任意处，把这个标记的链接内容定义出来。</p>
+<pre><code>This is a [link](http://example.com).</code></pre><p>参考式链接：在链接文字的方括号后面再接上另一个方括号，而在第二个方括号里面要填入用以辨识链接的标记（若省略则与链接文字相同），接着，在文件的任意处，把这个标记的链接内容定义出来。</p>
 <pre><code>This is [an example][1] reference-style link.
 
-[1]: http://example.com
-</code></pre><p>参考式链接可以提高 markdown 文本的易读性。</p>
+[1]: http://example.com</code></pre><p>参考式链接可以提高 markdown 文本的易读性。</p>
 <h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p>与链接类似，区别是前面增加叹号<code>!</code>：</p>
-<pre><code>![text](link)
-</code></pre><p>另一种图片语法是由插件支持的，用<code>{</code> <code>%</code>包围的img标签，后面跟着图片URL，在URL前可以加入可选的css class名称，如：<code>left</code>, <code>right</code>，得到文字环绕效果。</p>
+<pre><code>![text](link)</code></pre><p>另一种图片语法是由插件支持的，用<code>{</code> <code>%</code>包围的img标签，后面跟着图片URL，在URL前可以加入可选的css class名称，如：<code>left</code>, <code>right</code>，得到文字环绕效果。</p>
 <h3 id="引用-blockquote"><a href="#引用-blockquote" class="headerlink" title="引用 (blockquote)"></a>引用 (blockquote)</h3><p>用<code>&gt;</code>开头的一个段落：</p>
 <blockquote>
 <p>Stay hungry…<br>stay foolish.</p>
@@ -310,270 +240,190 @@
 <p>用四个空格缩进的段落，会按原始格式显示，相当于HTML的<code>&lt;pre&gt;</code>的效果：</p>
 <pre><code>+----+
 |    |
-+----+
-</code></pre><p>也可以通过在原始格式引用段落的前后各加一行波浪号`<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 显示效果</span><br><span class="line"></span><br><span class="line">用`*`或`_`包围的文字会用斜体显示：</span><br><span class="line"></span><br><span class="line">Some of these words *are emphasized*.</span><br><span class="line"></span><br><span class="line">如果双重符号`**`或`__`则会用粗体显示：</span><br><span class="line"></span><br><span class="line">Use two asterisks for **strong emphasis**.</span><br><span class="line"></span><br><span class="line">用`` ` ``包围的文字按代码格式显示。</span><br><span class="line"></span><br><span class="line">### 列表</span><br><span class="line"></span><br><span class="line">用`*`, `+`, `-`开头的行都会作为列表项。子项缩进两个空格。</span><br><span class="line"></span><br><span class="line">+ 加号开头的段落</span><br><span class="line">  + 缩进两个空格，加号开头</span><br><span class="line">    + 再缩进两个空格，三级项目</span><br><span class="line">- 其次</span><br><span class="line"></span><br><span class="line">表格</span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">注意第二行的分割线的冒号位置，决定了这一列的对齐方式。</span><br><span class="line"></span><br><span class="line">    No.   | Name    | Status  |</span><br><span class="line">    -----:|:--------|:-------:|</span><br><span class="line">    1     | Alaph   | done    |</span><br><span class="line">    2     | Beta    | ongoing |</span><br><span class="line">    10000 | Release | n/a     | </span><br><span class="line"></span><br><span class="line">效果：</span><br><span class="line"></span><br><span class="line">No.   | Name    | Status  |</span><br><span class="line">-----:|:--------|:-------:|</span><br><span class="line">1     | Alaph   | done    |</span><br><span class="line">2     | Beta    | ongoing |</span><br><span class="line">10000 | Release | n/a     | </span><br><span class="line"></span><br><span class="line">### 脚注</span><br><span class="line"></span><br><span class="line">增加脚注[^1]很简单，就是这样：`[^1]`</span><br><span class="line"></span><br><span class="line">脚注定义的写法是以`[^1]: `开头，后面跟着定义。</span><br><span class="line"></span><br><span class="line">[^1]: 脚注一定会显示在最末尾。</span><br><span class="line"></span><br><span class="line">嵌入代码</span><br><span class="line">-----------</span><br><span class="line"></span><br><span class="line">下面的嵌入代码的方式都是由插件提供的，并非markdown语法。</span><br><span class="line"></span><br><span class="line">### 代码高亮</span><br></pre></td></tr></table></figure></p>
- <figure class="highlight plain"><figcaption><span>[title] [url] [link text]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code snippet</span><br></pre></td></tr></table></figure>
-<p><del>~</del></p>
++----+</code></pre><p>也可以通过在原始格式引用段落的前后各加一行波浪号<code>~~~~~~</code>来实现。(这是kramdown特有的语法)</p>
+<h3 id="显示效果"><a href="#显示效果" class="headerlink" title="显示效果"></a>显示效果</h3><p>用<code>*</code>或<code>_</code>包围的文字会用斜体显示：</p>
+<p>Some of these words <em>are emphasized</em>.</p>
+<p>如果双重符号<code>**</code>或<code>__</code>则会用粗体显示：</p>
+<p>Use two asterisks for <strong>strong emphasis</strong>.</p>
+<p>用<code>`</code>包围的文字按代码格式显示。</p>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>用<code>*</code>, <code>+</code>, <code>-</code>开头的行都会作为列表项。子项缩进两个空格。</p>
+<ul>
+<li>加号开头的段落<ul>
+<li>缩进两个空格，加号开头<ul>
+<li>再缩进两个空格，三级项目</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>其次</li>
+</ul>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><p>注意第二行的分割线的冒号位置，决定了这一列的对齐方式。</p>
+<pre><code>No.   | Name    | Status  |
+-----:|:--------|:-------:|
+1     | Alaph   | done    |
+2     | Beta    | ongoing |
+10000 | Release | n/a     | </code></pre><p>效果：</p>
+<table>
+<thead>
+<tr>
+<th align="right">No.</th>
+<th align="left">Name</th>
+<th align="center">Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">1</td>
+<td align="left">Alaph</td>
+<td align="center">done</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="left">Beta</td>
+<td align="center">ongoing</td>
+</tr>
+<tr>
+<td align="right">10000</td>
+<td align="left">Release</td>
+<td align="center">n/a</td>
+</tr>
+</tbody></table>
+<h3 id="脚注"><a href="#脚注" class="headerlink" title="脚注"></a>脚注</h3><p>增加脚注<a href="脚注一定会显示在最末尾。">^1</a>很简单，就是这样：<code>[^1]</code></p>
+<p>脚注定义的写法是以<code>[^1]:</code>开头，后面跟着定义。</p>
+<h2 id="嵌入代码"><a href="#嵌入代码" class="headerlink" title="嵌入代码"></a>嵌入代码</h2><p>下面的嵌入代码的方式都是由插件提供的，并非markdown语法。</p>
+<h3 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#96;&#96;&#96; [language] [title] [url] [link text]</span><br><span class="line">code snippet</span><br><span class="line">&#96;&#96;&#96;</span><br></pre></td></tr></table></figure>
+
 <p>效果：</p>
 <figure class="highlight java"><figcaption><span>HelloWorld.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello, World"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="嵌入Gist"><a href="#嵌入Gist" class="headerlink" title="嵌入Gist"></a>嵌入Gist</h3><script src="//gist.github.com/2934603.js"></script>
+
 <p>方法是写一个用<code>{</code> <code>%</code>包围的gist标签，后面带上id。</p>
 <hr>
 
     </div>
 
-    
-      <hr>
-<div class="recommended_posts">
-    
-    
-    <div class="recommended_posts_header">推荐文章 </div>
-    <ul>
-        
-            <li><a href="http://aleung.github.io/blog/2016/08/30/update/">Blog update</a></li>
-        
-            <li><a href="http://aleung.github.io/blog/2015/02/05/typesetting-basic/">几条基础排版规则，让文档显得专业</a></li>
-        
-            <li><a href="http://aleung.github.io/blog/2015/01/26/jekyll/">Jekyll</a></li>
-        
-    </ul>
-    
-</div>
-
-    
 
     
     
     
 
-    <footer class="post-footer">
+      <footer class="post-footer">
           
-        
-        <div class="post-tags">
-            <a href="/blog/tags/Blogging/" rel="tag"><i class="fa fa-tag"></i> Blogging</a>
-          
-        </div>
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-              <a href="/blog/2012/06/09/Some-reading-record/" rel="next" title="一些读书记录">
-                <i class="fa fa-chevron-left"></i> 一些读书记录
-              </a>
-            
+          <div class="post-tags">
+              <a href="/blog/tags/Blogging/" rel="tag"><i class="fa fa-tag"></i> Blogging</a>
           </div>
 
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-              <a href="/blog/2012/06/25/migrate-my-blog-to-github/" rel="prev" title="migrate my blog to github">
-                migrate my blog to github <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-  </div>
+        
 
 
-          </div>
-          
-    
-    <div class="comments" id="gitalk-container"></div>
-  
-
-
-        </div>
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2012/06/09/Some-reading-record/" rel="prev" title="一些读书记录">
+      <i class="fa fa-chevron-left"></i> 一些读书记录
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2012/06/25/migrate-my-blog-to-github/" rel="next" title="migrate my blog to github">
+      migrate my blog to github <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
 
-  <aside id="sidebar" class="sidebar">
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
     <div class="sidebar-inner">
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Markdown基本语法"><span class="nav-number">1.</span> <span class="nav-text">Markdown基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标题"><span class="nav-number">1.1.</span> <span class="nav-text">标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">1.2.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片"><span class="nav-number">1.3.</span> <span class="nav-text">图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用-blockquote"><span class="nav-number">1.4.</span> <span class="nav-text">引用 (blockquote)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示效果"><span class="nav-number">1.5.</span> <span class="nav-text">显示效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表"><span class="nav-number">1.6.</span> <span class="nav-text">列表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表格"><span class="nav-number">2.</span> <span class="nav-text">表格</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#脚注"><span class="nav-number">2.1.</span> <span class="nav-text">脚注</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#嵌入代码"><span class="nav-number">3.</span> <span class="nav-text">嵌入代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码高亮"><span class="nav-number">3.1.</span> <span class="nav-text">代码高亮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌入Gist"><span class="nav-number">3.2.</span> <span class="nav-text">嵌入Gist</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="/blog/images/android-chrome-512x512.png">
   <p class="site-author-name" itemprop="name">Leo Liang</p>
-  <div class="site-description motion-element" itemprop="description"></div>
+  <div class="site-description" itemprop="description"></div>
 </div>
-  <nav class="site-state motion-element">
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">328</span>
+          <span class="site-state-item-count">329</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-tags">
-        
-          
             <a href="/blog/tags/">
           
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
         <span class="site-state-item-count">52</span>
-        <span class="site-state-item-name">标签</span>
-        </a>
+        <span class="site-state-item-name">标签</span></a>
       </div>
-    
   </nav>
-  <div class="feed-link motion-element">
-    <a href="/blog/atom.xml" rel="alternate">
-      <i class="fa fa-rss"></i>RSS
-    </a>
-  </div>
+</div>
 
 
 
-        </div>
       </div>
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Markdown基本语法"><span class="nav-number">1.</span> <span class="nav-text">Markdown基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标题"><span class="nav-number">1.1.</span> <span class="nav-text">标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">1.2.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片"><span class="nav-number">1.3.</span> <span class="nav-text">图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用-blockquote"><span class="nav-number">1.4.</span> <span class="nav-text">引用 (blockquote)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌入Gist"><span class="nav-number">1.5.</span> <span class="nav-text">嵌入Gist</span></a></li></ol></li></ol></div>
-            
-
-          </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
         </div>
-      <!--/noindex-->
-      
 
     </div>
   </aside>
@@ -583,17 +433,24 @@
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Leo Liang</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
 
         
 
@@ -604,44 +461,26 @@
 
 
 
-        
       </div>
     </footer>
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-      </div>
-
-    
-
   </div>
 
   
-  <script src="/blog/lib/jquery/index.js?v=3.4.1"></script>
-  <script src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
 
-  <script src="/blog/js/utils.js?v=7.2.0"></script>
-  <script src="/blog/js/motion.js?v=7.2.0"></script>
+<script src="/blog/js/utils.js"></script>
 
-  
-  <script src="/blog/js/affix.js?v=7.2.0"></script>
-  <script src="/blog/js/schemes/pisces.js?v=7.2.0"></script>
+<script src="/blog/js/motion.js"></script>
 
 
-
-  
-  <script src="/blog/js/scrollspy.js?v=7.2.0"></script>
-<script src="/blog/js/post-details.js?v=7.2.0"></script>
+<script src="/blog/js/schemes/pisces.js"></script>
 
 
+<script src="/blog/js/next-boot.js"></script>
 
-  <script src="/blog/js/next-boot.js?v=7.2.0"></script>
 
-  
-
-  
-
-  
 
 
   
@@ -649,6 +488,8 @@
 
 
 
+  
+<script src="/blog/js/local-search.js"></script>
 
 
 
@@ -662,46 +503,29 @@
 
 
 
+  
 
+  
 
-
-
-
-
-  <script src="/blog/js/local-search.js?v=7.2.0"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
-<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
 
 <script>
-  var gitalk = new Gitalk({
-    clientID: '578b819466ead4247b6e',
-    clientSecret: '6a36866b9ae12bc5b0b1f0df95c98cbb2ed7ef61',
-    repo: 'blog-comments',
-    owner: 'aleung',
-    admin: ['aleung'],
-    id: md5(location.pathname),
-      language: window.navigator.language || window.navigator.userLanguage,
-    
-    distractionFreeMode: 'true'
-  });
-  gitalk.render('gitalk-container');
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '578b819466ead4247b6e',
+      clientSecret: '6a36866b9ae12bc5b0b1f0df95c98cbb2ed7ef61',
+      repo        : 'blog-comments',
+      owner       : 'aleung',
+      admin       : ['aleung'],
+      id          : 'f6f79156510a7cc42acc46e70cd2d2a8',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
 </script>
-
 
 </body>
 </html>

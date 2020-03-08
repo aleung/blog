@@ -1,85 +1,52 @@
 <!DOCTYPE html>
-
-
-
-
-
-<html class="theme-next gemini use-motion" lang="zh-CN">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="generator" content="Hexo 3.9.0">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=7.2.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=7.2.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=7.2.0">
-  <link rel="mask-icon" href="/blog/images/logo.svg?v=7.2.0" color="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+  <link rel="manifest" href="/blog/images/manifest.json">
 
-<link rel="stylesheet" href="/blog/css/main.css?v=7.2.0">
-
-
-<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+<link rel="stylesheet" href="/blog/css/main.css">
 
 
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/blog/',
-    scheme: 'Gemini',
-    version: '7.2.0',
-    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},
-    search: {
-      root: '/blog/',
-      path: 'search.xml'
-    },
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    }
-  };
-</script>
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
 
-  <meta name="description" content="一个 Consul 集群由3个 Consul server 和近百个 Consul client 组成。观察发现集群状态不稳定，频繁出现以下现象：  节点退出集群，又重新加入集群； 重新选举 leader，有时候原来的 leader 会重新当选。  对于第一个问题，分析发现原因是我们错误使用了 fail fast 策略：我们平台中会有个supervisor daemon监控着进程的状态，当进程 h">
-<meta name="keywords" content="SoftwareDev">
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一个 Consul 集群由3个 Consul server 和近百个 Consul client 组成。观察发现集群状态不稳定，频繁出现以下现象：  节点退出集群，又重新加入集群； 重新选举 leader，有时候原来的 leader 会重新当选。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Consul 集群不稳定的分析">
 <meta property="og:url" content="http://aleung.github.io/blog/2016/11/05/Consul-unstable/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description" content="一个 Consul 集群由3个 Consul server 和近百个 Consul client 组成。观察发现集群状态不稳定，频繁出现以下现象：  节点退出集群，又重新加入集群； 重新选举 leader，有时候原来的 leader 会重新当选。  对于第一个问题，分析发现原因是我们错误使用了 fail fast 策略：我们平台中会有个supervisor daemon监控着进程的状态，当进程 h">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:description" content="一个 Consul 集群由3个 Consul server 和近百个 Consul client 组成。观察发现集群状态不稳定，频繁出现以下现象：  节点退出集群，又重新加入集群； 重新选举 leader，有时候原来的 leader 会重新当选。">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://aleung.github.io/blog/attachments/2016/11/raft_state.png">
 <meta property="og:image" content="http://aleung.github.io/blog/attachments/2016/11/timeline.jpg">
 <meta property="og:image" content="http://aleung.github.io/blog/attachments/2016/11/consul_cluster.jpg">
-<meta property="og:updated_time" content="2016-11-05T07:31:48.000Z">
+<meta property="article:published_time" content="2016-11-05T03:22:20.000Z">
+<meta property="article:modified_time" content="2020-03-08T12:58:17.030Z">
+<meta property="article:author" content="Leo Liang">
+<meta property="article:tag" content="SoftwareDev">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Consul 集群不稳定的分析">
-<meta name="twitter:description" content="一个 Consul 集群由3个 Consul server 和近百个 Consul client 组成。观察发现集群状态不稳定，频繁出现以下现象：  节点退出集群，又重新加入集群； 重新选举 leader，有时候原来的 leader 会重新当选。  对于第一个问题，分析发现原因是我们错误使用了 fail fast 策略：我们平台中会有个supervisor daemon监控着进程的状态，当进程 h">
 <meta name="twitter:image" content="http://aleung.github.io/blog/attachments/2016/11/raft_state.png">
-  <link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
-  <link rel="canonical" href="http://aleung.github.io/blog/2016/11/05/Consul-unstable/">
+
+<link rel="canonical" href="http://aleung.github.io/blog/2016/11/05/Consul-unstable/">
 
 
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : false,
+    isPost : true
   };
 </script>
 
@@ -91,11 +58,8 @@
 
 
 
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -104,9 +68,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -118,18 +81,26 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  <div class="container sidebar-position-right page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
   <div class="site-meta">
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/blog/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Good good study, day day up</span>
@@ -137,143 +108,115 @@
       </a>
     </div>
         <p class="site-subtitle">aleung的学习笔记, aleung的idea</p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
   </div>
 </div>
-
 
 
 <nav class="site-nav">
-    <ul id="menu" class="menu">
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-      
-    
-      
-    
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">52</span></a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">52</span></a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-      
-    
-      
-    
+        <li class="menu-item menu-item-archives">
 
-    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">328</span></a>
+    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">329</span></a>
 
   </li>
-        <li class="menu-item menu-item-search">
-          <a href="javascript:;" class="popup-trigger">
-          
-            <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-        </li>
-      
-    </ul>
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
   </div>
-  <div id="local-search-result"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
 </div>
 
+  </div>
+</div>
 
-    </div>
-</nav>
-
+  </div>
 </div>
     </header>
 
     
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+
+          <div class="content">
             
 
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/blog/2016/11/05/Consul-unstable/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2016/11/05/Consul-unstable/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
       <meta itemprop="name" content="Leo Liang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Good good study, day day up">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">Consul 集群不稳定的分析
-
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          Consul 集群不稳定的分析
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
-
-              <time title="创建时间：2016-11-05 11:22:20 / 修改时间：15:31:48" itemprop="dateCreated datePublished" datetime="2016-11-05T11:22:20+08:00">2016-11-05</time>
+              <time title="创建时间：2016-11-05 11:22:20" itemprop="dateCreated datePublished" datetime="2016-11-05T11:22:20+08:00">2016-11-05</time>
             </span>
-          
-            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-08 20:58:17" itemprop="dateModified" datetime="2020-03-08T20:58:17+08:00">2020-03-08</time>
+              </span>
 
-            
           
-
-          <br>
 
         </div>
       </header>
@@ -289,15 +232,20 @@
 <li>节点退出集群，又重新加入集群；</li>
 <li>重新选举 leader，有时候原来的 leader 会重新当选。</li>
 </ol>
+<a id="more"></a>
+
 <p>对于第一个问题，分析发现原因是我们错误使用了 fail fast 策略：我们平台中会有个supervisor daemon监控着进程的状态，当进程 health check 失败了，就会重启进程并且发送告警。对于 Consul agent 进程，health check 调用 Consul API，API不能正常返回就认为进程状态不健康。这样做本来的用意是及时发现集群配置的错误，另外也是服务依赖管理的需要，依赖 Consul 的其它服务会等到 Consul agent 进入正常状态后才启动。但是，由于第二个问题的存在，在 leader 重新选举过程中 API 不能正常响应，Consul agent 就被当作不健康而被重启，出现了 Consul 节点退出重新加入集群的现象。本来，群集是能自动恢复到正常工作状态的，重启进程反而造成更大的负面影响。</p>
 <p>对于第二个问题，直接原因是某个 Consul server 所在的VM上有个异常的进程将CPU几乎全耗尽了，Consul 不能及时的处理集群间的通信，响应超时，产生了临时性的脑裂。但开始我们一直不能理解，单个 server 的 partitioning 为什么会影响到整个集群呢？剩余的 2 个 server 应该还是能够组成集群并保持稳定的 leader 才对。后来才发现，比起全部丢失，消息的部分丢失所引起的现象会诡异得多。</p>
 <p>这是当前 leader cm121 的日志：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">50:32 [WARN] raft: Rejecting vote from 172.17.52.84:8300 since we have a leader: 172.17.52.121:8300</span><br><span class="line">50:32 [ERR] raft: peer 172.17.52.84:8300 has newer term, stopping replication</span><br><span class="line">50:32 [INFO] raft: aborting pipeline replication to peer 172.17.52.84:8300</span><br><span class="line">50:32 [INFO] raft: aborting pipeline replication to peer 172.17.52.85:8300</span><br><span class="line">50:32 [INFO] consul: cluster leadership lost</span><br><span class="line">50:32 [INFO] raft: Node at 172.17.52.121:8300 [Follower] entering Follower state</span><br><span class="line">50:33 [WARN] raft: Heartbeat timeout reached, starting election</span><br><span class="line">50:33 [INFO] raft: Node at 172.17.52.121:8300 [Candidate] entering Candidate state</span><br><span class="line">50:34 [INFO] raft: Election won. Tally: 2</span><br><span class="line">50:34 [INFO] raft: Node at 172.17.52.121:8300 [Leader] entering Leader state</span><br><span class="line">50:34 [INFO] consul: cluster leadership acquired</span><br><span class="line">50:34 [INFO] consul: New leader elected: cm121</span><br></pre></td></tr></table></figure>
+
 <p>在这个例子中，CPU耗尽的 server 是 cm84，当前 leader 为 cm121。cm121 会定期发出 AppendEntries RPC，但 cm84 因为没有CPU资源没有处理到，等到 heartbeat timeout，cm84 错误认为当前没有 leader 了，就向所有其它 server 发出 RequestVote RPC（带有更大的 term 值），自荐为候选人，发起一轮新的投票。但是这个投票请求被其它 server 都拒绝了。</p>
-<img src="/blog/attachments/2016/11/raft_state.png">
+<img src="/blog/attachments/2016/11/raft_state.png" class="">
+
 <p>根据状态图可知，当 leader 收到其它 server 发来的消息有更大的 team 值时，就需要交出 leader 位置，转为 follower。因此被 cm84 一捣乱，集群里面就没有 leader 了，导致接下来的超时重新选举。在新一轮选举中，cm121得到两票，重新当选为 leader。</p>
 <p>将消息的时间线画出来，其中 S1 为当前 leader (cm121)，S3 为会间歇性丢掉消息的 server (cm84)，可见 S3 如何导致重新选举 leader。</p>
-<img src="/blog/attachments/2016/11/timeline.jpg">
+<img src="/blog/attachments/2016/11/timeline.jpg" class="">
+
 <p>对于 Consul 中 raft 实现的行为：reject vote since we have a leader，似乎跟 raft 论文描述的有些出入。在 Raft <a href="https://raft.github.io/raft.pdf" target="_blank" rel="noopener">论文</a>中 RequestVote RPC receiver implementation 部分，没有提到已有 leader 时需要 reject 新的 vote。不过，即使没有这个检查，cm84 大部分情况下还是不能满足当选条件，因为它错失了 leader 发来的 AppendEntries RPC，它的 log 就不一定是 up-to-date 的（除非错失的 AppendEntries 没有 log entries，只是heartbeat）。cm84 不能当选，cm121被迫退位，群集还是会进入无 leader 状态。</p>
 <blockquote>
 <p><strong>RequestVote RPC</strong></p>
@@ -323,238 +271,132 @@
 <p>下一步要做的是避免 Consul 进程得不到足够的CPU资源，计划尝试修改 Consul 进程的 nice 来提高调度优先级，或者配置 CPU affinity 绑定一个CPU核给 Consul。</p>
 <p>另外，在分析过程中也进一步加深了对 Consul 的理解。</p>
 <p>Consul agent 分为两种：server 和 client。实际上，这里是两个不同层次的群集（当涉及到多个 datacenter 时，还多一个 WAN layer，这里就不讨论了）。</p>
-<img src="/blog/attachments/2016/11/consul_cluster.jpg">
+<img src="/blog/attachments/2016/11/consul_cluster.jpg" class="">
+
 <p>所有 server 通过 Raft 协议组成一个集群，是一个 CP 系统。Consul 的 catelog 和 KV store 服务都是在这个 raft 集群中提供的，虽然 API 在 client 上也提供，但 client 只是转发给 server 来处理。集群中只会选出最多一个 leader，能容忍 partition 的发生（脑裂）。当存在 pratitioning 时，leader 在有多数 server 的分区里，只有少数 server 的分区选不出 leader。数据写入都由 leader 处理，保证了强一致性。 数据读取根据一致性要求（consistency mode），可以由 leader 或者 follower 处理。在没有选出 leader 的时候，Consul 的大部分 API 会不可用（consistency mode 为 stale 的读请求应该可以处理，需要测试确认一下）。</p>
 <p>所有 consul agent，包括 server 和 client，组成一个更大的集群，就是平常所说的 consul cluster。这个集群是通过 Serf 协议（一种 gossip 协议）组成的，是一个AP系统，用于 consul 节点的发现和管理。AP系统只能保证最终一致性，因此 consul 节点的加入或者离开，是不能立刻被整个群集所见到的。</p>
 
     </div>
 
-    
-      <hr>
-<div class="recommended_posts">
-    
-    
-    <div class="recommended_posts_header">推荐文章 </div>
-    <ul>
-        
-            <li><a href="http://aleung.github.io/blog/2018/04/11/project-preset/">软件项目的标准配置和自动检查更新</a></li>
-        
-            <li><a href="http://aleung.github.io/blog/2017/09/07/docker-dev-env/">Microservice development environment make easy with Docker</a></li>
-        
-            <li><a href="http://aleung.github.io/blog/2017/06/21/pact/">Pact - 微服务的契约测试</a></li>
-        
-    </ul>
-    
-</div>
-
-    
 
     
     
     
 
-    <footer class="post-footer">
+      <footer class="post-footer">
           
-        
-        <div class="post-tags">
-            <a href="/blog/tags/SoftwareDev/" rel="tag"><i class="fa fa-tag"></i> SoftwareDev</a>
-          
-        </div>
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-              <a href="/blog/2016/08/30/update/" rel="next" title="Blog update">
-                <i class="fa fa-chevron-left"></i> Blog update
-              </a>
-            
+          <div class="post-tags">
+              <a href="/blog/tags/SoftwareDev/" rel="tag"><i class="fa fa-tag"></i> SoftwareDev</a>
           </div>
 
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-              <a href="/blog/2017/01/06/Use-OpenJDK-in-proprietary-software/" rel="prev" title="在非GPL应用中使用OpenJDK的法律问题">
-                在非GPL应用中使用OpenJDK的法律问题 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-  </div>
+        
 
 
-          </div>
-          
-    
-    <div class="comments" id="gitalk-container"></div>
-  
-
-
-        </div>
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2016/08/30/update/" rel="prev" title="Blog update">
+      <i class="fa fa-chevron-left"></i> Blog update
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2017/01/06/Use-OpenJDK-in-proprietary-software/" rel="next" title="在非GPL应用中使用OpenJDK的法律问题">
+      在非GPL应用中使用OpenJDK的法律问题 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
 
-  <aside id="sidebar" class="sidebar">
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="/blog/images/android-chrome-512x512.png">
   <p class="site-author-name" itemprop="name">Leo Liang</p>
-  <div class="site-description motion-element" itemprop="description"></div>
+  <div class="site-description" itemprop="description"></div>
 </div>
-  <nav class="site-state motion-element">
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">328</span>
+          <span class="site-state-item-count">329</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-tags">
-        
-          
             <a href="/blog/tags/">
           
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
         <span class="site-state-item-count">52</span>
-        <span class="site-state-item-name">标签</span>
-        </a>
+        <span class="site-state-item-name">标签</span></a>
       </div>
-    
   </nav>
-  <div class="feed-link motion-element">
-    <a href="/blog/atom.xml" rel="alternate">
-      <i class="fa fa-rss"></i>RSS
-    </a>
-  </div>
+</div>
 
 
 
-        </div>
       </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
 
     </div>
   </aside>
@@ -564,17 +406,24 @@
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Leo Liang</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
 
         
 
@@ -585,44 +434,26 @@
 
 
 
-        
       </div>
     </footer>
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-      </div>
-
-    
-
   </div>
 
   
-  <script src="/blog/lib/jquery/index.js?v=3.4.1"></script>
-  <script src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
 
-  <script src="/blog/js/utils.js?v=7.2.0"></script>
-  <script src="/blog/js/motion.js?v=7.2.0"></script>
+<script src="/blog/js/utils.js"></script>
 
-  
-  <script src="/blog/js/affix.js?v=7.2.0"></script>
-  <script src="/blog/js/schemes/pisces.js?v=7.2.0"></script>
+<script src="/blog/js/motion.js"></script>
 
 
-
-  
-  <script src="/blog/js/scrollspy.js?v=7.2.0"></script>
-<script src="/blog/js/post-details.js?v=7.2.0"></script>
+<script src="/blog/js/schemes/pisces.js"></script>
 
 
+<script src="/blog/js/next-boot.js"></script>
 
-  <script src="/blog/js/next-boot.js?v=7.2.0"></script>
 
-  
-
-  
-
-  
 
 
   
@@ -630,6 +461,8 @@
 
 
 
+  
+<script src="/blog/js/local-search.js"></script>
 
 
 
@@ -643,46 +476,29 @@
 
 
 
+  
 
+  
 
-
-
-
-
-  <script src="/blog/js/local-search.js?v=7.2.0"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
-<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
 
 <script>
-  var gitalk = new Gitalk({
-    clientID: '578b819466ead4247b6e',
-    clientSecret: '6a36866b9ae12bc5b0b1f0df95c98cbb2ed7ef61',
-    repo: 'blog-comments',
-    owner: 'aleung',
-    admin: ['aleung'],
-    id: md5(location.pathname),
-      language: window.navigator.language || window.navigator.userLanguage,
-    
-    distractionFreeMode: 'true'
-  });
-  gitalk.render('gitalk-container');
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '578b819466ead4247b6e',
+      clientSecret: '6a36866b9ae12bc5b0b1f0df95c98cbb2ed7ef61',
+      repo        : 'blog-comments',
+      owner       : 'aleung',
+      admin       : ['aleung'],
+      id          : 'eda1a6b747f22cc812bd86d05c7a6eb9',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
 </script>
-
 
 </body>
 </html>
