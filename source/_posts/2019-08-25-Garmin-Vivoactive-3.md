@@ -6,7 +6,7 @@ tags:
 - Gadget
 ---
 
-![](2019-08-25-Garmin-Vovoactive-3/vivoactive3.jpg)
+![](2019-08-25-Garmin-Vivoactive-3/vivoactive3.jpg)
 
 最近将 {% post_link pebble 'Pebble Time' %} 手表换掉了，新的手表是 Garmin 的运动手表 [Vivoactive 3](https://www.garmin.com.cn/products/sports-recreation/vivoactive3pvd/) (VA3)。
 
