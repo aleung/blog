@@ -114,12 +114,12 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">52</span></a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">53</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">329</span></a>
+    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">330</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -170,6 +170,83 @@
             
 
   <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2014/12/26/ivy-introduction-for-maven-user/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2014/12/26/ivy-introduction-for-maven-user/" class="post-title-link" itemprop="url">Ivy Introduction for Maven User</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-12-26 01:11:52" itemprop="dateCreated datePublished" datetime="2014-12-26T01:11:52+08:00">2014-12-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>由于 sbt 使用 Ivy 做依赖管理，必须了解一下 Ivy 的基础知识。这里从熟悉 Maven 的用户的角度简单描述一下 Ivy。</p>
+<h2 id="共同点"><a href="#共同点" class="headerlink" title="共同点"></a>共同点</h2><p>Maven的功能要比 Ivy 多很多，Maven 既管 build 也管依赖，而Ivy 仅仅是负责依赖管理。但就在依赖管理方面，两者在概念、模型、功能等方面都还是比较相似的。</p>
+<p>对于 artifact 的标识，都是使用 groupID, artifactID, version 三元组，不过 Ivy 叫它们为 organization, module name, revision。Ivy 兼容 Maven 2 metadata，可以直接使用 Maven 2 repository。</p>
+<h2 id="Configuration-Scope"><a href="#Configuration-Scope" class="headerlink" title="Configuration / Scope"></a>Configuration / Scope</h2><p>Ivy 有个重要的概念叫 configuration，在 Maven 里类似的对应是 scope，但是 Ivy 的 configuration 比 Maven 的 scope 要灵活得多。</p>
+<p>一个模块可以有多个 configuration，每个 configuration 包含一组外部模块依赖的声明（实际的配置是反过来的，每个依赖声明会标识自己在那种 configuration 中生效）。Configuration 可以是跟 Maven scope 类似的 compile, runtime 和 test，也可以任意定义。例如，某个模块既可以支持 Oracle 也可以支持 MySQL，当使用不同数据库时，需要依赖的模块是不同的，就可以分别在 oracle 和 mysql 两个 configuration 中定义各自需要的依赖。</p>
+<p>Ivy 的 configuration 在依赖传递管理方面，比 Maven 要强。除了可以定义在一个 configuation 中需要依赖某个模块，还可以定义依赖这个模块时，会使用它的哪个 configuration，只有指定的 configuration 中的依赖才会传递进来。这个机制称为 configuration mapping。</p>
+<p>下面的例子中，声明了在 default configuration 中需要依赖 hibernate，并且包含 hibernate 的 proxool 和 oscache 这两种 configuration 中的依赖。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span> <span class="attr">org</span>=<span class="string">"hibernate"</span> <span class="attr">name</span>=<span class="string">"hibernate"</span> <span class="attr">rev</span>=<span class="string">"2.1.8"</span> <span class="attr">conf</span>=<span class="string">"default-&gt;proxool,oscache"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Configuration 可以扩展（继承）另一个 configuration，可以设置外部可见性。</p>
+<h2 id="Repository"><a href="#Repository" class="headerlink" title="Repository"></a>Repository</h2><p>Maven 的 repository 必须是网络服务（local 除外，local repository 本质上相当于 cache），Ivy 除了支持Maven 2 repository，也支持指定文件系统路径作为repository，还有各种各样其他的存储方式。</p>
+<p>Maven 当配置了多个 repository 时，是按照配置的顺序一一查找，找到 artifact 为止。Ivy 的 artifact 查找是由 resolver 来负责，一个 resolver 对应一个 repository，有些特殊的 resolver 可以将多个 resolver 组合起来使用，例如 chain resolver 和 dual resolver。缺省的 resolver 就是一个 chain resolve，按照 local, shared, public的顺序去访问这些 repository。Ivy 的组织要比 Maven 更灵活一些。</p>
+
+      
+    </div>
+
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
         
   
   
@@ -1000,83 +1077,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2013/12/08/intercept-android-https-traffic/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
-      <meta itemprop="name" content="Leo Liang">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good good study, day day up">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2013/12/08/intercept-android-https-traffic/" class="post-title-link" itemprop="url">拦截Android应用HTTPS通讯内容</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2013-12-08 15:03:00" itemprop="dateCreated datePublished" datetime="2013-12-08T15:03:00+08:00">2013-12-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>昨天在捣弄 <a href="http://micoach.adidas.com/" target="_blank" rel="noopener">miCoach</a> 到 <a href="http://nikeplus.nike.com/" target="_blank" rel="noopener">Nike+</a> 的数据迁移，到了最后一步发现调用 Nike+ API 需要传送client_id和client_secret，这两个信息是用来认证客户端的，但Nike并没有公开开放API，因此无法申请到client_id。看 <a href="https://github.com/angusws/tcx2nikeplus" target="_blank" rel="noopener">tcx2nikeplus</a> 的作者说他是通过查看iPhone应用发送的请求来拿到这两个信息的。但是 Nike+ API 都是走HTTPS的，普通方式的截包看不到加密传输的数据。</p>
-<p>要嗅探加密传输，必须通过<a href="http://zh.wikipedia.org/wiki/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB" target="_blank" rel="noopener">中间人攻击</a>的方式才行。上网搜索一下看看有没有现成工具，果然一搜就找到了：<a href="http://portswigger.net/burp/" target="_blank" rel="noopener">Burp Suite</a>。它是一个安全测试工具，功能好像有不少，我这里用它做代理，从中监控应用到服务器的通讯内容。</p>
-<p>下面记录大致操作过程。</p>
-<p>在PC上安装运行Burp，设置 Proxy - Options - Proxy Listeners，让它监听合适的地址和端口，并且选择 “Generate CA-signed per-host certificates”。</p>
-<p>将浏览器代理指向Burp proxy，访问任意一个https地址，Burp这时是中间人，它会用自己的根证书(PortSwiggerCA)签发一个目标服务器的证书，替换了真正服务器的证书。浏览器应该会有安全报警，因为系统并不信任签发这个证书的CA。查看证书详细信息，选择根证书并且信任这个根证书，就会把PortSwiggerCA的证书加入到系统的信任列表中。</p>
-<p>要将这个根证书装进Android，需要先从系统 key chain 里将它导出到文件（.pem格式），然后执行下面的命令将它转换为DER格式后缀为.crt的文件。</p>
-<pre><code>openssl x509 -in PortSwiggerCA.pem -inform PEM –out PortSwiggerCA.crt -outform DER</code></pre><p>接下来，将 PortSwiggerCA.crt 放入Android的sdcard，在系统安全菜单中安装证书。证书安装后，Android系统就会信任所有Burp签发的证书了。</p>
-<p>在Android的WLAN设置代理指向Burp。但很多Android应用都不理会系统的代理设置，不使用系统指定代理，遇到这种情况就要用 <a href="https://play.google.com/store/apps/details?id=org.proxydroid" target="_blank" rel="noopener">ProxyDroid</a> 来设置GlobalProxry（手机要root）。设置好了，在Burp里面就能够拦截到Android应用的HTTPS通信明文了。</p>
-<img src="/blog/attachments/2013/12/burp.png" class="">
-
-<p><em>注意：为确保安全，测试完之后要将 PortSwiggerCA 这个根证书从PC和Android系统信任列表中删除。如果不是临时使用，应该要用自己的证书代替Burp提供的证书。</em></p>
-<p>这个故事告诉我们，中间人攻击并不是那么复杂的事情。特别是终端应用开发者，不可寄望于通过加密传输来隐藏应用到服务器的协议细节，要逆向工程是很容易的。</p>
-
-      
-    </div>
-
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1149,14 +1149,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">329</span>
+          <span class="site-state-item-count">330</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/blog/tags/">
           
-        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-count">53</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

@@ -114,12 +114,12 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">52</span></a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">53</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">329</span></a>
+    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">330</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -170,6 +170,100 @@
             
 
   <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2010/02/24/Illustration-Spring-ApplicationContext-in-enterprise-application/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2010/02/24/Illustration-Spring-ApplicationContext-in-enterprise-application/" class="post-title-link" itemprop="url">图解：Spring ApplicationContext in enterprise application</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2010-02-24 21:46:00" itemprop="dateCreated datePublished" datetime="2010-02-24T21:46:00+08:00">2010-02-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2011-01-20 02:29:00" itemprop="dateModified" datetime="2011-01-20T02:29:00+08:00">2011-01-20</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在一个比较复杂的enterprise application (EAR)里面，往往有多个war和ejb，如果希望使用Springframework通过IoC方式来管理及装配POJO beans，就要面对如何初始化application context，由谁来初始化，如何让这些war和ejb共享application context等问题。</p>
+<p>关于多个war、ejb共享application context的方法，在下面这两篇文章里解释得比较清楚：</p>
+<ul>
+<li><a href="http://blog.springsource.com/2007/06/11/using-a-shared-parent-application-context-in-a-multi-war-spring-application/" target="_blank" rel="noopener">Using a shared parent application context in a multi-war Spring application</a></li>
+<li><a href="http://springtips.blogspot.com/2007/09/using-shared-context-from-ejbs.html" target="_blank" rel="noopener">Using a Shared Context from EJBs</a></li>
+</ul>
+<p>在这里，我不再详细叙述上面文章中的内容，通过图解的方式希望能让它更易理解，需要对照阅读。</p>
+<p>图中的方块、圆圈都表示实例，形状的嵌套表示它们的包含关系。在例子里，缺省值都显式写出来，方便查找。</p>
+<p><a href="http://www.flickr.com/photos/leoliang/4384915548/" target="_blank" rel="noopener"><img src="http://farm5.static.flickr.com/4037/4384915548_2ec7d610e6_o.png" alt="share-context-1"></a></p>
+<p>先看图中靛蓝色的box，是ContextSingletonBeanFactoryLocator实例，application context的共享是依靠它来实现的：对于每个locatorFactorSelector，在一个classloader的范围内只会存在一个ContextSingletonBeanFactoryLocator的实例。ContextSingletonBeanFactoryLocator内部有一个ApplicationContext（图中的天蓝色box），它的bean是由locatorFactorSelector所指向的xml文件所定义的。例如locatorFactorSelector为classpath*:beanRefContext.xml，就会寻找classpath中所有的beanRefContext.xml文件并根据它们去创建内部ApplicationContext。这个内部ApplicationContext只是其它ApplicationContext的容器，不存放application的bean。一个beanRefContext.xml文件应该像下面那样，里面是一个ApplicationContext，它才是真正的业务bean的容器。如果需要可以设置它的parent context。如果有多个beanRefContext.xml文件，就会创建多个ApplicationContext，它们通过id来标识。</p>
+<figure class="highlight xml"><figcaption><span>beanRefContext.xml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">beans</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"a"</span> <span class="attr">class</span>=<span class="string">"org.springframework.context.support.ClassPathXmlApplicationContext"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">list</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">value</span>&gt;</span>context_a.xml<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">list</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">ref</span> <span class="attr">bean</span>=<span class="string">"b"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">EJB应该在onCreate()过程中通过下面的代码来获得application context，需要通过factoryKey（例子里是"a"）来指定具体是哪个context：</span><br><span class="line">    </span><br><span class="line">``` java</span><br><span class="line">beanFactory= ContextSingletonBeanFactoryLocator.getInstance("classpath*:beanRefContext.xml").useBeanFactory("a").getFactory();</span><br></pre></td></tr></table></figure>
+
+<p>在war里是依靠ContextLoaderListener来启动ApplicationContext的。在web.xml里加入：</p>
+<figure class="highlight xml"><figcaption><span>web.xml    </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span></span><br><span class="line">        org.springframework.web.context.ContextLoaderListener</span><br><span class="line">    <span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这个application context包含的是/WEB-INF/applicationContext.xml中定义的beans。在Servlet中通过下面的代码可以获得这个context：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">beanFactory = WebApplicationContextUtils.getWebApplicationContext(<span class="keyword">this</span>.getServletContext());</span><br></pre></td></tr></table></figure>
+
+<p>但这样创建出来的是一个独立的application context，仅仅在war内部可以访问，无法做到多个war和ejb之间共享。</p>
+<p>要实现共享，就要在web.xml中再加入：</p>
+<figure class="highlight xml"><figcaption><span>web.xml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>parentContextKey<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>b<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>locatorFactorySelector<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath*:beanRefContext.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span> <span class="comment">&lt;!-- this is the default value --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这样，当ContextLoaderListener创建war的application context时，会根据locatorFactorySelector去取相应的ContextSingletonBeanFactoryLocator实例，并且从locator中根据parentContextKey拿到具体的context，将这个context作为war的application context的parent。在图中，war 1的servlet可以访问到key为’b’的context，因为它是当前context的parent。</p>
+<p>最后的效果就是：哪个war或者ejb先初始化，它就会去初始化ContextSingletonBeanFactoryLocator实例，由于是singleton，只会有一个实例存在，所有的war和ejb都从这个locator里面拿到具体存放业务bean的context，实现了context的共享。</p>
+<p>在这里需要留意的是classloader，必须很清楚的知道哪些类是由哪个层次的classloader加载的：所有共享的bean，以及相关的spring jar都必须由EJB classloader加载。关于EAR的classloader及层次关系请参看 <a href="http://good-good-study.appspot.com/blog/posts/4218" target="_blank" rel="noopener">WebLogic的classloading</a>。</p>
+<p>在实际应用中，往往不需要对application context作隔离，整个ear里面所有ejb、war共享一个application context是最简便的。这时war里不需要定义任何context和context loader，与EJB一样直接使用ContextSingletonBeanFactoryLocator就可以获取到context。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">beanFactory= ContextSingletonBeanFactoryLocator.getInstance(<span class="string">"classpath*:beanRefContext.xml"</span>).useBeanFactory(<span class="string">"share-context"</span>).getFactory();</span><br></pre></td></tr></table></figure>
+
+<p><a href="http://www.flickr.com/photos/leoliang/5370082919/" target="_blank" rel="noopener"><img src="http://farm6.static.flickr.com/5245/5370082919_6dfc7f7b1d_z.jpg" alt="sping_shared_context"></a></p>
+
+      
+    </div>
+
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
         
   
   
@@ -871,76 +965,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2009/12/11/Introduction-of-Android-slides/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
-      <meta itemprop="name" content="Leo Liang">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good good study, day day up">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2009/12/11/Introduction-of-Android-slides/" class="post-title-link" itemprop="url">介绍Android的slides</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2009-12-11 05:55:00" itemprop="dateCreated datePublished" datetime="2009-12-11T05:55:00+08:00">2009-12-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <div id="__ss_2689852" style="width: 425px; text-align: left;">
-    <a href="http://www.slideshare.net/aleung/android-2689852" target="_blank" rel="noopener" style="font:14px Helvetica,Arial,Sans-serif;display:block;margin:12px 0 3px 0;text-decoration:underline;" title="Android">Android</a> <object data="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=android-091210073738-phpapp01&amp;stripped_title=android-2689852" height="355" type="application/x-shockwave-flash" width="425"> <param name="allowFullScreen" value="true" /> <param name="allowScriptAccess" value="always" /> <param name="src" value="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=android-091210073738-phpapp01&amp;stripped_title=android-2689852" /> <param name="allowfullscreen" value="true" /> </object>
-    <div style="font-size: 11px; font-family: tahoma,arial; height: 26px; padding-top: 2px;">
-        View more <a href="http://www.slideshare.net/" target="_blank" rel="noopener" style="text-decoration:underline;">documents</a> from <a href="http://www.slideshare.net/aleung" target="_blank" rel="noopener" style="text-decoration:underline;">aleung</a>.</div>
-</div>
-
-      
-    </div>
-
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1013,14 +1037,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">329</span>
+          <span class="site-state-item-count">330</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/blog/tags/">
           
-        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-count">53</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

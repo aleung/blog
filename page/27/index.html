@@ -114,12 +114,12 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">52</span></a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">53</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">329</span></a>
+    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">330</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -170,6 +170,73 @@
             
 
   <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2004/06/30/MicroDEM-/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2004/06/30/MicroDEM-/" class="post-title-link" itemprop="url">MicroDEM制图所需地理数据转换方法</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2004-06-30 01:23:00" itemprop="dateCreated datePublished" datetime="2004-06-30T01:23:00+08:00">2004-06-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2016-03-16 22:11:16" itemprop="dateModified" datetime="2016-03-16T22:11:16+08:00">2016-03-16</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>MicroDEM使用dbase来保存数据, 但一般通用的地理数据都是MIF格式较多。MicroDEM不支持import其他格式的数据。</p>
+<p>其实MicroDEM中的dbase就是shp格式。数据可以使用GlobalMapper来转换, 读取mif文件, export vector data为shapefile, 会生成3个文件, 其中一个是dbf, MicroDEM可读取的格式.</p>
+
+      
+    </div>
+
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
         
   
   
@@ -815,90 +882,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2004/04/30/Solve-Xerces-C-XML-parser-EnitiyResolver-doesn-t-work-in-the-problem/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
-      <meta itemprop="name" content="Leo Liang">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good good study, day day up">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2004/04/30/Solve-Xerces-C-XML-parser-EnitiyResolver-doesn-t-work-in-the-problem/" class="post-title-link" itemprop="url">解决Xerces-C XML parser中EnitiyResolver不起作用的问题</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2004-04-30 01:32:00" itemprop="dateCreated datePublished" datetime="2004-04-30T01:32:00+08:00">2004-04-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2012-06-18 23:48:00" itemprop="dateModified" datetime="2012-06-18T23:48:00+08:00">2012-06-18</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在SAX和DOM两种paser API中，均提供了EntityResolver接口，应用程序可通过实现这个接口的resolveEntity()方法来实现对外部实体访问的控制，例如将对网络URL的访问重定向为对本地文件或者数据库的访问。Xerces软件包提供了例子redirect来演示这个功能。</p>
-<p>在我们的程序中，parse VXML文件时需要使用外部的schema，而这些schema又会间接引用其他的schema或者DTD，这些外部实体都是通过URL形式的system id来指定的（基本上都是在<a href="http://www.w3c.org" target="_blank" rel="noopener">www.w3c.org</a>上）。考虑到程序运行环境不一定与internet连接，还有远程网络的效率也不高，我们在程序中实现了自己的EntityResolver，把所有对这些schemas、DTDs的访问都截取下来，返回程序中内置的拷贝。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DTDResolver</span> :</span> <span class="keyword">public</span> EntityResolver &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> InputSource * <span class="title">resolveEntity</span><span class="params">(<span class="keyword">const</span> XMLCh * <span class="keyword">const</span> publicId,</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">const</span> XMLCh * <span class="keyword">const</span> systemId)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (Compare(systemId, <span class="string">L"http://www.w3.org/TR/voicexml20/vxml.xsd"</span>)) &#123;</span><br><span class="line">            <span class="function">VXIcharToXMLCh <span class="title">name</span><span class="params">(<span class="string">L"http://www.w3.org/TR/voicexml20/vxml.xsd (SB)"</span>)</span></span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> MemBufInputSource(VALIDATOR_DATA + VALIDATOR_VXML,</span><br><span class="line">                VALIDATOR_VXML_SIZE,</span><br><span class="line">                name.c_str(), <span class="literal">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (Compare(systemId, <span class="string">L"http://www.w3.org/2001/xml.xsd"</span>)) &#123;</span><br><span class="line">            <span class="function">VXIcharToXMLCh <span class="title">name</span><span class="params">(<span class="string">L"http://www.w3.org/2001/xml.xsd"</span>)</span></span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> MemBufInputSource(VALIDATOR_DATA + VALIDATOR_XML,</span><br><span class="line">                VALIDATOR_XML_SIZE,</span><br><span class="line">                name.c_str(), <span class="literal">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (Compare(systemId, <span class="string">L"XMLSchema.dtd"</span>)) &#123;</span><br><span class="line">            <span class="function">VXIcharToXMLCh <span class="title">name</span><span class="params">(<span class="string">L"XMLSchema.dtd"</span>)</span></span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> MemBufInputSource(VALIDATOR_DATA + VALIDATOR_SCHEMA_DTD,</span><br><span class="line">                VALIDATOR_SCHEMA_DTD_SIZE,</span><br><span class="line">                name.c_str(), <span class="literal">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ......</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ......</span></span><br><span class="line"></span><br><span class="line">parser = XMLReaderFactory::createXMLReader();</span><br><span class="line">DTDResolver * dtd = <span class="keyword">new</span> DTDResolver();</span><br><span class="line">parser-&gt;setEntityResolver(dtd);</span><br></pre></td></tr></table></figure>
-
-<p>在测试中发现，对某些外部实体的访问成功截取了，但是另外一些却不成功，parser依然尝试通过网络访问，然后由于网络不通而访问失败，造成xml文件无法parse。</p>
-<p>对程序进行跟踪，发现了问题出现的规律：所有对schema文件的引用处理都正常，无论是include还是import方式，也无论是多少层的间接引用；在被parse的XML文件中DOCTYPE声明的外部实体引用，处理也正常，故此xerces自带的redirect例子是不会出问题的；但是，schema文件的DOCTYPE声明的外部实体引用就不能被正确处理了，根本不会调用指定的resolveEntity()方法。</p>
-<p>这时，基本上可以确认问题是出在xerces身上，而不是我们的程序的问题了。于是仔细跟踪xerces代码对schema parse的执行过程，最终发现了问题。</p>
-<p>XercesDOMParser类有两个resolveEnitiy方法：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">InputSource* <span class="title">XercesDOMParser::resolveEntity</span><span class="params">(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> publicId,</span></span></span><br><span class="line"><span class="function"><span class="params">                                            <span class="keyword">const</span> XMLCh* <span class="keyword">const</span> systemId,</span></span></span><br><span class="line"><span class="function"><span class="params">                                            <span class="keyword">const</span> XMLCh* <span class="keyword">const</span> baseURI)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (fEntityResolver)</span><br><span class="line">        <span class="keyword">return</span> fEntityResolver-&gt;resolveEntity(publicId, systemId);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">InputSource* <span class="title">XercesDOMParser::resolveEntity</span><span class="params">(XMLResourceIdentifier* resourceIdentifier)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (fEntityResolver)</span><br><span class="line">        <span class="keyword">return</span> fEntityResolver-&gt;resolveEntity(resourceIdentifier-&gt;getPublicId(),</span><br><span class="line">                                                resourceIdentifier-&gt;getSystemId());</span><br><span class="line">    <span class="keyword">if</span> (fXMLEntityResolver)</span><br><span class="line">        <span class="keyword">return</span> fXMLEntityResolver-&gt;resolveEntity(resourceIdentifier);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>根据代码注释，前者是deprecated的，被后者代替。</p>
-<p>由XercesDOMParser派生出XSDDOMParser类，这个类是专门用来parser xsd文件（也就是schema）的。这个类重载了XercesDOMParser的三个参数的resolveEntity方法，用fUserEntityHandler代替fEntityResolver的方法调用。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">InputSource* <span class="title">XSDDOMParser::resolveEntity</span><span class="params">(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> publicId,</span></span></span><br><span class="line"><span class="function"><span class="params">                                         <span class="keyword">const</span> XMLCh* <span class="keyword">const</span> systemId,</span></span></span><br><span class="line"><span class="function"><span class="params">                                         <span class="keyword">const</span> XMLCh* <span class="keyword">const</span> baseURI)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (fUserEntityHandler)</span><br><span class="line">        <span class="keyword">return</span> fUserEntityHandler-&gt;resolveEntity(publicId, systemId, baseURI);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>但是XSDDOMParser没有重载第二个resolveEntity方法，估计是第二个方法是后来才加入XercesDOMParser的，在XSDDOMParser中没有同步修改。因此，依然是使用fEntityResolver，而不是fUserEntityHandler，就造成了没有调用到我们定义的resolveEntity方法，依然按照原来的system id去访问网络了。</p>
-<p>问题找出来，解决就简单了，在XSDDOMParser中把另外一个resolveEntity方法也重载了，改为使用fUserEntityHandler。修改之后，测试通过。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">InputSource* <span class="title">XSDDOMParser::resolveEntity</span><span class="params">(XMLResourceIdentifier* resourceIdentifier)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (fUserEntityHandler)</span><br><span class="line">        <span class="keyword">return</span> fUserEntityHandler-&gt;resolveEntity(resourceIdentifier);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个问题在Xerces-C 2.4和2.5版本都存在，IBM的XML4C与Xerces-C是影子项目，也有同样的问题。</p>
-
-      
-    </div>
-
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -971,14 +954,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">329</span>
+          <span class="site-state-item-count">330</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/blog/tags/">
           
-        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-count">53</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

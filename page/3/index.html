@@ -114,12 +114,12 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">52</span></a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">53</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">329</span></a>
+    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">330</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -170,6 +170,95 @@
             
 
   <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2015/07/28/CAP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2015/07/28/CAP/" class="post-title-link" itemprop="url">CAP</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-07-28 00:00:00" itemprop="dateCreated datePublished" datetime="2015-07-28T00:00:00+08:00">2015-07-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2016-08-30 23:41:57" itemprop="dateModified" datetime="2016-08-30T23:41:57+08:00">2016-08-30</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="更新一致性"><a href="#更新一致性" class="headerlink" title="更新一致性"></a>更新一致性</h1><p>更新一致性问题发生在多个实体同时更新同一数据，出现写冲突。并发环境下维护数据一致性所用的方式通常分为悲观和乐观两种。</p>
+<p>悲观方式就是避免发生冲突，例如采用 write lock，根本不让写操作同时发生。排在后面的操作者需要检查最新数据来判断是否继续更新。</p>
+<p>乐观方式是先让冲突发生，然后检测冲突并处理。例如用条件更新，仅当数据库中的数据当前值与之前读出的值相同时才对此执行更新操作。另一种方法是记录不同版本的数据，当不同版本数据发生冲突时需要采取某种策略去合并（merge）数据。</p>
+<p>在存在数据复制的分布式系统中，需要保证不同节点的更新操作顺序是保持一致的，否则无法解决数据一致性。但分布式系统中顺序一致性往往难以保障，常用的方法是将某份数据的所有写入操作都交由一个节点来完成（数据分片机制）。</p>
+<h1 id="读取一致性（读写冲突）"><a href="#读取一致性（读写冲突）" class="headerlink" title="读取一致性（读写冲突）"></a>读取一致性（读写冲突）</h1><p>由于存放于不同聚合的相关数据分成多个步骤更新，在更新过程中读取数据可能产生违反“逻辑一致性”的情况。关系数据库通过事务来解决此问题。面向聚合的NoSQL 数据库通常只能在单一聚合内部保证更新操作的原子性，无法保证跨聚合更新的原子性。存在不一致风险的时间长度称为“不一致窗口”。</p>
+<p>当数据需要复制副本时，从节点获取到更新后的数据需要一定的时间，在未成功复制之前，数据存在违反“复制一致性”的问题。最终更新操作还是会传播到所有节点，从而得到更新后的数据，这种情况叫做“最终一致性”，也就是说，在任意时刻，节点中都可能存在复制不一致问题，但陈旧数据最终都能得到更新。</p>
+<p>视乎应用逻辑可以忍受多长的不一致窗口，可以采取不同策略。例如保证“照原样读出所写内容的一致性”（read-your-writes consistency），这可以通过提供 session 一致性来保障，例如采用 sticky session，或者检查数据的 version stamp 。</p>
+<h1 id="CAP"><a href="#CAP" class="headerlink" title="CAP"></a>CAP</h1><p>CAP定理是需要放宽一致性约束的原因。CAP 包括：一致性 Consistency，可用性 Availability，分区耐受性 Partition tolerance。三者不可能同时满足。</p>
+<p>CAP 三个概念不能从字面上想当然去理解。</p>
+<p>简单的说，一致性保证要求往分布式系统的操作的效果看起来就像一个节点上操作一样，在同一个逻辑瞬间中在所有节点上完成。</p>
+<p>可用性是说系统中某个无故障节点对所收到的每一请求必须给予确定结果响应。在考虑到P 的情况下，即使出现脑裂，节点依然要能够给出响应。通俗的例子：当你还活着，我找到你，你就必须对我的请求给出明确答复，不能说因为别的节点联系不上了所以给不了答复。需要注意定义中的无故障节点前提，CAP 考虑的是此前提之下的群集节点可用性。</p>
+<p>分区耐受性是指分布式系统需要能允许节点之间出现通信故障，导致部分消息丢失，甚至集群被分割为多个无法相互通信的分区（脑裂）。</p>
+<h1 id="CA之间的取舍"><a href="#CA之间的取舍" class="headerlink" title="CA之间的取舍"></a>CA之间的取舍</h1><p>在实践中，P 是必须保障的，因为不存在绝对不会发生故障的网络。那么问题就是在 C 和 A 之间如何平衡。</p>
+<p>在出现分区时，如果要优先考虑 C 而放弃 A，那么可以完全停止服务，拒绝写操作（如二阶段提交），或者仅仅对数据的 master node 在本分区的请求提供服务。</p>
+<p>如果优先考虑 A 而放弃 C，那么节点可以继续响应任何请求，即使返回的可能是陈旧数据，或者可能出现写数据冲突。数据冲突在通信恢复后可以通过版本戳侦测出来，然后通过某种（应用指定的）策略去合并。</p>
+<p>实际上，系统设计不会追求完美的一致性或者完美的可用性，而是根据需求在其中折中。例如允许更长的不一致窗口，降低一致性要求来换取可用性提升。</p>
+<p>仲裁 Quorum 可以在发生分区问题时保障一致性，视乎分区问题的严重性。当复制因子为 N（数据副本数量），成功写入节点数为 W，成功读取节点数为 R，当 R+W&gt;N 时可满足一致性要求。</p>
+<p>另一方面，一致性也与 latency 相互排斥，当引入更多手段来保证一致性时（如仲裁），latency 会增加，或者说当允许更大的 latency 时，可以增加一致性保障（例如不断重试）。</p>
+<h1 id="放宽持久性约束"><a href="#放宽持久性约束" class="headerlink" title="放宽持久性约束"></a>放宽持久性约束</h1><p>某些场合可以牺牲一些持久性以换取更好性能，也就是要忍受在故障情况下部分数据丢失。</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
+<li><a href="https://book.douban.com/subject/25662138/" target="_blank" rel="noopener">NoSQL Distilled</a></li>
+<li><a href="https://codahale.com/you-cant-sacrifice-partition-tolerance/" target="_blank" rel="noopener">You Can’t Sacrifice Partition Tolerance</a></li>
+<li><a href="http://www.infoq.com/cn/articles/cap-twelve-years-later-how-the-rules-have-changed" target="_blank" rel="noopener">CAP理论十二年回顾：”规则”变了</a></li>
+</ul>
+
+      
+    </div>
+
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
         
   
   
@@ -1035,83 +1124,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2014/12/26/ivy-introduction-for-maven-user/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
-      <meta itemprop="name" content="Leo Liang">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good good study, day day up">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2014/12/26/ivy-introduction-for-maven-user/" class="post-title-link" itemprop="url">Ivy Introduction for Maven User</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2014-12-26 01:11:52" itemprop="dateCreated datePublished" datetime="2014-12-26T01:11:52+08:00">2014-12-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>由于 sbt 使用 Ivy 做依赖管理，必须了解一下 Ivy 的基础知识。这里从熟悉 Maven 的用户的角度简单描述一下 Ivy。</p>
-<h2 id="共同点"><a href="#共同点" class="headerlink" title="共同点"></a>共同点</h2><p>Maven的功能要比 Ivy 多很多，Maven 既管 build 也管依赖，而Ivy 仅仅是负责依赖管理。但就在依赖管理方面，两者在概念、模型、功能等方面都还是比较相似的。</p>
-<p>对于 artifact 的标识，都是使用 groupID, artifactID, version 三元组，不过 Ivy 叫它们为 organization, module name, revision。Ivy 兼容 Maven 2 metadata，可以直接使用 Maven 2 repository。</p>
-<h2 id="Configuration-Scope"><a href="#Configuration-Scope" class="headerlink" title="Configuration / Scope"></a>Configuration / Scope</h2><p>Ivy 有个重要的概念叫 configuration，在 Maven 里类似的对应是 scope，但是 Ivy 的 configuration 比 Maven 的 scope 要灵活得多。</p>
-<p>一个模块可以有多个 configuration，每个 configuration 包含一组外部模块依赖的声明（实际的配置是反过来的，每个依赖声明会标识自己在那种 configuration 中生效）。Configuration 可以是跟 Maven scope 类似的 compile, runtime 和 test，也可以任意定义。例如，某个模块既可以支持 Oracle 也可以支持 MySQL，当使用不同数据库时，需要依赖的模块是不同的，就可以分别在 oracle 和 mysql 两个 configuration 中定义各自需要的依赖。</p>
-<p>Ivy 的 configuration 在依赖传递管理方面，比 Maven 要强。除了可以定义在一个 configuation 中需要依赖某个模块，还可以定义依赖这个模块时，会使用它的哪个 configuration，只有指定的 configuration 中的依赖才会传递进来。这个机制称为 configuration mapping。</p>
-<p>下面的例子中，声明了在 default configuration 中需要依赖 hibernate，并且包含 hibernate 的 proxool 和 oscache 这两种 configuration 中的依赖。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span> <span class="attr">org</span>=<span class="string">"hibernate"</span> <span class="attr">name</span>=<span class="string">"hibernate"</span> <span class="attr">rev</span>=<span class="string">"2.1.8"</span> <span class="attr">conf</span>=<span class="string">"default-&gt;proxool,oscache"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>Configuration 可以扩展（继承）另一个 configuration，可以设置外部可见性。</p>
-<h2 id="Repository"><a href="#Repository" class="headerlink" title="Repository"></a>Repository</h2><p>Maven 的 repository 必须是网络服务（local 除外，local repository 本质上相当于 cache），Ivy 除了支持Maven 2 repository，也支持指定文件系统路径作为repository，还有各种各样其他的存储方式。</p>
-<p>Maven 当配置了多个 repository 时，是按照配置的顺序一一查找，找到 artifact 为止。Ivy 的 artifact 查找是由 resolver 来负责，一个 resolver 对应一个 repository，有些特殊的 resolver 可以将多个 resolver 组合起来使用，例如 chain resolver 和 dual resolver。缺省的 resolver 就是一个 chain resolve，按照 local, shared, public的顺序去访问这些 repository。Ivy 的组织要比 Maven 更灵活一些。</p>
-
-      
-    </div>
-
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1184,14 +1196,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">329</span>
+          <span class="site-state-item-count">330</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/blog/tags/">
           
-        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-count">53</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
