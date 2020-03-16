@@ -14,7 +14,7 @@ hexo s
 
 Publish to Github:
 ```
-hexo -g deploy
+hexo deploy -g
 ```
 
 ## Common Used Tags 
