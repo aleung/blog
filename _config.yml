@@ -87,3 +87,8 @@ search:
 # Integration
 # disqus_shortname: aleung
 google_analytics: UA-2827715-4
+
+# https://github.com/chekun/hexo-excerpt
+excerpt:
+  depth: 5
+  hideWholePostExcerpts: false
