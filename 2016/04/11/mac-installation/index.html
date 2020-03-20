@@ -21,15 +21,15 @@
     var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="装了一台黑苹果在公司里用，幸福指数大大提升。 硬件硬件选型参考tonymacx86的CustoMac Mini，算下来主机不足4000元。要保证安装顺利、功能正常和稳定，最重要的是选择推荐的主板型号，可以找到详细的安装配置教程，各种可能的坑都有人给出解决方案了。安装过程一律依据tonymacx86的guide进行，没有任何问题。SSD和机械硬盘组成fusion drive，在较低的成本上达到不错的">
+  <meta name="description" content="装了一台黑苹果在公司里用，幸福指数大大提升。 硬件硬件选型参考tonymacx86的CustoMac Mini)，算下来主机不足4000元。要保证安装顺利、功能正常和稳定，最重要的是选择推荐的主板型号，可以找到详细的安装配置教程，各种可能的坑都有人给出解决方案了。安装过程一律依据tonymacx86的guide进行，没有任何问题。SSD和机械硬盘组成fusion drive，在较低的成本上达到不错">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hackintosh Installation">
 <meta property="og:url" content="http://aleung.github.io/blog/2016/04/11/mac-installation/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description" content="装了一台黑苹果在公司里用，幸福指数大大提升。 硬件硬件选型参考tonymacx86的CustoMac Mini，算下来主机不足4000元。要保证安装顺利、功能正常和稳定，最重要的是选择推荐的主板型号，可以找到详细的安装配置教程，各种可能的坑都有人给出解决方案了。安装过程一律依据tonymacx86的guide进行，没有任何问题。SSD和机械硬盘组成fusion drive，在较低的成本上达到不错的">
+<meta property="og:description" content="装了一台黑苹果在公司里用，幸福指数大大提升。 硬件硬件选型参考tonymacx86的CustoMac Mini)，算下来主机不足4000元。要保证安装顺利、功能正常和稳定，最重要的是选择推荐的主板型号，可以找到详细的安装配置教程，各种可能的坑都有人给出解决方案了。安装过程一律依据tonymacx86的guide进行，没有任何问题。SSD和机械硬盘组成fusion drive，在较低的成本上达到不错">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2016-04-10T16:00:00.000Z">
-<meta property="article:modified_time" content="2016-08-30T16:34:13.000Z">
+<meta property="article:modified_time" content="2020-03-20T14:19:01.559Z">
 <meta property="article:author" content="Leo Liang">
 <meta property="article:tag" content="Software">
 <meta property="article:tag" content="Hardware">
@@ -120,7 +120,7 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">53</span></a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">52</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -210,7 +210,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2016-08-31 00:34:13" itemprop="dateModified" datetime="2016-08-31T00:34:13+08:00">2016-08-31</time>
+                <time title="修改时间：2020-03-20 22:19:01" itemprop="dateModified" datetime="2020-03-20T22:19:01+08:00">2020-03-20</time>
               </span>
 
           
@@ -225,7 +225,7 @@
 
       
         <p>装了一台黑苹果在公司里用，幸福指数大大提升。</p>
-<h1 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h1><p>硬件选型参考tonymacx86的<a href="[http://www.tonymacx86.com/building-customac-buyers-guide-march-2016.html#CustoMac_Mini](http://www.tonymacx86.com/building-customac-buyers-guide-march-2016.html#CustoMac_Mini)">CustoMac Mini</a>，算下来主机不足4000元。要保证安装顺利、功能正常和稳定，最重要的是选择推荐的主板型号，可以找到详细的安装配置教程，各种可能的坑都有人给出解决方案了。安装过程一律依据tonymacx86的guide进行，没有任何问题。SSD和机械硬盘组成fusion drive，在较低的成本上达到不错的性能和容量的兼顾。唯一问题是用了fusion driver之后hibernate就不能用了，因为Clover认不出fusion driver，找不到上面的sleep image。</p>
+<h1 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h1><p>硬件选型参考tonymacx86的<a href="http://www.tonymacx86.com/building-customac-buyers-guide-march-2016.html#CustoMac_Mini" target="_blank" rel="noopener">CustoMac Mini</a>)，算下来主机不足4000元。要保证安装顺利、功能正常和稳定，最重要的是选择推荐的主板型号，可以找到详细的安装配置教程，各种可能的坑都有人给出解决方案了。安装过程一律依据tonymacx86的guide进行，没有任何问题。SSD和机械硬盘组成fusion drive，在较低的成本上达到不错的性能和容量的兼顾。唯一问题是用了fusion driver之后hibernate就不能用了，因为Clover认不出fusion driver，找不到上面的sleep image。</p>
 <h1 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h1><p>以下内容均针对 El Capitan。</p>
 <h2 id="App安装途径"><a href="#App安装途径" class="headerlink" title="App安装途径"></a>App安装途径</h2><p>安装应用途径，按照优先顺序：</p>
 <ul>
@@ -374,7 +374,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/blog/tags/">
           
-        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

@@ -114,7 +114,7 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">53</span></a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">52</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -225,20 +225,14 @@
 
 <p>在测试中发现，对某些外部实体的访问成功截取了，但是另外一些却不成功，parser依然尝试通过网络访问，然后由于网络不通而访问失败，造成xml文件无法parse。</p>
 <p>对程序进行跟踪，发现了问题出现的规律：所有对schema文件的引用处理都正常，无论是include还是import方式，也无论是多少层的间接引用；在被parse的XML文件中DOCTYPE声明的外部实体引用，处理也正常，故此xerces自带的redirect例子是不会出问题的；但是，schema文件的DOCTYPE声明的外部实体引用就不能被正确处理了，根本不会调用指定的resolveEntity()方法。</p>
-<p>这时，基本上可以确认问题是出在xerces身上，而不是我们的程序的问题了。于是仔细跟踪xerces代码对schema parse的执行过程，最终发现了问题。</p>
-<p>XercesDOMParser类有两个resolveEnitiy方法：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">InputSource* <span class="title">XercesDOMParser::resolveEntity</span><span class="params">(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> publicId,</span></span></span><br><span class="line"><span class="function"><span class="params">                                            <span class="keyword">const</span> XMLCh* <span class="keyword">const</span> systemId,</span></span></span><br><span class="line"><span class="function"><span class="params">                                            <span class="keyword">const</span> XMLCh* <span class="keyword">const</span> baseURI)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (fEntityResolver)</span><br><span class="line">        <span class="keyword">return</span> fEntityResolver-&gt;resolveEntity(publicId, systemId);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">InputSource* <span class="title">XercesDOMParser::resolveEntity</span><span class="params">(XMLResourceIdentifier* resourceIdentifier)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (fEntityResolver)</span><br><span class="line">        <span class="keyword">return</span> fEntityResolver-&gt;resolveEntity(resourceIdentifier-&gt;getPublicId(),</span><br><span class="line">                                                resourceIdentifier-&gt;getSystemId());</span><br><span class="line">    <span class="keyword">if</span> (fXMLEntityResolver)</span><br><span class="line">        <span class="keyword">return</span> fXMLEntityResolver-&gt;resolveEntity(resourceIdentifier);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>根据代码注释，前者是deprecated的，被后者代替。</p>
-<p>由XercesDOMParser派生出XSDDOMParser类，这个类是专门用来parser xsd文件（也就是schema）的。这个类重载了XercesDOMParser的三个参数的resolveEntity方法，用fUserEntityHandler代替fEntityResolver的方法调用。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">InputSource* <span class="title">XSDDOMParser::resolveEntity</span><span class="params">(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> publicId,</span></span></span><br><span class="line"><span class="function"><span class="params">                                         <span class="keyword">const</span> XMLCh* <span class="keyword">const</span> systemId,</span></span></span><br><span class="line"><span class="function"><span class="params">                                         <span class="keyword">const</span> XMLCh* <span class="keyword">const</span> baseURI)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (fUserEntityHandler)</span><br><span class="line">        <span class="keyword">return</span> fUserEntityHandler-&gt;resolveEntity(publicId, systemId, baseURI);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>但是XSDDOMParser没有重载第二个resolveEntity方法，估计是第二个方法是后来才加入XercesDOMParser的，在XSDDOMParser中没有同步修改。因此，依然是使用fEntityResolver，而不是fUserEntityHandler，就造成了没有调用到我们定义的resolveEntity方法，依然按照原来的system id去访问网络了。</p>
-<p>问题找出来，解决就简单了，在XSDDOMParser中把另外一个resolveEntity方法也重载了，改为使用fUserEntityHandler。修改之后，测试通过。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">InputSource* <span class="title">XSDDOMParser::resolveEntity</span><span class="params">(XMLResourceIdentifier* resourceIdentifier)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (fUserEntityHandler)</span><br><span class="line">        <span class="keyword">return</span> fUserEntityHandler-&gt;resolveEntity(resourceIdentifier);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个问题在Xerces-C 2.4和2.5版本都存在，IBM的XML4C与Xerces-C是影子项目，也有同样的问题。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2004/04/30/Solve-Xerces-C-XML-parser-EnitiyResolver-doesn-t-work-in-the-problem/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -308,11 +302,14 @@
 <p>因为上下文切换的开销, 线程过多效率会降低, 我做这个测试程序就是想知道这个效率曲线到底是怎样的.</p>
 <p>以下为网上找到的资料:</p>
 <p>I just found this under CreateThread() in MSDN:  </p>
-<p>The number of threads a process can create is limited by the available virtual memory. By default, every thread has one megabyte of stack space. Therefore, you can create at most 2028 threads. If you reduce the default stack size, you can create more threads. However, your application will have better performance if you create one thread per processor and build queues of requests for which the application maintains the context information. A thread would process all requests in a queue before processing requests in the next queue.  </p>
-<p>So the number of threads you can create is capped by the 2 GB user address space available to your process.  </p>
-<p>So you have a few choices, as I see it:  </p>
-<p>1) Run multiple copies of your server at once and coordinate between them. You will need endless amounts of swap space.<br>2) Reduce the amount of stack used per thread (lowering from 1 Mb to 100Kb should get you 40,000 threads).<br>3) Re-architect your app to not require one thread per connection. Have each thread monitor many connections using (for example) a select() call.</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2004/04/10/How-to-increase-the-number-of-Windows-programs-thread-/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -382,7 +379,14 @@
 <p>经常会有这样的时候：无所事事不知道该干些什么，过后又后悔浪费了时间。目标不一定要很远大，它指引的是方向，帮助自己排除干扰，做出每个选择，什么是值得做的。不是说做的每件事情都需要有意义，而是做完之后不需要后悔就好了。多些思考，少些漫无目的，</p>
 <p><a href="http://huamin.blogone.net/" target="_blank" rel="noopener">长夜孤灯</a>（很好的名字），这个blog的主人把他在人生目标，个人计划这方面的思考记录下来。看了很有同感，为人理性，爱好思考，但个性稍微消沉，容易患得患失，似乎自己与作者有共通之处（flyisland也是这么说的，难道大家都一样？）。他提到的很多问题也是我的问题，看看他写的东西，反思自己，很有好处。</p>
 <p>应该怎样做？继续思考，坚持于行动，一点一点改进。记录下来，自勉。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2004/04/05/Target-plan/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -459,7 +463,14 @@
 </li>
 </ul>
 <p>罗嗦了这么多, 我的美味书签是: <a href="http://del.icio.us/aleung" target="_blank" rel="noopener">http://del.icio.us/aleung</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2004/03/28/Delicious-bookmarks/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -526,6 +537,14 @@
       
           <p>MeeSoft(<a href="http://meesoft.logicnet.dk/" target="_blank" rel="noopener">http://meesoft.logicnet.dk/</a>)这个网站有不少有意思的免费软件，包括Command(还记得DOS时代的NC吗？)、SmartMorph、图象增强(可以修复对焦不准的照片啊!)、图表制作、mp3管理、HTML优化等等。</p>
 
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2004/03/01/MeeSoft-/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -592,6 +611,14 @@
       
           <p>MAPSOURCE软件按经纬度的块存储文件，可以把世界其它地方的块删除，仅保留中国地区的文件块,从04309845.IMG到04311439.IMG，节约不少硬盘空间。不用担心，世界地图依然存在的，只是局部细节没有了，我想不必关心美国的乡村小路吧？</p>
 
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2004/02/22/MAPSOURCE-software-to-lose-weight/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -659,6 +686,14 @@
           <p><a href="http://unxutils.sourceforge.net" target="_blank" rel="noopener">unxutils.sourceforge.net</a> 提供了一系列的unix工具在win32平台上的移植版本. 这些版本是完全基于win32平台的, 不像cygwin那样还需要一个模拟层.</p>
 <p>Windows 2000 command line 中的 for 命令用于对一组文件中的每个执行某特定命令，类似于unix的 find * -exec command ，功能很强大，具体参数用 for /? 查看。</p>
 
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2004/02/20/If-you-get-used-to-using-UNIX-commands-so-in-Windows-/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -727,6 +762,14 @@
 <p>这些发明真的很弱智吗？我不这样认为。这八个发明都是解决现实生活中的实际问题的，虽然不见得都实用，但毕竟是对问题的一个解决方案。我倒是佩服这些发明者的创造能力，不是所有的发明都能成为伟大发明，但伟大发明必然是建立在不断的思维锻炼的基础之上。</p>
 <p>限制、扼杀创造力，是否教育和传统思维的悲哀？</p>
 
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2004/02/18/The-Japanese-weak-minded-invention-/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -796,8 +839,14 @@
 <p>我的pda上就有个小程序做时间记录的，我现在设置了 工作、学习、事务、消遣 几个分类，做事情前点一点，做完之后点一点，就会把花费的时间记录下来。这样可以统计出有多少时间是用于工作，多少时间看书学习，阅读邮件之类的事务耗了多少时间，上网看新闻等消遣又用了多少时间。掌握了这些数据，可帮助改善个人的时间利用效率。</p>
 <p>如果要用来统计各项目的工作时间，再按项目细分就可以了。虽然看起来记录有点麻烦，其实习惯了就好，不就是点个按钮嘛。</p>
 <p>Palm上的这个工具叫Punch Time Clock， PC上应该也有类似的程序的。</p>
-<p>不过真要按时间统计计算工作量，还有个观念问题。我今天工作了一天，统计出来的工作时间是4小时，要提交上去上司怎么说？偷懒？不行，怎么也得填个8小时。要真的按4小时算了，下次有同样任务，哦，你上次4小时做出来的，好，给你半天时间!实际上，真正有效的工作时间能占总工作时间的一半，已经不错了，各研究资料都是这么说的。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2004/02/13/Work-time-statistics/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -874,16 +923,14 @@
 <li>Not support POI database anymore</li>
 <li>Warranty void</li>
 </ul>
-<p>Steps:</p>
-<ol>
-<li>Download a firmware update for GPSMap 76 from Garmin website or from the following URL:<br><a href="http://www.tramsoft.ch/gps/garmin_gpsmap76-firmware-upgrades_en.html" target="_blank" rel="noopener">http://www.tramsoft.ch/gps/garmin_gpsmap76-firmware-upgrades_en.html</a></li>
-<li>Extract the downloaded self-extractarchive file to a folder. There should be three files: a ROM image (rgn file), an update tool (exe file) and a readme file. </li>
-<li>Notice that the ROM image is named as 017702000xxx.rgn,xxx is the firmware version number, 177 is the product number of GPSMap 76. You can’t direct use this file to update the GPS 76 because of the incorrect product number. Change the rgn file name from 177 to 173 which is the product number of GPS 76. </li>
-<li>Backup all date in your GPS 76. </li>
-<li>The exciting time comes. Do it as a normal firmware update. </li>
-<li>After about 2 minutes nervous waiting, it done. Enjoy your GPS 76 with 1000 waypoints and 10000track points!</li>
-</ol>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2004/01/06/Use-GPSMap-76-firmware-to-GPS-76-upgrade/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -978,7 +1025,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/blog/tags/">
           
-        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

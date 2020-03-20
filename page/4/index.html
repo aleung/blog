@@ -114,7 +114,7 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">53</span></a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">52</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -222,16 +222,15 @@
           <p>由于 sbt 使用 Ivy 做依赖管理，必须了解一下 Ivy 的基础知识。这里从熟悉 Maven 的用户的角度简单描述一下 Ivy。</p>
 <h2 id="共同点"><a href="#共同点" class="headerlink" title="共同点"></a>共同点</h2><p>Maven的功能要比 Ivy 多很多，Maven 既管 build 也管依赖，而Ivy 仅仅是负责依赖管理。但就在依赖管理方面，两者在概念、模型、功能等方面都还是比较相似的。</p>
 <p>对于 artifact 的标识，都是使用 groupID, artifactID, version 三元组，不过 Ivy 叫它们为 organization, module name, revision。Ivy 兼容 Maven 2 metadata，可以直接使用 Maven 2 repository。</p>
-<h2 id="Configuration-Scope"><a href="#Configuration-Scope" class="headerlink" title="Configuration / Scope"></a>Configuration / Scope</h2><p>Ivy 有个重要的概念叫 configuration，在 Maven 里类似的对应是 scope，但是 Ivy 的 configuration 比 Maven 的 scope 要灵活得多。</p>
-<p>一个模块可以有多个 configuration，每个 configuration 包含一组外部模块依赖的声明（实际的配置是反过来的，每个依赖声明会标识自己在那种 configuration 中生效）。Configuration 可以是跟 Maven scope 类似的 compile, runtime 和 test，也可以任意定义。例如，某个模块既可以支持 Oracle 也可以支持 MySQL，当使用不同数据库时，需要依赖的模块是不同的，就可以分别在 oracle 和 mysql 两个 configuration 中定义各自需要的依赖。</p>
-<p>Ivy 的 configuration 在依赖传递管理方面，比 Maven 要强。除了可以定义在一个 configuation 中需要依赖某个模块，还可以定义依赖这个模块时，会使用它的哪个 configuration，只有指定的 configuration 中的依赖才会传递进来。这个机制称为 configuration mapping。</p>
-<p>下面的例子中，声明了在 default configuration 中需要依赖 hibernate，并且包含 hibernate 的 proxool 和 oscache 这两种 configuration 中的依赖。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span> <span class="attr">org</span>=<span class="string">"hibernate"</span> <span class="attr">name</span>=<span class="string">"hibernate"</span> <span class="attr">rev</span>=<span class="string">"2.1.8"</span> <span class="attr">conf</span>=<span class="string">"default-&gt;proxool,oscache"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>Configuration 可以扩展（继承）另一个 configuration，可以设置外部可见性。</p>
-<h2 id="Repository"><a href="#Repository" class="headerlink" title="Repository"></a>Repository</h2><p>Maven 的 repository 必须是网络服务（local 除外，local repository 本质上相当于 cache），Ivy 除了支持Maven 2 repository，也支持指定文件系统路径作为repository，还有各种各样其他的存储方式。</p>
-<p>Maven 当配置了多个 repository 时，是按照配置的顺序一一查找，找到 artifact 为止。Ivy 的 artifact 查找是由 resolver 来负责，一个 resolver 对应一个 repository，有些特殊的 resolver 可以将多个 resolver 组合起来使用，例如 chain resolver 和 dual resolver。缺省的 resolver 就是一个 chain resolve，按照 local, shared, public的顺序去访问这些 repository。Ivy 的组织要比 Maven 更灵活一些。</p>
-
+<h2 id="Configuration-Scope"><a href="#Configuration-Scope" class="headerlink" title="Configuration / Scope"></a>Configuration / Scope</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2014/12/26/ivy-introduction-for-maven-user/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -282,7 +281,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+                <time title="修改时间：2020-03-20 22:34:56" itemprop="dateModified" datetime="2020-03-20T22:34:56+08:00">2020-03-20</time>
               </span>
 
           
@@ -300,53 +299,14 @@
 <h2 id="Graphite"><a href="#Graphite" class="headerlink" title="Graphite"></a>Graphite</h2><p>Graphite has two major components. </p>
 <p>The first is <code>carbon-cache</code>, which is a daemon process to receive metrics data from client through TCP connection and store into filesystem via <code>whisper</code> database library.</p>
 <p>Another one is a webapp. It provides HTTP API for generating graphs and retrieving raw data.</p>
-<p>Since Ubuntu 14.04, it’s easy to install graphite with <code>apt-get</code>:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install graphite-web graphite-carbon</span><br></pre></td></tr></table></figure>
-
-<p>Both <code>carbon</code> and <code>graphite-web</code> are installed as python module. </p>
-<p>Start carbon:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service carbon-cache start</span><br></pre></td></tr></table></figure>
-
-<p>Graphite-web is base on django framework. Read <code>/usr/share/doc/graphite-web/README</code> for how to setup graphite-web. A major steps is to create database and default data:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo graphite-manage syncdb</span><br><span class="line">sudo chown _graphite:_graphite /var/lib/graphite/graphite.db</span><br></pre></td></tr></table></figure>
-
-<p>For testing Graphite, you can start Graphite with the Django lightweight Web server for development:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -u _graphite /usr/bin/django-admin runserver --settings graphite.settings 0.0.0.0:8080</span><br></pre></td></tr></table></figure>
-
-<p>To install on Apache, follow the guide in <code>/usr/share/doc/graphite-web/README</code>. </p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libapache2-mod-wsgi</span><br><span class="line">sudo cp /usr/share/graphite-web/apache2-graphite.conf /etc/apache2/sites-available/graphite-web.conf</span><br><span class="line">sudo a2ensite graphite-web</span><br><span class="line">sudo service apache2 restart</span><br></pre></td></tr></table></figure>
-
-<p>Graphite-web 0.9.12 only works under URL root path, it conflict with Apache default site setting. I modify <code>/etc/apache2/sites-enabled/graphite-web.conf</code> to make it work in a virtual host on port 81.</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute"><span class="nomarkup">Listen</span></span> 81</span><br><span class="line"><span class="section">&lt;VirtualHost *:81&gt;</span></span><br><span class="line"> ...</span><br><span class="line"><span class="section">&lt;/VirtualHost&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>Reference:</p>
-<ul>
-<li><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-graphite-on-an-ubuntu-14-04-server" target="_blank" rel="noopener">https://www.digitalocean.com/community/tutorials/how-to-install-and-use-graphite-on-an-ubuntu-14-04-server</a></li>
-</ul>
-<h2 id="Grafana"><a href="#Grafana" class="headerlink" title="Grafana"></a>Grafana</h2><p>Download grafana package and extract to a directory. Configure Apache web server to make the grafana directory accessable.</p>
-<p>Edit <code>config.js</code> (copy from <code>config.sample.js</code>) to enable graphite as datasource.</p>
-<p>Because graphite-web is hosting on virtual host on port 81, which is different than where grafana is hosting, there is cross site script access restriction. Have to enable CORS (cross origin resource sharing) on graphite-web side.</p>
-<p>Enable Apache mod_headers:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo a2enmod headers</span><br></pre></td></tr></table></figure>
-
-<p>Add into <code>/etc/apache2/sites-enabled/graphite-web.conf</code>:</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute"><span class="nomarkup">Header</span></span> set Access-Control-Allow-Origin <span class="string">"*"</span></span><br><span class="line"><span class="attribute"><span class="nomarkup">Header</span></span> set Access-Control-Allow-Methods <span class="string">"GET, OPTIONS"</span></span><br><span class="line"><span class="attribute"><span class="nomarkup">Header</span></span> set Access-Control-Allow-Headers <span class="string">"origin, authorization, accept"</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Elasticsearch"><a href="#Elasticsearch" class="headerlink" title="Elasticsearch"></a>Elasticsearch</h2><p>Elasticsearch is used by Granfan as a database to persistent dashboard configuration. Search and analystics features of Elasticsearch isn’t used in this case. Without Elasticsearch Grafana still works, but unable to save any change to dashboard design. You have to export dashboard JSON and import next time you want to use it.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.1.deb</span><br><span class="line">sudo dpkg -i elasticsearch-1.4.1.deb</span><br></pre></td></tr></table></figure>
-
-<p>Elasticsearch is not starting on bootup by default. To setup as service, run:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-rc.d elasticsearch defaults 95 10</span><br></pre></td></tr></table></figure>
-
-<p>To start manually, run:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/elasticsearch start</span><br></pre></td></tr></table></figure>
-
-<p>To enable CORS (cross origin resource sharing), add below into <code>/etc/elasticsearch/elasticsearch.yml</code>:</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">http.cors.enabled:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p>The scala script <code>feed_graphite.scala</code> generates mock API metrics data for demo. The Grafana portal is defined as <code>api.json</code>. Both files are stored in this <a href="https://gist.github.com/aleung/1ec7e56bfa9448af920b" target="_blank" rel="noopener">gist</a>.</p>
-<p><img src="/attachments/2014/12/api-metrics-demo.png" alt=""></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2014/12/14/api-metrics-demo/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -417,86 +377,14 @@
 
 <p>数据不包含号码以0开头的专业选手（大概几十人）。由于不知道确切号码段，没完赛选手的数据有可能有误。</p>
 <p>首先是各组的人数，男女比例全马约8:1，半马约3.6:1。跑步的妹子相对还是比较少，女子只要完赛了，总能够拿到个几百名的名次的 :)</p>
-<p>然后看成绩分布。</p>
-<p>半程组里有15%男选手和22%女选手未能完成比赛，而全程组不能完赛的男女选手比例分别是14%和21%。不一定是女子毅力不行，是相同的关门时间对女子更困难些吧。但有意思的是虽然全程更痛苦，但完成率跟半程是基本上一样的。</p>
-<p>半马组，一半的男选手在2:30内跑完，一半的女选手在2:45内跑完。全马组，这个数字是男子5:00，女子5:20。有能力5小时内跑完全程的，已经强过一半的人了。</p>
-<p>有几十人是过了关门时间才冲线的，依然有成绩，看来组委会还不是那么不近人情。</p>
-<img src="/blog/attachments/2014/11/half-marathon.png" class="">
-
-<img src="/blog/attachments/2014/11/marathon.png" class="">
-
-<p>能跑330是什么水平？400呢？看看下面的表格，比例是表示有多少人在这个时间内完赛。</p>
-<ul>
-<li>男子全程</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="right">时间</th>
-<th align="right">比例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="right">3:30</td>
-<td align="right">4.0%</td>
-</tr>
-<tr>
-<td align="right">4:00</td>
-<td align="right">15.6%</td>
-</tr>
-<tr>
-<td align="right">4:30</td>
-<td align="right">32.1%</td>
-</tr>
-<tr>
-<td align="right">5:00</td>
-<td align="right">52.0%</td>
-</tr>
-<tr>
-<td align="right">5:30</td>
-<td align="right">67.2%</td>
-</tr>
-<tr>
-<td align="right">6:00</td>
-<td align="right">85.5%</td>
-</tr>
-</tbody></table>
-<ul>
-<li>女子全程</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="right">时间</th>
-<th align="right">比例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="right">3:30</td>
-<td align="right">1.3%</td>
-</tr>
-<tr>
-<td align="right">4:00</td>
-<td align="right">5.7%</td>
-</tr>
-<tr>
-<td align="right">4:30</td>
-<td align="right">17.1%</td>
-</tr>
-<tr>
-<td align="right">5:00</td>
-<td align="right">38.6%</td>
-</tr>
-<tr>
-<td align="right">5:30</td>
-<td align="right">58.0%</td>
-</tr>
-<tr>
-<td align="right">6:00</td>
-<td align="right">78.2%</td>
-</tr>
-</tbody></table>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2014/11/26/2014-guangzhou-marathon-analysis/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -638,6 +526,14 @@
       
           <p>关于PlantUML的简介。</p>
 <iframe src="//www.slideshare.net/slideshow/embed_code/38238529" width="597" height="486" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/aleung/plantuml" title="PlantUML" target="_blank">PlantUML</a> </strong> from <strong><a href="http://www.slideshare.net/aleung" target="_blank">aleung</a></strong> </div>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2014/08/23/plantuml/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -688,7 +584,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+                <time title="修改时间：2020-03-20 22:40:32" itemprop="dateModified" datetime="2020-03-20T22:40:32+08:00">2020-03-20</time>
               </span>
 
           
@@ -706,55 +602,14 @@
 <h1 id="版式设计"><a href="#版式设计" class="headerlink" title="版式设计"></a>版式设计</h1><p>正文字号常见为12~14px。</p>
 <p>标题与正文字号（font-size）的比例，比较流行的平均值是1.96。也就是将正文文字字号乘以2，就得到标题文字的字号。字号从传统值（6,7,8,9,10,11,12,14,16,18,21,24,36,48,60,72）或者斐波那契数列（8,13,21,34,55）中选择，可以得到更自然的版式效果。</p>
 <p>计算行宽的简单方法：行宽=字号*30。如果字号是10px，行宽就是300px，差不多等于一行65个字。</p>
-<p>行高（line-height）受多种因素的影响：字体、字号、粗细、样式、行宽、字距等。行宽越宽，行高就需越大；字号越大，行高就需要越小。比较流行的行高与字号的比例是1.5。</p>
-<p>段间距通常是行高的75%左右。</p>
-<h1 id="字体分类"><a href="#字体分类" class="headerlink" title="字体分类"></a>字体分类</h1><p>网页设计中大多数字体可以分为五大类别：</p>
-<h3 id="Geometric-Sans-无衬线几何字体"><a href="#Geometric-Sans-无衬线几何字体" class="headerlink" title="Geometric Sans 无衬线几何字体"></a>Geometric Sans 无衬线几何字体</h3><img src="/blog/attachments/2014/8/geometric.jpg" class="">
-
-<p>这个类别实际包括了几何风格（Geometric）、现实风格（Realist）和奇异风格（Grotesk）三类字体。它们基于精准几何形体，每个字母笔画的宽度都是一样的，这种设计生动体现了“少即是多”的极简派的设计思想。</p>
-<ul>
-<li>运用得当：干净、感性、现代而通用；</li>
-<li>运用不当：冰冷、理性、枯燥。</li>
-</ul>
-<p><em>Examples of Geometric/Realist/Grotesk Sans:</em> Helvetica, Univers, Futura, Avant Garde, Akzidenz Grotesk, Franklin Gothic, Gotham.</p>
-<h3 id="Humanist-Sans-无衬线人文字体"><a href="#Humanist-Sans-无衬线人文字体" class="headerlink" title="Humanist Sans 无衬线人文字体"></a>Humanist Sans 无衬线人文字体</h3><img src="/blog/attachments/2014/8/humanist.jpg" class="">
-
-<p>由手写体衍化而来，它们中的一些可能看上去干净而现代，但仍旧保留了一些手写体的特点。一般具有更多细节、更少的一致性，而且字体较窄笔画偏粗。</p>
-<ul>
-<li>运用得当：既现代又人文；</li>
-<li>运用不当：缺乏力度，不够权威。</li>
-</ul>
-<p><em>Examples of Humanist Sans:</em> Gill Sans, Frutiger, Myriad, Optima, Verdana.</p>
-<h3 id="Old-Style-古体字"><a href="#Old-Style-古体字" class="headerlink" title="Old Style 古体字"></a>Old Style 古体字</h3><img src="/blog/attachments/2014/8/old-style.jpg" class="">
-
-<p>特点是粗细笔画间的对比微妙，还有字母的弧度朝左偏。</p>
-<ul>
-<li>运用得当：古典，传统而易读；</li>
-<li>运用不当：依然是古典和传统（与其他不协调）。</li>
-</ul>
-<p><em>Examples of Old Style:</em> Jenson, Bembo, Palatino, Garamond(尤其显得传统)</p>
-<h3 id="Transitional-and-Modern-过渡体和现代体"><a href="#Transitional-and-Modern-过渡体和现代体" class="headerlink" title="Transitional and Modern 过渡体和现代体"></a>Transitional and Modern 过渡体和现代体</h3><img src="/blog/attachments/2014/8/trans.jpg" class=""><img src="/blog/attachments/2014/8/modern.jpg" class="">
-
-<p>这两类字体是启蒙思想的产物，字体设计师尝试改变平凡而低调的古体字的字形，使其变得更具几何特点、更锐利、更艺术。</p>
-<ul>
-<li>运用得当：展现出力量感、时尚感和活力；</li>
-<li>运用不当：不伦不类——若说古典，又过于显眼和繁复；若说现代，又显得有点俗气。</li>
-</ul>
-<p><em>Examples of transitional typefaces:</em> Times New Roman, Baskerville.</p>
-<p><em>Examples of Modern serifs:</em> Bodoni, Didot.</p>
-<h3 id="Slab-Serifs-带衬线的板式字体"><a href="#Slab-Serifs-带衬线的板式字体" class="headerlink" title="Slab Serifs 带衬线的板式字体"></a>Slab Serifs 带衬线的板式字体</h3><img src="/blog/attachments/2014/8/slab.jpg" class="">
-
-<p>笔画与其他衬线字体很像（形式简洁，笔画粗细对比相对微弱），但较为特别的是笔画末端有又方又硬的衬线。</p>
-<p>这类字体可以传达出一种权威感，如Rockwell字体的粗体；也可以展现出友好的感觉，如Archer。独特的块状衬线能为版面带来特别的气息，不过一旦用错也尤为显眼。</p>
-<p><em>Examples of Slab Serifs:</em> Clarendon, Rockwell, Courier, Lubalin Graph, Archer.</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><ul>
-<li><a href="what-font">What Font Should I Use?</a></li>
-<li>Making Sense of Type Classification (<a href="type-class-1">part 1</a>) (<a href="type-class-2">part 2</a>)</li>
-</ul>
-<h1 id="CSS-Font-Stack"><a href="#CSS-Font-Stack" class="headerlink" title="CSS Font Stack"></a>CSS Font Stack</h1><p>创建字体栈的基本公式：最佳字体 + 次佳字体 + 常见的相似字体 + 相似的网页安全字体 + 通用字体。</p>
-<p>在字体栈中要注意字体的字形比例。例如网页安全字体中，Verdana字形很宽，Arial/Helvetica相对较窄，它们不应该同时存在于版式中；Times和Georgia也是同理。</p>
-<p>常见的字体栈参看 <a href="http://www.smashingmagazine.com/2009/09/22/complete-guide-to-css-font-stacks/" target="_blank" rel="noopener">Guide to CSS Font Stacks</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2014/08/23/getting-the-hang-of-web-typography/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -824,10 +679,14 @@
 <p>考慮到前路漫漫，將速度下降到5’50”。這時接近正午時分，雖然沒有太陽直射，人也比較熱，心率上升到接近160。找賣水的地方，但琶洲一帶很荒蕪，估算著也撐到過了琶洲橋後也沒問題。</p>
 <p>13.5km處上橋，這橋真長，足足一公里。過了琶洲大橋下來，14.6km，去超市買運動飲料喝，停了幾分鐘。這麽一停下來，就沒法重新跑起來了，完全不想動。繼續跑後氣喘得很厲害，隔夜風爐都吹得著，腳擡不起，步頻下降了很多。將速度下降到6’30”了，希望能夠慢慢適應過來。堅持了一段，毫無起色，終於在過了華南大橋底，到了17km處放棄了。不清楚為什麼買水停了一下後狀態會突然變得那麽差，看回數據，過橋前的速度還是保持得比較平穩的5’50”左右。以前我也有經驗是不能停，一旦停下就很難重新回復狀態，但慢慢適應一段時間後還是可以的，這次完全不行。</p>
 <p>找不到廁所，鑽進樹叢裏面尿尿。舒暢完後渾身酥軟，一轉身沒站穩跟身後樹幹長滿刺的木棉樹來了個親密接觸。</p>
-<p>沿著江邊走，中午很寧靜，人不多，只有知了在不知疲倦的叫。突然覺得這個環境很舒服，享受一下時光吧，在榕樹陰下的石凳坐下，冰冷的石頭冷卻著大腿的肌肉，涼風吹拂身上的汗水。出來跑步什麼都沒有帶，不用再習慣性的拿手機來看，就讓時間的碎片留白，就是那樣靜坐著，看著開闊的江面，感覺那TMD不就是幸福麽。所以人都是自己感動自己的，要不哪來那麽多感人的事情。</p>
-<p>歇了一會，將運動飲料全喝完了，感覺恢復了一些，起來繼續跑一下，邊跑盤算著後面還能再跑多遠。但是，跑累了的時候就是靠內心去堅持的，原來一直習慣了喘著氣的狀態，可以一直跑下去，一旦享受過停下休息的舒服後就承受不了之前那種苦了。最後跑到珠江新城地鐵站收官，累計20.5km。後面這段其實心率還在正常範圍，肌肉沒有不適，就是步頻慢了，按理說這個狀態還可以繼續跑上好一段距離的。</p>
-<p>另一方面，今天跑的狀態看來確實不是那麽好，跑完幾個小時的感覺比以往跑這個距離要累。<br>回來看數據，感覺步頻似乎是反應體力狀態的一個直觀指標，從8.4km起步頻明顯下降了一個台階，而14.6km買水後步頻更是嚴重下降。另一方面，心率跟狀態有什麼關聯也還不是很清晰，每次跑步隨著疲勞累積，心率都是不斷升高的。但看以往的記錄，心率到160多速度依然保持的也有。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2014/06/21/run/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -878,7 +737,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+                <time title="修改时间：2020-03-20 22:25:10" itemprop="dateModified" datetime="2020-03-20T22:25:10+08:00">2020-03-20</time>
               </span>
 
           
@@ -892,7 +751,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>幾年前我寫過對Google中國地圖偏移規律的分析(<a href="/2009/12/26/Google-China-Map-offset-1/">1</a>)(<a href="/2009/12/27/Google-China-Map-offset-2/">2</a>)，根據抓取到的偏移量數據，大概看出呈現了<code>sin(a)+sin(3a)</code>這樣的函數曲線規律，並且這個函數以不同頻率和幅度疊加了兩次。當時我推導出函數及其係數，利用它去校正偏移，在百公里範圍的區域內已經非常理想，但是在全國大範圍的不同區域，係數需要有點不同，也就是擬合函數還是差了一些低頻率的細節。不過當時的分析細節我也不敢在博客裏面寫，後來我也沒有再搞地圖方面的應用開發了，就把這個放下。</p>
+          <p>幾年前我寫過對Google中國地圖偏移規律的分析(<a href="/blog/2009/12/26/Google-China-Map-offset-1/" title="1">1</a>)(<a href="/blog/2009/12/27/Google-China-Map-offset-2/" title="2">2</a>)，根據抓取到的偏移量數據，大概看出呈現了<code>sin(a)+sin(3a)</code>這樣的函數曲線規律，並且這個函數以不同頻率和幅度疊加了兩次。當時我推導出函數及其係數，利用它去校正偏移，在百公里範圍的區域內已經非常理想，但是在全國大範圍的不同區域，係數需要有點不同，也就是擬合函數還是差了一些低頻率的細節。不過當時的分析細節我也不敢在博客裏面寫，後來我也沒有再搞地圖方面的應用開發了，就把這個放下。</p>
 <p>實際上這個地圖偏移並不是Google自己搞的算法，而是國家測繪局以立法的形式統一要求加的，稱為地形图非线性保密处理，所有從事國內電子地圖的廠商應該都得到了這個算法，實際上並起不到什麼所謂保護國家安全和國家利益的作用（保護行業壟斷者利益倒是真的），但是這個地圖偏移對地理信息處理和GPS技術的民用化起到了巨大的阻礙作用，近年各種與地理位置相關的應用如雨後春筍般湧現，但都為中國地圖的偏移而頭痛不已，後來由於下面提到的算法的流傳，問題得以解決，但增加很多不必要的複雜性和浪費開發、數據處理的人力。在我看來，這個地圖非線性加密處理在地理信息領域就像GFW在互聯網信息領域一樣，浪費了大量社會財富來對技術發展與應用進行封鎖。<a href="http://baike.baidu.com/view/2356807.htm#2_2" target="_blank" rel="noopener">李成名</a>，你真的成名了。</p>
 <p>感謝Internet，感謝open source，現在這個偏移算法在網上已經可以輕松找到了。</p>
 <p>網上流傳的原始算法是<a href="http://emq.googlecode.com/svn/emq/src/Algorithm/Coords/Converter.java" target="_blank" rel="noopener">這個Java文件</a>，然後有人整理過代碼，接力開發出多種語言版本。在『A Fork of Stuffs』博客裏，<a href="http://blog.csdn.net/coolypf/article/details/8686588" target="_blank" rel="noopener">地球坐标系 (WGS-84) 到火星坐标系 (GCJ-02) 的转换算法</a>給出了C#實現，這個博客另外一篇<a href="http://blog.csdn.net/coolypf/article/details/8569813" target="_blank" rel="noopener">火星坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换算法</a>也很有用。而使用比較方便應該是下面的github代碼庫：</p>
@@ -900,8 +759,14 @@
 <li><a href="https://github.com/googollee/eviltransform" target="_blank" rel="noopener">googollee/eviltransform</a>: C, go, JavaScript, php語言版本</li>
 <li><a href="https://github.com/Leask/EvilTransform" target="_blank" rel="noopener">Leask/EvilTransform</a>: Java和C#語言版本，似乎就是將前面介紹的代碼收集到github裏面，沒有改動。</li>
 </ul>
-<p>另外，github裏還有一個項目 <a href="https://github.com/fourcels/lbs" target="_blank" rel="noopener">fourcels/lbs</a> 是用查表法來糾偏的，裏面的偏移數據（共9M）說不定就是早期從Google地圖服務上抓下來的。但現在有了算法，查表法的價值就不大了。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2014/04/03/zhong-guo-di-tu-pian-yi/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1051,17 +916,14 @@
 <li>Embedded into Octopress blog platform. The below examples are using it.</li>
 <li>IDE plugin. Easy way to keep UML together with source code.</li>
 </ul>
-<p>The syntax of PlantUML’s DSL is quite intuitional, you can start to use it by following example.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">package ConsentObject &lt;&lt;Rect&gt;&gt; &#123;</span><br><span class="line">  Consent : id</span><br><span class="line">  Scope : key</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">Client - User</span><br><span class="line">(Client, User) . Consent</span><br><span class="line"> </span><br><span class="line">Consent - &quot;*&quot; Scope</span><br><span class="line"> </span><br><span class="line">Consent &quot;1&quot; -- &quot;1..*&quot; AccessToken</span><br></pre></td></tr></table></figure>
-
-<p>The generated diagram:</p>
-<img  src=http://www.plantuml.com/plantuml/svg/K-0gI4pEJanFLN3EpojEpIlnJyfAJIvHiB490b9sTWhLN0emAGKhXSmK83SuERyW5SZ9JgtagkLIu7BEoGJ9wYg45gSMSMb0k3fWdgQ27amtI27K75q59IqbY358eag6IWgwG2b3FJsWh6DoScfnSKX-TceU0000> 
-
-<p>A sequence diagram example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">title OAuth 2.0 Authorization Code Grant</span><br><span class="line"></span><br><span class="line">actor    UserAgent       as UA</span><br><span class="line">participant Application     as APP</span><br><span class="line">participant OAuthServer     as OAuth</span><br><span class="line">participant ResourceServer  as RS</span><br><span class="line"></span><br><span class="line">&#x3D;&#x3D; Application requests authorization from user &#x3D;&#x3D;</span><br><span class="line">UA-&gt;APP: </span><br><span class="line">APP--&gt;UA:redirect to OAuth Server</span><br><span class="line">UA-&gt;OAuth: GET &#x2F;authorize?response_type&#x3D;code</span><br><span class="line">ref over UA, OAuth: user authentication\nuser confirms reqest</span><br><span class="line">OAuth--&gt;UA: redirect to App with authorization_code</span><br><span class="line">UA-&gt;APP: authorization_code</span><br><span class="line"></span><br><span class="line">&#x3D;&#x3D; Application retrieve access token &#x3D;&#x3D;</span><br><span class="line">APP-&gt;OAuth: POST &#x2F;token with authorization_code</span><br><span class="line">ref over APP, OAuth: client authentication</span><br><span class="line">APP&lt;--OAuth: access_token</span><br><span class="line"></span><br><span class="line">&#x3D;&#x3D; Application access protected resource &#x3D;&#x3D;</span><br><span class="line">APP-&gt;RS: getResource with access_token</span><br><span class="line">RS-&gt;OAuth: validateToken(access_token)</span><br><span class="line">RS--&gt;APP: result</span><br></pre></td></tr></table></figure>
-
-<img  src=http://www.plantuml.com/plantuml/svg/TP9FJuGm4CNl_HHpr4JKU2IYQOpPusvWkPbicZAxDh8KfyCQ_VIsfP35Fnm8RT_C-xsXRBX5MCk1N-7k-XR2XoNpfTZO3fviWx0YrR4GIhCb69_Q8Sa3TfpMoa4jHQ-8ZJQzbuFi-zReiKjIoCrc8Occ5T89QPB4hOMeH6S7qZZflAYiX2YAXGFX-u2E7QW5_fxi4GRF2aKXQfazU8GSX7zdsKCjSyB646e6jca4eqtKneqSLizRk9dQuYEXwstdSCUVFHRQpqSGxi46k5fUGQgAfg7ApoX1ldHnKzjkR-Ze0hD75h5Wn85p7XyFFen7MaJQHSSvoXzdlqV3PF24eBH6vtphD-p2FC8Kff2RTULJZaV_cSunVU6SKxSct89bqj3wFikIPFJTnUO_uH9JJvPzR6myxVYxPy2ook60F5s3H7VUigpc62VLcaOnRiF1nRdgCiZIqBp7qF8t>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2014/01/20/text-to-uml-diagram/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1156,7 +1018,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/blog/tags/">
           
-        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

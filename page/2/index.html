@@ -114,7 +114,7 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">53</span></a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">52</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -205,7 +205,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-04 18:55:37" itemprop="dateModified" datetime="2019-08-04T18:55:37+08:00">2019-08-04</time>
+                <time title="修改时间：2020-03-20 22:26:16" itemprop="dateModified" datetime="2020-03-20T22:26:16+08:00">2020-03-20</time>
               </span>
 
           
@@ -441,6 +441,14 @@
           <p>接近一年没有更新过这个blog了，时间过得真快，也是有史以来荒废得最久的时间。</p>
 <p>虽然没有写文章，在上半年还是断断续续的花了点时间升级了blog系统。原本用的是<a href="https://github.com/octopress/octopress" target="_blank" rel="noopener">Octopress</a>，但Octopress的3.0版本开发基本上处于废弃状态，想换回正宗的<a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>，Jekyll 3.0的发布也是从2004年底一直等到2005年底，试用过测试版本很多不兼容问题。从去年以来，工作重点切换到node.js平台，于是自己的项目也选择node.js好了，最后选用了<a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>作为blog系统。Hexo还有个优点就是render速度比基于Ruby的Jekyll/Octopress快了起码一个数量级，我这里三百多篇文章，以前启动预览得大概一分钟，现在几秒钟。</p>
 
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2016/08/30/update/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -491,7 +499,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2016-08-31 00:34:13" itemprop="dateModified" datetime="2016-08-31T00:34:13+08:00">2016-08-31</time>
+                <time title="修改时间：2020-03-20 22:19:01" itemprop="dateModified" datetime="2020-03-20T22:19:01+08:00">2020-03-20</time>
               </span>
 
           
@@ -506,45 +514,16 @@
 
       
           <p>装了一台黑苹果在公司里用，幸福指数大大提升。</p>
-<h1 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h1><p>硬件选型参考tonymacx86的<a href="[http://www.tonymacx86.com/building-customac-buyers-guide-march-2016.html#CustoMac_Mini](http://www.tonymacx86.com/building-customac-buyers-guide-march-2016.html#CustoMac_Mini)">CustoMac Mini</a>，算下来主机不足4000元。要保证安装顺利、功能正常和稳定，最重要的是选择推荐的主板型号，可以找到详细的安装配置教程，各种可能的坑都有人给出解决方案了。安装过程一律依据tonymacx86的guide进行，没有任何问题。SSD和机械硬盘组成fusion drive，在较低的成本上达到不错的性能和容量的兼顾。唯一问题是用了fusion driver之后hibernate就不能用了，因为Clover认不出fusion driver，找不到上面的sleep image。</p>
+<h1 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h1><p>硬件选型参考tonymacx86的<a href="http://www.tonymacx86.com/building-customac-buyers-guide-march-2016.html#CustoMac_Mini" target="_blank" rel="noopener">CustoMac Mini</a>)，算下来主机不足4000元。要保证安装顺利、功能正常和稳定，最重要的是选择推荐的主板型号，可以找到详细的安装配置教程，各种可能的坑都有人给出解决方案了。安装过程一律依据tonymacx86的guide进行，没有任何问题。SSD和机械硬盘组成fusion drive，在较低的成本上达到不错的性能和容量的兼顾。唯一问题是用了fusion driver之后hibernate就不能用了，因为Clover认不出fusion driver，找不到上面的sleep image。</p>
 <h1 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h1><p>以下内容均针对 El Capitan。</p>
-<h2 id="App安装途径"><a href="#App安装途径" class="headerlink" title="App安装途径"></a>App安装途径</h2><p>安装应用途径，按照优先顺序：</p>
-<ul>
-<li><a href="https://caskroom.github.io/" target="_blank" rel="noopener">Homebrew Cask</a></li>
-<li><a href="http://brew.sh/" target="_blank" rel="noopener">Homebrew</a></li>
-<li>App Store</li>
-<li>官网下载</li>
-</ul>
-<h3 id="升级已安装的所有brews"><a href="#升级已安装的所有brews" class="headerlink" title="升级已安装的所有brews"></a>升级已安装的所有brews</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew update</span><br><span class="line">brew upgrade</span><br></pre></td></tr></table></figure>
-
-<h3 id="升级已安装的所有casks"><a href="#升级已安装的所有casks" class="headerlink" title="升级已安装的所有casks"></a>升级已安装的所有casks</h3><p>From: <a href="http://apple.stackexchange.com/a/231020/13455" target="_blank" rel="noopener">http://apple.stackexchange.com/a/231020/13455</a></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s https://gist.githubusercontent.com/atais/5d3ec79e67f221cb55b7/raw/f6e6b647e6f90939c016ba88e591529d143cb33d/cash_upgrade.sh | bash /dev/stdin</span><br></pre></td></tr></table></figure>
-
-<h2 id="强大的命令行"><a href="#强大的命令行" class="headerlink" title="强大的命令行"></a>强大的命令行</h2><ul>
-<li>用iTerm2替换系统自带的terminal<ul>
-<li>安装 Solarized Dracula theme （不要选Solaris dark，好多工具的输出会看不见）</li>
-<li>更改字体</li>
-</ul>
-</li>
-<li>用zsh替换缺省的bash<ul>
-<li>使用 Oh-my-zsh 进行zsh的配置，以上步骤参考这里 <a href="https://gist.github.com/kevin-smets/8568070" target="_blank" rel="noopener">https://gist.github.com/kevin-smets/8568070</a></li>
-<li>设置为超酷的theme: <a href="https://gist.github.com/agnoster/3712874" target="_blank" rel="noopener">agnoster</a></li>
-</ul>
-</li>
-<li>安装 <a href="https://github.com/clvv/fasd" target="_blank" rel="noopener">fasd</a></li>
-</ul>
-<h2 id="Finder增强"><a href="#Finder增强" class="headerlink" title="Finder增强"></a>Finder增强</h2><h3 id="快速切换是否显示隐藏文件"><a href="#快速切换是否显示隐藏文件" class="headerlink" title="快速切换是否显示隐藏文件"></a>快速切换是否显示隐藏文件</h3><p>按照<a href="http://apple.stackexchange.com/questions/177132/how-to-set-h-to-enable-show-hidden-files/177138#177138" target="_blank" rel="noopener">这里</a>的方法创建一个Automator Service。</p>
-<h3 id="增强-Finder-预览文件的能力"><a href="#增强-Finder-预览文件的能力" class="headerlink" title="增强 Finder 预览文件的能力"></a>增强 Finder 预览文件的能力</h3><p>安装quick look plugins： <a href="https://github.com/sindresorhus/quick-look-plugins" target="_blank" rel="noopener">https://github.com/sindresorhus/quick-look-plugins</a></p>
-<h2 id="增强剪贴板"><a href="#增强剪贴板" class="headerlink" title="增强剪贴板"></a>增强剪贴板</h2><p>安装 ClipMenu，提供剪贴板历史功能</p>
-<h2 id="本地化Web应用"><a href="#本地化Web应用" class="headerlink" title="本地化Web应用"></a>本地化Web应用</h2><p>安装 <a href="https://github.com/dmarmor/epichrome" target="_blank" rel="noopener">epichrome</a> 将web应用（例如trello）包装为本地应用，方便使用 Mission Control 和全屏。它实际上是每个web应用绑定一个独立的chrome profile，故此还可以安装使用chrome插件。</p>
-<h2 id="一套键盘鼠标控制两台电脑"><a href="#一套键盘鼠标控制两台电脑" class="headerlink" title="一套键盘鼠标控制两台电脑"></a>一套键盘鼠标控制两台电脑</h2><p>Mac是台式机，键盘鼠标连接到Mac上，安装SynergyKM，运行为server；Win笔记本安装Synergy（网上寻找第三方编译版本，open source，但官网下载binary要收费），运行为client。</p>
-<p>使用Windows键盘，需要重新映射按键。首先是在 Preference - Keyboard - Modifier Keys 中对调 Option 和 Command 键，这样左下角三个键的位置就跟Mac的键位相同了。然后安装<a href="https://pqrs.org/osx/karabiner/" target="_blank" rel="noopener">Karabiner</a>，一个功能超强的键盘映射工具，在profile中选择enable需要的映射规则。</p>
-<p>因为用 Synergy 同时控制Win电脑，这时重映射过的键盘在 Windows 里面就很难用了。Karabiner 支持多个profile，但目前还没有根据所在屏幕自动切换的方案，解决方法是创建一个NoRemap的profile，里面不打开任何remap规则，用F6键做profile切换。</p>
-<p>Profile切换需要在Karabiner中增加自定义规则，在<code>private.xml</code>中加入下面的内容：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">vkopenurldef</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>KeyCode::VK_OPEN_URL_SHELL_switchprofile_default<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span> <span class="attr">type</span>=<span class="string">"shell"</span>&gt;</span></span><br><span class="line">        &lt;![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name Default    ]]&gt;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">vkopenurldef</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">vkopenurldef</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>KeyCode::VK_OPEN_URL_SHELL_switchprofile_noremap<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span> <span class="attr">type</span>=<span class="string">"shell"</span>&gt;</span></span><br><span class="line">        &lt;![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name NoRemap    ]]&gt;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">vkopenurldef</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">item</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Switch Profile to Default with F6<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">identifier</span>&gt;</span>private.switch1<span class="tag">&lt;/<span class="name">identifier</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">autogen</span>&gt;</span></span><br><span class="line">        __KeyToKey__</span><br><span class="line">        KeyCode::F6,</span><br><span class="line">        KeyCode::VK_OPEN_URL_SHELL_switchprofile_default</span><br><span class="line">    <span class="tag">&lt;/<span class="name">autogen</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">item</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Switch Profile to NoRemap with F6<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">identifier</span>&gt;</span>private.switch2<span class="tag">&lt;/<span class="name">identifier</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">autogen</span>&gt;</span></span><br><span class="line">        __KeyToKey__</span><br><span class="line">        KeyCode::F6,</span><br><span class="line">        KeyCode::VK_OPEN_URL_SHELL_switchprofile_noremap</span><br><span class="line">    <span class="tag">&lt;/<span class="name">autogen</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>参考自：<a href="http://apple.stackexchange.com/a/143064/13455" target="_blank" rel="noopener">http://apple.stackexchange.com/a/143064/13455</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2016/04/11/mac-installation/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -627,9 +606,14 @@
 <li>最后一个拐弯后，一大堆美女啦啦队热情的喊，从她们手上接过一个气球，跑完最后一段。拿着气球这个点子不错，拍照效果应该好吧。冲线后，一按手表，居然是4:02:02，完全没有想到居然能够 PB 还快了10分钟。官方净成绩是4:01:53.</li>
 </ul>
 <p>这次还是首次全马没有上厕所。前十几公里是有一点想尿的，厕所要排队想后面的人少，但跑到后边就没有尿意了，省了一分钟 :)</p>
-<p>尽管气温不高，从第一个海绵站（7.5km）开始就拿海绵降温，开始是淋头部。到小腿出现发硬，怕抽筋，就给小腿和大腿也淋水。大概30km 处拿了半瓶水来淋小腿，弄得鞋袜都湿了，幸好也没有带来什么影响。后来就不敢直接淋，用手捧水在腿上抹。</p>
-<p>不算起步的3km，20km前平均步速5:33；20-30km平均5:36（除去弄盐丸浪费时间那段）；30km 以后平均5:46。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2015/12/06/guangzhou-marathon/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -698,28 +682,14 @@
 <p>于是开始网上查找资料，了解相关信息。一开始的想法是做像那篇文章中的 XYZ 结构，大一点的打印体积（开始都是贪心的），看了 <a href="http://forums.reprap.org/" target="_blank" rel="noopener">RepRap 论坛</a>发现关于 delta 结构的讨论很热门，了解多一些后知道 delta 结构打印机的打印速度快，成本比较低，制作也不复杂，于是锁定了 <a href="http://reprap.org/wiki/Kossel" target="_blank" rel="noopener">Kossel</a> 机型，心想先做一个出来练练手，小一点也够用了，以后真玩起来有需要再做大机器。</p>
 <p>接下来在寻找国内的资源的时候知道了 <a href="http://www.thingiverse.com/thing:388683" target="_blank" rel="noopener">K800</a> 打印机，这是国内爱好者 maximscy 在 Kossel Mini 基础上改进的以降低成本为目标的机型，原本 K800 的意思就是人民币800元可以做出来的 Kossel，但实际上基本上也还是要上千元。</p>
 <p>K800 应该说对于推动3D打印机在国内普及有不少功劳，淘宝上有不少卖套件的。K800 降低了成本，但是毕竟还是以牺牲一点精度为代价，因此卖家也有不少“升级套餐”，例如将打印制作的元件换成铝合金元件，滑轮换回直线导轨等等。我对成本还不算很敏感，想做出来的机器质素好一点，但看下来发现套件的价格水分又太大了，而且配置不一定跟自己要求一致，于是决定自己采购元件。</p>
-<p>最后定下来的方案基本上是原版的 Kossel Mini 方案，高度增加50mm，框架连接件用铝合金的以增加牢固程度和精度，挤出机用铝合金的套件。斜杆的制作精度要求比较高，也直接买做好的算了。</p>
-<p>制作相关的资料信息，例如 BOM，记录在GitHub的 <a href="https://github.com/aleung/KosselPrinter" target="_blank" rel="noopener">KosselPrinter</a> 项目里。</p>
-<h2 id="进展"><a href="#进展" class="headerlink" title="进展"></a>进展</h2><h3 id="国庆节前"><a href="#国庆节前" class="headerlink" title="国庆节前"></a>国庆节前</h3><p>计划用国庆节7天假期来制作，所有材料应该要在节前采购完毕。开始没有考虑到淘宝店家在国庆节会放假，到27号了BOM还没有完全做好，订单还没下。淘宝上采购的难度比预计要困难得多，要比较不同店家的产品，而且搜索了才知道有些元件有好多选择，要弄清楚它们的区别，相互的配套，一个变了可能设计就要改变，配套的东西也不同了。在马云家奋战一个晚上直到凌晨3点，第二天又继续买买买，终于把订单全下完，总金额1400元出头。</p>
-<p>元件在29、30日陆续送到，其中挤出机发现配件不齐，找卖家补发。想着剩下的东西在1日都能够全部收齐了吧？</p>
-<h3 id="10-1"><a href="#10-1" class="headerlink" title="10-1"></a>10-1</h3><p>安装框架，发现买的铝合金连接件是按照国标铝型材设计的，竖杆孔里有几条棱，而我用的是欧标铝型材，配合使用T型螺母，因为棱的存在无法压紧，只好尝试用锉刀去锉掉那条棱。另外，我买的 M3*8 螺丝显得小和短了，有点勉强，出去转了一圈，没有找到卖铝型材用螺母的地方，都放假了。</p>
-<img src="/blog/attachments/2015/10/1.jpg" class="">
-
-<p>铝合金连接件有一件漏打一个孔，跟店家联系，他晚上直接开车给我送一个好的过来，超好人。跟他说起欧标型材的问题，他说可以送给我一些国标 M4 方螺母，也可以塞进欧标型材的槽里的，就不需要锉掉那条棱了。</p>
-<h3 id="10-2"><a href="#10-2" class="headerlink" title="10-2"></a>10-2</h3><p>把直线导轨装上，发现只有一根导轨的滑块能够在重力下自己下滑，另外两根摩擦力都好大，而且是不均匀，在某些地方特别卡，需要用一点力才能推过去。网上问人，说这是不正常的，要么是质量特别差，要么是旧零件翻新。只好退货了，然后就不知道应该买什么导轨，国产的似乎不可靠，台湾上银的又太贵，而且据说淘宝假货很多。</p>
-<img src="/blog/attachments/2015/10/2.jpg" class="">
-
-<p>快递国庆节都休息了，节前买的东西到了配送点就是没人送上门，停工待料。开始看软件、参数调整和建模方面的资料，发现入坑了，而且似乎是深不见底。</p>
-<p>试用 <a href="http://www.openscad.org/" target="_blank" rel="noopener">OpenSCAD</a>，通过写代码的方式来建3D模型，很容易上手，做基于几何体的模型很简便（自由曲面用什么工具都不简单吧？）。</p>
-<h3 id="10-3"><a href="#10-3" class="headerlink" title="10-3"></a>10-3</h3><p>收到M4螺丝螺母，把原来用M3螺丝螺母已经装好的框架拆掉。发现步进电机、同步轮和连接件的安装位置不太吻合，看来又要动用钢锉。要等导轨和滑车到了后确定具体位置才好动手。于是所有东西又回到一堆零件的状态。</p>
-<p>将计划从国庆假期完成更新为10月底前完成。</p>
-<h3 id="10-5"><a href="#10-5" class="headerlink" title="10-5"></a>10-5</h3><p>快递终于上班了，所有淘宝买的东西都送齐了。但是直线导轨退货后还没有重新购买，没有这个关键零件还是什么都做不了。</p>
-<p>今天没有干什么东西，只是将送丝机和挤出头装配了起来。</p>
-<img src="/blog/attachments/2015/10/3.jpg" class=""> <img src="/blog/attachments/2015/10/4.jpg" class="">
-
-
-<p><em>(To be contined…)</em></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2015/10/05/kossel-mini-3d-printer-making/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -789,7 +759,14 @@
 <p>从软件开发者的平均水平这个角度来看，自由软件项目也优于企业开发的软件项目。当然，这里谈的自由软件项目是指有一组稳定贡献者有明确蓝图的，这样才能与企业项目相比较，个人练手的项目不算在内。试想一下，在一个软件企业里面，水平足矣为自由软件提交代码的开发者占了多少比例？但是那些尚不能为自由软件项目提交代码的开发者，在企业里面可是天天写代码的，甚至大部分代码是出自他们之手。</p>
 <p>泛泛的说，在某个领域，如果可选的自由软件有不少，那么排名前列的项目，质量基本上不需要太过担心。</p>
 <p>上面是我对自由软件质量担忧的看法，但这当然不代表就可以随意选择使用自由软件，技术选型中需要评估的东西还有很多。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2015/09/20/quality-of-free-software/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -858,6 +835,14 @@
 <p><em>注意：看绿色导航箭头，是可以向下翻页的。有些背景图片可能需要翻墙才能看到，否则会变成空白。</em></p>
 <iframe src="//slides.com/aleung/goodgoodstudy/embed?style=light" width="800" height="600" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2015/09/20/continuous-learning/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -926,14 +911,15 @@
 <p>上网搜索一圈，发现这种打着 “HTML presentation framework” 名号的工具还真多，近些年来 HTML5、CSS、JavaScript 的广泛应用，这些基于 HTML 的演示可以做得很炫，让人耳目一新，例如这个 <a href="http://vizzuality.github.io/rollingstonesmap/" target="_blank" rel="noopener">50 Years of the Rolling Stones</a> 和 <a href="http://lightning.fm/massofplanets/#/" target="_blank" rel="noopener">Mass of Planets</a> (要允许网页使用摄像头)。</p>
 <p>比较了一下，感觉 <a href="https://github.com/hakimel/reveal.js" target="_blank" rel="noopener">reveal.js</a> 不错，也很受欢迎。后来又发现另外一个后起之秀 <a href="https://github.com/markdalgleish/bespoke.js" target="_blank" rel="noopener">bespoke.js</a>，影响力不够 reveal.js 大，但它的插件式设计更胜一筹。对了，这些工具基本上都是用 JavaScript/Node.js 等一套工具链的，前端相关的技术 js 独霸天下了。</p>
 <p>先试了一下 bespoke.js。看到 reveal.js 能使用 <a href="https://www.leapmotion.com/" target="_blank" rel="noopener">Leap Motion</a> Controller 来手势控制，演示起来会比较出彩，正好同事有一个 leap motion，可以借来玩，但是却找不到 bespoke.js 支持 leap motion 的插件。查了一下，原来 leap 有 JavaScript API，在浏览器里面能够通过事件监听获得双手各个手指的位置和手势动作的信息，API 暴露出来的已经是处理后的双手模型了，应用用起来相当方便。于是就简单的 port 了一个 <a href="https://www.npmjs.com/package/bespoke-leapmotion" target="_blank" rel="noopener">bespoke-leapmotion</a> 插件出来。但说实在的，leap motion 这东西还是中看不中用，用手势切换页面根本就不如手指头按个按键快捷和省力，手势的辨别也不够精准（这方面应用在数据处理上是可以下些功夫的）。</p>
-<img src="/blog/attachments/2015/8/leapmotion.jpg" class="">
-
-<p>Bespoke.js 的 markdown 支持似乎还有些坑，总有这样那样的问题。而且在 markdown 在版面布局方面局限性也很大，做出来的 slides 显得单调了些，效果不够理想，于是又在看看直接用 HTML 来写会怎样。HTML 是足够灵活了，但是要设置排版布局又累死了，我对 HTML+CSS 也不是那么熟悉，有点想放弃用回 PowerPoint 了。 </p>
-<p>正好这个时候，发现了 <a href="http://slides.com" target="_blank" rel="noopener">slides.com</a> 这个网站，它背后用的就是 reveal.js，但它的在线编辑器真心好用啊，鼠标拖放元素，功能简洁但又足够做出漂亮的效果了。就是它了！</p>
-<img src="/blog/attachments/2015/8/slides-editor.png" class="">
-
-<p>但是，我还是念念不忘 leap motion —— 演示的时候可以带来新奇的效果啊。Slides.com 自然不会有这偏门的功能，但它很良心的提供了 export to reveal.js，在上面编辑好的 slides 可以放回本地的 reveal.js 里面播放，免费用户都可以享受。嗯，看起来一切都好，可是，怎么在 slides.com 里面写好的 speaker notes 导出后都丢失了呢？查看导出文件的内容，似乎是 slides.com 内部处理 speaker notes 用的机制跟 reveal.js 不一样，存放的格式也不同了。还好，只要数据都在，还是有办法的，写个<a href="https://github.com/aleung/slides-export" target="_blank" rel="noopener">程序</a>来转换就行了。</p>
-
+<img src="/blog/attachments/2015/8/leapmotion.jpg" class>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2015/08/29/html-presentation-framework/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1028,7 +1014,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/blog/tags/">
           
-        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

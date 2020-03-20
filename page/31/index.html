@@ -114,7 +114,7 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">53</span></a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">52</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -224,24 +224,14 @@
 <p><strong>DOM</strong>: Document Object Model (<a href="http://www.w3.org/DOM/" target="_blank" rel="noopener">http://www.w3.org/DOM/</a>)<br>DOM 由 W3C 创建，并且是该协会的正式建议.<br>解析器读入整个文档，然后构建一个驻留内存的树结构，然后您的代码就可以使用 DOM 接口来操作这个树结构。您可以遍历树以了解原始文档包含了什么，您可以删除树的几个部分，还可以重新排列树和添加新的分支，等等。<br>DOM 构建整个文档驻留内存的树。如果文档很大，就会要求有极大的内存。<br>DOM 创建表示原始文档中每个东西的对象，包括元素、文本、属性和空格。如果您只需关注原始文档的一小部分，那么创建那些永远不被使用的对象是极其浪费的。<br>DOM 解析器必须在您的代码取得控制权之前读取整个文档。对于非常大的文档，这会引起显著的延迟。   </p>
 <p><strong>SAX</strong> API for XML (<a href="http://www.saxproject.org/" target="_blank" rel="noopener">http://www.saxproject.org/</a>)<br>SAX 采用事件驱动的模式, 解释器读入XML文档, 进行扫描, 当发现符合指定条件的数据时, 向您的代码发送一个事件。SAX 不能修改 XML 文档.<br>SAX 事件是无状态的。当 SAX 解析器在 XML 文档中发现文本时，它就向您的代码发送一个事件。该事件仅仅给您发现的文本；它不告诉您什么元素包含那个文本。如果您想知道这一点，则必须自己编写状态管理代码。<br>SAX 事件不是持久的。如果应用程序需要一个数据结构来对 XML 文档建模，则必须自己编写那样的代码。如果您需要从 SAX 事件访问数据，并且没有把那个数据存储在代码中，那么您不得不再次解析该文档。<br>SAX 的速度相当快, 而且节省内存, 因为它不会保存数据在内存之中.   </p>
 <p>DOM/SAX 是两种不同的解析方法, 各有侧重点, 用于不同用途. 它们都可以用不同的编程语言来实现, 不同的供应商会提供各自的解释器版本. 例如Microsoft提供了DOM分析器msxml.dll, Apache的xerces, SUN的crimson等.   </p>
-<p>DOM与SAX, 如何选择?   </p>
-<ul>
-<li><p>应用程序将如何部署？<br>如果您的应用程序将要作为 Java applet 部署，那么您会希望使要下载的代码数量最小，SAX 解析器比 DOM 解析器小。   </p>
-</li>
-<li><p>一旦解析了 XML 文档，还需要多次访问那些数据吗？<br>如果您需要回过头来访问 XML 文件的已解析版本，DOM 可能是正确的选择。而 SAX 事件被触发时，如果您以后需要它，则由您（开发人员）自己决定以某种方式保存它。如果您需要访问不曾保存的事件，则必须再次解析该文件。而 DOM 自动保存所有的数据。   </p>
-</li>
-<li><p>只需要 XML 源文件的少量内容吗？<br>如果您只需要 XML 源文件的少量内容，那么 SAX 可能是正确的选择。SAX 不会为源文件中的每个东西创建对象；您要确定什么是重要的。使用 SAX，您要检查每个事件以了解它是否与您的需要有关，然后相应地处理它。更妙的是，一旦找到您正在寻找的东西，您的代码就会抛出一个异常来完全停止 SAX 解析器。   </p>
-</li>
-<li><p>您正在一台内存很少的机器上工作吗？<br>若是的话，不管您可能考虑到的其它因素是什么，SAX 是您的最佳选择。  </p>
-</li>
-</ul>
-<p>在Java语言中, 要处理XML, 除了直接使用DOM/SAX, 还有高层次一点的API可以使用, 比较常见的是JAXP和JDOM.   </p>
-<p><strong>JAXP</strong>: Java API for XML Processing<br>是 Sun 提供的标准API, 包含在JDK中.<br>但它更多的是一套接口, 将DOM和SAX的接口规范起来, 并没有在易操作性方面提供太多的方便.  </p>
-<p><strong>JDOM</strong>: 由Brett McLaughlin, Jason Hunter两人创立的open source项目 (<a href="http://www.jdom.org" target="_blank" rel="noopener">http://www.jdom.org</a>)<br>JDOM的设计目的不是要做万能的解析器, 而是能提供常用的大部分的功能. 它的使用相对简单, 容易理解, 使用它开发代码量会比较少.<br>JDOM 的速度也比较高, 仅仅比SAX慢一点. 它主要是使用SAX来实现功能, 当需要用到DOM的时候才使用DOM.   </p>
-<p>还有不少类似的API, 某些甚至已经比JDOM更好, 不过都不如JDOM使用范围广.  </p>
-<p>JAXP/JDOM 都是建立在 DOM/SAX 之上的API, 也可认为是抽象层, 需要通过具体供应商提供 DOM/SAX 实现来完成 XML 解析工作. 作为一个相对高层的接口, 隐藏了具体厂商实现, 减低复杂性, 降低开发的工作量.   </p>
-<p>一般来说, 在我们开发程序的时候, 从开发效率,兼容性,移植性等方面考虑, 都是选择使用高层的API更好些. JAXP已经附带在JDK中, 由SUN所支持, 应该标准化/延续性方面会比较好; 而根据网上开发者反映, 普遍都喜欢用JDOM, 因为使用简单方便.  </p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2003/09/08/Java-XML-API/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -312,6 +302,14 @@ textArea.setCaretPosition(length);</code></pre><p>如果还希望限制JTextArea
 <pre><code>if ( length &gt; maxTextLength ) { 
     textArea.replaceRange(&quot;&quot;, 0, length - maxTextLength); 
 }</code></pre>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2003/09/04/How-to-let-JTextArea-automatic-scroll-to-the-bottom-/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -378,28 +376,15 @@ textArea.setCaretPosition(length);</code></pre><p>如果还希望限制JTextArea
       
           <h3 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode:"></a>Unicode:</h3><p>unicode.org制定的编码机制, 要将全世界常用文字都函括进去.<br>在1.0中是16位编码, 由U+0000到U+FFFF. 每个2byte码对应一个字符; 在2.0开始抛弃了16位限制, 原来的16位作为基本位平面, 另外增加了16个位平面, 相当于20位编码, 编码范围0到0x10FFFF.  </p>
 <h3 id="UCS"><a href="#UCS" class="headerlink" title="UCS:"></a>UCS:</h3><p>ISO制定的ISO10646标准所定义的 Universal Character Set, 采用4byte编码.  </p>
-<h3 id="Unicode与UCS的关系"><a href="#Unicode与UCS的关系" class="headerlink" title="Unicode与UCS的关系:"></a>Unicode与UCS的关系:</h3><p>ISO与unicode.org是两个不同的组织, 因此最初制定了不同的标准; 但自从unicode2.0开始, unicode采用了与ISO 10646-1相同的字库和字码, ISO也承诺ISO10646将不会给超出0x10FFFF的UCS-4编码赋值, 使得两者保持一致.  </p>
-<h3 id="UCS的编码方式"><a href="#UCS的编码方式" class="headerlink" title="UCS的编码方式:"></a>UCS的编码方式:</h3><ul>
-<li>UCS-2, 与unicode的2byte编码基本一样.   </li>
-<li>UCS-4, 4byte编码, 目前是在UCS-2前加上2个全零的byte.  </li>
-</ul>
-<h3 id="UTF-Unicode-UCS-Transformation-Format"><a href="#UTF-Unicode-UCS-Transformation-Format" class="headerlink" title="UTF: Unicode/UCS Transformation Format"></a>UTF: Unicode/UCS Transformation Format</h3><ul>
-<li>UTF-8, 8bit编码, ASCII不作变换, 其他字符做变长编码, 每个字符1-3 byte. 通常作为外码. 有以下优点:  <ul>
-<li>与CPU字节顺序无关, 可以在不同平台之间交流  </li>
-<li>容错能力高, 任何一个字节损坏后, 最多只会导致一个编码码位损失, 不会链锁错误(如GB码错一个字节就会整行乱码)   </li>
-</ul>
-</li>
-<li>UTF-16, 16bit编码, 是变长码, 大致相当于20位编码, 值在0到0x10FFFF之间, 基本上就是unicode编码的实现. 它是变长码, 与CPU字序有关, 但因为最省空间, 常作为网络传输的外码.<br>UTF-16是unicode的preferred encoding.   </li>
-<li>UTF-32, 仅使用了unicode范围(0到0x10FFFF)的32位编码, 相当于UCS-4的子集.  </li>
-</ul>
-<h3 id="UTF与unicode的关系"><a href="#UTF与unicode的关系" class="headerlink" title="UTF与unicode的关系:"></a>UTF与unicode的关系:</h3><p>Unicode是一个字符集, 可以看作为内码.<br>而UTF是一种编码方式, 它的出现是因为unicode不适宜在某些场合直接传输和处理. UTF-16直接就是unicode编码, 没有变换, 但它包含了0x00在编码内, 头256字节码的第一个byte都是0x00, 在操作系统(C语言)中有特殊意义, 会引起问题. 采用UTF-8编码对unicode的直接编码作些变换可以避免这问题, 并带来一些优点.  </p>
-<h3 id="中国国标编码"><a href="#中国国标编码" class="headerlink" title="中国国标编码:"></a>中国国标编码:</h3><ul>
-<li>GB 13000: 完全等同于ISO 10646-1/Unicode 2.1, 今后也将随ISO 10646/Unicode的标准更改而同步更改.  </li>
-<li>GBK: 对GB2312的扩充, 以容纳GB2312字符集范围以外的Unicode 2.1的统一汉字部分, 并且增加了部分unicode中没有的字符.   </li>
-<li>GB 18030-2000: 基于GB 13000, 作为Unicode 3.0的GBK扩展版本, 覆盖了所有unicode编码, 地位等同于UTF-8, UTF-16, 是一种unicode编码形式. 变长编码, 用单字节/双字节/4字节对字符编码. GB18030向下兼容GB2312/GBK.<br>GB 18030是中国所有非手持/嵌入式计算机系统的强制实施标准.  </li>
-</ul>
-<p><em>2001-11-14 (2003-9-2 补充)</em>  </p>
-
+<h3 id="Unicode与UCS的关系"><a href="#Unicode与UCS的关系" class="headerlink" title="Unicode与UCS的关系:"></a>Unicode与UCS的关系:</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2003/09/02/Unicode-/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -473,6 +458,14 @@ textArea.setCaretPosition(length);</code></pre><p>如果还希望限制JTextArea
 <li>其他的一些东西, 如Java Charts Package等, 只有介绍没有下载  </li>
 </ul>
 
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2003/08/29/java-library/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -546,6 +539,14 @@ textArea.setCaretPosition(length);</code></pre><p>如果还希望限制JTextArea
 </ul>
 <p>这个Java英文讨论组, <a href="http://www.javalobby.org" target="_blank" rel="noopener">http://www.javalobby.org</a> , 内容还可以, search功能也比较好用.<br>看老外的论坛也是老骂架的:)  </p>
 
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2003/08/28/SWT-Swing-/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -621,6 +622,14 @@ textArea.setCaretPosition(length);</code></pre><p>如果还希望限制JTextArea
 <li>EPS <a href="http://eps.sourceforge.net/" target="_blank" rel="noopener">http://eps.sourceforge.net/</a><br>这是一个小应用程序，能够下载GPS数据并显示。这个程序能与Garmin GPS通讯，有上传/下载功能, 不过代码风格很差。</li>
 </ul>
 
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2003/08/27/Some-GPS-related-software-and-project/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -689,6 +698,14 @@ textArea.setCaretPosition(length);</code></pre><p>如果还希望限制JTextArea
 <p><a href="http://www.idealliance.org/papers/xml02/dx_xml02/papers/05-05-05/05-05-05.html" target="_blank" rel="noopener">http://www.idealliance.org/papers/xml02/dx_xml02/papers/05-05-05/05-05-05.html</a>  </p>
 <p>Mobile GPS Demonstration Platform, 演示了移动通讯/GPS/WebService/XML技术的结合, 一辆装备了GPS、GPRS mobile、Java Embeded Board的玩具小车。  </p>
 
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2003/08/26/Super-toy-car/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -755,6 +772,14 @@ textArea.setCaretPosition(length);</code></pre><p>如果还希望限制JTextArea
       
           <p>Java程序的本地化，做法都是在程序中不直接写死字符串，而是通过ResourceBoundle的getString()方法，在本地语言的properties文件中读取出翻译后的字串。<br>对于已经开发好的程序，找出源代码中写死的字符串工作相当繁琐，Eclipse有这方面的辅助工具。<br>选择文件，右键菜单 source-&gt;Extenalize Strings 打开工具，能够找出源文件中的所有字符串，选择那些需要翻译，自动替换并生成properties文件。  </p>
 
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2003/08/22/Eclipse-i18n-l10n-/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -821,6 +846,14 @@ textArea.setCaretPosition(length);</code></pre><p>如果还希望限制JTextArea
       
           <p>《诊断 Java 代码》这组文章提到了很多种“错误模式”，有时间值得看看。<br><a href="http://www.ibm.com/developerWorks/cn/java/j-diag/index.shtml" target="_blank" rel="noopener">http://www.ibm.com/developerWorks/cn/java/j-diag/index.shtml</a></p>
 
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2003/08/20/Java-/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -887,6 +920,14 @@ textArea.setCaretPosition(length);</code></pre><p>如果还希望限制JTextArea
       
           <p>Java swing编程，更改了一个JPanel的内部components后，需要改变一下窗口大小，新内容才能显示出来。<br>解决方法：调用panel.validate()。<br>对于container，添加或者改变了对象后，需要调用validate()才能重新布局并显示。</p>
 
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2003/08/19/Swing-components-refresh/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -981,7 +1022,7 @@ textArea.setCaretPosition(length);</code></pre><p>如果还希望限制JTextArea
       <div class="site-state-item site-state-tags">
             <a href="/blog/tags/">
           
-        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

@@ -114,7 +114,7 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">53</span></a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">52</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -231,8 +231,14 @@
 </li>
 </ol>
 <p>对于第一个问题，transocks_ev 不支持UDP，因此无法tunnel DNS查询请求。我在考虑参考<a href="http://code.google.com/p/cmwrap/" target="_blank" rel="noopener">CMWrap</a>的方案，做一个DNS proxy，转成TCP请求发出去。  </p>
-<p>对于第二个问题，想用一个命令行ssh来代替ConnectBot。目前在Android上常用的是dropbear，但dropbear不支持SOCKS。查了linux上支持SOCKS的ssh client有OpenSSH和lsh（还有没有其他？），但是Sunner尝试了编译OpenSSH和lsh都不成功，因为它俩都太依赖gnu的一些东西了，比如glibc、glib等，而android上所有的对应的库都是从简的。因此暂时还是先用着ConnectBot，并将CPU高的问题反馈给开发者，看看有没有什么回应。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2010/06/07/Android-SSH-tunnel-2010-06-06-/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -304,14 +310,16 @@
 <li>如果浏览器(或者其他程序)支持使用SOCKS proxy，设置使用SSH client开放出来的SOCKS端口，就可以使用了</li>
 <li>如果浏览器(或者其他程序)不支持SOCKS proxy，只支持HTTP proxy，就需要再运行一个支持SOCKS的代理程序（例如Privoxy），将HTTP转成SOCKS</li>
 </ul>
-<p><img src="http://farm5.static.flickr.com/4046/4662779602_743c1c50c2_b.jpg" alt=""></p>
+<p><img src="http://farm5.static.flickr.com/4046/4662779602_743c1c50c2_b.jpg" alt></p>
 <p>在Android上就要麻烦一点了，因为需要网络通讯的不仅仅是浏览器，很多Android application都需要访问网络，但是它们并不支持proxy—-连HTTP proxy都不支持，更不用说SOCKS了。它们只会直接连接目标站点，如图中虚线所示，然后撞墙。</p>
-<p>但是Linux有iptables，可以设置iptables规则（需要root权限），将HTTP/HTTPS请求forward到一个transparent SOCKS proxy去。transparent SOCKS proxy的作用是将任意TCP连接转成SOCKS连接，这样就可以走SSH tunnel出去了。我分析过几乎所有的Android应用访问网络都是走HTTP/HTTPS协议的，所有仅仅处理HTTP/HTTPS就够了。</p>
-<p><img src="http://farm5.static.flickr.com/4023/4662779594_32dd9773cb_b.jpg" alt=""></p>
-<p>Android上支持dynamic port forwarding的SSH client有<a href="http://code.google.com/p/connectbot/" target="_blank" rel="noopener">ConnectBot</a>，不过ConnectBot是一个有界面的应用，似乎不能由其他程序来控制，这样就不好做到翻墙软件的傻瓜化了。应该还是弄一个命令行的ssh client更合适。</p>
-<p>在网上搜索了一下，开源的transparent SOCKS proxy有几个：<a href="http://oss.tiggerswelt.net/transocks_ev/" target="_blank" rel="noopener">transocks_ev</a>，<a href="http://transocks.sourceforge.net/" target="_blank" rel="noopener">TranSocks</a> 和 <a href="http://darkk.net.ru/redsocks/" target="_blank" rel="noopener">redsocks</a>。从文档上看，似乎transocks_ev比较适合。</p>
-<p>但是，我现在面临的困难在于我不熟悉如何交叉编译Android平台程序（C语言），了解了一下如何搭建Android交叉编译环境，似乎挺麻烦（对我而言）。而且要让普通Linux上可运行的sshd和transocks port到Android上，也许还有一些代码要修改。不知道有没有Android系统高手能够帮忙？</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2010/06/02/Consider-how-in-the-Android-mobile-phones-in-use-SSH-tunnel-over-the-wall/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -380,13 +388,14 @@
 <p>原来用的G1因为内存太小，运行速度很卡。Nexus One用起来的第一感受就是顺畅，另外就是屏幕显示效果很艳丽。</p>
 <p>机器是2.1的系统，但是没有root，因此正式使用前的第一件事情就是刷机。上网看了一些文章，大部分写得罗里罗嗦的，完全没有重点，真正动手做其实就是简单几步。下面不写具体操作过程，因为网上一大堆。</p>
 <h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>PC上要安装好USB驱动和fastboot、adb工具。工具是Android SDK附带的，装好SDK就有。</p>
-<h3 id="Unlock-bootloader"><a href="#Unlock-bootloader" class="headerlink" title="Unlock bootloader"></a>Unlock bootloader</h3><p>Unlock了之后才允许进行刷机操作。Unlock后开机时会显示一个打开的锁的图标，说明这台机器已经unlock了，也就是无保修了。只要unlock了，下面的操作都可以进行了，不一定要按照先后顺序。</p>
-<h3 id="更新recovery"><a href="#更新recovery" class="headerlink" title="更新recovery"></a>更新recovery</h3><p>下载Amon_RA做的recovery image，用fastboot工具写入手机。安装新ROM或者patch都需要通过recovery来进行，其实系统已经自带了recovery，不更换也能用，但是Amon_RA的功能更强，使用起来会方便很多。</p>
-<h3 id="更新radio"><a href="#更新radio" class="headerlink" title="更新radio"></a>更新radio</h3><p>我检查了一下，自带的radio已经是最新版本，所以跳过了这个步骤。</p>
-<h3 id="安装新版本的ROM"><a href="#安装新版本的ROM" class="headerlink" title="安装新版本的ROM"></a>安装新版本的ROM</h3><p>我装的是CyanogenMod的ROM，比较可靠。这个ROM是带root的，装起来就有root权限了。因为CM的ROM是不带Google Applications的（版权问题），所以还需要再刷个GoogleApp包（网上可找到，目前最新版本是EPE54B），这个包应该是通过Google官方升级包制作出来的。如果装的是其他版本的ROM，例如国内的人制作的，通常已经把Google应用内置进去了，就不需要额外步骤。</p>
-<p>对我而言，到此为止刷机过程就完成了。有些人还要再打其他的patch，例如中文排序、theme之类的。</p>
-<h3 id="不更换ROM，获取root"><a href="#不更换ROM，获取root" class="headerlink" title="不更换ROM，获取root"></a>不更换ROM，获取root</h3><p>是否有root权限，是与ROM相关的，例如我刷了CM 5.0.6就有root权限了。有些人不想换ROM，沿用官方的系统，但又想要root权限，就需要刷hack过的superboot image。要注意下载superboot image的时候，要选择跟ROM一致的版本，例如目前官方正式发布的最新ROM版本是ERE27。版本号从手机信息界面可以查到。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2010/05/11/Nexus-One-/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -456,14 +465,14 @@
 <p><a href="http://www.flickr.com/photos/leoliang/4567523723/" target="_blank" rel="noopener"><img src="http://farm5.static.flickr.com/4008/4567523723_7775160d6f_o.jpg" alt="DIY cloth folder"></a></p>
 <p>找到装电压力锅的纸盒，当时觉得可能还有用没舍得扔，果然派上用场了。制作非常简单，无非就是切割、折叠、粘贴固定。</p>
 <p><a href="http://www.flickr.com/photos/leoliang/4567523741/" target="_blank" rel="noopener"><img src="http://farm4.static.flickr.com/3298/4567523741_6b42abf4a5_o.jpg" alt="DIY cloth folder"></a></p>
-<p>自己做还有个好处是可以根据自己衣柜的尺寸来做，最大化的利用空间。图中的W和H是期望叠出来的衣服的尺寸，要考虑衣服折叠后的厚度，所以要折边处要预留1～2厘米。</p>
-<p>下面是做好的成品，虽然不大好看，但是实践证明还是相当好用的 :)</p>
-<p><a href="http://www.flickr.com/photos/leoliang/4567523739/" target="_blank" rel="noopener"><img src="http://farm5.static.flickr.com/4008/4567523739_677118ef91_o.jpg" alt="DIY cloth folder"></a></p>
-<p><a href="http://www.flickr.com/photos/leoliang/4567523737/" target="_blank" rel="noopener"><img src="http://farm4.static.flickr.com/3298/4567523737_94cb2b1211_o.jpg" alt="DIY cloth folder"></a></p>
-<p>叠衣服的过程就是四步：铺好，如果衣袖和下摆过长超出叠衣板的边缘就先把它翻进来，然后将叠衣板左、右、下翻三下，ok。</p>
-<p><a href="http://www.flickr.com/photos/leoliang/4567523735/" target="_blank" rel="noopener"><img src="http://farm5.static.flickr.com/4067/4567523735_fa5a268e89_o.jpg" alt="DIY cloth folder"></a></p>
-<p>做好了很兴奋，正好衣柜里的衣服要换季了，把夏装拿出来，全部重新叠了一遍。用叠衣板后，叠一件衣服的时间不见得能快多少，但好处是叠得方正，一摞下来每件的大小都一模一样，放衣柜里整整齐齐。薄衣服的效果都很好，包括tee、衬衫、秋衣之类，但不能用来叠厚衣服，例如毛衣。其实也不是叠衣板的问题，而是厚衣服不能叠成这么小的面积，如果有必要可以专门再做一个大尺寸的用来叠厚衣服。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2010/05/01/DIY-Sheldon-/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -533,12 +542,14 @@
 <hr>
 <p>为什么老城区会让人感觉亲切?因为公共空间尺度合适，不是宏大而单调；空间没有被宽阔的机动车道割裂，联系紧密；空间功能多元化，各种人群各种活动融合在一起更有生机。</p>
 <p>现在发达国家的城市规划逐渐摒弃功能主义，让每个区域的功能趋于综合化，使得空间更有生气和活力，也减少了时间性单向的交通压力。但我们的城市规划还是喜欢搞单一的商务区，高科技园，大学城。</p>
-<p>“通过人的观察与感受，使公共环境中的活动与毗邻的住宅商店车间工厂的各种活动融会贯通，就能从双向扩展和丰富体验的可能性”：这是新的理念，在欧洲就见过不少临街办公室开着大大的玻璃窗并且毫无遮挡，外面对里面的东西和活动一览无遗。在瑞典，私人住宅的阳台和院落大多都是通透的，夏日经常见到有人在阳台上闲坐观望甚至用餐，外面的人也看到他们，大家互为风景。</p>
-<p>步行者走捷径的愿望是非常执着的，如果可以看到目标，他们总是径直走向那里。因此，很多草坪花基是注定要被践踏的，与其竖牌子搭栏杆还不如想想怎样能够方便行人。</p>
-<p>当去远处目的地的路程一览无遗时，步行就会索然无味；但看得见目的地而又不得不绕行，则更令人扫兴和不悦。蜿蜒富于变化的街道使步行变得更有趣，因此在老城古镇中闲逛是一种享受，特别是拐过一个弯，一个小广场一座特别建筑或是一个雕塑突然显露眼前时更令人惊喜。</p>
-<p>一个理想的居住空间应该是既有足够的私人空间，也有良好的可活动的公共空间。现在我们的居住环境是普遍提高了，但公共空间却几乎没有。回家关上双重防盗门，窗户阳台还有防盗网，基本与外界隔绝。有小区花园的也没有多少可闲坐的地方。比起以前小孩可在街头玩耍，街坊在门前聊天，我们城市离宜居更远了。</p>
-<p>我们这里一些郊区大盘算是有些公共空间，但还不是有活力的空间。因为开发的思路是纯住宅区，像祈福要买点东西都要跑到外头去。适当的商业其实是有益的。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2010/04/13/Reading-feeling-contact-and-the-space-Life-between-buildings-/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -610,18 +621,14 @@
 <p>感谢国家，我冇意见，谢绝跨省</p>
 </blockquote>
 <p><a href="http://www.flickr.com/photos/leoliang/4457512786/" target="_blank" rel="noopener"><img src="http://farm3.static.flickr.com/2759/4457512786_e9a1222544_o.jpg" alt="旧城相对论"></a></p>
-<p>这个更加猛：</p>
-<p><a href="http://www.flickr.com/photos/leoliang/4457511592/" target="_blank" rel="noopener"><img src="http://farm5.static.flickr.com/4006/4457511592_2c05c2fd31_o.jpg" alt="旧城相对论"></a></p>
-<p>当然，发泄怨气的其实还是少数，大多数都是表达对老建筑以及其上承载的文化的留恋。</p>
-<p><a href="http://www.flickr.com/photos/leoliang/4456734439/" target="_blank" rel="noopener"><img src="http://farm5.static.flickr.com/4020/4456734439_b293ff5282_o.jpg" alt="旧城相对论"></a></p>
-<p>这是我和清风白云的”创作”：</p>
-<blockquote>
-<p>Big brother is watching you!</p>
-</blockquote>
-<p><a href="http://www.flickr.com/photos/leoliang/4456736391/" target="_blank" rel="noopener"><img src="http://farm5.static.flickr.com/4042/4456736391_192618ca5b_o.jpg" alt="旧城相对论"></a></p>
-<p>这也是我们搞的，我们向往信息的自由：</p>
-<p><a href="http://www.flickr.com/photos/leoliang/4456735659/" target="_blank" rel="noopener"><img src="http://farm3.static.flickr.com/2700/4456735659_d6f35ef45e_o.jpg" alt="旧城相对论"></a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2010/03/23/The-old-city-relativity-dialogue-old-city-device-art/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -728,6 +735,14 @@ Connection: close
 goB. .U....s7.......#
 )...</code></pre><p>不过payload是binary的，没法直接看出里面是些什么东西。</p>
 
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2010/03/19/Grab-Android-system-on-network-communication/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -778,7 +793,7 @@ goB. .U....s7.......#
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+                <time title="修改时间：2020-03-20 23:24:48" itemprop="dateModified" datetime="2020-03-20T23:24:48+08:00">2020-03-20</time>
               </span>
 
           
@@ -795,33 +810,14 @@ goB. .U....s7.......#
           <h2 id="Issue"><a href="#Issue" class="headerlink" title="Issue"></a>Issue</h2><p>SOAP WS client which uses CXF can’t run on GlassFish AS. Getting ClassCastException on invoking some CXF API. The problem was described as CXF-2237 [2].</p>
 <h2 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h2><p>JAX-WS is the Java API for XML Web Service defined by JSR 224. SUN provides a JAX-WS reference implementation in Metro project, which is inside GlassFish AS. The SUN JAX-WS implement was later also merged into JDK 6. Apache CXF is another JAX-WS implementation.</p>
 <p>An application can select different JAX-WS implementation by Provider SPI. JSR 224 [4] chapter 6.2.1 defines the algorithm of Provider implementation selection:</p>
-<blockquote>
-<ol>
-<li><p>If a resource with the name of META-INF/services/javax.xml.ws.spi.Provider exists, then its first line, if present, is used as the UTF-8 encoded name of the implementation class.</p>
-</li>
-<li><p>If the ${java.home}/lib/jaxws.properties file exists and it is readable by the java.util.Properties.load(InputStream) method and it contains an entry whose key is javax.xml.ws.spi.Provider, then the value of that entry is used as the name of the implementation class.</p>
-</li>
-<li><p>If a system property with the name javax.xml.ws.spi.Provider is defined, then its value is used as the name of the implementation class.</p>
-</li>
-<li><p>Finally, a default implementation class name is used.</p>
-</li>
-</ol>
-</blockquote>
-<p>The Provider implementation class in JDK 6 is <code>com.sun.xml.internal.ws.spi.ProviderImpl</code> in rt.jar. I guess it’s the default implementation as mentioned in step 4.</p>
-<p>CXF packages META-INF/services/javax.xml.ws.spi.Provider which points to <code>org.apache.cxf.jaxws.spi.ProviderImpl</code> in cxf.jar. It will be considered in step 1.</p>
-<p>Metro also packages META-INF/services/javax.xml.ws.spi.Provider which points to <code>com.sun.xml.ws.spi.ProviderImpl</code> in webservices-rt.jar. It also will be considered in step 1.</p>
-<p>Because in GlassFish the Metro library is in system classpath, so its META-INF/services/javax.xml.ws.spi.Provider will be loaded precede over CXF’s. That’s why Metro will always be used as JAX-WS implement no matter CXF exists or not.</p>
-<h2 id="Potential-Solution"><a href="#Potential-Solution" class="headerlink" title="Potential Solution"></a>Potential Solution</h2><h3 id="Classloader-control"><a href="#Classloader-control" class="headerlink" title="Classloader control"></a>Classloader control</h3><p>If we can force the JVM to load resource from cxf.jar prior to webservices-rt.jar that will be fine. But GlassFish hasn’t the mechanism likeWebLogic’s <code>&lt;prefer-application-packages&gt;</code>[5]. After some finding we give up this approach.</p>
-<h3 id="Remove-Metro-from-GlassFish"><a href="#Remove-Metro-from-GlassFish" class="headerlink" title="Remove Metro from GlassFish"></a>Remove Metro from GlassFish</h3><p>If there is no application which deploys on the this application server that depends on Metro, we can remove Metro lib (webservices-*.jar) from GlassFish’s lib folder.</p>
-<h3 id="Change-to-Metro"><a href="#Change-to-Metro" class="headerlink" title="Change to Metro"></a>Change to Metro</h3><p>That’s nothing to say. We finally choose this way. There is almost no workload to migrate our code from CXF to Metro, because both of them follows JAX-WS specification, except that some code that calls CXF specify API need to be changed. We even don’t change the build script and still use CXF’s wsdl2java tool.</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
-<li><a href="https://issues.apache.org/jira/browse/CXF-857" target="_blank" rel="noopener">CXF Issue: CXF-857</a></li>
-<li><a href="https://issues.apache.org/jira/browse/CXF-2237" target="_blank" rel="noopener">CXF Issue: CXF-2237</a></li>
-<li><a href="http://stackoverflow.com/questions/2064068/how-to-pick-cxf-over-metro-on-glassfish" target="_blank" rel="noopener">StackOverflow: How to pick CXF over Metro on Glassfish</a></li>
-<li><a href="http://jcp.org/en/jsr/detail?id=224" target="_blank" rel="noopener">JSR 224: JAX-WS 2.x</a></li>
-<li><a href="http://good-good-study.appspot.com/blog/posts/4218" target="_blank" rel="noopener">WebLogic的classloading</a></li>
-</ol>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2010/03/11/Study-of-the-issue-that-CXF-can-t-run-on-GlassFish/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -886,16 +882,19 @@ goB. .U....s7.......#
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><img src="http://farm5.static.flickr.com/4010/4390272360_cd4c3c040a_o.jpg" alt=""></p>
+          <p><img src="http://farm5.static.flickr.com/4010/4390272360_cd4c3c040a_o.jpg" alt></p>
 <p>几乎每次过马路，我都恨不得手里有这样一块牌子，可以伸到身体前面，把来车挡住 —- 在没有交通灯的斑马线，十个司机有九个会毫不减速的冲过，而不会避让过马路的行人；即使在有交通灯的斑马线，如果不是路口，也有司机根本当红灯不存在。</p>
 <p>我想，能不能做个可伸缩的棒，例如是套筒的方式，里面加上弹簧，缩起来的时候大概烟盒大小，可以方便的放在口袋，当需要过马路的时候，将它弹出来，变成一米左右的长度。棒身用红、黄鲜艳颜色的反光材料覆盖。为了增大可视面积，棒伸展时需要在前端弹出一个平面，应该用个弹性钢丝圈加上薄膜可以做出来，类似可折叠太阳帽的样子。过完马路后一压就能够把警示棒收起来。</p>
 <p>Beatles四位大叔过Abbey Road时就是这样子的：</p>
-<p><img src="http://farm5.static.flickr.com/4003/4390322224_a0a6979623_o.jpg" alt=""></p>
-<p>现在激光全息成像技术还不成熟，如果能够做到便携化，还可以从口袋里掏出激光器一照，一个栅栏就出来了：</p>
-<p><img src="http://farm3.static.flickr.com/2711/4389554227_f36eafa67f_o.jpg" alt=""></p>
-<p>至于驾车人士关心的如何制止行人乱穿马路，那就是不是我考虑的问题了。我自己是遵守交通规则的，有斑马线就走斑马线，有行人交通灯就等绿灯才过。</p>
-<p>欢迎驾车人士批判，哈哈 :)</p>
-
+<p><img src="http://farm5.static.flickr.com/4003/4390322224_a0a6979623_o.jpg" alt></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2010/02/27/Portable-pedestrians-cross-the-street-warning-great/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -967,14 +966,14 @@ goB. .U....s7.......#
 <p>For any port and interface that a server listens on for UDP, it MUST listen on that same port and interface for TCP. This is because a message may need to be sent using TCP, rather than UDP, if it is too large.</p>
 </blockquote>
 <p>So, whether send a SIP message in UDP or TCP is decided bytransport layer. When the initial SIP message of a transaction is sent in UDP it’s possible that the consequent messages are sent in TCP.</p>
-<h3 id="SIP-MESSAGE-is-resent-in-0-5-second"><a href="#SIP-MESSAGE-is-resent-in-0-5-second" class="headerlink" title="SIP MESSAGE is resent in 0.5 second"></a>SIP MESSAGE is resent in 0.5 second</h3><p>In another test case we found that the client resends the SIP MESSAGE request in 0.5 second if it doesn’t receive the response. We know that SIP message should be resent in a specific time if no response is received. But why the interval is 0.5 second? Is it configurable in Sailfin?</p>
-<p>Also go to RFC 3261, find the answer in chapter 17.1.1.2 and 17.1.2.2:</p>
-<blockquote>
-<p>If an unreliable transport is in use, the client transaction MUST set timer E to fire in T1 seconds. If timer E fires while still in this state, the timer is reset, but this time with a value of MIN(2<em>T1, T2). When the timer fires again, it is reset to a MIN(4</em>T1, T2). … For the default values of T1 and T2, this results in intervals of 500 ms, 1 s, 2 s, 4 s, 4 s, 4 s, etc.</p>
-<p>The default value for T1 is 500 ms. T1 is an estimate of the RTT between the client and server transactions. … T1 MAY be chosen larger, and this is RECOMMENDED if it is known in advance (such as on high latency access links) that the RTT is larger.</p>
-</blockquote>
-<p>In SailFin(GlassFish) the value of T1 and T2 can be configured in admin console under: Configuration - SIP Service - SIP Protocol.</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2010/02/26/Two-questions-about-SIP-message-transport/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1069,7 +1068,7 @@ goB. .U....s7.......#
       <div class="site-state-item site-state-tags">
             <a href="/blog/tags/">
           
-        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

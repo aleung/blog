@@ -21,25 +21,25 @@
     var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="对于”I Love” audio player的想法, flyisland的批阅建议是请jobs同志执行。我也很希望jobs同志能够欣赏这个想法，更希望的是我也能有flyisland同志同样的运气，能得到一个赠送的iPod。在此之前，还是继续自我陶醉一下，下面是想到的初步设计：  UI负责用户界面；Control接受UI的命令，进行播放控制；作品的选择、喜爱度的累积是profile的任务；媒体文件">
+  <meta name="description" content="对于”I Love” audio player的想法, flyisland的批阅建议是请jobs同志执行。我也很希望jobs同志能够欣赏这个想法，更希望的是我也能有flyisland同志同样的运气，能得到一个赠送的iPod。在此之前，还是继续自我陶醉一下，下面是想到的初步设计：   UI负责用户界面；Control接受UI的命令，进行播放控制；作品的选择、喜爱度的累积是profile的任务；媒体文">
 <meta property="og:type" content="article">
 <meta property="og:title" content="‘I Love’ audio player - basic design">
 <meta property="og:url" content="http://aleung.github.io/blog/2006/08/29/I-Love-Audio-Player-Basic-Design/index.html">
 <meta property="og:site_name" content="Good good study, day day up">
-<meta property="og:description" content="对于”I Love” audio player的想法, flyisland的批阅建议是请jobs同志执行。我也很希望jobs同志能够欣赏这个想法，更希望的是我也能有flyisland同志同样的运气，能得到一个赠送的iPod。在此之前，还是继续自我陶醉一下，下面是想到的初步设计：  UI负责用户界面；Control接受UI的命令，进行播放控制；作品的选择、喜爱度的累积是profile的任务；媒体文件">
+<meta property="og:description" content="对于”I Love” audio player的想法, flyisland的批阅建议是请jobs同志执行。我也很希望jobs同志能够欣赏这个想法，更希望的是我也能有flyisland同志同样的运气，能得到一个赠送的iPod。在此之前，还是继续自我陶醉一下，下面是想到的初步设计：   UI负责用户界面；Control接受UI的命令，进行播放控制；作品的选择、喜爱度的累积是profile的任务；媒体文">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://aleung.github.io/attachments/2006/8/227012217_2b9c0d6ecd.jpg">
-<meta property="og:image" content="http://aleung.github.io/attachments/2006/8/227012224_56936e3643.jpg">
-<meta property="og:image" content="http://aleung.github.io/attachments/2006/8/227012248_2ce4e0e4e8.jpg">
-<meta property="og:image" content="http://aleung.github.io/attachments/2006/8/227012242_fa610759ef.jpg">
-<meta property="og:image" content="http://aleung.github.io/attachments/2006/8/227012232_3c57a934d1.jpg">
+<meta property="og:image" content="http://aleung.github.io/blog/attachments/2006/8/227012217_2b9c0d6ecd.jpg">
+<meta property="og:image" content="http://aleung.github.io/blog/attachments/2006/8/227012224_56936e3643.jpg">
+<meta property="og:image" content="http://aleung.github.io/blog/attachments/2006/8/227012248_2ce4e0e4e8.jpg">
+<meta property="og:image" content="http://aleung.github.io/blog/attachments/2006/8/227012242_fa610759ef.jpg">
+<meta property="og:image" content="http://aleung.github.io/blog/attachments/2006/8/227012232_3c57a934d1.jpg">
 <meta property="article:published_time" content="2006-08-28T18:19:00.000Z">
 <meta property="article:modified_time" content="2012-06-23T11:19:00.000Z">
 <meta property="article:author" content="Leo Liang">
 <meta property="article:tag" content="SoftwareDev">
 <meta property="article:tag" content="Idea">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://aleung.github.io/attachments/2006/8/227012217_2b9c0d6ecd.jpg">
+<meta name="twitter:image" content="http://aleung.github.io/blog/attachments/2006/8/227012217_2b9c0d6ecd.jpg">
 
 <link rel="canonical" href="http://aleung.github.io/blog/2006/08/29/I-Love-Audio-Player-Basic-Design/">
 
@@ -126,7 +126,7 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">53</span></a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">52</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -231,16 +231,19 @@
 
       
         <p>对于”I Love” audio player的想法, flyisland的批阅建议是请jobs同志执行。我也很希望jobs同志能够欣赏这个想法，更希望的是我也能有flyisland同志同样的运气，能得到一个赠送的iPod。在此之前，还是继续自我陶醉一下，下面是想到的初步设计：</p>
-<p><img src="/attachments/2006/8/227012217_2b9c0d6ecd.jpg" alt="audioplayer"></p>
-<p>UI负责用户界面；Control接受UI的命令，进行播放控制；作品的选择、喜爱度的累积是profile的任务；媒体文件的播放是委托给player进行的。</p>
-<p><img src="/attachments/2006/8/227012224_56936e3643.jpg" alt="audioplayer.control"></p>
-<p>JavaZoom.com的<a href="http://www.javazoom.net/jlgui/developerguide.html" target="_blank" rel="noopener">jlGui</a>是一个opensource的music player，它提供了一个很简洁实用的BasicPlayer API，用在这里正合适。</p>
-<p><img src="/attachments/2006/8/227012248_2ce4e0e4e8.jpg" alt="basicplayer"></p>
-<p>UI，应该就是GUI了吧，有人会需要command line吗？甚至是外接LED显示屏？</p>
-<p><img src="/attachments/2006/8/227012242_fa610759ef.jpg" alt="audioplayer.ui"></p>
-<p>Profile部分将是最重要也是最复杂的了，现在考虑得还不成熟，只有个大概。</p>
-<p><img src="/attachments/2006/8/227012232_3c57a934d1.jpg" alt="audioplayer.profile"></p>
+<img src="/blog/attachments/2006/8/227012217_2b9c0d6ecd.jpg" class="">
 
+<p>UI负责用户界面；Control接受UI的命令，进行播放控制；作品的选择、喜爱度的累积是profile的任务；媒体文件的播放是委托给player进行的。</p>
+<img src="/blog/attachments/2006/8/227012224_56936e3643.jpg" class="">
+
+<p>JavaZoom.com的<a href="http://www.javazoom.net/jlgui/developerguide.html" target="_blank" rel="noopener">jlGui</a>是一个opensource的music player，它提供了一个很简洁实用的BasicPlayer API，用在这里正合适。</p>
+<img src="/blog/attachments/2006/8/227012248_2ce4e0e4e8.jpg" class="">
+
+<p>UI，应该就是GUI了吧，有人会需要command line吗？甚至是外接LED显示屏？</p>
+<img src="/blog/attachments/2006/8/227012242_fa610759ef.jpg" class="">
+
+<p>Profile部分将是最重要也是最复杂的了，现在考虑得还不成熟，只有个大概。</p>
+<img src="/blog/attachments/2006/8/227012232_3c57a934d1.jpg" class="">
     </div>
 
 
@@ -350,7 +353,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/blog/tags/">
           
-        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

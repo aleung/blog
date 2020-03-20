@@ -114,7 +114,7 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">53</span></a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">52</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -227,28 +227,14 @@
 </ul>
 <p>在这里，我不再详细叙述上面文章中的内容，通过图解的方式希望能让它更易理解，需要对照阅读。</p>
 <p>图中的方块、圆圈都表示实例，形状的嵌套表示它们的包含关系。在例子里，缺省值都显式写出来，方便查找。</p>
-<p><a href="http://www.flickr.com/photos/leoliang/4384915548/" target="_blank" rel="noopener"><img src="http://farm5.static.flickr.com/4037/4384915548_2ec7d610e6_o.png" alt="share-context-1"></a></p>
-<p>先看图中靛蓝色的box，是ContextSingletonBeanFactoryLocator实例，application context的共享是依靠它来实现的：对于每个locatorFactorSelector，在一个classloader的范围内只会存在一个ContextSingletonBeanFactoryLocator的实例。ContextSingletonBeanFactoryLocator内部有一个ApplicationContext（图中的天蓝色box），它的bean是由locatorFactorSelector所指向的xml文件所定义的。例如locatorFactorSelector为classpath*:beanRefContext.xml，就会寻找classpath中所有的beanRefContext.xml文件并根据它们去创建内部ApplicationContext。这个内部ApplicationContext只是其它ApplicationContext的容器，不存放application的bean。一个beanRefContext.xml文件应该像下面那样，里面是一个ApplicationContext，它才是真正的业务bean的容器。如果需要可以设置它的parent context。如果有多个beanRefContext.xml文件，就会创建多个ApplicationContext，它们通过id来标识。</p>
-<figure class="highlight xml"><figcaption><span>beanRefContext.xml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">beans</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"a"</span> <span class="attr">class</span>=<span class="string">"org.springframework.context.support.ClassPathXmlApplicationContext"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">list</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">value</span>&gt;</span>context_a.xml<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">list</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">ref</span> <span class="attr">bean</span>=<span class="string">"b"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">EJB应该在onCreate()过程中通过下面的代码来获得application context，需要通过factoryKey（例子里是"a"）来指定具体是哪个context：</span><br><span class="line">    </span><br><span class="line">``` java</span><br><span class="line">beanFactory= ContextSingletonBeanFactoryLocator.getInstance("classpath*:beanRefContext.xml").useBeanFactory("a").getFactory();</span><br></pre></td></tr></table></figure>
-
-<p>在war里是依靠ContextLoaderListener来启动ApplicationContext的。在web.xml里加入：</p>
-<figure class="highlight xml"><figcaption><span>web.xml    </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span></span><br><span class="line">        org.springframework.web.context.ContextLoaderListener</span><br><span class="line">    <span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>这个application context包含的是/WEB-INF/applicationContext.xml中定义的beans。在Servlet中通过下面的代码可以获得这个context：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">beanFactory = WebApplicationContextUtils.getWebApplicationContext(<span class="keyword">this</span>.getServletContext());</span><br></pre></td></tr></table></figure>
-
-<p>但这样创建出来的是一个独立的application context，仅仅在war内部可以访问，无法做到多个war和ejb之间共享。</p>
-<p>要实现共享，就要在web.xml中再加入：</p>
-<figure class="highlight xml"><figcaption><span>web.xml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>parentContextKey<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>b<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>locatorFactorySelector<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath*:beanRefContext.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span> <span class="comment">&lt;!-- this is the default value --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>这样，当ContextLoaderListener创建war的application context时，会根据locatorFactorySelector去取相应的ContextSingletonBeanFactoryLocator实例，并且从locator中根据parentContextKey拿到具体的context，将这个context作为war的application context的parent。在图中，war 1的servlet可以访问到key为’b’的context，因为它是当前context的parent。</p>
-<p>最后的效果就是：哪个war或者ejb先初始化，它就会去初始化ContextSingletonBeanFactoryLocator实例，由于是singleton，只会有一个实例存在，所有的war和ejb都从这个locator里面拿到具体存放业务bean的context，实现了context的共享。</p>
-<p>在这里需要留意的是classloader，必须很清楚的知道哪些类是由哪个层次的classloader加载的：所有共享的bean，以及相关的spring jar都必须由EJB classloader加载。关于EAR的classloader及层次关系请参看 <a href="http://good-good-study.appspot.com/blog/posts/4218" target="_blank" rel="noopener">WebLogic的classloading</a>。</p>
-<p>在实际应用中，往往不需要对application context作隔离，整个ear里面所有ejb、war共享一个application context是最简便的。这时war里不需要定义任何context和context loader，与EJB一样直接使用ContextSingletonBeanFactoryLocator就可以获取到context。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">beanFactory= ContextSingletonBeanFactoryLocator.getInstance(<span class="string">"classpath*:beanRefContext.xml"</span>).useBeanFactory(<span class="string">"share-context"</span>).getFactory();</span><br></pre></td></tr></table></figure>
-
-<p><a href="http://www.flickr.com/photos/leoliang/5370082919/" target="_blank" rel="noopener"><img src="http://farm6.static.flickr.com/5245/5370082919_6dfc7f7b1d_z.jpg" alt="sping_shared_context"></a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2010/02/24/Illustration-Spring-ApplicationContext-in-enterprise-application/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -327,6 +313,14 @@
 <p>如果您有任何问题或无法收到邮件，请发送邮件到 <a href="mailto:jsmith.email2009@googlemail.com">jsmith.email2009@googlemail.com</a></p>
 </blockquote>
 
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2010/02/24/Recommend-a-introduced-over-the-wall-knowledge-of-the-mailing-list/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -395,33 +389,15 @@
 <h2 id="JSON-support-in-Jersey-and-CXF"><a href="#JSON-support-in-Jersey-and-CXF" class="headerlink" title="JSON support in Jersey and CXF"></a>JSON support in Jersey and CXF</h2><p>Both Jersey and Apache CXF support JSON data generated out of JAXB beans. Developer can generate JavatypefromXML schema (xsd) by JAXB ormanually write Java bean with annotations. Then the resource can support JSON representatons.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@XmlRootElement</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StatusInfoBean</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> String status = <span class="string">"Idle"</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> tonerRemaining = <span class="number">25</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> Collection&lt;JobInfoBean&gt; jobs = <span class="keyword">new</span> HashSet&lt;JobInfoBean&gt;();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Path</span>(<span class="string">"/status"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyResource</span> </span>&#123;</span><br><span class="line">    StatusInfoBean statusInfoBean = <span class="keyword">new</span> StatusInfoBean();</span><br><span class="line">    &#123;</span><br><span class="line">        statusInfoBean.jobs.add(<span class="keyword">new</span> JobInfoBean(<span class="string">"sample.doc"</span>, <span class="string">"printing..."</span>, <span class="number">13</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@GET</span></span><br><span class="line">    <span class="meta">@Produces</span>(<span class="string">"application/json"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> StatusInfoBean <span class="title">getStatus</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> statusInfoBean;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@PUT</span></span><br><span class="line">    <span class="meta">@Consumes</span>(<span class="string">"application/json"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">setStatus</span><span class="params">(StatusInfoBean status)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.statusInfoBean = status;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="Cusomize-the-JSON-provider"><a href="#Cusomize-the-JSON-provider" class="headerlink" title="Cusomize the JSON provider"></a>Cusomize the JSON provider</h2><p>The behavior of the JSON provider can be customized. But the way of customization is different in Jersey and CXF.</p>
-<p>The configuration described in this article targets on Jersey 1.0.2 or higher, CXF 2.2 or higher.</p>
-<p>In Jersey, developer should implement a JAXB ContextResolver which creates JSONJAXBContext with JSONConfiguration.Different configurations can be set bybuilder pattern.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Provider</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyJAXBContextResolver</span> <span class="keyword">implements</span> <span class="title">ContextResolver</span>&lt;<span class="title">JAXBContext</span>&gt; </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> JAXBContext context;</span><br><span class="line">    <span class="keyword">private</span> Class[] types = &#123;StatusInfoBean<span class="class">.<span class="keyword">class</span>, <span class="title">JobInfoBean</span>.<span class="title">class</span>&#125;</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyJAXBContextResolver</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.context = <span class="keyword">new</span> JSONJAXBContext(</span><br><span class="line">                JSONConfiguration.mapped()</span><br><span class="line">                                   .rootUnwrapping(<span class="keyword">true</span>)</span><br><span class="line">                                   .arrays(<span class="string">"jobs"</span>)</span><br><span class="line">                                   .nonStrings(<span class="string">"pages"</span>, <span class="string">"tonerRemaining"</span>)</span><br><span class="line">                                   .build(),</span><br><span class="line">                types);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> JAXBContext <span class="title">getContext</span><span class="params">(Class&lt;?&gt; objectType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (types[<span class="number">0</span>].equals(objectType)) ? context : <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Further simplificationway can be found in <a href="http://blogs.sun.com/japod/entry/configuring_json_for_restful_web" target="_blank" rel="noopener">http://blogs.sun.com/japod/entry/configuring_json_for_restful_web</a></p>
-<p>In Apache CXF, to customize the JSON provider, developer can implement a new provider or configure the properties of org.apache.cxf.jaxrs.provider.JSONProvider.</p>
-<p>Custom provider is registered by Spring configuration:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">beans</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">jaxrs:server</span> <span class="attr">id</span>=<span class="string">"customerService"</span> <span class="attr">address</span>=<span class="string">"/"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">jaxrs:serviceBeans</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.CustomerService"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">jaxrs:serviceBeans</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">        <span class="tag">&lt;<span class="name">jaxrs:providers</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">ref</span> <span class="attr">bean</span>=<span class="string">"jsonProvider"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">jaxrs:providers</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">        <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"jsonProvider"</span> <span class="attr">class</span>=<span class="string">"org.apache.cxf.jaxrs.provider.JSONProvider"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dropRootName"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"serializeAsArray"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"arrayKeys"</span> <span class="attr">value</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">list</span>&gt;</span><span class="tag">&lt;<span class="name">value</span>&gt;</span>jobs<span class="tag">&lt;/<span class="name">value</span>&gt;</span><span class="tag">&lt;/<span class="name">list</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">jaxrs:server</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Drop-root-element-Root-unwrapping"><a href="#Drop-root-element-Root-unwrapping" class="headerlink" title="Drop root element / Root unwrapping"></a>Drop root element / Root unwrapping</h3><p>Drop root element means strip out the root element from JSON. In the following example the StatusInfoBean element is dropped.</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"status"</span>:<span class="string">"Idle"</span>,<span class="attr">"tonerRemaining"</span>:<span class="string">"25"</span>,<span class="attr">"jobs"</span>:&#123;<span class="attr">"name"</span>:<span class="string">"sample.doc"</span>,<span class="attr">"status"</span>:<span class="string">"printing..."</span>,<span class="attr">"pages"</span>:<span class="string">"13"</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>In Jersey whether dropping root element is configured by JSONConfiguration.rootUnwrapping(). In CXF it is by JSONProvider.setDropRootElement().</p>
-<h3 id="Single-value-array"><a href="#Single-value-array" class="headerlink" title="Single value array"></a>Single value array</h3><p>Single value List object can be serialized as array or non-array. See example:</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"rows"</span>:&#123;<span class="attr">"userid"</span>:<span class="string">"1621"</span>,<span class="attr">"name"</span>:<span class="string">"Grotefend"</span>&#125;&#125;</span><br><span class="line">&#123;<span class="attr">"rows"</span>:[&#123;<span class="attr">"userid"</span>:<span class="string">"1621"</span>,<span class="attr">"name"</span>:<span class="string">"Grotefend"</span>&#125;]&#125;</span><br></pre></td></tr></table></figure>
-
-<p>In CXF it’s controlled by JSONProvider properties “serializeAsArray” and “arrayKeys”.</p>
-<h3 id="Namespace"><a href="#Namespace" class="headerlink" title="Namespace"></a>Namespace</h3><p>If the JAXB bean has namespace, whether to include namespace in JSON can be controlled in CXF by JSONProvider properties “ignoreNamespaces”.</p>
-<h2 id="Nature-JSON-notation"><a href="#Nature-JSON-notation" class="headerlink" title="Nature JSON notation"></a>Nature JSON notation</h2><p>Nature JSON notation is:</p>
-<ul>
-<li>root unwrapping</li>
-<li>single value List object serialized as array</li>
-<li>???</li>
-</ul>
-<p>See com.sun.jersey.api.json.JSONConfiguration.Notation</p>
-
+<h2 id="Cusomize-the-JSON-provider"><a href="#Cusomize-the-JSON-provider" class="headerlink" title="Cusomize the JSON provider"></a>Cusomize the JSON provider</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2010/02/22/JSON-support-in-JAX-RS/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -496,6 +472,14 @@
 </ul>
 <p><a href="https://appengine.google.com/" target="_blank" rel="noopener">Google Application Engine</a> 提供了强大的平台，<a href="http://www.playframework.org" target="_blank" rel="noopener">Play Framework</a>使得Java web开发变得很简便。开发这个应用用了几天时间，不算快，但作为第一次，学习、查资料花的时间不少，上手之后的工作效率将会提高很多。另外，对我来说，HTML+CSS才是最困难的部分，基本没有做前端的经验。现在的界面是从sample里面copy出来改的，每改一点就要看看效果，边试边改。</p>
 
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2010/02/14/Basic-function-complete-can-open/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -562,10 +546,17 @@
       
           <p>支持atom比我想象中简单很多，根本用不着什么library，多加一个xml template就行了。</p>
 <p>如果你的浏览器支持，就能在地址栏右边看到feed的图标，点击就可以选择阅读器进行订阅。或者在阅读器（例如Google Reader）里面输入这个网站的地址，也可以订阅。</p>
-<p><img src="http://farm5.static.flickr.com/4058/4353315450_7d1914e9ab_o.png" alt=""></p>
+<p><img src="http://farm5.static.flickr.com/4058/4353315450_7d1914e9ab_o.png" alt></p>
 <p>PS. 这个blog的页面使用了一些HTML5标签，因此需要使用新的浏览器才能正常浏览，例如使用 Firefox 3, Chrome。如果你看到的页面不是上图的样子，说明你的浏览器 out date 啦。</p>
 <p>PPS. 我会一如既往的使用flickr来存放照片，如果你看不到照片，或者有一天你连这个blog的页面都看不到，那说明你上的只是局域网，根本不是Internet。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2010/02/14/This-blog-now-support-feed-output/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -635,9 +626,14 @@
 <p>下面的原文发在<a href="http://aleung.blogbus.com" target="_blank" rel="noopener">BlogBus</a>。</p>
 <hr>
 <p>去向未定，但想继续看我的blog，估计都得学几招翻墙功夫了</p>
-<p>请bookmark这个地址：<a href="http://feeds.feedburner.com/GoodGoodStudyDayDayUp" target="_blank" rel="noopener">http://feeds.feedburner.com/GoodGoodStudyDayDayUp</a></p>
-<p><img src="http://farm5.static.flickr.com/4030/4356716336_bd25956bc6_o.jpg" alt=""></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2010/01/24/Seems-to-have-to-get-off-here/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -706,6 +702,14 @@
 <p>找到<a href="http://www.nirsoft.net/" target="_blank" rel="noopener">Nir Sofer</a>出品的小工具 ShellExView，这个工具分析注册表，列出所有注册到explorer的shell extension及相关信息，并能够enable/disable选定的extension。找到可疑的extension，将它disable，然后再进行一次右键操作，看看还会不会crash。如此排除法很快就定位出什么软件是罪魁祸首，将它卸载或者将extension disable，问题就解决了。</p>
 <p>比较有用的信息是extension type，file extensions，file created time。首先关注文件创建时间，找出最近新增的extension，因为以前正常，最近才出问题，那引起问题通常是新装的软件。不过也不能一概而论，也有可能是以前安装的软件，因为最近的环境更改而出现了问题。另外可以根据extension type和file extensions进行过滤，例如我遇到的问题是右键菜单引发崩溃，那重点关注extension type为Context Menu的那些项。还有，在任何类型文件上按右键菜单都会引发崩溃，所以不大可能是由只针对特定文件类型的extension引发的。虽然系统注册的shell extension很多，例如我这个新装没多久的Vista系统就已经有三百多项，但是大部分都是Microsoft出品的，一般来说还是比较可靠的，只要关注非Microsoft的就可以了，找起问题来还是很快的。</p>
 
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2010/01/01/The-reason-for-explorer-crash-tools/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -770,15 +774,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>接着<a href="/2009/12/26/Google-China-Map-offset-1/">昨天的分析</a>。</p>
+          <p>接着<a href="/blog/2009/12/26/Google-China-Map-offset-1/" title="昨天的分析">昨天的分析</a>。</p>
 <p>已经发现在纬线上的偏移值呈现出明显的规律性，这个规律不难拟合出来。利用拟合出来的函数将这个高频扰动抵消之后，得到了这样的曲线：</p>
-<p><img src="/attachments/2009/12/4382498800_1bc9e586dd_o.jpg" alt=""></p>
-<p>看起来相当完美。那在看看将它应用到大尺度上效果如何：</p>
-<p><img src="/attachments/2009/12/4381740587_73cd1113fd_o.jpg" alt=""></p>
-<p>有微小的抖动，看来参数细节还需要微调一下，不过要求不高的话其实已经可以接受了。</p>
-<p>接下来，在这张图上又发现了规律…… 嗯，我不能继续写下去了。</p>
-<p>其实对于离线应用，进一步的分析不做也没有关系了，并不需要将整个函数拟合出来，剩余的工作可以通过查表法来做，然后插值再加回高频扰动。因为知道了高频扰动的函数后，就能够用较低的采样频率来记录偏移量，即使将整个表放内存里，占用的空间大小也可以接受。</p>
+<img src="/blog/attachments/2009/12/4382498800_1bc9e586dd_o.jpg" class>
 
+<p>看起来相当完美。那在看看将它应用到大尺度上效果如何：</p>
+<img src="/blog/attachments/2009/12/4381740587_73cd1113fd_o.jpg" class>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2009/12/27/Google-China-Map-offset-2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -848,24 +857,14 @@
 <p>接下来，我对偏移数据做了一些分析。纵坐标是18级地图的偏移量。</p>
 <p>首先是较小尺度，在经纬度1度的范围内每0.01度取得一个偏移值。</p>
 <p>图一：纬度不变，经度1度变化范围内，偏移量的变化（横坐标数字为经度0.01度）</p>
-<p><img src="/attachments/2009/12/4382500790_05a7a3af13_o.jpg" alt=""></p>
-<p>图二，与图一相同的数据，可以看出偏移在平面上的变化</p>
-<p><img src="/attachments/2009/12/4382501234_2a060a3355_o.jpg" alt=""></p>
-<p>图三，经度不变，纬度1度变化范围内，偏移量的变化（横坐标数字为纬度0.01度）。可见偏移量变化不如经度变化时大。</p>
-<p><img src="/attachments/2009/12/4382501616_0902aeee3e_o.jpg" alt=""></p>
-<p>图四，与图三相同的数据，可以看出偏移在平面上的变化</p>
-<p><img src="/attachments/2009/12/4382501968_d960178154_o.jpg" alt=""></p>
-<p>图五，经度纬度均1度范围内，偏移在平面上的变化。其实是图二与图四&ldquo;相乘&rdquo;的结果。</p>
-<p><img src="/attachments/2009/12/4381741057_b10a5de8ca_o.jpg" alt=""></p>
-<p>接下来从大尺度上看看。</p>
-<p>图六，北纬40度的纬线上偏移值变化图，横坐标为经度。看得出以经度1度为周期呈现出一定的规律性，在y向偏移量上特别明显。</p>
-<p><img src="/attachments/2009/12/4382499286_a837b8022d_o.jpg" alt=""></p>
-<p>图七，东经116度的经线上偏移值变化图，横坐标为纬度。这个就没有奇怪的小波动了，而且x向偏移似乎可以非常理想的用二次曲线来拟合。</p>
-<p><img src="/attachments/2009/12/4381742115_a15b5e01c5_o.jpg" alt=""></p>
-<p>图八，刚才在图六中发现纬线上的偏移值呈现出规律性，这里放大来看看。很明显是以1度为周期的。</p>
-<p><img src="/attachments/2009/12/4382498276_2952ffa74c_o.jpg" alt=""></p>
-<p>暂无结论。请看<a href="/2009/12/27/Google-China-Map-offset-2/">续篇</a>。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2009/12/26/Google-China-Map-offset-1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -939,17 +938,14 @@
 </ul>
 <p>那个价钱更划算？</p>
 <p>如果单位不同，就更难比较了，例如纯净水：</p>
-<ul>
-<li>550ml一打，10元；</li>
-<li>10L，12元；</li>
-<li>5 gal（加仑），18元。</li>
-</ul>
-<p>比价易（Unit Price Compare）就是专门解决这种问题的，它是运行在Android手机上的应用，能够比较不同包装的商品单价哪个更便宜。</p>
-<p>比价易支持不同单位的自动换算，对于”150克6杯加送1杯100克”这样的情况，直接输入为 150*6+100 就可以了。看看截图：</p>
-<p><a href="http://www.flickr.com/photos/leoliang/4987380823/" target="_blank" rel="noopener"><img src="http://farm5.static.flickr.com/4111/4987380823_cfb55b6633.jpg" alt="Unit Price Compare - list"></a> <a href="http://www.flickr.com/photos/leoliang/4987981690/" target="_blank" rel="noopener"><img src="http://farm5.static.flickr.com/4109/4987981690_1fae2f0784.jpg" alt="Unit Price Compare - item"></a></p>
-<p>安装：在Android Market中搜索”Unit Price Compare”</p>
-<p><a href="http://www.flickr.com/photos/leoliang/4987981626/" target="_blank" rel="noopener"><img src="http://farm5.static.flickr.com/4112/4987981626_c5cfbd0307_m.jpg" alt="Unit Price Compare - download"></a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2009/12/12/Parity-easy-the-supermarket-good-helper/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1044,7 +1040,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/blog/tags/">
           
-        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

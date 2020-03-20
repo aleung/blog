@@ -114,7 +114,7 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">53</span></a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">52</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -224,14 +224,14 @@
 <p>下面记录大致操作过程。</p>
 <p>在PC上安装运行Burp，设置 Proxy - Options - Proxy Listeners，让它监听合适的地址和端口，并且选择 “Generate CA-signed per-host certificates”。</p>
 <p>将浏览器代理指向Burp proxy，访问任意一个https地址，Burp这时是中间人，它会用自己的根证书(PortSwiggerCA)签发一个目标服务器的证书，替换了真正服务器的证书。浏览器应该会有安全报警，因为系统并不信任签发这个证书的CA。查看证书详细信息，选择根证书并且信任这个根证书，就会把PortSwiggerCA的证书加入到系统的信任列表中。</p>
-<p>要将这个根证书装进Android，需要先从系统 key chain 里将它导出到文件（.pem格式），然后执行下面的命令将它转换为DER格式后缀为.crt的文件。</p>
-<pre><code>openssl x509 -in PortSwiggerCA.pem -inform PEM –out PortSwiggerCA.crt -outform DER</code></pre><p>接下来，将 PortSwiggerCA.crt 放入Android的sdcard，在系统安全菜单中安装证书。证书安装后，Android系统就会信任所有Burp签发的证书了。</p>
-<p>在Android的WLAN设置代理指向Burp。但很多Android应用都不理会系统的代理设置，不使用系统指定代理，遇到这种情况就要用 <a href="https://play.google.com/store/apps/details?id=org.proxydroid" target="_blank" rel="noopener">ProxyDroid</a> 来设置GlobalProxry（手机要root）。设置好了，在Burp里面就能够拦截到Android应用的HTTPS通信明文了。</p>
-<img src="/blog/attachments/2013/12/burp.png" class="">
-
-<p><em>注意：为确保安全，测试完之后要将 PortSwiggerCA 这个根证书从PC和Android系统信任列表中删除。如果不是临时使用，应该要用自己的证书代替Burp提供的证书。</em></p>
-<p>这个故事告诉我们，中间人攻击并不是那么复杂的事情。特别是终端应用开发者，不可寄望于通过加密传输来隐藏应用到服务器的协议细节，要逆向工程是很容易的。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2013/12/08/intercept-android-https-traffic/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -282,7 +282,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+                <time title="修改时间：2020-03-20 22:42:08" itemprop="dateModified" datetime="2020-03-20T22:42:08+08:00">2020-03-20</time>
               </span>
 
           
@@ -297,42 +297,19 @@
 
       
           <p>11月23日，参加了2013广州马拉松的半程赛事，这是我第二次跑半程马拉松，赛会成绩1:55:11，自己按过出发点的计时是1:52:50。这个成绩比上一年要差了一些，2012广州半马的自己计时是1:49:57。但还是完成目标了，我赛前预订的是两小时内完成。</p>
-<p>今年的训练是从7月中旬开始的（见：<a href="2013/07/27/first-long-run">今年首次长跑训练</a>），最开始的目标是全程马拉松，但是训练断断续续了好多回：八月初去大辣甲岛坐快艇颠伤了腰；九月中旬肠胃炎病了一回体重一下掉了两公斤；十月中旬出差；十月中旬到十一月中旬咳嗽了一个月。总之一直都没有跟上训练计划，训练强度没有上去，跑全马没有可能了，报名时还是选择半马。咳嗽延续了很长时间，严重到胸口肋骨痛，虽然训练没有完全停止，但很担心这样的身体状态连半马都跑不下来了，幸好到了十一月中旬，赛前两周咳嗽逐步好转。一直都没有怎么跑长距离，都是平常的30分钟，十一月开始才将每次跑量增加到12km左右。11月16日（赛前一周）晚遇上Nike的夜跑活动，那次跑得非常轻松，13km步速5:27，就对完赛非常有信心了。赛前一周内减量，周二周四跑了两次慢速短时间维持运动状态。</p>
+<p>今年的训练是从7月中旬开始的（见： <a href="/blog/2013/07/27/first-long-run/" title="今年首次长跑训练">今年首次长跑训练</a>），最开始的目标是全程马拉松，但是训练断断续续了好多回：八月初去大辣甲岛坐快艇颠伤了腰；九月中旬肠胃炎病了一回体重一下掉了两公斤；十月中旬出差；十月中旬到十一月中旬咳嗽了一个月。总之一直都没有跟上训练计划，训练强度没有上去，跑全马没有可能了，报名时还是选择半马。咳嗽延续了很长时间，严重到胸口肋骨痛，虽然训练没有完全停止，但很担心这样的身体状态连半马都跑不下来了，幸好到了十一月中旬，赛前两周咳嗽逐步好转。一直都没有怎么跑长距离，都是平常的30分钟，十一月开始才将每次跑量增加到12km左右。11月16日（赛前一周）晚遇上Nike的夜跑活动，那次跑得非常轻松，13km步速5:27，就对完赛非常有信心了。赛前一周内减量，周二周四跑了两次慢速短时间维持运动状态。</p>
 <p>从周训练量图上看得出来：太少了，很多时候每周2小时都不够。</p>
-<img src="/blog/attachments/2013/12/run-history-weekly.png" class="">
+<img src="/blog/attachments/2013/12/run-history-weekly.png" class>
 
 <p>今年的路线比去年好多了，都是沿着江边跑。半程路线没有经过老城区，时间也早，观众没有那么多，但气氛也还是比去年好，观众都在热情的叫喊，特别是跑到路边跟一溜的观众一一击掌，兴奋度立马提高，特别有动力。</p>
-<img src="/blog/attachments/2013/12/marathon-route.png" class="">
-
-<p>早上七点半起跑，我6:40到珠江新城地铁站，一出站到处都是跑手，看到这个场景人就开始有点兴奋了，虽然平日这个时间还在床上呼呼大睡。在歌剧院外面的广场脱了外套和长裤，当天气温比较暖和，没有热身也不怎么冷。跟朋友回合，时间已到7:10，看着出发区密密麻麻的人群，有点心急。幸好今年的存包工作做得很好，不需要排队，然后上厕所，倒是排了上十分钟，一切妥当已经接近起跑时间。广马的出发点空间过于狭窄，只有一条半车道的宽度，早就已经挤满了人。有人在人堆里往前钻，我也跟在他后面钻，好歹往前挪了几十米。离起跑线还是很远很远，也不知道是什么时候鸣枪的，总之听到前面有人欢呼，然后又等了好一会发现人群开始往前移动了。人群基本还是走，我已经是尽量在人缝中钻了，走走停停，到起跑线时已经两分半钟。过了起跑线，还是跑不起来，跑了一小段前面又堵住了，又得走。一直过了大半公里，路面宽了之后，才可以真正跑起来。</p>
-<p>起跑后几公里都没有把握好速度。按照2小时内完赛的目标，我给自己预定的配速是5’20”~5’30”之间。路面宽阔后，大家的速度都加上去了，一听 miCoach pacer 报速度，步速已经到 5’10” 左右了，于是就把速度降下来。在赛事中跟自己平常训练很不一样，平常起跑的速度都比较慢，要跑上十来分钟速度才加得上去，而在赛事中兴奋度高了，跟着其他人一下子就跑得比较快，自己一点感觉都没有，还以为慢。怕跑快，控制速度后，又压得太慢了，降到了5’40”。在四五公里左右还感觉右小腿肌肉有点僵硬感。</p>
-<img src="/blog/attachments/2013/12/first5k.png" class="">
-
-<p>过了前半小时，大概跑顺了进入状态。特别是车陂路第一个折返点后，一路都跑得很顺畅，步速基本上都在5’20”以上。回到珠江新城路段，沿路观众也多起来，我也喜欢回应一下观众，跑近路旁，挥挥手，甚至击掌，观众喝彩得更热烈，自己也更加兴奋，明显速度会跑快一点。五公里开始有水站，以前跑我不喜欢拿运动饮料，觉得甜了反而不解渴，但这次还是都选择了喝运动饮料，因为可以补充点能量。跟去年不一样，今年饮料是用纸杯分发的，确实这样更合理不浪费，只不过一边跑一边喝的难度不小，估计是喝一半撒了一半。实际上并不感觉渴，喝一两口感觉就可以了，但每5公里的饮料站我都去拿了，而且都全喝完，以保证不缺水，毕竟当天的温度对长跑来说比较高。</p>
-<img src="/blog/attachments/2013/12/6-12km.png" class="">
-
-<p>10km处有计时显示，已经忘了是多少，当时估算了一下，2小时内完成没什么问题了。12km开始进入猎德大桥路段，感觉依然很轻松。我记到去年到10km时也是感觉非常轻松的，但过了不久就开始疲累，因此也不敢大意。后面这一段路的速度在图上看波动比较大：12~13km猎德大道这短短一段路几个小上下坡：过猎德涌两次；13.5km左右路段是爬猎德大桥的上坡，14km左右是冲下坡；15.5km处磨碟沙隧道下坡又是一轮猛冲，16km是隧道上坡。速度下降得很厉害的地方都是饮水站或者降温海绵站。</p>
-<p>在猎德-花城大道折返处拐弯的时候突然听到有人喊我的名字，一看是小春天，举着写上『Leo加油』的一张纸。有点惊喜，没想到她在这里，原来我是让她们在过桥后15、16km路段等的。因为是在拐弯处，当我看到她的时候已经几乎跑过了，匆匆一眼印象中一身很灰的衣服，所以啦啦队也要穿抢眼的衣服啊。然后开始上猎德大桥，虽然比较高，坡度还算是平缓的，减速保持步频上坡，终于过了最高点了，前面有大堆摄影师拦在路上拍照，很多人经过时都摆些pose好上镜，我当时没有意识到这里是一个官方摄影点，只是一心想着下坡可以冲快些。绕过了那群摄影师，突然又听到有人喊我的名字，一看是清风在旁边，也只是来得及挥挥手就冲过去了。一长段下坡，放开脚步狂奔。</p>
-<p>疲累感大概是在16km后出现的，冲完磨碟沙隧道下坡后上坡感觉有点吃力了，然后后面的路程就开始没有轻松的感觉，不过这时剩下的路程已经没有多少，看着对面折返的跑全马的跑手，心想：我再跑几公里就完成了，要跑全马的话还要再跑一倍多的距离，多痛苦啊。后面的路程开始一边跑一边默算着剩下的公里数，不过状态也还是不差，可能就是心理上觉得差不多到了失去了动力。</p>
-<img src="/blog/attachments/2013/12/13-18km.png" class="">
-
-<p>琶洲大桥脚折返后，剩下最后两公里，开始加速做最后冲刺。因为最后有个小弯，一直没有看到终点门楼，有点觉得维持不住速度，直到最后一两百米左右看到终点，这时来劲了还猛冲了一下。</p>
-<img src="/blog/attachments/2013/12/sprint.png" class="">
-
-<p>全程的心率在缓慢的上升，大概10km后进入黄区(159-165BPM)，除了最后冲刺，基本维持在黄区内。冲线时最高心率175BPM。</p>
-<img src="/blog/attachments/2013/12/heart-rate.png" class="">
-
-<p>下面是全程的步速与步频曲线，粗线是步频。可以看出速度虽然有波动但全程平均差别不是太大，但前半程的步频基本在180以上，而后半程就下降到180以下了，说明体力下降步伐没有那么轻快了。</p>
-<img src="/blog/attachments/2013/12/stride-rate.png" class="">
-
-<p>几点总结：</p>
-<ul>
-<li>训练量不足；</li>
-<li>体能储备上，半程没有问题，但跑更长距离估计余量不多了，需要增加长距离训练；</li>
-<li>配速不够平稳。miCoach pacer 只能靠语音播报，不像手表可以随时看到数值，定时播报的间隔时间有点长，在没有把握时应该多让它报一下步速。</li>
-</ul>
-<p>最后感谢亲友团的支持鼓励！希望明年一起跑！</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2013/12/01/2013-gz-half-marathon/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -400,6 +377,14 @@
           <p>上个月在公司里分享的主题。Slideshare上看不到页面的动画效果，页面里的东西混一起了，要下载原PowerPoint文件看才行。</p>
 <iframe src="http://www.slideshare.net/slideshow/embed_code/26482993" width="595" height="487" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen></iframe>
 
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2013/10/21/du-of-software-design/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -469,12 +454,14 @@
 <p>经过广州塔，江堤上很多游人，景色不错。五十多分钟时过猎德桥，过完桥就开始回程了。<br>猎德大桥上竟然铺了橡胶，但太软了跑起来反而不好用力。</p>
 <p>下桥后停下来吃了根蕉，这一停不得了，再也跑不动了，真是宁可慢不可停。跑了几百米，虽然很慢，但都还是恢复不了跑步状态，大腿小腿都动不起来。才刚回程这样的状态不是办法，只好再停下来做了一轮腿部拉伸。拉伸完之后跑步的状态恢复了，虽然腿还是累。</p>
 <p>然后水袋饮水软管和耳机线又在胸前晃来晃去，每跑一步就拍一下身体，很不舒服。前半程卡在背包带上好好的，后面就总卡不稳了，可能是累了后身体晃动厉害了。又得停下来倒弄一番，还不小心把软件弄停了，后面都没有了记录。</p>
-<p>这时候刚好跑了一小时。手机不再有跑速语音提醒了，不知道自己的速度。但即使软件不断提醒我要提高速度到绿区，也加不了速了。这时候把步伐稳定下来，控制着小步幅，自我感觉姿态还是保持住的，但步频就提不上去了。一路跑一路在默念着：宁可慢，不可停。一旦停下来，就很难很难再恢复回跑的状态了。我的目标只是时间，不是距离。</p>
-<p>就这样默念着，不知不觉也就跑完了花城广场到广州大桥一段，上广州大桥到二沙岛。其实也不远，就两公里。跑着跑着就开始考虑起路线的问题了。先是想：一定要按计划跑够两小时！然后想，按这速度，两小时估计回不到家了，大概到江湾酒店。那么就跑到江湾就停吧。随着疲劳感一波一波袭来，思想斗争不断：看来跑不了这么远了；不行！起码也要到江湾；就到海印吧；现在先别想，撑过下一个路口再说！天啊，这么累，怎么可能跑马拉松啊。在差不多到音乐厅的前一个路口，思想还是放弃了，就坚持跑到二沙中医院的公交车站吧。</p>
-<p>当我跑步时，我在想些什么——哪有那么多人生哲理思考，想得只有一件事：什么时候可以停下来！</p>
-<p>其实最后步姿还不错，膝盖等关节状态良好，呼吸也还可以，就是大腿抬不起，要坚持在身体上应该还可以的，就是没有战胜自己。有人跑完马拉松后总结：在你感觉已经崩溃的时候，其实至少还可以再跑已经跑过的一半的距离。如果不是出现伤痛，唯一决定性的就是自己的意志。</p>
-<p>回家在地图上测了路线距离，大约13.5公里，1小时30分钟，算下来pace 6’40”。同以前的成绩比慢了不少。但这是恢复训练一周半后的第一次long run，算正常，本应该先跑个一小时循序渐进的。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2013/07/27/first-long-run/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -553,6 +540,14 @@
 <p>位于自然主义和抽象之间的是程式化。“程式化”（stslized）形容的是这样一种具象艺术：它遵照某种早已确定的风格或套路来描绘世界。</p>
 </blockquote>
 
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2013/06/16/Living-with-Art/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -628,12 +623,14 @@
 </ol>
 <p>这样看来，锤子做的事情跟很多基于Android的定制系统是一个层面的，类似的系统太多太多了：最早但死掉的中国移动OMS，各手机厂商为自己手机定制的系统（HTC SenseUI，联想乐OS，魅族Flyme），已经放弃的点心OS，很火的MIUI……。顺便说一下，MIUI为应用图标硬加的圆角矩形背景极为难看，希望被老罗炮轰一下后能改过来。</p>
 <p>从整体设计风格来说，锤子追随的是iOS的UI风格和人机界面设计规范，从各个UI组件的样子可以看得出来，还有交互操作的方式，也包括拟物化的设计、仿真的视觉反馈等。</p>
-<p>对于一些操作细节的打磨，带来更人性化的体验，是很多人对锤子称道的地方。的确是做得不错，但演示到的几乎每一个改进／做法，都能够在其他系统／第三方应用中找到已经真实应用的范本。老罗团队做得好是在于关注到需要改进的地方，将它们集中到一起。发现哪里操作细节需要改进比起作出改进更难。</p>
-<p>因此，看完两个小时的发布会，这个锤子系统没有带来什么耳目一新的感觉。老罗太高调了，说什么要做最好的手机系统，吹嘘的跟现实的落差太大。也许这是营销手段，反正我就不喜欢这种营销了。</p>
-<p>发布会最后一段，老罗说得很清楚：锤子将会是一个极其封闭的系统，因为只有封闭，才能为小白用户提供最完美、一致的用户体验。听起来很耳熟是不？这不就是苹果说的吗？但是，智能手机系统更重要的角色是一个平台，各种应用才是上面的主角。应用的图标跟系统风格不搭配，锤子给出的解决方案是给你换掉，可是进入应用后，应用的UI、操作方式呢？这才是更重要的。UX不仅仅是美工，是整个人机交互。苹果是怎么做到的？苹果制定了一套系统详尽的人机界面设计规范(HIG)，苹果有很强的控制力，它可以通过App Store发布审核制度强制要求只有符合的应用才能上架。我看不到锤子能有这样的能力去控制第三方应用，也不觉得一个团队有能力(和有必要)在系统里自带所有主要的功能而抛弃第三方应用，因此觉得锤子找的这个提供更佳用户界面的切入点恐怕走不了多远。</p>
-<p>在手机平台这个层面的用户体验上，要作出革新，非小打小闹可以做到。我虽然不做用户交互端的开发，但也有关注移动应用的UX的发展。真正意义的智能手机应用自iPhone革命性发布开始，并没有好多年的时间，这些年来，UX design在迅猛发展。iOS以高度拟物仿真的特点一直独领风骚，但走入了过分繁杂的极端；Android一路在摸索，历年Google IO都带出新的UI/UX design pattern，每次都推翻之前的方案，但可以看到一路在改善，到了Android 4.x，已经有一整套成熟的设计规范；微软的Metro UI可以称得上是一个大的革新。近年的设计趋势都是简约化，去年底苹果工业设计师的更替后，苹果的设计理念也许也会往这个方向走。在我看来，大气的设计是定义出一整套设计语汇，自成体系，并且背后要有设计哲学所支撑（Metro的定位是一种设计语言）。读完iOS的HIG，Android SDK文档里的设计指南，Windows phone的设计指南，就有所体会。另外顺便说说Android应用，普遍比较丑的原因不在于Android自己的设计理念，而是应用开发者没有跟随这个理念，不少依照Android 4.x的设计风格的应用都很漂亮很好用的。</p>
-<p>最后总结我看到的锤子：老罗崇尚苹果的整套理念，另外也看到了一些可以改进的地方（例如他说的iPhone设计上的妥协），于是要将它搬到Android平台上来，按照自己的理解重现实现一遍。这将是一个很有趣的尝试，期望能为国内手机应用UX僵化老土的设计带来新鲜的风气。只是别把自己过分拔高就好了。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2013/04/03/my-opinion-on-smartisan-os/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -708,16 +705,14 @@
 <blockquote>
 <p>A charge cycle means using all of the battery’s power, but that doesn’t necessarily mean a single charge. For instance, you could listen to your iPod for a few hours one day, using half its power, and then recharge it fully. If you did the same thing the next day, it would count as one charge cycle, not two, so you may take several days to complete a cycle. </p>
 </blockquote>
-<blockquote>
-<p>Lithium-ion polymer batteries need to be used for maximum performance. If you don’t use your device often, be sure to complete a charge cycle at least once a month. </p>
-</blockquote>
-<p>电池的放电循环是累计的（原文里有图），不是说要一次性用光所有的电。 </p>
-<p>如果你一个月用电池用不够一个放电循环，那就需要专门去把电池的电耗掉再充满。但如果你平常不时需要移动使用电脑的话，一般一个月都能用够一个电池放电循环，就没有必要专门去耗用电池的电了。 </p>
-<p>锂电池的正常使用寿命大概在500～1000次放电循环左右。<a href="http://support.apple.com/kb/ht1519" target="_blank" rel="noopener">这里</a>有Apple官方声称的电池寿命数值，新款MBP，MBA都是1000次。 </p>
-<p>而且有说法是浅放电比起深放电有利于延长电池寿命[<a href="http://batteryuniversity.com/learn/article/how_to_prolong_lithium_based_batteries" target="_blank" rel="noopener">来源</a>] 。特别是，过放电会严重损害电池。电脑有保护，不会让电池过放，电量低到一定程度就自动关机，但是若关机后依然长期不充电，电池的自放电也会最终使电池过放电。 </p>
-<p>我的MBP用了接近两年，按照有电源时就插电源的用法，现在电池也已经用了131个周期了。要知道，电脑休眠也是耗电的。 </p>
-<p>还有<a href="http://forums.macrumors.com/showpost.php?p=9875442&postcount=23" target="_blank" rel="noopener">这里</a>也整理了很多与Apple Notebook电池相关的知识。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2013/03/30/should-i-keep-plugged-in-after-my-notebook-is-fully-charged/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -768,7 +763,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+                <time title="修改时间：2020-03-20 23:00:02" itemprop="dateModified" datetime="2020-03-20T23:00:02+08:00">2020-03-20</time>
               </span>
 
           
@@ -787,8 +782,14 @@
 <p>Before I changed the configuration, there were SNAPSHOT artifacts in the repository. After configuration changed, the continuous integration jobs running on CI server redeployed artifacts to the repository, and those new files have time stamp in file names, and the version is the same. That caused the problem.</p>
 <p>To solve the problem, I should delete the *-SNAPSHOT file, if and only if there are both unique snapshot and non-unique snapshot of the same version.</p>
 <p>I wrote a Ruby script to do that. It scans all recent deployed artifacts (they have time stamp in file name because of the new configuration) and try to delete the same version non-unique snapshot (-SNAPSHOT) file if any. It uses Artifactory’s REST API. This script need to be run periodically till all artifacts have been rebuilt and deployed to repository. </p>
-<script src="//gist.github.com/https://gist.github.com/aleung/5260512.js"></script>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2013/03/30/maven-unique-non-unique-snapshot-conflict/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -839,7 +840,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+                <time title="修改时间：2020-03-20 23:02:23" itemprop="dateModified" datetime="2020-03-20T23:02:23+08:00">2020-03-20</time>
               </span>
 
           
@@ -854,12 +855,20 @@
 
       
           <p><a href="http://www.jfrog.com/home/v_artifactory_opensource_overview" target="_blank" rel="noopener">Artifactory</a> has no feature to automatically remove old artifacts from local repository. Once the disk is full, manually remove unused artifacts is painful. Moveover, you’re not sure which artifacts are unused and can be safely deleted.</p>
-<p>Artifactory has a set of <a href="http://wiki.jfrog.org/confluence/display/RTF/Artifactory' target="_blank" rel="noopener"s+REST+API">REST API</a>. One of the API is to search artifacts not downloaded since a specified date. In our projects, there are CI jobs which keep building the software for each branch. If a SNAPSHOT artifact hasn’t been downloaded for a time, we can make sure that this artifact is no use any more, a newer version should be existing.</p>
+<p>Artifactory has a set of <a href="http://wiki.jfrog.org/confluence/display/RTF/Artifactory' target=" _blank" rel="noopener" s+rest+api">REST API</a>. One of the API is to search artifacts not downloaded since a specified date. In our projects, there are CI jobs which keep building the software for each branch. If a SNAPSHOT artifact hasn’t been downloaded for a time, we can make sure that this artifact is no use any more, a newer version should be existing.</p>
 <p>I made a Ruby script to do the clean up job automatically. It searches artifacts which weren’t downloaded in specific days and deletes them. It can be invoked in a CI job to run periodically. </p>
-<script src="//gist.github.com/https://gist.github.com/aleung/5203736.js"></script>
+<script src="//gist.github.com/5203736.js"></script>
 
 <p>The script can also be used to clean unused release (non-SNAPSHOT) artifacts. However a good practice is to keep releases forever. </p>
 
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2013/03/22/clean-aged-artifacts-from-artifactory/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -928,14 +937,17 @@
 <p>Artifactory is able to export a whole repository into file system as local repository layout (like .m2/repository folder). So I looked for import feature in Nexus, but failed.</p>
 <p>Searched on Google then I found <a href="http://stackoverflow.com/a/3304212/94148" target="_blank" rel="noopener">this answer</a> on StackOverflow. Sean provided a pom with embedded Groovy script to upload (deploy) a hierarchy of files to a Maven repository. However Sean’s solution handles groupId, artifactId and version in a way differ to what I want. It requires to specify groupId and version in pom as fixed value.</p>
 <p>I modify the Groovy script a bit to handle local repository folder layout. GroupId, artifactId and version are parsed from path of file. Here is my modified version:</p>
-<script src="//gist.github.com/https://gist.github.com/aleung/5194777.js"></script>
+<script src="//gist.github.com/5194777.js"></script>
 
 <p>Before using it, modify the setting in &lt;deploy.basefolder&gt; and &lt;distributionManagement&gt;. Make sure you have removed all non-artifact files e.g. *.sha1, *.lastUpdated from your import directory. Or you may enhance the script to filter those files out.</p>
-<p>Suppose your import folder is ~/.m2/repository, put this pom.xml at ~/.m2. Run <code>cd ~/.m2; mvn install</code> then everything is done.</p>
-<p>Usually you should configure your repository to allow redeploy of an existing artifact. Otherwise you’ll get error if an artifact you want to import already exist in repository.</p>
-<p><strong>Update</strong> 2013-3-29:</p>
-<p>There is a more simple way to import artifacts into Nexus, if you have privilege to access its data folder. Just copy the files into the storage location of the repository (the path can be found in repository configuration tab on Nexus web UI), change owner and group of the copied directories and files. After that, on Nexus web UI right click the folder and choose rebuild metadata. After a while everything will be ready.</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2013/03/19/maven-batch-deploy-artifacts/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1030,7 +1042,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/blog/tags/">
           
-        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://aleung.github.io/blog/attachments/2012/7/xperia-u.png">
 <meta property="article:published_time" content="2012-07-22T10:22:00.000Z">
-<meta property="article:modified_time" content="2016-03-16T14:11:17.000Z">
+<meta property="article:modified_time" content="2020-03-20T15:02:23.526Z">
 <meta property="article:author" content="Leo Liang">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
@@ -121,7 +121,7 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-tags">
 
-    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">53</span></a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">52</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -211,7 +211,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+                <time title="修改时间：2020-03-20 23:02:23" itemprop="dateModified" datetime="2020-03-20T23:02:23+08:00">2020-03-20</time>
               </span>
 
           
@@ -230,7 +230,7 @@
 <p><a href="http://en.wikipedia.org/wiki/Nexus_One" target="_blank" rel="noopener">Nexus One</a> 手机用了两年多，升过几次系统，到现在用起来还是挺满意，但唯一的问题是内部存储(ROM)太小了，只有512M，留给安装应用的空间不足200M，而现在的应用又越来越大，已经到了当想装新应用必须先卸载其他一些的地步了。尝试过A2SD，效果不大理想，卡顿感比较明显，也可能因为我的TF卡速度不够高。</p>
 <p>现在换的这个 <a href="http://www.sonymobile.com/global-en/products/phones/xperia-u/" target="_blank" rel="noopener">Sony Xperia U</a> 属于 <a href="http://www.xperiablog.net/2012/03/07/xperia-nxt-specifications-compared-%E2%80%93-xperia-p-vs-xperia-s-vs-xperia-u/" target="_blank" rel="noopener">Xperia NXT</a> 系列，称为Sony下一代智能手机，包括 Xperia S, Xperia P 和 Xperia U，档次由高至低。Xperia U 在配置上其实跟 Nexus One 变化不算大（<a href="http://geekaphone.com/compare/Sony-Xperia-U-vs-HTC-Nexus-One" target="_blank" rel="noopener">对比</a>），主要区别是CPU双核(频率相同)，内部存储容量4G，而其他的如屏幕之类都不相上下。不过，两个产品发布时间差了2年，Nexus One在当年算是旗舰级别，而现在Xperia U只是中端机型，在现在的手机大混战中一点都不起眼。这也正符合我目前的需要，相当于一个内存升级版的Nexus One。之前考虑过人称Google三儿子的Galaxy Nexus，样样都满意，不过有些特性我倒用不着，例如4.6寸大屏幕。</p>
 <p>玩了几天，跟我的期望比较一致，总体满意。有些经验记录下来。</p>
-<h2 id="刷机"><a href="#刷机" class="headerlink" title="刷机"></a>刷机</h2><p>参考前一篇 <a href="/2012/07/21/flashing-xperia-u/">Xperia U 刷机</a>。</p>
+<h2 id="刷机"><a href="#刷机" class="headerlink" title="刷机"></a>刷机</h2><p>参考前一篇 <a href="/blog/2012/07/21/flashing-xperia-u/" title="Xperia U 刷机">Xperia U 刷机</a>。</p>
 <h2 id="透明发光条"><a href="#透明发光条" class="headerlink" title="透明发光条"></a>透明发光条</h2><p>在屏幕下方软按键处有一条称为 illuminating transparent band 的发光条，晚上环境光线暗的时候，那条光带有点刺眼，干脆不要亮好了，找到一个应用 <a href="https://play.google.com/store/apps/details?id=com.haxor" target="_blank" rel="noopener">Screen Filter</a> 可以将soft-key backlight关闭。另外，在 Google Play 搜索“illumination bar”可以找到一些应用能够将这个发光条用作未接来电、未读短信、邮件的提醒灯。</p>
 <h2 id="USB连接电脑"><a href="#USB连接电脑" class="headerlink" title="USB连接电脑"></a>USB连接电脑</h2><p>Xperia NXT 系列的USB连接采用<a href="http://en.wikipedia.org/wiki/Media_Transfer_Protocol" target="_blank" rel="noopener">MTP</a> (Media Transfer Protocol) 模式，而不是通常的MSC(Mass Storage)模式。在Windows里，USB连上后，会显示成一个没有盘符的设备，可以在explorer中访问，但在Mac OS X中，就根本看不到。XDA上有人做了个应用<a href="http://forum.xda-developers.com/showthread.php?t=1606940" target="_blank" rel="noopener">SDCARD Mounter</a>，装在手机上后（需要root），能够将Xperia S/U/P的内部存储空间用MSC模式mount起来，这样在电脑上就能够像U盘一样访问了。</p>
 <p>如果手机没有root，那么Mac OS X还可以安装<a href="http://www.android.com/filetransfer/" target="_blank" rel="noopener">Android File Transfer</a>来访问手机存储，不过我没有试过是否可行。重要的是，Android File Transfer只能在它的窗口中看到手机的文件，而不是挂载在文件系统上，在finder和shell中都访问不了，这是因为MTP模式下文件系统并不是由电脑端管理，而是在设备端管理。我需要用script来控制传输文件，因此只能用MSC模式。</p>
@@ -245,7 +245,7 @@
 <p>Xperia U 的 play on device 就是push模式。但我家里没有支持DLNA的电视机，有没有办法推送到电脑，用电脑的显示器来播放呢？如果是Win7就很好办，Win7带的Media Player内置支持DLNA，将媒体库菜单里的“允许远程控制我的播放器”选中就可以了。但是我的电脑用的是Mac OS X，这种办法走不通。后来发现大名鼎鼎的<a href="http://xbmc.org/" target="_blank" rel="noopener">XBMC</a>也支持 DLNA renderer 功能，在network setting里面将 Allow control of XBMC via UPnP 选上，手机 play on device 菜单里果然就出现了XBMC可供选择。另外，还惊喜的发现 XBMC 还有 Allow XBMC to receive AirPlay content 选项，测试过能够将iPad的视频推送到XBMC中播放。太好了，那就可以用 Thunderbolt Display 来看了。</p>
 <p>Xperia U 还可以充当 DLNA media server，试过在电脑上用<a href="http://www.videolan.org/vlc/" target="_blank" rel="noopener">VLC</a>可以浏览手机上的所有视频、音乐、照片。需要在手机的 Connected devices 应用中enable。</p>
 <h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><ul>
-<li><a href="/2010/05/11/Nexus-One-/">Nexus One 到手，以及刷机过程</a></li>
+<li><a href="/blog/2010/05/11/Nexus-One-/" title="Nexus One 到手，以及刷机过程">Nexus One 到手，以及刷机过程</a></li>
 </ul>
 
     </div>
@@ -357,7 +357,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/blog/tags/">
           
-        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
