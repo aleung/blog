@@ -52,7 +52,7 @@ tags:
 
 屏幕的旋轉就是一種 runtime change，缺省情況下會觸發activity的重啓，也就是銷毀並重新創建activity[^2]，重新創建時使用的是新的Configuration，裏面帶的又是系統locale，因此就造成了界面變回系統缺省語言。
 
-[^2]: 在 [Android Activity Lifecycle in UML](/2010/12/16/Android-activity-lifecycle-in-UML-state-machine-diagram) 文中的狀態圖可以見到configChanged引發的狀態遷移。
+[^2]: 在 {% post_link Android-activity-lifecycle-in-UML-state-machine-diagram %} 文中的狀態圖可以見到configChanged引發的狀態遷移。
 
 爲了避免這種情況，需要在Application的 onConfigurationChanged() 裏面也對Configuration做修改。
 
@@ -129,7 +129,7 @@ PreferenceActivity的重啓是在OnSharedPreferenceChangeListener得知設定發
 
 ## 總結
 
-現在將思路理清了寫下來，感覺不算複雜，但是在做的過程中費了好多腦筋繞了不少彎路，邊上網查資料邊嘗試。Android的API Guides在ICS發佈後改進了好多，很多內容重寫過更清晰容易理解了，另外一個非常有價值的資源是[StackOverflow.com](StackOverflow.com)。
+現在將思路理清了寫下來，感覺不算複雜，但是在做的過程中費了好多腦筋繞了不少彎路，邊上網查資料邊嘗試。Android的API Guides在ICS發佈後改進了好多，很多內容重寫過更清晰容易理解了，另外一個非常有價值的資源是[StackOverflow.com](https://StackOverflow.com)。
 
 我感覺，對於一般應用沒有太大必要去實現應用內的語言選擇。系統裏所有應用都使用統一的locale本來就挺好的。
 

@@ -85,12 +85,8 @@ _Examples of Slab Serifs:_ Clarendon, Rockwell, Courier, Lubalin Graph, Archer.
 
 ### Reference:
 
-- [What Font Should I Use?](what-font)
-- Making Sense of Type Classification ([part 1](type-class-1)) ([part 2](type-class-2))
-
-[what-font]:http://www.smashingmagazine.com/2010/12/14/what-font-should-i-use-five-principles-for-choosing-and-using-typefaces/
-[type-class-1]:http://www.smashingmagazine.com/2013/04/17/making-sense-type-classification-part-1/
-[type-class-2]:http://www.smashingmagazine.com/2013/06/19/making-sense-of-type-classification-part-2/
+- [What Font Should I Use?](http://www.smashingmagazine.com/2010/12/14/what-font-should-i-use-five-principles-for-choosing-and-using-typefaces/)
+- Making Sense of Type Classification ([part 1](http://www.smashingmagazine.com/2013/04/17/making-sense-type-classification-part-1/)) ([part 2](http://www.smashingmagazine.com/2013/06/19/making-sense-of-type-classification-part-2/))
 
 # CSS Font Stack
 

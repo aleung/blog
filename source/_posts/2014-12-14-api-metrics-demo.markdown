@@ -121,6 +121,6 @@ http.cors.enabled: true
 
 The scala script `feed_graphite.scala` generates mock API metrics data for demo. The Grafana portal is defined as `api.json`. Both files are stored in this [gist](https://gist.github.com/aleung/1ec7e56bfa9448af920b).
 
-![](/attachments/2014/12/api-metrics-demo.png)
+![](2014-12-14-api-metrics-demo/api-metrics-demo.png)
 
 

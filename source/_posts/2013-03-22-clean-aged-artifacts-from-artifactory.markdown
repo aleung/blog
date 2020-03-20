@@ -13,6 +13,6 @@ Artifactory has a set of [REST API](http://wiki.jfrog.org/confluence/display/RTF
 
 I made a Ruby script to do the clean up job automatically. It searches artifacts which weren't downloaded in specific days and deletes them. It can be invoked in a CI job to run periodically. 
 
-{% gist https://gist.github.com/aleung/5203736 %}
+{% gist 5203736 %}
 
 The script can also be used to clean unused release (non-SNAPSHOT) artifacts. However a good practice is to keep releases forever. 

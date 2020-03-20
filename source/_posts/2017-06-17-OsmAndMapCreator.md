@@ -24,4 +24,4 @@ Previous full map data (osm.pbf) \
 [OsmAnd] <------ Latest offline map (obf) <------- [OsmAndMapCreator]
 ```
 
-步骤和脚本放在 gist：https://gist.github.com/aleung/42776348d023b689e8c337b82a3c7cd5，适用于 MacOS 和 Linix，需要自行修改文件中的目录路径。工具在Win平台也可以用，但脚本就要重新写了。
+步骤和脚本放在 gist：https://gist.github.com/aleung/42776348d023b689e8c337b82a3c7cd5 ，适用于 MacOS 和 Linix，需要自行修改文件中的目录路径。工具在Win平台也可以用，但脚本就要重新写了。

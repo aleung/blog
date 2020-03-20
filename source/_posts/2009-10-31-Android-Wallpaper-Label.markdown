@@ -23,7 +23,7 @@ Wallpaper Label 软件的另外一个作用是设置Android手机的桌面墙纸
 
 这是5个屏幕合成的效果图，可以看出宽屏墙纸画面效果：
 
-![](/attachments/2009/10/wallpaperlabel3.jpg)
+{% img /attachments/2009/10/wallpaperlabel3.jpg %}
 
 软件在Android Market上下载安装，搜索"Wallpaper Label"就可以找到。
 (2012-7 update: Android自身功能不断增强，这个软件已经没什么用处，早已下架)

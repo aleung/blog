@@ -7,7 +7,7 @@ tags:
 - Running 
 ---
 
-![](/attachments/2012/9/luhu_sat.jpg)
+{% img /attachments/2012/9/luhu_sat.jpg %}
 
 麓湖的跑步路线是环绕着湖一周的路。路面包括木栈道、柏油车道、砖铺人行道，麓湖路属于绿道系统的部分有木栈道，其余环湖路线的人行道很窄，可以跑到车道边上，但有来车时需要注意安全。
 
@@ -17,11 +17,11 @@ tags:
 
 环湖一圈约3.5km，总上升59m，基本上不算多大起伏。
 
-![](/attachments/2012/9/luhu_elevation.jpg)
+{% img /attachments/2012/9/luhu_elevation.jpg %}
 
 总体来说是不错的跑步路线，推荐。
 
-![](/attachments/2012/9/luhu_map.jpg)
+{% img /attachments/2012/9/luhu_map.jpg %}
 
-其他跑步路线介绍：[广州跑步路线：索引](/2012/09/09/running-route)
+其他跑步路线介绍：{% post_link running-route %}
 

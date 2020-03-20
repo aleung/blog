@@ -19,4 +19,4 @@ We deliver our product in uniform installation package for all customers. A mech
 Actually Spring Framework already supports it. With property placeholder, it is able to use placeholder in bean reference and resolve the bean name from properties. The bean definition XML file is not allowed to be modified when product is released, because it's packaged in war/ear. But properties can be modified as long as it's store outside of the package, e.g. on file system or in configuration management (extend the PropertyPlaceholderConfigurer class).
 
 Here is a sample code snippet:
-{% gist https://gist.github.com/2934603 %}
+{% gist 2934603 %}

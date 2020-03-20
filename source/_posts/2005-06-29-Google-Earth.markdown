@@ -11,8 +11,8 @@ GIS应用越来越走向大众了，刚看到新闻，MSN也要推出Virtual Ear
   
 深圳滨海公园
 
-![Shenzhen on Google Earth](/attachments/2005/6/GoogleEarth1.jpg)
+{% img /attachments/2005/6/GoogleEarth1.jpg %}
 
 NewYork, 真是数字城市啊  
 
-![NewYork on Google Earth](/attachments/2005/6/GoogleEarth2.jpg)
+{% img /attachments/2005/6/GoogleEarth2.jpg %}

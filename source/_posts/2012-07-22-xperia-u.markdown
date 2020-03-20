@@ -7,7 +7,7 @@ tags:
 - Android 
 ---
 
-{%img /attachments/2012/7/xperia-u.png %}
+{% img /attachments/2012/7/xperia-u.png %}
 
 [Nexus One](http://en.wikipedia.org/wiki/Nexus_One) 手机用了两年多，升过几次系统，到现在用起来还是挺满意，但唯一的问题是内部存储(ROM)太小了，只有512M，留给安装应用的空间不足200M，而现在的应用又越来越大，已经到了当想装新应用必须先卸载其他一些的地步了。尝试过A2SD，效果不大理想，卡顿感比较明显，也可能因为我的TF卡速度不够高。
 
@@ -17,7 +17,7 @@ tags:
 
 ## 刷机
 
-参考前一篇 [Xperia U 刷机](/2012/07/21/flashing-xperia-u/)。
+参考前一篇 {% post_link flashing-xperia-u %}。
 
 ## 透明发光条
 
@@ -45,4 +45,4 @@ Xperia U 还可以充当 DLNA media server，试过在电脑上用[VLC](http://w
 
 ### Reference:
 
-- [Nexus One 到手，以及刷机过程](/2010/05/11/Nexus-One-/)
+- {% post_link Nexus-One- %}

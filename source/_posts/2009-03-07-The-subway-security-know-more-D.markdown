@@ -20,24 +20,21 @@ tags:
 
 盾构机前部盾体的结构图：  
 
-![](/attachments/2009/3/Herrenknecht1.jpg)
+{% img /attachments/2009/3/Herrenknecht1.jpg %}
 
 整个盾构机像火车一样很长，一节节台车组成。车间里这台盾构机才刚开始组装，提供给云南的一个水利工程用的，工程师介绍说共有三十多节：
 
-![](/attachments/2009/3/Herrenknecht2.jpg)
+{% img /attachments/2009/3/Herrenknecht2.jpg %}
 
 准备组装的刀盘驱动部分：
 
-![](/attachments/2009/3/Herrenknecht3.jpg)
+{% img /attachments/2009/3/Herrenknecht3.jpg %}
 
 左面是回收回来的旧滚刀，右面是展台上的滚刀，和适合不同地质条件的刀体。岩石就是靠这些滚刀压碎的：
 
-![](/attachments/2009/3/Herrenknecht4.jpg)
+{% img /attachments/2009/3/Herrenknecht4.jpg %}
 
 我参观的时候厂房里没有组装好的机器，从网上找来两张照片。上图看到的是盾构机的前部，红色的刀盘，上面镶嵌的黑色的就是刀具。从照片看似乎就是在我参观的那个车间。下图是一台硬岩掘进机的侧面。
 
-![](/attachments/2009/3/Herrenknecht5.jpg)
-![](/attachments/2009/3/Herrenknecht6.jpg)
-
-  
-
+{% img /attachments/2009/3/Herrenknecht5.jpg %}
+{% img /attachments/2009/3/Herrenknecht6.jpg %}

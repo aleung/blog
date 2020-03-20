@@ -43,7 +43,7 @@ The capacity constraint defines the maximum number of requests that can be queue
 
 I draw a picture to show the threadpool and queue. Requests dispatched with different WorkManager are in different color.
 
-![](/attachments/2012/8/workmanager.jpg)
+{% img /attachments/2012/8/workmanager.jpg %}
 
 - Self-tuning thread pool thread allocation ratio amoung WorkManagers is affected by request class. 
 - Minimum threads constraint limits: never queue request, unless `executing >= min-threads-constraint.count`

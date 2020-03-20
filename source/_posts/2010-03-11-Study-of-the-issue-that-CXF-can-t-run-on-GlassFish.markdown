@@ -52,4 +52,4 @@ That's nothing to say. We finally choose this way. There is almost no workload t
   2. [CXF Issue: CXF-2237](https://issues.apache.org/jira/browse/CXF-2237)
   3. [StackOverflow: How to pick CXF over Metro on Glassfish](http://stackoverflow.com/questions/2064068/how-to-pick-cxf-over-metro-on-glassfish)
   4. [JSR 224: JAX-WS 2.x](http://jcp.org/en/jsr/detail?id=224)
-  5. [WebLogic的classloading](http://good-good-study.appspot.com/blog/posts/4218)
+  5. {% post_link WebLogic-classloading %}

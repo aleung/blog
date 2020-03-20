@@ -7,7 +7,7 @@ tags:
 - Running
 ---
 
-![](/attachments/2012/9/ersha_sat.jpg)
+{% img /attachments/2012/9/ersha_sat.jpg %}
 
 环岛一周约4.4km，其实只能算环半岛，因为岛西面一大段的沿江堤岸是公众不能进入的。车道大部分是沥青路面，晴澜路段水泥路面，人行道是铺石路面。环岛道路汽车不多，在注意安全的前提下可以靠边跑车道。
 
@@ -21,6 +21,6 @@ tags:
 
 总体来说也是可以推荐的跑步路线。
 
-![](/attachments/2012/9/ersha_map.jpg)
+{% img /attachments/2012/9/ersha_map.jpg %}
 
-其他跑步路线介绍：[广州跑步路线：索引](/2012/09/09/running-route)
+其他跑步路线介绍：{% post_link running-route %}

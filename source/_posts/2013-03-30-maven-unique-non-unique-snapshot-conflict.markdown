@@ -17,4 +17,4 @@ To solve the problem, I should delete the \*-SNAPSHOT file, if and only if there
 
 I wrote a Ruby script to do that. It scans all recent deployed artifacts (they have time stamp in file name because of the new configuration) and try to delete the same version non-unique snapshot (-SNAPSHOT) file if any. It uses Artifactory's REST API. This script need to be run periodically till all artifacts have been rebuilt and deployed to repository. 
 
-{%gist https://gist.github.com/aleung/5260512 %}
+{% gist 5260512 %}

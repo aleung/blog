@@ -16,7 +16,7 @@ Searched on Google then I found [this answer](http://stackoverflow.com/a/3304212
 
 I modify the Groovy script a bit to handle local repository folder layout. GroupId, artifactId and version are parsed from path of file. Here is my modified version:
 
-{%gist https://gist.github.com/aleung/5194777 %}
+{% gist 5194777 %}
 
 Before using it, modify the setting in \<deploy.basefolder\> and \<distributionManagement\>. Make sure you have removed all non-artifact files e.g. *.sha1, *.lastUpdated from your import directory. Or you may enhance the script to filter those files out.
 

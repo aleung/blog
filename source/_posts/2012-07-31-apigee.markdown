@@ -18,11 +18,11 @@ Apigee Enterprise product is an API proxy plus developer portal.
 
 Usually when an organization open its internal services or data to external, it develops the API and exposure it, with necessary document published. Application developers learn the API by reading the document, and then code to use the API.
 
-![](/attachments/2012/7/api.png)
+{% img /attachments/2012/7/api.png %}
 
 Apigee helps API provider by providing API management, security, analytics etc. It provides developer portal for API provider to management developer onboarding, and also help developer to learn the API by playing with it.
 
-![](/attachments/2012/7/api_with_apigee.png)
+{% img /attachments/2012/7/api_with_apigee.png %}
 
 
 Console To-Go

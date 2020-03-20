@@ -8,5 +8,5 @@ tags:
 ---
 这一系列博文记录我跑过的路线。
 
-- [麓湖](/2012/09/09/running-route-luhu/)
-- [二沙岛](/2012/09/10/running-route-ersha/)
+- {% post_link running-route-luhu %}
+- {% post_link running-route-ersha %}
