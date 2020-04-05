@@ -119,7 +119,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">330</span></a>
+    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">331</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -170,6 +170,77 @@
             
 
   <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2020/04/05/Precisely-model-delta-printer-bed-shape/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2020/04/05/Precisely-model-delta-printer-bed-shape/" class="post-title-link" itemprop="url">Precisely model delta printer bed shape</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-05 15:38:40 / 修改时间：21:42:15" itemprop="dateCreated datePublished" datetime="2020-04-05T15:38:40+08:00">2020-04-05</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>In firmware, the printable area of delta printer is set to be a circular area. But you can’t set the printing area diameter as large as the printer head reachable area (yellow circle), because the effector and fan need extra space. You have to set a smaller diameter (blue circle) to avoid impacting the belt. (Image originates from <a href="https://reprap.org/wiki/Delta_geometry" target="_blank" rel="noopener">reprap</a>)</p>
+<p><img src="/blog/2020/04/05/Precisely-model-delta-printer-bed-shape/delta_reachable_area.png" alt></p>
+<p>How can I make use of most of the printer head reachable area as printable area? Slicer software e.g. Slic3r/PrusaSlicer has feature to set bed shape from a STL file. It allows you to set bed shape in any irregular shape, and it will alert you if the part is placed outside the printable area. In this way you can set a large printing area diameter in printer firmware, and exclude the areas where interfering will happen inside slicer bed shape setting.</p>
+<p>I used Fusion 360 to model the real printable area of my Kossel Mini printer. The print bed glass is 200mm diameter, so I first drew a 190mm diameter circle as the basic printable area. It’s also set into the firmware.</p>
+<p>I connected the printing host software on PC to my printer and sent G-code to find out the edge positions of the printable area.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2020/04/05/Precisely-model-delta-printer-bed-shape/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
         
   
   
@@ -836,85 +907,11 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2017/06/21/pact/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
-      <meta itemprop="name" content="Leo Liang">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good good study, day day up">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2017/06/21/pact/" class="post-title-link" itemprop="url">Pact - 微服务的契约测试</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2017-06-21 14:52:23" itemprop="dateCreated datePublished" datetime="2017-06-21T14:52:23+08:00">2017-06-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-03 18:27:04" itemprop="dateModified" datetime="2019-08-03T18:27:04+08:00">2019-08-03</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>微服务架构的系统中，存在着大量的服务，每个服务开放出接口（作为provider），接口可以被很多其他服务调用（consume）。接口API是服务提供者和服务消费者之间的契约，理论上，只要测试了双方的实现都完全符合API，就可以保证它们能够正常的集成到一起；但在现实场景中，对API难以给出非常精确的定义，覆盖测试完整API的工作量也会非常巨大，再加上随着API的演进，要验证兼容性更是很麻烦。</p>
-<p>消费者驱动契约（<a href="http://martinfowler.com/articles/consumerDrivenContracts.html" target="_blank" rel="noopener">Consumer Driven Contract</a>）测试试图解决这个问题。它从接口的消费者出发，记录下消费者使用接口的各种场景，以此作为契约，验证接口的提供者是否符合。<a href="https://docs.pact.io/" target="_blank" rel="noopener">Pact</a> 就是支持针对 HTTP API 的消费者驱动契约测试的工具。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog/2017/06/21/pact/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/33/">33</a><a class="extend next" rel="next" href="/blog/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/34/">34</a><a class="extend next" rel="next" href="/blog/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -982,7 +979,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">330</span>
+          <span class="site-state-item-count">331</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

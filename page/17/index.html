@@ -119,7 +119,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">330</span></a>
+    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">331</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -170,6 +170,82 @@
             
 
   <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2009/02/03/Robocopy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2009/02/03/Robocopy/" class="post-title-link" itemprop="url">Robocopy</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2009-02-03 00:57:00" itemprop="dateCreated datePublished" datetime="2009-02-03T00:57:00+08:00">2009-02-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>自从使用Windows Vista之后，通过共享网络copy大文件时就经常会出现错误。以前的错误信息是什么没有留意，今天出错后上网搜索了一下错误代码0x800705aa，看到有人说用xcopy的/Z参数可以解决。</p>
+<p>在Vista中，xcopy被robocopy代替了，两者都是命令行工具。看了一下robocopy的功能挺强，参数很多，不过太不好记了。再找一下，有<a href="http://www.softpedia.com/get/System/OS-Enhancements/RoboCopy-GUI.shtml" target="_blank" rel="noopener">Robocopy GUI</a>，将参数按功能归类了，鼠标指上去还有简要说明，这就方便多了。</p>
+<p>使用robocopy来copy原来出错那些文件，果然就没有问题了。</p>
+
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2009/02/03/Robocopy/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
         
   
   
@@ -865,88 +941,11 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2008/09/15/Online-backup/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
-      <meta itemprop="name" content="Leo Liang">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good good study, day day up">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2008/09/15/Online-backup/" class="post-title-link" itemprop="url">在线备份</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2008-09-15 18:20:00" itemprop="dateCreated datePublished" datetime="2008-09-15T18:20:00+08:00">2008-09-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>以前介绍过文件同步/备份工具<a href="http://aleung.blogbus.com/logs/5545100.html" target="_blank" rel="noopener">Unison</a>，那是一个在两台电脑之间进行文件双向同步的好工具。不过，Unison同步时需要两台电脑同时开机，并且可以通过网络直接通信。我以前用于办公室内两台电脑的同步，非常方便，不过想将办公室和家里的电脑进行同步(备份)，就做不到了。</p>
-<p>尝试了网上的在线文件同步/备份/分析工具，这样的网站有好多，我并没有仔细研究比较过，现在用的是<a href="http://syncplicity.com/" target="_blank" rel="noopener">Syncplicity</a>，感觉功能不错，速度也可以。</p>
-<p>使用相当简便，在要同步的电脑上安装一个client，指定哪些目录需要同步，它就会自动将文件上传服务器，或者从服务器下载，就看哪边的版本更新一点。只要连上网，它就在后台运行，不用费心。如果是要手工执行备份的话，往往会忘记的，自动就没有这个问题。一个帐号可以连接多个client(免费账号限制2个)，相当于星形连接，由服务器分发改变了的文件。备份在服务器上的文件可以通过web界面访问。它的FAQ介绍了它有处理冲突的能力：保留所有不同的版本，让用户自己选择。不过，我没有试过，目前我只是用它来做单向备份。Syncplicity能够与GoogleDoc同步，我没有使用GoogleDoc的需要，也懒得试了。</p>
-<p>Syncplicity对免费用户提供2GB空间，允许两台电脑进行同步，当然收费版本的限制会放宽了。免费的服务基本上都够用的，需要备份的是些比较重要又经常变化的文件，如果是备份旧东西，不变的，用刻光盘的方式更合适。</p>
-<p>给Syncplicity做了这么多广告，是因为：如果我邀请新用户注册，我可以增加100M空间。所以各位记得填写我的邀请信中的号码啊，呵呵。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog/2008/09/15/Online-backup/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/16/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/blog/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/33/">33</a><a class="extend next" rel="next" href="/blog/page/18/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/16/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/blog/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/34/">34</a><a class="extend next" rel="next" href="/blog/page/18/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1014,7 +1013,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">330</span>
+          <span class="site-state-item-count">331</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
