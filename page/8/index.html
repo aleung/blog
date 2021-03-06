@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16.png">
@@ -119,7 +119,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">331</span></a>
+    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">332</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -170,6 +170,83 @@
             
 
   <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2012/07/07/spring-bean-reference-injection-definition-by-external-configuration/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2012/07/07/spring-bean-reference-injection-definition-by-external-configuration/" class="post-title-link" itemprop="url">Spring bean reference injection definition by external configuration</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2012-07-07 21:38:00" itemprop="dateCreated datePublished" datetime="2012-07-07T21:38:00+08:00">2012-07-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-20 23:06:47" itemprop="dateModified" datetime="2020-03-20T23:06:47+08:00">2020-03-20</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>当使用 Spring 作为 IoC framework 的时候，有时会利用 property placeholder 来将bean的注入属性做成可配置化。但是，一般很少会将 reference bean id 也用 property placeholder 代替，有人甚至以为这是不允许的。</p>
+<p>利用Spring Framework的property placeholder，将bean依赖关系配置抽离Spring XML文件，就能在产品发布部署后，通过配置选项来选定不同的实现，可用于集成接口、特定业务逻辑打开关闭等。</p>
+<p><a href="http://www.oodesign.com/adapter-pattern.html" target="_blank" rel="noopener">Adaptor pattern</a> is widely used at the point where our product integrates with external system. Product will provide several adapters to adapt to different external system interface.<br>We deliver our product in uniform installation package for all customers. A mechanism is required to configure which adapter to be used after system is installed.</p>
+<p><a href="http://www.oodesign.com/factory-pattern.html" target="_blank" rel="noopener">Factory pattern</a> can be used to create the specific adapter by configuration property. But by this way we need to create factory for each kind of adapters.</p>
+<p>Actually Spring Framework already supports it. With property placeholder, it is able to use placeholder in bean reference and resolve the bean name from properties. The bean definition XML file is not allowed to be modified when product is released, because it’s packaged in war/ear. But properties can be modified as long as it’s store outside of the package, e.g. on file system or in configuration management (extend the PropertyPlaceholderConfigurer class).</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2012/07/07/spring-bean-reference-injection-definition-by-external-configuration/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
         
   
   
@@ -861,83 +938,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2011/12/24/Running-training-software-development-XiaoJi-RunningCadence-step-frequency/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
-      <meta itemprop="name" content="Leo Liang">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good good study, day day up">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2011/12/24/Running-training-software-development-XiaoJi-RunningCadence-step-frequency/" class="post-title-link" itemprop="url">跑步步频训练软件 RunningCadence 开发小记</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2011-12-24 00:16:00" itemprop="dateCreated datePublished" datetime="2011-12-24T00:16:00+08:00">2011-12-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在<a href="/2011/11/15/Nike-Lunar-Run-10-/">10km跑总结</a>里提到：这次10km跑成绩的提高最重要因素是步频的提高。</p>
-<p>在网上看了一些资料，提到提高步频的好处，并指出长跑理想的步频应该在每分钟180步左右，就开始尝试练习提高步频。但是跑起来并不知道怎样的频率才是合适的，还需要有工具测量才行。想到可以用手机的加速度传感器来测量，跑步时把手机绑在手臂上或者拿手上，测量手的摆动周期应该就可以计算出步频。</p>
-<p>有了想法后，就考虑怎样实现。先要知道跑步时加速度传感器得到的数据会是怎样的，在market上找到软件Accelero-meter Log，能显出加速度传感器三轴数据的曲线。拿着手机跑了几步看看曲线，发现完全不是想象中那么简单：从曲线可以看出每跑一步的加速度变化，但并不是一步一个脉冲那么理想，而是大脉冲中包含着小脉冲，波形很不规则；更要命的是不同轴测量到的数据频率会不一样，软件应该按那个轴的数据计算？后来才想到不同轴测量数据频率不同的原因是手摆动的频率与身体重心上下移动的频率不一致，只是一半，再加上手的活动太自如了，跑动过程中会有不同的动作，都会引起加速度变化。</p>
-<p>上网找到一个开源的Android计步器的代码，看看它怎么做，发现它只是将三个轴的数值加在一起，然后判断变化量。根据前面看得的数据波形，我感觉这样的算法太不靠谱了，再看看这个软件的用户评价，果然不佳。</p>
-<p>这时想到Nike的配合iPhone使用的计步器，是藏在鞋里面的。它应该是感应脚的每次着地，而且计步器是固定在鞋里的，有特定的安装方向，因此它可以只检测垂直地面的加速度。想到这里就豁然开朗了，原来测量摆臂的想法是错误的，应该测量脚着地的冲击，也就是垂直方向的加速度。但那个轴才是垂直地面的呢？我不能规定用户使用这个软件时手机摆放的方向啊，他可以绑在臂上，拿在手里，放裤袋中。。。因此首先要解决的问题是如何判断手机的姿态，找出垂直于地面的轴。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog/2011/12/24/Running-training-software-development-XiaoJi-RunningCadence-step-frequency/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1010,7 +1010,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">331</span>
+          <span class="site-state-item-count">332</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1046,7 +1046,7 @@
 <div class="copyright">
   
   &copy; 2001 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
