@@ -8812,7 +8812,7 @@ parallel(data)</code></pre><h3 id="低级绘图命令"><a href="#低级绘图命
       </tags>
   </entry>
   <entry>
-    <title>Guangzhou Covid-19 infograph</title>
+    <title>广州COVID-19疫情信息图</title>
     <url>/blog/2021/06/12/Guangzhou-Covid-19-infograph/</url>
     <content><![CDATA[<p>最近在看一本书《<a href="https://book.douban.com/subject/27108685/">用数据讲故事</a>》，介绍用故事思维做数据可视化。看过后想找个东西来练习一下，正好最近广州一波COVID-19瘟疫爆发，就试着做一个疫情的信息图。</p>
 <p>这张图要传达些什么信息呢？我的目标是向关心疫情的普通民众解释：</p>
