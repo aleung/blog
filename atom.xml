@@ -6,7 +6,7 @@
   <link href="http://aleung.github.io/blog/atom.xml" rel="self"/>
   
   <link href="http://aleung.github.io/blog/"/>
-  <updated>2021-05-04T07:27:49.505Z</updated>
+  <updated>2021-06-13T16:03:05.946Z</updated>
   <id>http://aleung.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Guangzhou Covid-19 infograph</title>
+    <link href="http://aleung.github.io/blog/2021/06/12/Guangzhou-Covid-19-infograph/"/>
+    <id>http://aleung.github.io/blog/2021/06/12/Guangzhou-Covid-19-infograph/</id>
+    <published>2021-06-12T14:26:46.000Z</published>
+    <updated>2021-06-13T16:03:05.946Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在看一本书《<a href="https://book.douban.com/subject/27108685/">用数据讲故事</a>》，介绍用故事思维做数据可视化。看过后想找个东西来练习一下，正好最近广州一波COVID-19瘟疫爆发，就试着做一个疫情的信息图。</p><p>这张图要传达些什么信息呢？我的目标是向关心疫情的普通民众解释：</p><ol><li>哪里出现了病例？</li><li>这些地方的疫情有多严重？</li><li>随着时间过去，情况发生了什么变化？</li><li>从一开始一个阿婆得病，到后来多处爆发，疫情是怎样变得严峻起来的？</li></ol><p>另外，信息图要在社交媒体发布，我设想它应该能在手机上比较轻松的阅读。</p><p><em>6月8日疫情信息图</em></p><p><img src="/blog/2021/06/12/Guangzhou-Covid-19-infograph/jun9.png"></p><span id="more"></span><p><strong>哪里出现了病例？</strong></p><p>随着疫情升温，社交媒体上传播的信息越来越纷杂，有些是不实传闻，有些是将密切接触者/此密切接触者也当作出现病例。新闻报道和政府公告中列出的地名并不直观，例如一直说荔湾区出现疫情，我过了好多天才知道其实严重的是芳村而不是老荔湾。有些稍偏僻的地方名称不是所有人都熟知。再加上政府的防疫措施例如局部地区封闭、全民核酸检测等在全市各地都有进行，让很多人没有完全弄清楚出现病例的是哪些地方。</p><p>对于在哪里这个信息，用地图来表示应该是最直观的。</p><p><strong>这些地方的疫情有多严重？</strong></p><p>回答了哪里出现了病例这个问题后，接下来大家很自然的就会想知道有多少个病例，一个地方只有一两个病例和几十个病例的严重性显然是不一样的。另外，网上流传的哪儿有密切接触者的信息让人心惶惶，但密切接触者只是危险因素，已确诊病例（包括无症状感染者）才是更严谨的反映严重性的指标。</p><p>每个地方的数据就是一个数字，最简单和直观的展示方式就是把这个数字标出来。另外，为了直观的对比不同地区的情况，在地图上使用气泡图来反映这个数据。考虑视觉上不要太过繁杂，只使用了4种气泡大小。</p><p><strong>随着时间过去，情况发生了什么变化？</strong></p><p>上面的累计病例数字并不能反映变化的趋势：情况是已经好转，还是还在恶化中？已经层层加码的防疫措施是否起到了作用？</p><p>将单日的确诊数字列出来，就比较好反映趋势了。本来随时间变化的数据最典型是用折线图来表示，但我发现每日确诊数字并没有非常强的连贯性，跳跃比较厉害，可能用柱状图的效果更好一些。为了控制版面，突出重点，省略了病例很少并且最近几天没有新发病例的地区。</p><p><strong>从一开始一个阿婆得病，到后来多处爆发，疫情是怎样变得严峻起来的？</strong></p><p>这是需要更进一步发掘的信息。第一个病例出现时，大家还有点不以为然，到后来多处爆发，防疫措施不断升级，包括带走隔离密切接触者、禁止堂食、突然封闭小区做大规模核酸检测、交通封锁禁止离开等等，让市民都懵了，不知道疫情是怎样突然变得严峻起来的，封区和全民检测这些措施是必要的吗？针对这个问题，可以从很多个角度来分析。在刚开始只有十来个案例的时候，已经有传媒做了流行病学调查的信息图，将每个病例之间传播链展示出来。我不想继续在这个角度去叙述，一方面是公开资料不足够，另外我觉得大众对进一步的传播链分析并不会很感兴趣。但是，大家还是会关心为什么在一个新的地方出现病例：首先这会引起紧张，意味着疫情扩散；另外是新闻效应——原来没有病例现在出现了，肯定是有特别原因的，而已经出现病例的地方传染给家庭成员或者社区中接触的其他人，那就不太奇怪（事实上也是这样）。故此，我选择了这个角度来描述：瘟疫是怎么进入一个地区的，也就是首例的传播途径。</p><p>这个信息也是与地理位置相关的，故此还是在地图上展现，我用了连接图（connection map）来描述这个信息。</p><p><strong>图幅大小与细节</strong></p><p>开始做的时候对这个没有什么概念，先试着把地图底图做出来，再添加部分元素来看看效果。比我想象中好一些，基本跟做PowerPoint slides差不多的图像元素尺寸，在手机上看问题都不大。局部细节可能需要放大一级来看，但不会出现反复拖动看不到全貌的问题。最初担心可以显示的宽度不足，需要用纵向长条的图幅，而因为地图的固有比例，长图会很难排版。最终没有这个担忧，用了A4的比例，一屏就能看全。</p><p>为了能在手机不大的屏幕上容易阅读，尽量缩减了图的复杂性，限制色彩使用的数量。</p><p><strong>统计单元</strong></p><p>这张图的几个信息都涉及到“哪里”，到底应该用什么作为统计的单元呢？最初我的想法是与政府划定的风险区一致，但查看了公告后，发现除了芳村的中风险区是以街道为单位外，其余的都是细化到一栋楼、一个小区。这么小的地理单元在统计上意义不大。</p><p>后来，我决定以<a href="https://zh.wikipedia.org/wiki/%E8%A1%97%E9%81%93%E5%8A%9E%E4%BA%8B%E5%A4%84">街道</a>作为统计单元，主要原因是街道是乡级行政区，在城市管理工作中的角色很重，在当前广州的疫情防控工作中，很多措施都是在街道这个层面上进行的，另外病例所属街道的信息在政府公告上可以查到，有可靠信息源。在核心城区中的街道面积用作病例统计比较适合，不过外围城区的街道面积就要大很多，从图中可以看到可以有十倍以上差别。是否有更好的统计单元？这可能是可以改进的地方。</p><p><strong>反馈及修改</strong></p><p>在6月8日的图上，有病例的街道在地图上用了浅红色覆盖，用意是容易看出街道的地理范围。但正如上面所说，有些街道面积太大，例如番禺的洛浦、大石，只有一两个病例，就把二十多平方公里的地域标红了，容易让读者误解全部都是疫区。在6月9日的图中，做了另外一个尝试：去掉大面积的颜色覆盖，仅保留气泡。对于只有少量病例的街道，气泡并不是标注在地理中心，而是标注在病例出现的大致位置。这样做解决了疫区误解的问题，但比起之前少了街道地理区域的信息，视觉效果上好像也差了一些。</p><p>第一天的图容易误解可能还有一个原因是配色——浅红色让人理解为危险区域。如果改成中性的颜色可能也会好些。在《用数据讲故事》作者的blog中最近一篇文章 <a href="https://www.storytellingwithdata.com/blog/2021/6/8/colors-and-emotions-in-data-visualization">colors and emotions in data visualization</a>，正好就提到了 map of COVID-19 cases 的例子：一个图是用了红色”bloody-red”，另一个图“using more decent colors to avoid an emotion of fear”，选择了蓝-绿色系，两者传递的情感就很不一样。</p><p><em>6月9日疫情信息图</em></p><p><img src="/blog/2021/06/12/Guangzhou-Covid-19-infograph/jun10.png"></p><p>第二天的图还做了少量改进：气泡图用不同颜色添加了额外一个维度的信息——是否在最近3天/7天出现新的病例。这样改动后，地图上的信息量增加了，能直观的区分出一个地区的疫情是否已经受控。不过采用的配色并不理想，辨析度不够，还需要改进。</p><p><strong>不足</strong></p><p>一个粗糙的练习作品，做出来的图在美感方面相当欠缺。配色、字体、版面设计，都是将就着做出来。一动手就暴露出自己在这方面没有知识储备，没有经验，胡乱尝试怎么都不顺眼。</p><p>地图上的线条比较多，包括表示传播途径的红色箭头和指示气泡对于街道名称的灰色线，显得有些杂乱，不知道有什么改进的方法。</p><p>最后，也是最核心的，在一张图里展示这几样信息，到底是太多了还是不够？这个故事讲好了吗？受众有没有明确？我所讲的是他们关心的吗？</p><p>这次疫情的数据还可以从很多不同的角度来分析，例如flyisland就做了一个图，分析传播链条中各个节点的R值，从中可以观察到有哪些超级传播者带来影响。可是他的图好像只发布在微信中，没有web上可链接的资源。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;最近在看一本书《&lt;a href=&quot;https://book.douban.com/subject/27108685/&quot;&gt;用数据讲故事&lt;/a&gt;》，介绍用故事思维做数据可视化。看过后想找个东西来练习一下，正好最近广州一波COVID-19瘟疫爆发，就试着做一个疫情的信息图。&lt;/p&gt;
+&lt;p&gt;这张图要传达些什么信息呢？我的目标是向关心疫情的普通民众解释：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;哪里出现了病例？&lt;/li&gt;
+&lt;li&gt;这些地方的疫情有多严重？&lt;/li&gt;
+&lt;li&gt;随着时间过去，情况发生了什么变化？&lt;/li&gt;
+&lt;li&gt;从一开始一个阿婆得病，到后来多处爆发，疫情是怎样变得严峻起来的？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;另外，信息图要在社交媒体发布，我设想它应该能在手机上比较轻松的阅读。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;6月8日疫情信息图&lt;/em&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="DataVisualization" scheme="http://aleung.github.io/blog/tags/DataVisualization/"/>
+    
+  </entry>
   
   <entry>
     <title>选择合适的5号/7号电池</title>
@@ -434,28 +462,6 @@
     
     
     <category term="Running" scheme="http://aleung.github.io/blog/tags/Running/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Kossel Mini 3D打印机制作记录 (1)</title>
-    <link href="http://aleung.github.io/blog/2015/10/05/kossel-mini-3d-printer-making/"/>
-    <id>http://aleung.github.io/blog/2015/10/05/kossel-mini-3d-printer-making/</id>
-    <published>2015-10-05T13:16:22.000Z</published>
-    <updated>2018-02-27T16:38:47.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="缘起及设计"><a href="#缘起及设计" class="headerlink" title="缘起及设计"></a>缘起及设计</h2><p>一切都起源于 flyisland 转的这篇文章：<a href="http://post.smzdm.com/p/332896" target="_blank" rel="noopener">从零开始，给自己设计一台3D打印机</a>，大量的图文细节和制作过程描述吸引了我，门槛似乎也不怎么高，于是产生了做一台的想法。看了 <a href="http://www.thingiverse.com/" target="_blank" rel="noopener">Thingivers</a> 这个网站，更是发现了新的世界，打消了“有3d打印机不知道用来做什么”的疑虑，对喜欢搞制作的人来说3d打印机太有用了。</p><p>于是开始网上查找资料，了解相关信息。一开始的想法是做像那篇文章中的 XYZ 结构，大一点的打印体积（开始都是贪心的），看了 <a href="http://forums.reprap.org/" target="_blank" rel="noopener">RepRap 论坛</a>发现关于 delta 结构的讨论很热门，了解多一些后知道 delta 结构打印机的打印速度快，成本比较低，制作也不复杂，于是锁定了 <a href="http://reprap.org/wiki/Kossel" target="_blank" rel="noopener">Kossel</a> 机型，心想先做一个出来练练手，小一点也够用了，以后真玩起来有需要再做大机器。</p><p>接下来在寻找国内的资源的时候知道了 <a href="http://www.thingiverse.com/thing:388683" target="_blank" rel="noopener">K800</a> 打印机，这是国内爱好者 maximscy 在 Kossel Mini 基础上改进的以降低成本为目标的机型，原本 K800 的意思就是人民币800元可以做出来的 Kossel，但实际上基本上也还是要上千元。</p><p>K800 应该说对于推动3D打印机在国内普及有不少功劳，淘宝上有不少卖套件的。K800 降低了成本，但是毕竟还是以牺牲一点精度为代价，因此卖家也有不少“升级套餐”，例如将打印制作的元件换成铝合金元件，滑轮换回直线导轨等等。我对成本还不算很敏感，想做出来的机器质素好一点，但看下来发现套件的价格水分又太大了，而且配置不一定跟自己要求一致，于是决定自己采购元件。</p><p>最后定下来的方案基本上是原版的 Kossel Mini 方案，高度增加50mm，框架连接件用铝合金的以增加牢固程度和精度，挤出机用铝合金的套件。斜杆的制作精度要求比较高，也直接买做好的算了。</p><p>制作相关的资料信息，例如 BOM，记录在GitHub的 <a href="https://github.com/aleung/KosselPrinter" target="_blank" rel="noopener">KosselPrinter</a> 项目里。</p><h2 id="进展"><a href="#进展" class="headerlink" title="进展"></a>进展</h2><h3 id="国庆节前"><a href="#国庆节前" class="headerlink" title="国庆节前"></a>国庆节前</h3><p>计划用国庆节7天假期来制作，所有材料应该要在节前采购完毕。开始没有考虑到淘宝店家在国庆节会放假，到27号了BOM还没有完全做好，订单还没下。淘宝上采购的难度比预计要困难得多，要比较不同店家的产品，而且搜索了才知道有些元件有好多选择，要弄清楚它们的区别，相互的配套，一个变了可能设计就要改变，配套的东西也不同了。在马云家奋战一个晚上直到凌晨3点，第二天又继续买买买，终于把订单全下完，总金额1400元出头。</p><p>元件在29、30日陆续送到，其中挤出机发现配件不齐，找卖家补发。想着剩下的东西在1日都能够全部收齐了吧？</p><h3 id="10-1"><a href="#10-1" class="headerlink" title="10-1"></a>10-1</h3><p>安装框架，发现买的铝合金连接件是按照国标铝型材设计的，竖杆孔里有几条棱，而我用的是欧标铝型材，配合使用T型螺母，因为棱的存在无法压紧，只好尝试用锉刀去锉掉那条棱。另外，我买的 M3*8 螺丝显得小和短了，有点勉强，出去转了一圈，没有找到卖铝型材用螺母的地方，都放假了。</p><img src="/blog/attachments/2015/10/1.jpg" class=""><p>铝合金连接件有一件漏打一个孔，跟店家联系，他晚上直接开车给我送一个好的过来，超好人。跟他说起欧标型材的问题，他说可以送给我一些国标 M4 方螺母，也可以塞进欧标型材的槽里的，就不需要锉掉那条棱了。</p><h3 id="10-2"><a href="#10-2" class="headerlink" title="10-2"></a>10-2</h3><p>把直线导轨装上，发现只有一根导轨的滑块能够在重力下自己下滑，另外两根摩擦力都好大，而且是不均匀，在某些地方特别卡，需要用一点力才能推过去。网上问人，说这是不正常的，要么是质量特别差，要么是旧零件翻新。只好退货了，然后就不知道应该买什么导轨，国产的似乎不可靠，台湾上银的又太贵，而且据说淘宝假货很多。</p><img src="/blog/attachments/2015/10/2.jpg" class=""><p>快递国庆节都休息了，节前买的东西到了配送点就是没人送上门，停工待料。开始看软件、参数调整和建模方面的资料，发现入坑了，而且似乎是深不见底。</p><p>试用 <a href="http://www.openscad.org/" target="_blank" rel="noopener">OpenSCAD</a>，通过写代码的方式来建3D模型，很容易上手，做基于几何体的模型很简便（自由曲面用什么工具都不简单吧？）。</p><h3 id="10-3"><a href="#10-3" class="headerlink" title="10-3"></a>10-3</h3><p>收到M4螺丝螺母，把原来用M3螺丝螺母已经装好的框架拆掉。发现步进电机、同步轮和连接件的安装位置不太吻合，看来又要动用钢锉。要等导轨和滑车到了后确定具体位置才好动手。于是所有东西又回到一堆零件的状态。</p><p>将计划从国庆假期完成更新为10月底前完成。</p><h3 id="10-5"><a href="#10-5" class="headerlink" title="10-5"></a>10-5</h3><p>快递终于上班了，所有淘宝买的东西都送齐了。但是直线导轨退货后还没有重新购买，没有这个关键零件还是什么都做不了。</p><p>今天没有干什么东西，只是将送丝机和挤出头装配了起来。</p><img src="/blog/attachments/2015/10/3.jpg" class=""> <img src="/blog/attachments/2015/10/4.jpg" class=""><p><em>(To be contined…)</em></p>]]></content>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;缘起及设计&quot;&gt;&lt;a href=&quot;#缘起及设计&quot; class=&quot;headerlink&quot; title=&quot;缘起及设计&quot;&gt;&lt;/a&gt;缘起及设计&lt;/h2&gt;&lt;p&gt;一切都起源于 flyisland 转的这篇文章：&lt;a href=&quot;http://post.smzdm.com/p/332896&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;从零开始，给自己设计一台3D打印机&lt;/a&gt;，大量的图文细节和制作过程描述吸引了我，门槛似乎也不怎么高，于是产生了做一台的想法。看了 &lt;a href=&quot;http://www.thingiverse.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Thingivers&lt;/a&gt; 这个网站，更是发现了新的世界，打消了“有3d打印机不知道用来做什么”的疑虑，对喜欢搞制作的人来说3d打印机太有用了。&lt;/p&gt;
-&lt;p&gt;于是开始网上查找资料，了解相关信息。一开始的想法是做像那篇文章中的 XYZ 结构，大一点的打印体积（开始都是贪心的），看了 &lt;a href=&quot;http://forums.reprap.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;RepRap 论坛&lt;/a&gt;发现关于 delta 结构的讨论很热门，了解多一些后知道 delta 结构打印机的打印速度快，成本比较低，制作也不复杂，于是锁定了 &lt;a href=&quot;http://reprap.org/wiki/Kossel&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Kossel&lt;/a&gt; 机型，心想先做一个出来练练手，小一点也够用了，以后真玩起来有需要再做大机器。&lt;/p&gt;
-&lt;p&gt;接下来在寻找国内的资源的时候知道了 &lt;a href=&quot;http://www.thingiverse.com/thing:388683&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;K800&lt;/a&gt; 打印机，这是国内爱好者 maximscy 在 Kossel Mini 基础上改进的以降低成本为目标的机型，原本 K800 的意思就是人民币800元可以做出来的 Kossel，但实际上基本上也还是要上千元。&lt;/p&gt;
-&lt;p&gt;K800 应该说对于推动3D打印机在国内普及有不少功劳，淘宝上有不少卖套件的。K800 降低了成本，但是毕竟还是以牺牲一点精度为代价，因此卖家也有不少“升级套餐”，例如将打印制作的元件换成铝合金元件，滑轮换回直线导轨等等。我对成本还不算很敏感，想做出来的机器质素好一点，但看下来发现套件的价格水分又太大了，而且配置不一定跟自己要求一致，于是决定自己采购元件。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="Maker" scheme="http://aleung.github.io/blog/tags/Maker/"/>
     
   </entry>
   

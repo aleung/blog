@@ -119,7 +119,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">333</span></a>
+    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">334</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -170,6 +170,105 @@
             
 
   <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2009/09/17/How-to-setup-hg-Mercurial-web-access/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2009/09/17/How-to-setup-hg-Mercurial-web-access/" class="post-title-link" itemprop="url">How to setup hg (Mercurial) web access</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2009-09-17 03:08:00" itemprop="dateCreated datePublished" datetime="2009-09-17T03:08:00+08:00">2009-09-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>(Platform: Windows Vista)</p>
+<ol>
+<li>Mercurial is already installed. </li>
+<li>Install Apache. </li>
+<li>Download mercurial source package to get the file hgwebdir.cgi. This file isn’t included in the Windows binary package. </li>
+<li>Copy hgwebdir.cgi into Apache’s cgi-bin folder and rename to hgwebdir.py </li>
+<li>Create a file named hgweb.config in the same folder. Config the name and the path of therepositories in this file. </li>
+<li>Install python 2.5 and make sure to check the option to registerit as the default handler of .py file.<br>The hgwebdir.cgi from Mercurial 1.xrequires python 2.5. Error “Invalid Magic Number” will be got when running on other version python. </li>
+<li>Extract the file library.zip in Mercurial installation folder into a directory. Use 7zip to unzip, other zip tools might fail. </li>
+<li>In Mercurial installation directory there is a foldernamed Templates.Moveit into thelibrary folder. </li>
+<li>Edit hgwebdir.py, add followinglines to add the library folderinto python library path:<br>import sys<br>sys.path.insert(0, “C:\Program Files\Mercurial\library”)</li>
+<li>Start apache, try to access in browser<br><a href="http://localhost/cgi-bin/hgwebdir.py" target="_blank" rel="noopener">http://localhost/cgi-bin/hgwebdir.py</a></li>
+<li>If the repositories index page can shown, that’s fine. If got 500 internal error, check apache error log.<br>If the error information is like this:<br><em>The system cannot find the path specified. : couldn’t create child process: 720003: hgwebdir.py</em><br>it means Apache can’t locate the python executer. <ol>
+<li>Edit Apache’s config file httpd.conf,uncomment theline:<br>ScriptInterpreterSource registry<br>This will enable Apache to skip the script’s shebang line and use default registered handler.</li>
+</ol>
+</li>
+<li>When the index is successfully shown in browser, edit the .hg\hgrc file in each repositories to add following lines. It will enable push to repository by web access (default is read only) and enable push by http (default is requiring ssl).<br>[web]<br>allow_push = *<br>push_ssl = false</li>
+<li>Try to clone a repository by web access and modify something then push back. It should be ok. </li>
+<li>Add a line in Apache http.conf to make the URL more friendly:<br>ScriptAliasMatch ^/hg(.*) “C:/Program Files/Apache2.2/cgi-bin/hgwebdir.py$1”<br>Now the url will be:<br><a href="http://localhost/hg" target="_blank" rel="noopener">http://localhost/hg</a></li>
+</ol>
+<p>Just record the installation steps in case I need to do it againsome time in the furture. Hope thatIhaven’t missed any step :)</p>
+<p>Reference:</p>
+<ul>
+<li><a href="http://mercurial.selenic.com/wiki/PublishingRepositories" target="_blank" rel="noopener">http://mercurial.selenic.com/wiki/PublishingRepositories</a></li>
+<li><a href="http://mercurial.selenic.com/wiki/HgWebDirStepByStep" target="_blank" rel="noopener">http://mercurial.selenic.com/wiki/HgWebDirStepByStep</a></li>
+<li><a href="http://www.imladris.com/Scripts/PythonForWindows.html" target="_blank" rel="noopener">http://www.imladris.com/Scripts/PythonForWindows.html</a></li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2009/09/17/How-to-setup-hg-Mercurial-web-access/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
         
   
   
@@ -868,82 +967,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2009/05/18/5km-29-17/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/android-chrome-512x512.png">
-      <meta itemprop="name" content="Leo Liang">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Good good study, day day up">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2009/05/18/5km-29-17/" class="post-title-link" itemprop="url">5km, 29:17</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2009-05-18 21:18:00" itemprop="dateCreated datePublished" datetime="2009-05-18T21:18:00+08:00">2009-05-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2016-03-16 22:11:17" itemprop="dateModified" datetime="2016-03-16T22:11:17+08:00">2016-03-16</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>(注：下面的今天是指5.18，当时blogbus正被河蟹强暴中，无法发出来)</p>
-<p>今天临下班前又有想跑步的冲动，问了平常一块跑的同事，他们怕下雨都不去，我就自己一个人跑。如果每天都能保持这样的运动欲望，能形成习惯就好了，可惜总是做不到，一天打鱼n天晒网。</p>
-<p>其实今天确实不适合跑步，雾气太大了，树林茂密的地方特别是低洼处明显一层雾气。这样的环境下运动对呼吸系统可能不是太好。跑到第二圈真的开始下雨了，还好只是中雨，眼镜还不至于蒙上。一个人跑，自己感觉速度比往日跟同事一起跑快了一点，气也喘得大一点，但最后看时间也就是29分钟多。状态始终与去年底时差远了，那时跟Stico一起跑，跑两圈也是大概30分钟左右，但基本上可以一边跑一边聊天。</p>
-
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog/2009/05/18/5km-29-17/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1016,7 +1039,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">333</span>
+          <span class="site-state-item-count">334</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
