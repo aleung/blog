@@ -1,5 +1,5 @@
 ---
-title: Guangzhou Covid-19 infograph
+title: 广州COVID-19疫情信息图
 date: 2021-06-12 22:26:46
 tags:
 - DataVisualization
