@@ -53,18 +53,28 @@ tags:
   - 将DNS侦听在1053端口，以免与dnsmasq的DNS服务冲突。
     Dnsmasq的DNS cache功能实际上不会被使用，因为往53端口流量会被iptables重定向到了clash的1053端口。但是如果关闭了dnsmasq的DNS功能，DHCP就不会下发nameserver配置给DHCP client，造成连上热点的设备没有DNS配置。
 
-- 设置iptables，让clash工作于TProxy模式。
-  ```
+- 设置iptables，让clash工作为透明代理。
+  ```shell
+  # DNS rules
   iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to 1053
   iptables -t nat -I OUTPUT -p udp -d 127.0.0.0/8 --dport 53 -j REDIRECT --to 1053
-iptables -t nat -A PREROUTING -p tcp ! --dport 22 -j REDIRECT --to-ports 7892
-iptables -t nat -A OUTPUT -p tcp -m owner ! --uid-owner clash -j REDIRECT --to-port 7892
+  
+  # All incoming TCP traffic except SSH redirect to Clash port
+  iptables -t nat -A PREROUTING -p tcp ! --dport 22 -j REDIRECT --to-ports 7892
+  
+  # All outgoing TCP traffic except from user transmission and clash redirect to Clash port
+  iptables -t nat -A OUTPUT -p tcp -m owner --uid-owner debian-transmission -j ACCEPT
+  iptables -t nat -A OUTPUT -p tcp -m owner --uid-owner clash -j ACCEPT
+  iptables -t nat -A OUTPUT -p tcp -j REDIRECT --to-port 7892
   ```
   
   - 首先需要复习一下关于iptables的知识：https://www.cnblogs.com/f-ck-need-u/p/7397146.html
   - 我这里采用了一个比较简化的配置，规则很少。没有支持UDP代理，目前感觉没有这样的需求，迟些再看看有没有必要加上吧。
+  - Clash配置中设置 redire-port 7892，用iptable REDIRECT target将包转发到此端口。
+    - 另外还有一种模式为TPROXY，参考 [Iptables REDIRECT vs. DNAT vs. TPROXY](https://gsoc-blog.ecklm.com/iptables-redirect-vs.-dnat-vs.-tproxy) 和 [使用 iptables 的 tproxy](https://www.bilibili.com/read/cv14088928)。TPROXY只能工作于PREROUTING链，不工作于OUTPUT链，为了让本机对外流量进入代理需要配置路由规则，整个配置更复杂一些。
   - 支持代理wifi hotspot流量（PREROUTING链）和本机流量（OUTPUT链）。
   - 使用了iptables的owner模块功能，配合专门的clash用户，避免流量回环。
+  - 来自transmission的流量（BT）也要bypass。
   
 - 将iptables规则持久化，下次启动的时候自动恢复。
   ```
@@ -86,7 +96,7 @@ iptables -t nat -A OUTPUT -p tcp -m owner ! --uid-owner clash -j REDIRECT --to-p
   AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_ADMIN
   ExecStart=/usr/local/bin/clash -d /etc/clash/
   Restart=on-failure
-
+  
   [Install]
   WantedBy=multi-user.target
   ```
