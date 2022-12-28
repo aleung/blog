@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="捡到一个斐信K2G无线路由器，上电连接192.168.2.1进入管理界面，发现需要密码，长按后面按钮10秒重置系统，恢复出厂设置。路由器前面只有一盏灯，红色是正在启动，变成橙色是启动完成。 管理界面的路径包含&#x2F;cgi-bin&#x2F;luci，这个路由器的固件应该是基于OpenWRT的。翻了一下菜单，功能不多，看到网上说这个路由器刷机资源挺丰富的，试一试。 这个路由器硬件是K2G A1版本，固件版本号为2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="K2G 无线路由器">
+<meta property="og:url" content="http://aleung.github.io/blog/2022/10/09/k2g-router/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:description" content="捡到一个斐信K2G无线路由器，上电连接192.168.2.1进入管理界面，发现需要密码，长按后面按钮10秒重置系统，恢复出厂设置。路由器前面只有一盏灯，红色是正在启动，变成橙色是启动完成。 管理界面的路径包含&#x2F;cgi-bin&#x2F;luci，这个路由器的固件应该是基于OpenWRT的。翻了一下菜单，功能不多，看到网上说这个路由器刷机资源挺丰富的，试一试。 这个路由器硬件是K2G A1版本，固件版本号为2">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-10-09T15:26:46.000Z">
+<meta property="article:modified_time" content="2022-12-28T16:11:03.771Z">
+<meta property="article:author" content="Leo Liang">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://aleung.github.io/blog/2022/10/09/k2g-router/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>K2G 无线路由器 | Good good study, day day up</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Good good study, day day up</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">aleung的学习笔记, aleung的idea</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">53</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">335</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2022/10/09/k2g-router/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.io/gravatar/leoliang@gmail.com">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          K2G 无线路由器
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-10-09 23:26:46" itemprop="dateCreated datePublished" datetime="2022-10-09T23:26:46+08:00">2022-10-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-12-29 00:11:03" itemprop="dateModified" datetime="2022-12-29T00:11:03+08:00">2022-12-29</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>捡到一个斐信K2G无线路由器，上电连接192.168.2.1进入管理界面，发现需要密码，长按后面按钮10秒重置系统，恢复出厂设置。路由器前面只有一盏灯，红色是正在启动，变成橙色是启动完成。</p>
+<p>管理界面的路径包含<code>/cgi-bin/luci</code>，这个路由器的固件应该是基于OpenWRT的。翻了一下菜单，功能不多，看到网上说这个路由器刷机资源挺丰富的，试一试。</p>
+<p>这个路由器硬件是K2G A1版本，固件版本号为22.6.3.20，芯片方案 MT7620A+MT7612EN，64M内存，8MB闪存。</p>
+<h2 id="刷机步骤"><a href="#刷机步骤" class="headerlink" title="刷机步骤"></a>刷机步骤</h2><p>首先刷breed（bootloader），步骤：</p>
+<ol>
+<li><p>从<a target="_blank" rel="noopener" href="https://breed.hackpascal.net/">https://breed.hackpascal.net</a>下载breed包(<a href="./breed-mt7620-phicomm-psg1208.bin">breed-mt7620-phicomm-psg1208.bin</a>)到本地电脑。</p>
+</li>
+<li><p>在电脑上运行一个 http server，供下载breed安装包 (例如 <code>npx http-server ~/Download/</code>)</p>
+</li>
+<li><p>电脑用网线连接路由器. 运行<code>ip a</code>确认一下分配到的IP地址，后面路由器要连接这个IP来下载breed安装包</p>
+</li>
+<li><p>进入路由器管理界面（<a href="http://192.168.2.1）：高级设置-系统设置-自动升级-自定义升级时间，从下拉菜单中选择5分钟；按F12打开浏览器开发工具，定位到这个菜单项的HTML，将`value`修改为`05">http://192.168.2.1）：高级设置-系统设置-自动升级-自定义升级时间，从下拉菜单中选择5分钟；按F12打开浏览器开发工具，定位到这个菜单项的HTML，将`value`修改为`05</a> | &#x2F;usr&#x2F;sbin&#x2F;telnetd -l &#x2F;bin&#x2F;login.sh&#96;(注入漏洞)；选择一下其他分钟数，再点回来，确认value内的值没有丢失。然后点击web界面上的保存按钮</p>
+</li>
+<li><p>这时，telnetd应该就运行了。Telnet到192.168.2.1，应该能够进入shell</p>
+</li>
+<li><p>在shell里面执行:</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /tmp</span><br><span class="line">wget http://192.168.2.229:8080/breed-mt7620-phicomm-psg1208.bin</span><br><span class="line">mtd unlock Bootloader</span><br><span class="line">mtd -r write breed-mt7620-phicomm-psg1208.bin Bootloader</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>等待路由器重启，breed就已经被刷入</p>
+</li>
+</ol>
+<p>进入breed web界面的方法：</p>
+<ol>
+<li>持续按住路由器上的reset按钮，接通路由器电源，待路由器上电后3-5秒后松开reset按钮，进入bootloader（指示灯会一直红色）</li>
+<li>浏览器访问 <a target="_blank" rel="noopener" href="http://192.168.1.1/">http://192.168.1.1</a></li>
+<li>上面可以进行固件备份、固件安装等操作。安装固件和恢复出厂配置时需要选择闪存布局&#x2F;固件类型为”Config区(公版)”。</li>
+<li>开刷前，请必须记得先「恢复出厂设置」-&gt;「Config 区 (公版)」，然后点「执行」</li>
+</ol>
+<p>来源：<a target="_blank" rel="noopener" href="https://www.right.com.cn/FORUM/thread-325866-1-1.html">https://www.right.com.cn/FORUM/thread-325866-1-1.html</a></p>
+<h2 id="固件"><a href="#固件" class="headerlink" title="固件"></a>固件</h2><p>然后下一步刷固件，网上搜索发现2020年之后没有人玩这款路由器了，后面没有什么更新，固件都是之前的。</p>
+<h3 id="Padavan（老毛子）固件"><a href="#Padavan（老毛子）固件" class="headerlink" title="Padavan（老毛子）固件"></a>Padavan（老毛子）固件</h3><p>Padavan是俄罗斯（老毛子）大神改自华硕路由器系统。网上的Padavan固件基本上都没有提供K2G的版本，只找到这个提供了K2G：<a target="_blank" rel="noopener" href="https://www.right.com.cn/forum/thread-4000461-1-1.html">https://www.right.com.cn/forum/thread-4000461-1-1.html</a></p>
+<p>其中纯净版可以正常使用，但标准版固件有问题，重新启动或恢复出厂设置无法启动路由器。</p>
+<h3 id="Pandorabox-潘多拉固件"><a href="#Pandorabox-潘多拉固件" class="headerlink" title="Pandorabox 潘多拉固件"></a>Pandorabox 潘多拉固件</h3><p>Pandorabox 基于 OpenWRT 修改而来，和 OpenWRT 几乎拥有一样的优缺点，但无线驱动比openwrt的开源驱动好很多。</p>
+<ul>
+<li>胜在丰富的插件和自由的固件定制</li>
+<li>使用复杂</li>
+</ul>
+<p>忘记有没有找到K2G能用的了，反正最后用的是上面那个Padavan纯净版，没有什么插件，作为一个路由器够用了。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>书房里的wifi信号不是太好，但又拉不了网线进房间。台式电脑放在书房里，另外又装了台NAS，如果都走无线就太慢了。尝试使用这个K2G作为无线中继，在房间中的设备用网线连上这个中继，效果还可以，速度比电脑自己的无线网卡好。</p>
+<p>Padavan的无线设置里选择无线桥接，工作模式选择“AP-Client + AP“，这时这个无线接口充当另外一个AP的客户端，配置上级AP的SSID和认证密码，就像一个客户端设备一样连上；同时这个无线接口还是一个AP，可以为其他设备提供接入，跟上级AP同一个子网，DHCP也是由上级路由器提供。</p>
+<p>如果不需要为其他无线设备提供接入，只用网线，也可以选择工作模式为 “AP-Client“ only，按理说性能会好些，不过我试了一下同时充当AP速度也没有什么区别。</p>
+<p>无线桥接中的工作模式选择还有 “WDS桥接“ 和 ”WDS中继“ 两种，好像是说要求上下级的路由器的芯片系列相同才行。先试的是WDS模式但没有成功，AP-Client模式能用也就不深究了。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2021/06/12/Guangzhou-Covid-19-infograph/" rel="prev" title="广州COVID-19疫情信息图">
+      <i class="fa fa-chevron-left"></i> 广州COVID-19疫情信息图
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%B7%E6%9C%BA%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.</span> <span class="nav-text">刷机步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BA%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">固件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Padavan%EF%BC%88%E8%80%81%E6%AF%9B%E5%AD%90%EF%BC%89%E5%9B%BA%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">Padavan（老毛子）固件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pandorabox-%E6%BD%98%E5%A4%9A%E6%8B%89%E5%9B%BA%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">Pandorabox 潘多拉固件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">使用</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="https://avatars.io/gravatar/leoliang@gmail.com">
+  <p class="site-author-name" itemprop="name">Leo Liang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">335</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Liang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '578b819466ead4247b6e',
+      clientSecret: '6a36866b9ae12bc5b0b1f0df95c98cbb2ed7ef61',
+      repo        : 'blog-comments',
+      owner       : 'aleung',
+      admin       : ['aleung'],
+      id          : '7579613d639a3dc2f4e4e53f63cfad95',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

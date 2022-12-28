@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="做好3d打印机，需要制作些什么就自己建模了。大部分的CAD工具都是图形交互式的，也就是靠鼠标把模型”画“出来，但我更喜欢通过建模语言来把模型描述出来。在网上搜寻和试用了一些基于3D建模语言的CAD工具，将我了解的记录一下。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3D modeling language">
+<meta property="og:url" content="http://aleung.github.io/blog/2018/08/26/3D-modeling-language/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:description" content="做好3d打印机，需要制作些什么就自己建模了。大部分的CAD工具都是图形交互式的，也就是靠鼠标把模型”画“出来，但我更喜欢通过建模语言来把模型描述出来。在网上搜寻和试用了一些基于3D建模语言的CAD工具，将我了解的记录一下。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://aleung.github.io/blog/attachments/2018/8/openscad.png">
+<meta property="article:published_time" content="2018-08-26T05:28:32.000Z">
+<meta property="article:modified_time" content="2022-08-28T15:12:31.183Z">
+<meta property="article:author" content="Leo Liang">
+<meta property="article:tag" content="Maker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://aleung.github.io/blog/attachments/2018/8/openscad.png">
+
+<link rel="canonical" href="http://aleung.github.io/blog/2018/08/26/3D-modeling-language/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>3D modeling language | Good good study, day day up</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Good good study, day day up</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">aleung的学习笔记, aleung的idea</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">53</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">335</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2018/08/26/3D-modeling-language/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.io/gravatar/leoliang@gmail.com">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          3D modeling language
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-08-26 13:28:32" itemprop="dateCreated datePublished" datetime="2018-08-26T13:28:32+08:00">2018-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-28 23:12:31" itemprop="dateModified" datetime="2022-08-28T23:12:31+08:00">2022-08-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <img src="/blog/attachments/2018/8/openscad.png" class="">
+
+<p>做好3d打印机，需要制作些什么就自己建模了。大部分的CAD工具都是图形交互式的，也就是靠鼠标把模型”画“出来，但我更喜欢通过建模语言来把模型描述出来。在网上搜寻和试用了一些基于3D建模语言的CAD工具，将我了解的记录一下。</p>
+<span id="more"></span>
+
+<h1 id="CAD建模语言"><a href="#CAD建模语言" class="headerlink" title="CAD建模语言"></a>CAD建模语言</h1><h4 id="OpenSCAD"><a href="#OpenSCAD" class="headerlink" title="OpenSCAD"></a>OpenSCAD</h4><p>网站：<a target="_blank" rel="noopener" href="http://www.openscad.org/">http://www.openscad.org/</a></p>
+<p>文档：<a target="_blank" rel="noopener" href="http://www.openscad.org/cheatsheet/index.html">http://www.openscad.org/cheatsheet/index.html</a></p>
+<p>这个领域的领头项目，知名度最高，使用者最多。 </p>
+<p>虽然不是一门通用语言，但是也有不少通用语言的特性，例如变量、函数、条件判断、循环。</p>
+<h4 id="Relativity-SCAD"><a href="#Relativity-SCAD" class="headerlink" title="Relativity SCAD"></a>Relativity SCAD</h4><p>文档：<a target="_blank" rel="noopener" href="https://github.com/davidson16807/relativity.scad/wiki">https://github.com/davidson16807/relativity.scad/wiki</a></p>
+<p>不是独立语言，只是OpenSCAD的library，但是它提供了一套全新的API替换掉OpenSCAD原有的API的大部分功能，使用起来比OpenSCAD API简单很多。 </p>
+<p>是一个个人项目，近两年基本上没有更新了，但看上去完成度很高，也许是没有什么需要更新了，可靠程度有待验证。 </p>
+<p>特别之处： </p>
+<ul>
+<li>通过描述对象之间的相对位置，大大简化了OpenSCAD建模中繁琐的transformation </li>
+<li>通过selector对部分对象进行操作，减少了boolean operation的繁琐组合</li>
+</ul>
+<p>感觉相当完美的解决了OpenSCAD使用过程中的痛点，写出来的代码简洁很多。 </p>
+<h4 id="CraftML"><a href="#CraftML" class="headerlink" title="CraftML"></a>CraftML</h4><p>网站：<a target="_blank" rel="noopener" href="https://craftml.io/">https://craftml.io/</a>， <a target="_blank" rel="noopener" href="https://github.com/craftml/craftml">https://github.com/craftml/craftml</a></p>
+<p>Markup language 风格的建模语言（类似HTML）。1.x版本已经被放弃，github repo都删除了；现在的2.0 beta是重写过的，但似乎也是个死项目。 </p>
+<h4 id="OpenJsCAD"><a href="#OpenJsCAD" class="headerlink" title="OpenJsCAD"></a>OpenJsCAD</h4><p>网站：<a target="_blank" rel="noopener" href="https://github.com/jscad/OpenJSCAD.org">https://github.com/jscad/OpenJSCAD.org</a></p>
+<p>Online IDE: <a target="_blank" rel="noopener" href="https://openjscad.org/">https://openjscad.org/</a> </p>
+<p>使用 JavaScript 语言建模，支持类似于OpenSCAD函数风格的API，和CSG对象风格API（已经deprecated）。</p>
+<p>优势是使用 JavaScript 有很强的表达能力和扩展能力，可用利用npm模块来扩展。</p>
+<p>不足： </p>
+<ul>
+<li>API混乱，1.x的API已经deprecated，2.0 API又未完善 </li>
+<li>文档错误多 </li>
+<li>API使用错误时没有定位错误位置，难以debug</li>
+</ul>
+<h4 id="SolidPython"><a href="#SolidPython" class="headerlink" title="SolidPython"></a>SolidPython</h4><p>网站：<a target="_blank" rel="noopener" href="https://github.com/SolidCode/SolidPython">https://github.com/SolidCode/SolidPython</a></p>
+<p>Python frontend for OpenSCAD。用 python 来生成 OpenSCAD 代码，也是依托于通用语言的强大表达能力和扩展能力。</p>
+<p>近一年开发不活跃，但项目应该依然处于有维护状态。 </p>
+<p>特别之处： </p>
+<ul>
+<li>first-class negative space (holes) </li>
+<li>直接用 + - * 运算符表示 object boolean operators</li>
+</ul>
+<p>不足： </p>
+<ul>
+<li>Python多行表达式书写不方便，需要人工调整缩进</li>
+</ul>
+<h4 id="ImplicitCAD"><a href="#ImplicitCAD" class="headerlink" title="ImplicitCAD"></a>ImplicitCAD</h4><p>网站：<a target="_blank" rel="noopener" href="http://www.implicitcad.org/">http://www.implicitcad.org/</a>，<a target="_blank" rel="noopener" href="https://github.com/colah/ImplicitCAD">https://github.com/colah/ImplicitCAD</a></p>
+<p>Online IDE：<a target="_blank" rel="noopener" href="http://www.implicitcad.org/editor">http://www.implicitcad.org/editor</a> </p>
+<p>类似于OpenSCAD的语言，按项目文档的说法是：ExtOpenScad，with many things missing, many added, and many just working differently。 </p>
+<p>项目未完全完善，处于beta测试可用状态。 </p>
+<p>工具本身是用Haskell实现的。 </p>
+<p>特别之处： </p>
+<ul>
+<li>Extrude支持函数参数，产生变化的挤出效果 </li>
+<li>圆弧化object对接的边缘</li>
+</ul>
+<h1 id="我的选择"><a href="#我的选择" class="headerlink" title="我的选择"></a>我的选择</h1><p>最先是用 OpenSCAD 的，但是用 OpenSCAD 做稍复杂一些的模型，代码就要写得很繁琐，故此寻找有没有其他更好的方案，就有了上面一批工具的尝试。</p>
+<p>使用了一段时间的 OpenJsCAD，因为是我熟悉的js语言，v1 API有丰富的参数让代码写起来简洁一些，一度认为是最佳的选择。但后来发现它正在进行的向 v2 API 的迁移太混乱了，用户很难预期到底应该使用哪种方式。另外，近来几个月的开发工作也停滞不前了，觉得项目当前的成熟度有点问题。</p>
+<p>其他的几个工具也都是有很大的成熟度问题，于是只好又回到了 OpenSCAD。Relativity SCAD 是最近的发现的，只用来做过一个模型，目前的体验相当好，应该可以作为今后的主要工具。可靠性、完整度还有待在更多的使用中去验证。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/blog/tags/Maker/" rel="tag"><i class="fa fa-tag"></i> Maker</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2018/04/11/project-preset/" rel="prev" title="软件项目的标准配置和自动检查更新">
+      <i class="fa fa-chevron-left"></i> 软件项目的标准配置和自动检查更新
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2019/02/25/thermostatic-water-heater/" rel="next" title="燃气热水器恒温控制">
+      燃气热水器恒温控制 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CAD%E5%BB%BA%E6%A8%A1%E8%AF%AD%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">CAD建模语言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E9%80%89%E6%8B%A9"><span class="nav-number">2.</span> <span class="nav-text">我的选择</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="https://avatars.io/gravatar/leoliang@gmail.com">
+  <p class="site-author-name" itemprop="name">Leo Liang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">335</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Liang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '578b819466ead4247b6e',
+      clientSecret: '6a36866b9ae12bc5b0b1f0df95c98cbb2ed7ef61',
+      repo        : 'blog-comments',
+      owner       : 'aleung',
+      admin       : ['aleung'],
+      id          : '37a986e5249284e1aa6a296930d46053',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

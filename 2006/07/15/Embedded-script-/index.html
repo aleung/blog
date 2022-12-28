@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="近年来各种编程语言如雨后春笋一般涌现出来，令人眼花缭乱。有些是已经有相当历史的近来得到了广泛关注，有些则是新创的但风头不弱于前辈。它们的名字虽然我很多都听说过，大概知道是什么样的语言，但也是仅此而已了。 这些新兴语言大都是动态语言，运行于虚拟机之中。而我一直都是使用C++&#x2F;Java这些静态语言，这些新语言让我觉得很新鲜。在具有动态特性的语言中，我唯一熟悉的也就是PHP了，但是php给我的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Embedded script 初接触">
+<meta property="og:url" content="http://aleung.github.io/blog/2006/07/15/Embedded-script-/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:description" content="近年来各种编程语言如雨后春笋一般涌现出来，令人眼花缭乱。有些是已经有相当历史的近来得到了广泛关注，有些则是新创的但风头不弱于前辈。它们的名字虽然我很多都听说过，大概知道是什么样的语言，但也是仅此而已了。 这些新兴语言大都是动态语言，运行于虚拟机之中。而我一直都是使用C++&#x2F;Java这些静态语言，这些新语言让我觉得很新鲜。在具有动态特性的语言中，我唯一熟悉的也就是PHP了，但是php给我的">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2006-07-15T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-12-07T16:53:24.576Z">
+<meta property="article:author" content="Leo Liang">
+<meta property="article:tag" content="SoftwareDev">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://aleung.github.io/blog/2006/07/15/Embedded-script-/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Embedded script 初接触 | Good good study, day day up</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Good good study, day day up</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">aleung的学习笔记, aleung的idea</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">53</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">335</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2006/07/15/Embedded-script-/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.io/gravatar/leoliang@gmail.com">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Embedded script 初接触
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2006-07-15 08:00:00" itemprop="dateCreated datePublished" datetime="2006-07-15T08:00:00+08:00">2006-07-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-12-08 00:53:24" itemprop="dateModified" datetime="2022-12-08T00:53:24+08:00">2022-12-08</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>近年来各种编程语言如雨后春笋一般涌现出来，令人眼花缭乱。有些是已经有相当历史的近来得到了广泛关注，有些则是新创的但风头不弱于前辈。它们的名字虽然我很多都听说过，大概知道是什么样的语言，但也是仅此而已了。</p>
+<p>这些新兴语言大都是动态语言，运行于虚拟机之中。而我一直都是使用C++&#x2F;Java这些静态语言，这些新语言让我觉得很新鲜。在具有动态特性的语言中，我唯一熟悉的也就是PHP了，但是php给我的印象是方便灵活，但是显得零乱，缺乏OO特性，难以承担大规模应用。也因此我对这些语言就带有一点偏见，觉得“不够严谨”、有点“小儿科”。</p>
+<p>由于所开发系统的业务逻辑的复杂和多变，让我们吃尽了苦头，寻找解决方案的一个思路是将业务逻辑控制分离出来，降低这部分修改的难度。如果要再进一步，就是要采用script来描述业务逻辑了，那么是设计这样一种script，还是有什么现有的架构可以重用？</p>
+<p>将视野放开，可以看到动态语言在这方面得到了越来越广泛的应用，有好多新兴语言就是用来做embedded script的。在嵌入的脚本和宿主语言之间，数据可以传递，函数可以相互调用。因为我做的应用使用C++开发，因此我这几天看了<a target="_blank" rel="noopener" href="http://www.lua.org/">Lua</a>和<a target="_blank" rel="noopener" href="http://www.squirrel-lang.org/">Squirrel</a>这两种用于C&#x2F;C++的嵌入语言的资料，这两种语言目前主要都是在游戏开发领域使用，Lua比较出名因为魔兽争霸使用了它，Squirrel是从Lua派生出来的。先不考虑怎样应用于具体业务，单从语言本身来说，这些简单的语言给我印象不错，一些语言特征能够给编码带来很多方便，如function作为first-class value，table数据结构(关联数组)，而我特别关心的是它们对coroutine(协程)的支持。</p>
+<p>使用通用的script还是自己开发引擎，自定义script格式，这就看怎么权衡了。动态语言的语言机制强大而灵活，其描述能力是自定义的script难以到达的；但是通用、灵活往往也意味着复杂，自定义script专注于要实现的业务功能，往往比较简单，学习难度要低；自己定义script虽然要开发解释器，但是针对性很强，与业务紧密相关，使用通用script还是要考虑怎样来描述业务操作，宿主程序如何提供接口来结合起来，其实要做的事情并不少。</p>
+<p>不过我现在对它们的了解还只是很表面，仅仅走马观花而已，观点一定是片面的，还需要进一步的学习。就目前来说，我对使用嵌入语言存在着这些疑问：</p>
+<ul>
+<li>缺乏OO特性，如果是宿主程序是采用OOD的话，不容易结合起来，我现在已经很难想象一个大型系统如何能够不采用面向对象来实现了。（不过这个还是因语言而异，据介绍某些语言是具有很完善的OO特性的）。Lua支持基于原型的面向对象编程模型(prototype-based OO Modal)，我对这种对象模型是持怀疑态度的，它并不完善，好多OO设计方法都无法实现出来。不过我必须承认我并没有深入研究过，也许还需要多些了解。[见附注] </li>
+<li>与宿主语言的binding太复杂。不使用class应该还是挺简单的，但使用了class之后就比较麻烦了。使用嵌入脚本，就是希望让开发更简单快捷，如果因此又引入另外一种复杂性，那么优势就被抵消了。 </li>
+<li>怎样将通用的script用于针对性的业务？是不是宿主程序需要以例如API的形式提供一套接口？我现在还没有看到这部分，如果找到一些开源应用的代码来看看应该可以解答这个疑问。 </li>
+<li>性能始终是一个需要关心的问题</li>
+</ul>
+<hr>
+<p>PS. 刚才网上花了不少时间读了关于面向对象的讨论和文章，看来我对于面向对象的了解还是相当片面的，只是局限在C++&#x2F;Java语言对于OO的实现，而C++&#x2F;Java是属于<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Class-based_OOP">class-based OOP</a>，单纯的用class-based的思维去套用<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Prototype-based_programming">prototype-based OOP</a>得到的结论当然不合理。另外一个错误就是我将prototype-based和object-based混为一谈了，其实完全两码事，object-based model则一般不认为是OO。花点时间去了解一下prototype-based OOP和动态编成语言应该是值得的，起码可以开拓思路。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/blog/tags/SoftwareDev/" rel="tag"><i class="fa fa-tag"></i> SoftwareDev</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2006/07/14/DIY-/" rel="prev" title="DIY交流网站">
+      <i class="fa fa-chevron-left"></i> DIY交流网站
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2006/07/22/What-is-a-moment-how-long-/" rel="next" title="一刹那到底是多久？">
+      一刹那到底是多久？ <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="https://avatars.io/gravatar/leoliang@gmail.com">
+  <p class="site-author-name" itemprop="name">Leo Liang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">335</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Liang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '578b819466ead4247b6e',
+      clientSecret: '6a36866b9ae12bc5b0b1f0df95c98cbb2ed7ef61',
+      repo        : 'blog-comments',
+      owner       : 'aleung',
+      admin       : ['aleung'],
+      id          : '57722098fcf010a7741709d475e92cbd',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="去年底今年初先后做了两个分体的人体工学键盘。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DIY人体工学分体键盘">
+<meta property="og:url" content="http://aleung.github.io/blog/2019/08/04/DIY-keyboard/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:description" content="去年底今年初先后做了两个分体的人体工学键盘。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://aleung.github.io/blog/blog/2019/08/04/DIY-keyboard/mini-thumb-dactyl.jpg">
+<meta property="og:image" content="http://aleung.github.io/blog/blog/2019/08/04/DIY-keyboard/dactyl-manuform.jpg">
+<meta property="article:published_time" content="2019-08-04T08:16:51.000Z">
+<meta property="article:modified_time" content="2022-08-28T15:12:31.183Z">
+<meta property="article:author" content="Leo Liang">
+<meta property="article:tag" content="Maker">
+<meta property="article:tag" content="Gadget">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://aleung.github.io/blog/blog/2019/08/04/DIY-keyboard/mini-thumb-dactyl.jpg">
+
+<link rel="canonical" href="http://aleung.github.io/blog/2019/08/04/DIY-keyboard/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>DIY人体工学分体键盘 | Good good study, day day up</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Good good study, day day up</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">aleung的学习笔记, aleung的idea</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">53</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">335</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2019/08/04/DIY-keyboard/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.io/gravatar/leoliang@gmail.com">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          DIY人体工学分体键盘
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-04 16:16:51" itemprop="dateCreated datePublished" datetime="2019-08-04T16:16:51+08:00">2019-08-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-28 23:12:31" itemprop="dateModified" datetime="2022-08-28T23:12:31+08:00">2022-08-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="/blog/blog/2019/08/04/DIY-keyboard/mini-thumb-dactyl.jpg"></p>
+<p>去年底今年初先后做了两个分体的人体工学键盘。</p>
+<span id="more"></span>
+
+<p>用着微软的人体工学键盘4000好多年了（以前写过<a href="/blog/2013/01/08/keyboard-and-mouse/">一篇介绍</a>，里面也有照片），对它唯一不满的地方是太大了，占用了桌面不少空间。实际上我根本用不着小键盘，如果不要右边那一块，桌面就宽敞不少。</p>
+<p>对市面有售的键盘又做了一番了解，找不到合适的。本来左右手分区的键盘就很罕见，符合我的期望，并且买得到和买得起根本没有。不过倒是发现有不少爱好者自己设计制作键盘并且开源的，有3D打印机打印壳体，做起来似乎不会太难。Reddit的 <a target="_blank" rel="noopener" href="https://www.reddit.com/r/MechanicalKeyboards/">r&#x2F;MechanicalKeyboards</a> 是爱好者的其中一个大本营，上面各种各样的键盘让人眼花缭乱。其中，一款叫做 <a target="_blank" rel="noopener" href="https://github.com/adereth/dactyl-keyboard">Dactyl</a> 的键盘，和由它派生出来的 <a target="_blank" rel="noopener" href="https://github.com/tshort/dactyl-keyboard">Dactyl-Manuform</a> 键盘，有不少人制作过，资料相对齐全些，外形也比较符合我的要求：左右手按键分离、带倾斜度适应手掌自然摆放的角度、占地不多。</p>
+<p>做键盘首先要做的功课的选择什么键轴（按键键体）和什么键帽。大部分的机械键盘爱好者玩的也就是把这些东西换来换去。我对机械键盘没有什么情结，除了在年代久远的时候用过的 IBM PC 是机械键盘，实在理解不了噼里啪啦的敲键快感在哪里。不过要自己做，能买到的键必然是机械按键了。各种各样的键轴在发烧友口中说得神乎其神，我就挑选了据说是最平庸的 Cherry 茶轴。另外，键帽也有不同高度、倾斜度和材质的讲究。我要做的键盘的键盘体自身已经带有弧度，就不需要键帽再有高度、弧度的区别，所以选择了DSA规格的无刻（上面没有印字）键帽。</p>
+<p>受了网上一些文章的影响，第一个键盘选择了比较激进的最少键位的方案：主键盘区为3行10列，连数字键都没有，很多按键需要靠同时按拇指区的切换键来打出来。这样做的好处是手在键盘的位置是固定的，手腕就搁在手托上按什么键都不需要挪动。但是代价就是脑子不够用了：拇指需要按的切换键太多，记不住。</p>
+<p><img src="/blog/blog/2019/08/04/DIY-keyboard/dactyl-manuform.jpg"></p>
+<p>用了几个星期，还是难以做到肌肉记忆不去想怎么去按键，于是打算再做了一个多些按键的。之前选择最少键位方案的另外一个原因是我的3D打印机可打印面积不够大，加一行或者加一列都会超出打印床的大小了，因此首先得解决怎么能够适应打印面积的问题。</p>
+<p>第一个想法是将拇指区与主键盘区分离成两个部分独立打印。这就需要修改壳体的3D模型。Dactyl 这个项目比较有意思，模型是用Clojure程序生成的，因此我也就顺便（被迫）学习了 Clojure，感受还不错，终于有机会接触 lisp 风格的函数式编程了。做出来的版本是这个：<a target="_blank" rel="noopener" href="https://github.com/aleung/mini-thumb-dactyl-keyboard#dactyl-manuform-thumb-part-printed-separately-wip">dactyl_split.clj</a>，打印过一个样品出来，但我没有最终完善它的所有细节，因为有了一个新的想法。</p>
+<p>Manuform的拇指区每边有6个键。一个大拇指要按6个键太困难了，有些键的位置比较难够得着，记忆的负荷也太大，总是要想一想按哪个。按照自己用下来的情况，一个拇指可以比较容易的靠肌肉记忆按2个键，最多也就是控制3个键。把拇指区改小了，打印面积也就缩小了。</p>
+<p>于是就做出了我的派生作品：<a target="_blank" rel="noopener" href="https://github.com/aleung/mini-thumb-dactyl-keyboard#mini-thumb-dactyl">Mini Thumb Dactyl</a> —— 缩小了拇指区的 Dactyl-Manuform。也就是标题照片里面的键盘。这个即使增加了一行和一列，都能够在我的3D打印机上打出来。</p>
+<p>制作一个键盘主要包括三部分的工作：壳体、电路、固件（firmware）。壳体用3D打印机打印，如果别人做好的现成的STL模型不满足要求，就要自己去修改。电路的核心是 <a target="_blank" rel="noopener" href="https://www.wikiwand.com/zh-hk/Arduino">Arduino</a> 兼容的电路板，因为左右手键盘是独立的，两边各一片。Firmware基于开源的键盘固件 <a target="_blank" rel="noopener" href="https://qmk.fm/">QMK</a>，不需要自己编码，但是它的配置与按键电路连接相关（不同的按键数量会不同），按键映射也需要自己去配置。</p>
+<p>开源作品是不同开发者在前人基础上不断改进的过程，但也带来了很多版本分支。网上的资料比较零碎，没有从头到尾的系统有条理的文档，而且不同资料有些描述各不一样，分别适应于某个特定的分支。寻找资料、整理信息、理清关系是比较麻烦的事情。因此我把制作的具体过程中的所有关键信息整理写成了一份 <a target="_blank" rel="noopener" href="https://github.com/aleung/mini-thumb-dactyl-keyboard/blob/master/guide/index.md">How to Make a Dactyl Manuform Keyboard</a> ，以此为主线，相关的知识点可以再去阅读、搜索。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/blog/tags/Maker/" rel="tag"><i class="fa fa-tag"></i> Maker</a>
+              <a href="/blog/tags/Gadget/" rel="tag"><i class="fa fa-tag"></i> Gadget</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2019/02/25/thermostatic-water-heater/" rel="prev" title="燃气热水器恒温控制">
+      <i class="fa fa-chevron-left"></i> 燃气热水器恒温控制
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2019/08/25/Garmin-Vivoactive-3/" rel="next" title="Garmin Vovoactive 3">
+      Garmin Vovoactive 3 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="https://avatars.io/gravatar/leoliang@gmail.com">
+  <p class="site-author-name" itemprop="name">Leo Liang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">335</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Liang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '578b819466ead4247b6e',
+      clientSecret: '6a36866b9ae12bc5b0b1f0df95c98cbb2ed7ef61',
+      repo        : 'blog-comments',
+      owner       : 'aleung',
+      admin       : ['aleung'],
+      id          : '2302dab711d7d7b7e85cc31a3647ef7b',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

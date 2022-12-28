@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="色彩管理的第一篇是在2004年写的，当时本来想连续写，可写了一篇就没有下文了。现在再来继续色彩的话题，不过这次的主题其实不算色彩管理，而是看看色彩的本质是什么。 颜色是什么？学物理的时候说太阳光通过菱镜会分离成彩色的光带，不同颜色的光的波长是不一样的。这给我们一个印象：颜色就是可见光波长这个物理量的反映。但是问题来了，白色对应什么波长的光？为什么红光和绿光混合在一起变成了黄光，难道混合后波长产生变">
+<meta property="og:type" content="article">
+<meta property="og:title" content="色彩管理 (2)">
+<meta property="og:url" content="http://aleung.github.io/blog/2012/09/15/color-management-2/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:description" content="色彩管理的第一篇是在2004年写的，当时本来想连续写，可写了一篇就没有下文了。现在再来继续色彩的话题，不过这次的主题其实不算色彩管理，而是看看色彩的本质是什么。 颜色是什么？学物理的时候说太阳光通过菱镜会分离成彩色的光带，不同颜色的光的波长是不一样的。这给我们一个印象：颜色就是可见光波长这个物理量的反映。但是问题来了，白色对应什么波长的光？为什么红光和绿光混合在一起变成了黄光，难道混合后波长产生变">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://aleung.github.io/blog/attachments/2012/9/eye.jpg">
+<meta property="og:image" content="http://aleung.github.io/blog/attachments/2012/9/gamut.jpg">
+<meta property="article:published_time" content="2012-09-14T16:56:00.000Z">
+<meta property="article:modified_time" content="2022-12-07T16:53:24.584Z">
+<meta property="article:author" content="Leo Liang">
+<meta property="article:tag" content="ImageProcessing">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://aleung.github.io/blog/attachments/2012/9/eye.jpg">
+
+<link rel="canonical" href="http://aleung.github.io/blog/2012/09/15/color-management-2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>色彩管理 (2) | Good good study, day day up</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Good good study, day day up</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">aleung的学习笔记, aleung的idea</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">53</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">335</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2012/09/15/color-management-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.io/gravatar/leoliang@gmail.com">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          色彩管理 (2)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2012-09-15 00:56:00" itemprop="dateCreated datePublished" datetime="2012-09-15T00:56:00+08:00">2012-09-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-12-08 00:53:24" itemprop="dateModified" datetime="2022-12-08T00:53:24+08:00">2022-12-08</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>色彩管理的<a href="/blog/2004/11/12/Color-management-1/" title="色彩管理 (1)">第一篇</a>是在2004年写的，当时本来想连续写，可写了一篇就没有下文了。现在再来继续色彩的话题，不过这次的主题其实不算色彩管理，而是看看色彩的本质是什么。</p>
+<p>颜色是什么？学物理的时候说太阳光通过菱镜会分离成彩色的光带，不同颜色的光的波长是不一样的。这给我们一个印象：颜色就是可见光波长这个物理量的反映。但是问题来了，白色对应什么波长的光？为什么红光和绿光混合在一起变成了黄光，难道混合后波长产生变化了？原因在于，颜色并不是某一個物理量的直接反映，而是人对光线的心理反映，称之为色觉。</p>
+<img src="/blog/attachments/2012/9/eye.jpg" class="right"> 
+
+<p>人眼有三种色彩感受器（视锥细胞），每种感受器可以感应不同波长范围的光，分别的感受峰值波长为：420nm，534nm，564nm，差不多相当于蓝、绿、红三色光的波长。对于某一种光谱，三种感受器得到三组信号送往大脑，大脑根据这三组信号值的不同组合感知到不同的色彩。</p>
+<p>现实世界中的光线通常都不会是单一波长的（只有激光光源产生的才是单一波长的光吧，要么是经过分光镜得到的），而是不同波长组合的混合光。视觉感受器并不能区分这些光谱，反正各种感受器只对自己能感应的波长范围内的光作出反应，最后大脑拿到的就是三组信号而已。不同的光谱组合的光线，可能对三种视觉感受器产生的刺激恰好是一样的，这样大脑就会将它们感受为同一种颜色，术语称为“异谱同色”。例如波长600nm左右的光线人感受是黄色，而波长540nm绿光和700nm红光一定强度比例的混合，人感觉到的也是黄色。</p>
+<p>我曾经在之乎问过一个问题：人眼若多一种新的视椎细胞可感应可见光范围内的另外一个波长的光，人看到的色彩会有什么变化吗？看到的颜色更多？ 后来我想明白了，是会看到更多的颜色的，准确的说，是能够分辨出更多不同的颜色。在只有三种感受器时，有些不同波长组合的混合光产生的刺激是一样的，大脑区分不出，将它们当作同样的颜色，但假若增加另一种波长的感受器后，这个感受器感应到的刺激不同，就能够分辨为不同色彩了。至于这个颜色是什么？我们不可能知道，因为颜色仅仅是一种心理反应。如此类推，不同动物看到的色彩也是不一样的，因为不同动物眼睛的视锥细胞的波长响应曲线不同，而且数量也不一定一样。假如有某种外星人有四种甚至更多的色彩感受器，那他们会认为地球人全是色盲，地球人到他们的世界里可能连分辨交通灯都有问题——如果他们还用交通灯。另外，所谓三原色，也是针对人而言的。</p>
+<p>既然色彩只是种心理反应（感觉），那为了准确描述色彩和进行分析，就需要建立色彩模型。根据关注的角度不同，不同的研究者拿出了不同的色彩模型，例如孟塞尔颜色立体模型、CIE L* a* b* 模型。其中 CIE XYZ 模型应该是最能反映人的颜色视觉的，因为它的制定就是通过大量实验来测定人对三种特定波长光线S、M、L（约对应于红绿蓝）的刺激值X，Y，Z。实验方式是让人同时观察目标色光线和SML三组标准光的混合光，调节S&#x2F;M&#x2F;L的光强，使得人眼感觉混合光和目标色光线的颜色完全一样，从而得出目标色的XYZ值。CIE XYZ色彩空间是色彩管理的基础。</p>
+<p>CIE XYZ定义了一个三维空间，展现起来不如二维图形直观。经常用来表示色彩空间大小的二维马蹄型图称为CIE xy色度图，如下图。它的纵横座标xy是根据XYZ推导出来的，x&#x3D;X&#x2F;(X+Y+Z), y&#x3D;Y&#x2F;(X+Y+Z), z&#x3D;Z&#x2F;(X+Y+Z), x+y+z&#x3D;1。彩色的马蹄形范围表示人眼可见的全部色彩范围。在数码相机和电脑显示中使用的RGB色彩空间在CIE xy色度图中反映为三角形范围，三个顶点分别为R&#x2F;G&#x2F;B三原色。</p>
+<img src="/blog/attachments/2012/9/gamut.jpg" class="">
+
+<p>不考虑印刷，摄影爱好者一般会接触到的色彩空间也就是AdobeRGB和sRGB。从图中可见，AdobeRGB的色域比sRGB广，特别是在蓝绿色系方面，AdobeRGB能够表现的色彩比sRGB丰富很多。我查找不到资料描述各种数码相机的感光元件能够记录下来的色域有多大，但一般的说法是一般数码单反所能记录的色彩范围都比sRGB广，接近或大于AdobeRGB。因此，专业的摄影都会选择AdobeRGB色彩空间来保存图像文档。但问题是，我们的显示器并不能展现这么广的色域，民用型号通常都只能再现sRGB色彩空间或更小一点（广色域显示器会比sRGB大，但一般还是达不到AdobeRGB），因此照片中记录的部分颜色是无法在显示器上原汁原味的再现出来的（这里先不考虑显示器没有校准导致偏色问题），超出设备色彩空间的颜色只能用接近的来替换，例如翠绿色的海水就没有那么漂亮了。另外一个问题是有些软件，例如不是最新版本的浏览器，是不支持色彩管理的，它不会将照片的色彩空间映射到显示器的色彩空间以保持在可显示范围内的颜色一致，而是将照片中的RGB值当作设备色彩空间的值来直接显示。如果照片用的是sRGB还好，因为显示器本身大致符合sRGB，颜色偏差不会太多，但若照片是用色域更广的AdobeRGB的，色彩偏差就严重了。所以数码相机的说明书上一般会建议如果照片仅在电脑上观看最好选择sRGB。</p>
+<p>不过，数码相机的色彩空间设置仅仅是针对JPG格式的，如果用RAW格式，保存的是传感器得到的原始值，实际上是数码相机设备色彩空间，而不是任何标准色彩空间。当在电脑中用RAW处理软件打开时，会将照片由设备色彩空间映射到软件设定的工作空间。我用Apple Aperture打开Nikon的RAW，看到它是被标识为AdobeRGB色彩空间。用数码单反的话，最好还是选择RAW格式，因为记录的信息多，后期处理的余地就大很多。</p>
+<p>See also:</p>
+<p><a href="/2004/11/12/Color-management-1">色彩管理(1)</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/blog/tags/ImageProcessing/" rel="tag"><i class="fa fa-tag"></i> ImageProcessing</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2012/09/10/running-route-ersha/" rel="prev" title="广州跑步路线：二沙岛">
+      <i class="fa fa-chevron-left"></i> 广州跑步路线：二沙岛
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2012/09/17/Java-volatile-/" rel="next" title="Java的volatile关键字的作用">
+      Java的volatile关键字的作用 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="https://avatars.io/gravatar/leoliang@gmail.com">
+  <p class="site-author-name" itemprop="name">Leo Liang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">335</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Liang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '578b819466ead4247b6e',
+      clientSecret: '6a36866b9ae12bc5b0b1f0df95c98cbb2ed7ef61',
+      repo        : 'blog-comments',
+      owner       : 'aleung',
+      admin       : ['aleung'],
+      id          : 'e6f5397b8e34998b9aae195592385907',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

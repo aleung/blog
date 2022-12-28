@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="上一篇是2015年国庆写的，当时是滑轨质量不行需要更换。后来重新买了滑轨，装配起来，测试过电路板、电机正常，然后就停工了。一放两年，这两个星期终于重新拿出来，继续制作。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kossel Mini 3D打印机制作记录 (2)">
+<meta property="og:url" content="http://aleung.github.io/blog/2017/12/31/kossel-mini-3d-printer-making/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:description" content="上一篇是2015年国庆写的，当时是滑轨质量不行需要更换。后来重新买了滑轨，装配起来，测试过电路板、电机正常，然后就停工了。一放两年，这两个星期终于重新拿出来，继续制作。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://aleung.github.io/blog/attachments/2017/12/kossel.jpg">
+<meta property="og:image" content="http://aleung.github.io/blog/attachments/2017/12/delta_columns.jpg">
+<meta property="og:image" content="http://aleung.github.io/blog/attachments/2017/12/delta_radius.jpg">
+<meta property="og:image" content="http://aleung.github.io/blog/attachments/2017/12/jam.jpg">
+<meta property="og:image" content="http://aleung.github.io/blog/attachments/2017/12/hotend.jpg">
+<meta property="article:published_time" content="2017-12-31T06:41:46.000Z">
+<meta property="article:modified_time" content="2022-08-28T15:12:31.183Z">
+<meta property="article:author" content="Leo Liang">
+<meta property="article:tag" content="Maker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://aleung.github.io/blog/attachments/2017/12/kossel.jpg">
+
+<link rel="canonical" href="http://aleung.github.io/blog/2017/12/31/kossel-mini-3d-printer-making/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Kossel Mini 3D打印机制作记录 (2) | Good good study, day day up</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Good good study, day day up</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">aleung的学习笔记, aleung的idea</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">53</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">335</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2017/12/31/kossel-mini-3d-printer-making/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.io/gravatar/leoliang@gmail.com">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Kossel Mini 3D打印机制作记录 (2)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-12-31 14:41:46" itemprop="dateCreated datePublished" datetime="2017-12-31T14:41:46+08:00">2017-12-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-28 23:12:31" itemprop="dateModified" datetime="2022-08-28T23:12:31+08:00">2022-08-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <img src="/blog/attachments/2017/12/kossel.jpg" class="">
+
+<p><a href="/blog/2015/10/05/kossel-mini-3d-printer-making/">上一篇</a>是2015年国庆写的，当时是滑轨质量不行需要更换。后来重新买了滑轨，装配起来，测试过电路板、电机正常，然后就停工了。一放两年，这两个星期终于重新拿出来，继续制作。</p>
+<span id="more"></span>
+
+<p>两年过去，Kossel打印机已经不是DIY热门了，搜索到的新信息很少。另一方面，淘宝上配件的价格普遍下降了不少。</p>
+<h1 id="装配"><a href="#装配" class="headerlink" title="装配"></a>装配</h1><p>其实主要部分在2015年底已经装好了，就差滑车限位开关和挤出机没装上。装起来后就是上面照片的样子啦。</p>
+<p>电线虽然已经理过了还是有些乱，等能打印后设计个外壳把电路板罩上。</p>
+<h1 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h1><p>装配还好，调试才是累人的活。</p>
+<p>升级到最新的 Merlin 固件，delta结构打印机的配置参数减少了一些，网上的调试教程普遍是两三年前的，针对旧版本固件，已经不适用了。</p>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>Delta 结构打印机的坐标原点在打印床正中心，三根立柱依次编号为 alpha &#x2F; beta &#x2F; gamma，但也有称为 X, Y, Z 柱，不能跟坐标系的三个轴混淆。三根立柱和xy平面的位置关系如下图，圆形为可打印半径。需要先计算好A, B, C 三点的xy坐标，后面调试要用。</p>
+<img src="/blog/attachments/2017/12/delta_columns.jpg" class="">
+
+<p>打印头的移动可以分解为：</p>
+<ul>
+<li>z轴上的运动：三个柱的滑车同时上下移动相同距离；</li>
+<li>xy平面上的运动：三个滑车上下移动不等距离，造成斜杆倾斜角度变化而改变斜杆在平面上的投影长度；</li>
+</ul>
+<p>需要给出的参数就是以下几个：</p>
+<ul>
+<li><code>DELTA_DIAGONAC_ROD</code> - 斜杆长度</li>
+<li><code>DELTA_RADIUS</code> - 打印头处于平面正中央时，斜杆在平面上的投影长度</li>
+<li><code>DELTA_HEIGHT</code> - 打印头可以到达的最高点的z坐标</li>
+<li><code>DELTA_PRINTABLE_RADIUS</code> - 可打印半径</li>
+<li><code>DEFAULT_AXIS_STEPS_PER_UNIT</code> - 各电机（包括三个柱，和挤出机）走1mm需要的步进脉冲数量</li>
+</ul>
+<p>打印机怎么知道滑车的位置呢？滑车由步进电机驱动，根据<code>DEFAULT_AXIS_STEPS_PER_UNIT</code>可以推算出相对运动距离。在轨道最高点（endstop）安装有感应开关，滑车复位时上行至最高点直到感应开关触发，此处的位置对应着z轴的<code>DELTA_HEIGHT</code>值。</p>
+<img src="/blog/attachments/2017/12/delta_radius.jpg" class="">
+
+<h2 id="参数调整"><a href="#参数调整" class="headerlink" title="参数调整"></a>参数调整</h2><h3 id="初始设定"><a href="#初始设定" class="headerlink" title="初始设定"></a>初始设定</h3><p><code>DEFAULT_AXIS_STEPS_PER_UNIT</code> 这个参数的调准是第一步。我用的步进电机基本步距1.8°，RAMPS驱动板采用1&#x2F;16微步（microstepping），也就是转一圈需要3200个脉冲。XYZ柱电机安装GT2同步轮，齿距2mm，16齿，也就是转一圈滑车移动32mm，由此算出 100 steps&#x2F;mm。对于挤出机(E)，根据挤出轮直径12mm，算出周长37.7mm，得到 84.88 steps&#x2F;mm。</p>
+<p>尽可能精确的测量斜杆长度（球头中心点距离），填入<code>DELTA_DIAGONAC_ROD</code> 。</p>
+<p>将三个滑车推到最高点，测量打印嘴离打印床的垂直高度，稍放大几毫米余量，填入<code>DELTA_HEIGHT</code>。</p>
+<p><code>DELTA_RADIUS</code> 的值很难测准，可以通过用细线挂重物的方式来找出垂线。两三毫米内的误差也是可以的。</p>
+<h3 id="调准高度和endstop偏移"><a href="#调准高度和endstop偏移" class="headerlink" title="调准高度和endstop偏移"></a>调准高度和endstop偏移</h3><p>三个立柱的 endstop 感应器安装位置会有偏差，不在一个水平面上，<code>DELTA_ENDSTOP_ADJ</code> 参数可以矫正这个误差（如果有EEPROM，也可以用 G-code <code>M666</code> 设定这些参数并用<code>M500</code>保存）。</p>
+<p>为了调校方便，需要在printing host软件中先设定4个宏，分别让打印头移动到前面基础知识坐标平面图中的 A, B, C, O 点。宏包含以下 G-code，其中x,y为点的坐标：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">G28</span><br><span class="line">G0 X&lt;x&gt; Y&lt;y&gt; Z5 F5000</span><br></pre></td></tr></table></figure>
+
+<p>执行宏后，打印头会悬停在对应点上方的几毫米处。在打印床上放一张复印纸。在printing host软件中控制打印头z轴单步下降，接近后每次下降0.1mm，抽拉复印纸根据打印头有没有摩擦到纸张来判断打印头是否已经降到打印床表面，如果纸张被打印头压死抽不动就是已经太低了。记录下最后的z坐标（打印机液晶屏显示，或者<code>M114</code>指令获取）。</p>
+<p>根据A, B, C点测量到的值，调整 <a target="_blank" rel="noopener" href="http://reprap.org/wiki/G-code#M666:_Set_delta_endstop_adjustment"><code>M666</code></a> 的X, Y, Z参数，反复迭代测量、调整，直到A, B, C点打印头接触打印床时z坐标为零。这个步骤完成后，打印机的三个立柱上滑车的z高度就是准确和同步的了。</p>
+<h3 id="调准radius"><a href="#调准radius" class="headerlink" title="调准radius"></a>调准radius</h3><p>上面调整结束后，O点数据不为零，也就是打印头在xy平面上运动，z坐标不变的时候，实际上的运动轨迹是一个碗形，可能向上凸也可能向下凹。要纠正碗形失真，需要精确设置 <code>DELTA_RADIUS</code> 参数。用 <a target="_blank" rel="noopener" href="http://reprap.org/wiki/G-code#M665:_Set_delta_configuration"><code>M665</code></a> 也可以调整这个参数 (R)。</p>
+<p>调试过程类似，也是迭代调整参数和测量，直到 A, B, C, O 点均测得零值。</p>
+<h3 id="调准斜杆长度"><a href="#调准斜杆长度" class="headerlink" title="调准斜杆长度"></a>调准斜杆长度</h3><p>接下来的校准需要通过打印一个立方体来进行，用游标卡尺测量打印出来的真实 x, y 边长，根据与期望长度的比例来调整 <code>DELTA_DIAGONAC_ROD</code>（或<code>M665</code>的L参数）。</p>
+<p>由于打印头问题，这个测试还没能开始。</p>
+<h3 id="调试数据记录"><a href="#调试数据记录" class="headerlink" title="调试数据记录"></a>调试数据记录</h3><p>下表是几次迭代校准的过程，左边的是使用的参数，A／B／C／O为测量值。</p>
+<table>
+<thead>
+<tr>
+<th>M666 X</th>
+<th>M666 Y</th>
+<th>M666 Z</th>
+<th>M665 H</th>
+<th>M665 L</th>
+<th>M665 R</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>O</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-6</td>
+<td>-8</td>
+<td>-6</td>
+<td>250</td>
+<td>214</td>
+<td>103</td>
+<td>0</td>
+<td>0.8</td>
+<td>0.7</td>
+<td>1.3</td>
+<td></td>
+</tr>
+<tr>
+<td>-6.2</td>
+<td>-7.2</td>
+<td>-5.3</td>
+<td>250</td>
+<td>214</td>
+<td>103</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.7</td>
+<td>高度和水平已校准</td>
+</tr>
+<tr>
+<td>-5.5</td>
+<td>-6.5</td>
+<td>-4.6</td>
+<td>250</td>
+<td>214</td>
+<td>101</td>
+<td>0.1</td>
+<td>0</td>
+<td>0.1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>-5.5</td>
+<td>-6.6</td>
+<td>-4.6</td>
+<td>250</td>
+<td>214</td>
+<td>101.2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>radius已校准</td>
+</tr>
+</tbody></table>
+<h2 id="挤出头"><a href="#挤出头" class="headerlink" title="挤出头"></a>挤出头</h2><p>运动部件的校准还说顺利，可是真准备首次打印的时候才出问题。</p>
+<p>进丝一段之后就挤不进去了，步进电机前进一下就往回跳。喷嘴一点料都没有挤出来。尝试回抽，拔一小段后也卡住。拆开打印头，发现打印丝在离前端几毫米的地方形成了一个环，造成不能前进也不能后退。</p>
+<p>散热风扇正常，升高降低温度都试过，四氟管已经确认插到头，都没发解决进丝一到喉管瓶颈为就堵塞的问题。从拔出来的堵塞物看，是丝进入喉管瓶颈位置后软化膨胀变粗，刮起表面一层，堆积成环状就卡死了。</p>
+<img src="/blog/attachments/2017/12/jam.jpg" class="">
+
+<p>这卷耗材还是两年前的，拆过封口，时间太长会对材料有影响。换了一卷没有拆封的耗材来测试，这次能过顺利进丝通过瓶颈位，喷嘴也出丝了。可是接下来加载模型打印，又不出料了。</p>
+<p>上网查资料，发现现在的喉管有改进型的，里面带铁氟龙管内衬，或者是可以让进料铁氟龙管直通过去，一直到喷嘴处。在耗材可能软化的段都是铁氟龙管内衬，摩擦力很小而且没有接缝，就不容易出现堵塞。</p>
+<img src="/blog/attachments/2017/12/hotend.jpg" class="">
+
+<p>元旦店家都休息了，又一次陷入等待状态……</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/blog/tags/Maker/" rel="tag"><i class="fa fa-tag"></i> Maker</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2017/09/07/docker-dev-env/" rel="prev" title="Microservice development environment make easy with Docker">
+      <i class="fa fa-chevron-left"></i> Microservice development environment make easy with Docker
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2018/02/26/Kossel-Mini-3D-printer-making-3/" rel="next" title="Kossel Mini 3D 打印机制作记录 (3)">
+      Kossel Mini 3D 打印机制作记录 (3) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A3%85%E9%85%8D"><span class="nav-number">1.</span> <span class="nav-text">装配</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B0%83%E8%AF%95"><span class="nav-number">2.</span> <span class="nav-text">调试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">2.1.</span> <span class="nav-text">基础知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%B0%83%E6%95%B4"><span class="nav-number">2.2.</span> <span class="nav-text">参数调整</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E8%AE%BE%E5%AE%9A"><span class="nav-number">2.2.1.</span> <span class="nav-text">初始设定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E5%87%86%E9%AB%98%E5%BA%A6%E5%92%8Cendstop%E5%81%8F%E7%A7%BB"><span class="nav-number">2.2.2.</span> <span class="nav-text">调准高度和endstop偏移</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E5%87%86radius"><span class="nav-number">2.2.3.</span> <span class="nav-text">调准radius</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E5%87%86%E6%96%9C%E6%9D%86%E9%95%BF%E5%BA%A6"><span class="nav-number">2.2.4.</span> <span class="nav-text">调准斜杆长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E8%AF%95%E6%95%B0%E6%8D%AE%E8%AE%B0%E5%BD%95"><span class="nav-number">2.2.5.</span> <span class="nav-text">调试数据记录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%A4%E5%87%BA%E5%A4%B4"><span class="nav-number">2.3.</span> <span class="nav-text">挤出头</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="https://avatars.io/gravatar/leoliang@gmail.com">
+  <p class="site-author-name" itemprop="name">Leo Liang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">335</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Liang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '578b819466ead4247b6e',
+      clientSecret: '6a36866b9ae12bc5b0b1f0df95c98cbb2ed7ef61',
+      repo        : 'blog-comments',
+      owner       : 'aleung',
+      admin       : ['aleung'],
+      id          : 'fd182e3df5e80eb8e9ea8bb8619b1e5c',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

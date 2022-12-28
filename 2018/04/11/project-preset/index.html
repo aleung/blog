@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="在上一篇文章中介绍了如何使用利用 docker 容器创建微服务开发环境，解决的是怎么保证同一个软件项目在任何地方都能够快速复制出一个相同的环境用于开发和测试。但是，在使用了微服务架构的产品线中，我们还面临另外一个挑战。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件项目的标准配置和自动检查更新">
+<meta property="og:url" content="http://aleung.github.io/blog/2018/04/11/project-preset/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:description" content="在上一篇文章中介绍了如何使用利用 docker 容器创建微服务开发环境，解决的是怎么保证同一个软件项目在任何地方都能够快速复制出一个相同的环境用于开发和测试。但是，在使用了微服务架构的产品线中，我们还面临另外一个挑战。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-04-11T14:17:10.000Z">
+<meta property="article:modified_time" content="2022-08-28T15:12:31.183Z">
+<meta property="article:author" content="Leo Liang">
+<meta property="article:tag" content="SoftwareDev">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://aleung.github.io/blog/2018/04/11/project-preset/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>软件项目的标准配置和自动检查更新 | Good good study, day day up</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Good good study, day day up</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">aleung的学习笔记, aleung的idea</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">53</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">335</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2018/04/11/project-preset/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.io/gravatar/leoliang@gmail.com">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          软件项目的标准配置和自动检查更新
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-04-11 22:17:10" itemprop="dateCreated datePublished" datetime="2018-04-11T22:17:10+08:00">2018-04-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-28 23:12:31" itemprop="dateModified" datetime="2022-08-28T23:12:31+08:00">2022-08-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在<a href="/blog/2017/09/07/docker-dev-env/">上一篇文章</a>中介绍了如何使用利用 docker 容器创建微服务开发环境，解决的是怎么保证同一个软件项目在任何地方都能够快速复制出一个相同的环境用于开发和测试。但是，在使用了微服务架构的产品线中，我们还面临另外一个挑战。</p>
+<span id="more"></span>
+
+<h2 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h2><p>系统由很多微服务构成，每个微服务都是一个独立的软件项目——单独的 git 代码仓库，各自的环境配置，独立的测试与发布流程。目前我们的系统中已经有了几十个这样的软件项目，而且数量还在不断增加。在我们每日的常规开发工作中，都不断的面临下面的问题：</p>
+<ul>
+<li>怎么快速创建出一个新的软件项目，包含所有必需的配置文件，并且符合产品线的标准开发测试流程和代码规范？</li>
+<li>怎么保证依赖的软件／库都及时更新到合适的版本？怎么防止开发人员使用了错误的版本而导致质量隐患？</li>
+<li>怎么防止开发人员使用了 license 不合适的第三方软件／库，导致法律风险？</li>
+<li>对于开发团队使用的公共基础设施的更改（例如 CI 服务器的某些变更），需要修改软件项目的配置的，如何快速的在所有软件项目中完成修改？</li>
+<li>怎么保证每个项目都应用了代码检查工具，并且及时更新到符合产品线统一定义的最新规范的配置？</li>
+<li>需要在软件的开发测试自动化流程中引入新的步骤或工具，怎么快速的部署到所有的软件项目中？</li>
+</ul>
+<p>由于我们采用的开发平台和开发工具都使用了文件配置，以上的问题可以归纳为三个：</p>
+<ul>
+<li>首先是怎么简单快捷地创建出软件项目的一组文件；</li>
+<li>然后是对于现有的软件项目，如何检查文件的某些内容是否符合规范（比如依赖定义中是否包含正确的版本号，CI流程定义有没有被删除掉某些步骤）；</li>
+<li>最后是怎么去更新已有的文件内容。</li>
+</ul>
+<p>对于第一个问题，如何快速创建新的软件项目，业内已经有很多解决方案，通常使用称之为“脚手架” (scaffold) 工具。这些工具的本质上是基于模版创建出软件项目的一组基本文件。但是现有的脚手架工具都只能帮助新软件项目的初始化工作，并不能解决第三个问题，它们对于已经进入开发阶段的项目无能为力。而在开发实践中，根本不可能设置好项目模版就一成不变，技术在发展，流程在改进，开发流程和基础设施中也会有bug需要修复，经常会出现所有软件项目都需要做一些同样的改动的情况。</p>
+<p>以前，遇到这样的情况，就得群发邮件，通知大家去修改。效果是可想而知的，有些项目忘记修改，有些改了但是改错了没有发现。而且大家习惯于遇到问题发现要修改的时候才找另外一个项目来抄，而不是按照邮件或文档里写的方法来改，结果抄的还是一个旧版本，或者是改漏的地方，要花大量的时间来排查问题。总之，在微服务化带来大量软件项目之后，这样的工作方式是相当低效的。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>厌倦了不停的发公告、催促大家做修改、帮助不同人解决重复出现的问题，得寻找一个根本解决问题的方法。也就是要做到：</p>
+<ul>
+<li>所有的规范要求应该通过<strong>代码（工具）</strong>来<strong>强制</strong>检查或执行，而不是靠个人自觉</li>
+<li>所有与规范相关的代码更新都应该<strong>自动化</strong>进行，而不需要让每个项目的维护者手工去一次次做修改</li>
+</ul>
+<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>经过几个月的试用与改进，一套符合我们产品线最佳实践和规范的node.js项目通用设定以及自动配置工具最终实用化并开始全面推广，称为 SES Node.js Project Preset。</p>
+<p>Preset 主要包含两部分：项目标准配置和自动检查更新工具。</p>
+<h3 id="项目标准配置"><a href="#项目标准配置" class="headerlink" title="项目标准配置"></a>项目标准配置</h3><p>项目标准配置涵括了 node.js 项目从编辑环境、开发流程、代码检查、测试流程、CI设置到软件发布的软件开发周期各个环节。</p>
+<p>开发人员日常需要执行的操作只有两个：</p>
+<ul>
+<li><code>yarn docker</code> - 启动 docker 开发环境，过程中会自动安装依赖，自动更新到最新preset</li>
+<li><code>yarn test</code> - 包括了代码编译、格式化、静态代码检查、执行单元测试、冗余代码检查等</li>
+</ul>
+<p>代码提交到 GitLab 上，CI流程会自动执行所有检查流程，除了测试不通过外，任何规范性检查不通过都不能合并回主干（体现强制性）。</p>
+<p>项目标准配置通过一系列的脚本、工具配置文件来实现。主要包括以下这些：</p>
+<ul>
+<li>项目基本的文件模版：README，LICENSE，CHANGELOG。</li>
+<li>Git环境配置：.gitignore，.gitattributes。</li>
+<li>代码格式：编辑器风格定义文件 .editorconfig，TypeScript代码自动格式化工具 tsfmt、tslint。</li>
+<li>TypeScript编译与代码检查：tsc配置文件tsconfig.json，代码检查工具 tslint，重复代码检查工具 jscpd。</li>
+<li>单元测试：mocha测试工具，nyc测试覆盖率报告。</li>
+<li>软件依赖版本：package.json 中的 dependencies、devDependencies、optionalDependencies。</li>
+<li>Docker 开发环境配置：docker-compose.yaml。</li>
+<li>软件打包发布：rpm spec 以及 rpm build script。</li>
+<li>GitLab配置：Merge Request模版、Issue模版、CI流程定义文件 .gitlab-ci.yml</li>
+<li>NPM脚本：package.json中的scripts配置，包括 build，test，ci，rpm，docker，start，setup 等等。</li>
+</ul>
+<h3 id="自动检查与更新工具"><a href="#自动检查与更新工具" class="headerlink" title="自动检查与更新工具"></a>自动检查与更新工具</h3><p>这样一个工具的最底层操作都是文件的修改和拷贝。我没有自己从头构建，而是基于开源自动化项目配置工具<a target="_blank" rel="noopener" href="https://github.com/sapegin/mrm">mrm</a>。Mrm缺省支持一些task，例如 LICENSE 文件、.gitignore、编辑器格式、ESLint规则等等。缺省task的设置是一般开源项目的通用配置，对于我们产品不太适用，但是没关系，mrm也支持自定制task，提供了一组API，可以比较方便的修改包括 JSON、YML、ini、纯文本等各种格式的文件。我开发维护了一个 preset 库，包含一组自定义task，涵括了上面一节里的所有内容。</p>
+<p>这个 mrm preset 最重要的是它不仅仅是根据预定义模版创建文件，它还分析现有项目的配置，检查是否需要更新。某些更新并不是单纯的覆盖，而是根据项目的具体情况来生成的，例如对于 docker-compose.yaml，根据里面定义了那些测试依赖容器，自动配置被测试应用的环境变量；分析 package.json 中的依赖定义，自动更新旧版本，如果发现有未列入白名单中的依赖，则告警或报错。</p>
+<p>虽然项目标准配置涉及的东西很多，但是有了这个工具，配置起来只需要执行一条命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npx -p mrm -p @ses/mrm-preset mrm all --preset @ses/mrm-preset</span></span><br></pre></td></tr></table></figure>
+
+<p>项目只需要配置一次，以后 preset 有新版本发布，在 docker 开发环境启动时就会自动安装并且更新。</p>
+<p>当项目标准配置需要更改，仅需要更新并发布npm包<code>@ses/mrm-preset</code> ，也无需通知大家改动，任何开发者在进入项目开发环境时就会自动修改，他将修改提交到 GitLab 即可。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>规范必需强制性执行，才能保证代码质量。只要存在可以通融走捷径的地方，必然会形成技术债务累积。</p>
+<p>要做到项目的配置能够全自动更新，环境的配置均应该以文件保存，与代码一同保存做 git 库里 （Infrastructure as code）。例如 Jenkins 的配置就没办法跟随项目代码一起变动，而 GitLab CI 配置就可以，这也是我们迁移到 GitLab 的其中一个原因。配置最好采用声明式风格，而非命令式，这样才方便自动修改。比如NPM script容易改，若项目用 gulp.js 做make工具，就很难改。（采用声明式风格，基于文件的配置，是现在很多平台和工具的趋势，例如 Docker，GitLab CI，Kubernetes，Vagrant等等）</p>
+<p>综合上次介绍的 docker 标准环境和这里介绍的项目标准配置，利用自动化工具，可以有效提高开发效率，避免大量由于环境、配置因素出现的问题。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/blog/tags/SoftwareDev/" rel="tag"><i class="fa fa-tag"></i> SoftwareDev</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2018/02/26/Kossel-Mini-3D-printer-making-3/" rel="prev" title="Kossel Mini 3D 打印机制作记录 (3)">
+      <i class="fa fa-chevron-left"></i> Kossel Mini 3D 打印机制作记录 (3)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2018/08/26/3D-modeling-language/" rel="next" title="3D modeling language">
+      3D modeling language <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%91%E6%88%98"><span class="nav-number">1.</span> <span class="nav-text">挑战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%A1%88"><span class="nav-number">3.</span> <span class="nav-text">方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%A0%87%E5%87%86%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.</span> <span class="nav-text">项目标准配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E6%A3%80%E6%9F%A5%E4%B8%8E%E6%9B%B4%E6%96%B0%E5%B7%A5%E5%85%B7"><span class="nav-number">3.2.</span> <span class="nav-text">自动检查与更新工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="https://avatars.io/gravatar/leoliang@gmail.com">
+  <p class="site-author-name" itemprop="name">Leo Liang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">335</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Liang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '578b819466ead4247b6e',
+      clientSecret: '6a36866b9ae12bc5b0b1f0df95c98cbb2ed7ef61',
+      repo        : 'blog-comments',
+      owner       : 'aleung',
+      admin       : ['aleung'],
+      id          : 'a2f08fd957c7659ac87f7d1a78bf74b2',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

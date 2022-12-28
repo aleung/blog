@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="在SAX和DOM两种paser API中，均提供了EntityResolver接口，应用程序可通过实现这个接口的resolveEntity()方法来实现对外部实体访问的控制，例如将对网络URL的访问重定向为对本地文件或者数据库的访问。Xerces软件包提供了例子redirect来演示这个功能。 在我们的程序中，parse VXML文件时需要使用外部的schema，而这些schema又会间接引用其他">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决Xerces-C XML parser中EnitiyResolver不起作用的问题">
+<meta property="og:url" content="http://aleung.github.io/blog/2004/04/30/Solve-Xerces-C-XML-parser-EnitiyResolver-doesn-t-work-in-the-problem/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:description" content="在SAX和DOM两种paser API中，均提供了EntityResolver接口，应用程序可通过实现这个接口的resolveEntity()方法来实现对外部实体访问的控制，例如将对网络URL的访问重定向为对本地文件或者数据库的访问。Xerces软件包提供了例子redirect来演示这个功能。 在我们的程序中，parse VXML文件时需要使用外部的schema，而这些schema又会间接引用其他">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2004-04-29T17:32:00.000Z">
+<meta property="article:modified_time" content="2012-06-18T15:48:00.000Z">
+<meta property="article:author" content="Leo Liang">
+<meta property="article:tag" content="SoftwareDev">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://aleung.github.io/blog/2004/04/30/Solve-Xerces-C-XML-parser-EnitiyResolver-doesn-t-work-in-the-problem/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>解决Xerces-C XML parser中EnitiyResolver不起作用的问题 | Good good study, day day up</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Good good study, day day up</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">aleung的学习笔记, aleung的idea</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">53</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">335</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2004/04/30/Solve-Xerces-C-XML-parser-EnitiyResolver-doesn-t-work-in-the-problem/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.io/gravatar/leoliang@gmail.com">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          解决Xerces-C XML parser中EnitiyResolver不起作用的问题
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2004-04-30 01:32:00" itemprop="dateCreated datePublished" datetime="2004-04-30T01:32:00+08:00">2004-04-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2012-06-18 23:48:00" itemprop="dateModified" datetime="2012-06-18T23:48:00+08:00">2012-06-18</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在SAX和DOM两种paser API中，均提供了EntityResolver接口，应用程序可通过实现这个接口的resolveEntity()方法来实现对外部实体访问的控制，例如将对网络URL的访问重定向为对本地文件或者数据库的访问。Xerces软件包提供了例子redirect来演示这个功能。</p>
+<p>在我们的程序中，parse VXML文件时需要使用外部的schema，而这些schema又会间接引用其他的schema或者DTD，这些外部实体都是通过URL形式的system id来指定的（基本上都是在<a target="_blank" rel="noopener" href="http://www.w3c.org/">www.w3c.org</a>上）。考虑到程序运行环境不一定与internet连接，还有远程网络的效率也不高，我们在程序中实现了自己的EntityResolver，把所有对这些schemas、DTDs的访问都截取下来，返回程序中内置的拷贝。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">DTDResolver</span> : <span class="keyword">public</span> EntityResolver &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> InputSource * <span class="title">resolveEntity</span><span class="params">(<span class="type">const</span> XMLCh * <span class="type">const</span> publicId,</span></span></span><br><span class="line"><span class="params"><span class="function">        <span class="type">const</span> XMLCh * <span class="type">const</span> systemId)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">Compare</span>(systemId, <span class="string">L&quot;http://www.w3.org/TR/voicexml20/vxml.xsd&quot;</span>)) &#123;</span><br><span class="line">            <span class="function">VXIcharToXMLCh <span class="title">name</span><span class="params">(<span class="string">L&quot;http://www.w3.org/TR/voicexml20/vxml.xsd (SB)&quot;</span>)</span></span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">MemBufInputSource</span>(VALIDATOR_DATA + VALIDATOR_VXML,</span><br><span class="line">                VALIDATOR_VXML_SIZE,</span><br><span class="line">                name.<span class="built_in">c_str</span>(), <span class="literal">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">Compare</span>(systemId, <span class="string">L&quot;http://www.w3.org/2001/xml.xsd&quot;</span>)) &#123;</span><br><span class="line">            <span class="function">VXIcharToXMLCh <span class="title">name</span><span class="params">(<span class="string">L&quot;http://www.w3.org/2001/xml.xsd&quot;</span>)</span></span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">MemBufInputSource</span>(VALIDATOR_DATA + VALIDATOR_XML,</span><br><span class="line">                VALIDATOR_XML_SIZE,</span><br><span class="line">                name.<span class="built_in">c_str</span>(), <span class="literal">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">Compare</span>(systemId, <span class="string">L&quot;XMLSchema.dtd&quot;</span>)) &#123;</span><br><span class="line">            <span class="function">VXIcharToXMLCh <span class="title">name</span><span class="params">(<span class="string">L&quot;XMLSchema.dtd&quot;</span>)</span></span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">MemBufInputSource</span>(VALIDATOR_DATA + VALIDATOR_SCHEMA_DTD,</span><br><span class="line">                VALIDATOR_SCHEMA_DTD_SIZE,</span><br><span class="line">                name.<span class="built_in">c_str</span>(), <span class="literal">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ......</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ......</span></span><br><span class="line"></span><br><span class="line">parser = XMLReaderFactory::<span class="built_in">createXMLReader</span>();</span><br><span class="line">DTDResolver * dtd = <span class="keyword">new</span> <span class="built_in">DTDResolver</span>();</span><br><span class="line">parser-&gt;<span class="built_in">setEntityResolver</span>(dtd);</span><br></pre></td></tr></table></figure>
+
+<p>在测试中发现，对某些外部实体的访问成功截取了，但是另外一些却不成功，parser依然尝试通过网络访问，然后由于网络不通而访问失败，造成xml文件无法parse。</p>
+<p>对程序进行跟踪，发现了问题出现的规律：所有对schema文件的引用处理都正常，无论是include还是import方式，也无论是多少层的间接引用；在被parse的XML文件中DOCTYPE声明的外部实体引用，处理也正常，故此xerces自带的redirect例子是不会出问题的；但是，schema文件的DOCTYPE声明的外部实体引用就不能被正确处理了，根本不会调用指定的resolveEntity()方法。</p>
+<p>这时，基本上可以确认问题是出在xerces身上，而不是我们的程序的问题了。于是仔细跟踪xerces代码对schema parse的执行过程，最终发现了问题。</p>
+<p>XercesDOMParser类有两个resolveEnitiy方法：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">InputSource* <span class="title">XercesDOMParser::resolveEntity</span><span class="params">(<span class="type">const</span> XMLCh* <span class="type">const</span> publicId,</span></span></span><br><span class="line"><span class="params"><span class="function">                                            <span class="type">const</span> XMLCh* <span class="type">const</span> systemId,</span></span></span><br><span class="line"><span class="params"><span class="function">                                            <span class="type">const</span> XMLCh* <span class="type">const</span> baseURI)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (fEntityResolver)</span><br><span class="line">        <span class="keyword">return</span> fEntityResolver-&gt;<span class="built_in">resolveEntity</span>(publicId, systemId);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">InputSource* <span class="title">XercesDOMParser::resolveEntity</span><span class="params">(XMLResourceIdentifier* resourceIdentifier)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (fEntityResolver)</span><br><span class="line">        <span class="keyword">return</span> fEntityResolver-&gt;<span class="built_in">resolveEntity</span>(resourceIdentifier-&gt;<span class="built_in">getPublicId</span>(),</span><br><span class="line">                                                resourceIdentifier-&gt;<span class="built_in">getSystemId</span>());</span><br><span class="line">    <span class="keyword">if</span> (fXMLEntityResolver)</span><br><span class="line">        <span class="keyword">return</span> fXMLEntityResolver-&gt;<span class="built_in">resolveEntity</span>(resourceIdentifier);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>根据代码注释，前者是deprecated的，被后者代替。</p>
+<p>由XercesDOMParser派生出XSDDOMParser类，这个类是专门用来parser xsd文件（也就是schema）的。这个类重载了XercesDOMParser的三个参数的resolveEntity方法，用fUserEntityHandler代替fEntityResolver的方法调用。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">InputSource* <span class="title">XSDDOMParser::resolveEntity</span><span class="params">(<span class="type">const</span> XMLCh* <span class="type">const</span> publicId,</span></span></span><br><span class="line"><span class="params"><span class="function">                                         <span class="type">const</span> XMLCh* <span class="type">const</span> systemId,</span></span></span><br><span class="line"><span class="params"><span class="function">                                         <span class="type">const</span> XMLCh* <span class="type">const</span> baseURI)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (fUserEntityHandler)</span><br><span class="line">        <span class="keyword">return</span> fUserEntityHandler-&gt;<span class="built_in">resolveEntity</span>(publicId, systemId, baseURI);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是XSDDOMParser没有重载第二个resolveEntity方法，估计是第二个方法是后来才加入XercesDOMParser的，在XSDDOMParser中没有同步修改。因此，依然是使用fEntityResolver，而不是fUserEntityHandler，就造成了没有调用到我们定义的resolveEntity方法，依然按照原来的system id去访问网络了。</p>
+<p>问题找出来，解决就简单了，在XSDDOMParser中把另外一个resolveEntity方法也重载了，改为使用fUserEntityHandler。修改之后，测试通过。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">InputSource* <span class="title">XSDDOMParser::resolveEntity</span><span class="params">(XMLResourceIdentifier* resourceIdentifier)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (fUserEntityHandler)</span><br><span class="line">        <span class="keyword">return</span> fUserEntityHandler-&gt;<span class="built_in">resolveEntity</span>(resourceIdentifier);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个问题在Xerces-C 2.4和2.5版本都存在，IBM的XML4C与Xerces-C是影子项目，也有同样的问题。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/blog/tags/SoftwareDev/" rel="tag"><i class="fa fa-tag"></i> SoftwareDev</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2004/04/10/How-to-increase-the-number-of-Windows-programs-thread-/" rel="prev" title="如何增加windows程序的线程数量?">
+      <i class="fa fa-chevron-left"></i> 如何增加windows程序的线程数量?
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2004/04/30/Promising-subversion/" rel="next" title="前景光明的subversion">
+      前景光明的subversion <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="https://avatars.io/gravatar/leoliang@gmail.com">
+  <p class="site-author-name" itemprop="name">Leo Liang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">335</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Liang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '578b819466ead4247b6e',
+      clientSecret: '6a36866b9ae12bc5b0b1f0df95c98cbb2ed7ef61',
+      repo        : 'blog-comments',
+      owner       : 'aleung',
+      admin       : ['aleung'],
+      id          : '01412955fdbc38b1933dda985c060b14',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="更新一致性更新一致性问题发生在多个实体同时更新同一数据，出现写冲突。并发环境下维护数据一致性所用的方式通常分为悲观和乐观两种。 悲观方式就是避免发生冲突，例如采用 write lock，根本不让写操作同时发生。排在后面的操作者需要检查最新数据来判断是否继续更新。 乐观方式是先让冲突发生，然后检测冲突并处理。例如用条件更新，仅当数据库中的数据当前值与之前读出的值相同时才对此执行更新操作。另一种方法是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CAP">
+<meta property="og:url" content="http://aleung.github.io/blog/2015/07/28/CAP/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:description" content="更新一致性更新一致性问题发生在多个实体同时更新同一数据，出现写冲突。并发环境下维护数据一致性所用的方式通常分为悲观和乐观两种。 悲观方式就是避免发生冲突，例如采用 write lock，根本不让写操作同时发生。排在后面的操作者需要检查最新数据来判断是否继续更新。 乐观方式是先让冲突发生，然后检测冲突并处理。例如用条件更新，仅当数据库中的数据当前值与之前读出的值相同时才对此执行更新操作。另一种方法是">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2015-07-27T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-28T15:12:31.179Z">
+<meta property="article:author" content="Leo Liang">
+<meta property="article:tag" content="SoftwareDev">
+<meta property="article:tag" content="Database">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://aleung.github.io/blog/2015/07/28/CAP/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CAP | Good good study, day day up</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Good good study, day day up</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">aleung的学习笔记, aleung的idea</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">53</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">335</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2015/07/28/CAP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.io/gravatar/leoliang@gmail.com">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CAP
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-07-28 00:00:00" itemprop="dateCreated datePublished" datetime="2015-07-28T00:00:00+08:00">2015-07-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-28 23:12:31" itemprop="dateModified" datetime="2022-08-28T23:12:31+08:00">2022-08-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="更新一致性"><a href="#更新一致性" class="headerlink" title="更新一致性"></a>更新一致性</h1><p>更新一致性问题发生在多个实体同时更新同一数据，出现写冲突。并发环境下维护数据一致性所用的方式通常分为悲观和乐观两种。</p>
+<p>悲观方式就是避免发生冲突，例如采用 write lock，根本不让写操作同时发生。排在后面的操作者需要检查最新数据来判断是否继续更新。</p>
+<p>乐观方式是先让冲突发生，然后检测冲突并处理。例如用条件更新，仅当数据库中的数据当前值与之前读出的值相同时才对此执行更新操作。另一种方法是记录不同版本的数据，当不同版本数据发生冲突时需要采取某种策略去合并（merge）数据。</p>
+<p>在存在数据复制的分布式系统中，需要保证不同节点的更新操作顺序是保持一致的，否则无法解决数据一致性。但分布式系统中顺序一致性往往难以保障，常用的方法是将某份数据的所有写入操作都交由一个节点来完成（数据分片机制）。</p>
+<h1 id="读取一致性（读写冲突）"><a href="#读取一致性（读写冲突）" class="headerlink" title="读取一致性（读写冲突）"></a>读取一致性（读写冲突）</h1><p>由于存放于不同聚合的相关数据分成多个步骤更新，在更新过程中读取数据可能产生违反“逻辑一致性”的情况。关系数据库通过事务来解决此问题。面向聚合的NoSQL 数据库通常只能在单一聚合内部保证更新操作的原子性，无法保证跨聚合更新的原子性。存在不一致风险的时间长度称为“不一致窗口”。</p>
+<p>当数据需要复制副本时，从节点获取到更新后的数据需要一定的时间，在未成功复制之前，数据存在违反“复制一致性”的问题。最终更新操作还是会传播到所有节点，从而得到更新后的数据，这种情况叫做“最终一致性”，也就是说，在任意时刻，节点中都可能存在复制不一致问题，但陈旧数据最终都能得到更新。</p>
+<p>视乎应用逻辑可以忍受多长的不一致窗口，可以采取不同策略。例如保证“照原样读出所写内容的一致性”（read-your-writes consistency），这可以通过提供 session 一致性来保障，例如采用 sticky session，或者检查数据的 version stamp 。</p>
+<h1 id="CAP"><a href="#CAP" class="headerlink" title="CAP"></a>CAP</h1><p>CAP定理是需要放宽一致性约束的原因。CAP 包括：一致性 Consistency，可用性 Availability，分区耐受性 Partition tolerance。三者不可能同时满足。</p>
+<p>CAP 三个概念不能从字面上想当然去理解。</p>
+<p>简单的说，一致性保证要求往分布式系统的操作的效果看起来就像一个节点上操作一样，在同一个逻辑瞬间中在所有节点上完成。</p>
+<p>可用性是说系统中某个无故障节点对所收到的每一请求必须给予确定结果响应。在考虑到P 的情况下，即使出现脑裂，节点依然要能够给出响应。通俗的例子：当你还活着，我找到你，你就必须对我的请求给出明确答复，不能说因为别的节点联系不上了所以给不了答复。需要注意定义中的无故障节点前提，CAP 考虑的是此前提之下的群集节点可用性。</p>
+<p>分区耐受性是指分布式系统需要能允许节点之间出现通信故障，导致部分消息丢失，甚至集群被分割为多个无法相互通信的分区（脑裂）。</p>
+<h1 id="CA之间的取舍"><a href="#CA之间的取舍" class="headerlink" title="CA之间的取舍"></a>CA之间的取舍</h1><p>在实践中，P 是必须保障的，因为不存在绝对不会发生故障的网络。那么问题就是在 C 和 A 之间如何平衡。</p>
+<p>在出现分区时，如果要优先考虑 C 而放弃 A，那么可以完全停止服务，拒绝写操作（如二阶段提交），或者仅仅对数据的 master node 在本分区的请求提供服务。</p>
+<p>如果优先考虑 A 而放弃 C，那么节点可以继续响应任何请求，即使返回的可能是陈旧数据，或者可能出现写数据冲突。数据冲突在通信恢复后可以通过版本戳侦测出来，然后通过某种（应用指定的）策略去合并。</p>
+<p>实际上，系统设计不会追求完美的一致性或者完美的可用性，而是根据需求在其中折中。例如允许更长的不一致窗口，降低一致性要求来换取可用性提升。</p>
+<p>仲裁 Quorum 可以在发生分区问题时保障一致性，视乎分区问题的严重性。当复制因子为 N（数据副本数量），成功写入节点数为 W，成功读取节点数为 R，当 R+W&gt;N 时可满足一致性要求。</p>
+<p>另一方面，一致性也与 latency 相互排斥，当引入更多手段来保证一致性时（如仲裁），latency 会增加，或者说当允许更大的 latency 时，可以增加一致性保障（例如不断重试）。</p>
+<h1 id="放宽持久性约束"><a href="#放宽持久性约束" class="headerlink" title="放宽持久性约束"></a>放宽持久性约束</h1><p>某些场合可以牺牲一些持久性以换取更好性能，也就是要忍受在故障情况下部分数据丢失。</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/25662138/">NoSQL Distilled</a></li>
+<li><a target="_blank" rel="noopener" href="https://codahale.com/you-cant-sacrifice-partition-tolerance/">You Can’t Sacrifice Partition Tolerance</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.infoq.com/cn/articles/cap-twelve-years-later-how-the-rules-have-changed">CAP理论十二年回顾：”规则”变了</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/blog/tags/SoftwareDev/" rel="tag"><i class="fa fa-tag"></i> SoftwareDev</a>
+              <a href="/blog/tags/Database/" rel="tag"><i class="fa fa-tag"></i> Database</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2015/06/09/the-end-of-eternity/" rel="prev" title="永恒的终结">
+      <i class="fa fa-chevron-left"></i> 永恒的终结
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2015/08/29/html-presentation-framework/" rel="next" title="HTML presentation framework">
+      HTML presentation framework <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E4%B8%80%E8%87%B4%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">更新一致性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E4%B8%80%E8%87%B4%E6%80%A7%EF%BC%88%E8%AF%BB%E5%86%99%E5%86%B2%E7%AA%81%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">读取一致性（读写冲突）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CAP"><span class="nav-number">3.</span> <span class="nav-text">CAP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CA%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8F%96%E8%88%8D"><span class="nav-number">4.</span> <span class="nav-text">CA之间的取舍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%94%BE%E5%AE%BD%E6%8C%81%E4%B9%85%E6%80%A7%E7%BA%A6%E6%9D%9F"><span class="nav-number">5.</span> <span class="nav-text">放宽持久性约束</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">6.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="https://avatars.io/gravatar/leoliang@gmail.com">
+  <p class="site-author-name" itemprop="name">Leo Liang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">335</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Liang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '578b819466ead4247b6e',
+      clientSecret: '6a36866b9ae12bc5b0b1f0df95c98cbb2ed7ef61',
+      repo        : 'blog-comments',
+      owner       : 'aleung',
+      admin       : ['aleung'],
+      id          : 'd088162cef15750ed186fbf13294bcbd',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

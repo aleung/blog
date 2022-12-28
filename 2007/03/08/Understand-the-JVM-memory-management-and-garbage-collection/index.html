@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="v2 - 2022-8-16v1 - 2007-3-8 Java语言具备GC(垃圾回收)的能力，内存管理不需要应用程序去过问，这很方便。但是，GC是怎么进行的，JVM的内存参数应该怎么调整，如何优化，往往我们不是太清楚。看过一些资料后，对Sun JVM的内存管理以及垃圾回收的机制大概有了一个概念，这里将这些资料归纳和翻译出来。本文初稿内容主要基于Sun JVM 1.3.1，在后续版本中有不少优化措">
+<meta property="og:type" content="article">
+<meta property="og:title" content="了解JVM的内存管理与垃圾回收">
+<meta property="og:url" content="http://aleung.github.io/blog/2007/03/08/Understand-the-JVM-memory-management-and-garbage-collection/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:description" content="v2 - 2022-8-16v1 - 2007-3-8 Java语言具备GC(垃圾回收)的能力，内存管理不需要应用程序去过问，这很方便。但是，GC是怎么进行的，JVM的内存参数应该怎么调整，如何优化，往往我们不是太清楚。看过一些资料后，对Sun JVM的内存管理以及垃圾回收的机制大概有了一个概念，这里将这些资料归纳和翻译出来。本文初稿内容主要基于Sun JVM 1.3.1，在后续版本中有不少优化措">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://aleung.github.io/blog/attachments/2007/3/java_memory.jpg">
+<meta property="article:published_time" content="2007-03-07T20:31:00.000Z">
+<meta property="article:modified_time" content="2022-08-15T16:00:00.000Z">
+<meta property="article:author" content="Leo Liang">
+<meta property="article:tag" content="SoftwareDev">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://aleung.github.io/blog/attachments/2007/3/java_memory.jpg">
+
+<link rel="canonical" href="http://aleung.github.io/blog/2007/03/08/Understand-the-JVM-memory-management-and-garbage-collection/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>了解JVM的内存管理与垃圾回收 | Good good study, day day up</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Good good study, day day up</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">aleung的学习笔记, aleung的idea</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">53</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">335</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2007/03/08/Understand-the-JVM-memory-management-and-garbage-collection/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.io/gravatar/leoliang@gmail.com">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          了解JVM的内存管理与垃圾回收
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2007-03-08 04:31:00" itemprop="dateCreated datePublished" datetime="2007-03-08T04:31:00+08:00">2007-03-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-16 00:00:00" itemprop="dateModified" datetime="2022-08-16T00:00:00+08:00">2022-08-16</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>v2 - 2022-8-16<br>v1 - 2007-3-8</p>
+<p>Java语言具备GC(垃圾回收)的能力，内存管理不需要应用程序去过问，这很方便。但是，GC是怎么进行的，JVM的内存参数应该怎么调整，如何优化，往往我们不是太清楚。看过一些资料后，对Sun JVM的内存管理以及垃圾回收的机制大概有了一个概念，这里将这些资料归纳和翻译出来。本文初稿内容主要基于Sun JVM 1.3.1，在后续版本中有不少优化措施，但是这些基本概念还是不变的。</p>
+<h2 id="GC"><a href="#GC" class="headerlink" title="GC"></a>GC</h2><p>当JVM进行GC的时候，是要消耗CPU资源和需要一定时间的，这会影响到程序的正常运行，因此需要尽可能减少GC消耗的时间。Java程序运行过程中，对象的生命周期有长有短，其中相当大部分是都是比较短命的，例如局部的对象一用完就可以回收了。在大多数情况下，只要能够及时回收这些短命对象的内存，就能够确保JVM有足够内存来分配给新的对象。因此JVM采用一种分代回收(<em>generational collection</em>) 的策略，用较高的频率对年轻的对象(young generation)进行扫描和回收，这种叫做minor collection，而对老对象(old generation)的检查回收频率要低很多，称为major collection。这样就不需要每次GC都将内存中所有对象都检查一遍。</p>
+<p>内存收集方式的最基础方式是以下几种：</p>
+<p>一种称为copying或scavenge，将所有仍然生存的对象搬到另外一块内存后，整块内存就可回收。这种方法有效率，但需要有一定的空闲内存，拷贝也有开销。这种方法用于minor collection。</p>
+<p>另外一种称为mark-sweep，从GC root开始根据引用遍历对象，将活着的对象标记出来，扫描一遍后，没有被标记的内存就可以回收了。这种方法不需要占用额外的空间，但会形成内存碎片。这种方法用于major collection.</p>
+<p>在mark-sweep基础上发展出来一种方法称为mark-compact，将活着的对象标记出来后，搬迁到一起连成大块的内存，然后回收其他内存。这种方法不需要占用额外的空间，但迁移带来额外开销，速度相对慢一些，用于major collection.</p>
+<p>在以上几种基础的内存收集方法之上，有各种改进，例如：增量式回收，每次只处理一小部分；多线程平行执行；通过各种方法缩短stop the world（普通GC在执行过程中要暂停应用的执行）时间。</p>
+<p>目前版本 JVM 支持多种GC实现方式，通过 <code>-XX:+UseXyzGC</code> （Xyz为GC方式名字，具体查看文档）来指定：</p>
+<ul>
+<li>Serial GC - 串行使用单核CPU的mark-compact</li>
+<li>Parallel GC - 使用多线程进行，也称为 Throughput Collector</li>
+<li>CMS（已经被G1替代） - Concurrent Mark Sweep，分阶段并行的进行mark和sweep，目标是缩短GC停顿时间，只在某些阶段需要暂停应用执行</li>
+<li>G1 - Garbage First，并行的mark-compact，可以增量进行</li>
+<li>ZGC（在Java 15起提供）- 使用颜色指针标记，并行处理所有高开销操作，暂停应用短于10ms</li>
+</ul>
+<h2 id="Heap-Memory"><a href="#Heap-Memory" class="headerlink" title="Heap Memory"></a>Heap Memory</h2><p>JVM管理的内存，通常叫做堆(heap)，可以用下面的图来描述。</p>
+<p>JVM启动后，保留一段地址空间，这个空间的大小由-Xmx指定。这块空间的大小就是heap可能的最大值，但一开始不一定全都分配了物理内存，初始分配的heap大小由-Xms指定，如果-Xms小于-Xmx，剩余部分是virtual的，当需要的时候，再向OS申请。</p>
+<p>Young generation 内存由一块Eden(伊甸园，有意思)和两块Survivor Space构成。新创建的对象的内存都分配自eden。两块Survivor Space总有会一块是空闲的，用作copying collection的目标空间。Minor collection的过程就是将eden和在用survivor space中的活对象copy到空闲survivor space中。所谓survivor，也就是大部分对象在伊甸园出生后，根本活不过一次GC。对象在young generation里经历了一定次数的minor collection后，年纪大了，就会被移到old generation中，称为tenuring。</p>
+<p>剩余内存空间不足会触发GC，如eden空间不够了就要进行minor collection，old generation空间不够要进行major collection。</p>
+<p>很多参数会影响里面各部分空间的分配。-XX:MinHeapFreeRatio与-XX:MaxHeapFreeRatio设定空闲内存占总内存的比例范围，这两个参数会影响GC的频率和单次GC的耗时。-XX:NewRatio决定young与old generation的比例。Young generation空间越大，minor collection频率越低，但是old generation空间小了，又可能导致major collection频率增加。-XX:NewSize和-XX:MaxNewSize直接指定了young generation的缺省大小和最大大小。</p>
+<img src="/blog/attachments/2007/3/java_memory.jpg" class="">
+
+<p>-Xmx<br>set maximum Java heap size</p>
+<p>-Xms<br>set initial Java heap size</p>
+<p>-XX:NewRatio&#x3D;2<br>Ratio of old&#x2F;young generation sizes.</p>
+<p>-XX:NewSize&#x3D;2.125m<br>Default size of new generation (in bytes)</p>
+<p>-XX:MaxNewSize&#x3D;<br>Maximum size of new generation (in bytes). Since 1.4, MaxNewSize is computed as a function of NewRatio.</p>
+<p>-XX:SurvivorRatio&#x3D;<br>Ratio of eden&#x2F;survivor space size. For example, when SurvivorRatio&#x3D;2, one survivor space size is 1&#x2F;4 of young generation.</p>
+<p>(上面给出的缺省值不一定准确，不同JVM版本和不同OS环境下会有不同)</p>
+<h2 id="Non-Heap-Memory"><a href="#Non-Heap-Memory" class="headerlink" title="Non-Heap Memory"></a>Non-Heap Memory</h2><p>除了heap，JVM还有多种内存使用，下面列出主要的：</p>
+<h3 id="Metapace"><a href="#Metapace" class="headerlink" title="Metapace"></a>Metapace</h3><p>Java 8 之前的版本有permanent generation，属于heap space的一个特殊部分，是JVM用来保存class object和meta data，大小由-XX:PermSize和-XX:MaxPermSize指定。大量动态生成(编译)和加载class会增加这部分内存的耗用。但从Java 8起，不再有permanent generation，而是改成了放在native memory中的 metaspace，大小会自动增长，也可以由 <code>MetaspaceSize</code> and <code>MaxMetaspaceSize</code> 限制。</p>
+<h3 id="Code-cache"><a href="#Code-cache" class="headerlink" title="Code cache"></a>Code cache</h3><p>用于存放JIT编译的代码和native代码</p>
+<h3 id="Thread"><a href="#Thread" class="headerlink" title="Thread"></a>Thread</h3><p>每个线程都有一个栈，栈的大小由 <code>-Xss</code> 控制。</p>
+<h3 id="Direct-Buffer-Memory"><a href="#Direct-Buffer-Memory" class="headerlink" title="Direct Buffer Memory"></a>Direct Buffer Memory</h3><p>可以在Java应用中申请使用的堆外内存，经常用于NIO，也可以在JVM之间共享。大小缺省与heap相同，也可以由 <code>-XX:MaxDirectMemorySize</code> 限制。</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>以上给出的只是基本的介绍，下面reference中的文章都很不错，对进一步了解或者查找性能优化参数都有帮助。</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://www.baeldung.com/jvm-parameters">Guide to the Most Important JVM Parameters</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=c755fFv1Rnk">Memory footprint of a Java process (Youtube)</a></li>
+<li><a target="_blank" rel="noopener" href="http://java.sun.com/javase/technologies/hotspot/vmoptions.jsp">http://java.sun.com/javase/technologies/hotspot/vmoptions.jsp</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/blog/tags/SoftwareDev/" rel="tag"><i class="fa fa-tag"></i> SoftwareDev</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2007/02/03/Web-2-0-/" rel="prev" title="Web 2.0 渐入佳境">
+      <i class="fa fa-chevron-left"></i> Web 2.0 渐入佳境
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2007/03/15/Windows-symbolic-link-/" rel="next" title="Windows的symbolic link支持">
+      Windows的symbolic link支持 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#GC"><span class="nav-number">1.</span> <span class="nav-text">GC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Heap-Memory"><span class="nav-number">2.</span> <span class="nav-text">Heap Memory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Non-Heap-Memory"><span class="nav-number">3.</span> <span class="nav-text">Non-Heap Memory</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Metapace"><span class="nav-number">3.1.</span> <span class="nav-text">Metapace</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-cache"><span class="nav-number">3.2.</span> <span class="nav-text">Code cache</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Thread"><span class="nav-number">3.3.</span> <span class="nav-text">Thread</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Direct-Buffer-Memory"><span class="nav-number">3.4.</span> <span class="nav-text">Direct Buffer Memory</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="https://avatars.io/gravatar/leoliang@gmail.com">
+  <p class="site-author-name" itemprop="name">Leo Liang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">335</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Liang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '578b819466ead4247b6e',
+      clientSecret: '6a36866b9ae12bc5b0b1f0df95c98cbb2ed7ef61',
+      repo        : 'blog-comments',
+      owner       : 'aleung',
+      admin       : ['aleung'],
+      id          : 'e26b21f3448c1932fc32e34e53627c68',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="家里各种联网的设备多了，要能比较方便连上Internet，还是在路由器上设置个透明代理比起每个设备都要安装简单一些。我的目标是设置多个wifi热点，其中一个配置透明代理，有需要的设备才连上这个热点，这样可以避免在代理出什么问题的时候影响了普通的网络访问。 最初想直接在路由器上搞，OpenWRT支持配置多个wifi热点多个网络。但安装OpenClash后发现它是要设置iptables规则的，这是透明">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Setup transparent proxy on Ubuntu">
+<meta property="og:url" content="http://aleung.github.io/blog/2021/02/28/Setup-transparent-proxy-on-Ubuntu/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:description" content="家里各种联网的设备多了，要能比较方便连上Internet，还是在路由器上设置个透明代理比起每个设备都要安装简单一些。我的目标是设置多个wifi热点，其中一个配置透明代理，有需要的设备才连上这个热点，这样可以避免在代理出什么问题的时候影响了普通的网络访问。 最初想直接在路由器上搞，OpenWRT支持配置多个wifi热点多个网络。但安装OpenClash后发现它是要设置iptables规则的，这是透明">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://kroki.io/nwdiag/svg/eNqFkNGOgjAQRd_9igk-i6VujIb4JcaYSisQS6dpQdhs_Pe1RcUIjW_N9N577oxqecly-JsBlFbD3hZMC9hBJrHhh_QxXiygQi6MSmf3iRJ1i-YCBVbCOwEY50ZYezdGyZbGyXoTJzFZ0p_If_dm2E_KkujgRaiFak3tmLd3jDbY_YY5q7hzHN_sFTKJWjlU6mWZZLYIiOhTVF-PJ-xGfSRT4Takb_O1Cxm6VHgqpejfOhvh8kbYOgykz_W_EelA9JHHget5ucFGPzgZSjTOPGfkfGYkerva522CC0wHurhX4LjI7R86wLAH">
+<meta property="article:published_time" content="2021-02-28T10:21:21.000Z">
+<meta property="article:modified_time" content="2022-12-07T15:43:20.744Z">
+<meta property="article:author" content="Leo Liang">
+<meta property="article:tag" content="Anti-GFW">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://kroki.io/nwdiag/svg/eNqFkNGOgjAQRd_9igk-i6VujIb4JcaYSisQS6dpQdhs_Pe1RcUIjW_N9N577oxqecly-JsBlFbD3hZMC9hBJrHhh_QxXiygQi6MSmf3iRJ1i-YCBVbCOwEY50ZYezdGyZbGyXoTJzFZ0p_If_dm2E_KkujgRaiFak3tmLd3jDbY_YY5q7hzHN_sFTKJWjlU6mWZZLYIiOhTVF-PJ-xGfSRT4Takb_O1Cxm6VHgqpejfOhvh8kbYOgykz_W_EelA9JHHget5ucFGPzgZSjTOPGfkfGYkerva522CC0wHurhX4LjI7R86wLAH">
+
+<link rel="canonical" href="http://aleung.github.io/blog/2021/02/28/Setup-transparent-proxy-on-Ubuntu/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Setup transparent proxy on Ubuntu | Good good study, day day up</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Good good study, day day up</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">aleung的学习笔记, aleung的idea</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">53</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">335</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2021/02/28/Setup-transparent-proxy-on-Ubuntu/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.io/gravatar/leoliang@gmail.com">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Setup transparent proxy on Ubuntu
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-02-28 18:21:21" itemprop="dateCreated datePublished" datetime="2021-02-28T18:21:21+08:00">2021-02-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-12-07 23:43:20" itemprop="dateModified" datetime="2022-12-07T23:43:20+08:00">2022-12-07</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>家里各种联网的设备多了，要能比较方便连上Internet，还是在路由器上设置个透明代理比起每个设备都要安装简单一些。我的目标是设置多个wifi热点，其中一个配置透明代理，有需要的设备才连上这个热点，这样可以避免在代理出什么问题的时候影响了普通的网络访问。</p>
+<p>最初想直接在路由器上搞，OpenWRT支持配置多个wifi热点多个网络。但安装OpenClash后发现它是要设置iptables规则的，这是透明代理所必须，而它设置的iptables规则对所有网络都生效了，做不到仅对一个热点打开代理。OpenClash用起来似乎还问题多多，怎么配置都不太正常。</p>
+<p>想起来家里还有个9年前的小电脑，用的是上网本的CPU，功耗比较低，虽然安装桌面系统它性能已经完全不能用了，但做这个用途还是足够的。而且它有一个以太网卡和一个无线网卡，正好可以充当一个次级无线路由，挂在主路由下面，物尽其用。翻出来启动一看，系统装的是Lubuntu 18.04 LTS，把软件升级了一下一切正常，那我也懒得重装系统了。</p>
+<p>平常都没有怎么接触Linux系统、网络配置的东西，摸索着把东西装起来。比起网上的好多资料，应该算是比较简化的步骤，尽量沿用原系统缺省安装的软件和配置。整个过程总结如下。</p>
+<span id="more"></span>
+
+<ul>
+<li><p>首先，开启OS路由功能，修改 <code>/etc/sysctl.conf</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.ip_forward=1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装dnsmasq-base。不要装dnsmasq，因为它会起一个服务，而NetworkManager在设置wifi hotspot后也会运行dnsmasq，造成重复的dnsmasq进程。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install dnsmasq-base</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果系统里面已经有 systemd-resolved 服务，需要把它关闭，否则53端口会冲突。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl disable systemd-resolved</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Ubuntu的网络设备和连接是用NetworkManager进行管理的，它会自动覆盖重写<code>/etc/resolve.conf</code>文件。修改NetworkManager配置 <code>/etc/NetworkManager/NetworkManager.conf</code>，让它把<code>/etc/resolve.conf</code>里的nameserver配置指向dnsmasq。另外，如果 <code>/etc/resolve.conf</code> 是一个已经存在的链接，需要删除它。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[main]</span><br><span class="line">dns=dnsmasq</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行NetworkManager的命令行交互式配置工具<code>nmtui</code>，创建一个wifi hotspot：mode选择access point，IPv4 config选择shared。如果不是远程登录，也可以直接在GUI上点击系统托盘中网络图标来配置。</p>
+<ul>
+<li>创建出来的子网是 <code>10.42.0.1/24</code>，而不是常见的 <code>192.168.*.*</code>。但反正能用，有什么关系呢。</li>
+<li>NetworkManager会自动启动dnsmasq，DHCP也自动配置好了，无需安装任何额外软件包。</li>
+</ul>
+</li>
+<li><p>安装clash。Clash没有安装包，就一个可执行文件。为它创建专门的clash用户。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useradd -U clash</span><br><span class="line">copy clash /usr/local/bin</span><br><span class="line">chown clash:clash /usr/local/bin/clash</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置<code>/etc/clash/config.yaml</code>，配置方式细节参考<a target="_blank" rel="noopener" href="https://github.com/Dreamacro/clash/wiki/configuration">clash文档</a>和<a target="_blank" rel="noopener" href="https://lancellc.gitbook.io/clash/">gitbook</a>，下面主要强调我的配置方式：</p>
+<ul>
+<li>DNS设置为fake-ip模式。关于DNS工作模式，这篇文章解释得比较清楚： <a target="_blank" rel="noopener" href="https://blog.skk.moe/post/what-happend-to-dns-in-proxy/">https://blog.skk.moe/post/what-happend-to-dns-in-proxy/</a></li>
+<li>将DNS侦听在1053端口，以免与dnsmasq的DNS服务冲突。<br>Dnsmasq的DNS cache功能实际上不会被使用，因为往53端口流量会被iptables重定向到了clash的1053端口。但是如果关闭了dnsmasq的DNS功能，DHCP就不会下发nameserver配置给DHCP client，造成连上热点的设备没有DNS配置。</li>
+</ul>
+</li>
+<li><p>设置iptables，让clash工作为透明代理。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">DNS rules</span></span><br><span class="line">iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to 1053</span><br><span class="line">iptables -t nat -I OUTPUT -p udp -d 127.0.0.0/8 --dport 53 -j REDIRECT --to 1053</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">All incoming TCP traffic except SSH redirect to Clash port</span></span><br><span class="line">iptables -t nat -A PREROUTING -p tcp ! --dport 22 -j REDIRECT --to-ports 7892</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">All outgoing TCP traffic except from user transmission and clash redirect to Clash port</span></span><br><span class="line">iptables -t nat -A OUTPUT -p tcp -m owner --uid-owner debian-transmission -j ACCEPT</span><br><span class="line">iptables -t nat -A OUTPUT -p tcp -m owner --uid-owner clash -j ACCEPT</span><br><span class="line">iptables -t nat -A OUTPUT -p tcp -j REDIRECT --to-port 7892</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>首先需要复习一下关于iptables的知识：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/f-ck-need-u/p/7397146.html">https://www.cnblogs.com/f-ck-need-u/p/7397146.html</a></li>
+<li>我这里采用了一个比较简化的配置，规则很少。没有支持UDP代理，目前感觉没有这样的需求，迟些再看看有没有必要加上吧。</li>
+<li>Clash配置中设置 redire-port 7892，用iptable REDIRECT target将包转发到此端口。<ul>
+<li>另外还有一种模式为TPROXY，参考 <a target="_blank" rel="noopener" href="https://gsoc-blog.ecklm.com/iptables-redirect-vs.-dnat-vs.-tproxy">Iptables REDIRECT vs. DNAT vs. TPROXY</a> 和 <a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv14088928">使用 iptables 的 tproxy</a>。TPROXY只能工作于PREROUTING链，不工作于OUTPUT链，为了让本机对外流量进入代理需要配置路由规则，整个配置更复杂一些。</li>
+</ul>
+</li>
+<li>支持代理wifi hotspot流量（PREROUTING链）和本机流量（OUTPUT链）。</li>
+<li>使用了iptables的owner模块功能，配合专门的clash用户，避免流量回环。</li>
+<li>来自transmission的流量（BT）也要bypass。</li>
+</ul>
+</li>
+<li><p>将iptables规则持久化，下次启动的时候自动恢复。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt install iptables-persistent</span><br><span class="line">iptables-save &gt; /etc/iptables/rules.v4</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建clash服务：<code>/etc/systemd/system/clash.service</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Clash Daemon</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">StandardError=journal</span><br><span class="line">User=clash</span><br><span class="line">Group=clash</span><br><span class="line">AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_ADMIN</span><br><span class="line">ExecStart=/usr/local/bin/clash -d /etc/clash/</span><br><span class="line">Restart=on-failure</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>其中 <code>AmbientCapabilities</code> 那行是因为以非root用户运行，需要赋予权限。其实在我的这个场景下不要也行：DNS绑定的是高位端口，不是53端口，不需要<code>CAP_NET_BIND_SERVICE</code>；不代理UDP没有 <code>CAP_NET_ADMIN</code> 也无所谓。</li>
+</ul>
+</li>
+<li><p>最后启动 clash 服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl enable clash</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>装个 <a target="_blank" rel="noopener" href="https://github.com/haishanh/yacd">yacd</a> 作为clash的web dashboard，管理起来会方便很多</p>
+<ul>
+<li><p>解压到 <code>/etc/clash/dashboard</code> 目录下面，并且在 <code>/etc/clash/config.yaml</code> 里面配置一行就行了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">external-ui: dashboard</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>浏览器访问 <code>http://&lt;router_ip&gt;:9090/ui</code> 打开</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>Update：</p>
+<p>后来发现这个小电脑的wifi热点速度很慢，应该是无线网卡的问题。于是还是改回旁路由的模式。</p>
+<p><img src="https://kroki.io/nwdiag/svg/eNqFkNGOgjAQRd_9igk-i6VujIb4JcaYSisQS6dpQdhs_Pe1RcUIjW_N9N577oxqecly-JsBlFbD3hZMC9hBJrHhh_QxXiygQi6MSmf3iRJ1i-YCBVbCOwEY50ZYezdGyZbGyXoTJzFZ0p_If_dm2E_KkujgRaiFak3tmLd3jDbY_YY5q7hzHN_sFTKJWjlU6mWZZLYIiOhTVF-PJ-xGfSRT4Takb_O1Cxm6VHgqpejfOhvh8kbYOgykz_W_EelA9JHHget5ucFGPzgZSjTOPGfkfGYkerva522CC0wHurhX4LjI7R86wLAH"></p>
+<p>在主路由器OpenWRT上多配置了一个名为proxy的子网（bridge interface），关联了一个LAN口（要设置VLAN与其他口隔离）和一个wifi AP。通过在DHCP Server上设置DHCP-Options，把这个proxy子网的DNS和网关都需要指向安装了clash的小电脑。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">config dhcp &#x27;proxy&#x27;</span><br><span class="line">	option start &#x27;100&#x27;</span><br><span class="line">	option limit &#x27;150&#x27;</span><br><span class="line">	option interface &#x27;proxy&#x27;</span><br><span class="line">	list dhcp_option &#x27;3,192.168.3.2&#x27;</span><br><span class="line">	list dhcp_option &#x27;6,192.168.3.2&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/blog/tags/Anti-GFW/" rel="tag"><i class="fa fa-tag"></i> Anti-GFW</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2020/04/05/Precisely-model-delta-printer-bed-shape/" rel="prev" title="Precisely model delta printer bed shape">
+      <i class="fa fa-chevron-left"></i> Precisely model delta printer bed shape
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2021/05/04/Choose-Cell-Battery/" rel="next" title="选择合适的5号/7号电池">
+      选择合适的5号/7号电池 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="https://avatars.io/gravatar/leoliang@gmail.com">
+  <p class="site-author-name" itemprop="name">Leo Liang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">335</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Liang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '578b819466ead4247b6e',
+      clientSecret: '6a36866b9ae12bc5b0b1f0df95c98cbb2ed7ef61',
+      repo        : 'blog-comments',
+      owner       : 'aleung',
+      admin       : ['aleung'],
+      id          : '4353240e23a3a62a2784b3f806707925',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

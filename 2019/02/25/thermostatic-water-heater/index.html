@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="为了选购热水器，做了好多功课。不像软件开发和电脑硬件领域，网上通过搜索引擎很难找到相关的专业一些的技术资料，大量的都是营销的文章，里面的技术相关的信息很混乱甚至是错误的。在看了各种广告、资料后，自己摸索总结了一些关于燃气热水器的恒温控制的原理。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="燃气热水器恒温控制">
+<meta property="og:url" content="http://aleung.github.io/blog/2019/02/25/thermostatic-water-heater/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:description" content="为了选购热水器，做了好多功课。不像软件开发和电脑硬件领域，网上通过搜索引擎很难找到相关的专业一些的技术资料，大量的都是营销的文章，里面的技术相关的信息很混乱甚至是错误的。在看了各种广告、资料后，自己摸索总结了一些关于燃气热水器的恒温控制的原理。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://aleung.github.io/blog/attachments/2019/2/heater-1.png">
+<meta property="og:image" content="http://aleung.github.io/blog/attachments/2019/2/old-heater-control.jpg">
+<meta property="og:image" content="http://aleung.github.io/blog/attachments/2019/2/working_area.jpg">
+<meta property="og:image" content="http://aleung.github.io/blog/attachments/2019/2/heater-2.png">
+<meta property="og:image" content="http://aleung.github.io/blog/attachments/2019/2/heater-3.png">
+<meta property="article:published_time" content="2019-02-25T15:28:32.000Z">
+<meta property="article:modified_time" content="2022-08-28T15:12:31.183Z">
+<meta property="article:author" content="Leo Liang">
+<meta property="article:tag" content="HomeAppliance">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://aleung.github.io/blog/attachments/2019/2/heater-1.png">
+
+<link rel="canonical" href="http://aleung.github.io/blog/2019/02/25/thermostatic-water-heater/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>燃气热水器恒温控制 | Good good study, day day up</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Good good study, day day up</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">aleung的学习笔记, aleung的idea</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">53</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">335</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2019/02/25/thermostatic-water-heater/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.io/gravatar/leoliang@gmail.com">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          燃气热水器恒温控制
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-25 23:28:32" itemprop="dateCreated datePublished" datetime="2019-02-25T23:28:32+08:00">2019-02-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-28 23:12:31" itemprop="dateModified" datetime="2022-08-28T23:12:31+08:00">2022-08-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>为了选购热水器，做了好多功课。不像软件开发和电脑硬件领域，网上通过搜索引擎很难找到相关的专业一些的技术资料，大量的都是营销的文章，里面的技术相关的信息很混乱甚至是错误的。在看了各种广告、资料后，自己摸索总结了一些关于燃气热水器的恒温控制的原理。</p>
+<span id="more"></span>
+
+<h2 id="最基本的燃气热水器工作原理"><a href="#最基本的燃气热水器工作原理" class="headerlink" title="最基本的燃气热水器工作原理"></a>最基本的燃气热水器工作原理</h2><p>下图是最基本的燃气热水器的原理图，没有自动恒温功能，也就是老旧的那些机械旋钮控制的热水器。</p>
+<img src="/blog/attachments/2019/2/heater-1.png" class="">
+
+<p>两个阀门分别在水回路和燃气回路中，分别控制水流量和火力。可是在好多热水器中，水回路阀门的旋钮是标记为“水温调节”的，根本就是乱写。我以前就总是搞不清楚这两个旋钮怎么用——既然都有水温调节了还要控制火力干什么。</p>
+<img src="/blog/attachments/2019/2/old-heater-control.jpg" class="">
+
+<p>如果希望出水水温高一些，调节燃气阀增加供气量让火力猛一些。但是，如果进水水温太低，即使火力全开了，都到不了期望出水温度，怎么办呢？那就要控制水流量，让通过的水流少一些，就可以加热到更高温度了。这个就是所谓“水温调节”旋钮的真正作用。</p>
+<p>根据我的推理，燃气热水器的水流量-温升工作范围大致上应该是处于如下图的阴影区域中。</p>
+<img src="/blog/attachments/2019/2/working_area.jpg" class="">
+
+<ul>
+<li>纵轴是水流量，横轴为水的温升。</li>
+<li>上面水平线是水路管道可以达到的最大流量。</li>
+<li>下面水平线是水流感应的最小工作流量，少于这个流量会自动熄火保护。</li>
+<li>左侧绿色曲线为火力最小时的工作曲线。更小火焰就不能稳定燃烧，会熄火。如果最小温升过大，在水温较高的夏天就会出现热水太热的问题。分段燃烧、微火苗之类的技术是尽量让这个曲线往左移，</li>
+<li>右侧红色曲线是火力最大时的工作曲线，流量越大，温度升高得越少。其中，当温升为25度时对于的流量就是热水器的额定产热水能力，单位为升&#x2F;分钟。比如，产热水能力为10L的热水器，要将水温升高50度，水流量最大不可能超过5L&#x2F;min，否则温度上不去。</li>
+</ul>
+<h2 id="简单的恒温控制"><a href="#简单的恒温控制" class="headerlink" title="简单的恒温控制"></a>简单的恒温控制</h2><h3 id="水温恒定控制"><a href="#水温恒定控制" class="headerlink" title="水温恒定控制"></a>水温恒定控制</h3><p>热水器正常稳定燃烧的情况下，如果进水的温度不变，水流量也是固定的，出来的水温应该是稳定的。在一次洗澡的过程中，进水温度也不会有什么变化（除去刚开始时室内管道里的水温可能会不一样，过一会就稳定了），但是水量却是会变化的，原因很多，包括水压不稳定、其他地方用水影响、调节水龙头等等，水流量一变，水温就不恒定了。</p>
+<p>需要让出水温度自动保持恒定，需要加入反馈控制回路。简单的方法就是探测出水口的温度，与设定温度相比较，据此控制火力大小。</p>
+<img src="/blog/attachments/2019/2/heater-2.png" class="">
+
+<p>我估计大部分低端恒温热水器的恒温控制就是这样的原理。热水器上没有机械旋钮了，变成了数码的温度设定和显示。</p>
+<h3 id="自动水量调节"><a href="#自动水量调节" class="headerlink" title="自动水量调节"></a>自动水量调节</h3><p>但是有个问题，当进水温度太低时，即使火力最大也是无法输出达到设定温度的热水的，看之前的图的红色工作曲线。老式热水器怎么办呢？可以人手把水量旋钮关小一些，水流量小了温升就大了。可是现在的是电脑控制数字设定的热水器啊，怎么还能靠人去调节水量呢？</p>
+<p>于是稍高一个档次的热水器就在进水水路上增加一个自动水量调节装置，这是一个记忆合金控制的阀门，会跟随进水温度而自动调节开度，水温越低它就关得越小，相当于你在冬天将热水器的进水角阀关小一点的效果。</p>
+<p><strong>自动水量调节是不能提高恒温精度的！</strong>它解决的是冬天热水不够热的问题，解决方法是根据进水温度自动限制水流量，也就是相当于将水阀关小一点。当然，后果就是夏天你用大花洒可以畅快的洗澡，冬天可能就不行了，水量会变小。但是它至少保证了温度是足够的。</p>
+<p>还有些热水器有“变升”功能，通过按钮选择不同的升数，说白了也就是控制进水阀门而已，选择小一点的升数就是将阀门关小一些。看看商家宣传的春秋笔法：夏天大水量的时候说舒爽，冬天水量上不去，他就不提舒爽却说节水了。</p>
+<p>记忆合金自动水量调节虽然能够根据进水温度调节水流量，但是它不知道用户设定的期望出水温度，也就是不知道温差。例如15度水温，水量全开加热到35度是没问题的，要加热到50度就不行了。那么这个自动水量调节在进水温度15度时应不应该限制水量呢？限制多少合适？出厂时只能根据某个出水温度来设定流量，假设是40度，那么当你把热水器设置到50度，它温度还是上不去；而设置到35度时，本来水流量可以大一些的，它却给限制了。</p>
+<h2 id="进阶的恒温控制"><a href="#进阶的恒温控制" class="headerlink" title="进阶的恒温控制"></a>进阶的恒温控制</h2><h3 id="水量伺服"><a href="#水量伺服" class="headerlink" title="水量伺服"></a>水量伺服</h3><p>水量伺服功能在比较高档的热水器才有装备，它是一个由伺服电机驱动的进水阀门，通过控制器能够比较精准的控制开合程度。</p>
+<img src="/blog/attachments/2019/2/heater-3.png" class="">
+
+<p>水量伺服的主要用途还是类似于自动水量调节，在进水温度与期望水温温差过大时降低流量。因为它是受控的，比起不能控制的自动水量调节有更强的功能：</p>
+<ul>
+<li>根据进水温度传感器能够得知与期望水温的温差，根据温差控制合理的水流量，保证设置到什么温度都能产出符合设定温度的热水。</li>
+<li>稳定水流量：当水压发生变化，例如其他地方开水关水，会影响到热水器水流量。热水器控制器通过流量传感器监控到流量的瞬间变化，可以控制水量伺服阀门动作，去抑制流量的变化。</li>
+<li>前面说到保持恒温主要是靠燃气比例阀调节火力，但是火力的调节到水温变化是有一些时间滞后的，因此温度会出现波动。有了水量伺服，控制器可以同时调节火力和微调水流量（也称为“水气双调”），达到更迅速的出水温度调节效果。</li>
+<li>开机快速出水：刚点火时，水管、热交换器都是冷的，需要加热一段时间后才能逐渐到达设定温度。有了水量伺服，可以在刚开机时限制比较小的水流量，让它更快的升温；到达设定温度后，再放大回正常的水流量。</li>
+</ul>
+<p>严格来说，带有水量伺服的才能叫水气双调，但是现在很多宣传将记忆合金自动水量调节也称为水气双调，其实那个水量根本不能被控制。</p>
+<h3 id="更多的传感器和控制手段"><a href="#更多的传感器和控制手段" class="headerlink" title="更多的传感器和控制手段"></a>更多的传感器和控制手段</h3><p>对于恒温控制，最重要（必备）的是出水温度传感器。高级热水器会增加更多的传感器用于恒温控制，例如进水温度传感器、水流量传感器。更多的控制部件，除了最基本的燃气比例阀，还有上面提到的水量伺服。我不确定风机转速调节是否会影响温度。反正就是从两个方面控制：更精确的控制燃烧，更灵敏的控制水流量。</p>
+<h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><p>虽然说传感器越多，控制手段越多，就提供了更精确控制的可能性，但是实际效果如何，还得看控制器的算法。现在的恒温热水器控制器都是微处理器运行软件，应该都是基于 <a target="_blank" rel="noopener" href="https://www.wikiwand.com/zh-hant/PID%E6%8E%A7%E5%88%B6%E5%99%A8">PID 控制</a>算法，但是参数细节和各种优化手段学问就大了。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/blog/tags/HomeAppliance/" rel="tag"><i class="fa fa-tag"></i> HomeAppliance</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2018/08/26/3D-modeling-language/" rel="prev" title="3D modeling language">
+      <i class="fa fa-chevron-left"></i> 3D modeling language
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2019/08/04/DIY-keyboard/" rel="next" title="DIY人体工学分体键盘">
+      DIY人体工学分体键盘 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84%E7%87%83%E6%B0%94%E7%83%AD%E6%B0%B4%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">最基本的燃气热水器工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E6%81%92%E6%B8%A9%E6%8E%A7%E5%88%B6"><span class="nav-number">2.</span> <span class="nav-text">简单的恒温控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B0%B4%E6%B8%A9%E6%81%92%E5%AE%9A%E6%8E%A7%E5%88%B6"><span class="nav-number">2.1.</span> <span class="nav-text">水温恒定控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E6%B0%B4%E9%87%8F%E8%B0%83%E8%8A%82"><span class="nav-number">2.2.</span> <span class="nav-text">自动水量调节</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6%E7%9A%84%E6%81%92%E6%B8%A9%E6%8E%A7%E5%88%B6"><span class="nav-number">3.</span> <span class="nav-text">进阶的恒温控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B0%B4%E9%87%8F%E4%BC%BA%E6%9C%8D"><span class="nav-number">3.1.</span> <span class="nav-text">水量伺服</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E5%A4%9A%E7%9A%84%E4%BC%A0%E6%84%9F%E5%99%A8%E5%92%8C%E6%8E%A7%E5%88%B6%E6%89%8B%E6%AE%B5"><span class="nav-number">3.2.</span> <span class="nav-text">更多的传感器和控制手段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95"><span class="nav-number">3.3.</span> <span class="nav-text">算法</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="https://avatars.io/gravatar/leoliang@gmail.com">
+  <p class="site-author-name" itemprop="name">Leo Liang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">335</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Liang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '578b819466ead4247b6e',
+      clientSecret: '6a36866b9ae12bc5b0b1f0df95c98cbb2ed7ef61',
+      repo        : 'blog-comments',
+      owner       : 'aleung',
+      admin       : ['aleung'],
+      id          : 'a0f05b3f5d8f9ea7af1357c65f9edcd2',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

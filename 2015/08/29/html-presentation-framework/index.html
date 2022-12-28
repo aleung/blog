@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="最近要做一个分享，需要做个有趣一些的 slides。工作上的 slides 都是用 PowerPoints 来做的，但 ppt 放网上分享不方便，而且也不 cool，因此琢磨着弄个什么来玩玩。开始打算想用 markdown 来写，一方面是习惯了，另外也够简便。几年前就曾试过用 markdown 写一个简单的 slides。 上网搜索一圈，发现这种打着 “HTML presentation fram">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML presentation framework">
+<meta property="og:url" content="http://aleung.github.io/blog/2015/08/29/html-presentation-framework/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:description" content="最近要做一个分享，需要做个有趣一些的 slides。工作上的 slides 都是用 PowerPoints 来做的，但 ppt 放网上分享不方便，而且也不 cool，因此琢磨着弄个什么来玩玩。开始打算想用 markdown 来写，一方面是习惯了，另外也够简便。几年前就曾试过用 markdown 写一个简单的 slides。 上网搜索一圈，发现这种打着 “HTML presentation fram">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://aleung.github.io/blog/attachments/2015/8/leapmotion.jpg">
+<meta property="og:image" content="http://aleung.github.io/blog/attachments/2015/8/slides-editor.png">
+<meta property="article:published_time" content="2015-08-28T19:23:55.000Z">
+<meta property="article:modified_time" content="2022-12-07T16:53:24.584Z">
+<meta property="article:author" content="Leo Liang">
+<meta property="article:tag" content="Presentation">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://aleung.github.io/blog/attachments/2015/8/leapmotion.jpg">
+
+<link rel="canonical" href="http://aleung.github.io/blog/2015/08/29/html-presentation-framework/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>HTML presentation framework | Good good study, day day up</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Good good study, day day up</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">aleung的学习笔记, aleung的idea</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">53</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">335</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2015/08/29/html-presentation-framework/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.io/gravatar/leoliang@gmail.com">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HTML presentation framework
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-08-29 03:23:55" itemprop="dateCreated datePublished" datetime="2015-08-29T03:23:55+08:00">2015-08-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-12-08 00:53:24" itemprop="dateModified" datetime="2022-12-08T00:53:24+08:00">2022-12-08</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>最近要做一个分享，需要做个有趣一些的 slides。工作上的 slides 都是用 PowerPoints 来做的，但 ppt 放网上分享不方便，而且也不 cool，因此琢磨着弄个什么来玩玩。开始打算想用 markdown 来写，一方面是习惯了，另外也够简便。几年前就曾试过用 markdown 写一个简单的 <a href="http://aleung.github.io/presentation/markdown/slides.html">slides</a>。</p>
+<p>上网搜索一圈，发现这种打着 “HTML presentation framework” 名号的工具还真多，近些年来 HTML5、CSS、JavaScript 的广泛应用，这些基于 HTML 的演示可以做得很炫，让人耳目一新，例如这个 <a target="_blank" rel="noopener" href="http://vizzuality.github.io/rollingstonesmap/">50 Years of the Rolling Stones</a> 和 <a target="_blank" rel="noopener" href="http://lightning.fm/massofplanets/#/">Mass of Planets</a> (要允许网页使用摄像头)。</p>
+<p>比较了一下，感觉 <a target="_blank" rel="noopener" href="https://github.com/hakimel/reveal.js">reveal.js</a> 不错，也很受欢迎。后来又发现另外一个后起之秀 <a target="_blank" rel="noopener" href="https://github.com/markdalgleish/bespoke.js">bespoke.js</a>，影响力不够 reveal.js 大，但它的插件式设计更胜一筹。对了，这些工具基本上都是用 JavaScript&#x2F;Node.js 等一套工具链的，前端相关的技术 js 独霸天下了。</p>
+<p>先试了一下 bespoke.js。看到 reveal.js 能使用 <a target="_blank" rel="noopener" href="https://www.leapmotion.com/">Leap Motion</a> Controller 来手势控制，演示起来会比较出彩，正好同事有一个 leap motion，可以借来玩，但是却找不到 bespoke.js 支持 leap motion 的插件。查了一下，原来 leap 有 JavaScript API，在浏览器里面能够通过事件监听获得双手各个手指的位置和手势动作的信息，API 暴露出来的已经是处理后的双手模型了，应用用起来相当方便。于是就简单的 port 了一个 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/bespoke-leapmotion">bespoke-leapmotion</a> 插件出来。但说实在的，leap motion 这东西还是中看不中用，用手势切换页面根本就不如手指头按个按键快捷和省力，手势的辨别也不够精准（这方面应用在数据处理上是可以下些功夫的）。</p>
+<img src="/blog/attachments/2015/8/leapmotion.jpg" class="">
+
+<p>Bespoke.js 的 markdown 支持似乎还有些坑，总有这样那样的问题。而且在 markdown 在版面布局方面局限性也很大，做出来的 slides 显得单调了些，效果不够理想，于是又在看看直接用 HTML 来写会怎样。HTML 是足够灵活了，但是要设置排版布局又累死了，我对 HTML+CSS 也不是那么熟悉，有点想放弃用回 PowerPoint 了。 </p>
+<p>正好这个时候，发现了 <a target="_blank" rel="noopener" href="http://slides.com/">slides.com</a> 这个网站，它背后用的就是 reveal.js，但它的在线编辑器真心好用啊，鼠标拖放元素，功能简洁但又足够做出漂亮的效果了。就是它了！</p>
+<img src="/blog/attachments/2015/8/slides-editor.png" class="">
+
+<p>但是，我还是念念不忘 leap motion —— 演示的时候可以带来新奇的效果啊。Slides.com 自然不会有这偏门的功能，但它很良心的提供了 export to reveal.js，在上面编辑好的 slides 可以放回本地的 reveal.js 里面播放，免费用户都可以享受。嗯，看起来一切都好，可是，怎么在 slides.com 里面写好的 speaker notes 导出后都丢失了呢？查看导出文件的内容，似乎是 slides.com 内部处理 speaker notes 用的机制跟 reveal.js 不一样，存放的格式也不同了。还好，只要数据都在，还是有办法的，写个<a target="_blank" rel="noopener" href="https://github.com/aleung/slides-export">程序</a>来转换就行了。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/blog/tags/Presentation/" rel="tag"><i class="fa fa-tag"></i> Presentation</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2015/07/28/CAP/" rel="prev" title="CAP">
+      <i class="fa fa-chevron-left"></i> CAP
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2015/09/20/continuous-learning/" rel="next" title="持续学习">
+      持续学习 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="https://avatars.io/gravatar/leoliang@gmail.com">
+  <p class="site-author-name" itemprop="name">Leo Liang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">335</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Liang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '578b819466ead4247b6e',
+      clientSecret: '6a36866b9ae12bc5b0b1f0df95c98cbb2ed7ef61',
+      repo        : 'blog-comments',
+      owner       : 'aleung',
+      admin       : ['aleung'],
+      id          : 'e414e7cfaf6c74ee8270531df4e0a58e',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

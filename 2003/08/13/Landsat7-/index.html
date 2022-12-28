@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="LANDSAT是美国陆地探测卫星系统。从1972年开始发射第一颗卫星LANDSAT 1，到目前最新的LANDSAT 7。 LANDSAT 7 卫星于99年发射，装备有Enhanced Thematic Mapper Plus(ETM+)设备，ETM+被动感应地表反射的太阳辐射和散发的热辐射，有8个波段的感应器，覆盖了从红外到可见光的不同波长范围。 ETM+比起在LANDSAT 4、5上面装备的Th">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Landsat7卫星及遥感图象处理">
+<meta property="og:url" content="http://aleung.github.io/blog/2003/08/13/Landsat7-/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:description" content="LANDSAT是美国陆地探测卫星系统。从1972年开始发射第一颗卫星LANDSAT 1，到目前最新的LANDSAT 7。 LANDSAT 7 卫星于99年发射，装备有Enhanced Thematic Mapper Plus(ETM+)设备，ETM+被动感应地表反射的太阳辐射和散发的热辐射，有8个波段的感应器，覆盖了从红外到可见光的不同波长范围。 ETM+比起在LANDSAT 4、5上面装备的Th">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2003-08-12T18:49:00.000Z">
+<meta property="article:modified_time" content="2022-12-07T16:53:24.568Z">
+<meta property="article:author" content="Leo Liang">
+<meta property="article:tag" content="GPS_GIS">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://aleung.github.io/blog/2003/08/13/Landsat7-/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Landsat7卫星及遥感图象处理 | Good good study, day day up</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Good good study, day day up</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">aleung的学习笔记, aleung的idea</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">53</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">335</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2003/08/13/Landsat7-/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.io/gravatar/leoliang@gmail.com">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Landsat7卫星及遥感图象处理
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2003-08-13 02:49:00" itemprop="dateCreated datePublished" datetime="2003-08-13T02:49:00+08:00">2003-08-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-12-08 00:53:24" itemprop="dateModified" datetime="2022-12-08T00:53:24+08:00">2022-12-08</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>LANDSAT是美国陆地探测卫星系统。从1972年开始发射第一颗卫星LANDSAT 1，到目前最新的LANDSAT 7。</p>
+<p>LANDSAT 7 卫星于99年发射，装备有Enhanced Thematic Mapper Plus(ETM+)设备，ETM+被动感应地表反射的太阳辐射和散发的热辐射，有8个波段的感应器，覆盖了从红外到可见光的不同波长范围。</p>
+<p>ETM+比起在LANDSAT 4、5上面装备的Thematic Mapper(TM)设备在红外波段的分辨率更高，因此有更高的准确性。</p>
+<p>LANDSAT 7 的一些总体数据：</p>
+<ul>
+<li>7个光谱波段和一个全色波段 </li>
+<li>观察宽度达185km </li>
+<li>15、30、60、80米精度 </li>
+<li>离地705km太阳同步轨道 </li>
+<li>16天运行周期 </li>
+<li>覆盖范围为南北纬81度之间区域</li>
+</ul>
+<p>ETM+的波段：</p>
+<ol>
+<li>0.45-0.52微米蓝绿波段, 用于水体穿透, 土壤植被分辨 </li>
+<li>0.52-0.60微米绿色波段, 用于植被分辨 </li>
+<li>0.63-0.69微米红色波段, 处于叶绿素吸收区域, 用于观测道路&#x2F;裸露土壤&#x2F;植被种类效果很好 </li>
+<li>0.76-0.90微米近红外波段, 用于估算生物数量, 尽管这个波段可以从植被中区分出水体，分辨潮湿土壤，但是对于道路辨认效果不如TM3。 </li>
+<li>1.55-1.75微米中红外波段, 这被认为是所有波段中最佳的一个, 用于分辨道路&#x2F;裸露土壤&#x2F;水, 它还能在不同植被之间有好的对比度, 并且有较好的穿透大气、云雾的能力。 </li>
+<li>10.5-12.5微米热红外波段, 感应发出热辐射的目标. 分辨率为60m. </li>
+<li>2.08-2.35微米中红外波段, 对于岩石&#x2F;矿物的分辨很有用, 也可用于辨识植被覆盖和湿润土壤. </li>
+<li>0.52-0.90微米全色波段, 得到的是黑白图象, 分辨率为15m, 用于增强分辨率, 提供分辨能力. (ETM+增加了这个波段，TM没有)</li>
+</ol>
+<p>以上波段除6、8外分辨率均为30m。</p>
+<p>Landsat7 ETM+ 数据又分为多种，例如L0Rp, L1R和L1G.</p>
+<ul>
+<li>L1R: radiometrically corrected but not geometrically resampled. </li>
+<li>L1G: radiometrically corrected and resampled for geometric correction and registration to geographic map projections.</li>
+</ul>
+<p>在使用这些卫星图象的时候，要先进行处理。通常是用多个波段的图象进行彩色合成，得到伪彩色图象。在合成前，各波段图象还要先做图象增强处理。</p>
+<p>例如：MrSid卫星图象是用band7作为红色, band4作为绿色，band2作为蓝色合成的，简称为742。（MrSid用的是Landsat TM, 1987-1993拍摄数据，当时未有Landsat 7）；GeoGratis Landsat7 合成卫星图象是用743(RGB)。Terra为绿野做到北京图用的是542。</p>
+<p>常用的合成方法：</p>
+<ul>
+<li>321：真彩合成。与肉眼所见接近；仅使用反射的可见光，受大气、云雾、阴影、散射的影响较大，通常对比度不高，感觉模糊（蓝色光散射严重）；对于海岸区域研究特别有用，因为可见光可穿透水面，观察到海底。 </li>
+<li>432：近红外合成。颜色与肉眼所见完全不同；植被在近红外波段反射率特别高，因为叶绿素在此波段反射的能量大，因此在432图象中植被会明显表现为深浅不同的红色，不同类型植物有不同的红色色调；水会吸收差不多所有的近红外光，因此水面颜色很深近乎黑色。 </li>
+<li>743&#x2F;742：短波红外合成。包含至少一个短波红外波段，短波红外波段的反射率主要取决于物体表面的含水量，因此这类图象可用于植被保护和土地研究。</li>
+</ul>
+<p>图象合成可以用Photoshop之类的图象编辑软件来做，缺点是不能做出带地理信息的GeoTiff图象。<a target="_blank" rel="noopener" href="http://www.geogr.ku.dk/chips/">Chips</a>（哥本哈根图象处理系统）是一个专门用于遥感图象处理的软件，标准版是免费的。用它来制作3波段合成图象很容易。以下为简单使用方法：</p>
+<blockquote>
+</blockquote>
+<p>Open WinChips, and from the <em>File</em> menu, select <em>New Project</em>. From the <em>File</em> menu, select <em>Add Object(s)</em>, and select the three images for the three bands you want to use in your composite image, and add them as _Chips Image_s. From the <em>File</em> menu, select <em>New Object</em>, then <em>Lookup Table</em>, then save the new Lookup Table file. From the <em>View</em> menu, select <em>New Image View</em>. In the <em>Image View Configuration</em> dialog, on the <em>Image</em> tab, select <em>Display Mode</em> as RGB. For each of the <em>(Red, Green, Blue)</em> choices, select the image for the band you want to use for the respective color. For <em>Lookup Table</em> select the Lookup Table you added earlier, then click <em>OK</em>. </p>
+<blockquote>
+</blockquote>
+<p>You should now have a <em>Default Image View</em> window open, showing your 3-band color composite image. From the <em>Image View</em> menu, select <em>Lookup Table</em>, then <em>Enhance using Statistics for Entire Image</em>. Once the statistics are calculated for each of the colors, a <em>Modify Lookup Table</em> dialog will be presented. To see the effect of some basic image enhancement, click on <em>Hist. Equal.</em>. You can use <em>Reset</em> to undo the enhancement. Click on <em>Cancel</em> to close the dialog window. </p>
+<blockquote>
+</blockquote>
+<p>To save the 3-band color composite image, from the <em>Image View</em> menu select <em>Export View To Standard Format</em>. Once you have saved the image file, you have the option of saving geocoding for the image. </p>
+<p>参考：  </p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://imaging.geocomm.com/features/sensor/landsat7/">http://imaging.geocomm.com/features/sensor/landsat7/</a>  </li>
+<li><a target="_blank" rel="noopener" href="http://members.shaw.ca/davepatton/landsat7.html">http://members.shaw.ca/davepatton/landsat7.html</a>  </li>
+<li><a target="_blank" rel="noopener" href="http://chesapeake.towson.edu/data/composite.asp">http://chesapeake.towson.edu/data/composite.asp</a>  </li>
+<li><a target="_blank" rel="noopener" href="http://chesapeake.towson.edu/data/raw_data.asp">http://chesapeake.towson.edu/data/raw_data.asp</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/blog/tags/GPS-GIS/" rel="tag"><i class="fa fa-tag"></i> GPS_GIS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2003/08/05/Robocode-/" rel="prev" title="Robocode的线程与执行次序">
+      <i class="fa fa-chevron-left"></i> Robocode的线程与执行次序
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2003/08/18/Java-/" rel="next" title="Java字符转换问题">
+      Java字符转换问题 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="https://avatars.io/gravatar/leoliang@gmail.com">
+  <p class="site-author-name" itemprop="name">Leo Liang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">335</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Liang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '578b819466ead4247b6e',
+      clientSecret: '6a36866b9ae12bc5b0b1f0df95c98cbb2ed7ef61',
+      repo        : 'blog-comments',
+      owner       : 'aleung',
+      admin       : ['aleung'],
+      id          : '6e20dc5ed0e3a4f43aa121451786748b',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

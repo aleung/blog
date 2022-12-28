@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="在10km跑总结里提到：这次10km跑成绩的提高最重要因素是步频的提高。 在网上看了一些资料，提到提高步频的好处，并指出长跑理想的步频应该在每分钟180步左右，就开始尝试练习提高步频。但是跑起来并不知道怎样的频率才是合适的，还需要有工具测量才行。想到可以用手机的加速度传感器来测量，跑步时把手机绑在手臂上或者拿手上，测量手的摆动周期应该就可以计算出步频。 有了想法后，就考虑怎样实现。先要知道跑步时加">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跑步步频训练软件 RunningCadence 开发小记">
+<meta property="og:url" content="http://aleung.github.io/blog/2011/12/24/Running-training-software-development-XiaoJi-RunningCadence-step-frequency/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:description" content="在10km跑总结里提到：这次10km跑成绩的提高最重要因素是步频的提高。 在网上看了一些资料，提到提高步频的好处，并指出长跑理想的步频应该在每分钟180步左右，就开始尝试练习提高步频。但是跑起来并不知道怎样的频率才是合适的，还需要有工具测量才行。想到可以用手机的加速度传感器来测量，跑步时把手机绑在手臂上或者拿手上，测量手的摆动周期应该就可以计算出步频。 有了想法后，就考虑怎样实现。先要知道跑步时加">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2011-12-23T16:16:00.000Z">
+<meta property="article:modified_time" content="2022-12-07T16:53:24.584Z">
+<meta property="article:author" content="Leo Liang">
+<meta property="article:tag" content="SoftwareDev">
+<meta property="article:tag" content="Running">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="MyWork">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://aleung.github.io/blog/2011/12/24/Running-training-software-development-XiaoJi-RunningCadence-step-frequency/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>跑步步频训练软件 RunningCadence 开发小记 | Good good study, day day up</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Good good study, day day up</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">aleung的学习笔记, aleung的idea</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">53</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">335</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2011/12/24/Running-training-software-development-XiaoJi-RunningCadence-step-frequency/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.io/gravatar/leoliang@gmail.com">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          跑步步频训练软件 RunningCadence 开发小记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2011-12-24 00:16:00" itemprop="dateCreated datePublished" datetime="2011-12-24T00:16:00+08:00">2011-12-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-12-08 00:53:24" itemprop="dateModified" datetime="2022-12-08T00:53:24+08:00">2022-12-08</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在<a href="/2011/11/15/Nike-Lunar-Run-10-/">10km跑总结</a>里提到：这次10km跑成绩的提高最重要因素是步频的提高。</p>
+<p>在网上看了一些资料，提到提高步频的好处，并指出长跑理想的步频应该在每分钟180步左右，就开始尝试练习提高步频。但是跑起来并不知道怎样的频率才是合适的，还需要有工具测量才行。想到可以用手机的加速度传感器来测量，跑步时把手机绑在手臂上或者拿手上，测量手的摆动周期应该就可以计算出步频。</p>
+<p>有了想法后，就考虑怎样实现。先要知道跑步时加速度传感器得到的数据会是怎样的，在market上找到软件Accelero-meter Log，能显出加速度传感器三轴数据的曲线。拿着手机跑了几步看看曲线，发现完全不是想象中那么简单：从曲线可以看出每跑一步的加速度变化，但并不是一步一个脉冲那么理想，而是大脉冲中包含着小脉冲，波形很不规则；更要命的是不同轴测量到的数据频率会不一样，软件应该按那个轴的数据计算？后来才想到不同轴测量数据频率不同的原因是手摆动的频率与身体重心上下移动的频率不一致，只是一半，再加上手的活动太自如了，跑动过程中会有不同的动作，都会引起加速度变化。</p>
+<p>上网找到一个开源的Android计步器的代码，看看它怎么做，发现它只是将三个轴的数值加在一起，然后判断变化量。根据前面看得的数据波形，我感觉这样的算法太不靠谱了，再看看这个软件的用户评价，果然不佳。</p>
+<p>这时想到Nike的配合iPhone使用的计步器，是藏在鞋里面的。它应该是感应脚的每次着地，而且计步器是固定在鞋里的，有特定的安装方向，因此它可以只检测垂直地面的加速度。想到这里就豁然开朗了，原来测量摆臂的想法是错误的，应该测量脚着地的冲击，也就是垂直方向的加速度。但那个轴才是垂直地面的呢？我不能规定用户使用这个软件时手机摆放的方向啊，他可以绑在臂上，拿在手里，放裤袋中。。。因此首先要解决的问题是如何判断手机的姿态，找出垂直于地面的轴。</p>
+<p>人在运动的时候加速度不断变化，但加速度矢量一段时间的累计应该为零，而重力加速度是恒定的，并且垂直于地面，检测出重力加速度的方向就ok了。具体实现的方法也比较简单：对传感器三个轴的数据分别做截止频率为0.25Hz的低通滤波后，数值最大的那个轴应该就是最接近于垂直地面的。</p>
+<p>还有个问题是手机加速度传感器的采样频率能到多高？是否能满足要求？长跑理想的着地次数是每分钟180次，相当于3Hz，一般人都只会比这个慢。实测我的Nexus One使用最短采样间隔时大约30~50ms能获取到一组数据，也就是采样频率大于20Hz，对于检测3Hz的信号完全足够。</p>
+<p>对于复杂波形的处理方法，同样是简单的一阶低通滤波，截止频率取了3.5Hz，相当于每分钟210次着地。高频干扰通过滤波削弱后，相邻波峰的时间间隔就是两次着地的时间间隔了。具体实现时，波峰判断会比较麻烦，采样检查是否超过阈值来代替。本来想按振幅比例来设定阈值的，但算振幅也比较麻烦，之前检测重力加速度时已经得到重力加速度在测量轴上的分量，直接拿它的1&#x2F;2做阈值就好了。这样做还带来了一个没有预料到的副作用：走路时脚步比较轻，超不过阈值，因此软件还能知道当前是否处于跑步状态。</p>
+<p>步频数据算出来以后其他的就好办了。跑步时不方便看屏幕，通过语音合成播放出来。设定目标步频，语音提示应该加快还是减慢。还打算过增加个目标步频的节拍音，当实际步频与目标不一致时播放出来，不过软件用了这段时间，感觉有语音播报步频基本上已经足够了，暂时不做以后再说吧。</p>
+<p>这个软件项目的网站： <a target="_blank" rel="noopener" href="http://code.google.com/p/running-cadence/">http://code.google.com/p/running-cadence/</a></p>
+<p>软件发布在Android Market:<a target="_blank" rel="noopener" href="https://market.android.com/details?id=leoliang.runningcadence">https://market.android.com/details?id=leoliang.runningcadence</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/blog/tags/SoftwareDev/" rel="tag"><i class="fa fa-tag"></i> SoftwareDev</a>
+              <a href="/blog/tags/Running/" rel="tag"><i class="fa fa-tag"></i> Running</a>
+              <a href="/blog/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
+              <a href="/blog/tags/MyWork/" rel="tag"><i class="fa fa-tag"></i> MyWork</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2011/11/24/NoClassDefFoundError/" rel="prev" title="NoClassDefFoundError">
+      <i class="fa fa-chevron-left"></i> NoClassDefFoundError
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2011/12/26/Baiyun-mountain-running/" rel="next" title="白云山跑步">
+      白云山跑步 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="https://avatars.io/gravatar/leoliang@gmail.com">
+  <p class="site-author-name" itemprop="name">Leo Liang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">335</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Liang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '578b819466ead4247b6e',
+      clientSecret: '6a36866b9ae12bc5b0b1f0df95c98cbb2ed7ef61',
+      repo        : 'blog-comments',
+      owner       : 'aleung',
+      admin       : ['aleung'],
+      id          : '3439e8ab5e5de999aa734b139b653be7',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

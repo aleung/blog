@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="3D 打印机玩了两年多，最近两个月折腾了一番，又有一些新的心得。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3D打印机使用新进展">
+<meta property="og:url" content="http://aleung.github.io/blog/2020/03/08/update-about-my-3d-printer/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:description" content="3D 打印机玩了两年多，最近两个月折腾了一番，又有一些新的心得。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://aleung.github.io/blog/blog/2020/03/08/update-about-my-3d-printer/fusion360.png">
+<meta property="og:image" content="http://aleung.github.io/blog/blog/2020/03/08/update-about-my-3d-printer/nonplanar.png">
+<meta property="og:image" content="http://aleung.github.io/blog/blog/2020/03/08/update-about-my-3d-printer/airbrush.jpg">
+<meta property="og:image" content="http://aleung.github.io/blog/blog/2020/03/08/update-about-my-3d-printer/2020-02-b-1.png">
+<meta property="og:image" content="http://aleung.github.io/blog/blog/2020/03/08/update-about-my-3d-printer/shrink.jpg">
+<meta property="og:image" content="http://aleung.github.io/blog/blog/2020/03/08/update-about-my-3d-printer/under_extrude.jpg">
+<meta property="og:image" content="http://aleung.github.io/blog/blog/2020/03/08/update-about-my-3d-printer/embed.jpg">
+<meta property="article:published_time" content="2020-03-08T14:29:29.000Z">
+<meta property="article:modified_time" content="2022-08-28T15:12:31.203Z">
+<meta property="article:author" content="Leo Liang">
+<meta property="article:tag" content="Maker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://aleung.github.io/blog/blog/2020/03/08/update-about-my-3d-printer/fusion360.png">
+
+<link rel="canonical" href="http://aleung.github.io/blog/2020/03/08/update-about-my-3d-printer/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>3D打印机使用新进展 | Good good study, day day up</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Good good study, day day up</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">aleung的学习笔记, aleung的idea</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">53</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">335</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2020/03/08/update-about-my-3d-printer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.io/gravatar/leoliang@gmail.com">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          3D打印机使用新进展
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-08 22:29:29" itemprop="dateCreated datePublished" datetime="2020-03-08T22:29:29+08:00">2020-03-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-28 23:12:31" itemprop="dateModified" datetime="2022-08-28T23:12:31+08:00">2022-08-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>3D 打印机玩了两年多，最近两个月折腾了一番，又有一些新的心得。</p>
+<span id="more"></span>
+
+<h2 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h2><h3 id="建模软件：Fusion-360"><a href="#建模软件：Fusion-360" class="headerlink" title="建模软件：Fusion 360"></a>建模软件：Fusion 360</h3><p>不知道是不是因为很久以前玩过的类似软件不好用，一直对用鼠标绘图的建模软件敬而远之，因此用像写程序一样的建模语言来做模型。之前就写过我使用过的 <a href="/blog/2018/08/26/3D-modeling-language/" title="3D modeling language">3D modeling language</a>，其中主要用的是 Relativity SCAD，玩了一年半，算比较熟手了，大部分模型都是用它来做的。</p>
+<p>但是建模语言也有一些缺点：</p>
+<ul>
+<li>不直观。需要先在纸上画草图，当时做的时候还好，脑子里能够将代码和图对得上，可是过了几个月回头想修改的时候，就要花一些时间来理解代码了。</li>
+<li>所有东西都要由球体、立方体、圆柱体三种基础集合体组合而成，曲面特别难做，只能勉强用hull解决一部分。想把过渡面弄平滑基本上搞不掂，增加个支撑肋条都麻烦得要命。</li>
+<li>总有各种小问题需要解决</li>
+</ul>
+<p>有一次在 YouTube 上看了一个视频介绍用 Autodesk Fusion 360 来做打印模型的受力分析，就安装了 Fusion 360 来试了一下，对基础操作了解之后，发现使用并不复杂，再看了一些介绍的视频，对这种基于绘图的建模软件的观感完全改变了：</p>
+<ul>
+<li>它同样可以跟建模语言一样做参数化设计，随时可以修改参数去改变模型尺寸。</li>
+<li>通过创建多个参考面画平面图来构建出立体模型，十分直观。</li>
+<li>通过底下的修改历史进度条，随时可以独立修改之前的某个操作，或者在之前某个步骤的位置插入额外的操作。并不是想我以前以为那样很难修改以前画好的东西。</li>
+<li>过渡面、斜切、肋条这些细节修改做起来轻而易举。</li>
+</ul>
+<p>在 YouTube 上有不少很好的教学视频，边看边试，做了几个模型后基本上也能上手了，一下子就变成了我现在建模用的主力工具。Fusion 360 对个人使用提供免费无限期许可，对于功能这么强大的软件真是很不错。</p>
+<p><img src="/blog/blog/2020/03/08/update-about-my-3d-printer/fusion360.png"></p>
+<h3 id="切片软件：Slic3r-PrusaSlicer-Slic3r"><a href="#切片软件：Slic3r-PrusaSlicer-Slic3r" class="headerlink" title="切片软件：Slic3r - PrusaSlicer - Slic3r++"></a>切片软件：Slic3r - PrusaSlicer - Slic3r++</h3><p>自从做好3D打印机以来一直用的是开源的 <a target="_blank" rel="noopener" href="https://slic3r.org/">Slic3r</a>，它一直也没有怎么出过升级版本。直到最近两个月，我才知道 Slic3r 有一个fork叫做 <a target="_blank" rel="noopener" href="https://www.prusa3d.com/prusaslicer/">PrusaSlicer</a>，在 Slic3r 基础上增加了更多的功能。在 Reddit 上有人评价：完全找不到理由从 PrusaSlicer 转回 Slic3r。既然如此，就下载下来一试，果然：Slic3r的配置选项本来已经多得眼花缭乱了，PrusaSlicer又增加了一堆。然后过了两个星期，再发现了另外一个fork：<a target="_blank" rel="noopener" href="https://github.com/supermerill/slic3r">Slic3r++</a>，这虽然好像只是一个个人的项目，但它在PrusaSlicer的基础上增加了几个很好的改进：</p>
+<ul>
+<li>Ironing：在打印完上表面后，用打印头在上面重新再“熨”一遍，将纹理抹平。打印出来的表面平滑了很多，效果相当理想。</li>
+<li>Denser infill：有了这个功能，内部填充密度可以低至4%，上表面只打2实心层，也不怎么影响上表面的封口质量。</li>
+<li>打印 overhang 和 bridge 更容易一些，优化了打印路径。不过，我也观察到打印桥的时候曾经出现不合理的路径，还有需要改进的地方。</li>
+</ul>
+<p>它还有其他一些小改进，但就上面几个就足以让我切换到 Slic3r++ 上来了。</p>
+<h2 id="打印机硬件"><a href="#打印机硬件" class="headerlink" title="打印机硬件"></a>打印机硬件</h2><h3 id="尖头喷嘴与非平面打印（non-planar）"><a href="#尖头喷嘴与非平面打印（non-planar）" class="headerlink" title="尖头喷嘴与非平面打印（non-planar）"></a>尖头喷嘴与非平面打印（non-planar）</h3><p>在YouTube看到一个介绍<a target="_blank" rel="noopener" href="https://youtu.be/gmePlcU0TRw">非平面打印</a>的视频，想尝试一下，就买了一个尖头的打印喷嘴。</p>
+<p>先说什么是非平面打印。FDM（熔融沉积）打印是在Z轴上一层一层的把打印材料堆积起来的，打完一层后打印头上升一层高度，再打一层。典型一层的高度是0.3mm。对于打印比较平缓的斜面时，就会有明显等高线阶梯，表面不精细。但实际上打印头是可以在Z轴上运动的，层并不一定需要为水平面。Non-plannar slicing 是通过一定的算法，让打印头在打印模型上表面时，打印层为一个曲面，减少等高线阶梯。这个思路在几年前已经在网上有描述，去年一位汉堡大学的学生将这作为他的毕业论文课题，并且基于开源Slic3r开发了一个基本可用的<a target="_blank" rel="noopener" href="https://github.com/Zip-o-mat/Slic3r/tree/nonplanar">实现</a>.</p>
+<p><img src="/blog/blog/2020/03/08/update-about-my-3d-printer/nonplanar.png"></p>
+<p>当打印层不在一个平面上时，打印到凹陷的地方时，打印头上面的部件就有可能碰撞到已打印的凸起位置。因此打印头突出得越多，能够打印的曲面倾斜度越大。</p>
+<p>淘宝上看到有卖这种不锈钢尖头的打印喷嘴。这应该是转接了绘画喷笔的喷头，在国外网站也是早年有讨论，现在国内都量产了。比起E3D喷嘴，这种喷嘴的净空高度增加了好几毫米。</p>
+<p><img src="/blog/blog/2020/03/08/update-about-my-3d-printer/airbrush.jpg"></p>
+<p>可是，换上这个喷嘴后，立马就堵丝了。检查发现应该是因为温度的问题：尖嘴处的热容量小，再加上风扇吹着，温度下降得比较快，打印材料冷却了就堵住了。升高打印温度解决了堵头问题，但多番调试始终打印效果都不理想，出现各种问题，后来就换回了普通喷嘴。</p>
+<p>现在复盘一下，主要应该是这些问题：</p>
+<ul>
+<li>原来用的是带铁氟龙内衬的喉管，上面还是有个接缝。不知道是因为用的时间长了接缝变大，还是什么原因，材料冷却后会卡在接缝处。后来我更换了直通的喉管，进料铁氟龙管一直伸到加热块前面，中间没有任何接缝。</li>
+<li>调平探头的海绵套不适配尖头外形，不能在上面卡住。我做的临时固定措施不牢固，造成自动调平的误差大，所以打印首层不能贴合打印床。</li>
+<li>需要调整打印工件降温风扇的风量的吹风位置，让出料温度合适，既要保持熔融状态顺畅挤出，又要能够在挤出之后迅速冷却。怎样才是最佳的还有待实践。</li>
+</ul>
+<p>结果就是根本没有机会尝试到非平面打印。不过暂时也先不折腾了，更换喷嘴太麻烦。毕竟现在唯一能支持这个功能的slicer还是试验性的，日常应用还是有不少限制，等什么时候软件完善了再来试试。</p>
+<h3 id="风扇"><a href="#风扇" class="headerlink" title="风扇"></a>风扇</h3><p>在试验尖头喷嘴的时候感觉风扇需要调整一下，于是将二合一散热风道的设计又重做了几个版本。</p>
+<p><img src="/blog/blog/2020/03/08/update-about-my-3d-printer/2020-02-b-1.png"></p>
+<p>尝试了不同的风量比例、出风口大小、角度、吹风位置，总结了一些经验：</p>
+<ul>
+<li>轴流风扇的风压小，风道出风口不能收得太小，越直越好，否则出风量很小，空气甚至会在风扇处倒灌。如果换成用径流风扇（涡轮风扇）做工件散热应该会好些，但这样就得装两个风扇了，增加打印头的体积和重量。</li>
+<li>向工件吹风的目的是要将喷嘴挤出的材料在刚挤出的瞬间就迅速冷却，一方面是打印悬空结构时让挤出材料不下垂，另一方面（可能）有助于减少后续冷却带来的收缩。因此，出风方向应该正对着喷嘴尖端，让挤出处的风量最大，散热效果最好。而对于已经打印出来的工件，</li>
+<li>观察到打印桥的时候风力似乎会将拉丝往下压，造成桥的下垂，因此可能出风角度尽量接近水平一些有好处（不能肯定）。</li>
+</ul>
+<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p>更换元件，调试过程中间出过好几个问题，一度打印效果非常差。以下是遇到的几个问题，解决后基本上打印质量比较理想了。</p>
+<h3 id="首层裂开上翘"><a href="#首层裂开上翘" class="headerlink" title="首层裂开上翘"></a>首层裂开上翘</h3><p>这个问题在更换风扇风道后出现，还去 StackExchange 上提过<a target="_blank" rel="noopener" href="https://3dprinting.stackexchange.com/q/11800/162">问题</a>。打印首层过程中，中间裂开翘起，但是边缘贴合打印床又没有问题。尝试过清洁玻璃板、更换胶水、delta参数校准、Z校准都不起作用，最后仔细观察打印过程，发现打印丝刚挤出来的时候是贴合玻璃板的，然后它就被扯起来了，是因为前面已打印的相邻材料在冷却收缩。首层打印时关闭风扇，就不再出现这个问题。</p>
+<p><img src="/blog/blog/2020/03/08/update-about-my-3d-printer/shrink.jpg"></p>
+<p>但是，我以前一直都是打印全程风扇全开的，也没有出现过这个问题。其实是因为吹风位置改变引起的，没有及时冷却刚挤出来的材料，而是变成冷却已经打印成型的模型，造成模型的收缩。后来调整吹风位置，直接吹向喷嘴尖端就好了（见上面风扇一节）。</p>
+<h3 id="挤出不足"><a href="#挤出不足" class="headerlink" title="挤出不足"></a>挤出不足</h3><p>这个问题是在尝试0.2mm层高时发现的，起初认为是slicer软件问题，在github上提了issue，作者说我的0.3mm层高打印（右侧）其实也是挤出不足的。</p>
+<p><img src="/blog/blog/2020/03/08/update-about-my-3d-printer/under_extrude.jpg"></p>
+<p>自从打印机装好以来，一直没有校准过挤出量，感觉上差不多。固件里的挤出参数是根据步进电机和齿轮参数算出来的，想着应该没错吧？</p>
+<p>这次就认真的测量了一下：用笔在打印丝上做记号，发指令让挤出机慢速走个50mm左右，测量实际上打印丝的移动距离。惊讶的发现居然欠了15%左右，怪不得挤出不足。按实测比例修改参数，反复测量两次，大概就校准了。这时0.3mm层高的打印饱满了很多，打印0.8mm薄壁测试，用游标卡尺测量，厚度也误差很少了。</p>
+<h3 id="Z-offset"><a href="#Z-offset" class="headerlink" title="Z offset"></a>Z offset</h3><p>挤出电机的系数校准后，0.2mm层高的首层依然空隙很大，没有什么变化。后来发现是打印头的Z位置不准，Z&#x3D;0 时与打印平台有零点几毫米的空隙，因此首层实际高度高了许多，自然挤出量就不够了。重新做 delta calibration 之后解决问题。</p>
+<h3 id="最大挤出速度"><a href="#最大挤出速度" class="headerlink" title="最大挤出速度"></a>最大挤出速度</h3><p>打印速度可以去到多高？Delta结构的打印机，打印头移动速度在XYZ坐便轴上都可以相当快，但是这只是移动的速度，实际打印时限制打印速度的还有挤出的速度，如果材料的挤出跟不上，打印头移动得过快只会造成欠料，质量降低。而挤出速度也不是仅仅由挤出机决定的，挤出机很够力，但加热块的热量不足以融化大量材料，也挤不出来。</p>
+<p>测试最大挤出速度，同样需要在打印丝上做标记。按照平常使用的打印头加热温度，每次挤出50mm，看看挤出过程中是否有停顿（打滑），寻找最快的速度。测试结果是180度时，最大挤出速度为 4mm&#x2F;s（F240）。</p>
+<p>材料的长度可以换算为体积，对于1.75mm的材料，每毫米体积约为 2.4立方毫米。对于测试到的最大挤出速度，也就是最大挤出体积为 9.6mm^3&#x2F;s。</p>
+<p>实际打印时，因为挤出后空间限制，造成backpressure，特别是打印填充时，挤出速度远小于理想速度。根据<a target="_blank" rel="noopener" href="http://www.soliforum.com/topic/15529/finding-maximum-print-speeds/">这里</a>的测试，不同层高的实际挤出速度相对于理想速度的比例为： 0.1mm 38%，0.2mm 61%，0.3mm 92%。这个具体数值肯定会受很多因素的影响，我也懒得测试了，留个安全系数应该差不多。</p>
+<p>在PrusaSlicer里面，可在 Filament Settings -&gt; Advanced -&gt; Print speed override -&gt; Max volumetric speed 设置挤出速度限制，以限制最高打印速度不超出挤出可承受速度范围。根据上面计算，0.3mm层高时不应大于 8.8mm^3&#x2F;s ，0.2mm层高时不大于 5.8。考虑增加85%的安全系数，设置成 7.5 和 4.9 比较合适。目前还不知道冷却风扇对实际挤出时的最大速度会带来多大影响。</p>
+<h2 id="Marlin-Firmware"><a href="#Marlin-Firmware" class="headerlink" title="Marlin Firmware"></a>Marlin Firmware</h2><p>最近也升级了打印机的固件。<a target="_blank" rel="noopener" href="https://marlinfw.org/">Marlin Firmware</a> 在长长的开发周期之后，终于正式发布了2.0版本。2.0版本主要是32bit，增加了对很多控制板的支持，但对于我用的低端 Arduino，其实没有什么区别。装2.0试了一下，感觉有点不是很稳定，不记得具体啥问题了，反正换回了1.1。惊喜的发现，其实2.0里面见到的新增功能，在1.1分支的最新版本里面都已经有了。</p>
+<h3 id="加载-x2F-卸载打印材料"><a href="#加载-x2F-卸载打印材料" class="headerlink" title="加载&#x2F;卸载打印材料"></a>加载&#x2F;卸载打印材料</h3><p>升级固件后，最大的好处是装载和卸下打印丝方便多了。因为是远程送料，以前每次都要先预热打印头，等到温度够了后，手工把打印丝穿过挤出机，一直插到打印头，有融化的材料挤出来为止。要卸下打印丝也一样，预热温度够了手工抽出来。现在菜单里面就有 load&#x2F;unload 选项，固件里配置好参数，菜单一选，就自动预热，自动进&#x2F;退料到位。</p>
+<h3 id="暂停"><a href="#暂停" class="headerlink" title="暂停"></a>暂停</h3><p>另外一个功能是可以在打印过程中暂停，暂停可以有两种用途：更换打印材料（换颜色）；往打印工件内部空腔放入东西（例如一块磁铁），恢复打印后就可以将上面封口，将物品封闭在打印件内部。</p>
+<p><img src="/blog/blog/2020/03/08/update-about-my-3d-printer/embed.jpg"></p>
+<p>这需要在slicer中配合，往预定的层上插入M25（暂停打印）指令，打印到那个层，打印就会暂停，并且打印头移到一个安全位置。这时可以卸下原来的打印丝，换上另外一盘不同颜色的，然后菜单选择继续打印，它就会回到原来位置继续。</p>
+<h3 id="Advanced-linear"><a href="#Advanced-linear" class="headerlink" title="Advanced linear"></a>Advanced linear</h3><p>按<a target="_blank" rel="noopener" href="https://youtu.be/n3yK0lJ8TWM">介绍</a>，这个<a target="_blank" rel="noopener" href="https://marlinfw.org/docs/features/lin_advance.html">功能</a>能够改善打印速度变化时出料不均匀的问题，不需要各种高级的回抽的设定。可是当时我测试的效果并不好，后来把它关闭了。现在看来，是因为测试前并没有先校准好挤出量，当时是出于挤出不足的状态的。以后有空可以再试一次，看看效果如何。</p>
+<h2 id="YouTube"><a href="#YouTube" class="headerlink" title="YouTube"></a>YouTube</h2><p>前面提到，关于3D打印的很多新了解我都是从 YouTube 上面看到的，上面的关于3D打印、机械、设计方面的视频让人大开眼界。其中，对于3D打印尤其推荐一个大神 <a target="_blank" rel="noopener" href="https://www.youtube.com/channel/UCiczXOhGpvoQGhOL16EZiTg">CNC Kitchen</a>，他制作了很多视频，每集关注一个主题，测试不同的打印参数、材料、后处理方式对打印效果的影响。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/blog/tags/Maker/" rel="tag"><i class="fa fa-tag"></i> Maker</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2019/08/25/Garmin-Vivoactive-3/" rel="prev" title="Garmin Vovoactive 3">
+      <i class="fa fa-chevron-left"></i> Garmin Vovoactive 3
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2020/04/05/Precisely-model-delta-printer-bed-shape/" rel="next" title="Precisely model delta printer bed shape">
+      Precisely model delta printer bed shape <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E6%A8%A1%E8%BD%AF%E4%BB%B6%EF%BC%9AFusion-360"><span class="nav-number">1.1.</span> <span class="nav-text">建模软件：Fusion 360</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%87%E7%89%87%E8%BD%AF%E4%BB%B6%EF%BC%9ASlic3r-PrusaSlicer-Slic3r"><span class="nav-number">1.2.</span> <span class="nav-text">切片软件：Slic3r - PrusaSlicer - Slic3r++</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%93%E5%8D%B0%E6%9C%BA%E7%A1%AC%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">打印机硬件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%96%E5%A4%B4%E5%96%B7%E5%98%B4%E4%B8%8E%E9%9D%9E%E5%B9%B3%E9%9D%A2%E6%89%93%E5%8D%B0%EF%BC%88non-planar%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">尖头喷嘴与非平面打印（non-planar）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A3%8E%E6%89%87"><span class="nav-number">2.2.</span> <span class="nav-text">风扇</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E8%AF%95"><span class="nav-number">3.</span> <span class="nav-text">调试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A6%96%E5%B1%82%E8%A3%82%E5%BC%80%E4%B8%8A%E7%BF%98"><span class="nav-number">3.1.</span> <span class="nav-text">首层裂开上翘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%A4%E5%87%BA%E4%B8%8D%E8%B6%B3"><span class="nav-number">3.2.</span> <span class="nav-text">挤出不足</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Z-offset"><span class="nav-number">3.3.</span> <span class="nav-text">Z offset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E6%8C%A4%E5%87%BA%E9%80%9F%E5%BA%A6"><span class="nav-number">3.4.</span> <span class="nav-text">最大挤出速度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Marlin-Firmware"><span class="nav-number">4.</span> <span class="nav-text">Marlin Firmware</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD-x2F-%E5%8D%B8%E8%BD%BD%E6%89%93%E5%8D%B0%E6%9D%90%E6%96%99"><span class="nav-number">4.1.</span> <span class="nav-text">加载&#x2F;卸载打印材料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9A%82%E5%81%9C"><span class="nav-number">4.2.</span> <span class="nav-text">暂停</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Advanced-linear"><span class="nav-number">4.3.</span> <span class="nav-text">Advanced linear</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#YouTube"><span class="nav-number">5.</span> <span class="nav-text">YouTube</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="https://avatars.io/gravatar/leoliang@gmail.com">
+  <p class="site-author-name" itemprop="name">Leo Liang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">335</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Liang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '578b819466ead4247b6e',
+      clientSecret: '6a36866b9ae12bc5b0b1f0df95c98cbb2ed7ef61',
+      repo        : 'blog-comments',
+      owner       : 'aleung',
+      admin       : ['aleung'],
+      id          : 'ee6d4974fd59cf68559afd67dd23d21c',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

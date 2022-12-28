@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="A shortened sbt tutorial for beginner and quick reference. Directory structure1234567891011lib&#x2F;project&#x2F;  Build.scala  plugins.sbtsrc&#x2F;  main&#x2F;    resources&#x2F;    scala&#x2F;    java&#x2F;  test&#x2F;built.sbt  Source co">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Getting start with sbt">
+<meta property="og:url" content="http://aleung.github.io/blog/2014/12/26/getting-start-with-sbt/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:description" content="A shortened sbt tutorial for beginner and quick reference. Directory structure1234567891011lib&#x2F;project&#x2F;  Build.scala  plugins.sbtsrc&#x2F;  main&#x2F;    resources&#x2F;    scala&#x2F;    java&#x2F;  test&#x2F;built.sbt  Source co">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2014-12-26T09:17:50.000Z">
+<meta property="article:modified_time" content="2022-12-07T16:53:24.584Z">
+<meta property="article:author" content="Leo Liang">
+<meta property="article:tag" content="SoftwareDev">
+<meta property="article:tag" content="Scala">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://aleung.github.io/blog/2014/12/26/getting-start-with-sbt/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Getting start with sbt | Good good study, day day up</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Good good study, day day up</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">aleung的学习笔记, aleung的idea</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">53</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">335</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2014/12/26/getting-start-with-sbt/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.io/gravatar/leoliang@gmail.com">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Getting start with sbt
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-12-26 17:17:50" itemprop="dateCreated datePublished" datetime="2014-12-26T17:17:50+08:00">2014-12-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-12-08 00:53:24" itemprop="dateModified" datetime="2022-12-08T00:53:24+08:00">2022-12-08</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>A shortened sbt tutorial for beginner and quick reference.</p>
+<h2 id="Directory-structure"><a href="#Directory-structure" class="headerlink" title="Directory structure"></a>Directory structure</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">lib/</span><br><span class="line">project/</span><br><span class="line">  Build.scala</span><br><span class="line">  plugins.sbt</span><br><span class="line">src/</span><br><span class="line">  main/</span><br><span class="line">    resources/</span><br><span class="line">    scala/</span><br><span class="line">    java/</span><br><span class="line">  test/</span><br><span class="line">built.sbt</span><br></pre></td></tr></table></figure>
+
+<p>Source code can be placed in the project’s base directory. But usually people organize them into directory structure.</p>
+<p>sbt by default uses the same directory structure as Maven for source files, all under <code>src/</code>.</p>
+<p>sbt build definition files include <code>build.sbt</code> in project’s base drectory and other <code>.sbt</code> or <code>.scala</code> files in <code>project/</code> subdirectory.</p>
+<p>The <code>project</code> directory <em>is another project embedded</em> which knows how to build the outer project. So it may have its <code>build.sbt</code> and <code>project</code> directory structure, which is recursive. <em>The build definition is an sbt project.</em></p>
+<h2 id="Running"><a href="#Running" class="headerlink" title="Running"></a>Running</h2><p>Common sbt commands:</p>
+<ul>
+<li>clean</li>
+<li>compile</li>
+<li>test</li>
+<li>testOnly &lt;testcase&gt;*</li>
+<li>run &lt;argument&gt;*</li>
+<li>package</li>
+<li>reload</li>
+</ul>
+<p>sbt can ran in interactive mode or batch mode. In batch mode, specifying a space-seperated list of commands. For commands that take arguments, enclosing the command and arguments in quotes.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sbt clean compile <span class="string">&quot;testOnly TestA TestB&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>Prefixing a command with <code>~</code> will make the command run when any source files change. Press enter to stop watching for changes.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; ~ compile</span><br></pre></td></tr></table></figure>
+
+<h2 id="Build-definition"><a href="#Build-definition" class="headerlink" title="Build definition"></a>Build definition</h2><h3 id="sbt-build-definition-basic"><a href="#sbt-build-definition-basic" class="headerlink" title=".sbt build definition basic"></a>.sbt build definition basic</h3><h4 id="Project"><a href="#Project" class="headerlink" title="Project"></a>Project</h4><p><code>build.sbt</code> defines one or more <code>Project</code>s, which hold a list of Scala expressions called <code>settings</code>.</p>
+<p>Top-level objects and classes are not allowed in <code>build.sbt</code>. Those should go in the <code>project/</code> directory as full Scala source files.</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lazy</span> <span class="keyword">val</span> commonSettings = <span class="type">Seq</span>(</span><br><span class="line">  organization := <span class="string">&quot;com.example&quot;</span>,</span><br><span class="line">  version := <span class="string">&quot;0.1.0&quot;</span>,</span><br><span class="line">  scalaVersion := <span class="string">&quot;2.11.4&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">lazy</span> <span class="keyword">val</span> root = (project in file(<span class="string">&quot;.&quot;</span>)).</span><br><span class="line">  settings(commonSettings: _*).</span><br><span class="line">  settings(</span><br><span class="line">    name := <span class="string">&quot;hello&quot;</span></span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+
+<p>On the left, <code>name</code>, <code>version</code> and <code>scalaVersion</code> are <em>keys</em>. Keys have a method called <code>:=</code>, which returns a <code>Setting[T]</code>, where <code>T</code> is the value type.</p>
+<h4 id="Keys"><a href="#Keys" class="headerlink" title="Keys"></a>Keys</h4><p>There are three flavors of key: <code>SettingKey[T]</code>, <code>TaskKey[T]</code> and <code>InputKey[T]</code>.</p>
+<p>A <code>TaskKey[T]</code> is said to define a <em>task</em>. </p>
+<p>A <code>InputKey[T]</code> defines a <em>input task</em>, which parses user input and produce a task to run.</p>
+<p>For a setting, the value will be computed once at project load time. For a task, the computation will be re-run each time the task is executed.</p>
+<p>Built-in keys are fields in object <code>sbt.Keys</code>, which are implicitly imported so can be directly referred.</p>
+<p>Custom keys may be defined with their respective creation methods: <code>settingKey</code>, <code>taskKey</code>, and <code>inputKey</code>. </p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lazy</span> <span class="keyword">val</span> hello = taskKey[<span class="type">Unit</span>](<span class="string">&quot;An example task&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">lazy</span> <span class="keyword">val</span> root = (project in file(<span class="string">&quot;.&quot;</span>)).</span><br><span class="line">  settings(</span><br><span class="line">    hello := &#123; println(<span class="string">&quot;Hello!&quot;</span>) &#125;</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+
+<h3 id="Bare-sbt-build-definition"><a href="#Bare-sbt-build-definition" class="headerlink" title="Bare .sbt build definition"></a>Bare .sbt build definition</h3><p><em>Bare .sbt build definition</em> is an old style which is not recommended to use.</p>
+<p>Bare .sbt build definition doesn’t explicitly define a <code>Project</code>, it implicitly deines one based on the location of the <code>.sbt</code> file. The <code>.sbt</code> file consists of a list of <code>Setting[_]</code> expressions.</p>
+<p>Before sbt 0.13.7, settings must be separated by blank lines.</p>
+<h2 id="Library-dependencies"><a href="#Library-dependencies" class="headerlink" title="Library dependencies"></a>Library dependencies</h2><p>To add unmanaged dependencies, simplily drop jar files in <code>lib/</code>.</p>
+<p>Managed dependencies are specified by <code>libraryDependencies</code> key in <code>build.sbt</code>.</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">libraryDependencies += groupID % artifactID % revision % configuration</span><br></pre></td></tr></table></figure>
+
+<p>If you use double %% between the groupID and artifactID, sbt will add your project’s Scala version to the artifact name.</p>
+<p>Assuming the scalaVersion for your build is 2.11.1, the following adds <code>org.scala-tools:scala-stm_2.11.1:0.3</code>:</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">libraryDependencies += <span class="string">&quot;org.scala-tools&quot;</span> %% <span class="string">&quot;scala-stm&quot;</span> % <span class="string">&quot;0.3&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>By default, if omitted, configuration is “compile”. A common used value is “test”.</p>
+<p>sbt uses Apache Ivy to implement managed dependencies. Advanced usage of revision and configuration can follow Ivy document.</p>
+<p>sbt uses the standard Maven2 repository by default. To add additional repository, add a <code>resolver</code>:</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">resolvers += <span class="string">&quot;Local Maven Repository&quot;</span> at <span class="string">&quot;file://&quot;</span>+<span class="type">Path</span>.userHome.absolutePath+<span class="string">&quot;/.m2/repository&quot;</span></span><br><span class="line"></span><br><span class="line">resolvers += <span class="string">&quot;Sonatype OSS Snapshots&quot;</span> at <span class="string">&quot;https://oss.sonatype.org/content/repositories/snapshots&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Multiple-projects"><a href="#Multiple-projects" class="headerlink" title="Multiple projects"></a>Multiple projects</h2><p>Multiple projects can be grouped under one project. </p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lazy</span> <span class="keyword">val</span> root = (project in file(<span class="string">&quot;.&quot;</span>)).</span><br><span class="line">  aggregate(util, core)</span><br><span class="line"></span><br><span class="line"><span class="keyword">lazy</span> <span class="keyword">val</span> util = project</span><br><span class="line"></span><br><span class="line"><span class="keyword">lazy</span> <span class="keyword">val</span> core = project</span><br></pre></td></tr></table></figure>
+
+<p>Each sub-project has its own directory. In above example the directory name is same as the project’s ID. The following is a more explicit way: </p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lazy</span> <span class="keyword">val</span> core = project in file(<span class="string">&quot;core&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>If a project is not defined for the root directory in the build, sbt creates a default one that aggregates all other projects in the build. </p>
+<p>A project may depend on other projects:</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lazy</span> <span class="keyword">val</span> core = project.dependsOn(util, api)</span><br></pre></td></tr></table></figure>
+
+<p><code>foo dependsOn(bar)</code> means that the <code>compile</code> configuration in foo depends on the <code>compile</code> configuration in bar. You can declare other configuraiton dependency, for example, <code>dependsOn(bar % &quot;test-&gt;test;compile-&gt;compile&quot;)</code>.</p>
+<h2 id="Using-plugins"><a href="#Using-plugins" class="headerlink" title="Using plugins"></a>Using plugins</h2><p>Declares the plugin dependency in <code>project/plugins.sbt</code>. The file name can be different, you may create one sbt file for one plugin.</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addSbtPlugin(<span class="string">&quot;com.typesafe.sbt&quot;</span> % <span class="string">&quot;sbt-site&quot;</span> % <span class="string">&quot;0.7.0&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/blog/tags/SoftwareDev/" rel="tag"><i class="fa fa-tag"></i> SoftwareDev</a>
+              <a href="/blog/tags/Scala/" rel="tag"><i class="fa fa-tag"></i> Scala</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2014/12/26/ivy-introduction-for-maven-user/" rel="prev" title="Ivy Introduction for Maven User">
+      <i class="fa fa-chevron-left"></i> Ivy Introduction for Maven User
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2014/12/30/windows-troubleshooting/" rel="next" title="Trouble shooting: Windows响应缓慢">
+      Trouble shooting: Windows响应缓慢 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Directory-structure"><span class="nav-number">1.</span> <span class="nav-text">Directory structure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Running"><span class="nav-number">2.</span> <span class="nav-text">Running</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Build-definition"><span class="nav-number">3.</span> <span class="nav-text">Build definition</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sbt-build-definition-basic"><span class="nav-number">3.1.</span> <span class="nav-text">.sbt build definition basic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bare-sbt-build-definition"><span class="nav-number">3.2.</span> <span class="nav-text">Bare .sbt build definition</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Library-dependencies"><span class="nav-number">4.</span> <span class="nav-text">Library dependencies</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multiple-projects"><span class="nav-number">5.</span> <span class="nav-text">Multiple projects</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-plugins"><span class="nav-number">6.</span> <span class="nav-text">Using plugins</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="https://avatars.io/gravatar/leoliang@gmail.com">
+  <p class="site-author-name" itemprop="name">Leo Liang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">335</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Liang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '578b819466ead4247b6e',
+      clientSecret: '6a36866b9ae12bc5b0b1f0df95c98cbb2ed7ef61',
+      repo        : 'blog-comments',
+      owner       : 'aleung',
+      admin       : ['aleung'],
+      id          : '704f9adf9573bd342d785dd28ef893f2',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

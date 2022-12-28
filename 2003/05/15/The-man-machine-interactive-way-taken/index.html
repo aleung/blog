@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="找到一个神奇的软件Denim: http:&#x2F;&#x2F;guir.cs.berkeley.edu&#x2F;projects&#x2F;denim&#x2F;   这是一个辅助web设计&#x2F;界面设计,用来画草图的软件, 使用鼠标或者手写版, 在屏幕上绘制草图.   如果在软件设计领域也有这样的软件就好了, 例如用来画UML. 软件需要有一定的识别能力, 能够辨认出用户画的是什么图形, 变成规范的格式.  今天把手写板装上，试用了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人机交互方式的跃进">
+<meta property="og:url" content="http://aleung.github.io/blog/2003/05/15/The-man-machine-interactive-way-taken/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:description" content="找到一个神奇的软件Denim: http:&#x2F;&#x2F;guir.cs.berkeley.edu&#x2F;projects&#x2F;denim&#x2F;   这是一个辅助web设计&#x2F;界面设计,用来画草图的软件, 使用鼠标或者手写版, 在屏幕上绘制草图.   如果在软件设计领域也有这样的软件就好了, 例如用来画UML. 软件需要有一定的识别能力, 能够辨认出用户画的是什么图形, 变成规范的格式.  今天把手写板装上，试用了">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2003-05-14T16:09:00.000Z">
+<meta property="article:modified_time" content="2022-12-07T16:53:24.568Z">
+<meta property="article:author" content="Leo Liang">
+<meta property="article:tag" content="Software">
+<meta property="article:tag" content="UX">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://aleung.github.io/blog/2003/05/15/The-man-machine-interactive-way-taken/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>人机交互方式的跃进 | Good good study, day day up</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Good good study, day day up</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">aleung的学习笔记, aleung的idea</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">53</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">335</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2003/05/15/The-man-machine-interactive-way-taken/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.io/gravatar/leoliang@gmail.com">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          人机交互方式的跃进
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2003-05-15 00:09:00" itemprop="dateCreated datePublished" datetime="2003-05-15T00:09:00+08:00">2003-05-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-12-08 00:53:24" itemprop="dateModified" datetime="2022-12-08T00:53:24+08:00">2022-12-08</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>找到一个神奇的软件Denim: <a target="_blank" rel="noopener" href="http://guir.cs.berkeley.edu/projects/denim/">http://guir.cs.berkeley.edu/projects/denim/</a>  </p>
+<p>这是一个辅助web设计&#x2F;界面设计,用来画草图的软件, 使用鼠标或者手写版, 在屏幕上绘制草图.  </p>
+<p>如果在软件设计领域也有这样的软件就好了, 例如用来画UML. 软件需要有一定的识别能力, 能够辨认出用户画的是什么图形, 变成规范的格式. </p>
+<p>今天把手写板装上，试用了Denim，确实不错。  </p>
+<p>因为经常在写文档中需要有些框图之类的，我是想用手写板来画，并且利用软件的自动图形识别来将画出的图元规范化，那就方便了。于是在网上找有没有这样的软件。用google搜索，发现手绘草图的识别方面的论文不少，但是实用化软件就没几个。  </p>
+<p>看介绍，比较好的一个软件是Corel的Grafigo（<a target="_blank" rel="noopener" href="http://www.corel.com/grafigo/">http://www.corel.com/grafigo/</a>），这是一个专门for Tablet PC的软件，在Win2k上不能运行，也不能尝试实际效果。  </p>
+<p>另外一个是riteShape，是供开发pen application shape recognition的SDK，网上有在线demo（<a target="_blank" rel="noopener" href="http://pi.parascript.com/piweb/products/riteshape/rs_demo.asp">http://pi.parascript.com/piweb/products/riteshape/rs_demo.asp</a>），这个技术用在了该公司的riteMail中。riteMail是一个邮件client，提供了手写、图形邮件，包括了英文文字识别、图形识别的功能。  </p>
+<p>最终还是没有找到desktop PC可用的合适的软件。不过在找的过程中，发现了tablet PC是很特别的一个产品，它的手写输入、数字墨水带来了电脑人机交换中的一个新的概念。  </p>
+<p>另外也发现一个不错的软件SketchBook Pro，这个软件是用手写笔来绘画图形的，但不是面向美术设计师的，故此不象painter那么复杂，可以供你随时在上面涂鸦，可能作为草稿本更适合。另外它提供layer，故此可以在现有的图片上面做注释，例如在设计稿上标示出修改建议等。我要找它的注册码才行。  </p>
+<p>在做构思时，我更习惯用笔在纸上写画而不习惯在电脑上面写，因为笔纸有最大的自由度，不会因为工具的使用的限制而成为思维的障碍。由于技术上的限制，人机交互目前仍然只能在比较低级的层面，主要是键盘和鼠标，是人要改变自己的习惯去适应电脑，实际并不能顺畅，故此在某些情况下会成为思维的限制，因为要把精力分散在如何操控上了。如今Microsoft提出Tablet PC，有人认为只是概念抄作，但我觉得这已经超出仅仅输入设备的范畴了，而将是人机交换方式的一大跃进，这些挺有意思的，会是以后的方向，电脑与人的交换会越来越人性化。  </p>
+<p>在eDonkey网上发现有WinXP Tablet PC版本，不知能否下载下来。据说这个版本只是在XP pro基础上加了手写方面的功能，那么应该可以在台式机上安装吧？第一次对XP这么有好感:)  </p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/blog/tags/Software/" rel="tag"><i class="fa fa-tag"></i> Software</a>
+              <a href="/blog/tags/UX/" rel="tag"><i class="fa fa-tag"></i> UX</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2003/04/05/Solve-Solaris-sendmail-constantly-in-the-method-of-error/" rel="prev" title="解决Solaris中sendmail不断报错的方法">
+      <i class="fa fa-chevron-left"></i> 解决Solaris中sendmail不断报错的方法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2003/05/17/Garmin-Rino-110-/" rel="next" title="Garmin Rino 110 试用">
+      Garmin Rino 110 试用 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="https://avatars.io/gravatar/leoliang@gmail.com">
+  <p class="site-author-name" itemprop="name">Leo Liang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">335</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Liang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '578b819466ead4247b6e',
+      clientSecret: '6a36866b9ae12bc5b0b1f0df95c98cbb2ed7ef61',
+      repo        : 'blog-comments',
+      owner       : 'aleung',
+      admin       : ['aleung'],
+      id          : 'beb3fbf0549f7e90fec0560c804c3050',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>
