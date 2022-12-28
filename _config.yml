@@ -14,7 +14,7 @@ timezone:
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://aleung.github.io/blog
 root: /blog/
-permalink: :year/:month/:day/:title/
+permalink: ":year/:month/:day/:title/"
 permalink_defaults:
 
 # Directory
@@ -26,6 +26,7 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
+post_asset_folder: true
 
 # Writing
 new_post_name: :year-:month-:day-:title.md
@@ -35,7 +36,6 @@ external_link:
   enable: true   # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: true
 relative_link: false
 future: false
 highlight:
@@ -66,10 +66,10 @@ tag_generator:
   per_page: 0
 category_generator:
   per_page: 0
-  
+
 # Extensions
 ## Plugins: https://hexo.io/plugins/
-  
+
 ## Themes: https://hexo.io/themes/
 theme: next
 
@@ -92,3 +92,8 @@ google_analytics: UA-2827715-4
 excerpt:
   depth: 5
   hideWholePostExcerpts: false
+
+# https://github.com/hexojs/hexo-renderer-marked
+marked:
+  prependRoot: false
+  postAsset: false
