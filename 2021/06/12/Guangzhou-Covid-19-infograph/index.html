@@ -27,14 +27,14 @@
 <meta property="og:site_name" content="Good good study, day day up">
 <meta property="og:description" content="最近在看一本书《用数据讲故事》，介绍用故事思维做数据可视化。看过后想找个东西来练习一下，正好最近广州一波COVID-19瘟疫爆发，就试着做一个疫情的信息图。 这张图要传达些什么信息呢？我的目标是向关心疫情的普通民众解释：  哪里出现了病例？ 这些地方的疫情有多严重？ 随着时间过去，情况发生了什么变化？ 从一开始一个阿婆得病，到后来多处爆发，疫情是怎样变得严峻起来的？  另外，信息图要在社交媒体发布">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://aleung.github.io/blog/blog/2021/06/12/Guangzhou-Covid-19-infograph/jun9.png">
-<meta property="og:image" content="http://aleung.github.io/blog/blog/2021/06/12/Guangzhou-Covid-19-infograph/jun10.png">
+<meta property="og:image" content="http://aleung.github.io/blog/2021/06/12/Guangzhou-Covid-19-infograph/jun9.png">
+<meta property="og:image" content="http://aleung.github.io/blog/2021/06/12/Guangzhou-Covid-19-infograph/jun10.png">
 <meta property="article:published_time" content="2021-06-12T14:26:46.000Z">
 <meta property="article:modified_time" content="2022-08-28T15:12:31.219Z">
 <meta property="article:author" content="Leo Liang">
 <meta property="article:tag" content="DataVisualization">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://aleung.github.io/blog/blog/2021/06/12/Guangzhou-Covid-19-infograph/jun9.png">
+<meta name="twitter:image" content="http://aleung.github.io/blog/2021/06/12/Guangzhou-Covid-19-infograph/jun9.png">
 
 <link rel="canonical" href="http://aleung.github.io/blog/2021/06/12/Guangzhou-Covid-19-infograph/">
 
@@ -238,7 +238,7 @@
 <li>从一开始一个阿婆得病，到后来多处爆发，疫情是怎样变得严峻起来的？</li>
 </ol>
 <p>另外，信息图要在社交媒体发布，我设想它应该能在手机上比较轻松的阅读。</p>
-<p><img src="/blog/blog/2021/06/12/Guangzhou-Covid-19-infograph/jun9.png"></p>
+<p><img src="/blog/2021/06/12/Guangzhou-Covid-19-infograph/jun9.png"></p>
 <p><em>6月8日疫情信息图</em></p>
 <span id="more"></span>
 
@@ -263,7 +263,7 @@
 <p><strong>反馈及修改</strong></p>
 <p>在6月8日的图上，有病例的街道在地图上用了浅红色覆盖，用意是容易看出街道的地理范围。但正如上面所说，有些街道面积太大，例如番禺的洛浦、大石，只有一两个病例，就把二十多平方公里的地域标红了，容易让读者误解全部都是疫区。在6月9日的图中，做了另外一个尝试：去掉大面积的颜色覆盖，仅保留气泡。对于只有少量病例的街道，气泡并不是标注在地理中心，而是标注在病例出现的大致位置。这样做解决了疫区误解的问题，但比起之前少了街道地理区域的信息，视觉效果上好像也差了一些。</p>
 <p>第一天的图容易误解可能还有一个原因是配色——浅红色让人理解为危险区域。如果改成中性的颜色可能也会好些。在《用数据讲故事》作者的blog中最近一篇文章 <a target="_blank" rel="noopener" href="https://www.storytellingwithdata.com/blog/2021/6/8/colors-and-emotions-in-data-visualization">colors and emotions in data visualization</a>，正好就提到了 map of COVID-19 cases 的例子：一个图是用了红色”bloody-red”，另一个图“using more decent colors to avoid an emotion of fear”，选择了蓝-绿色系，两者传递的情感就很不一样。</p>
-<p><img src="/blog/blog/2021/06/12/Guangzhou-Covid-19-infograph/jun10.png"></p>
+<p><img src="/blog/2021/06/12/Guangzhou-Covid-19-infograph/jun10.png"></p>
 <p><em>6月9日疫情信息图</em></p>
 <p>第二天的图还做了少量改进：气泡图用不同颜色添加了额外一个维度的信息——是否在最近3天&#x2F;7天出现新的病例。这样改动后，地图上的信息量增加了，能直观的区分出一个地区的疫情是否已经受控。不过采用的配色并不理想，辨析度不够，还需要改进。</p>
 <p><strong>不足</strong></p>

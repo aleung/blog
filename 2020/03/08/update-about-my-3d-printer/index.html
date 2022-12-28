@@ -27,19 +27,19 @@
 <meta property="og:site_name" content="Good good study, day day up">
 <meta property="og:description" content="3D 打印机玩了两年多，最近两个月折腾了一番，又有一些新的心得。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://aleung.github.io/blog/blog/2020/03/08/update-about-my-3d-printer/fusion360.png">
-<meta property="og:image" content="http://aleung.github.io/blog/blog/2020/03/08/update-about-my-3d-printer/nonplanar.png">
-<meta property="og:image" content="http://aleung.github.io/blog/blog/2020/03/08/update-about-my-3d-printer/airbrush.jpg">
-<meta property="og:image" content="http://aleung.github.io/blog/blog/2020/03/08/update-about-my-3d-printer/2020-02-b-1.png">
-<meta property="og:image" content="http://aleung.github.io/blog/blog/2020/03/08/update-about-my-3d-printer/shrink.jpg">
-<meta property="og:image" content="http://aleung.github.io/blog/blog/2020/03/08/update-about-my-3d-printer/under_extrude.jpg">
-<meta property="og:image" content="http://aleung.github.io/blog/blog/2020/03/08/update-about-my-3d-printer/embed.jpg">
+<meta property="og:image" content="http://aleung.github.io/blog/2020/03/08/update-about-my-3d-printer/fusion360.png">
+<meta property="og:image" content="http://aleung.github.io/blog/2020/03/08/update-about-my-3d-printer/nonplanar.png">
+<meta property="og:image" content="http://aleung.github.io/blog/2020/03/08/update-about-my-3d-printer/airbrush.jpg">
+<meta property="og:image" content="http://aleung.github.io/blog/2020/03/08/update-about-my-3d-printer/2020-02-b-1.png">
+<meta property="og:image" content="http://aleung.github.io/blog/2020/03/08/update-about-my-3d-printer/shrink.jpg">
+<meta property="og:image" content="http://aleung.github.io/blog/2020/03/08/update-about-my-3d-printer/under_extrude.jpg">
+<meta property="og:image" content="http://aleung.github.io/blog/2020/03/08/update-about-my-3d-printer/embed.jpg">
 <meta property="article:published_time" content="2020-03-08T14:29:29.000Z">
 <meta property="article:modified_time" content="2022-08-28T15:12:31.203Z">
 <meta property="article:author" content="Leo Liang">
 <meta property="article:tag" content="Maker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://aleung.github.io/blog/blog/2020/03/08/update-about-my-3d-printer/fusion360.png">
+<meta name="twitter:image" content="http://aleung.github.io/blog/2020/03/08/update-about-my-3d-printer/fusion360.png">
 
 <link rel="canonical" href="http://aleung.github.io/blog/2020/03/08/update-about-my-3d-printer/">
 
@@ -252,7 +252,7 @@
 <li>过渡面、斜切、肋条这些细节修改做起来轻而易举。</li>
 </ul>
 <p>在 YouTube 上有不少很好的教学视频，边看边试，做了几个模型后基本上也能上手了，一下子就变成了我现在建模用的主力工具。Fusion 360 对个人使用提供免费无限期许可，对于功能这么强大的软件真是很不错。</p>
-<p><img src="/blog/blog/2020/03/08/update-about-my-3d-printer/fusion360.png"></p>
+<p><img src="/blog/2020/03/08/update-about-my-3d-printer/fusion360.png"></p>
 <h3 id="切片软件：Slic3r-PrusaSlicer-Slic3r"><a href="#切片软件：Slic3r-PrusaSlicer-Slic3r" class="headerlink" title="切片软件：Slic3r - PrusaSlicer - Slic3r++"></a>切片软件：Slic3r - PrusaSlicer - Slic3r++</h3><p>自从做好3D打印机以来一直用的是开源的 <a target="_blank" rel="noopener" href="https://slic3r.org/">Slic3r</a>，它一直也没有怎么出过升级版本。直到最近两个月，我才知道 Slic3r 有一个fork叫做 <a target="_blank" rel="noopener" href="https://www.prusa3d.com/prusaslicer/">PrusaSlicer</a>，在 Slic3r 基础上增加了更多的功能。在 Reddit 上有人评价：完全找不到理由从 PrusaSlicer 转回 Slic3r。既然如此，就下载下来一试，果然：Slic3r的配置选项本来已经多得眼花缭乱了，PrusaSlicer又增加了一堆。然后过了两个星期，再发现了另外一个fork：<a target="_blank" rel="noopener" href="https://github.com/supermerill/slic3r">Slic3r++</a>，这虽然好像只是一个个人的项目，但它在PrusaSlicer的基础上增加了几个很好的改进：</p>
 <ul>
 <li>Ironing：在打印完上表面后，用打印头在上面重新再“熨”一遍，将纹理抹平。打印出来的表面平滑了很多，效果相当理想。</li>
@@ -262,10 +262,10 @@
 <p>它还有其他一些小改进，但就上面几个就足以让我切换到 Slic3r++ 上来了。</p>
 <h2 id="打印机硬件"><a href="#打印机硬件" class="headerlink" title="打印机硬件"></a>打印机硬件</h2><h3 id="尖头喷嘴与非平面打印（non-planar）"><a href="#尖头喷嘴与非平面打印（non-planar）" class="headerlink" title="尖头喷嘴与非平面打印（non-planar）"></a>尖头喷嘴与非平面打印（non-planar）</h3><p>在YouTube看到一个介绍<a target="_blank" rel="noopener" href="https://youtu.be/gmePlcU0TRw">非平面打印</a>的视频，想尝试一下，就买了一个尖头的打印喷嘴。</p>
 <p>先说什么是非平面打印。FDM（熔融沉积）打印是在Z轴上一层一层的把打印材料堆积起来的，打完一层后打印头上升一层高度，再打一层。典型一层的高度是0.3mm。对于打印比较平缓的斜面时，就会有明显等高线阶梯，表面不精细。但实际上打印头是可以在Z轴上运动的，层并不一定需要为水平面。Non-plannar slicing 是通过一定的算法，让打印头在打印模型上表面时，打印层为一个曲面，减少等高线阶梯。这个思路在几年前已经在网上有描述，去年一位汉堡大学的学生将这作为他的毕业论文课题，并且基于开源Slic3r开发了一个基本可用的<a target="_blank" rel="noopener" href="https://github.com/Zip-o-mat/Slic3r/tree/nonplanar">实现</a>.</p>
-<p><img src="/blog/blog/2020/03/08/update-about-my-3d-printer/nonplanar.png"></p>
+<p><img src="/blog/2020/03/08/update-about-my-3d-printer/nonplanar.png"></p>
 <p>当打印层不在一个平面上时，打印到凹陷的地方时，打印头上面的部件就有可能碰撞到已打印的凸起位置。因此打印头突出得越多，能够打印的曲面倾斜度越大。</p>
 <p>淘宝上看到有卖这种不锈钢尖头的打印喷嘴。这应该是转接了绘画喷笔的喷头，在国外网站也是早年有讨论，现在国内都量产了。比起E3D喷嘴，这种喷嘴的净空高度增加了好几毫米。</p>
-<p><img src="/blog/blog/2020/03/08/update-about-my-3d-printer/airbrush.jpg"></p>
+<p><img src="/blog/2020/03/08/update-about-my-3d-printer/airbrush.jpg"></p>
 <p>可是，换上这个喷嘴后，立马就堵丝了。检查发现应该是因为温度的问题：尖嘴处的热容量小，再加上风扇吹着，温度下降得比较快，打印材料冷却了就堵住了。升高打印温度解决了堵头问题，但多番调试始终打印效果都不理想，出现各种问题，后来就换回了普通喷嘴。</p>
 <p>现在复盘一下，主要应该是这些问题：</p>
 <ul>
@@ -275,7 +275,7 @@
 </ul>
 <p>结果就是根本没有机会尝试到非平面打印。不过暂时也先不折腾了，更换喷嘴太麻烦。毕竟现在唯一能支持这个功能的slicer还是试验性的，日常应用还是有不少限制，等什么时候软件完善了再来试试。</p>
 <h3 id="风扇"><a href="#风扇" class="headerlink" title="风扇"></a>风扇</h3><p>在试验尖头喷嘴的时候感觉风扇需要调整一下，于是将二合一散热风道的设计又重做了几个版本。</p>
-<p><img src="/blog/blog/2020/03/08/update-about-my-3d-printer/2020-02-b-1.png"></p>
+<p><img src="/blog/2020/03/08/update-about-my-3d-printer/2020-02-b-1.png"></p>
 <p>尝试了不同的风量比例、出风口大小、角度、吹风位置，总结了一些经验：</p>
 <ul>
 <li>轴流风扇的风压小，风道出风口不能收得太小，越直越好，否则出风量很小，空气甚至会在风扇处倒灌。如果换成用径流风扇（涡轮风扇）做工件散热应该会好些，但这样就得装两个风扇了，增加打印头的体积和重量。</li>
@@ -284,10 +284,10 @@
 </ul>
 <h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p>更换元件，调试过程中间出过好几个问题，一度打印效果非常差。以下是遇到的几个问题，解决后基本上打印质量比较理想了。</p>
 <h3 id="首层裂开上翘"><a href="#首层裂开上翘" class="headerlink" title="首层裂开上翘"></a>首层裂开上翘</h3><p>这个问题在更换风扇风道后出现，还去 StackExchange 上提过<a target="_blank" rel="noopener" href="https://3dprinting.stackexchange.com/q/11800/162">问题</a>。打印首层过程中，中间裂开翘起，但是边缘贴合打印床又没有问题。尝试过清洁玻璃板、更换胶水、delta参数校准、Z校准都不起作用，最后仔细观察打印过程，发现打印丝刚挤出来的时候是贴合玻璃板的，然后它就被扯起来了，是因为前面已打印的相邻材料在冷却收缩。首层打印时关闭风扇，就不再出现这个问题。</p>
-<p><img src="/blog/blog/2020/03/08/update-about-my-3d-printer/shrink.jpg"></p>
+<p><img src="/blog/2020/03/08/update-about-my-3d-printer/shrink.jpg"></p>
 <p>但是，我以前一直都是打印全程风扇全开的，也没有出现过这个问题。其实是因为吹风位置改变引起的，没有及时冷却刚挤出来的材料，而是变成冷却已经打印成型的模型，造成模型的收缩。后来调整吹风位置，直接吹向喷嘴尖端就好了（见上面风扇一节）。</p>
 <h3 id="挤出不足"><a href="#挤出不足" class="headerlink" title="挤出不足"></a>挤出不足</h3><p>这个问题是在尝试0.2mm层高时发现的，起初认为是slicer软件问题，在github上提了issue，作者说我的0.3mm层高打印（右侧）其实也是挤出不足的。</p>
-<p><img src="/blog/blog/2020/03/08/update-about-my-3d-printer/under_extrude.jpg"></p>
+<p><img src="/blog/2020/03/08/update-about-my-3d-printer/under_extrude.jpg"></p>
 <p>自从打印机装好以来，一直没有校准过挤出量，感觉上差不多。固件里的挤出参数是根据步进电机和齿轮参数算出来的，想着应该没错吧？</p>
 <p>这次就认真的测量了一下：用笔在打印丝上做记号，发指令让挤出机慢速走个50mm左右，测量实际上打印丝的移动距离。惊讶的发现居然欠了15%左右，怪不得挤出不足。按实测比例修改参数，反复测量两次，大概就校准了。这时0.3mm层高的打印饱满了很多，打印0.8mm薄壁测试，用游标卡尺测量，厚度也误差很少了。</p>
 <h3 id="Z-offset"><a href="#Z-offset" class="headerlink" title="Z offset"></a>Z offset</h3><p>挤出电机的系数校准后，0.2mm层高的首层依然空隙很大，没有什么变化。后来发现是打印头的Z位置不准，Z&#x3D;0 时与打印平台有零点几毫米的空隙，因此首层实际高度高了许多，自然挤出量就不够了。重新做 delta calibration 之后解决问题。</p>
@@ -299,7 +299,7 @@
 <h2 id="Marlin-Firmware"><a href="#Marlin-Firmware" class="headerlink" title="Marlin Firmware"></a>Marlin Firmware</h2><p>最近也升级了打印机的固件。<a target="_blank" rel="noopener" href="https://marlinfw.org/">Marlin Firmware</a> 在长长的开发周期之后，终于正式发布了2.0版本。2.0版本主要是32bit，增加了对很多控制板的支持，但对于我用的低端 Arduino，其实没有什么区别。装2.0试了一下，感觉有点不是很稳定，不记得具体啥问题了，反正换回了1.1。惊喜的发现，其实2.0里面见到的新增功能，在1.1分支的最新版本里面都已经有了。</p>
 <h3 id="加载-x2F-卸载打印材料"><a href="#加载-x2F-卸载打印材料" class="headerlink" title="加载&#x2F;卸载打印材料"></a>加载&#x2F;卸载打印材料</h3><p>升级固件后，最大的好处是装载和卸下打印丝方便多了。因为是远程送料，以前每次都要先预热打印头，等到温度够了后，手工把打印丝穿过挤出机，一直插到打印头，有融化的材料挤出来为止。要卸下打印丝也一样，预热温度够了手工抽出来。现在菜单里面就有 load&#x2F;unload 选项，固件里配置好参数，菜单一选，就自动预热，自动进&#x2F;退料到位。</p>
 <h3 id="暂停"><a href="#暂停" class="headerlink" title="暂停"></a>暂停</h3><p>另外一个功能是可以在打印过程中暂停，暂停可以有两种用途：更换打印材料（换颜色）；往打印工件内部空腔放入东西（例如一块磁铁），恢复打印后就可以将上面封口，将物品封闭在打印件内部。</p>
-<p><img src="/blog/blog/2020/03/08/update-about-my-3d-printer/embed.jpg"></p>
+<p><img src="/blog/2020/03/08/update-about-my-3d-printer/embed.jpg"></p>
 <p>这需要在slicer中配合，往预定的层上插入M25（暂停打印）指令，打印到那个层，打印就会暂停，并且打印头移到一个安全位置。这时可以卸下原来的打印丝，换上另外一盘不同颜色的，然后菜单选择继续打印，它就会回到原来位置继续。</p>
 <h3 id="Advanced-linear"><a href="#Advanced-linear" class="headerlink" title="Advanced linear"></a>Advanced linear</h3><p>按<a target="_blank" rel="noopener" href="https://youtu.be/n3yK0lJ8TWM">介绍</a>，这个<a target="_blank" rel="noopener" href="https://marlinfw.org/docs/features/lin_advance.html">功能</a>能够改善打印速度变化时出料不均匀的问题，不需要各种高级的回抽的设定。可是当时我测试的效果并不好，后来把它关闭了。现在看来，是因为测试前并没有先校准好挤出量，当时是出于挤出不足的状态的。以后有空可以再试一次，看看效果如何。</p>
 <h2 id="YouTube"><a href="#YouTube" class="headerlink" title="YouTube"></a>YouTube</h2><p>前面提到，关于3D打印的很多新了解我都是从 YouTube 上面看到的，上面的关于3D打印、机械、设计方面的视频让人大开眼界。其中，对于3D打印尤其推荐一个大神 <a target="_blank" rel="noopener" href="https://www.youtube.com/channel/UCiczXOhGpvoQGhOL16EZiTg">CNC Kitchen</a>，他制作了很多视频，每集关注一个主题，测试不同的打印参数、材料、后处理方式对打印效果的影响。</p>
