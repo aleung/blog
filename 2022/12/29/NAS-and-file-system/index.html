@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aleung.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="折腾了Linux台式机和NAS，记录一下。(原文写于2022年底，但放下了就没有全部写完) 其实我没有很高的NAS的服务需求，主要是数据得有备份，因此也没有专门买NAS硬件也没有用专门的NAS软件，只是用了闲置下来一台台式机，安装Ubuntu。故此，我就有两台Ubuntu电脑，一台是日常用机，称为desktop，另一台是NAS。 NASBtrfs RAID 1NAS需要保障数据安全，组个RAID会">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NAS and file system">
+<meta property="og:url" content="http://aleung.github.io/blog/2022/12/29/NAS-and-file-system/index.html">
+<meta property="og:site_name" content="Good good study, day day up">
+<meta property="og:description" content="折腾了Linux台式机和NAS，记录一下。(原文写于2022年底，但放下了就没有全部写完) 其实我没有很高的NAS的服务需求，主要是数据得有备份，因此也没有专门买NAS硬件也没有用专门的NAS软件，只是用了闲置下来一台台式机，安装Ubuntu。故此，我就有两台Ubuntu电脑，一台是日常用机，称为desktop，另一台是NAS。 NASBtrfs RAID 1NAS需要保障数据安全，组个RAID会">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-12-29T14:44:15.000Z">
+<meta property="article:modified_time" content="2024-01-18T15:28:27.018Z">
+<meta property="article:author" content="Leo Liang">
+<meta property="article:tag" content="SysAdmin">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://aleung.github.io/blog/2022/12/29/NAS-and-file-system/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>NAS and file system | Good good study, day day up</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/blog/atom.xml" title="Good good study, day day up" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Good good study, day day up</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">aleung的学习笔记, aleung的idea</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">54</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">337</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://aleung.github.io/blog/2022/12/29/NAS-and-file-system/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.io/gravatar/leoliang@gmail.com">
+      <meta itemprop="name" content="Leo Liang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Good good study, day day up">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          NAS and file system
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-12-29 22:44:15" itemprop="dateCreated datePublished" datetime="2022-12-29T22:44:15+08:00">2022-12-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-01-18 23:28:27" itemprop="dateModified" datetime="2024-01-18T23:28:27+08:00">2024-01-18</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>折腾了Linux台式机和NAS，记录一下。(原文写于2022年底，但放下了就没有全部写完)</p>
+<p>其实我没有很高的NAS的服务需求，主要是数据得有备份，因此也没有专门买NAS硬件也没有用专门的NAS软件，只是用了闲置下来一台台式机，安装Ubuntu。故此，我就有两台Ubuntu电脑，一台是日常用机，称为desktop，另一台是NAS。</p>
+<h2 id="NAS"><a href="#NAS" class="headerlink" title="NAS"></a>NAS</h2><h3 id="Btrfs-RAID-1"><a href="#Btrfs-RAID-1" class="headerlink" title="Btrfs RAID 1"></a>Btrfs RAID 1</h3><p>NAS需要保障数据安全，组个RAID会安心一点。</p>
+<p>这台电脑用了一个128G的SSD作为系统盘，挂两个HDD组成RAID 1做数据盘，以后有需求可以再增加一个。</p>
+<p>数据盘的文件系统采用BTRFS，考虑BTRFS支持RAID，并且可以用多个容量不一的磁盘来组RAID 1，正好用上现有的硬盘，以后添加也可以根据到时最经济的大小来买。添加（<code>btrfs device add</code>）或者替换（<code>btrfs replace</code>）磁盘后，执行 <code>btrfs balance</code> 就会将数据在RAID中的磁盘中重新分配，它会根据数据副本数量自动考虑各个磁盘的空闲空间大小来分配。</p>
+<p>BTRFS 的 scrub 命令可以检查和修复一部分磁盘错误。它对每个数据块读取并检查 checksum，如果发现读取失败或者数据校验错误，就会尝试用 RAID 1 中的其他副本来替换。建议定期（例如每个月）执行。</p>
+<h2 id="Desktop"><a href="#Desktop" class="headerlink" title="Desktop"></a>Desktop</h2><p>工作电脑要解决的问题是磁盘容量和性能的平衡，还有文件的历史版本保存，方便出问题时回退。</p>
+<p>首先，系统根文件系统我不想搞复杂，怕出问题，还是简单在SSD上分配，用 ext4 文件系统。然后，home 和一些数据目录再考虑其他方案。</p>
+<h3 id="Cached-LVM"><a href="#Cached-LVM" class="headerlink" title="Cached LVM"></a>Cached LVM</h3><p>照片、视频、数据等等各种东西加起来，需要的磁盘容量不小。考虑到使用方便和存储速度，倾向于保存在desktop上，而不是从NAS远程访问。</p>
+<p>如果都用SSD，大容量SSD也太贵了，HDD速度又太慢。以前用黑苹果的时候，是用 SSD + HDD 组成了 fusion drive，体验相当好，故此在 Linux 下也寻找类似的方案。最终选择了使用 LVM cache。</p>
+<p>LVM 的基本概念是三层结构：</p>
+<ul>
+<li>LV - Logical Volume，在VG上分配LV，LV上创建文件系统</li>
+<li>VG - Volume Group，多个PV组合成一个VG</li>
+<li>PV - Physical Volume，对应着物理存储设备（磁盘或者分区）</li>
+</ul>
+<p>一个 VG 中的 PV 可以包括 SSD（高速）和 HDD（低速），cached LV 就是将一个 cache LV 和一个 main LV 绑定起来，其中 cache LV 的空间分配自高速的 PV，而 main LV 的空间分配自低速的 PV，利用 cache 对读写操作进行缓冲，提高访问速度。</p>
+<p>Cached LV 有两种类型：cache both read and write (type  <code>cache</code>) 和 cache only write operations (type <code>writecache</code> )，在我的应用场景中当然是希望要能够对读操作加速。有两种 cache 模式：writeback 和 writethrough，writethrough 安全但似乎就起不到加速写操作的作用，但如果指定 writeback 模式，创建的时候会有警告，不推荐使用。</p>
+<p>很多教程、文档上写的方法都是一步步按部就班进行：</p>
+<ol>
+<li>创建 main LV</li>
+<li>创建 cache data LV</li>
+<li>创建 cache meta LV</li>
+<li>将 cache data LV 和 cache meta LV 合并为一个 cache pool</li>
+<li>将 cache pool 绑定到 main LV，转换为 cached LV</li>
+</ol>
+<p>其实用 cachevol 比用 cache pool 要简单， 就是直接在高速 PV 上创建一个 LV，将这个 LV 作为 cache。它与 cache pool 不同在于 cachevol 无法将 data 与 meta 分开到不同磁盘上，但通常家用场景也没有这样的需求</p>
+<p>然而，还有一个终极大招：一个命令完成创建 main LV （例子中为<code>/dev/sdd2</code>）、创建 cachevol (例子中为<code>/dev/sda5</code>)、转换为 cached LV 的全过程：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lvcreate --type cache -l 100%FREE --cachedevice /dev/sda5 vg2 -n lv_name /dev/sdd2</span><br></pre></td></tr></table></figure>
+
+<p>如果在创建的过程中出现关于 chunksize 的错误信息，需要增加参数 <code>--chunksize</code> 来调整。超过100GB的cache需要256k chunk size。</p>
+<p>这样组成的 cached LV 跟 MacOS 的 APFS Fusoin Drive 还是有区别：cached LV 的有效大小是 main LV 的大小，cache volume 完全只是作为 cache，甚至可以把它摘掉也不会影响存储的数据；而 Fusion Drive 的容量是组成的多个分区的总大小，它内部自动将文件在不同设备之间迁移，尽可能将热数据保存在快速设备上。</p>
+<h3 id="Btrfs-subvolumes-and-snapshots"><a href="#Btrfs-subvolumes-and-snapshots" class="headerlink" title="Btrfs, subvolumes and snapshots"></a>Btrfs, subvolumes and snapshots</h3><p>上面步骤创建好的 LV 等价于磁盘分区，还需要在上面创建文件系统。考虑到 BTRFS 支持 snapshot，可以实现文件的历史版本记录，选择了使用BTRFS。</p>
+<h4 id="subvolume"><a href="#subvolume" class="headerlink" title="subvolume"></a>subvolume</h4><p>(没写完)</p>
+<h4 id="snapper"><a href="#snapper" class="headerlink" title="snapper"></a>snapper</h4><p>snapper是一个管理 btrfs snapshot 的工具，对每个 subvolume 配置 snapshot 的保留策略（每小时&#x2F;每天&#x2F;每周&#x2F;每月&#x2F;每年的分别保存多少份），定时创建&#x2F;清理 btrfs snapshot。</p>
+<p>snapper是命令行工具，有一个snapper-gui项目，但在Ubuntu上工作不是很正常。用<a target="_blank" rel="noopener" href="https://gitlab.com/btrfs-assistant/btrfs-assistant">btrfs-assistant</a> GUI tool, 代替了 snapper-gui</p>
+<p>实际使用中发现，如果文件系统剩余空间不多（例如不足10%），磁盘就会非常繁忙，系统卡顿，应该是数据整理非常耗费资源。要保证文件系统剩余足够空闲空间，这限制的snapshot的数量。另外一个问题是，删除snapshot的时候，磁盘会非常繁忙，因此也要减少 snapshot 的数量。期望单靠 snapshot 来找回文件历史版本并不是合适的方案，应该还是使用 backup 工具创建定期的备份（见下面的章节），而对于需要<strong>真正</strong>的文件版本的场合，使用专门的版本管理系统。</p>
+<p>如果重新再装系统，我就会考虑snapshot这个功能需求是否有那么重要了，也许并不需要使用btrfs。</p>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p>启用 quota 功能可以统计各个 subvolume 使用的空间大小：<code>btrfs enable quota /path</code>，但是 quota 会造成很严重的性能问题！所以没必要还是不要启用。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/speed47/btrfs-list">btrfs-list</a> 方便查看所有的 subvolume, snapshot 以及它们所占的空间大小</p>
+<h2 id="Backup"><a href="#Backup" class="headerlink" title="Backup"></a>Backup</h2><p>从desktop备份数据到NAS，用的是 <a target="_blank" rel="noopener" href="https://kopia.io/">Kopia</a>。类似的工具还有 <a target="_blank" rel="noopener" href="https://www.borgbackup.org/">Borg</a>，都是deduplication的备份工具，对于多个备份中的相同的数据（基于hash）不会重复传输和存储，可以高效的进行增量备份，节省存储空间。</p>
+<p>Kopia既有命令行也有GUI，我在desktop上安装了KopiaUI，使用相当方便。存储仓库用SFTP指向NAS，在NAS上不需要安装软件，配置好ssh就可以。</p>
+<p>在desktop上，为每个要备份的目录（我这里是对应着BTRFS的subvolume）创建一个policy，policy中可以配置备份保持的周期（每小时&#x2F;每天&#x2F;每周&#x2F;每月&#x2F;每年的分别保存多少份），执行间隔时间，设定是否压缩，等等。</p>
+<p>如果有些文件&#x2F;目录不想备份，可以写到<code>.kopiaignore</code>文件中，类似于<code>.gitignore</code>的格式，这也很方便，比起在软件中配置要简单。</p>
+<p>Desktop 上使用 BTRFS，并且已经使用 snapper 定时（每小时）创建 Btrfs snapshot，那最好是能够让备份工具备份最近一个文件系统snapshot，而不是直接备份当前文件，这样的好处是能够保证一个备份中的文件都是处于同一个时刻的，而不是有时间先后。</p>
+<p>Kopia 的policy支持配置 before-snapshot action，正好可以做这个事情。这个 action 的脚本做的事情就是找过要备份的 btrfs subvolume 中最后一个 snapshot 的路径：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">snapshots=<span class="variable">$KOPIA_SOURCE_PATH</span>/.snapshots</span><br><span class="line">latest=`<span class="built_in">ls</span> -Art <span class="variable">$snapshots</span> | <span class="built_in">tail</span> -n 1`</span><br><span class="line"><span class="built_in">echo</span> KOPIA_SNAPSHOT_PATH=<span class="variable">$snapshots</span>/<span class="variable">$latest</span>/snapshot</span><br></pre></td></tr></table></figure>
+
+<p>Kopia 会备份这个 action 返回的 KOPIA_SNAPSHOT_PATH，而不是原始的 KOPIA_SOURCE_PATH。</p>
+<p>以前用MacOS，它的 TimeMachine 很好用的一点是可以在 timeline 中很方便的浏览备份的文件，快速的定位到想要恢复的文件在那个日期的备份中存在。看了一轮 Linux 上的备份工具的介绍，在数据恢复方面都没有能够像 TimeMachine 那么方便的，需要一个个备份去查看。有些工具能够提供文件在不同备份之间 diff 的功能，可惜 Kopia 也没有。</p>
+<span id="more"></span>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/blog/tags/SysAdmin/" rel="tag"><i class="fa fa-tag"></i> SysAdmin</a>
+              <a href="/blog/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2022/10/09/k2g-router/" rel="prev" title="K2G 无线路由器">
+      <i class="fa fa-chevron-left"></i> K2G 无线路由器
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2024/01/18/oven-temperature-control/" rel="next" title="烤箱机械温控">
+      烤箱机械温控 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#NAS"><span class="nav-number">1.</span> <span class="nav-text">NAS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Btrfs-RAID-1"><span class="nav-number">1.1.</span> <span class="nav-text">Btrfs RAID 1</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Desktop"><span class="nav-number">2.</span> <span class="nav-text">Desktop</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Cached-LVM"><span class="nav-number">2.1.</span> <span class="nav-text">Cached LVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Btrfs-subvolumes-and-snapshots"><span class="nav-number">2.2.</span> <span class="nav-text">Btrfs, subvolumes and snapshots</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Backup"><span class="nav-number">3.</span> <span class="nav-text">Backup</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Liang"
+      src="https://avatars.io/gravatar/leoliang@gmail.com">
+  <p class="site-author-name" itemprop="name">Leo Liang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">337</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2001 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo Liang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '578b819466ead4247b6e',
+      clientSecret: 'e4361add3c0e6c42bbb657317778c436ce1e02ad',
+      repo        : 'blog-comments',
+      owner       : 'aleung',
+      admin       : ['aleung'],
+      id          : '2c87699734b150927e8fa8e918355609',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

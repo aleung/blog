@@ -6,7 +6,7 @@
   <link href="http://aleung.github.io/blog/atom.xml" rel="self"/>
   
   <link href="http://aleung.github.io/blog/"/>
-  <updated>2022-12-28T16:11:03.771Z</updated>
+  <updated>2024-01-18T15:41:12.086Z</updated>
   <id>http://aleung.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,102 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>烤箱机械温控</title>
+    <link href="http://aleung.github.io/blog/2024/01/18/oven-temperature-control/"/>
+    <id>http://aleung.github.io/blog/2024/01/18/oven-temperature-control/</id>
+    <published>2024-01-18T15:30:42.000Z</published>
+    <updated>2024-01-18T15:41:12.086Z</updated>
+    
+    <content type="html"><![CDATA[<p>拆开烤箱看过才知道机械温控器的双金属片就是安装在温控旋钮后面，因此它测量的是温控旋钮处的温度，而不是烤箱内腔里的温度。</p><p><img src="/blog/2024/01/18/oven-temperature-control/oven.jpg"></p><p>找 Bard 问一下，回答是这样的：</p><blockquote><p>由于机械温控器的温度传感器距离烤箱内部较远，因此测量结果会受到外界环境的影响，例如烤箱门的密封程度、烤箱内腔材质等。因此，机械温控器的温控精度通常较低，在烘焙等对温度要求较高的场合，不建议使用机械温控器的烤箱。</p><p>电子温控器的温度传感器通常安装在烤箱内部，因此测量结果更准确。电子温控器还可以通过微电路进行温度控制，可以实现更精准的恒温效果。因此，在烘焙等对温度要求较高的场合，建议使用电子温控器的烤箱。</p></blockquote><p>虽然知道机械的不会太准，没想到也太离谱了，这样受环境的影响大，腔内温度变化的反馈也很慢。看来还是得电子温控的才靠谱，要不就必须要在烤箱内放温度计，人工 PID 😀</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;拆开烤箱看过才知道机械温控器的双金属片就是安装在温控旋钮后面，因此它测量的是温控旋钮处的温度，而不是烤箱内腔里的温度。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/2024/01/18/oven-temperature-control/oven.jpg&quot;&gt;&lt;/p&gt;
+&lt;p&gt;找 Bard 问一下，回答是这样的：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;由于机械温控器的温度传感器距离烤箱内部较远，因此测量结果会受到外界环境的影响，例如烤箱门的密封程度、烤箱内腔材质等。因此，机械温控器的温控精度通常较低，在烘焙等对温度要求较高的场合，不建议使用机械温控器的烤箱。&lt;/p&gt;
+&lt;p&gt;电子温控器的温度传感器通常安装在烤箱内部，因此测量结果更准确。电子温控器还可以通过微电路进行温度控制，可以实现更精准的恒温效果。因此，在烘焙等对温度要求较高的场合，建议使用电子温控器的烤箱。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;虽然知道机械的不会太准，没想到也太离谱了，这样受环境的影响大，腔内温度变化的反馈也很慢。看来还是得电子温控的才靠谱，要不就必须要在烤箱内放温度计，人工 PID 😀&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="HomeAppliance" scheme="http://aleung.github.io/blog/tags/HomeAppliance/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NAS and file system</title>
+    <link href="http://aleung.github.io/blog/2022/12/29/NAS-and-file-system/"/>
+    <id>http://aleung.github.io/blog/2022/12/29/NAS-and-file-system/</id>
+    <published>2022-12-29T14:44:15.000Z</published>
+    <updated>2024-01-18T15:28:27.018Z</updated>
+    
+    <content type="html"><![CDATA[<p>折腾了Linux台式机和NAS，记录一下。(原文写于2022年底，但放下了就没有全部写完)</p><p>其实我没有很高的NAS的服务需求，主要是数据得有备份，因此也没有专门买NAS硬件也没有用专门的NAS软件，只是用了闲置下来一台台式机，安装Ubuntu。故此，我就有两台Ubuntu电脑，一台是日常用机，称为desktop，另一台是NAS。</p><h2 id="NAS"><a href="#NAS" class="headerlink" title="NAS"></a>NAS</h2><h3 id="Btrfs-RAID-1"><a href="#Btrfs-RAID-1" class="headerlink" title="Btrfs RAID 1"></a>Btrfs RAID 1</h3><p>NAS需要保障数据安全，组个RAID会安心一点。</p><p>这台电脑用了一个128G的SSD作为系统盘，挂两个HDD组成RAID 1做数据盘，以后有需求可以再增加一个。</p><p>数据盘的文件系统采用BTRFS，考虑BTRFS支持RAID，并且可以用多个容量不一的磁盘来组RAID 1，正好用上现有的硬盘，以后添加也可以根据到时最经济的大小来买。添加（<code>btrfs device add</code>）或者替换（<code>btrfs replace</code>）磁盘后，执行 <code>btrfs balance</code> 就会将数据在RAID中的磁盘中重新分配，它会根据数据副本数量自动考虑各个磁盘的空闲空间大小来分配。</p><p>BTRFS 的 scrub 命令可以检查和修复一部分磁盘错误。它对每个数据块读取并检查 checksum，如果发现读取失败或者数据校验错误，就会尝试用 RAID 1 中的其他副本来替换。建议定期（例如每个月）执行。</p><h2 id="Desktop"><a href="#Desktop" class="headerlink" title="Desktop"></a>Desktop</h2><p>工作电脑要解决的问题是磁盘容量和性能的平衡，还有文件的历史版本保存，方便出问题时回退。</p><p>首先，系统根文件系统我不想搞复杂，怕出问题，还是简单在SSD上分配，用 ext4 文件系统。然后，home 和一些数据目录再考虑其他方案。</p><h3 id="Cached-LVM"><a href="#Cached-LVM" class="headerlink" title="Cached LVM"></a>Cached LVM</h3><p>照片、视频、数据等等各种东西加起来，需要的磁盘容量不小。考虑到使用方便和存储速度，倾向于保存在desktop上，而不是从NAS远程访问。</p><p>如果都用SSD，大容量SSD也太贵了，HDD速度又太慢。以前用黑苹果的时候，是用 SSD + HDD 组成了 fusion drive，体验相当好，故此在 Linux 下也寻找类似的方案。最终选择了使用 LVM cache。</p><p>LVM 的基本概念是三层结构：</p><ul><li>LV - Logical Volume，在VG上分配LV，LV上创建文件系统</li><li>VG - Volume Group，多个PV组合成一个VG</li><li>PV - Physical Volume，对应着物理存储设备（磁盘或者分区）</li></ul><p>一个 VG 中的 PV 可以包括 SSD（高速）和 HDD（低速），cached LV 就是将一个 cache LV 和一个 main LV 绑定起来，其中 cache LV 的空间分配自高速的 PV，而 main LV 的空间分配自低速的 PV，利用 cache 对读写操作进行缓冲，提高访问速度。</p><p>Cached LV 有两种类型：cache both read and write (type  <code>cache</code>) 和 cache only write operations (type <code>writecache</code> )，在我的应用场景中当然是希望要能够对读操作加速。有两种 cache 模式：writeback 和 writethrough，writethrough 安全但似乎就起不到加速写操作的作用，但如果指定 writeback 模式，创建的时候会有警告，不推荐使用。</p><p>很多教程、文档上写的方法都是一步步按部就班进行：</p><ol><li>创建 main LV</li><li>创建 cache data LV</li><li>创建 cache meta LV</li><li>将 cache data LV 和 cache meta LV 合并为一个 cache pool</li><li>将 cache pool 绑定到 main LV，转换为 cached LV</li></ol><p>其实用 cachevol 比用 cache pool 要简单， 就是直接在高速 PV 上创建一个 LV，将这个 LV 作为 cache。它与 cache pool 不同在于 cachevol 无法将 data 与 meta 分开到不同磁盘上，但通常家用场景也没有这样的需求</p><p>然而，还有一个终极大招：一个命令完成创建 main LV （例子中为<code>/dev/sdd2</code>）、创建 cachevol (例子中为<code>/dev/sda5</code>)、转换为 cached LV 的全过程：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lvcreate --type cache -l 100%FREE --cachedevice /dev/sda5 vg2 -n lv_name /dev/sdd2</span><br></pre></td></tr></table></figure><p>如果在创建的过程中出现关于 chunksize 的错误信息，需要增加参数 <code>--chunksize</code> 来调整。超过100GB的cache需要256k chunk size。</p><p>这样组成的 cached LV 跟 MacOS 的 APFS Fusoin Drive 还是有区别：cached LV 的有效大小是 main LV 的大小，cache volume 完全只是作为 cache，甚至可以把它摘掉也不会影响存储的数据；而 Fusion Drive 的容量是组成的多个分区的总大小，它内部自动将文件在不同设备之间迁移，尽可能将热数据保存在快速设备上。</p><h3 id="Btrfs-subvolumes-and-snapshots"><a href="#Btrfs-subvolumes-and-snapshots" class="headerlink" title="Btrfs, subvolumes and snapshots"></a>Btrfs, subvolumes and snapshots</h3><p>上面步骤创建好的 LV 等价于磁盘分区，还需要在上面创建文件系统。考虑到 BTRFS 支持 snapshot，可以实现文件的历史版本记录，选择了使用BTRFS。</p><h4 id="subvolume"><a href="#subvolume" class="headerlink" title="subvolume"></a>subvolume</h4><p>(没写完)</p><h4 id="snapper"><a href="#snapper" class="headerlink" title="snapper"></a>snapper</h4><p>snapper是一个管理 btrfs snapshot 的工具，对每个 subvolume 配置 snapshot 的保留策略（每小时&#x2F;每天&#x2F;每周&#x2F;每月&#x2F;每年的分别保存多少份），定时创建&#x2F;清理 btrfs snapshot。</p><p>snapper是命令行工具，有一个snapper-gui项目，但在Ubuntu上工作不是很正常。用<a href="https://gitlab.com/btrfs-assistant/btrfs-assistant">btrfs-assistant</a> GUI tool, 代替了 snapper-gui</p><p>实际使用中发现，如果文件系统剩余空间不多（例如不足10%），磁盘就会非常繁忙，系统卡顿，应该是数据整理非常耗费资源。要保证文件系统剩余足够空闲空间，这限制的snapshot的数量。另外一个问题是，删除snapshot的时候，磁盘会非常繁忙，因此也要减少 snapshot 的数量。期望单靠 snapshot 来找回文件历史版本并不是合适的方案，应该还是使用 backup 工具创建定期的备份（见下面的章节），而对于需要<strong>真正</strong>的文件版本的场合，使用专门的版本管理系统。</p><p>如果重新再装系统，我就会考虑snapshot这个功能需求是否有那么重要了，也许并不需要使用btrfs。</p><h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p>启用 quota 功能可以统计各个 subvolume 使用的空间大小：<code>btrfs enable quota /path</code>，但是 quota 会造成很严重的性能问题！所以没必要还是不要启用。</p><p><a href="https://github.com/speed47/btrfs-list">btrfs-list</a> 方便查看所有的 subvolume, snapshot 以及它们所占的空间大小</p><h2 id="Backup"><a href="#Backup" class="headerlink" title="Backup"></a>Backup</h2><p>从desktop备份数据到NAS，用的是 <a href="https://kopia.io/">Kopia</a>。类似的工具还有 <a href="https://www.borgbackup.org/">Borg</a>，都是deduplication的备份工具，对于多个备份中的相同的数据（基于hash）不会重复传输和存储，可以高效的进行增量备份，节省存储空间。</p><p>Kopia既有命令行也有GUI，我在desktop上安装了KopiaUI，使用相当方便。存储仓库用SFTP指向NAS，在NAS上不需要安装软件，配置好ssh就可以。</p><p>在desktop上，为每个要备份的目录（我这里是对应着BTRFS的subvolume）创建一个policy，policy中可以配置备份保持的周期（每小时&#x2F;每天&#x2F;每周&#x2F;每月&#x2F;每年的分别保存多少份），执行间隔时间，设定是否压缩，等等。</p><p>如果有些文件&#x2F;目录不想备份，可以写到<code>.kopiaignore</code>文件中，类似于<code>.gitignore</code>的格式，这也很方便，比起在软件中配置要简单。</p><p>Desktop 上使用 BTRFS，并且已经使用 snapper 定时（每小时）创建 Btrfs snapshot，那最好是能够让备份工具备份最近一个文件系统snapshot，而不是直接备份当前文件，这样的好处是能够保证一个备份中的文件都是处于同一个时刻的，而不是有时间先后。</p><p>Kopia 的policy支持配置 before-snapshot action，正好可以做这个事情。这个 action 的脚本做的事情就是找过要备份的 btrfs subvolume 中最后一个 snapshot 的路径：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">snapshots=<span class="variable">$KOPIA_SOURCE_PATH</span>/.snapshots</span><br><span class="line">latest=`<span class="built_in">ls</span> -Art <span class="variable">$snapshots</span> | <span class="built_in">tail</span> -n 1`</span><br><span class="line"><span class="built_in">echo</span> KOPIA_SNAPSHOT_PATH=<span class="variable">$snapshots</span>/<span class="variable">$latest</span>/snapshot</span><br></pre></td></tr></table></figure><p>Kopia 会备份这个 action 返回的 KOPIA_SNAPSHOT_PATH，而不是原始的 KOPIA_SOURCE_PATH。</p><p>以前用MacOS，它的 TimeMachine 很好用的一点是可以在 timeline 中很方便的浏览备份的文件，快速的定位到想要恢复的文件在那个日期的备份中存在。看了一轮 Linux 上的备份工具的介绍，在数据恢复方面都没有能够像 TimeMachine 那么方便的，需要一个个备份去查看。有些工具能够提供文件在不同备份之间 diff 的功能，可惜 Kopia 也没有。</p><span id="more"></span>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;折腾了Linux台式机和NAS，记录一下。(原文写于2022年底，但放下了就没有全部写完)&lt;/p&gt;
+&lt;p&gt;其实我没有很高的NAS的服务需求，主要是数据得有备份，因此也没有专门买NAS硬件也没有用专门的NAS软件，只是用了闲置下来一台台式机，安装Ubuntu。故此，我就有两台Ubuntu电脑，一台是日常用机，称为desktop，另一台是NAS。&lt;/p&gt;
+&lt;h2 id=&quot;NAS&quot;&gt;&lt;a href=&quot;#NAS&quot; class=&quot;headerlink&quot; title=&quot;NAS&quot;&gt;&lt;/a&gt;NAS&lt;/h2&gt;&lt;h3 id=&quot;Btrfs-RAID-1&quot;&gt;&lt;a href=&quot;#Btrfs-RAID-1&quot; class=&quot;headerlink&quot; title=&quot;Btrfs RAID 1&quot;&gt;&lt;/a&gt;Btrfs RAID 1&lt;/h3&gt;&lt;p&gt;NAS需要保障数据安全，组个RAID会安心一点。&lt;/p&gt;
+&lt;p&gt;这台电脑用了一个128G的SSD作为系统盘，挂两个HDD组成RAID 1做数据盘，以后有需求可以再增加一个。&lt;/p&gt;
+&lt;p&gt;数据盘的文件系统采用BTRFS，考虑BTRFS支持RAID，并且可以用多个容量不一的磁盘来组RAID 1，正好用上现有的硬盘，以后添加也可以根据到时最经济的大小来买。添加（&lt;code&gt;btrfs device add&lt;/code&gt;）或者替换（&lt;code&gt;btrfs replace&lt;/code&gt;）磁盘后，执行 &lt;code&gt;btrfs balance&lt;/code&gt; 就会将数据在RAID中的磁盘中重新分配，它会根据数据副本数量自动考虑各个磁盘的空闲空间大小来分配。&lt;/p&gt;
+&lt;p&gt;BTRFS 的 scrub 命令可以检查和修复一部分磁盘错误。它对每个数据块读取并检查 checksum，如果发现读取失败或者数据校验错误，就会尝试用 RAID 1 中的其他副本来替换。建议定期（例如每个月）执行。&lt;/p&gt;
+&lt;h2 id=&quot;Desktop&quot;&gt;&lt;a href=&quot;#Desktop&quot; class=&quot;headerlink&quot; title=&quot;Desktop&quot;&gt;&lt;/a&gt;Desktop&lt;/h2&gt;&lt;p&gt;工作电脑要解决的问题是磁盘容量和性能的平衡，还有文件的历史版本保存，方便出问题时回退。&lt;/p&gt;
+&lt;p&gt;首先，系统根文件系统我不想搞复杂，怕出问题，还是简单在SSD上分配，用 ext4 文件系统。然后，home 和一些数据目录再考虑其他方案。&lt;/p&gt;
+&lt;h3 id=&quot;Cached-LVM&quot;&gt;&lt;a href=&quot;#Cached-LVM&quot; class=&quot;headerlink&quot; title=&quot;Cached LVM&quot;&gt;&lt;/a&gt;Cached LVM&lt;/h3&gt;&lt;p&gt;照片、视频、数据等等各种东西加起来，需要的磁盘容量不小。考虑到使用方便和存储速度，倾向于保存在desktop上，而不是从NAS远程访问。&lt;/p&gt;
+&lt;p&gt;如果都用SSD，大容量SSD也太贵了，HDD速度又太慢。以前用黑苹果的时候，是用 SSD + HDD 组成了 fusion drive，体验相当好，故此在 Linux 下也寻找类似的方案。最终选择了使用 LVM cache。&lt;/p&gt;
+&lt;p&gt;LVM 的基本概念是三层结构：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;LV - Logical Volume，在VG上分配LV，LV上创建文件系统&lt;/li&gt;
+&lt;li&gt;VG - Volume Group，多个PV组合成一个VG&lt;/li&gt;
+&lt;li&gt;PV - Physical Volume，对应着物理存储设备（磁盘或者分区）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一个 VG 中的 PV 可以包括 SSD（高速）和 HDD（低速），cached LV 就是将一个 cache LV 和一个 main LV 绑定起来，其中 cache LV 的空间分配自高速的 PV，而 main LV 的空间分配自低速的 PV，利用 cache 对读写操作进行缓冲，提高访问速度。&lt;/p&gt;
+&lt;p&gt;Cached LV 有两种类型：cache both read and write (type  &lt;code&gt;cache&lt;/code&gt;) 和 cache only write operations (type &lt;code&gt;writecache&lt;/code&gt; )，在我的应用场景中当然是希望要能够对读操作加速。有两种 cache 模式：writeback 和 writethrough，writethrough 安全但似乎就起不到加速写操作的作用，但如果指定 writeback 模式，创建的时候会有警告，不推荐使用。&lt;/p&gt;
+&lt;p&gt;很多教程、文档上写的方法都是一步步按部就班进行：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;创建 main LV&lt;/li&gt;
+&lt;li&gt;创建 cache data LV&lt;/li&gt;
+&lt;li&gt;创建 cache meta LV&lt;/li&gt;
+&lt;li&gt;将 cache data LV 和 cache meta LV 合并为一个 cache pool&lt;/li&gt;
+&lt;li&gt;将 cache pool 绑定到 main LV，转换为 cached LV&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;其实用 cachevol 比用 cache pool 要简单， 就是直接在高速 PV 上创建一个 LV，将这个 LV 作为 cache。它与 cache pool 不同在于 cachevol 无法将 data 与 meta 分开到不同磁盘上，但通常家用场景也没有这样的需求&lt;/p&gt;
+&lt;p&gt;然而，还有一个终极大招：一个命令完成创建 main LV （例子中为&lt;code&gt;/dev/sdd2&lt;/code&gt;）、创建 cachevol (例子中为&lt;code&gt;/dev/sda5&lt;/code&gt;)、转换为 cached LV 的全过程：&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;lvcreate --type cache -l 100%FREE --cachedevice /dev/sda5 vg2 -n lv_name /dev/sdd2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;如果在创建的过程中出现关于 chunksize 的错误信息，需要增加参数 &lt;code&gt;--chunksize&lt;/code&gt; 来调整。超过100GB的cache需要256k chunk size。&lt;/p&gt;
+&lt;p&gt;这样组成的 cached LV 跟 MacOS 的 APFS Fusoin Drive 还是有区别：cached LV 的有效大小是 main LV 的大小，cache volume 完全只是作为 cache，甚至可以把它摘掉也不会影响存储的数据；而 Fusion Drive 的容量是组成的多个分区的总大小，它内部自动将文件在不同设备之间迁移，尽可能将热数据保存在快速设备上。&lt;/p&gt;
+&lt;h3 id=&quot;Btrfs-subvolumes-and-snapshots&quot;&gt;&lt;a href=&quot;#Btrfs-subvolumes-and-snapshots&quot; class=&quot;headerlink&quot; title=&quot;Btrfs, subvolumes and snapshots&quot;&gt;&lt;/a&gt;Btrfs, subvolumes and snapshots&lt;/h3&gt;&lt;p&gt;上面步骤创建好的 LV 等价于磁盘分区，还需要在上面创建文件系统。考虑到 BTRFS 支持 snapshot，可以实现文件的历史版本记录，选择了使用BTRFS。&lt;/p&gt;
+&lt;h4 id=&quot;subvolume&quot;&gt;&lt;a href=&quot;#subvolume&quot; class=&quot;headerlink&quot; title=&quot;subvolume&quot;&gt;&lt;/a&gt;subvolume&lt;/h4&gt;&lt;p&gt;(没写完)&lt;/p&gt;
+&lt;h4 id=&quot;snapper&quot;&gt;&lt;a href=&quot;#snapper&quot; class=&quot;headerlink&quot; title=&quot;snapper&quot;&gt;&lt;/a&gt;snapper&lt;/h4&gt;&lt;p&gt;snapper是一个管理 btrfs snapshot 的工具，对每个 subvolume 配置 snapshot 的保留策略（每小时&amp;#x2F;每天&amp;#x2F;每周&amp;#x2F;每月&amp;#x2F;每年的分别保存多少份），定时创建&amp;#x2F;清理 btrfs snapshot。&lt;/p&gt;
+&lt;p&gt;snapper是命令行工具，有一个snapper-gui项目，但在Ubuntu上工作不是很正常。用&lt;a href=&quot;https://gitlab.com/btrfs-assistant/btrfs-assistant&quot;&gt;btrfs-assistant&lt;/a&gt; GUI tool, 代替了 snapper-gui&lt;/p&gt;
+&lt;p&gt;实际使用中发现，如果文件系统剩余空间不多（例如不足10%），磁盘就会非常繁忙，系统卡顿，应该是数据整理非常耗费资源。要保证文件系统剩余足够空闲空间，这限制的snapshot的数量。另外一个问题是，删除snapshot的时候，磁盘会非常繁忙，因此也要减少 snapshot 的数量。期望单靠 snapshot 来找回文件历史版本并不是合适的方案，应该还是使用 backup 工具创建定期的备份（见下面的章节），而对于需要&lt;strong&gt;真正&lt;/strong&gt;的文件版本的场合，使用专门的版本管理系统。&lt;/p&gt;
+&lt;p&gt;如果重新再装系统，我就会考虑snapshot这个功能需求是否有那么重要了，也许并不需要使用btrfs。&lt;/p&gt;
+&lt;h4 id=&quot;其他&quot;&gt;&lt;a href=&quot;#其他&quot; class=&quot;headerlink&quot; title=&quot;其他&quot;&gt;&lt;/a&gt;其他&lt;/h4&gt;&lt;p&gt;启用 quota 功能可以统计各个 subvolume 使用的空间大小：&lt;code&gt;btrfs enable quota /path&lt;/code&gt;，但是 quota 会造成很严重的性能问题！所以没必要还是不要启用。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/speed47/btrfs-list&quot;&gt;btrfs-list&lt;/a&gt; 方便查看所有的 subvolume, snapshot 以及它们所占的空间大小&lt;/p&gt;
+&lt;h2 id=&quot;Backup&quot;&gt;&lt;a href=&quot;#Backup&quot; class=&quot;headerlink&quot; title=&quot;Backup&quot;&gt;&lt;/a&gt;Backup&lt;/h2&gt;&lt;p&gt;从desktop备份数据到NAS，用的是 &lt;a href=&quot;https://kopia.io/&quot;&gt;Kopia&lt;/a&gt;。类似的工具还有 &lt;a href=&quot;https://www.borgbackup.org/&quot;&gt;Borg&lt;/a&gt;，都是deduplication的备份工具，对于多个备份中的相同的数据（基于hash）不会重复传输和存储，可以高效的进行增量备份，节省存储空间。&lt;/p&gt;
+&lt;p&gt;Kopia既有命令行也有GUI，我在desktop上安装了KopiaUI，使用相当方便。存储仓库用SFTP指向NAS，在NAS上不需要安装软件，配置好ssh就可以。&lt;/p&gt;
+&lt;p&gt;在desktop上，为每个要备份的目录（我这里是对应着BTRFS的subvolume）创建一个policy，policy中可以配置备份保持的周期（每小时&amp;#x2F;每天&amp;#x2F;每周&amp;#x2F;每月&amp;#x2F;每年的分别保存多少份），执行间隔时间，设定是否压缩，等等。&lt;/p&gt;
+&lt;p&gt;如果有些文件&amp;#x2F;目录不想备份，可以写到&lt;code&gt;.kopiaignore&lt;/code&gt;文件中，类似于&lt;code&gt;.gitignore&lt;/code&gt;的格式，这也很方便，比起在软件中配置要简单。&lt;/p&gt;
+&lt;p&gt;Desktop 上使用 BTRFS，并且已经使用 snapper 定时（每小时）创建 Btrfs snapshot，那最好是能够让备份工具备份最近一个文件系统snapshot，而不是直接备份当前文件，这样的好处是能够保证一个备份中的文件都是处于同一个时刻的，而不是有时间先后。&lt;/p&gt;
+&lt;p&gt;Kopia 的policy支持配置 before-snapshot action，正好可以做这个事情。这个 action 的脚本做的事情就是找过要备份的 btrfs subvolume 中最后一个 snapshot 的路径：&lt;/p&gt;
+&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;snapshots=&lt;span class=&quot;variable&quot;&gt;$KOPIA_SOURCE_PATH&lt;/span&gt;/.snapshots&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;latest=`&lt;span class=&quot;built_in&quot;&gt;ls&lt;/span&gt; -Art &lt;span class=&quot;variable&quot;&gt;$snapshots&lt;/span&gt; | &lt;span class=&quot;built_in&quot;&gt;tail&lt;/span&gt; -n 1`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; KOPIA_SNAPSHOT_PATH=&lt;span class=&quot;variable&quot;&gt;$snapshots&lt;/span&gt;/&lt;span class=&quot;variable&quot;&gt;$latest&lt;/span&gt;/snapshot&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;Kopia 会备份这个 action 返回的 KOPIA_SNAPSHOT_PATH，而不是原始的 KOPIA_SOURCE_PATH。&lt;/p&gt;
+&lt;p&gt;以前用MacOS，它的 TimeMachine 很好用的一点是可以在 timeline 中很方便的浏览备份的文件，快速的定位到想要恢复的文件在那个日期的备份中存在。看了一轮 Linux 上的备份工具的介绍，在数据恢复方面都没有能够像 TimeMachine 那么方便的，需要一个个备份去查看。有些工具能够提供文件在不同备份之间 diff 的功能，可惜 Kopia 也没有。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="SysAdmin" scheme="http://aleung.github.io/blog/tags/SysAdmin/"/>
+    
+    <category term="Linux" scheme="http://aleung.github.io/blog/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>K2G 无线路由器</title>
@@ -401,50 +497,6 @@
     
     
     <category term="SoftwareDev" scheme="http://aleung.github.io/blog/tags/SoftwareDev/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Blog update</title>
-    <link href="http://aleung.github.io/blog/2016/08/30/update/"/>
-    <id>http://aleung.github.io/blog/2016/08/30/update/</id>
-    <published>2016-08-30T13:40:17.000Z</published>
-    <updated>2022-08-28T15:12:31.183Z</updated>
-    
-    <content type="html"><![CDATA[<p>接近一年没有更新过这个blog了，时间过得真快，也是有史以来荒废得最久的时间。</p><p>虽然没有写文章，在上半年还是断断续续的花了点时间升级了blog系统。原本用的是<a href="https://github.com/octopress/octopress">Octopress</a>，但Octopress的3.0版本开发基本上处于废弃状态，想换回正宗的<a href="https://jekyllrb.com/">Jekyll</a>，Jekyll 3.0的发布也是从2004年底一直等到2005年底，试用过测试版本很多不兼容问题。从去年以来，工作重点切换到node.js平台，于是自己的项目也选择node.js好了，最后选用了<a href="https://hexo.io/">Hexo</a>作为blog系统。Hexo还有个优点就是render速度比基于Ruby的Jekyll&#x2F;Octopress快了起码一个数量级，我这里三百多篇文章，以前启动预览得大概一分钟，现在几秒钟。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;接近一年没有更新过这个blog了，时间过得真快，也是有史以来荒废得最久的时间。&lt;/p&gt;
-&lt;p&gt;虽然没有写文章，在上半年还是断断续续的花了点时间升级了blog系统。原本用的是&lt;a href=&quot;https://github.com/octopress/octopress&quot;&gt;Octopress&lt;/a&gt;，但Octopress的3.0版本开发基本上处于废弃状态，想换回正宗的&lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;，Jekyll 3.0的发布也是从2004年底一直等到2005年底，试用过测试版本很多不兼容问题。从去年以来，工作重点切换到node.js平台，于是自己的项目也选择node.js好了，最后选用了&lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;作为blog系统。Hexo还有个优点就是render速度比基于Ruby的Jekyll&amp;#x2F;Octopress快了起码一个数量级，我这里三百多篇文章，以前启动预览得大概一分钟，现在几秒钟。&lt;/p&gt;
-</summary>
-    
-    
-    
-    
-    <category term="Blogging" scheme="http://aleung.github.io/blog/tags/Blogging/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hackintosh Installation</title>
-    <link href="http://aleung.github.io/blog/2016/04/11/mac-installation/"/>
-    <id>http://aleung.github.io/blog/2016/04/11/mac-installation/</id>
-    <published>2016-04-10T16:00:00.000Z</published>
-    <updated>2022-08-28T15:12:31.183Z</updated>
-    
-    <content type="html"><![CDATA[<p>装了一台黑苹果在公司里用，幸福指数大大提升。</p><h1 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h1><p>硬件选型参考tonymacx86的<a href="http://www.tonymacx86.com/building-customac-buyers-guide-march-2016.html#CustoMac_Mini">CustoMac Mini</a>)，算下来主机不足4000元。要保证安装顺利、功能正常和稳定，最重要的是选择推荐的主板型号，可以找到详细的安装配置教程，各种可能的坑都有人给出解决方案了。安装过程一律依据tonymacx86的guide进行，没有任何问题。SSD和机械硬盘组成fusion drive，在较低的成本上达到不错的性能和容量的兼顾。唯一问题是用了fusion driver之后hibernate就不能用了，因为Clover认不出fusion driver，找不到上面的sleep image。</p><h1 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h1><p>以下内容均针对 El Capitan。</p><h2 id="App安装途径"><a href="#App安装途径" class="headerlink" title="App安装途径"></a>App安装途径</h2><p>安装应用途径，按照优先顺序：</p><ul><li><a href="https://caskroom.github.io/">Homebrew Cask</a></li><li><a href="http://brew.sh/">Homebrew</a></li><li>App Store</li><li>官网下载</li></ul><h3 id="升级已安装的所有brews"><a href="#升级已安装的所有brews" class="headerlink" title="升级已安装的所有brews"></a>升级已安装的所有brews</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew update</span><br><span class="line">brew upgrade</span><br></pre></td></tr></table></figure><h3 id="升级已安装的所有casks"><a href="#升级已安装的所有casks" class="headerlink" title="升级已安装的所有casks"></a>升级已安装的所有casks</h3><p>From: <a href="http://apple.stackexchange.com/a/231020/13455">http://apple.stackexchange.com/a/231020/13455</a></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s https://gist.githubusercontent.com/atais/5d3ec79e67f221cb55b7/raw/f6e6b647e6f90939c016ba88e591529d143cb33d/cash_upgrade.sh | bash /dev/stdin</span><br></pre></td></tr></table></figure><h2 id="强大的命令行"><a href="#强大的命令行" class="headerlink" title="强大的命令行"></a>强大的命令行</h2><ul><li>用iTerm2替换系统自带的terminal<ul><li>安装 Solarized Dracula theme （不要选Solaris dark，好多工具的输出会看不见）</li><li>更改字体</li></ul></li><li>用zsh替换缺省的bash<ul><li>使用 Oh-my-zsh 进行zsh的配置，以上步骤参考这里 <a href="https://gist.github.com/kevin-smets/8568070">https://gist.github.com/kevin-smets/8568070</a></li><li>设置为超酷的theme: <a href="https://gist.github.com/agnoster/3712874">agnoster</a></li></ul></li><li>安装 <a href="https://github.com/clvv/fasd">fasd</a></li></ul><h2 id="Finder增强"><a href="#Finder增强" class="headerlink" title="Finder增强"></a>Finder增强</h2><h3 id="快速切换是否显示隐藏文件"><a href="#快速切换是否显示隐藏文件" class="headerlink" title="快速切换是否显示隐藏文件"></a>快速切换是否显示隐藏文件</h3><p>按照<a href="http://apple.stackexchange.com/questions/177132/how-to-set-h-to-enable-show-hidden-files/177138#177138">这里</a>的方法创建一个Automator Service。</p><h3 id="增强-Finder-预览文件的能力"><a href="#增强-Finder-预览文件的能力" class="headerlink" title="增强 Finder 预览文件的能力"></a>增强 Finder 预览文件的能力</h3><p>安装quick look plugins： <a href="https://github.com/sindresorhus/quick-look-plugins">https://github.com/sindresorhus/quick-look-plugins</a></p><h2 id="增强剪贴板"><a href="#增强剪贴板" class="headerlink" title="增强剪贴板"></a>增强剪贴板</h2><p>安装 ClipMenu，提供剪贴板历史功能</p><h2 id="本地化Web应用"><a href="#本地化Web应用" class="headerlink" title="本地化Web应用"></a>本地化Web应用</h2><p>安装 <a href="https://github.com/dmarmor/epichrome">epichrome</a> 将web应用（例如trello）包装为本地应用，方便使用 Mission Control 和全屏。它实际上是每个web应用绑定一个独立的chrome profile，故此还可以安装使用chrome插件。</p><h2 id="一套键盘鼠标控制两台电脑"><a href="#一套键盘鼠标控制两台电脑" class="headerlink" title="一套键盘鼠标控制两台电脑"></a>一套键盘鼠标控制两台电脑</h2><p>Mac是台式机，键盘鼠标连接到Mac上，安装SynergyKM，运行为server；Win笔记本安装Synergy（网上寻找第三方编译版本，open source，但官网下载binary要收费），运行为client。</p><p>使用Windows键盘，需要重新映射按键。首先是在 Preference - Keyboard - Modifier Keys 中对调 Option 和 Command 键，这样左下角三个键的位置就跟Mac的键位相同了。然后安装<a href="https://pqrs.org/osx/karabiner/">Karabiner</a>，一个功能超强的键盘映射工具，在profile中选择enable需要的映射规则。</p><p>因为用 Synergy 同时控制Win电脑，这时重映射过的键盘在 Windows 里面就很难用了。Karabiner 支持多个profile，但目前还没有根据所在屏幕自动切换的方案，解决方法是创建一个NoRemap的profile，里面不打开任何remap规则，用F6键做profile切换。</p><p>Profile切换需要在Karabiner中增加自定义规则，在<code>private.xml</code>中加入下面的内容：</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">vkopenurldef</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>KeyCode::VK_OPEN_URL_SHELL_switchprofile_default<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span> <span class="attr">type</span>=<span class="string">&quot;shell&quot;</span>&gt;</span></span><br><span class="line">        &lt;![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name Default    ]]&gt;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">vkopenurldef</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">vkopenurldef</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>KeyCode::VK_OPEN_URL_SHELL_switchprofile_noremap<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span> <span class="attr">type</span>=<span class="string">&quot;shell&quot;</span>&gt;</span></span><br><span class="line">        &lt;![CDATA[    /Applications/Karabiner.app/Contents/Library/bin/karabiner select_by_name NoRemap    ]]&gt;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">vkopenurldef</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">item</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Switch Profile to Default with F6<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">identifier</span>&gt;</span>private.switch1<span class="tag">&lt;/<span class="name">identifier</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">autogen</span>&gt;</span></span><br><span class="line">        __KeyToKey__</span><br><span class="line">        KeyCode::F6,</span><br><span class="line">        KeyCode::VK_OPEN_URL_SHELL_switchprofile_default</span><br><span class="line">    <span class="tag">&lt;/<span class="name">autogen</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">item</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Switch Profile to NoRemap with F6<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">identifier</span>&gt;</span>private.switch2<span class="tag">&lt;/<span class="name">identifier</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">autogen</span>&gt;</span></span><br><span class="line">        __KeyToKey__</span><br><span class="line">        KeyCode::F6,</span><br><span class="line">        KeyCode::VK_OPEN_URL_SHELL_switchprofile_noremap</span><br><span class="line">    <span class="tag">&lt;/<span class="name">autogen</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br></pre></td></tr></table></figure><p>参考自：<a href="http://apple.stackexchange.com/a/143064/13455">http://apple.stackexchange.com/a/143064/13455</a></p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;装了一台黑苹果在公司里用，幸福指数大大提升。&lt;/p&gt;
-&lt;h1 id=&quot;硬件&quot;&gt;&lt;a href=&quot;#硬件&quot; class=&quot;headerlink&quot; title=&quot;硬件&quot;&gt;&lt;/a&gt;硬件&lt;/h1&gt;&lt;p&gt;硬件选型参考tonymacx86的&lt;a href=&quot;http://www.tonymacx86.com/building-customac-buyers-guide-march-2016.html#CustoMac_Mini&quot;&gt;CustoMac Mini&lt;/a&gt;)，算下来主机不足4000元。要保证安装顺利、功能正常和稳定，最重要的是选择推荐的主板型号，可以找到详细的安装配置教程，各种可能的坑都有人给出解决方案了。安装过程一律依据tonymacx86的guide进行，没有任何问题。SSD和机械硬盘组成fusion drive，在较低的成本上达到不错的性能和容量的兼顾。唯一问题是用了fusion driver之后hibernate就不能用了，因为Clover认不出fusion driver，找不到上面的sleep image。&lt;/p&gt;
-&lt;h1 id=&quot;软件&quot;&gt;&lt;a href=&quot;#软件&quot; class=&quot;headerlink&quot; title=&quot;软件&quot;&gt;&lt;/a&gt;软件&lt;/h1&gt;&lt;p&gt;以下内容均针对 El Capitan。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="Software" scheme="http://aleung.github.io/blog/tags/Software/"/>
-    
-    <category term="Hardware" scheme="http://aleung.github.io/blog/tags/Hardware/"/>
     
   </entry>
   
